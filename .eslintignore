@@ -1,0 +1,7 @@
+*.cjs
+*.js
+/api
+/app/styles/global.css
+/build/
+/node_modules
+/public/build

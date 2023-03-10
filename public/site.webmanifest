@@ -1,0 +1,22 @@
+{
+  "name": "Rewinds",
+  "short_name": "Rewinds",
+  "description": "Remix Tailwind Starter Kit",
+  "start_url": "https://rewinds.mhaidarhanif.com",
+  "icons": [
+    {
+      "src": "/favicons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#38bef8",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "display": "standalone"
+}

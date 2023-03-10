@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply scroll-m-20 font-brand font-semibold tracking-tight;
+  }
+  h1 {
+    @apply text-4xl lg:text-5xl;
+  }
+  h2 {
+    @apply text-3xl lg:text-4xl;
+  }
+  h3 {
+    @apply text-xl lg:text-2xl;
+  }
+  h4 {
+    @apply text-lg lg:text-xl;
+  }
+  h5 {
+    @apply lg:text-lg;
+  }
+  h6 {
+    @apply lg:text-base;
+  }
+  header {
+    @apply space-y-1;
+  }
+}
+
+@layer components {
+  /* shouldn't be a React component, because any element can be styled as a card */
+  .card {
+    @apply rounded border border-surface-100 bg-white p-4 dark:border-surface-700 dark:bg-surface-800/20;
+  }
+  .card-action {
+    @apply bg-surface-100 dark:bg-black;
+  }
+}
+
+@layer utilities {
+  /* Layouts */
+  .contain {
+    /* container alternative */
+    @apply mx-auto w-full max-w-7xl px-2 sm:px-4;
+  }
+  .stack {
+    @apply flex flex-wrap gap-2 sm:gap-4;
+  }
+  .stack-h {
+    @apply stack flex-row;
+  }
+  .stack-h-center {
+    @apply stack-h items-center;
+  }
+  .stack-v {
+    @apply stack flex-col;
+  }
+  /* Sizes */
+  .size-xs {
+    @apply h-3 w-3;
+  }
+  .size-sm {
+    @apply h-4 w-4;
+  }
+  .size-md {
+    @apply h-5 w-5;
+  }
+  .size-lg {
+    @apply h-6 w-6;
+  }
+  /* Prose */
+  .prose-config {
+    @apply prose dark:prose-invert;
+    @apply prose-p:prose-p-styles;
+    @apply prose-a:prose-a-styles;
+    @apply prose-ul:prose-list-styles;
+    @apply prose-ol:prose-list-styles;
+    @apply prose-code:prose-code-styles;
+  }
+  .prose-p-styles {
+    @apply sm:text-lg;
+  }
+  .prose-a-styles {
+    @apply font-semibold text-brand-600 no-underline transition-colors hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300;
+  }
+  .prose-list-styles {
+    @apply my-2 marker:text-base marker:text-brand-700 dark:marker:text-brand-300 [&>li]:mt-2;
+  }
+  .prose-code-styles {
+    @apply relative rounded bg-slate-200 py-[0.2rem] px-[0.3rem] font-mono text-sm font-semibold text-slate-900 transition-colors before:content-none after:content-none hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-400 hover:dark:bg-slate-700;
+  }
+}
+
+/* NProgress styles need to be outside of layers because using #id */
+#nprogress {
+  @apply pointer-events-none z-50;
+}
+#nprogress .bar {
+  @apply fixed top-0 left-0 z-50 h-1 w-full bg-brand-600 dark:bg-brand-400;
+}
+#nprogress .peg {
+  @apply absolute right-0 z-50 block h-full w-28 translate-x-0 -translate-y-1 rotate-3 opacity-100;
+  @apply shadow-[0_0_15px_#000,0_0_10px_#000] shadow-brand-900 dark:shadow-[0_0_15px_#FFF,0_0_10px_#FFF] dark:shadow-brand-500;
+}
+#nprogress .spinner {
+  @apply fixed bottom-2 right-2 z-50 block;
+}
+#nprogress .spinner-icon {
+  @apply z-50 box-border h-6 w-6 animate-spin rounded-full border-4 border-transparent  duration-500;
+  @apply border-l-brand-600 border-t-brand-600 dark:border-l-brand-300 dark:border-t-brand-300;
+}
+.nprogress-custom-parent {
+  @apply relative z-50 overflow-hidden;
+}
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+  @apply absolute z-50;
+}

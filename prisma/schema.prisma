@@ -1,0 +1,105 @@
+// References:
+// https://pris.ly/d/prisma-schema
+// https://github.com/remix-run/indie-stack/blob/main/prisma/schema.prisma
+// https://github.com/planetscale/beam/blob/main/prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+// -----------------------------------------------------------------------------
+// User
+// -----------------------------------------------------------------------------
+
+model User {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  name     String
+  email    String  @unique
+  username String? @unique
+  phone    String? @unique
+
+  password      UserPassword?
+  notifications UserNotification[]
+  roleId        String?
+  role          UserRole?          @relation(fields: [roleId], references: [id])
+  notes         Note[]
+
+  @@index([roleId])
+}
+
+model UserPassword {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  hash String
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@index([userId])
+}
+
+model UserProfile {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    Int      @unique
+
+  avatarImageURL String?
+  headline       String?
+  bio            String?
+
+  @@index([userId])
+}
+
+// -----------------------------------------------------------------------------
+// User Data
+// -----------------------------------------------------------------------------
+
+model UserRole {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  users     User[]
+
+  sequence    Int?
+  symbol      String  @unique // "ADMIN" | "MANAGER" | "EDITOR"
+  name        String  @unique // "Administrator" | "Manager" | "Editor"
+  description String?
+}
+
+model UserNotification {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  title String
+  body  String
+
+  @@index([userId])
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  title String
+  body  String
+
+  @@index([userId])
+}

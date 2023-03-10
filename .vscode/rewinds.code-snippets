@@ -1,0 +1,318 @@
+{
+  "Rewinds Console": {
+    "prefix": "c",
+    "body": ["console.log({ $1 });"],
+    "description": "Console log"
+  },
+
+  "Rewinds Console Log": {
+    "prefix": "cl",
+    "body": ["console.log({ $1 });"],
+    "description": "Console log"
+  },
+
+  "Rewinds Console Info": {
+    "prefix": "ci",
+    "body": ["console.info({ $1 });"],
+    "description": "Console info"
+  },
+
+  "Rewinds React Component": {
+    "prefix": "rwc",
+    "body": ["export const $1 = () => {", "  return <div>$1</div>;", "};", ""],
+    "description": "React component"
+  },
+
+  "Rewinds React PropTypes": {
+    "prefix": "rwp",
+    "body": [
+      "$1.propTypes = {",
+      "  $2: PropTypes.node",
+      "};",
+      "",
+      "$1.defaultProps = {",
+      "  $2: \"\"",
+      "};",
+      ""
+    ],
+    "description": "React component"
+  },
+
+  "Rewinds Remix Route": {
+    "prefix": "rwr",
+    "body": [
+      "import { Layout } from \"~/layouts\";",
+      "",
+      "export default function $1() {",
+      "  return (",
+      "    <Layout>",
+      "      <header>",
+      "        <h1>$1</h1>",
+      "      </header>",
+      "    </Layout>",
+      "  );",
+      "}",
+      ""
+    ],
+    "description": "Remix route to render the component that matches the given route path."
+  },
+
+  "Rewinds Remix Loader": {
+    "prefix": "rwl",
+    "body": [
+      "import { json } from \"~/libs\";",
+      "",
+      "import type { LoaderFunction } from \"@remix-run/node\";",
+      "",
+      "export const loader: LoaderFunction = async () => {",
+      "  return json({});",
+      "};",
+      ""
+    ],
+    "description": "Remix loader function called on server side before rendering to provide data to the route."
+  },
+
+  "Rewinds Remix Loader Session": {
+    "prefix": "rwls",
+    "body": [
+      "import { commitSession, getSession } from \"~/features\";",
+      "import { ${1|json,redirect|} } from \"~/libs\";",
+      "",
+      "import type { LoaderFunction } from \"@remix-run/node\";",
+      "",
+      "export const loader: LoaderFunction = async ({ request }) => {",
+      "  const session = await getSession(request.headers.get(\"Cookie\"));",
+      "",
+      "  return $1(\"$2\", {",
+      "    headers: {",
+      "      \"Set-Cookie\": await commitSession(session),",
+      "    },",
+      "  });",
+      "};",
+      ""
+    ],
+    "description": "Function called on server side before rendering to provide data to the route."
+  },
+
+  "Rewinds Remix Loader Function Params": {
+    "prefix": "remix-loader-params",
+    "body": [
+      "export const loader: LoaderFunction = async ({ request }) => {",
+      "  const url = new URL(request.url);",
+      "  const $2 = url.searchParams.${1|get,getAll|}(\"$2\")",
+      "  $3",
+      "  return {$4}",
+      "};"
+    ],
+    "description": "Function called on server side before rendering to provide data to the route."
+  },
+
+  "Rewinds Remix Action Function": {
+    "prefix": "remix-action",
+    "body": [
+      "export const action: ActionFunction = async ({ request }) => {",
+      "  const formData = await request.formData();",
+      "  $1",
+      "  redirect(`$2`);",
+      "};"
+    ],
+    "description": "Function called on server side to handle data mutation and other actions."
+  },
+
+  "Rewinds Remix Headers": {
+    "prefix": "remix-headers",
+    "body": [
+      "export const headers = ({ loaderHeaders, parentHeaders }) => {",
+      "  return {",
+      "    \"$1\": $2",
+      "  };",
+      "};"
+    ],
+    "description": "Function to define headers by route."
+  },
+
+  "Rewinds Remix Meta": {
+    "prefix": "rwm",
+    "description": "Function to define meta tags by route.",
+    "body": [
+      "import { createMetaData } from \"~/utils\";",
+      "",
+      "export const meta = createMetaData({",
+      "  title: `$1`,",
+      "  description: `$2`,",
+      "});"
+    ]
+  },
+
+  "Rewinds Remix Links": {
+    "prefix": "rwl",
+    "body": [
+      "export const links: LinksFunction = () => {",
+      "  return [",
+      "    { rel: \"$1\", href: \"$2\" }",
+      "  ];",
+      "};"
+    ],
+    "description": "Function to define links by route."
+  },
+
+  "Rewinds Remix CatchBoundary": {
+    "prefix": "rwcb",
+    "body": [
+      "export function CatchBoundary() {",
+      "  const caught = useCatch();",
+      "  $1",
+      "  return (",
+      "    <div>",
+      "      <h1>Caught</h1>",
+      "      <p>Status: {caught.status}</p>",
+      "      <pre>",
+      "        <code>{JSON.stringify(caught.data, null, 2)}</code>",
+      "      </pre>",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "React component that renders whenever an action or loader throws a Response."
+  },
+
+  "Rewinds Remix ErrorBoundary": {
+    "prefix": "rweb",
+    "body": [
+      "export function ErrorBoundary({ error }: { error: Error }) {",
+      "  return (",
+      "    <div>",
+      "      <h1>Error</h1>",
+      "      <p>{error.message}</p>",
+      "      <p>The stack trace is:</p>",
+      "      <pre>{error.stack}</pre>",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "React component that renders whenever there is an error anywhere on the route, either during rendering or during data loading."
+  },
+
+  "Rewinds Remix Handle": {
+    "prefix": "remix-handle",
+    "body": ["export const handle = {", "  $1", "};"],
+    "description": "handle allows you to create application conventions with the useMatches() hook."
+  },
+
+  "Rewinds Remix SEO Handle": {
+    "prefix": "rwseo",
+    "body": [
+      "export const handle: SEOHandle = {",
+      "  getSitemapEntries: () => {",
+      "    return $1;",
+      "  },",
+      "};",
+      ""
+    ],
+    "description": "SEO handle to be used with sitemap.xml file"
+  },
+
+  "Rewinds Remix Session": {
+    "prefix": "remix-session",
+    "body": [
+      "import { createCookieSessionStorage } from \"remix\";",
+      "",
+      "const sessionSecret = process.env.SESSION_SECRET;",
+      "if (!sessionSecret) {",
+      "  throw new Error(\"SESSION_SECRET must be set\");",
+      "}",
+      "",
+      "const { getSession, commitSession, destroySession } =",
+      "  createCookieSessionStorage({",
+      "    // a Cookie from `createCookie` or the CookieOptions to create one",
+      "    cookie: {",
+      "      name: \"${1:__session}\",",
+      "",
+      "      // all of these are optional",
+      "      domain: \"${2:remix.run}\",",
+      "      maxAge: 3000000,",
+      "      httpOnly: true,",
+      "      maxAge: 60,",
+      "      path: \"/\",",
+      "      sameSite: \"lax\",",
+      "      secrets: [sessionSecret],",
+      "      secure: true",
+      "    }",
+      "  });",
+      "export { getSession, commitSession, destroySession };"
+    ],
+    "description": "Creates a cookie session storage template."
+  },
+
+  "Rewinds Remix Link": {
+    "prefix": "remix-a-link",
+    "body": ["<Link prefetch=\"${1|none,intent,render|}\" to={`$2`}>$3</Link>"],
+    "description": "Remix Link component that renders an anchor tag for navigation."
+  },
+
+  "Rewinds Remix Pending Link": {
+    "prefix": "remix-a-link-pending",
+    "body": [
+      "function PendingLink({ to, children }: { to: string; children: any }) {",
+      "  const navigation = useNavigation();",
+      "  const path = useResolvedPath(to);",
+      "",
+      "  const isPending =",
+      "    navigation.state === \"loading\" &&",
+      "    navigation.location.pathname === path.pathname;",
+      "",
+      "  return (",
+      "    <Link",
+      "      data-pending={isPending ? \"true\" : null}",
+      "      to={to}",
+      "      children={children}",
+      "    />",
+      "  );",
+      "}"
+    ],
+    "description": "Pending link component."
+  },
+
+  "Rewinds Remix Button Navigation": {
+    "prefix": "remix-btn-navigation",
+    "body": [
+      "function SubmitButton() {",
+      "  const navigation = useNavigation();",
+      "",
+      "  const text =",
+      "    navigation.state === \"submitting\"",
+      "      ? \"Saving...\"",
+      "      : navigation.state === \"loading\"",
+      "      ? \"Saved!\"",
+      "      : \"Go\";",
+      "",
+      "  return <button type=\"submit\">{text}</button>;",
+      "}"
+    ],
+    "description": "Navigation submit button."
+  },
+
+  "Rewinds Remix Button Navigation Action": {
+    "prefix": "remix-btn-navigation-action",
+    "body": [
+      "function SubmitButton() {",
+      "  const navigation = useNavigation();",
+      "",
+      "  const loadTexts: any = {",
+      "    actionRedirect: \"Data saved, redirecting...\",",
+      "    actionReload: \"Data saved, reloading fresh data...\"",
+      "  };",
+      "",
+      "  const text =",
+      "    navigation.state === \"submitting\"",
+      "      ? \"Saving...\"",
+      "      : navigation.state === \"loading\"",
+      "      ? loadTexts[navigation.type] || \"Loading...\"",
+      "      : \"Go\";",
+      "",
+      "  return <button type=\"submit\"></button>;",
+      "}"
+    ],
+    "description": "Navigation action submit button."
+  }
+}

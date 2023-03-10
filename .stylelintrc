@@ -1,0 +1,6 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-tailwindcss"],
+  "rules": {
+    "rule-empty-line-before": "never"
+  }
+}

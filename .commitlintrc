@@ -1,0 +1,55 @@
+{
+  "extends": [
+    "@commitlint/config-conventional"
+  ],
+  "rules": {
+    "type-enum": [
+      2,
+      "always",
+      [
+        "build",
+        "chore",
+        "ci",
+        "docs",
+        "feat",
+        "fix",
+        "perf",
+        "refactor",
+        "revert",
+        "style",
+        "test",
+        "infra"
+      ]
+    ],
+    "scope-enum": [
+      2,
+      "always",
+      [
+        "auth",
+        "blog",
+        "component",
+        "config",
+        "content",
+        "data",
+        "example",
+        "feature",
+        "graphql",
+        "home",
+        "hook",
+        "layout",
+        "lib",
+        "package",
+        "pricing",
+        "react",
+        "remix",
+        "route",
+        "search",
+        "style",
+        "subscribe",
+        "tailwind",
+        "type",
+        "util"
+      ]
+    ]
+  }
+}
