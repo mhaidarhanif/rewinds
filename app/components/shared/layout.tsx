@@ -35,14 +35,14 @@ export function Layout({
   isSpaced,
   className,
   pageHeader,
-  noThemeToggle,
+  noThemeToggle = false,
   children,
 }: Props) {
   return (
     <div className={cn("flex min-h-screen flex-col")}>
-      <SiteHeader noThemeToggle />
+      <SiteHeader noThemeToggle={noThemeToggle} />
 
-      {/* Custom header below the site header and before the main content */}
+      {/* Custom header */}
       {pageHeader}
 
       <main
@@ -51,7 +51,7 @@ export function Layout({
         {children}
       </main>
 
-      <SiteFooter noThemeToggle />
+      <SiteFooter noThemeToggle={noThemeToggle} />
     </div>
   );
 }

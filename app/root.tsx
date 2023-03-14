@@ -137,6 +137,7 @@ export function RootDocument({
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
+        {title && <title>{title}</title>}
         <Links />
       </head>
       <body>
@@ -151,7 +152,7 @@ export function RootDocument({
 
 export function ErrorBoundary({ error }: { error: Error }) {
   return (
-    <RootDocument>
+    <RootDocument title="Sorry, unexpected error occured.">
       <Layout
         noThemeToggle
         isSpaced
@@ -181,7 +182,6 @@ export function CatchBoundary() {
     case 404:
       message = `Sorry, this page is not available.`;
       break;
-
     default:
       throw new Error(caught.data || caught.statusText);
   }
