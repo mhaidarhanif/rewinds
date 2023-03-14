@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    @apply min-h-screen scroll-smooth bg-surface-50 font-sans text-surface-900 antialiased transition-colors dark:bg-surface-900 dark:text-surface-50;
+    @apply selection:bg-brand-500/20 selection:text-brand-900 dark:selection:bg-brand-500/20 dark:selection:text-brand-100;
+  }
   h1,
   h2,
   h3,

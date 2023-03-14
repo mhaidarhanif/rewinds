@@ -27,6 +27,7 @@ interface Props
   extends React.HTMLAttributes<HTMLElement>,
     VariantProps<typeof layoutVariants> {
   pageHeader?: React.ReactNode;
+  noThemeToggle?: boolean;
 }
 
 export function Layout({
@@ -34,11 +35,12 @@ export function Layout({
   isSpaced,
   className,
   pageHeader,
+  noThemeToggle,
   children,
 }: Props) {
   return (
     <div className={cn("flex min-h-screen flex-col")}>
-      <SiteHeader />
+      <SiteHeader noThemeToggle />
 
       {/* Custom header below the site header and before the main content */}
       {pageHeader}
@@ -49,7 +51,7 @@ export function Layout({
         {children}
       </main>
 
-      <SiteFooter />
+      <SiteFooter noThemeToggle />
     </div>
   );
 }

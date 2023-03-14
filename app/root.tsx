@@ -7,6 +7,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useCatch,
   useLoaderData,
   useNavigation,
 } from "@remix-run/react";
@@ -17,9 +18,10 @@ import {
   ThemeProvider,
   useTheme,
   PreventFlashOnWrongTheme,
+  Theme,
 } from "remix-themes";
 
-import { Toaster } from "~/components";
+import { Debug, Layout, PageHeader, Toaster } from "~/components";
 import { configDocumentLinks } from "~/configs";
 import { themeSessionResolver } from "~/sessions";
 import { cn, createMetaData } from "~/utils";
@@ -101,9 +103,7 @@ function App() {
 
       <body
         className={cn(
-          process.env.NODE_ENV === "development" && "debug-screens",
-          "navigation-colors min-h-screen scroll-smooth bg-surface-50 font-sans text-surface-900 antialiased dark:bg-surface-900 dark:text-surface-50",
-          "selection:bg-brand-500/20 selection:text-brand-900 dark:selection:bg-brand-500/20 dark:selection:text-brand-100"
+          process.env.NODE_ENV === "development" && "debug-screens"
         )}
       >
         <IconoirProvider
@@ -120,5 +120,91 @@ function App() {
         <LiveReload />
       </body>
     </html>
+  );
+}
+
+export function RootDocument({
+  children,
+  title,
+}: {
+  children: React.ReactNode;
+  title?: string;
+}) {
+  // Cannot use useLoaderData in catch/error boundary
+  return (
+    <html lang="en" data-theme={Theme.DARK}>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        {children}
+        <ScrollRestoration />
+        <Scripts />
+        <LiveReload />
+      </body>
+    </html>
+  );
+}
+
+export function ErrorBoundary({ error }: { error: Error }) {
+  return (
+    <RootDocument>
+      <Layout
+        noThemeToggle
+        isSpaced
+        pageHeader={
+          <PageHeader size="sm">
+            <h2>Error from Rewinds: {error.message}</h2>
+          </PageHeader>
+        }
+      >
+        <div>
+          <p>Here's the error information that can be informed to Rewinds.</p>
+          <Debug>{error}</Debug>
+        </div>
+      </Layout>
+    </RootDocument>
+  );
+}
+
+export function CatchBoundary() {
+  const caught = useCatch();
+
+  let message;
+  switch (caught.status) {
+    case 401:
+      message = `Sorry, you can't access this page.`;
+      break;
+    case 404:
+      message = `Sorry, this page is not available.`;
+      break;
+
+    default:
+      throw new Error(caught.data || caught.statusText);
+  }
+
+  return (
+    <RootDocument title={message}>
+      <Layout
+        noThemeToggle
+        isSpaced
+        pageHeader={
+          <PageHeader size="sm">
+            <h2>
+              Sorry, error {caught.status}: {caught.statusText}
+            </h2>
+            <p>{message}</p>
+          </PageHeader>
+        }
+      >
+        <div>
+          <p>Here's the error information that can be informed to Rewinds.</p>
+          <Debug>{caught}</Debug>
+        </div>
+      </Layout>
+    </RootDocument>
   );
 }

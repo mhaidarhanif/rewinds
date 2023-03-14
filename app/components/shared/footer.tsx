@@ -7,7 +7,11 @@ import {
 import { configMeta, configSite } from "~/configs";
 import { getCurrentYear } from "~/utils";
 
-export function SiteFooter() {
+interface Props {
+  noThemeToggle?: boolean;
+}
+
+export function SiteFooter({ noThemeToggle }: Props) {
   return (
     <footer className="card contain mt-60 flex flex-wrap items-end gap-4 border-t border-surface-200 py-4 dark:border-surface-700 sm:justify-between">
       <div className="space-y-2">
@@ -32,7 +36,7 @@ export function SiteFooter() {
       </div>
 
       <div className="flex w-full justify-end sm:w-min">
-        <ThemeToggleDropdownMenu align="end" />
+        {!noThemeToggle && <ThemeToggleDropdownMenu align="end" />}
       </div>
     </footer>
   );

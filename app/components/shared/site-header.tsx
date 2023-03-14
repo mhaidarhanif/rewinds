@@ -20,7 +20,11 @@ import { cn } from "~/utils";
 
 import type { NavItem } from "~/configs";
 
-export function SiteHeader() {
+interface Props {
+  noThemeToggle?: boolean;
+}
+
+export function SiteHeader({ noThemeToggle }: Props) {
   const isAuthenticated = false;
 
   return (
@@ -37,7 +41,7 @@ export function SiteHeader() {
         )}
       >
         <div className="flex w-full items-center justify-between gap-1 sm:gap-2">
-          <NavigationMain navItems={configSite?.mainNavItems} />
+          <NavigationMain noThemeToggle={noThemeToggle} />
           <NavigationMainItems navItems={configSite?.mainNavItems} />
           <NavigationButtons isAuthenticated={isAuthenticated} />
         </div>
@@ -50,7 +54,7 @@ export function SiteHeader() {
   );
 }
 
-export function NavigationMain({ navItems }: { navItems?: NavItem[] }) {
+export function NavigationMain({ noThemeToggle }: { noThemeToggle?: boolean }) {
   return (
     <div className="stack-h-center gap-1 lg:gap-2">
       <RemixNavLink
@@ -61,7 +65,7 @@ export function NavigationMain({ navItems }: { navItems?: NavItem[] }) {
         <Logo />
       </RemixNavLink>
 
-      <ThemeToggleButton />
+      {!noThemeToggle && <ThemeToggleButton />}
     </div>
   );
 }

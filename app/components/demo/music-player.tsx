@@ -453,7 +453,7 @@ export function MusicPlayer() {
             <div className="col-span-3 border-l border-l-surface-200 dark:border-l-surface-700 xl:col-span-4">
               <div className="h-full px-8 py-6">
                 <Tabs defaultValue="music" className="h-full space-y-6">
-                  <div className="space-between flex items-center">
+                  <div className="flex items-center justify-between">
                     <TabsList>
                       <TabsTrigger value="music" className="relative">
                         Music <DemoIndicator className="right-2" />
