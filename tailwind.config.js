@@ -55,6 +55,12 @@ module.exports = {
       content: {
         external: 'url("/assets/icons/arrow-up-right.svg")',
       },
+      minHeight: {
+        100: "100",
+      },
+      minWeight: {
+        100: "100",
+      },
     },
     debugScreens: {
       position: ["bottom", "left"],

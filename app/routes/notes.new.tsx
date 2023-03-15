@@ -16,23 +16,29 @@ export async function action({ request }: ActionArgs) {
 
   const formData = await request.formData();
   const title = formData.get("title");
-  const body = formData.get("body");
+  const content = formData.get("content");
 
   if (typeof title !== "string" || title.length === 0) {
     return json(
-      { errors: { title: "Title is required", body: null } },
+      { errors: { title: "Title is required", content: null } },
       { status: 400 }
     );
   }
 
-  if (typeof body !== "string" || body.length === 0) {
+  if (typeof content !== "string" || content.length === 0) {
     return json(
-      { errors: { title: null, body: "Body is required" } },
+      { errors: { title: null, content: "Content is required" } },
       { status: 400 }
     );
   }
 
-  const note = await createNote({ title, body, userId });
+  const note = await createNote({
+    slug: "",
+    title,
+    description: "",
+    content,
+    userId,
+  });
 
   return redirect(`/notes/${note.id}`);
 }
@@ -45,7 +51,7 @@ export default function NewNotePage() {
   useEffect(() => {
     if (actionData?.errors?.title) {
       titleRef.current?.focus();
-    } else if (actionData?.errors?.body) {
+    } else if (actionData?.errors?.content) {
       bodyRef.current?.focus();
     }
   }, [actionData]);
@@ -76,14 +82,14 @@ export default function NewNotePage() {
             ref={bodyRef}
             name="body"
             rows={8}
-            aria-invalid={actionData?.errors?.body ? true : undefined}
+            aria-invalid={actionData?.errors?.content ? true : undefined}
             aria-errormessage={
-              actionData?.errors?.body ? "body-error" : undefined
+              actionData?.errors?.content ? "body-error" : undefined
             }
           />
         </Label>
-        {actionData?.errors?.body && (
-          <div id="body-error">{actionData.errors.body}</div>
+        {actionData?.errors?.content && (
+          <div id="body-error">{actionData.errors.content}</div>
         )}
       </div>
 

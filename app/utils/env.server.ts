@@ -15,8 +15,9 @@ export function getEnv(request: Request) {
 
     // REMIX variables are mostly private
 
-    IMAGEKIT_URL_ENDPOINT: process.env.IMAGEKIT_URL_ENDPOINT,
-    IMAGEKIT_FOLDER_NAME: process.env.IMAGEKIT_FOLDER_NAME,
+    IMAGEKIT_URL_ENDPOINT:
+      process.env.IMAGEKIT_URL_ENDPOINT || "https://ik.imagekit.io",
+    IMAGEKIT_FOLDER_NAME: process.env.IMAGEKIT_FOLDER_NAME || "",
     IMAGEKIT_PUBLIC_KEY: process.env.IMAGEKIT_PUBLIC_KEY,
     IMAGEKIT_PRIVATE_KEY: process.env.IMAGEKIT_PRIVATE_KEY,
 

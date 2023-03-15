@@ -1,5 +1,5 @@
 /**
- * EDITME: Config Site and Meta
+ * EDITME: Site Config and Meta Config
  *
  * Site-wide info and meta data, mostly for information and SEO purpose
  */

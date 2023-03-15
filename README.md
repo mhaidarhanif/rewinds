@@ -53,12 +53,18 @@ Why creating this? Well, because I had a lot of recent projects with these same 
 - [Development](#development)
   - [Install Dependencies](#install-dependencies)
   - [Setup Environment Variables](#setup-environment-variables)
+    - [Prisma ORM and Database Connection](#prisma-orm-and-database-connection)
   - [Run Development Server](#run-development-server)
 - [Deployment](#deployment)
   - [Vercel](#vercel)
-- [Notes](#notes)
-  - [Workaround Explanation](#workaround-explanation)
+- [Important Notes](#important-notes)
+  - [Tailwind CSS Config](#tailwind-css-config)
+  - [Remix Entry Files](#remix-entry-files)
+  - [HMR Workaround](#hmr-workaround)
   - [References](#references)
+    - [Rewinds In The Wild](#rewinds-in-the-wild)
+    - [React](#react)
+    - [Tailwind CSS](#tailwind-css)
 
 # Tech Stack
 
@@ -122,13 +128,15 @@ doppler secrets download --no-file --format env > .env
 
 > ⚠️ Make sure to setup the environment variables here, on Vercel, or on your preferred deployment target. Otherwise the app will break on production. That's why Doppler is recommended and there are some preset strings in the `.env.example` which you can copy directly.
 
-### Prisma ORM and Database Connection
+## Prisma ORM and Database Connection
 
 It's up to you which database/DBMS you want to use with the app. This repo recommends to use MySQL on PlanetScale. But avoid using SQLite because it doesn's have `model.createMany()` function. For example:
 
 ```sh
 DATABASE_URL='mysql://username:pscale_pw_password@region.connect.psdb.cloud/name?sslaccept=strict'
 ```
+
+While in development, you can also visualize the schema with [Prismaliser](https://prismaliser.app).
 
 ## Run Development Server
 
@@ -149,6 +157,16 @@ Loading environment variables from .env
 Open up [localhost:3000](http://localhost:3000) and you should be ready to go!
 
 If you're used to using the `vercel dev` command provided by [Vercel CLI](https://vercel.com/cli) instead, you can also use that, but it's not needed.
+
+## TypeScript and ESLint Server
+
+When you update some significant changes in the TypeScript config, ESLint config, or just generated a new Prisma schema, you can restart .
+
+```sh
+> TypeScript: Restart TS Server
+> ESLint: Restart ESLint Server
+> Prisma: Restart Language Server
+```
 
 # Deployment
 
@@ -177,7 +195,7 @@ vercel
 
 It is generally recommended to use a Git repository, because future commits will then automatically be deployed by Vercel, through its [Git Integration](https://vercel.com/docs/concepts/git).
 
-# Notes
+# Important Notes
 
 ## Tailwind CSS Config
 

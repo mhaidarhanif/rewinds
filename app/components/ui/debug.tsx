@@ -1,3 +1,4 @@
+import { configDev } from "~/configs";
 import { useRootLoaderData } from "~/hooks";
 import { cn } from "~/utils";
 
@@ -13,6 +14,10 @@ export function Debug({
   const { ENV } = useRootLoaderData();
 
   if (ENV && ENV.NODE_ENV === "production") {
+    return null;
+  }
+
+  if (configDev.enableDebugComponent !== true) {
     return null;
   }
 

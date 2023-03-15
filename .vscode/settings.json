@@ -1,4 +1,25 @@
 {
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  // "editor.renderWhitespace": "boundary",
+  "editor.rulers": [120],
+  "editor.tabSize": 2,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "files.encoding": "utf8",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "peacock.color": "#3399cc",
+  "search.exclude": {
+    ".cache/**": true,
+    "build/**": true,
+    "node_modules/**": true,
+    "public/build/**": true
+  },
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#5cadd6",
     "activityBar.background": "#5cadd6",
@@ -17,6 +38,5 @@
     "titleBar.activeForeground": "#15202b",
     "titleBar.inactiveBackground": "#3399cc99",
     "titleBar.inactiveForeground": "#15202b99"
-  },
-  "peacock.color": "#3399cc"
+  }
 }

@@ -8,6 +8,7 @@ module.exports = {
   assetsBuildDirectory: "public/build",
   publicPath: "/build/",
 
+  // change this if you are not using Vercel
   server: isDevelopment ? undefined : "./server-vercel.js",
   serverBuildPath: isDevelopment ? "build/index.js" : "api/index.js",
 

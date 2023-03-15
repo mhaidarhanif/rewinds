@@ -8,24 +8,24 @@ export const dataUserRoles: Pick<
     sequence: 1,
     symbol: "ADMIN",
     name: "Administrator",
-    description: "Users can manage the entire system and data.",
+    description: "Users who can manage the entire system and data.",
   },
   {
     sequence: 2,
     symbol: "MANAGER",
     name: "Manager",
-    description: "Users can manage systems and data.",
+    description: "Users who can manage systems and data.",
   },
   {
     sequence: 3,
     symbol: "EDITOR",
     name: "Editor",
-    description: "Users can manage some data.",
+    description: "Users who can manage some data.",
   },
   {
     sequence: 4,
     symbol: "NORMAL",
     name: "Normal",
-    description: "Ordinary users can only do the rest.",
+    description: "Ordinary users who can only do the rest.",
   },
 ];

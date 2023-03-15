@@ -2,6 +2,7 @@
 // https://pris.ly/d/prisma-schema
 // https://github.com/remix-run/indie-stack/blob/main/prisma/schema.prisma
 // https://github.com/planetscale/beam/blob/main/prisma/schema.prisma
+// You can visualize the schema with https://prismaliser.app
 
 generator client {
   provider = "prisma-client-js"
@@ -23,17 +24,21 @@ model User {
   updatedAt DateTime @updatedAt
 
   name     String
-  email    String  @unique
-  username String? @unique
-  phone    String? @unique
+  email    String  @unique(map: "User.email_unique")
+  username String  @unique
+  phone    String? @unique // phone number is a numeric string and optional
 
-  password      UserPassword?
-  notifications UserNotification[]
-  roleId        String?
-  role          UserRole?          @relation(fields: [roleId], references: [id])
-  notes         Note[]
+  roleId        String
+  profileId     String             @unique
+  role          UserRole           @relation("UserRole", fields: [roleId], references: [id], onUpdate: Cascade)
+  profile       UserProfile        @relation("UserProfile", fields: [profileId], references: [id], onUpdate: Cascade)
+  password      UserPassword?      @relation("UserPassword") // optional if using OAuth etc
+  notifications UserNotification[] @relation("UserNotifications")
+  notes         Note[]             @relation("UserNotes")
+  noteImages    NoteImage[]        @relation("UserNoteImages")
 
   @@index([roleId])
+  @@index([profileId])
 }
 
 model UserPassword {
@@ -44,7 +49,7 @@ model UserPassword {
   hash String
 
   userId String @unique
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user   User   @relation("UserPassword", fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
 
   @@index([userId])
 }
@@ -53,53 +58,107 @@ model UserProfile {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  userId    Int      @unique
 
-  avatarImageURL String?
-  headline       String?
-  bio            String?
+  headline String?
+  bio      String?
+
+  userId  String?           @unique
+  user    User?             @relation("UserProfile")
+  avatars UserAvatarImage[] @relation("UserAvatars")
 
   @@index([userId])
 }
 
-// -----------------------------------------------------------------------------
-// User Data
-// -----------------------------------------------------------------------------
+model UserAvatarImage {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // see model Image
+  url      String
+  filePath String
+
+  profileId   String
+  userProfile UserProfile @relation("UserAvatars", fields: [profileId], references: [id])
+
+  @@index([profileId])
+}
 
 model UserRole {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  users     User[]
 
-  sequence    Int?
-  symbol      String  @unique // "ADMIN" | "MANAGER" | "EDITOR"
-  name        String  @unique // "Administrator" | "Manager" | "Editor"
-  description String?
+  sequence    Int    @unique // 1 | 2 | 3 | ...
+  symbol      String @unique // "ADMIN" | "MANAGER" | "EDITOR"
+  name        String @unique // "Administrator" | "Manager" | "Editor"
+  description String @db.Text // "User can manage everything"
+
+  users User[] @relation("UserRole")
 }
 
 model UserNotification {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  userId    String?
-  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
-  title String
-  body  String
+  title   String
+  content String @db.Text
+
+  userId String
+  user   User   @relation("UserNotifications", fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
 
   @@index([userId])
 }
+
+// -----------------------------------------------------------------------------
+// User
+// -----------------------------------------------------------------------------
 
 model Note {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  userId    String?
-  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
-  title String
-  body  String
+  slug        String @unique
+  title       String
+  description String @db.Text
+  content     String @db.Text
+
+  userId String
+  user   User        @relation("UserNotes", fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  images NoteImage[] @relation("NoteImages")
 
   @@index([userId])
+}
+
+model NoteImage {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // see model Image
+  url      String
+  filePath String
+
+  userId String
+  noteId String
+  user   User   @relation("UserNoteImages", fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  note   Note   @relation("NoteImages", fields: [noteId], references: [id])
+
+  @@index([userId])
+  @@index([noteId])
+}
+
+// -----------------------------------------------------------------------------
+// External Assets
+// -----------------------------------------------------------------------------
+
+model Image {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  url      String // Complete URL to the image
+  filePath String // ImageKit File Path, to be used with ImageKit component
 }
