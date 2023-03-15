@@ -15,7 +15,7 @@ export default function IndexRoute() {
   return (
     <Layout>
       <section
-        data-id="landing-hero"
+        data-id="landing-page-hero"
         className="mx-auto flex max-w-max flex-wrap items-center justify-center gap-4 py-10 lg:justify-between lg:py-20"
       >
         <div className="max-w-2xl space-y-4">

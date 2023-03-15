@@ -1,9 +1,17 @@
 import { json } from "@remix-run/node";
 import { Layout, PageHeader } from "~/components";
+import { createMetaData, createSitemap } from "~/utils";
+
+export const handle = createSitemap();
 
 export const loader = () => {
   return json(null, { status: 404 });
 };
+
+export const meta = createMetaData({
+  title: "Page Not Found",
+  description: "There is nothing here.",
+});
 
 export default function SplatRoute() {
   return (

@@ -22,7 +22,7 @@ export function Anchor({
       target="_blank"
       rel="noreferrer noopener"
       className={cn(
-        "min-h-tap min-w-tap cursor-pointer leading-[initial]",
+        "cursor-pointer leading-[initial]",
         !noIndicator && "after:content-['_↗']", // TODO: change to SVG
         className
       )}
@@ -35,7 +35,7 @@ export function Anchor({
 // Anchor with default styles from Prose config
 export function AnchorText({ className, href, children }: Props) {
   return (
-    <Anchor href={href} className={cn("prose-a-styles", className)}>
+    <Anchor href={href} className={cn("prose-a-styles py-tap", className)}>
       {children}
     </Anchor>
   );

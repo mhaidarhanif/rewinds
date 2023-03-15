@@ -6,20 +6,19 @@
 ![Remix](https://img.shields.io/badge/Remix-000000?style=flat-square&logo=remix&logoColor=white)
 ![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
-![Headless UI](https://img.shields.io/badge/Headless_UI-66E3FF?style=flat-square&logo=headless-ui&logoColor=white)
 ![Radix UI](https://img.shields.io/badge/Radix_UI-111111?style=flat-square&logo=framer&logoColor=white)
 ![Prisma ORM](https://img.shields.io/badge/Prisma_ORM-2D3748?style=flat-square&logo=prisma&logoColor=white)
 ![PlanetScale](https://img.shields.io/badge/PlanetScale-000000?style=flat-square&logo=planetscale&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
-Rewinds is a Remix Tailwind Stack with Tailwind CSS family of libraries, interactive components, and the TypeScript ecosystem. The core stack as listed on the badges, includes: TypeScript, Remix & Remix Auth, React, Tailwind CSS, Headless UI, Radix UI, Prisma ORM, PlanetScale, and Vercel.
+Rewinds is a Remix Tailwind Stack with Tailwind CSS family of libraries, interactive components, and the TypeScript ecosystem. The core stack as listed on the badges, includes: TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Prisma ORM, PlanetScale, and Vercel.
 
 Check out the code and the demo:
 
 - [mhaidarhanif/rewinds](https://github.com/mhaidarhanif/rewinds)
 - [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com)
 - [rewinds.vercel.app](https://rewinds.vercel.app)
-- [rewinds.dev](https://rewinds.dev) (Soon)
+- [rewinds.dev](https://rewinds.dev) (Sooner or later)
 
 As for now, this README is the only main documentation.
 
@@ -70,13 +69,12 @@ Why creating this? Well, because I had a lot of recent projects with these same 
 - [Remix](https://remix.run/docs)
   - [Remix Auth](https://github.com/sergiodxa/remix-auth)
   - [Remix Validated Form](https://remix-validated-form.io)
-    - [Zod](https://zod.dev)
+  - [Conform](https://conform.guide)
+  - [Zod](https://zod.dev)
 - [Tailwind CSS](https://tailwindcss.com)
   - [Radix UI](https://radix-ui.com)
     - [`tailwindcss-radix`](https://tailwindcss-radix.vercel.app)
   - [Headless UI](https://headlessui.com)
-  - [Ariakit](https://ariakit.org)
-  - [Reach UI](https://reach.tech)
   - [Fontsource](https://fontsource.org)
 - [Prisma ORM](https://prisma.io)
 - [PlanetScale](https://planetscale.com)
@@ -124,6 +122,14 @@ doppler secrets download --no-file --format env > .env
 
 > ⚠️ Make sure to setup the environment variables here, on Vercel, or on your preferred deployment target. Otherwise the app will break on production. That's why Doppler is recommended and there are some preset strings in the `.env.example` which you can copy directly.
 
+### Database Connection
+
+It's up to you which database/DBMS you want to use with the app. This repo recommends to use MySQL on PlanetScale. For example:
+
+```sh
+DATABASE_URL='mysql://username:pscale_pw_password@region.connect.psdb.cloud/name?sslaccept=strict'
+```
+
 ## Run Development Server
 
 Afterwards, start the Remix development server like so:
@@ -153,9 +159,52 @@ It is generally recommended to use a Git repository, because future commits will
 
 # Notes
 
-## Workaround Explanation
+## Tailwind CSS Config
 
-To enable HMR and HDR, at least as per v1.14, we have to do this when not primarily using Express server.
+Use [uicolors.app](https://uicolors.app/create) to generate the color tokens easily. Then replace what's inside `tailwind.config.js`.
+
+```js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          50: "#f2f9fd",
+          100: "#e5f1f9",
+          200: "#c5e2f2",
+          300: "#92cae7",
+          400: "#57aed9",
+          500: "#3399cc",
+          600: "#2277a7",
+          700: "#1d6087",
+          800: "#1b5171",
+          900: "#1c445e",
+        },
+        surface: {
+          50: "#f4f8f9",
+          100: "#dce7eb",
+          200: "#b8ced7",
+          300: "#8dacbb",
+          400: "#65899c",
+          500: "#4b6e81",
+          600: "#3a5667",
+          700: "#324653",
+          800: "#2b3944",
+          900: "#0a0d0f",
+        },
+      },
+    },
+  },
+};
+```
+
+## Remix Entry Files
+
+Since Remix v1.14, you might notice that the entry files are implicitly defined. At the moment, if you need to deploy a Remix app I still suggest to reveal or explicitly define the entry files to make it work smoothly.
+
+## HMR Workaround
+
+To enable HMR and HDR, at least as per Remix v1.14, we have to do this when not primarily using Express server.
 
 If using pnpm, you also have to install `react-refresh` to resolve the HMR dependency:
 
@@ -185,8 +234,20 @@ module.exports = {
 
 ## References
 
+### Rewinds In The Wild
+
+Some other projects using Rewinds:
+
+- [M Haidar Hanif Website](https://github.com/mhaidarhanif/mhaidarhanif-web)
+- [Catamyst](https://github.com/catamyst/catamyst-web)
+- [Super Duper Gallery](https://github.com/jonathannicolasdev/superduper)
+
+### React
+
 - [Bulletproof React - A simple, scalable, and powerful architecture for building production ready React applications](https://github.com/alan2207/bulletproof-react)
+
+### Tailwind CSS
+
 - [Why we use Tailwind CSS as our primary framework | Clean Commit](https://cleancommit.io/blog/why-we-use-tailwind-css-as-our-primary-framework)
 - [An Honest Look at Tailwind as an API for CSS | thoughtbot, inc.](https://thoughtbot.com/blog/an-honest-look-at-tailwind-as-an-api-for-css)
 - [Styling Best Practices I Use With Tailwind CSS | theodorusclarence.com](https://theodorusclarence.com/blog/tailwindcss-best-practice)
-- [Fix roperty does not exist on type 'never' in TypeScript | bobbyhadz](https://bobbyhadz.com/blog/typescript-property-does-not-exist-on-type-never)

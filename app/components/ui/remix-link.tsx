@@ -15,7 +15,7 @@ export function RemixLinkText({ to, children, disabled, className }: Props) {
     <RemixLink
       to={to}
       className={cn(
-        "prose-a-styles min-h-tap min-w-tap",
+        "prose-a-styles",
         disabled && "cursor-not-allowed opacity-80",
         className
       )}

@@ -20,6 +20,11 @@ export const configSite = {
     github: "https://github.com/mhaidarhanif/rewinds",
     twitter: "https://twitter.com/mhaidarhanif",
     youtube: "https://youtube.com/mhaidarhanif",
+    facebook: "https://facebook.com/mhaidarhanif",
+    instagram: "https://instagram.com/mhaidarhanif_",
+    devTo: "https://dev.to/mhaidarhanif",
+    hashnode: "https://hashnode.com/mhaidarhanif",
+    showwcase: "https://showwcase.com/mhaidarhanif",
   },
 
   twitter: {
