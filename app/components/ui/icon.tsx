@@ -4,7 +4,7 @@ import {
   Home,
   InfoEmpty,
   LayoutLeft,
-  Svg3DSelectFace,
+  Components,
 } from "~/icons";
 
 /**
@@ -20,7 +20,7 @@ export const iconMaps = {
   database: <Database />,
   default: <Circle />,
   demo: <LayoutLeft />,
-  examples: <Svg3DSelectFace />,
+  components: <Components />,
 };
 
 export function lookupIcon(lookupObject: any, defaultCase = "default") {

@@ -7,7 +7,7 @@ import type { VariantProps } from "class-variance-authority";
 
 export const buttonVariants = cva(
   cn(
-    "flex z-auto select-none active:translate-y-px inline-flex items-center justify-center transition-all",
+    "flex z-auto select-none active:translate-y-px items-center justify-center transition-all",
     "disabled:opacity-50 disabled:pointer-events-none",
     "focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 dark:focus:ring-brand-400 dark:focus:ring-offset-brand-900",
     "data-[state=open]:bg-brand-100 dark:data-[state=open]:bg-brand-800"
@@ -31,6 +31,8 @@ export const buttonVariants = cva(
         ghost:
           "text-brand-800 bg-transparent hover:bg-brand-500/20 data-[state=open]:bg-transparent dark:text-brand-100 dark:data-[state=open]:bg-transparent",
         link: "text-brand-800 bg-transparent underline-offset-4 hover:underline hover:bg-transparent dark:text-brand-200",
+        navlink:
+          "text-xs transition-colors sm:text-sm hover:bg-surface-100 hover:dark:bg-surface-800",
       },
       accent: {
         default: "",
@@ -48,10 +50,6 @@ export const buttonVariants = cva(
         default: "font-semibold",
         bold: "font-bold",
       },
-      isIcon: {
-        true: "",
-        false: "",
-      },
       size: {
         xs: "",
         sm: "",
@@ -61,6 +59,15 @@ export const buttonVariants = cva(
       },
       noIndicator: {
         true: "",
+        false: "",
+      },
+      isIcon: {
+        true: "",
+        false: "",
+      },
+      isActive: {
+        // to be used with variant="navlink"
+        true: "bg-surface-100 dark:bg-surface-800",
         false: "",
       },
     },

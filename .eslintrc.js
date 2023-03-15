@@ -14,13 +14,13 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:tailwindcss/recommended",
-    // "plugin:import/typescript",
-    // "plugin:sort-export-all/recommended",
+    "plugin:import/typescript",
+    "plugin:sort-export-all/recommended",
   ],
-  // settings: {
-  //   "import/resolver": { typescript: true, node: true },
-  //   "import/parsers": { "@typescript-eslint/parser": [".ts", ".tsx"] },
-  // },
+  settings: {
+    "import/resolver": { typescript: true, node: true },
+    "import/parsers": { "@typescript-eslint/parser": [".ts", ".tsx"] },
+  },
   parserOptions: {
     project: ["./tsconfig.json"],
   },
@@ -31,26 +31,26 @@ module.exports = {
     "react/self-closing-comp": "warn",
     "tailwindcss/classnames-order": "off",
     "tailwindcss/no-arbitrary-value": "warn",
-    // "import/order": [
-    //   "warn",
-    //   {
-    //     alphabetize: {
-    //       caseInsensitive: true,
-    //       order: "asc",
-    //     },
-    //     groups: [
-    //       "builtin",
-    //       "external",
-    //       "internal",
-    //       "parent",
-    //       "sibling",
-    //       "index",
-    //       "object",
-    //       "type",
-    //     ],
-    //     "newlines-between": "always",
-    //     warnOnUnassignedImports: true,
-    //   },
-    // ],
+    "import/order": [
+      "warn",
+      {
+        alphabetize: {
+          caseInsensitive: true,
+          order: "asc",
+        },
+        groups: [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type",
+        ],
+        "newlines-between": "always",
+        warnOnUnassignedImports: true,
+      },
+    ],
   },
 };

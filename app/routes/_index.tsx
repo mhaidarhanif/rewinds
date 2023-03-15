@@ -1,6 +1,6 @@
 import { ButtonAnchor, ButtonLink, LandingImage, Layout } from "~/components";
 import { configSite } from "~/configs";
-import { Github, Svg3DSelectFace } from "~/icons";
+import { Github, Components } from "~/icons";
 import { createDocumentLinks, createSitemap } from "~/utils";
 
 import type { LinksFunction } from "@remix-run/node";
@@ -25,14 +25,14 @@ export default function IndexRoute() {
             <p>
               💿 Rewinds is a Remix Tailwind Stack with Tailwind CSS family of
               libraries, React components, and the JavaScript/TypeScript/Node.js
-              ecosystem. Including other tech stack such as React, Headless UI,
-              Radix UI, Prisma ORM, PlanetScale, Vercel, and more.
+              ecosystem. Including other tech stack such as mostly React, Radix
+              UI, Prisma ORM, PlanetScale, Vercel, and more.
             </p>
           </div>
           <div className="stack-h">
-            <ButtonLink to="/examples" size="lg">
-              <Svg3DSelectFace />
-              <span>Examples</span>
+            <ButtonLink to="/components" size="lg">
+              <Components />
+              <span>Components</span>
             </ButtonLink>
             <ButtonAnchor
               href={configSite?.links.github}

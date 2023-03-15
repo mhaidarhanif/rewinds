@@ -13,8 +13,8 @@ interface Props {
 
 export function SiteFooter({ noThemeToggle }: Props) {
   return (
-    <footer className="card contain mt-60 flex flex-wrap items-end gap-4 border-t border-surface-200 py-4 dark:border-surface-700 sm:justify-between">
-      <div>
+    <footer className="card contain mt-60 flex flex-wrap items-end gap-4 border-t border-surface-200 py-4 dark:border-surface-700 sm:justify-between sm:py-8">
+      <div className="space-y-4">
         <ul data-id="footer-links" className="space-y-2">
           <li>
             <span>Repo: </span>
@@ -32,7 +32,7 @@ export function SiteFooter({ noThemeToggle }: Props) {
         <p className="opacity-80">
           <span>Copyright &copy; </span>
           <span>{getCurrentYear()} </span>
-          <Anchor href={configMeta?.author.url}>
+          <Anchor href={configMeta?.author.url} className="font-semibold">
             {configMeta?.author.name}
           </Anchor>
         </p>

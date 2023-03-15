@@ -6,7 +6,7 @@ export {
   Iconoir,
   InfoEmpty,
   LayoutLeft,
-  Svg3DSelectFace,
+  Svg3DSelectFace as Components,
   Trash,
   Undo,
   ArrowSeparateVertical,

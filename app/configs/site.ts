@@ -35,7 +35,7 @@ export const configSite = {
   mainNavItems: [
     { to: "/", title: "Home", icon: "home" },
     { to: "/about", title: "About", icon: "about" },
-    { to: "/examples", title: "Examples", icon: "examples" },
+    { to: "/components", title: "Components", icon: "components" },
     { to: "/demo", title: "Demo", icon: "demo" },
     { to: "/database", title: "Database", icon: "database" },
   ],

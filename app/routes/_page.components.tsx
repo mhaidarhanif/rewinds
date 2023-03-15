@@ -12,7 +12,6 @@ import {
   FormSubmitButton,
   FormTextArea,
   Input,
-  ItemActionContextMenuDemo,
   Label,
   Layout,
   Logo,
@@ -40,7 +39,7 @@ import { createSitemap } from "~/utils";
 import type { LoaderArgs, ActionArgs, LinksFunction } from "@remix-run/node";
 
 export const meta = createMetaData({
-  title: "Examples",
+  title: "Components",
   description: "Several components already made.",
 });
 
@@ -58,13 +57,13 @@ export async function action({ request }: ActionArgs) {
   return json({});
 }
 
-export default function ExamplesRoute() {
+export default function ComponentsRoute() {
   return (
     <Layout
       isSpaced
       pageHeader={
         <PageHeader>
-          <h2>Examples</h2>
+          <h2>Components</h2>
           <p>Like a kitchen sink to see all the components.</p>
         </PageHeader>
       }
@@ -78,7 +77,6 @@ export default function ExamplesRoute() {
         <ExampleButton />
         <ExampleButtonIcon />
         <ExampleToast />
-        <ExampleContextMenu />
       </div>
 
       <div className="stack-v">
@@ -320,21 +318,6 @@ export function ExampleToast() {
   );
 }
 
-export function ExampleContextMenu() {
-  return (
-    <section id="example-context-menu" className="card space-y-8">
-      <h3>Context Menu</h3>
-
-      <div className="stack-v">
-        <h4>Demo</h4>
-        <div className="stack-h-center">
-          <ItemActionContextMenuDemo />
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export function ExampleBlank() {
   return (
     <section id="example-blank" className="card space-y-8">
@@ -393,7 +376,7 @@ export function ExampleForm() {
           </div>
 
           <div className="flex gap-2">
-            <Button type="submit" className="flex-1">
+            <Button type="submit" className="grow">
               Submit Form
             </Button>
             <Button type="reset" variant="subtle">

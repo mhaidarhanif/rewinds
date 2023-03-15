@@ -2,6 +2,7 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 import { Debug, Layout } from "~/components";
+import { useRootLoaderData } from "~/hooks";
 import { createSitemap } from "~/utils";
 
 export const handle = createSitemap();
@@ -17,10 +18,12 @@ export async function loader() {
 }
 
 export default function DebugRoute() {
+  const { ENV } = useRootLoaderData();
   const { initialNumber, numbers } = useLoaderData<typeof loader>();
 
   return (
-    <Layout>
+    <Layout isSpaced>
+      <Debug name="ENV">{{ ENV }}</Debug>
       <Debug name="numbers">{{ initialNumber, numbers }}</Debug>
     </Layout>
   );

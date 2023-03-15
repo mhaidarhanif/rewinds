@@ -3,6 +3,7 @@ import {
   ButtonIcon,
   ButtonIconAnchor,
   ButtonLink,
+  buttonVariants,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -82,10 +83,15 @@ export function NavigationMainItems({ navItems }: { navItems?: NavItem[] }) {
               prefetch="intent"
               className={({ isActive }) =>
                 cn(
-                  "px-2 py-2",
-                  "flex items-center gap-2 rounded-md text-xs font-semibold transition-colors sm:text-sm",
-                  "hover:bg-surface-100 hover:dark:bg-surface-800",
-                  isActive && "bg-surface-100 dark:bg-surface-800"
+                  "flex gap-2 p-2",
+                  buttonVariants({
+                    variant: "navlink",
+                    radius: "default",
+                    weight: "default",
+                    size: "default",
+                    isActive,
+                    className: "",
+                  })
                 )
               }
               end
@@ -105,7 +111,7 @@ export function NavigationButtons({
   isAuthenticated?: boolean;
 }) {
   return (
-    <div className="flex flex-1 items-center justify-end space-x-2">
+    <div className="flex grow items-center justify-end space-x-2">
       <nav className="hidden gap-1 md:flex">
         <ButtonIconAnchor
           href={configSite?.links.github}

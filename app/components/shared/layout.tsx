@@ -32,17 +32,20 @@ interface Props
 
 export function Layout({
   variant = "default",
-  isSpaced,
+  isSpaced = false,
   className,
-  pageHeader,
-  noThemeToggle = false,
+
+  pageHeader, // by default should be none
+
+  noThemeToggle = false, // not a styling variant
+
   children,
 }: Props) {
   return (
     <div className={cn("flex min-h-screen flex-col")}>
       <SiteHeader noThemeToggle={noThemeToggle} />
 
-      {/* Custom header */}
+      {/* Custom page header */}
       {pageHeader}
 
       <main

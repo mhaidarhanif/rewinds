@@ -32,7 +32,7 @@ export function createMetaData({
   twitterAuthorHandle?: string;
   twitterImagePath?: string;
   url?: string;
-} = configMeta) {
+} = configMeta): V2_HtmlMetaDescriptor[] {
   return [
     {
       title:

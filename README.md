@@ -122,9 +122,9 @@ doppler secrets download --no-file --format env > .env
 
 > ⚠️ Make sure to setup the environment variables here, on Vercel, or on your preferred deployment target. Otherwise the app will break on production. That's why Doppler is recommended and there are some preset strings in the `.env.example` which you can copy directly.
 
-### Database Connection
+### Prisma ORM and Database Connection
 
-It's up to you which database/DBMS you want to use with the app. This repo recommends to use MySQL on PlanetScale. For example:
+It's up to you which database/DBMS you want to use with the app. This repo recommends to use MySQL on PlanetScale. But avoid using SQLite because it doesn's have `model.createMany()` function. For example:
 
 ```sh
 DATABASE_URL='mysql://username:pscale_pw_password@region.connect.psdb.cloud/name?sslaccept=strict'
@@ -138,6 +138,14 @@ Afterwards, start the Remix development server like so:
 nr dev
 ```
 
+This will run both the Remix server and Express server with HMR enabled. Then wait until you see these info on the terminal:
+
+```sh
+📀 Remix on Express server listening on port :3000
+Loading environment variables from .env
+💿 Built in 0s
+```
+
 Open up [localhost:3000](http://localhost:3000) and you should be ready to go!
 
 If you're used to using the `vercel dev` command provided by [Vercel CLI](https://vercel.com/cli) instead, you can also use that, but it's not needed.
@@ -147,6 +155,18 @@ If you're used to using the `vercel dev` command provided by [Vercel CLI](https:
 ## Vercel
 
 As this repo was made after having run the `create-remix` command and selected "Vercel" as a deployment target, you only need to [import your Git repository](https://vercel.com/new) into Vercel, and it will be deployed.
+
+Just keep in mind to setup the environment variables :
+
+```sh
+REMIX_APP_NAME=
+REMIX_APP_EMAIL=
+REMIX_ADMIN_EMAIL=
+REMIX_ADMIN_PASSWORD=
+REMIX_SESSION_SECRET=
+
+DATABASE_URL=
+```
 
 If you'd like to avoid using a Git repository, you can also deploy the directory by running [Vercel CLI](https://vercel.com/cli):
 
@@ -204,7 +224,21 @@ Since Remix v1.14, you might notice that the entry files are implicitly defined.
 
 ## HMR Workaround
 
-To enable HMR and HDR, at least as per Remix v1.14, we have to do this when not primarily using Express server.
+To enable HMR and HDR, at least as per Remix v1.14, when not primarily using Express server only (like using Vercel and other server), we have to do this in the `package.json` scripts.
+
+```json
+{
+  "dev": "run-p dev:*",
+  "dev:remix": "cross-env NODE_ENV=development remix dev",
+  "dev:serve": "cross-env NODE_ENV=development nodemon --require dotenv/config ./server-express.js --watch ./server-express.js"
+}
+```
+
+If you don't need the HMR, simply run `dev:remix` script only as this will run without using the Express server:
+
+```sh
+nr dev:remix
+```
 
 If using pnpm, you also have to install `react-refresh` to resolve the HMR dependency:
 

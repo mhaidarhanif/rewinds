@@ -24,16 +24,24 @@ import {
 import { Debug, Layout, PageHeader, Toaster } from "~/components";
 import { configDocumentLinks } from "~/configs";
 import { themeSessionResolver } from "~/sessions";
-import { cn, createMetaData } from "~/utils";
+import { cn, createMetaData, getEnv } from "~/utils";
 
 import type {
   HeadersFunction,
   LinksFunction,
   LoaderArgs,
   LoaderFunction,
+  V2_MetaFunction,
+  V2_HtmlMetaDescriptor,
 } from "@remix-run/node";
 
-export const meta = createMetaData();
+export const meta: V2_MetaFunction = () => {
+  return [
+    { charSet: "utf-8" },
+    { name: "viewport", content: "width=device-width,initial-scale=1" },
+    ...createMetaData(),
+  ] satisfies V2_HtmlMetaDescriptor[];
+};
 
 export const headers: HeadersFunction = () => {
   return {
@@ -47,9 +55,11 @@ export const links: LinksFunction = () => {
 
 // Return the theme from the session storage using the loader
 export const loader: LoaderFunction = async ({ request }: LoaderArgs) => {
+  const ENV = getEnv(request);
   const { getTheme } = await themeSessionResolver(request);
 
   return json({
+    ENV,
     theme: getTheme(),
   });
 };
@@ -94,8 +104,6 @@ function App() {
   return (
     <html lang="en" data-theme={theme ?? ""}>
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
         <Links />
@@ -134,8 +142,6 @@ export function RootDocument({
   return (
     <html lang="en" data-theme={Theme.DARK}>
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         {title && <title>{title}</title>}
         <Links />
