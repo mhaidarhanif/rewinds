@@ -238,7 +238,11 @@ module.exports = {
 
 ## Remix Entry Files
 
-Since Remix v1.14, you might notice that the entry files are implicitly defined. At the moment, if you need to deploy a Remix app I still suggest to reveal or explicitly define the entry files to make it work smoothly.
+Since Remix v1.14, you might notice that the entry files are implicitly defined. At the moment, if you need to deploy a Remix app I still suggest to reveal or explicitly define the entry files to make it work smoothly. Althought this repo already have the entry files.
+
+```sh
+npx remix reveal
+```
 
 ## HMR Workaround
 
@@ -303,3 +307,17 @@ Some other projects using Rewinds:
 - [Why we use Tailwind CSS as our primary framework | Clean Commit](https://cleancommit.io/blog/why-we-use-tailwind-css-as-our-primary-framework)
 - [An Honest Look at Tailwind as an API for CSS | thoughtbot, inc.](https://thoughtbot.com/blog/an-honest-look-at-tailwind-as-an-api-for-css)
 - [Styling Best Practices I Use With Tailwind CSS | theodorusclarence.com](https://theodorusclarence.com/blog/tailwindcss-best-practice)
+
+## Todos
+
+- [ ] Conform for form management
+- [ ] Auth with Remix Auth
+  - [ ] Auth with Clerk
+- [ ] Lighthouse / Pagespeed reports
+- [ ] Google Webmaster
+- [ ] Analytics
+- [ ] JSON-LD config
+- [ ] Lazy load example
+- [ ] ImageKit example
+- [ ] Mapbox example
+- [ ] SPF record example

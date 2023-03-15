@@ -1,7 +1,10 @@
 /**
- * EDITME: Change or reorder seed functions
+ * EDITME: Seed
+ *
+ * Change or reorder seed functions
  */
 
+// Important to import external libraries directly
 import bcrypt from "bcryptjs";
 import invariant from "tiny-invariant";
 
@@ -21,7 +24,7 @@ async function seed() {
 export async function seedUsers() {
   // ---------------------------------------------------------------------------
   console.info("Seed user roles...");
-  await prisma.userRole.deleteMany();
+  await prisma.userRole.deleteMany(); // will cascade delete users and notes
 
   await prisma.userRole.createMany({
     data: dataUserRoles,
@@ -34,7 +37,6 @@ export async function seedUsers() {
 
   // ---------------------------------------------------------------------------
   console.info("Seed users...");
-  await prisma.user.deleteMany();
 
   const { REMIX_ADMIN_EMAIL, REMIX_ADMIN_PASSWORD } = process.env;
   invariant(REMIX_ADMIN_EMAIL, "REMIX_ADMIN_EMAIL must be set");

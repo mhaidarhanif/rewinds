@@ -10,32 +10,39 @@ import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 
 export async function loader({ request, params }: LoaderArgs) {
   const userId = await requireUserId(request);
-  invariant(params.noteId, "noteId not found");
+  invariant(params.noteId, "noteId is not found");
 
   const note = await getNote({ userId, id: params.noteId });
   if (!note) {
-    throw new Response("Not Found", { status: 404 });
+    throw new Response("Note is Not Found", { status: 404 });
   }
   return json({ note });
 }
 
 export async function action({ request, params }: ActionArgs) {
   const userId = await requireUserId(request);
-  invariant(params.noteId, "noteId not found");
+  invariant(params.noteId, "noteId is not found");
 
   await deleteNote({ userId, id: params.noteId });
 
   return redirect("/notes");
 }
 
-export default function NoteDetailsPage() {
-  const data = useLoaderData<typeof loader>();
+export default function NoteDetailsRoute() {
+  const { note } = useLoaderData<typeof loader>();
 
   return (
     <div>
-      <h3>{data.note.title}</h3>
-      <p>{data.note.body}</p>
-      <hr />
+      <div className="hidden">
+        <span>ID: {note.id}</span>
+        <span>Slug: {note.slug}</span>
+      </div>
+
+      <h3>{note.title}</h3>
+      <p>{note.description}</p>
+
+      <div>{note.content}</div>
+
       <RemixForm method="post">
         <Button type="submit">Delete</Button>
       </RemixForm>

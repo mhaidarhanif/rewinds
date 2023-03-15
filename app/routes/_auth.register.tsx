@@ -13,7 +13,7 @@ import {
 } from "~/components";
 import { createUser, getUserByEmail } from "~/models";
 import { getUserId, createUserSession } from "~/sessions";
-import { createMetaData } from "~/utils";
+import { createMetaData, invariant } from "~/utils";
 
 import type { ActionArgs, LoaderArgs, V2_MetaFunction } from "@remix-run/node";
 
@@ -31,14 +31,20 @@ export async function loader({ request }: LoaderArgs) {
 }
 
 export async function action({ request }: ActionArgs) {
+  const redirectTo = "/";
   const formData = await request.formData();
 
   const name = formData.get("name");
+  const username = formData.get("username");
   const email = formData.get("email");
   const password = formData.get("password");
-  const redirectTo = "/";
 
-  const existingUser = await getUserByEmail(String(email));
+  invariant(name, "Name is required");
+  invariant(username, "Username is required");
+  invariant(email, "Email is required");
+  invariant(password, "Password is required");
+
+  const existingUser = await getUserByEmail(email.toString());
   if (existingUser) {
     return json(
       {
@@ -51,7 +57,12 @@ export async function action({ request }: ActionArgs) {
     );
   }
 
-  const user = await createUser(String(name), String(email), String(password));
+  const user = await createUser({
+    name: name.toString(),
+    username: username.toString(),
+    email: email.toString(),
+    password: password.toString(),
+  });
 
   return createUserSession({
     request,
@@ -90,7 +101,7 @@ export default function RegisterRoute() {
                 name="name"
                 type="text"
                 autoComplete="name"
-                placeholder="Tony Stark"
+                placeholder="Ryan Wathan"
               />
             </div>
           </div>
@@ -104,7 +115,7 @@ export default function RegisterRoute() {
                 name="username"
                 type="text"
                 autoComplete="username"
-                placeholder="tonystark"
+                placeholder="ryanwathan"
               />
             </div>
           </div>
@@ -121,7 +132,7 @@ export default function RegisterRoute() {
                 autoComplete="email"
                 aria-invalid={actionData?.errors?.email ? true : undefined}
                 aria-describedby="email-error"
-                placeholder="tony@stark.com"
+                placeholder="ryanwathan@hey.com"
               />
               {actionData?.errors?.email && (
                 <div id="email-error">{actionData.errors.email}</div>

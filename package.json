@@ -31,6 +31,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "clean": "rm -rf build public/build",
+    "reveal": "remix reveal",
     "postinstall": "nr clean && nr prisma:generate"
   },
   "engines": {

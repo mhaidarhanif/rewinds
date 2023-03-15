@@ -30,7 +30,7 @@ model User {
 
   roleId        String
   profileId     String             @unique
-  role          UserRole           @relation("UserRole", fields: [roleId], references: [id], onUpdate: Cascade)
+  role          UserRole           @relation("UserRole", fields: [roleId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   profile       UserProfile        @relation("UserProfile", fields: [profileId], references: [id], onUpdate: Cascade)
   password      UserPassword?      @relation("UserPassword") // optional if using OAuth etc
   notifications UserNotification[] @relation("UserNotifications")

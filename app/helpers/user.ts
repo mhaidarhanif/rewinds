@@ -1,6 +1,8 @@
 import { useMatches } from "@remix-run/react";
 import { useMemo } from "react";
 
+import { createSlug } from "~/utils";
+
 import type { User } from "~/models";
 
 const DEFAULT_REDIRECT = "/";
@@ -68,4 +70,8 @@ export function useUser(): User {
 
 export function validateEmail(email: unknown): email is string {
   return typeof email === "string" && email.length > 3 && email.includes("@");
+}
+
+export function createUsername(name: string): string {
+  return createSlug(name);
 }
