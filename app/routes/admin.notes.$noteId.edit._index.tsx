@@ -87,7 +87,7 @@ export default function AdminNotesEditRoute() {
             defaultValue={note.content}
           />
           <p className="text-sm text-surface-500">
-            The note has a maximum content of 1,000 characters.
+            The note has a maximum content length of 1,000 characters.
           </p>
         </div>
 

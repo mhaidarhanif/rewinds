@@ -29,7 +29,8 @@
         "stylelint": "stylelint ./app/styles/*.css",
         "stylelint:fix": "stylelint --fix ./app/styles/*.css",
         "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
-        "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
+        "format:fix": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
+        "fix-all": "nr check && nr format:fix",
         "clean": "rm -rf build public/build",
         "reveal": "remix reveal",
         "postinstall": "nr clean && nr prisma:generate"

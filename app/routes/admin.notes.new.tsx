@@ -1,4 +1,3 @@
-
 import { conform, useForm as useConform } from "@conform-to/react";
 import { getFieldsetConstraint, parse } from "@conform-to/zod";
 import { redirect } from "@remix-run/node";
@@ -29,7 +28,10 @@ export const handle = createSitemap();
 export const schemaNote = z.object({
   title: z.string().min(1, "Title is required"),
   description: z.string().min(1, "Description is required"),
-  content: z.string().min(1, "Content is required"),
+  content: z
+    .string()
+    .min(1, "Content is required")
+    .max(1000, "Content length max of 1000 characters"),
 });
 
 export async function action({ request }: ActionArgs) {
@@ -56,7 +58,6 @@ export async function action({ request }: ActionArgs) {
   // redirect to new note view
   return redirect(`/admin/notes/${newNote.id}`);
 }
-
 
 export default function AdminNotesNewRoute() {
   const actionData = useActionData<typeof action>();
@@ -92,7 +93,7 @@ export default function AdminNotesNewRoute() {
             <Input
               {...conform.input(title)}
               type="text"
-              placeholder="What's on your mind?"
+              placeholder="Note title or what's on your mind?"
               autoFocus
               defaultValue={isDevelopment ? "A new example" : ""}
             />
@@ -106,7 +107,7 @@ export default function AdminNotesNewRoute() {
             <Input
               {...conform.input(description)}
               type="text"
-              placeholder="Short description"
+              placeholder="Add a short description"
               defaultValue={isDevelopment ? "The description" : ""}
             />
             <p id={description.errorId} role="alert">
@@ -119,7 +120,7 @@ export default function AdminNotesNewRoute() {
           <Label htmlFor={content.id}>Content</Label>
           <TextArea
             {...conform.input(content)}
-            placeholder="Type your note content here..."
+            placeholder="Type your longer content here..."
             rows={10}
             defaultValue={
               isDevelopment ? "Here is the long content about the note." : ""
@@ -129,7 +130,7 @@ export default function AdminNotesNewRoute() {
             {content.error}
           </p>
           <p className="text-sm text-surface-500">
-            The note has a maximum content of 1,000 characters.
+            The note has a maximum content length of 1,000 characters.
           </p>
         </div>
 
