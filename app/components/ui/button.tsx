@@ -7,7 +7,7 @@ import type { VariantProps } from "class-variance-authority";
 
 export const buttonVariants = cva(
   cn(
-    "flex z-auto select-none active:translate-y-px items-center justify-center transition-all",
+    "flex z-auto select-none active:translate-y-px transition-all",
     "disabled:opacity-50 disabled:pointer-events-none",
     "focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 dark:focus:ring-brand-400 dark:focus:ring-offset-brand-900",
     "data-[state=open]:bg-brand-100 dark:data-[state=open]:bg-brand-800"
@@ -56,6 +56,10 @@ export const buttonVariants = cva(
         default: "",
         lg: "",
         fixed: "",
+      },
+      align: {
+        default: "text-center justify-center items-center",
+        left: "text-left justify-left items-center",
       },
       noIndicator: {
         true: "",
@@ -138,6 +142,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       size = "default",
       weight = "default",
       radius = "default",
+      align = "default",
       className,
       ...props
     },
@@ -151,6 +156,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             accent,
             weight,
             radius,
+            align,
             isIcon: false,
             size,
             className,

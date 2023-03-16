@@ -1,10 +1,9 @@
 import { json } from "@remix-run/node";
-import { Form, Link, NavLink, Outlet, useLoaderData } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 
-import { ButtonLink, Layout } from "~/components";
-import { useUser } from "~/helpers";
+import { Debug } from "~/components";
 import { adminNote } from "~/models";
-import { cn, createSitemap } from "~/utils";
+import { createSitemap } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
 
@@ -17,47 +16,13 @@ export async function loader({ request }: LoaderArgs) {
 
 export default function AdminNotesRoute() {
   const { notes } = useLoaderData<typeof loader>();
-  const user = useUser();
 
   return (
-    <Layout>
-      <header>
-        <h1>
-          <Link to=".">Notes</Link>
-        </h1>
-        <p>{user.email}</p>
-        <Form action="/logout" method="post">
-          <button type="submit">Logout</button>
-        </Form>
-      </header>
+    <div data-id="admin-notes">
+      <h2>Notes</h2>
+      <p>Notes content</p>
 
-      <main>
-        <div>
-          <ButtonLink to="new">Add Note</ButtonLink>
-
-          {notes.length <= 0 && <p>No notes yet</p>}
-          {notes.length > 0 && (
-            <ol>
-              {notes.map((note) => (
-                <li key={note.id}>
-                  <NavLink
-                    to={note.id}
-                    className={({ isActive }) =>
-                      cn("block", isActive && "bg-white")
-                    }
-                  >
-                    <span>{note.title}</span>
-                  </NavLink>
-                </li>
-              ))}
-            </ol>
-          )}
-        </div>
-
-        <div data-id="notes-layout-outlet">
-          <Outlet />
-        </div>
-      </main>
-    </Layout>
+      <Debug name="notes">{notes}</Debug>
+    </div>
   );
 }

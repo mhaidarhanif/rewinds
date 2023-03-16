@@ -15,6 +15,7 @@ export const ButtonAnchor = ({
   variant = "default",
   size = "default",
   accent = "default",
+  align = "default",
   noIndicator = false,
   className,
   children,
@@ -28,7 +29,14 @@ export const ButtonAnchor = ({
       className={cn(
         "flex cursor-pointer flex-wrap gap-2",
         !noIndicator && "after:content-['_↗']",
-        buttonVariants({ variant, size, accent, isIcon: false, className })
+        buttonVariants({
+          variant,
+          size,
+          accent,
+          align,
+          isIcon: false,
+          className,
+        })
       )}
       {...props}
     >

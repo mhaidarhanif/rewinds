@@ -1,4 +1,4 @@
-export * from "./admin.navigation-items";
+export * from "./admin";
 export * from "./dev";
 export * from "./document";
 export * from "./fonts";

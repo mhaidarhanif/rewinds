@@ -12,6 +12,7 @@ export const ButtonLink = ({
   to = "/",
   variant = "default",
   size = "default",
+  align,
   className,
   children,
   ...props
@@ -24,6 +25,7 @@ export const ButtonLink = ({
         buttonVariants({
           variant,
           size,
+          align,
           isIcon: false,
           className,
         })
@@ -44,6 +46,7 @@ export const ButtonNavLink = ({
   to = "/",
   variant = "default",
   size = "default",
+  align = "default",
   className,
   children,
   ...props
@@ -55,6 +58,7 @@ export const ButtonNavLink = ({
         buttonVariants({
           variant,
           size,
+          align,
           isIcon: false,
           className,
         })
