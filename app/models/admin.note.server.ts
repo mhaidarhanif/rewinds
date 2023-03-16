@@ -1,6 +1,7 @@
 import { prisma } from "~/libs";
+import { createSlug } from "~/utils";
 
-import type { Note } from "@prisma/client";
+import type { Note, User } from "@prisma/client";
 
 export const adminNote = {
   async getAllNotes() {
@@ -16,6 +17,27 @@ export const adminNote = {
       where: { id },
       include: {
         user: true,
+      },
+    });
+  },
+
+  async addNewNote({
+    userId,
+    title,
+    description,
+    content,
+  }: { userId: User["id"] } & Pick<Note, "title" | "description" | "content">) {
+    return prisma.note.create({
+      data: {
+        slug: createSlug(title),
+        title,
+        description,
+        content,
+        user: {
+          connect: {
+            id: userId,
+          },
+        },
       },
     });
   },

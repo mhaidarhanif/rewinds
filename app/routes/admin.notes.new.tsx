@@ -1,11 +1,12 @@
-import { redirect } from "@remix-run/node";
 
 import { conform, useForm as useConform } from "@conform-to/react";
 import { getFieldsetConstraint, parse } from "@conform-to/zod";
+import { redirect } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useActionData } from "@remix-run/react";
 import { useId } from "react";
 import { z } from "zod";
+
 import {
   Button,
   ButtonLink,
@@ -15,63 +16,63 @@ import {
   RemixForm,
   TextArea,
 } from "~/components";
+import { adminNote } from "~/models";
+import { authenticator } from "~/services";
 import { createSitemap } from "~/utils";
 
-import type { Submission } from "@conform-to/react";
 import type { ActionArgs } from "@remix-run/node";
+
+const isDevelopment = process.env.NODE_ENV === "development";
 
 export const handle = createSitemap();
 
-export async function addNewNote({
-  title,
-  description,
-  content,
-}: z.infer<typeof schemaNoteNew>) {
-  console.log({ title, description, content });
-  return null;
-}
-
-const schemaNoteNew = z.object({
+export const schemaNote = z.object({
   title: z.string().min(1, "Title is required"),
   description: z.string().min(1, "Description is required"),
   content: z.string().min(1, "Content is required"),
 });
 
 export async function action({ request }: ActionArgs) {
-  const formData = await request.formData();
-  const submission = parse(formData, { schema: schemaNoteNew });
+  const user = await authenticator.isAuthenticated(request, {
+    failureRedirect: "/login",
+  });
 
+  // server-side validation
+  const formData = await request.formData();
+  const submission = parse(formData, { schema: schemaNote });
   if (!submission.value || submission.intent !== "submit") {
-    return json(
-      { ...submission, payload: submission.payload },
-      { status: 400 }
-    );
+    return json({ submission }, { status: 400 });
   }
 
-  await addNewNote(submission.value);
+  // add new note
+  const newNote = await adminNote.addNewNote({
+    userId: user.id,
+    ...submission.value,
+  });
+  if (!newNote) {
+    return json({ submission }, { status: 500 });
+  }
 
-  return json(submission);
-  // return redirect(`.`); // TODO: redirect to $noteId
+  // redirect to new note view
+  return redirect(`/admin/notes/${newNote.id}`);
 }
 
-const isDevelopment = process.env.NODE_ENV === "development";
 
 export default function AdminNotesNewRoute() {
   const actionData = useActionData<typeof action>();
 
   const id = useId();
   const [form, { title, description, content }] = useConform<
-    z.infer<typeof schemaNoteNew>
+    z.infer<typeof schemaNote>
   >({
     id,
-    lastSubmission: actionData as Submission,
     initialReport: "onSubmit",
-    // client-side validation that can be overrided
+    // client-side validation that can be overriden
     onValidate({ formData }) {
-      return parse(formData, { schema: schemaNoteNew });
+      return parse(formData, { schema: schemaNote });
     },
     // more schema details
-    constraint: getFieldsetConstraint(schemaNoteNew),
+    constraint: getFieldsetConstraint(schemaNote),
   });
 
   return (
