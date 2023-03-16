@@ -12,7 +12,7 @@ export const ButtonLink = ({
   to = "/",
   variant = "default",
   size = "default",
-  align,
+  align = "default",
   className,
   children,
   ...props

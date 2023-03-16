@@ -34,6 +34,10 @@ export const buttonVariants = cva(
         navlink:
           "text-xs transition-colors sm:text-sm hover:bg-surface-100 hover:dark:bg-surface-800",
       },
+      align: {
+        default: "text-center justify-center items-center",
+        left: "text-left justify-left items-center",
+      },
       accent: {
         default: "",
         surface:
@@ -56,10 +60,6 @@ export const buttonVariants = cva(
         default: "",
         lg: "",
         fixed: "",
-      },
-      align: {
-        default: "text-center justify-center items-center",
-        left: "text-left justify-left items-center",
       },
       noIndicator: {
         true: "",
@@ -124,6 +124,7 @@ export const buttonVariants = cva(
     ],
     defaultVariants: {
       variant: "default",
+      align: "default",
       weight: "default",
       size: "default",
     },
