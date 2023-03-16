@@ -1,6 +1,12 @@
 import { json } from "@remix-run/node";
 
-import { Button, ButtonLink, PageHeader, RemixForm, RemixLink } from "~/components";
+import {
+  Button,
+  ButtonLink,
+  PageHeader,
+  RemixForm,
+  RemixLink,
+} from "~/components";
 import { Plus, Trash } from "~/icons";
 import { createSitemap } from "~/utils";
 

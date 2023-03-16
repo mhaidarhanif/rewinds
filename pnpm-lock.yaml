@@ -3,6 +3,9 @@ lockfileVersion: 5.4
 specifiers:
   '@antfu/ni': ^0.20.0
   '@balavishnuvj/remix-seo': ^1.0.2
+  '@conform-to/dom': 0.6.0
+  '@conform-to/react': 0.6.0
+  '@conform-to/zod': 0.6.0
   '@fontsource/archivo': ^4.5.11
   '@fontsource/chivo-mono': ^4.5.1
   '@fontsource/inter': ^4.5.15
@@ -124,6 +127,9 @@ specifiers:
 
 dependencies:
   '@balavishnuvj/remix-seo': 1.0.2_vqzukzos2a4seqrewotiqej5ay
+  '@conform-to/dom': 0.6.0
+  '@conform-to/react': 0.6.0_react@18.2.0
+  '@conform-to/zod': 0.6.0_lpnzkfop2oacp5gydatocmotsu
   '@fontsource/archivo': 4.5.11
   '@fontsource/chivo-mono': 4.5.1
   '@fontsource/inter': 4.5.15
@@ -1537,6 +1543,29 @@ packages:
       '@remix-run/react': 1.14.3_biqbaboplfbrettd7655fr4n2y
       '@remix-run/server-runtime': 1.14.3
       lodash: 4.17.21
+    dev: false
+
+  /@conform-to/dom/0.6.0:
+    resolution: {integrity: sha512-jeNLWs2DNcPvsukexbdnufsEg0KBZnTSo4Ukl7+4+reudUyrHheAmwlQogkhUIfw+8ov3RbA/DKuY65PTDjyPg==}
+    dev: false
+
+  /@conform-to/react/0.6.0_react@18.2.0:
+    resolution: {integrity: sha512-jMBmXDFKIjkiuOlPSIReNFDPDM+dyuzK05W4imYUJXCgclzIUmkcEERFCuPn1GXtemmKssIJWvgvUw+wqzIhjQ==}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
+      '@conform-to/dom': 0.6.0
+      react: 18.2.0
+    dev: false
+
+  /@conform-to/zod/0.6.0_lpnzkfop2oacp5gydatocmotsu:
+    resolution: {integrity: sha512-aX3TiOGGnNswFv9IVYkjpiWxZq0NIUEbQ95NrHHTo8iJIMwGnRDHTuXWSBaPVPWASHxGzgIVVZOIBlLtUoH+pQ==}
+    peerDependencies:
+      '@conform-to/dom': 0.6.0
+      zod: ^3.21.0
+    dependencies:
+      '@conform-to/dom': 0.6.0
+      zod: 3.21.4
     dev: false
 
   /@cspotcode/source-map-support/0.8.1:

@@ -7,7 +7,7 @@ import {
   Input,
   Label,
   RemixForm,
-  TextArea
+  TextArea,
 } from "~/components";
 import { adminNote } from "~/models";
 import { createSitemap, invariant } from "~/utils";

@@ -16,12 +16,12 @@ authenticator.use(
     const email = form.get("email")?.toString();
     const password = form.get("password")?.toString();
     if (!email || !password) {
-      return {} as UserSession
+      return {} as UserSession;
     }
 
-    const user = await verifyLogin(email, password) as UserSession;
+    const user = (await verifyLogin(email, password)) as UserSession;
     if (!user) {
-      return {} as UserSession
+      return {} as UserSession;
     }
 
     // the type of this user must match the type you pass to the Authenticator

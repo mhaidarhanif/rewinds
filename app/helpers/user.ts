@@ -89,7 +89,7 @@ export function getUserInfo(user: User | UserSession) {
   return {
     ...user,
     userNameInitials,
-    avatarImageUrl: getUserAvatarImageUrl(user?.name)
+    avatarImageUrl: getUserAvatarImageUrl(user?.name),
   };
 }
 

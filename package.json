@@ -42,6 +42,9 @@
     },
     "dependencies": {
         "@balavishnuvj/remix-seo": "^1.0.2",
+        "@conform-to/dom": "0.6.0",
+        "@conform-to/react": "0.6.0",
+        "@conform-to/zod": "0.6.0",
         "@fontsource/archivo": "^4.5.11",
         "@fontsource/chivo-mono": "^4.5.1",
         "@fontsource/inter": "^4.5.15",
