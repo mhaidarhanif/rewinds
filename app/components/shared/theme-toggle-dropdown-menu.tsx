@@ -14,9 +14,10 @@ const COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 
 interface Props {
   align?: "center" | "start" | "end" | undefined;
+  size?: "xs" | "sm" | "lg" | undefined;
 }
 
-export function ThemeToggleDropdownMenu({ align = "end" }: Props) {
+export function ThemeToggleDropdownMenu({ align = "end", size }: Props) {
   const [, setTheme] = useTheme();
   const isPreferDark = useMediaQuery(COLOR_SCHEME_QUERY);
 
@@ -32,7 +33,7 @@ export function ThemeToggleDropdownMenu({ align = "end" }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <ButtonIcon variant="ghost">
+        <ButtonIcon variant="ghost" size={size}>
           <Sun className="rotate-0 scale-100 transition-all hover:text-surface-900 dark:-rotate-90 dark:scale-0 dark:text-surface-400 dark:hover:text-surface-100" />
           <Moon className="absolute rotate-90 scale-0 transition-all hover:text-surface-900 dark:rotate-0 dark:scale-100 dark:text-surface-400 dark:hover:text-surface-100" />
           <span className="sr-only">Toggle theme</span>

@@ -1,12 +1,14 @@
 import { useMatches } from "@remix-run/react";
 import { useMemo } from "react";
 
+import type { Theme } from "remix-themes";
 import type { getEnv } from "~/utils";
 
 const DEFAULT_REDIRECT = "/";
 
 export type RootLoaderData = {
   ENV: ReturnType<typeof getEnv>;
+  theme: Theme | null;
 };
 
 /**
@@ -56,5 +58,8 @@ export function useRootLoaderData() {
 
   return {
     ENV: data?.ENV,
+    theme: data?.theme,
+    user: {},
+    notifications: {},
   };
 }

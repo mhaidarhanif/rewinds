@@ -114,7 +114,7 @@
     "remix-utils": "^6.0.0",
     "remix-validated-form": "^4.6.10",
     "sleep-promise": "^9.1.0",
-    "superjson": "1.12.2",
+    "superjson": "^1.12.2",
     "tailwind-merge": "^1.10.0",
     "tailwindcss-animate": "^1.0.5",
     "tailwindcss-debug-screens": "^2.2.1",

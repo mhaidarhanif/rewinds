@@ -90,7 +90,6 @@ export function NavigationMainItems({ navItems }: { navItems?: NavItem[] }) {
                     weight: "default",
                     size: "default",
                     isActive,
-                    className: "",
                   })
                 )
               }

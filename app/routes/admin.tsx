@@ -1,9 +1,16 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 import { json } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 
-import { ButtonNavLink, Logo, RemixLink, RemixNavLink } from "~/components";
+import {
+  ButtonNavLink,
+  buttonVariants,
+  Logo,
+  RemixNavLink,
+  ThemeToggleButton,
+} from "~/components";
 import { configAdmin } from "~/configs";
-import { createSitemap } from "~/utils";
+import { cn, createSitemap } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
 
@@ -16,7 +23,19 @@ export async function loader({ request }: LoaderArgs) {
 export default function AdminRoute() {
   return (
     <div data-id="admin-layout-route" className="flex">
-      <aside className="card min-h-screen min-w-fit space-y-4">
+      <AdminSidebar />
+
+      <div data-id="admin-layout-outlet" className="grow">
+        <Outlet />
+      </div>
+    </div>
+  );
+}
+
+export function AdminSidebar() {
+  return (
+    <aside className="card flex min-h-screen min-w-fit flex-col space-y-4">
+      <div className="stack-h-center">
         <RemixNavLink
           to="/admin"
           prefetch="intent"
@@ -24,22 +43,43 @@ export default function AdminRoute() {
         >
           <Logo />
         </RemixNavLink>
-        <ul className="space-y-1">
-          {configAdmin.navigationItems.map(({ name, to }) => {
-            return (
-              <li key={name}>
-                <ButtonNavLink align="left" size="sm" variant="navlink" to={to}>
-                  {name}
-                </ButtonNavLink>
-              </li>
-            );
-          })}
-        </ul>
-      </aside>
-
-      <div data-id="admin-layout-outlet" className="grow p-2">
-        <Outlet />
+        <ThemeToggleButton size="sm" />
       </div>
-    </div>
+
+      <ul className="grow space-y-1">
+        {configAdmin.navigationItems.map(({ name, to }) => {
+          return (
+            <li key={name}>
+              <RemixNavLink
+                key={name}
+                to={to}
+                prefetch="intent"
+                className={({ isActive }) =>
+                  cn(
+                    "inline-flex w-full gap-2 p-2",
+                    buttonVariants({
+                      variant: "navlink",
+                      radius: "default",
+                      weight: "default",
+                      size: "sm",
+                      align: "left",
+                      isActive,
+                    })
+                  )
+                }
+                end
+              >
+                {name}
+              </RemixNavLink>
+            </li>
+          );
+        })}
+      </ul>
+      <div className="stack-v-center">
+        <ButtonNavLink size="sm" variant="ghost" to="/">
+          Go to site
+        </ButtonNavLink>
+      </div>
+    </aside>
   );
 }

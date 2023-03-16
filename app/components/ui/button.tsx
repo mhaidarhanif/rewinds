@@ -7,7 +7,7 @@ import type { VariantProps } from "class-variance-authority";
 
 export const buttonVariants = cva(
   cn(
-    "flex z-auto select-none active:translate-y-px transition-all",
+    "inline-flex z-auto select-none active:translate-y-px transition-all",
     "disabled:opacity-50 disabled:pointer-events-none",
     "focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 dark:focus:ring-brand-400 dark:focus:ring-offset-brand-900",
     "data-[state=open]:bg-brand-100 dark:data-[state=open]:bg-brand-800"

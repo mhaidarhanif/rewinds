@@ -9,6 +9,7 @@ export const pageHeaderVariants = cva(
   {
     variants: {
       size: {
+        xs: "py-3 sm:py-6",
         sm: "py-6 sm:py-10 mb-6",
         default: "py-12 sm:py-20 mb-12",
       },
@@ -36,10 +37,7 @@ export function PageHeader({
 }: Props) {
   return (
     <header
-      className={cn(
-        "mb-10 bg-surface-100 py-12 dark:bg-surface-800/20 sm:py-20",
-        pageHeaderVariants({ size, isTextCentered, className })
-      )}
+      className={cn(pageHeaderVariants({ size, isTextCentered, className }))}
       {...props}
     >
       <div className="contain space-y-2">{children}</div>
