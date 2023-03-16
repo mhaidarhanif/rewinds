@@ -68,7 +68,7 @@ export function TextCode({
   ...props
 }: React.HTMLAttributes<HTMLElement>) {
   return (
-    <code className={cn("prose-code-styles", className)} {...props}>
+    <code className={cn("code", className)} {...props}>
       {children}
     </code>
   );

@@ -1,8 +1,8 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import { ButtonLink, Debug, PageHeader } from "~/components";
-import { Plus } from "~/icons";
+import { RemixLink } from "~/components";
 import { adminNote } from "~/models";
 import { createSitemap } from "~/utils";
 
@@ -25,14 +25,17 @@ export default function AdminNotesRoute() {
   return (
     <div className="stack-v">
       <h3>All Notes</h3>
-      {notes.map((note) => {
-        return (
-          <div key={note.id} className="card">
-            <h4>{note.title}</h4>
-            <div>{note.content}</div>
-          </div>
-        );
-      })}
+      <ul className="space-y-2">
+        {notes.map((note) => {
+          return (
+            <RemixLink key={note.id} to={note.id} className="block">
+              <li className="card hover:card-hover">
+                <h4>{note.title}</h4>
+              </li>
+            </RemixLink>
+          );
+        })}
+      </ul>
     </div>
   );
 }

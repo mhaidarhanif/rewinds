@@ -53,8 +53,9 @@ Why creating this? Well, because I had a lot of recent projects with these same 
 - [Development](#development)
   - [Install Dependencies](#install-dependencies)
   - [Setup Environment Variables](#setup-environment-variables)
-    - [Prisma ORM and Database Connection](#prisma-orm-and-database-connection)
+  - [Prisma ORM and Database Connection](#prisma-orm-and-database-connection)
   - [Run Development Server](#run-development-server)
+  - [TypeScript and ESLint Server](#typescript-and-eslint-server)
 - [Deployment](#deployment)
   - [Vercel](#vercel)
 - [Important Notes](#important-notes)
@@ -65,6 +66,7 @@ Why creating this? Well, because I had a lot of recent projects with these same 
     - [Rewinds In The Wild](#rewinds-in-the-wild)
     - [React](#react)
     - [Tailwind CSS](#tailwind-css)
+  - [Todos](#todos)
 
 # Tech Stack
 
@@ -81,6 +83,7 @@ Why creating this? Well, because I had a lot of recent projects with these same 
   - [Radix UI](https://radix-ui.com)
     - [`tailwindcss-radix`](https://tailwindcss-radix.vercel.app)
   - [Headless UI](https://headlessui.com)
+  - [Zag](https://zagjs.com)
   - [Fontsource](https://fontsource.org)
 - [Prisma ORM](https://prisma.io)
 - [PlanetScale](https://planetscale.com)

@@ -9,7 +9,7 @@ import {
   RemixForm,
   RemixLink,
 } from "~/components";
-import { Plus } from "~/icons";
+import { Plus, Trash } from "~/icons";
 import { createSitemap } from "~/utils";
 
 import type { ActionArgs } from "@remix-run/node";
@@ -34,7 +34,7 @@ export default function AdminNotesRoute() {
           </ButtonLink>
           <RemixForm method="delete">
             <Button size="sm" variant="danger">
-              <Plus className="size-sm" />
+              <Trash className="size-sm" />
               <span>Delete all notes</span>
             </Button>
           </RemixForm>

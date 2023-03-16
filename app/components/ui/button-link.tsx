@@ -11,6 +11,7 @@ export interface ButtonLinkProps
 export const ButtonLink = ({
   to = "/",
   variant = "default",
+  accent = "default",
   size = "default",
   align = "default",
   className,
@@ -24,6 +25,7 @@ export const ButtonLink = ({
         "inline-flex gap-2",
         buttonVariants({
           variant,
+          accent,
           size,
           align,
           isIcon: false,
@@ -45,6 +47,7 @@ export interface ButtonNavLinkProps
 export const ButtonNavLink = ({
   to = "/",
   variant = "default",
+  accent = "default",
   size = "default",
   align = "default",
   className,
@@ -57,6 +60,7 @@ export const ButtonNavLink = ({
       className={cn(
         buttonVariants({
           variant,
+          accent,
           size,
           align,
           isIcon: false,

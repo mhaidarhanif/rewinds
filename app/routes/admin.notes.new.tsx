@@ -25,16 +25,27 @@ export async function action({ request }: ActionArgs) {
 
 export default function AdminNotesNewRoute() {
   return (
-    <div data-id="admin-notes" className="stack-v">
+    <div data-id="admin-notes-new" className="stack-v">
       <header className="space-y-2">
         <h3>Add New Note</h3>
       </header>
 
       <RemixForm method="post" className="card max-w-lg space-y-4">
-        <div className="space-y-1">
-          <Label htmlFor="title">Title</Label>
-          <Input id="title" type="text" placeholder="What's on your mind?" />
-        </div>
+        <header>
+          <div className="space-y-1">
+            <Label htmlFor="title">Title</Label>
+            <Input id="title" type="text" placeholder="What's on your mind?" />
+          </div>
+
+          <div className="space-y-1">
+            <Label htmlFor="description">Description</Label>
+            <Input
+              id="description"
+              type="text"
+              placeholder="Short description"
+            />
+          </div>
+        </header>
 
         <div className="space-y-1">
           <Label htmlFor="content">Content</Label>
@@ -49,12 +60,15 @@ export default function AdminNotesNewRoute() {
         </div>
 
         <div className="flex gap-2">
-          <Button type="submit" className="grow">
+          <Button type="submit" variant="subtle" className="grow">
             Save Note
           </Button>
-          <Button type="reset" variant="subtle">
+          <Button type="reset" variant="ghost">
             Reset
           </Button>
+          <ButtonLink to={`/admin/notes`} variant="link" accent="red">
+            <span>Cancel</span>
+          </ButtonLink>
         </div>
       </RemixForm>
 

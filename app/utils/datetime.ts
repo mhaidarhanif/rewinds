@@ -16,19 +16,12 @@ export function getCurrentYear() {
  * Date time format
  */
 
-export const formatDate = (date: string | Date | undefined) => {
+export const formatDateTime = (date: string | Date | undefined) => {
   const formatted = dayjs(date).locale("en").format("D MMM YYYY, H:mm:ss");
   return formatted;
 };
-export const formatDateOnly = (date: string | Date | undefined) => {
+export const formatDate = (date: string | Date | undefined) => {
   const formatted = dayjs(date).locale("en").format("D MMM YYYY");
-  return formatted;
-};
-
-export const formatDateId = (date: string | Date | undefined) => {
-  const formatted = dayjs(date)
-    .locale("id")
-    .format("D MMMM YYYY [jam] H:mm:ss");
   return formatted;
 };
 
@@ -38,10 +31,5 @@ export const formatDateId = (date: string | Date | undefined) => {
 
 export const formatRelativeTime = (date: string | Date | undefined) => {
   const formatted = dayjs(date).locale("en").fromNow();
-  return formatted;
-};
-
-export const formatRelativeTimeId = (date: string | Date | undefined) => {
-  const formatted = dayjs(date).locale("id").fromNow();
   return formatted;
 };

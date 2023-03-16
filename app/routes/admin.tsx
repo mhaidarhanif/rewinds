@@ -67,7 +67,6 @@ export function AdminSidebar() {
                     })
                   )
                 }
-                end
               >
                 {name}
               </RemixNavLink>
