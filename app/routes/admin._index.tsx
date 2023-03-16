@@ -22,9 +22,10 @@ export default function AdminIndexRoute() {
 
   return (
     <div data-id="admin-index">
-      <PageHeader size="sm">
-        <h2>Admin Dashboard</h2>
-        <p>Index content</p>
+      <PageHeader size="xs">
+        <div className="stack-h-center">
+          <h1>Admin Dashboard</h1>
+        </div>
       </PageHeader>
 
       <div className="stack-v">

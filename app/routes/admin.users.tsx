@@ -18,16 +18,16 @@ export default function AdminUsersRoute() {
       <PageHeader size="xs">
         <div className="stack-h-center">
           <RemixLink to=".">
-            <h1>Notes</h1>
+            <h1>Users</h1>
           </RemixLink>
           <ButtonLink to="new" size="sm">
             <Plus className="size-sm" />
-            <span>New note</span>
+            <span>New users</span>
           </ButtonLink>
           <RemixForm method="delete">
             <Button size="sm" variant="danger">
               <Trash className="size-sm" />
-              <span>Delete all notes</span>
+              <span>Delete all users</span>
             </Button>
           </RemixForm>
         </div>
