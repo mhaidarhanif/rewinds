@@ -43,7 +43,7 @@ export async function action({ request }: ActionArgs) {
   return redirect(`/notes/${note.id}`);
 }
 
-export default function NewNotePage() {
+export default function NewNoteRoute() {
   const actionData = useActionData<typeof action>();
   const titleRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLTextAreaElement>(null);

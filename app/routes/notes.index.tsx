@@ -3,7 +3,7 @@ import { createSitemap } from "~/utils";
 
 export const handle = createSitemap();
 
-export default function NoteIndexPage() {
+export default function NoteIndexRoute() {
   return (
     <p>
       No note selected. Select a note on the left, or{" "}

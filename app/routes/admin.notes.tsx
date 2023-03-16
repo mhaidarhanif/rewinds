@@ -1,24 +1,22 @@
 import { json } from "@remix-run/node";
 import { Form, Link, NavLink, Outlet, useLoaderData } from "@remix-run/react";
 
-import { Layout } from "~/components";
+import { ButtonLink, Layout } from "~/components";
 import { useUser } from "~/helpers";
-import { getNoteListItems } from "~/models";
-import { requireUserId } from "~/sessions";
-import { createSitemap } from "~/utils";
+import { adminNote } from "~/models";
+import { cn, createSitemap } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
 
 export const handle = createSitemap();
 
 export async function loader({ request }: LoaderArgs) {
-  const userId = await requireUserId(request);
-  const noteListItems = await getNoteListItems({ userId });
-  return json({ noteListItems });
+  const notes = await adminNote.getAllNotes();
+  return json({ notes });
 }
 
-export default function NotesRoute() {
-  const data = useLoaderData<typeof loader>();
+export default function AdminNotesRoute() {
+  const { notes } = useLoaderData<typeof loader>();
   const user = useUser();
 
   return (
@@ -35,23 +33,20 @@ export default function NotesRoute() {
 
       <main>
         <div>
-          <Link to="new">+ New Note</Link>
+          <ButtonLink to="new">Add Note</ButtonLink>
 
-          <hr />
-
-          {data.noteListItems.length === 0 ? (
-            <p>No notes yet</p>
-          ) : (
+          {notes.length <= 0 && <p>No notes yet</p>}
+          {notes.length > 0 && (
             <ol>
-              {data.noteListItems.map((note) => (
+              {notes.map((note) => (
                 <li key={note.id}>
                   <NavLink
-                    className={({ isActive }) =>
-                      `block ${isActive ? "bg-white" : ""}`
-                    }
                     to={note.id}
+                    className={({ isActive }) =>
+                      cn("block", isActive && "bg-white")
+                    }
                   >
-                    📝 {note.title}
+                    <span>{note.title}</span>
                   </NavLink>
                 </li>
               ))}
