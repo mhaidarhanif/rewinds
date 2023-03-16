@@ -1,5 +1,7 @@
 import { json } from "@remix-run/node";
 
+import { Button, ButtonLink, PageHeader, RemixForm, RemixLink } from "~/components";
+import { Plus, Trash } from "~/icons";
 import { createSitemap } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
@@ -13,8 +15,23 @@ export async function loader({ request }: LoaderArgs) {
 export default function AdminUsersRoute() {
   return (
     <div data-id="admin-users">
-      <h2>Users</h2>
-      <p>Users content</p>
+      <PageHeader size="xs">
+        <div className="stack-h-center">
+          <RemixLink to=".">
+            <h1>Notes</h1>
+          </RemixLink>
+          <ButtonLink to="new" size="sm">
+            <Plus className="size-sm" />
+            <span>New note</span>
+          </ButtonLink>
+          <RemixForm method="delete">
+            <Button size="sm" variant="danger">
+              <Trash className="size-sm" />
+              <span>Delete all notes</span>
+            </Button>
+          </RemixForm>
+        </div>
+      </PageHeader>
     </div>
   );
 }

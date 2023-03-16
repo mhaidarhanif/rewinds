@@ -1,2 +1,2 @@
-export * from "./auth.server";
-export * from "./theme.server";
+export * from "./auth-session.server";
+export * from "./theme-session.server";

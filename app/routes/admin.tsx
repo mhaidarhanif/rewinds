@@ -1,5 +1,5 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import { json } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 
 import {
@@ -10,6 +10,7 @@ import {
   ThemeToggleButton,
 } from "~/components";
 import { configAdmin } from "~/configs";
+import { authenticator } from "~/services";
 import { cn, createSitemap } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
@@ -17,6 +18,14 @@ import type { LoaderArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader({ request }: LoaderArgs) {
+  // get the user data or redirect to login if it failed
+  const user = await authenticator.isAuthenticated(request, {
+    failureRedirect: "/login",
+  });
+  // if user is not an admin, redirect to landing/home
+  if (user.roleSymbol !== "ADMIN") {
+    redirect(`/`);
+  }
   return json({});
 }
 

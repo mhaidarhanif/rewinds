@@ -7,10 +7,8 @@ import {
   Input,
   Label,
   RemixForm,
-  TextArea,
-  TextCode,
+  TextArea
 } from "~/components";
-import { EditPencil } from "~/icons";
 import { adminNote } from "~/models";
 import { createSitemap, invariant } from "~/utils";
 

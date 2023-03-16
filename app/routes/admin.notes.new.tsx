@@ -1,20 +1,14 @@
-import { json, redirect } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { redirect } from "@remix-run/node";
 
 import {
   Button,
-  ButtonLink,
-  Debug,
-  Input,
+  ButtonLink, Input,
   Label,
   RemixForm,
-  TextArea,
+  TextArea
 } from "~/components";
-import { Plus } from "~/icons";
-import { adminNote } from "~/models";
 import { createSitemap } from "~/utils";
 
-import type { LoaderArgs } from "@remix-run/node";
 import type { ActionArgs } from "@remix-run/node";
 
 export const handle = createSitemap();

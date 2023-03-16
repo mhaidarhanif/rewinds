@@ -1,6 +1,4 @@
-import { json, redirect } from "@remix-run/node";
-import { useActionData, useSearchParams } from "@remix-run/react";
-import { useEffect, useRef } from "react";
+import { useSearchParams } from "@remix-run/react";
 
 import {
   Button,
@@ -12,11 +10,11 @@ import {
   RemixForm,
   RemixLinkText,
 } from "~/components";
-import { verifyLogin } from "~/models";
-import { createUserSession, getUserId } from "~/sessions";
+import { authenticator } from "~/services/auth-service.server";
 import { createMetaData } from "~/utils";
 
-import type { ActionArgs, LoaderArgs, V2_MetaFunction } from "@remix-run/node";
+import type { ActionArgs, LoaderArgs } from "@remix-run/node";
+import type { V2_MetaFunction } from "@remix-run/node";
 
 export const meta: V2_MetaFunction = () => {
   return createMetaData({
@@ -25,64 +23,32 @@ export const meta: V2_MetaFunction = () => {
   });
 };
 
+// Loader: we can export a loader function where we check if the user is
+// authenticated with `authenticator.isAuthenticated` and redirect to the
+// dashboard if it is or return null if it's not
 export async function loader({ request }: LoaderArgs) {
-  const userId = await getUserId(request);
-  if (userId) return redirect("/");
-  return json({});
+  // If the user is already authenticated redirect to /dashboard directly
+  return await authenticator.isAuthenticated(request, {
+    successRedirect: "/admin",
+  });
 }
 
+// Action
+// we need to export an action function, here we will use the
+// `authenticator.authenticate method`
 export async function action({ request }: ActionArgs) {
-  const formData = await request.formData();
-  const email = formData.get("email");
-  const password = formData.get("password");
-  const redirectTo = "/notes";
-  const remember = formData.get("remember");
-
-  if (typeof password !== "string" || password.length === 0) {
-    return json(
-      { errors: { email: null, password: "Password is required" } },
-      { status: 400 }
-    );
-  }
-
-  if (password.length < 8) {
-    return json(
-      { errors: { email: null, password: "Password is too short" } },
-      { status: 400 }
-    );
-  }
-
-  const user = await verifyLogin(String(email), String(password));
-
-  if (!user) {
-    return json(
-      { errors: { email: "Invalid email or password", password: null } },
-      { status: 400 }
-    );
-  }
-
-  return createUserSession({
-    request,
-    userId: user.id,
-    remember: remember === "on" ? true : false,
-    redirectTo,
+  // we call the method with the name of the strategy we want to use and the
+  // request object, optionally we pass an object with the URLs we want the user
+  // to be redirected to after a success or a failure
+  return await authenticator.authenticate("user-pass", request, {
+    successRedirect: "/admin",
+    failureRedirect: "/login",
   });
 }
 
 export default function LoginRoute() {
   const [searchParams] = useSearchParams();
   const redirectTo = searchParams.get("redirectTo") || "/notes";
-  const actionData = useActionData<typeof action>();
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (actionData?.errors?.email) {
-      emailRef.current?.focus();
-    } else if (actionData?.errors?.password) {
-      passwordRef.current?.focus();
-    }
-  }, [actionData]);
 
   return (
     <Layout
@@ -98,41 +64,22 @@ export default function LoginRoute() {
         <RemixForm method="post" className="space-y-4">
           <div className="space-y-1">
             <Label htmlFor="email">Email address</Label>
-            <div>
-              <Input
-                ref={emailRef}
-                id="email"
-                required
-                autoFocus={true}
-                name="email"
-                type="email"
-                autoComplete="email"
-                aria-invalid={actionData?.errors?.email ? true : undefined}
-                aria-describedby="email-error"
-                placeholder="tony@stark.com"
-              />
-              {actionData?.errors?.email && (
-                <div id="email-error">{actionData.errors.email}</div>
-              )}
-            </div>
+            <Input
+              type="email"
+              name="email"
+              placeholder="ryanwathan@hey.com"
+              required
+            />
           </div>
 
           <div className="space-y-1">
             <Label htmlFor="password">Password</Label>
-            <div>
-              <Input
-                id="password"
-                ref={passwordRef}
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                aria-invalid={actionData?.errors?.password ? true : undefined}
-                aria-describedby="password-error"
-              />
-              {actionData?.errors?.password && (
-                <div id="password-error">{actionData.errors.password}</div>
-              )}
-            </div>
+            <Input
+              type="password"
+              name="password"
+              autoComplete="current-password"
+              required
+            />
           </div>
 
           <Input type="hidden" name="redirectTo" value={redirectTo} />

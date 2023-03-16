@@ -1,77 +1,100 @@
-import { useMatches } from "@remix-run/react";
-import { useMemo } from "react";
+import { redirect } from "@remix-run/node";
 
-import { createSlug } from "~/utils";
+import { authenticator } from "~/services";
+import { getSession } from "~/sessions";
 
-import type { User } from "~/models";
+import type { User } from "@prisma/client";
 
-const DEFAULT_REDIRECT = "/";
+export type UserSession = {
+  id: string;
+  name: string;
+  username: string;
+  roleSymbol: string;
+};
+
+export function isUser(user: UserSession): user is UserSession {
+  return user && typeof user === "object" && typeof user.id === "string";
+}
+
+export function isUserAdmin(user: UserSession): user is UserSession {
+  return user.roleSymbol.includes("ADMIN" || "MANAGER" || "EDITOR");
+}
 
 /**
- * This should be used any time the redirect path is user-provided
- * (Like the query string on our login/signup pages). This avoids
- * open-redirect vulnerabilities.
- * @param {string} to The redirect destination
- * @param {string} defaultRedirect The redirect to use if the to is unsafe.
+ * Authentication logic
+ * After submitting the correct email and password with user-pass strategy
  */
-export function safeRedirect(
-  to: FormDataEntryValue | string | null | undefined,
-  defaultRedirect: string = DEFAULT_REDIRECT
+
+export function authenticateUser(request: Request, redirectTo?: string) {
+  return authenticator.authenticate("user-pass", request, {
+    successRedirect: redirectTo ? redirectTo : "/user",
+    failureRedirect: "/login",
+    throwOnError: true,
+  });
+}
+
+/**
+ * Get user data from the session
+ * If need more complete data, use the database models
+ */
+
+export function getUserSession(request: Request) {
+  return authenticator.isAuthenticated(request);
+}
+
+export async function getUserRedirect(request: Request) {
+  const url = new URL(request.url);
+
+  return authenticator.isAuthenticated(request, {
+    failureRedirect: `/login?redirect=${url.pathname}`,
+  });
+}
+
+export async function redirectIfNotAdmin(request: Request) {
+  const user = await authenticator.isAuthenticated(request);
+  const url = new URL(request.url);
+
+  if (!user) {
+    throw redirect(`/login?redirect=${url.pathname}`);
+  }
+  if (user.roleSymbol !== "ADMIN") {
+    throw redirect("/");
+  }
+}
+
+export function redirectIfAuthenticated(
+  request: Request,
+  successRedirect?: string
 ) {
-  if (!to || typeof to !== "string") {
-    return defaultRedirect;
-  }
-
-  if (!to.startsWith("/") || to.startsWith("//")) {
-    return defaultRedirect;
-  }
-
-  return to;
+  return authenticator.isAuthenticated(request, {
+    successRedirect: successRedirect || "/user",
+  });
 }
 
 /**
- * This base hook is used in other hooks to quickly search for specific data
- * across all loader data using useMatches.
- * @param {string} id The route id
- * @returns {JSON|undefined} The router data or undefined if not found
+ * Other helpers
  */
-export function useMatchesData(
-  id: string
-): Record<string, unknown> | undefined {
-  const matchingRoutes = useMatches();
-  const route = useMemo(
-    () => matchingRoutes.find((route) => route.id === id),
-    [matchingRoutes, id]
-  );
-  return route?.data;
+
+export function logoutSession(request: Request) {
+  return authenticator.logout(request, { redirectTo: "/" });
 }
 
-function isUser(user: any): user is User {
-  return user && typeof user === "object" && typeof user.email === "string";
+export function getUserAvatarImageUrl(name: string | null) {
+  return `https://api.dicebear.com/5.x/initials/svg?seed=${name}&backgroundColor=3949ab`;
 }
 
-export function useOptionalUser(): User | undefined {
-  const data = useMatchesData("root");
-  if (!data || !isUser(data.user)) {
-    return undefined;
-  }
-  return data.user;
+export function getUserInfo(user: User | UserSession) {
+  const userNameInitials = "FB"; // @note generate using actual name
+
+  return {
+    ...user,
+    userNameInitials,
+    avatarImageUrl: getUserAvatarImageUrl(user?.name)
+  };
 }
 
-export function useUser(): User {
-  const maybeUser = useOptionalUser();
-  if (!maybeUser) {
-    throw new Error(
-      "No user found in root loader, but user is required by useUser. If user is optional, try useOptionalUser instead."
-    );
-  }
-  return maybeUser;
-}
-
-export function validateEmail(email: unknown): email is string {
-  return typeof email === "string" && email.length > 3 && email.includes("@");
-}
-
-export function createUsername(name: string): string {
-  return createSlug(name);
+export async function getErrorSession(request: Request) {
+  const session = await getSession(request.headers.get("cookie"));
+  const errorSession = session.get(authenticator.sessionErrorKey);
+  return errorSession;
 }

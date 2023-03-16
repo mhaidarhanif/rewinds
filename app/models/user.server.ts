@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
+import { AuthorizationError as RemixAuthError } from "remix-auth";
 
-import { createUsername } from "~/helpers";
 import { prisma } from "~/libs";
 import { invariant } from "~/utils";
 
@@ -33,7 +33,7 @@ export async function createUser({
   return prisma.user.create({
     data: {
       name,
-      username: username || createUsername(name),
+      username,
       email,
       password: { create: { hash: hashedPassword } },
       role: { connect: { id: defaultUserRole.id } },
@@ -52,27 +52,33 @@ export async function verifyLogin(
   email: User["email"],
   password: UserPassword["hash"]
 ) {
-  const userWithPassword = await prisma.user.findUnique({
+  if (!email) throw new RemixAuthError("Email diperlukan");
+  if (!password) throw new RemixAuthError("Password diperlukan");
+
+  const user = await prisma.user.findUnique({
     where: { email },
     include: {
       password: true,
+      role: true,
     },
   });
 
-  if (!userWithPassword || !userWithPassword.password) {
-    return null;
+  if (!user || !user.password) {
+    throw new RemixAuthError("Email tidak ditemukan");
   }
 
-  const isValid = await bcrypt.compare(
-    password,
-    userWithPassword.password.hash
-  );
+  const isPasswordCorrect = await bcrypt.compare(password, user.password.hash);
 
-  if (!isValid) {
-    return null;
+  if (!isPasswordCorrect) {
+    throw new RemixAuthError("Password salah");
   }
 
-  const { password: _password, ...userWithoutPassword } = userWithPassword;
-
-  return userWithoutPassword;
+  // To make sure we only have the essential data in the session
+  // Without any other sensitive information
+  return {
+    id: user.id,
+    name: user.name,
+    username: user.username,
+    roleSymbol: user.role?.symbol,
+  };
 }

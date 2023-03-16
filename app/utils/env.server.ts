@@ -1,6 +1,6 @@
 /**
- * This will expose all variables within global ENV
- * Only for client-side env
+ * Public functionality that will expose all selected variables within global ENV
+ * The values are only used for client-side env
  * Never expose the REMIX_SESSION_SECRET or any server/node/non-browser env
  */
 
@@ -19,7 +19,7 @@ export function getEnv(request: Request) {
       process.env.IMAGEKIT_URL_ENDPOINT || "https://ik.imagekit.io",
     IMAGEKIT_FOLDER_NAME: process.env.IMAGEKIT_FOLDER_NAME || "",
     IMAGEKIT_PUBLIC_KEY: process.env.IMAGEKIT_PUBLIC_KEY,
-    IMAGEKIT_PRIVATE_KEY: process.env.IMAGEKIT_PRIVATE_KEY,
+    // IMAGEKIT private key obviously private
 
     MAPBOX_PUBLIC_TOKEN: process.env.MAPBOX_PUBLIC_TOKEN,
 

@@ -17,7 +17,7 @@ export async function loader({ request }: LoaderArgs) {
 }
 
 export default function AdminIndexRoute() {
-  const { ENV, theme } = useRootLoaderData();
+  const rootLoaderData = useRootLoaderData();
   const { metrics } = useLoaderData<typeof loader>();
 
   return (
@@ -28,9 +28,8 @@ export default function AdminIndexRoute() {
       </PageHeader>
 
       <div className="stack-v">
-        <Debug name="ENV">{ENV}</Debug>
-        <Debug name="theme">{theme}</Debug>
         <Debug name="metrics">{metrics}</Debug>
+        <Debug name="rootLoaderData">{rootLoaderData}</Debug>
       </div>
     </div>
   );

@@ -15,16 +15,18 @@ import { IconoirProvider } from "iconoir-react";
 import NProgress from "nprogress";
 import { useEffect } from "react";
 import {
-  ThemeProvider,
-  useTheme,
   PreventFlashOnWrongTheme,
   Theme,
+  ThemeProvider,
+  useTheme,
 } from "remix-themes";
 
 import { Debug, Layout, PageHeader, Toaster } from "~/components";
 import { configDocumentLinks } from "~/configs";
 import { themeSessionResolver } from "~/sessions";
 import { cn, createMetaData, getEnv } from "~/utils";
+
+import { getUserSession } from "./helpers";
 
 import type {
   HeadersFunction,
@@ -56,11 +58,19 @@ export const links: LinksFunction = () => {
 // Return the theme from the session storage using the loader
 export const loader: LoaderFunction = async ({ request }: LoaderArgs) => {
   const ENV = getEnv(request);
+
   const { getTheme } = await themeSessionResolver(request);
+  const theme = getTheme();
+
+  const user = await getUserSession(request);
+  if (!user) {
+    return json({ ENV, theme });
+  }
 
   return json({
     ENV,
-    theme: getTheme(),
+    theme,
+    user,
   });
 };
 

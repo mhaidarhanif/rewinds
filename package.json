@@ -25,7 +25,7 @@
         "check:types": "tsc --noEmit",
         "check:lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
         "eslint": "DEBUG=eslint:cli-engine nr check:lint",
-        "eslint:fix": "eslint . --fix",
+        "eslint:fix": "eslint . --fix --cache --cache-location ./node_modules/.cache/eslint .",
         "stylelint": "stylelint ./app/styles/*.css",
         "stylelint:fix": "stylelint --fix ./app/styles/*.css",
         "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",

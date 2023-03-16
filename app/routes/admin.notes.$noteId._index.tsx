@@ -1,7 +1,7 @@
 import { json, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import { Button, ButtonLink, Debug, RemixForm, TextCode } from "~/components";
+import { Button, ButtonLink, RemixForm } from "~/components";
 import { EditPencil, Trash } from "~/icons";
 import { adminNote } from "~/models";
 import {
