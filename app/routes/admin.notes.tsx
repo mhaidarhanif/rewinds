@@ -26,7 +26,7 @@ export default function AdminNotesRoute() {
       <PageHeader size="xs">
         <div className="stack-h-center">
           <RemixLink to=".">
-            <h2>Notes</h2>
+            <h1>Notes</h1>
           </RemixLink>
           <ButtonLink to="new" size="sm">
             <Plus className="size-sm" />
