@@ -19,7 +19,7 @@ export default function AdminNotesRoute() {
   const { notes } = useLoaderData<typeof loader>();
 
   if (notes.length <= 0) {
-    return <h3>No notes. Please add new.</h3>;
+    return <span>No notes. Please add new.</span>;
   }
 
   return (
@@ -34,6 +34,7 @@ export default function AdminNotesRoute() {
             <RemixLink key={note.id} to={note.id} className="block">
               <li className="card hover:card-hover">
                 <h4>{note.title}</h4>
+                <p>{note.slug}</p>
               </li>
             </RemixLink>
           );

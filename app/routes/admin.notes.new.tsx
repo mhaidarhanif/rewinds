@@ -2,7 +2,7 @@ import { conform, useForm as useConform } from "@conform-to/react";
 import { getFieldsetConstraint, parse } from "@conform-to/zod";
 import { redirect } from "@remix-run/node";
 import { json } from "@remix-run/node";
-import { useActionData } from "@remix-run/react";
+import { useActionData, useCatch } from "@remix-run/react";
 import { useId } from "react";
 import { z } from "zod";
 
@@ -156,6 +156,19 @@ export default function AdminNotesNewRoute() {
       <Debug name="actionData">
         {{ actionData, title, description, content }}
       </Debug>
+    </div>
+  );
+}
+
+export function CatchBoundary() {
+  const caught = useCatch();
+
+  return (
+    <div>
+      <h1>Error {caught.status}</h1>
+      <pre>
+        <code>{JSON.stringify(caught.data, null, 2)}</code>
+      </pre>
     </div>
   );
 }

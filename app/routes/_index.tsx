@@ -1,4 +1,10 @@
-import { ButtonAnchor, ButtonLink, LandingImage, Layout } from "~/components";
+import {
+  AnchorText,
+  ButtonAnchor,
+  ButtonLink,
+  LandingImage,
+  Layout,
+} from "~/components";
 import { configSite } from "~/configs";
 import { Github, Components } from "~/icons";
 import { createDocumentLinks, createSitemap } from "~/utils";
@@ -21,12 +27,20 @@ export default function IndexRoute() {
         <div className="max-w-2xl space-y-4">
           <div className="prose-config sm:prose-xl">
             <h1>Rewinds, a Remix Stack </h1>
-            <p>👋 Hey, it's just another web app starter kit.</p>
+            <p>
+              👋😎 Hey, it's just another web app starter kit made by{" "}
+              <AnchorText href="https://mhaidarhanif.com">
+                M Haidar Hanif
+              </AnchorText>
+            </p>
             <p>
               💿 Rewinds is a Remix Tailwind Stack with Tailwind CSS family of
               libraries, React components, and the JavaScript/TypeScript/Node.js
-              ecosystem. Including other tech stack such as mostly React, Radix
-              UI, Prisma ORM, PlanetScale, Vercel, and more.
+              ecosystem
+            </p>
+            <p>
+              📦 Including other tech stack such as mostly React, Radix UI,
+              Prisma ORM, PlanetScale, Vercel, and more
             </p>
           </div>
           <div className="stack-h">

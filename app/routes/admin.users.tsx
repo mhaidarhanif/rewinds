@@ -1,4 +1,5 @@
 import { json } from "@remix-run/node";
+import { Outlet } from "@remix-run/react";
 
 import {
   Button,
@@ -31,13 +32,22 @@ export default function AdminUsersRoute() {
             <span>New user</span>
           </ButtonLink>
           <RemixForm method="delete">
-            <Button size="sm" variant="danger">
+            <Button
+              size="sm"
+              variant="danger"
+              name="intent"
+              value="delete-all-users"
+            >
               <Trash className="size-sm" />
               <span>Delete all users</span>
             </Button>
           </RemixForm>
         </div>
       </PageHeader>
+
+      <div data-id="admin-users-outlet" className="p-2 sm:p-4">
+        <Outlet />
+      </div>
     </div>
   );
 }

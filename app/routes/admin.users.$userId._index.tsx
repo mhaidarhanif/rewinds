@@ -5,14 +5,13 @@ import {
   Button,
   ButtonLink,
   RemixForm,
-  RemixLinkText,
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "~/components";
 import { EditPencil, Trash } from "~/icons";
-import { adminNote } from "~/models";
+import { adminUser } from "~/models";
 import {
   createSitemap,
   formatDateTime,
@@ -26,30 +25,30 @@ import type { ActionArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader({ params }: LoaderArgs) {
-  const { noteId } = params;
-  invariant(noteId, "noteId doesn't exist");
+  const { userId } = params;
+  invariant(userId, "userId doesn't exist");
 
-  const note = await adminNote.getNote({ id: noteId });
-  return json({ note });
+  const user = await adminUser.getUser({ id: userId });
+  return json({ user });
 }
 
 export async function action({ request }: ActionArgs) {
-  return redirect(`/admin/notes`);
+  return redirect(`/admin/users`);
 }
 
-// Similar with "admin-notes-edit"
-export default function AdminNotesViewRoute() {
-  const { note } = useLoaderData<typeof loader>();
+// Similar with "admin-users-edit"
+export default function AdminUsersViewRoute() {
+  const { user } = useLoaderData<typeof loader>();
 
-  if (!note) {
-    return <p>Note doesn't exist.</p>;
+  if (!user) {
+    return <p>User doesn't exist.</p>;
   }
 
   return (
-    <div data-id="admin-notes-view" className="stack-v">
+    <div data-id="admin-users-view" className="stack-v">
       <header>
         <div className="stack-h-center">
-          <span>View Note</span>
+          <span>View User</span>
 
           <ButtonLink to="edit" size="xs" variant="info">
             <EditPencil className="size-xs" />
@@ -61,7 +60,7 @@ export default function AdminNotesViewRoute() {
               size="xs"
               variant="danger"
               name="intent"
-              value="delete-note"
+              value="delete-user"
             >
               <Trash className="size-xs" />
               <span> Delete</span>
@@ -73,63 +72,56 @@ export default function AdminNotesViewRoute() {
       <section className="card stack-v">
         <header>
           <div
-            data-id="note-view-id-slug"
+            data-id="user-view-id-slug"
             className="flex flex-wrap gap-2 text-xs opacity-50"
           >
             <p>
-              ID: <b>{note.id}</b>
-            </p>
-            <p>
-              Slug: <b>{note.slug}</b>
+              ID: <b>{user.id}</b>
             </p>
           </div>
 
           <TooltipProvider>
             <div className="flex flex-wrap gap-2 text-xs opacity-50">
-              <p>
-                <span>Made by </span>
-                <RemixLinkText to={`/admin/users/${note.user.id}`}>
-                  {note.user.name}
-                </RemixLinkText>
-              </p>
               <Tooltip>
                 <TooltipTrigger>
                   <p>
                     <span>Created </span>
-                    <b>{formatRelativeTime(note.createdAt)} </b>
+                    <b>{formatRelativeTime(user.createdAt)} </b>
                   </p>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <b>{formatDateTime(note.createdAt)}</b>
+                  <b>{formatDateTime(user.createdAt)}</b>
                 </TooltipContent>
               </Tooltip>
               <Tooltip>
                 <TooltipTrigger>
                   <p>
                     <span>Updated </span>
-                    <b>{formatRelativeTime(note.updatedAt)} </b>
+                    <b>{formatRelativeTime(user.updatedAt)} </b>
                   </p>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <b>{formatDateTime(note.createdAt)}</b>
+                  <b>{formatDateTime(user.createdAt)}</b>
                 </TooltipContent>
               </Tooltip>
             </div>
           </TooltipProvider>
         </header>
 
-        <h2>{note.title}</h2>
+        <h2>{user.name}</h2>
 
         <h3>
-          {note.description || (
-            <span className="opacity-30">No description</span>
-          )}
+          <b>@{user.username}</b>
         </h3>
 
-        <div className="prose-config sm:prose-xl sm:py-4">{note.content}</div>
+        <h4>{user.profile.headline}</h4>
+
+        <p>{user.profile.bio}</p>
+
+        {/* <div className="prose-config sm:prose-xl sm:py-4">{user.profile.story}</div> */}
       </section>
 
-      {/* <Debug name="note">{note}</Debug> */}
+      {/* <Debug name="user">{user}</Debug> */}
     </div>
   );
 }
