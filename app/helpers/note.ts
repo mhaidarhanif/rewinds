@@ -1,4 +1,4 @@
-import { createNanoID, createSlug } from "~/utils";
+import { createNanoID, createSlug, log } from "~/utils";
 
 import type { Note, User } from "@prisma/client";
 

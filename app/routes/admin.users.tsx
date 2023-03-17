@@ -14,8 +14,7 @@ import { adminUser } from "~/models";
 import { authenticator } from "~/services";
 import { createSitemap, invariant } from "~/utils";
 
-import type { ActionArgs} from "@remix-run/node";
-
+import type { ActionArgs } from "@remix-run/node";
 
 export const handle = createSitemap();
 

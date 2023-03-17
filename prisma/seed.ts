@@ -6,12 +6,12 @@
 
 // Important to import external libraries directly
 import bcrypt from "bcryptjs";
-import invariant from "tiny-invariant";
 import { customAlphabet } from "nanoid";
+import invariant from "tiny-invariant";
+import voca from "voca";
 
 import { dataUserRoles } from "~/data";
 import { prisma } from "~/libs";
-import voca from "voca";
 
 async function seed() {
   await seedUsers();
