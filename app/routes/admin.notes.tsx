@@ -23,14 +23,14 @@ export async function action({ request }: ActionArgs) {
   const user = await authenticator.isAuthenticated(request, {
     failureRedirect: "/login",
   });
-  invariant(user); // can use user data for security check later
+  invariant(user);
 
   const formData = await request.formData();
   const submission = parse(formData, {});
 
   if (submission.payload.intent === "delete-all-notes") {
     await adminNote.deleteAllNotes();
-    return json({ submission });
+    return json(submission);
   }
 
   return redirect(`/admin/notes`);

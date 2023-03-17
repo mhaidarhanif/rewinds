@@ -39,24 +39,25 @@ export async function action({ request }: ActionArgs) {
     failureRedirect: "/login",
   });
 
-  // server-side validation
   const formData = await request.formData();
   const submission = parse(formData, { schema: schemaNote });
   if (!submission.value || submission.intent !== "submit") {
-    return json({ submission }, { status: 400 });
+    return json(submission, { status: 400 });
   }
 
-  // add new note
-  const newNote = await adminNote.addNewNote({
-    user,
-    note: submission.value,
-  });
-  if (!newNote) {
-    return json({ submission }, { status: 500 });
+  try {
+    const newNote = await adminNote.addNewNote({
+      user,
+      note: submission.value,
+    });
+    if (!newNote) {
+      return json(submission, { status: 500 });
+    }
+    return redirect(`/admin/notes/${newNote.id}`);
+  } catch (error) {
+    console.error(error);
+    return json(submission, { status: 400 });
   }
-
-  // redirect to new note view
-  return redirect(`/admin/notes/${newNote.id}`);
 }
 
 export default function AdminNotesNewRoute() {
@@ -68,6 +69,7 @@ export default function AdminNotesNewRoute() {
   >({
     id,
     initialReport: "onSubmit",
+    lastSubmission: actionData,
     // client-side validation that can be overriden
     onValidate({ formData }) {
       return parse(formData, { schema: schemaNote });

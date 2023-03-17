@@ -1,4 +1,4 @@
-import { createSlug } from "~/utils";
+import { createNanoID, createSlug } from "~/utils";
 
 import type { Note, User } from "@prisma/client";
 
@@ -10,5 +10,6 @@ export function createNoteSlug({
   username: User["username"];
 }) {
   const slug = createSlug(title);
-  return `${slug}-${username}`;
+  const nanoid = createNanoID();
+  return `${slug}-${username}-${nanoid}`;
 }

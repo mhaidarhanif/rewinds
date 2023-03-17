@@ -42,4 +42,10 @@ export const adminNote = {
   async deleteAllNotes() {
     return prisma.note.deleteMany();
   },
+
+  async deleteNote({ id }: Pick<Note, "id">) {
+    return prisma.note.delete({
+      where: { id },
+    });
+  },
 };

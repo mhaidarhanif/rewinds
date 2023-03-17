@@ -1,3 +1,4 @@
+import { parse } from "@conform-to/react";
 import { json, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
@@ -13,6 +14,7 @@ import {
 } from "~/components";
 import { EditPencil, Trash } from "~/icons";
 import { adminNote } from "~/models";
+import { authenticator } from "~/services";
 import {
   createSitemap,
   formatDateTime,
@@ -34,6 +36,24 @@ export async function loader({ params }: LoaderArgs) {
 }
 
 export async function action({ request }: ActionArgs) {
+  const user = await authenticator.isAuthenticated(request, {
+    failureRedirect: "/login",
+  });
+  invariant(user);
+
+  const formData = await request.formData();
+  const submission = parse(formData);
+
+  if (submission.payload.intent === "delete-note") {
+    try {
+      await adminNote.deleteNote({ id: submission.payload.noteId });
+      return redirect(`/admin/notes`);
+    } catch (error) {
+      console.error(error);
+      return json(submission, { status: 400 });
+    }
+  }
+
   return redirect(`/admin/notes`);
 }
 
@@ -57,6 +77,7 @@ export default function AdminNotesViewRoute() {
           </ButtonLink>
 
           <RemixForm method="delete">
+            <input type="hidden" name="noteId" value={note.id} />
             <Button
               size="xs"
               variant="danger"
