@@ -6,7 +6,7 @@ import { Outlet } from "@remix-run/react";
 import {
   Button,
   ButtonLink,
-  PageHeader,
+  PageAdminHeader,
   RemixForm,
   RemixLink,
 } from "~/components";
@@ -39,28 +39,26 @@ export async function action({ request }: ActionArgs) {
 export default function AdminNotesRoute() {
   return (
     <div data-id="admin-notes-layout">
-      <PageHeader size="xs">
-        <div className="stack-h-center">
-          <RemixLink to=".">
-            <h1>Notes</h1>
-          </RemixLink>
-          <ButtonLink to="new" size="sm">
-            <Plus className="size-sm" />
-            <span>New note</span>
-          </ButtonLink>
-          <RemixForm method="delete">
-            <Button
-              size="sm"
-              variant="danger"
-              name="intent"
-              value="delete-all-notes"
-            >
-              <Trash className="size-sm" />
-              <span>Delete all notes</span>
-            </Button>
-          </RemixForm>
-        </div>
-      </PageHeader>
+      <PageAdminHeader size="xs">
+        <RemixLink to=".">
+          <h1>Notes</h1>
+        </RemixLink>
+        <ButtonLink to="new" size="sm">
+          <Plus className="size-sm" />
+          <span>New note</span>
+        </ButtonLink>
+        <RemixForm method="delete">
+          <Button
+            size="sm"
+            variant="danger"
+            name="intent"
+            value="delete-all-notes"
+          >
+            <Trash className="size-sm" />
+            <span>Delete all notes</span>
+          </Button>
+        </RemixForm>
+      </PageAdminHeader>
 
       <div data-id="admin-notes-outlet" className="p-2 sm:p-4">
         <Outlet />

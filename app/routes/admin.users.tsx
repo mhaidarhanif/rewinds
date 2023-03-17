@@ -4,7 +4,7 @@ import { Outlet } from "@remix-run/react";
 import {
   Button,
   ButtonLink,
-  PageHeader,
+  PageAdminHeader,
   RemixForm,
   RemixLink,
 } from "~/components";
@@ -22,28 +22,26 @@ export async function loader({ request }: LoaderArgs) {
 export default function AdminUsersRoute() {
   return (
     <div data-id="admin-users">
-      <PageHeader size="xs">
-        <div className="stack-h-center">
-          <RemixLink to=".">
-            <h1>Users</h1>
-          </RemixLink>
-          <ButtonLink to="new" size="sm">
-            <Plus className="size-sm" />
-            <span>New user</span>
-          </ButtonLink>
-          <RemixForm method="delete">
-            <Button
-              size="sm"
-              variant="danger"
-              name="intent"
-              value="delete-all-users"
-            >
-              <Trash className="size-sm" />
-              <span>Delete all users</span>
-            </Button>
-          </RemixForm>
-        </div>
-      </PageHeader>
+      <PageAdminHeader size="xs">
+        <RemixLink to=".">
+          <h1>Users</h1>
+        </RemixLink>
+        <ButtonLink to="new" size="sm">
+          <Plus className="size-sm" />
+          <span>New user</span>
+        </ButtonLink>
+        <RemixForm method="delete">
+          <Button
+            size="sm"
+            variant="danger"
+            name="intent"
+            value="delete-all-users"
+          >
+            <Trash className="size-sm" />
+            <span>Delete all users</span>
+          </Button>
+        </RemixForm>
+      </PageAdminHeader>
 
       <div data-id="admin-users-outlet" className="p-2 sm:p-4">
         <Outlet />

@@ -147,7 +147,9 @@ export default function AdminNotesViewRoute() {
           )}
         </h3>
 
-        <div className="prose-config sm:prose-xl sm:py-4">{note.content}</div>
+        <div className="prose-config whitespace-pre-wrap sm:prose-xl sm:py-4">
+          {note.content}
+        </div>
       </section>
 
       {/* <Debug name="note">{note}</Debug> */}

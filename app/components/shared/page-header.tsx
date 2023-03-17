@@ -44,3 +44,22 @@ export function PageHeader({
     </header>
   );
 }
+
+export function PageAdminHeader({
+  size,
+  isTextCentered,
+  className,
+  children,
+  ...props
+}: Props) {
+  return (
+    <header
+      className={cn(pageHeaderVariants({ size, isTextCentered, className }))}
+      {...props}
+    >
+      <div className="flex flex-wrap items-center gap-2 px-2 sm:gap-4 sm:px-4">
+        {children}
+      </div>
+    </header>
+  );
+}

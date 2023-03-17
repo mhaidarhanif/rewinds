@@ -26,7 +26,7 @@ export const handle = createSitemap();
 
 export async function loader({ params }: LoaderArgs) {
   const { userId } = params;
-  invariant(userId, "userId doesn't exist");
+  invariant(userId, "userId does not exist");
 
   const user = await adminUser.getUser({ id: userId });
   return json({ user });

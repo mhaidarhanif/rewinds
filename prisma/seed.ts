@@ -50,16 +50,19 @@ export async function seedUsers() {
     data: {
       email: REMIX_ADMIN_EMAIL,
       password: { create: { hash: hashedPassword } },
-      name: "Admin",
-      username: "admin",
+      name: "Rewinds Admin",
+      username: "administrator",
       phone: "+1234567890",
       role: { connect: { id: adminUserRole.id } },
       profile: {
-        create: { headline: "I am Admin", bio: "The admin of this app." },
+        create: {
+          headline: "I am Admin",
+          bio: "The administrator of this app.",
+        },
       },
     },
   });
-  invariant(user, "Admin User with role symbol ADMIN is failed to create");
+  invariant(user, "User with role symbol ADMIN is failed to create");
 }
 
 export async function seedNotes() {
@@ -67,23 +70,23 @@ export async function seedNotes() {
   console.info("Seed notes...");
   await prisma.note.deleteMany();
 
-  const adminUser = await prisma.user.findFirst({
+  const user = await prisma.user.findFirst({
     where: { role: { symbol: "ADMIN" } },
   });
-  invariant(adminUser, "Admin User with role symbol ADMIN is not found");
+  invariant(user, "User with role symbol ADMIN is not found");
 
   const note1 = {
     title: "The first note",
     description: "Description about the note",
     content: "This is the first note content that is for a demo.",
-    user: { connect: { id: adminUser.id } },
+    user: { connect: { id: user.id } },
   };
 
   await prisma.note.create({
     data: {
       slug: createNoteSlug({
         title: note1.title,
-        username: adminUser.username,
+        username: user.username,
       }),
       ...note1,
     },

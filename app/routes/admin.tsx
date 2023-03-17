@@ -83,6 +83,7 @@ export function AdminSidebar() {
           );
         })}
       </ul>
+
       <div className="stack-v-center">
         <ButtonNavLink size="sm" variant="ghost" to="/">
           Go to site
