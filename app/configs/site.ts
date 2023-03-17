@@ -10,6 +10,7 @@ const isDevelopment = process.env.NODE_ENV === "development";
 export const configSite = {
   domain: isDevelopment ? "localhost:3000" : "rewinds.mhaidarhanif.com",
 
+  slug: "rewinds",
   name: "Rewinds",
   title: "Rewinds: Remix Tailwind Starter Kit",
   description:
@@ -37,7 +38,7 @@ export const configSite = {
     { to: "/about", title: "About", icon: "about" },
     { to: "/components", title: "Components", icon: "components" },
     { to: "/demo", title: "Demo", icon: "demo" },
-    { to: "/database", title: "Database", icon: "database" },
+    isDevelopment && { to: "/database", title: "Database", icon: "database" },
   ],
 };
 

@@ -3,12 +3,8 @@ import { redirect } from "@remix-run/node";
 import { authenticator } from "~/services";
 import { getSession } from "~/sessions";
 
-import type { User } from "@prisma/client";
-
 export type UserSession = {
   id: string;
-  name: string;
-  username: string;
   roleSymbol: string;
 };
 
@@ -81,16 +77,6 @@ export function logoutSession(request: Request) {
 
 export function getUserAvatarImageUrl(name: string | null) {
   return `https://api.dicebear.com/5.x/initials/svg?seed=${name}&backgroundColor=3949ab`;
-}
-
-export function getUserInfo(user: User | UserSession) {
-  const userNameInitials = "FB"; // @note generate using actual name
-
-  return {
-    ...user,
-    userNameInitials,
-    avatarImageUrl: getUserAvatarImageUrl(user?.name),
-  };
 }
 
 export async function getErrorSession(request: Request) {

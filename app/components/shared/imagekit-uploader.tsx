@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 
 import { IKUpload, IKImage, Button, Debug } from "~/components";
+import { configSite } from "~/configs";
+import { createNanoID } from "~/utils";
 
 export type ImageKitResponse = {
   fileId: string;
@@ -24,8 +26,7 @@ export function ImageKitUploader({
     ImageKitResponse[]
   >([]);
 
-  const now = Math.floor(Date.now() / 1000);
-  const fileNameTemplate = `fujibox-${now}`;
+  const fileNameTemplate = `${configSite.slug}-${createNanoID}`;
   const isUploading = uploadState === "start" || uploadState === "progress";
 
   const onError = (err: any) => {

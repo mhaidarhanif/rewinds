@@ -3,6 +3,10 @@ import { prisma } from "~/libs";
 import type { User } from "@prisma/client";
 
 export const adminUser = {
+  async getUserCount() {
+    return prisma.user.count();
+  },
+
   async getAllUsers() {
     return prisma.user.findMany({
       include: {
@@ -36,5 +40,9 @@ export const adminUser = {
         notes: true,
       },
     });
+  },
+
+  async deleteAllUsers() {
+    return prisma.user.deleteMany();
   },
 };

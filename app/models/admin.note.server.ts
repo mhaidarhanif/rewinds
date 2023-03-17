@@ -4,6 +4,10 @@ import { prisma } from "~/libs";
 import type { Note, User } from "@prisma/client";
 
 export const adminNote = {
+  async getNoteCount() {
+    return prisma.note.count();
+  },
+
   async getAllNotes() {
     return prisma.note.findMany({
       include: {

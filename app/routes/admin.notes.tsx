@@ -1,7 +1,7 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 import { parse } from "@conform-to/react";
 import { json, redirect } from "@remix-run/node";
-import { Outlet } from "@remix-run/react";
+import { Outlet, useLoaderData } from "@remix-run/react";
 
 import {
   Button,
@@ -18,6 +18,11 @@ import { createSitemap, invariant } from "~/utils";
 import type { ActionArgs } from "@remix-run/node";
 
 export const handle = createSitemap();
+
+export async function loader() {
+  const noteCount = await adminNote.getNoteCount();
+  return json({ noteCount });
+}
 
 export async function action({ request }: ActionArgs) {
   const user = await authenticator.isAuthenticated(request, {
@@ -36,7 +41,11 @@ export async function action({ request }: ActionArgs) {
   return redirect(`/admin/notes`);
 }
 
+const isDevelopment = process.env.NODE_ENV === "development";
+
 export default function AdminNotesRoute() {
+  const { noteCount } = useLoaderData<typeof loader>();
+
   return (
     <div data-id="admin-notes-layout">
       <PageAdminHeader size="xs">
@@ -47,17 +56,20 @@ export default function AdminNotesRoute() {
           <Plus className="size-sm" />
           <span>New note</span>
         </ButtonLink>
-        <RemixForm method="delete">
-          <Button
-            size="sm"
-            variant="danger"
-            name="intent"
-            value="delete-all-notes"
-          >
-            <Trash className="size-sm" />
-            <span>Delete all notes</span>
-          </Button>
-        </RemixForm>
+        {isDevelopment && (
+          <RemixForm method="delete">
+            <Button
+              size="sm"
+              variant="danger"
+              name="intent"
+              value="delete-all-notes"
+              disabled={noteCount <= 0}
+            >
+              <Trash className="size-sm" />
+              <span>Delete all notes</span>
+            </Button>
+          </RemixForm>
+        )}
       </PageAdminHeader>
 
       <div data-id="admin-notes-outlet" className="p-2 sm:p-4">

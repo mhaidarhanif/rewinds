@@ -1,5 +1,6 @@
-import { json } from "@remix-run/node";
-import { Outlet } from "@remix-run/react";
+import { parse } from "@conform-to/react";
+import { json, redirect } from "@remix-run/node";
+import { Outlet, useLoaderData } from "@remix-run/react";
 
 import {
   Button,
@@ -9,17 +10,45 @@ import {
   RemixLink,
 } from "~/components";
 import { Plus, Trash } from "~/icons";
-import { createSitemap } from "~/utils";
+import { adminUser } from "~/models";
+import { authenticator } from "~/services";
+import { createSitemap, invariant } from "~/utils";
 
-import type { LoaderArgs } from "@remix-run/node";
+import type { ActionArgs} from "@remix-run/node";
+
 
 export const handle = createSitemap();
 
-export async function loader({ request }: LoaderArgs) {
-  return json({});
+export async function loader() {
+  const userCount = await adminUser.getUserCount();
+  return json({ userCount });
 }
 
+export async function action({ request }: ActionArgs) {
+  const user = await authenticator.isAuthenticated(request, {
+    failureRedirect: "/login",
+  });
+  invariant(user);
+  if (user.roleSymbol !== "ADMIN") {
+    return json({ message: "Not allowed" }, { status: 400 });
+  }
+
+  const formData = await request.formData();
+  const submission = parse(formData, {});
+
+  if (submission.payload.intent === "delete-all-users") {
+    await adminUser.deleteAllUsers();
+    return json(submission);
+  }
+
+  return redirect(`/admin/users`);
+}
+
+const isDevelopment = process.env.NODE_ENV === "development";
+
 export default function AdminUsersRoute() {
+  const { userCount } = useLoaderData<typeof loader>();
+
   return (
     <div data-id="admin-users">
       <PageAdminHeader size="xs">
@@ -30,17 +59,20 @@ export default function AdminUsersRoute() {
           <Plus className="size-sm" />
           <span>New user</span>
         </ButtonLink>
-        <RemixForm method="delete">
-          <Button
-            size="sm"
-            variant="danger"
-            name="intent"
-            value="delete-all-users"
-          >
-            <Trash className="size-sm" />
-            <span>Delete all users</span>
-          </Button>
-        </RemixForm>
+        {isDevelopment && (
+          <RemixForm method="delete">
+            <Button
+              size="sm"
+              variant="danger"
+              name="intent"
+              value="delete-all-users"
+              disabled={userCount <= 0}
+            >
+              <Trash className="size-sm" />
+              <span>Delete all users</span>
+            </Button>
+          </RemixForm>
+        )}
       </PageAdminHeader>
 
       <div data-id="admin-users-outlet" className="p-2 sm:p-4">

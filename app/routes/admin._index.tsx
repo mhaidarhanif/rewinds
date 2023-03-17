@@ -4,10 +4,10 @@ import { useLoaderData } from "@remix-run/react";
 import { Debug, PageAdminHeader } from "~/components";
 import { useRootLoaderData } from "~/hooks";
 import { admin } from "~/models";
+import { authenticator } from "~/services";
 import { createSitemap, invariant } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
-import { authenticator } from "~/services";
 
 export const handle = createSitemap();
 
