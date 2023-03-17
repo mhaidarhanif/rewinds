@@ -48,8 +48,8 @@ export async function action({ request }: ActionArgs) {
 
   // add new note
   const newNote = await adminNote.addNewNote({
-    userId: user.id,
-    ...submission.value,
+    user,
+    note: submission.value,
   });
   if (!newNote) {
     return json({ submission }, { status: 500 });
@@ -78,8 +78,8 @@ export default function AdminNotesNewRoute() {
 
   return (
     <div data-id="admin-notes-new" className="stack-v">
-      <header className="space-y-2">
-        <h3>Add New Note</h3>
+      <header>
+        <span>Add New Note</span>
       </header>
 
       <RemixForm

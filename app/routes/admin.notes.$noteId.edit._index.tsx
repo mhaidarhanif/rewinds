@@ -43,12 +43,12 @@ export default function AdminNotesEditRoute() {
   return (
     <div data-id="admin-notes-edit" className="stack-v">
       <header>
-        <h3>Edit Note</h3>
+        <span>Edit Note</span>
       </header>
 
       <RemixForm method="put" className="card stack-v max-w-lg">
         <header>
-          <div className="text-xs opacity-50">
+          <div className="flex flex-wrap gap-2 text-xs opacity-50">
             <p>
               ID: <b>{note.id}</b>
             </p>

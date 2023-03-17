@@ -22,7 +22,7 @@ export async function loader({ request }: LoaderArgs) {
     ]);
     return new Response("OK");
   } catch (error: unknown) {
-    console.log("Health Check ❌", { error });
+    console.info("Health Check ❌", { error });
     return new Response("ERROR", { status: 500 });
   }
 }

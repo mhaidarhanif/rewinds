@@ -27,7 +27,8 @@ export async function action({ request }: ActionArgs) {
 
   const formData = await request.formData();
   const submission = parse(formData, {});
-  if (submission.intent === "delete-all-notes") {
+
+  if (submission.payload.intent === "delete-all-notes") {
     await adminNote.deleteAllNotes();
     return json({ submission });
   }

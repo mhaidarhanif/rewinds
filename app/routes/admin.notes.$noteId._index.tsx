@@ -1,7 +1,15 @@
 import { json, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import { Button, ButtonLink, RemixForm } from "~/components";
+import {
+  Button,
+  ButtonLink,
+  RemixForm,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "~/components";
 import { EditPencil, Trash } from "~/icons";
 import { adminNote } from "~/models";
 import {
@@ -39,19 +47,20 @@ export default function AdminNotesViewRoute() {
   return (
     <div data-id="admin-notes-view" className="stack-v">
       <header>
-        <h3>View Note</h3>
+        <span>View Note</span>
       </header>
 
       <section className="card stack-v">
+        <div className="flex flex-wrap gap-2 text-xs opacity-50">
+          <p>
+            ID: <b>{note.id}</b>
+          </p>
+          <p>
+            Slug: <b>{note.slug}</b>
+          </p>
+        </div>
+
         <header>
-          <div className="text-xs opacity-50">
-            <p>
-              ID: <b>{note.id}</b>
-            </p>
-            <p>
-              Slug: <b>{note.slug}</b>
-            </p>
-          </div>
           <h3 className="sm:text-3xl">{note.title}</h3>
           <h4>
             {note.description || (
@@ -62,22 +71,36 @@ export default function AdminNotesViewRoute() {
 
         <div className="prose-config sm:prose-xl sm:py-4">{note.content}</div>
 
-        <div className="text-xs opacity-50">
-          <p>
-            <span>Made by </span>
-            <b>{note.user.name}</b>
-          </p>
-          <p>
-            <span>Created </span>
-            <b>{formatRelativeTime(note.createdAt)} </b>
-            <b>({formatDateTime(note.createdAt)})</b>
-          </p>
-          <p>
-            <span>Updated </span>
-            <b>{formatRelativeTime(note.updatedAt)} </b>
-            <b>({formatDateTime(note.updatedAt)})</b>
-          </p>
-        </div>
+        <TooltipProvider>
+          <div className="flex flex-wrap gap-2 text-xs opacity-50">
+            <p>
+              <span>Made by </span>
+              <b>{note.user.name}</b>
+            </p>
+            <Tooltip>
+              <TooltipTrigger>
+                <p>
+                  <span>Created </span>
+                  <b>{formatRelativeTime(note.createdAt)} </b>
+                </p>
+              </TooltipTrigger>
+              <TooltipContent>
+                <b>{formatDateTime(note.createdAt)}</b>
+              </TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger>
+                <p>
+                  <span>Updated </span>
+                  <b>{formatRelativeTime(note.updatedAt)} </b>
+                </p>
+              </TooltipTrigger>
+              <TooltipContent>
+                <b>{formatDateTime(note.createdAt)}</b>
+              </TooltipContent>
+            </Tooltip>
+          </div>
+        </TooltipProvider>
 
         <div className="flex gap-2">
           <ButtonLink to="edit" size="xs" variant="ghost">
@@ -85,7 +108,13 @@ export default function AdminNotesViewRoute() {
             <span> Edit</span>
           </ButtonLink>
           <RemixForm method="delete">
-            <Button size="xs" variant="ghost" accent="red">
+            <Button
+              size="xs"
+              variant="ghost"
+              accent="red"
+              name="intent"
+              value="delete-note"
+            >
               <Trash className="size-xs" />
               <span> Delete</span>
             </Button>

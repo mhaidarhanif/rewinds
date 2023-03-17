@@ -2,7 +2,7 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import { RemixLink } from "~/components";
+import { Debug, RemixLink } from "~/components";
 import { adminNote } from "~/models";
 import { createSitemap } from "~/utils";
 
@@ -18,13 +18,16 @@ export async function loader({ request }: LoaderArgs) {
 export default function AdminNotesRoute() {
   const { notes } = useLoaderData<typeof loader>();
 
-  if (!notes) {
-    return <p>No notes. Please add one.</p>;
+  if (notes.length <= 0) {
+    return <h3>No notes. Please add new.</h3>;
   }
 
   return (
     <div className="stack-v">
-      <h3>All Notes</h3>
+      <header>
+        <span>All Notes</span>
+      </header>
+
       <ul className="space-y-2">
         {notes.map((note) => {
           return (
@@ -36,6 +39,8 @@ export default function AdminNotesRoute() {
           );
         })}
       </ul>
+
+      <Debug name="notes">{notes}</Debug>
     </div>
   );
 }

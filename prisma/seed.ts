@@ -9,10 +9,12 @@ import bcrypt from "bcryptjs";
 import invariant from "tiny-invariant";
 
 import { dataUserRoles } from "~/data";
+import { createNoteSlug } from "~/helpers";
 import { prisma } from "~/libs";
 
 async function seed() {
   await seedUsers();
+  await seedNotes();
 }
 
 /**
@@ -57,26 +59,33 @@ export async function seedUsers() {
       },
     },
   });
+  invariant(user, "Admin User with role symbol ADMIN is failed to create");
+}
 
+export async function seedNotes() {
   // ---------------------------------------------------------------------------
   console.info("Seed notes...");
+  await prisma.note.deleteMany();
+
+  const adminUser = await prisma.user.findFirst({
+    where: { role: { symbol: "ADMIN" } },
+  });
+  invariant(adminUser, "Admin User with role symbol ADMIN is not found");
+
+  const note1 = {
+    title: "The first note",
+    description: "Description about the note",
+    content: "This is the first note content that is for a demo.",
+    user: { connect: { id: adminUser.id } },
+  };
 
   await prisma.note.create({
     data: {
-      slug: "my-1st-title-12345",
-      title: "My 1st title",
-      description: "",
-      content: "The 1st content",
-      user: { connect: { id: user.id } },
-    },
-  });
-  await prisma.note.create({
-    data: {
-      slug: "my-2nd-title-67890",
-      title: "My 2nd title",
-      description: "",
-      content: "The 2nd content",
-      user: { connect: { id: user.id } },
+      slug: createNoteSlug({
+        title: note1.title,
+        username: adminUser.username,
+      }),
+      ...note1,
     },
   });
 }
