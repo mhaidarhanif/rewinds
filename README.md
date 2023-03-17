@@ -33,9 +33,9 @@ As for now, this README is the only main documentation.
 
 ## Some Details
 
-Compared to the [the older `rewinds`](https://github.com/mhaidarhanif/rewinds-legacy), this newer version uses [`shadcn/ui`](https://github.com/shadcn/ui) as the base components style and setup for full stack app development is inspired by [T3 Stack](https://create.t3.gg). The main adaptation reason is that this repo uses Remix, not Next.js as the full stack framework.
+This repo is kind of over-engineered to have high flexibility and cover a lot of use cases for different applications/projects/products (especially what I'm working with several other people). Currently includes the Remix HMR & HDR setup with both Vercel config and Express server on development as per Remix `v1.14`. The config is just combining the templates from Remix with Express and Vercel based on the environment.
 
-This repo is kind of over-engineered to have high flexibility and cover a lot of use cases for different applications/projects/products. Currently includes the Remix HMR & HDR setup with both Vercel config and Express server on development as per Remix `v1.14`. The config is just combining the templates from Remix with Express and Vercel based on the environment.
+Compared to the [the older `rewinds`](https://github.com/mhaidarhanif/rewinds-legacy), this newer version uses [`shadcn/ui`](https://github.com/shadcn/ui) as the base components style and setup for full stack app development is inspired by [T3 Stack](https://create.t3.gg). The main adaptation reason is that this repo uses Remix, not Next.js as the full stack framework.
 
 ## Some Background
 
@@ -70,27 +70,30 @@ Why creating this? Well, because I had a lot of recent projects with these same 
 
 # Tech Stack
 
-> ⚠️ Some setup might haven't done yet or still in progress.
+Listed here are only the most important parts in the stack.️ Some setup might haven't done yet or still in progress.
 
-- [TypeScript](https://typescriptlang.org)
-- [React](https://beta.reactjs.org)
-- [Remix](https://remix.run/docs)
+- Core
+  - [TypeScript](https://typescriptlang.org)
+  - [React](https://beta.reactjs.org)
+  - [Remix](https://remix.run/docs)
+- Auth
   - [Remix Auth](https://github.com/sergiodxa/remix-auth)
-  - [Remix Validated Form](https://remix-validated-form.io)
-  - [Conform](https://conform.guide)
+- Form
   - [Zod](https://zod.dev)
-- [Tailwind CSS](https://tailwindcss.com)
-  - [Radix UI](https://radix-ui.com)
-    - [`tailwindcss-radix`](https://tailwindcss-radix.vercel.app)
-  - [Headless UI](https://headlessui.com)
-  - [Zag](https://zagjs.com)
+  - [Conform](https://conform.guide)
+- Styling
+  - [Tailwind CSS](https://tailwindcss.com)
   - [Fontsource](https://fontsource.org)
-- [Prisma ORM](https://prisma.io)
-- [PlanetScale](https://planetscale.com)
-- [Vercel](https://vercel.com)
-- [Vitest](https://vitest.dev)
-- [Testing Library](https://testing-library.com)
-- [Playwright](https://playwright.dev)
+  - [Radix UI](https://radix-ui.com)
+- Database
+  - [Prisma ORM](https://prisma.io)
+  - [PlanetScale](https://planetscale.com)
+- Deployment
+  - [Vercel](https://vercel.com)
+- Testing
+  - [Vitest](https://vitest.dev)
+  - [Testing Library](https://testing-library.com)
+  - [Playwright](https://playwright.dev)
 
 More details and references can also be checked from [`catamyst/stack`](https://a.catamyst.com/stack)
 

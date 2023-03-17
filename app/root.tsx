@@ -57,7 +57,7 @@ export const links: LinksFunction = () => {
 
 // Return the theme from the session storage using the loader
 export const loader: LoaderFunction = async ({ request }: LoaderArgs) => {
-  const ENV = getEnv(request);
+  const ENV = getEnv();
 
   const { getTheme } = await themeSessionResolver(request);
   const theme = getTheme();

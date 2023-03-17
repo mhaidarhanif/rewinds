@@ -1,9 +1,9 @@
 import { createCookieSessionStorage } from "@remix-run/node";
 import { createThemeSessionResolver } from "remix-themes";
 
-import { invariant } from "~/utils";
+import { envServer, invariant } from "~/utils";
 
-invariant(process.env.REMIX_SESSION_SECRET, "REMIX_SESSION_SECRET must be set");
+invariant(envServer.REMIX_SESSION_SECRET, "REMIX_SESSION_SECRET must be set");
 
 export const themeSessionStorage = createCookieSessionStorage({
   cookie: {
@@ -11,8 +11,8 @@ export const themeSessionStorage = createCookieSessionStorage({
     httpOnly: true,
     path: "/",
     sameSite: "lax",
-    secrets: [process.env.REMIX_SESSION_SECRET],
-    secure: process.env.NODE_ENV === "production",
+    secrets: [envServer.REMIX_SESSION_SECRET],
+    secure: envServer.NODE_ENV === "production",
   },
 });
 

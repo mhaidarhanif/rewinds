@@ -41,4 +41,8 @@ export const adminNote = {
       },
     });
   },
+
+  async deleteAllNotes() {
+    return prisma.note.deleteMany();
+  },
 };

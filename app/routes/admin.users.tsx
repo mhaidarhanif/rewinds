@@ -28,7 +28,7 @@ export default function AdminUsersRoute() {
           </RemixLink>
           <ButtonLink to="new" size="sm">
             <Plus className="size-sm" />
-            <span>New users</span>
+            <span>New user</span>
           </ButtonLink>
           <RemixForm method="delete">
             <Button size="sm" variant="danger">

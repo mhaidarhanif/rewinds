@@ -1,5 +1,6 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import { redirect } from "@remix-run/node";
+import { parse } from "@conform-to/react";
+import { json, redirect } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 
 import {
@@ -10,14 +11,28 @@ import {
   RemixLink,
 } from "~/components";
 import { Plus, Trash } from "~/icons";
-import { createSitemap } from "~/utils";
+import { adminNote } from "~/models";
+import { authenticator } from "~/services";
+import { createSitemap, invariant } from "~/utils";
 
 import type { ActionArgs } from "@remix-run/node";
 
 export const handle = createSitemap();
 
 export async function action({ request }: ActionArgs) {
-  return redirect(`.`);
+  const user = await authenticator.isAuthenticated(request, {
+    failureRedirect: "/login",
+  });
+  invariant(user); // can use user data for security check later
+
+  const formData = await request.formData();
+  const submission = parse(formData, {});
+  if (submission.intent === "delete-all-notes") {
+    await adminNote.deleteAllNotes();
+    return json({ submission });
+  }
+
+  return redirect(`/admin/notes`);
 }
 
 export default function AdminNotesRoute() {
@@ -33,7 +48,12 @@ export default function AdminNotesRoute() {
             <span>New note</span>
           </ButtonLink>
           <RemixForm method="delete">
-            <Button size="sm" variant="danger">
+            <Button
+              size="sm"
+              variant="danger"
+              name="intent"
+              value="delete-all-notes"
+            >
               <Trash className="size-sm" />
               <span>Delete all notes</span>
             </Button>

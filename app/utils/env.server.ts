@@ -4,27 +4,24 @@
  * Never expose the REMIX_SESSION_SECRET or any server/node/non-browser env
  */
 
-export function getEnv(request: Request) {
-  const url = new URL(request.url);
-
+export function getEnv() {
   return {
-    NODE_ENV: process.env.NODE_ENV, // development | test | production
-    APP_ENV: process.env.APP_ENV, // local | development | staging | production
-    APP_URL: url.origin,
-    VERCEL: process.env.VERCEL,
+    NODE_ENV: process.env.NODE_ENV || "development", // development | test | production
+    APP_ENV: process.env.APP_ENV || "unknown", // local | development | staging | production
+    VERCEL: process.env.VERCEL || false,
 
     // REMIX variables are mostly private
 
     IMAGEKIT_URL_ENDPOINT:
       process.env.IMAGEKIT_URL_ENDPOINT || "https://ik.imagekit.io",
-    IMAGEKIT_FOLDER_NAME: process.env.IMAGEKIT_FOLDER_NAME || "",
-    IMAGEKIT_PUBLIC_KEY: process.env.IMAGEKIT_PUBLIC_KEY,
+    IMAGEKIT_FOLDER_NAME: process.env.IMAGEKIT_FOLDER_NAME || "not-set",
+    IMAGEKIT_PUBLIC_KEY: process.env.IMAGEKIT_PUBLIC_KEY || "not-set",
     // IMAGEKIT private key obviously private
 
-    MAPBOX_PUBLIC_TOKEN: process.env.MAPBOX_PUBLIC_TOKEN,
+    MAPBOX_PUBLIC_TOKEN: process.env.MAPBOX_PUBLIC_TOKEN || "not-set",
 
-    GA_MEASUREMENT_ID: process.env.GA_MEASUREMENT_ID,
-    SENTRY_BROWSER_DSN: process.env.SENTRY_BROWSER_DSN,
+    GA_MEASUREMENT_ID: process.env.GA_MEASUREMENT_ID || "not-set",
+    SENTRY_BROWSER_DSN: process.env.SENTRY_BROWSER_DSN || "not-set",
     POSTHOG_API_HOST: process.env.POSTHOG_API_HOST,
     POSTHOG_API_KEY: process.env.POSTHOG_API_KEY,
   };
@@ -33,6 +30,13 @@ export function getEnv(request: Request) {
 /**
  * Only use for server-side env
  */
+
+// to bypass the required condition for just inital setup
+// REMIX variables are mostly private, this is just a bypass
+export const envServer = {
+  NODE_ENV: process.env.NODE_ENV || "development", // development | test | production
+  REMIX_SESSION_SECRET: process.env.REMIX_SESSION_SECRET || "",
+};
 
 export function getEnvServer(key: string) {
   return getEnvRequired(process.env, key);

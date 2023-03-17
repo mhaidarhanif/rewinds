@@ -94,8 +94,8 @@ export default function AdminNotesNewRoute() {
               {...conform.input(title)}
               type="text"
               placeholder="Note title or what's on your mind?"
-              autoFocus
               defaultValue={isDevelopment ? "A new example" : ""}
+              autoFocus
             />
             <p id={title.errorId} role="alert">
               {title.error}
@@ -135,7 +135,13 @@ export default function AdminNotesNewRoute() {
         </div>
 
         <div className="flex gap-2">
-          <Button type="submit" variant="subtle" className="grow">
+          <Button
+            type="submit"
+            variant="subtle"
+            className="grow"
+            name="intent"
+            value="submit"
+          >
             Save Note
           </Button>
           <Button type="reset" variant="ghost">
