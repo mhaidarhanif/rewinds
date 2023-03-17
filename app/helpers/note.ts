@@ -8,7 +8,7 @@ export function createNoteSlug({
   withUsername = false,
 }: {
   title: Note["title"];
-  username: User["username"];
+  username?: User["username"];
   withUsername?: boolean;
 }) {
   const slug = createSlug(title);

@@ -7,10 +7,11 @@
 // Important to import external libraries directly
 import bcrypt from "bcryptjs";
 import invariant from "tiny-invariant";
+import { customAlphabet } from "nanoid";
 
 import { dataUserRoles } from "~/data";
-import { createNoteSlug } from "~/helpers";
 import { prisma } from "~/libs";
+import voca from "voca";
 
 async function seed() {
   await seedUsers();
@@ -82,12 +83,11 @@ export async function seedNotes() {
     user: { connect: { id: user.id } },
   };
 
+  const slug = voca.slugify(note1.title);
+  const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz1234567890", 10);
   await prisma.note.create({
     data: {
-      slug: createNoteSlug({
-        title: note1.title,
-        username: user.username,
-      }),
+      slug: `${slug}-${nanoid()}`,
       ...note1,
     },
   });
