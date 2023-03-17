@@ -29,16 +29,14 @@ export const adminNote = {
   async addNewNote({
     user,
     note,
-  }: { user: Pick<User, "id" | "username"> } & {
+  }: { user: Pick<User, "id"> } & {
     note: Pick<Note, "title" | "description" | "content">;
   }) {
     return prisma.note.create({
       data: {
-        slug: createNoteSlug({ title: note.title, username: user.username }),
-        title: note.title,
-        description: note.description,
-        content: note.content,
         user: { connect: { id: user.id } },
+        slug: createNoteSlug(note),
+        ...note,
       },
     });
   },

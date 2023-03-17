@@ -80,13 +80,13 @@ export async function seedNotes() {
     title: "The first note",
     description: "Description about the note",
     content: "This is the first note content that is for a demo.",
-    user: { connect: { id: user.id } },
   };
 
   const slug = voca.slugify(note1.title);
   const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz1234567890", 10);
   await prisma.note.create({
     data: {
+      user: { connect: { id: user.id } },
       slug: `${slug}-${nanoid()}`,
       ...note1,
     },

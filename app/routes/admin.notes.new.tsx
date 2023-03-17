@@ -85,8 +85,8 @@ export default function AdminNotesNewRoute() {
       </header>
 
       <RemixForm
-        method="post"
         {...form.props}
+        method="post"
         className="card max-w-lg space-y-4"
       >
         <header>
