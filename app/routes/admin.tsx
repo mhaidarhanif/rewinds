@@ -10,8 +10,9 @@ import {
   ThemeToggleButton,
 } from "~/components";
 import { configAdmin } from "~/configs";
+import { userModel } from "~/models";
 import { authenticator } from "~/services";
-import { cn, createSitemap } from "~/utils";
+import { cn, createSitemap, invariant } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
 
@@ -19,13 +20,16 @@ export const handle = createSitemap();
 
 export async function loader({ request }: LoaderArgs) {
   // get the user data or redirect to login if it failed
-  const user = await authenticator.isAuthenticated(request, {
+  const userSession = await authenticator.isAuthenticated(request, {
     failureRedirect: "/login",
   });
   // if user is not an admin, redirect to landing/home
-  if (user.roleSymbol !== "ADMIN") {
+  const user = await userModel.getUserById({ id: userSession.id });
+  invariant(user, "User not found");
+  if (user.role.symbol !== "ADMIN") {
     redirect(`/`);
   }
+
   return json({});
 }
 

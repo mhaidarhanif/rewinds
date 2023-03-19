@@ -24,7 +24,7 @@ export default function DatabaseRoute() {
   return (
     <Layout
       isSpaced
-      pageHeader={
+      layoutHeader={
         <PageHeader>
           <h1>Database</h1>
           <p>To check database connection.</p>

@@ -156,10 +156,8 @@ export function NavigationButtons({ user }: { user?: UserSession }) {
 
 export function NavigationDropdownMenu({
   navItems,
-  user,
 }: {
   navItems: typeof configSite.navItems;
-  user?: boolean;
 }) {
   return (
     <DropdownMenu>
@@ -184,12 +182,13 @@ export function NavigationDropdownMenu({
             <Logo size="sm" accent="muted" />
           </RemixNavLink>
         </DropdownMenuLabel>
+
         <DropdownMenuSeparator />
 
         {navItems?.map(
           (item, index) =>
             item.to && (
-              <DropdownMenuItem key={index} asChild className="cursor-pointer">
+              <DropdownMenuItem key={index} asChild>
                 <RemixNavLink to={item.to} prefetch="intent">
                   {item.title}
                 </RemixNavLink>

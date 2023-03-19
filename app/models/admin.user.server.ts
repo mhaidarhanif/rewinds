@@ -26,22 +26,6 @@ export const adminUser = {
     });
   },
 
-  async getFirstAdminUser() {
-    return prisma.user.findFirst({
-      where: {
-        role: {
-          symbol: {
-            contains: "ADMIN",
-          },
-        },
-      },
-      include: {
-        role: true,
-        notes: true,
-      },
-    });
-  },
-
   async deleteAllUsers() {
     return prisma.user.deleteMany();
   },

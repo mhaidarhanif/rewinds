@@ -20,15 +20,15 @@ import type { ActionArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader() {
-  const noteCount = await adminNote.getNoteCount();
-  return json({ noteCount });
+  const notesCount = await adminNote.getNoteCount();
+  return json({ notesCount });
 }
 
 export async function action({ request }: ActionArgs) {
-  const user = await authenticator.isAuthenticated(request, {
+  const userSession = await authenticator.isAuthenticated(request, {
     failureRedirect: "/login",
   });
-  invariant(user);
+  invariant(userSession);
 
   const formData = await request.formData();
   const submission = parse(formData, {});
@@ -44,7 +44,7 @@ export async function action({ request }: ActionArgs) {
 const isDevelopment = process.env.NODE_ENV === "development";
 
 export default function AdminNotesRoute() {
-  const { noteCount } = useLoaderData<typeof loader>();
+  const { notesCount } = useLoaderData<typeof loader>();
 
   return (
     <div data-id="admin-notes-layout">
@@ -63,7 +63,7 @@ export default function AdminNotesRoute() {
               variant="danger"
               name="intent"
               value="delete-all-notes"
-              disabled={noteCount <= 0}
+              disabled={notesCount <= 0}
             >
               <Trash className="size-sm" />
               <span>Delete all notes</span>

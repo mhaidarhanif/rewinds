@@ -26,7 +26,7 @@ export const layoutVariants = cva("", {
 interface Props
   extends React.HTMLAttributes<HTMLElement>,
     VariantProps<typeof layoutVariants> {
-  pageHeader?: React.ReactNode;
+  layoutHeader?: React.ReactNode;
   noThemeToggle?: boolean;
 }
 
@@ -36,7 +36,7 @@ export function Layout({
   isSpaced = false,
   className,
 
-  pageHeader, // by default should be none
+  layoutHeader, // by default should be none
 
   noThemeToggle = false, // not a styling variant
 
@@ -47,7 +47,7 @@ export function Layout({
       <SiteHeader noThemeToggle={noThemeToggle} />
 
       {/* Custom page header */}
-      {pageHeader}
+      {layoutHeader}
 
       <main
         className={cn("grow", layoutVariants({ variant, isSpaced, className }))}

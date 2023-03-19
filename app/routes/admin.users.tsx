@@ -10,7 +10,7 @@ import {
   RemixLink,
 } from "~/components";
 import { Plus, Trash } from "~/icons";
-import { adminUser } from "~/models";
+import { adminUser, userModel } from "~/models";
 import { authenticator } from "~/services";
 import { createSitemap, invariant } from "~/utils";
 
@@ -24,11 +24,15 @@ export async function loader() {
 }
 
 export async function action({ request }: ActionArgs) {
-  const user = await authenticator.isAuthenticated(request, {
+  const userSession = await authenticator.isAuthenticated(request, {
     failureRedirect: "/login",
   });
-  invariant(user);
-  if (user.roleSymbol !== "ADMIN") {
+  invariant(userSession);
+
+  const user = await userModel.getUserById({ id: userSession.id });
+  invariant(user, "User not found");
+
+  if (user.role.symbol !== "ADMIN") {
     return json({ message: "Not allowed" }, { status: 400 });
   }
 

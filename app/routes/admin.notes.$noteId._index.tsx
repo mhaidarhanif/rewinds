@@ -36,10 +36,10 @@ export async function loader({ params }: LoaderArgs) {
 }
 
 export async function action({ request }: ActionArgs) {
-  const user = await authenticator.isAuthenticated(request, {
+  const userSession = await authenticator.isAuthenticated(request, {
     failureRedirect: "/login",
   });
-  invariant(user);
+  invariant(userSession);
 
   const formData = await request.formData();
   const submission = parse(formData);

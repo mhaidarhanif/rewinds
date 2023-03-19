@@ -12,12 +12,12 @@ import type { LoaderArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader({ request }: LoaderArgs) {
-  const user = await authenticator.isAuthenticated(request, {
+  const userSession = await authenticator.isAuthenticated(request, {
     failureRedirect: "/login",
   });
-  invariant(user);
+  invariant(userSession);
 
-  const metrics = await admin.getAllDataMetrics();
+  const metrics = await admin.getMetrics();
 
   return json({ metrics });
 }

@@ -1,6 +1,7 @@
 import { json } from "@remix-run/node";
 
-import { Layout, PageHeader } from "~/components";
+import { AnchorText, Layout, PageHeader } from "~/components";
+import { configMeta } from "~/configs";
 import { createMetaData, createSitemap } from "~/utils";
 
 export const handle = createSitemap();
@@ -18,14 +19,20 @@ export default function SplatRoute() {
   return (
     <Layout
       isSpaced
-      pageHeader={
+      layoutHeader={
         <PageHeader size="sm">
           <h2>Oops, Error 404: Page Not Found</h2>
           <p>Sorry, this page is not available..</p>
         </PageHeader>
       }
     >
-      <p>You might want to inform Rewinds.</p>
+      <p>
+        You might want to inform{" "}
+        <AnchorText href={configMeta.author.url}>
+          {configMeta.author.name}
+        </AnchorText>
+        .
+      </p>
     </Layout>
   );
 }

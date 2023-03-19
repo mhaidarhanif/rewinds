@@ -23,10 +23,9 @@ import {
 
 import { Debug, Layout, PageHeader, Toaster } from "~/components";
 import { configDocumentLinks } from "~/configs";
+import { authenticator } from "~/services";
 import { themeSessionResolver } from "~/sessions";
 import { cn, createMetaData, getEnv } from "~/utils";
-
-import { getUserSession } from "./helpers";
 
 import type {
   HeadersFunction,
@@ -57,12 +56,15 @@ export const links: LinksFunction = () => {
 
 // Return the theme from the session storage using the loader
 export const loader: LoaderFunction = async ({ request }: LoaderArgs) => {
+  // ENV data
   const ENV = getEnv();
 
+  // theme data
   const { getTheme } = await themeSessionResolver(request);
   const theme = getTheme();
 
-  const user = await getUserSession(request);
+  // user data
+  const user = await authenticator.isAuthenticated(request);
   if (!user) {
     return json({ ENV, theme });
   }
@@ -173,7 +175,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
       <Layout
         noThemeToggle
         isSpaced
-        pageHeader={
+        layoutHeader={
           <PageHeader size="sm">
             <h2>Error from Rewinds: {error.message}</h2>
           </PageHeader>
@@ -208,7 +210,7 @@ export function CatchBoundary() {
       <Layout
         noThemeToggle
         isSpaced
-        pageHeader={
+        layoutHeader={
           <PageHeader size="sm">
             <h2>
               Sorry, error {caught.status}: {caught.statusText}

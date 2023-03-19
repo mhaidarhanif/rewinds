@@ -24,7 +24,7 @@ export default function DemoRoute() {
   return (
     <Layout
       isSpaced
-      pageHeader={
+      layoutHeader={
         <PageHeader>
           <h1>Demo</h1>
           <p>Complex showcase, more than just component examples.</p>

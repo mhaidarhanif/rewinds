@@ -19,7 +19,7 @@ export async function loader({ params }: LoaderArgs) {
 }
 
 // Similar with "admin-notes-edit"
-export default function AdminNotesViewRoute() {
+export default function NotesViewRoute() {
   const { note } = useLoaderData<typeof loader>();
 
   if (!note) {

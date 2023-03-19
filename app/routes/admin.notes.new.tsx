@@ -35,7 +35,7 @@ export const schemaNote = z.object({
 });
 
 export async function action({ request }: ActionArgs) {
-  const user = await authenticator.isAuthenticated(request, {
+  const userSession = await authenticator.isAuthenticated(request, {
     failureRedirect: "/login",
   });
 
@@ -47,7 +47,7 @@ export async function action({ request }: ActionArgs) {
 
   try {
     const newNote = await adminNote.addNewNote({
-      user,
+      user: userSession,
       note: submission.value,
     });
     if (!newNote) {

@@ -61,7 +61,7 @@ export default function ComponentsRoute() {
   return (
     <Layout
       isSpaced
-      pageHeader={
+      layoutHeader={
         <PageHeader>
           <h1>Components</h1>
           <p>Like a kitchen sink to see all the components.</p>

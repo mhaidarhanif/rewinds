@@ -1,8 +1,9 @@
 import bcrypt from "bcryptjs";
 import { AuthorizationError as RemixAuthError } from "remix-auth";
 
+import { configUser } from "~/configs";
 import { prisma } from "~/libs";
-import { invariant } from "~/utils";
+import { createNanoID, invariant } from "~/utils";
 
 import type { UserPassword, User } from "@prisma/client";
 export type { User } from "@prisma/client";
@@ -12,6 +13,7 @@ export const publicUserFields = {
   name: true,
   username: true,
   role: true,
+  notes: true,
 };
 
 export const privateUserFields = {
@@ -20,6 +22,38 @@ export const privateUserFields = {
   phone: true,
   profile: true,
   notes: true,
+};
+
+export const userModel = {
+  async getMetrics({ id }: Pick<User, "id">) {
+    const metrics = await prisma.$transaction([
+      prisma.note.count({ where: { userId: id } }),
+    ]);
+
+    return configUser.navigationItems.map((item, index) => {
+      return {
+        id: createNanoID(),
+        ...item,
+        count: metrics[index],
+      };
+    });
+  },
+
+  async getUserById({ id }: Pick<User, "id">) {
+    return prisma.user.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        name: true,
+        username: true,
+        role: true,
+        profile: true,
+        notes: {
+          where: { isPublished: true },
+        },
+      },
+    });
+  },
 };
 
 export async function getUserById(id: User["id"]) {

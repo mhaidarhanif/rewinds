@@ -29,14 +29,14 @@ export async function action({ request }: ActionArgs) {
   return null;
 }
 
-export default function RegisterRoute() {
+export default function AuthRegisterRoute() {
   const [searchParams] = useSearchParams();
   const redirectTo = searchParams.get("redirectTo") ?? undefined;
 
   return (
     <Layout
       isSpaced
-      pageHeader={
+      layoutHeader={
         <PageHeader size="sm" isTextCentered>
           <h2>Register new account</h2>
           <p>Let's get started to begin your journey</p>

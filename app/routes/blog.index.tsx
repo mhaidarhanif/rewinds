@@ -21,7 +21,7 @@ export default function BlogRoute() {
   return (
     <Layout
       isSpaced
-      pageHeader={
+      layoutHeader={
         <PageHeader>
           <h1>Blog</h1>
           <p>Quality articles for you.</p>

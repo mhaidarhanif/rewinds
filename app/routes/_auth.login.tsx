@@ -2,7 +2,6 @@ import { useSearchParams } from "@remix-run/react";
 
 import {
   Button,
-  Checkbox,
   Input,
   Label,
   Layout,
@@ -29,7 +28,7 @@ export const meta: V2_MetaFunction = () => {
 export async function loader({ request }: LoaderArgs) {
   // If the user is already authenticated redirect to /dashboard directly
   return await authenticator.isAuthenticated(request, {
-    successRedirect: "/admin",
+    successRedirect: "/user",
   });
 }
 
@@ -41,19 +40,19 @@ export async function action({ request }: ActionArgs) {
   // request object, optionally we pass an object with the URLs we want the user
   // to be redirected to after a success or a failure
   return await authenticator.authenticate("user-pass", request, {
-    successRedirect: "/admin",
+    successRedirect: "/user",
     failureRedirect: "/login",
   });
 }
 
-export default function LoginRoute() {
+export default function AuthLoginRoute() {
   const [searchParams] = useSearchParams();
   const redirectTo = searchParams.get("redirectTo") || "/notes";
 
   return (
     <Layout
       isSpaced
-      pageHeader={
+      layoutHeader={
         <PageHeader size="sm" isTextCentered>
           <h2>Login to continue</h2>
           <p>Use your Rewinds account</p>
@@ -84,12 +83,12 @@ export default function LoginRoute() {
 
           <Input type="hidden" name="redirectTo" value={redirectTo} />
 
-          <div className="flex gap-1">
+          {/* <div className="flex gap-1">
             <Checkbox id="remember" name="remember" />
             <Label htmlFor="remember" className="cursor-pointer">
               Remember me
             </Label>
-          </div>
+          </div> */}
 
           <Button type="submit" className="w-full">
             Log in

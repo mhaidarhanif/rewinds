@@ -2,7 +2,7 @@ import { configAdmin } from "~/configs";
 import { prisma } from "~/libs";
 
 export const admin = {
-  async getAllDataMetrics() {
+  async getMetrics() {
     const counts = await prisma.$transaction([
       prisma.user.count(),
       prisma.note.count(),

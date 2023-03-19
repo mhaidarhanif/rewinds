@@ -17,7 +17,7 @@ export const configSite = {
     "Rewinds is a Remix stack with Tailwind CSS, Radix UI, and their ecosystem. Made by @mhaidarhanif.",
 
   links: {
-    website: "https://example.com",
+    website: "https://mhaidarhanif.com",
     github: "https://github.com/mhaidarhanif/rewinds",
     twitter: "https://twitter.com/mhaidarhanif",
     youtube: "https://youtube.com/mhaidarhanif",
