@@ -17,6 +17,11 @@ export const pageHeaderVariants = cva("", {
     },
     withBackground: {
       true: "bg-surface-100 dark:bg-surface-800/20",
+      false: "",
+    },
+    withContainer: {
+      true: "",
+      false: "",
     },
   },
   defaultVariants: {
@@ -31,9 +36,10 @@ interface Props
     VariantProps<typeof pageHeaderVariants> {}
 
 export function PageHeader({
-  size,
-  isTextCentered,
-  withBackground,
+  size = "default",
+  isTextCentered = false,
+  withBackground = true,
+  withContainer = true,
   className,
   children,
   ...props
@@ -41,11 +47,17 @@ export function PageHeader({
   return (
     <header
       className={cn(
-        pageHeaderVariants({ size, isTextCentered, withBackground, className })
+        pageHeaderVariants({
+          size,
+          isTextCentered,
+          withBackground,
+          withContainer,
+          className,
+        })
       )}
       {...props}
     >
-      <div className={cn("contain space-y-2")}>{children}</div>
+      <div className={cn(withContainer && "contain space-y-2")}>{children}</div>
     </header>
   );
 }

@@ -23,8 +23,9 @@ export async function loader({ request }: LoaderArgs) {
   const userSession = await authenticator.isAuthenticated(request, {
     failureRedirect: "/login",
   });
+
   // if user is not an admin, redirect to landing/home
-  const user = await userModel.getUserById({ id: userSession.id });
+  const user = await userModel.getUserForSession({ id: userSession.id });
   invariant(user, "User not found");
   if (user.role.symbol !== "ADMIN") {
     redirect(`/`);
@@ -33,7 +34,7 @@ export async function loader({ request }: LoaderArgs) {
   return json({});
 }
 
-export default function AdminRoute() {
+export default function AdminLayoutRoute() {
   return (
     <div data-id="admin-layout-route" className="flex">
       <AdminSidebar />

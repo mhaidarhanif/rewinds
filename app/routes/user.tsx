@@ -1,5 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname */
-import { json } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 
 import { Layout, PageHeader } from "~/components";
@@ -16,19 +14,12 @@ export async function loader({ request }: LoaderArgs) {
   });
   invariant(userSession);
 
-  return json({});
+  return null;
 }
 
-export default function UserRoute() {
+export default function UserLayoutRoute() {
   return (
-    <Layout
-      isSpaced
-      layoutHeader={
-        <PageHeader size="xs">
-          <h1>User Dashboard</h1>
-        </PageHeader>
-      }
-    >
+    <Layout isSpaced>
       <div data-id="user-layout-outlet" className="grow">
         <Outlet />
       </div>

@@ -80,7 +80,7 @@ export function ComboboxExample() {
                     {({ selected, active }) => (
                       <>
                         <span
-                          className={`block truncate ${
+                          className={`truncateText block ${
                             selected ? "font-medium" : "font-normal"
                           }`}
                         >

@@ -2,7 +2,7 @@ import { useMatches } from "@remix-run/react";
 import { useMemo } from "react";
 
 import type { Theme } from "remix-themes";
-import type { UserSession } from "~/helpers";
+import type { UserData } from "~/helpers";
 import type { getEnv } from "~/utils";
 
 /**
@@ -34,8 +34,8 @@ export function safeRedirect(
 
 export type RootLoaderData = {
   ENV: ReturnType<typeof getEnv>;
-  theme: Theme | null;
-  user: UserSession | null;
+  theme: Theme | undefined;
+  user: UserData | undefined;
 };
 
 export function useMatchesData(

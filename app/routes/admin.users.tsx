@@ -29,7 +29,7 @@ export async function action({ request }: ActionArgs) {
   });
   invariant(userSession);
 
-  const user = await userModel.getUserById({ id: userSession.id });
+  const user = await userModel.getUserForSession({ id: userSession.id });
   invariant(user, "User not found");
 
   if (user.role.symbol !== "ADMIN") {

@@ -26,7 +26,7 @@ const DropdownMenuSubTrigger = forwardRef<
     data-id="radix-dropdown-menu-subtrigger"
     ref={ref}
     className={cn(
-      "flex cursor-default select-none items-center rounded-sm py-1.5 px-2 text-sm font-medium outline-none focus:bg-surface-100 data-[state=open]:bg-surface-100 dark:focus:bg-surface-800 dark:data-[state=open]:bg-surface-800",
+      "flex select-none items-center rounded-sm py-1.5 px-2 text-sm font-medium outline-none focus:bg-surface-100 data-[state=open]:bg-surface-100 dark:focus:bg-surface-800 dark:data-[state=open]:bg-surface-800",
       inset && "pl-8",
       className
     )}
@@ -86,7 +86,7 @@ const DropdownMenuItem = forwardRef<
     data-id="radix-dropdown-menu-item"
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-1.5 px-2 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
+      "relative flex select-none items-center rounded-sm py-1.5 px-2 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
       inset && "pl-8",
       className
     )}
@@ -103,7 +103,7 @@ const DropdownMenuCheckboxItem = forwardRef<
     data-id="radix-dropdown-menu-checkboxitem"
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
+      "relative flex select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
       className
     )}
     checked={checked}
@@ -128,7 +128,7 @@ const DropdownMenuRadioItem = forwardRef<
     data-id="radix-dropdown-menu-radioitem"
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
+      "relative flex select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
       className
     )}
     {...props}
@@ -153,7 +153,7 @@ const DropdownMenuLabel = forwardRef<
     data-id="radix-dropdown-menu-label"
     ref={ref}
     className={cn(
-      "px-2 py-1.5 text-sm font-semibold text-surface-900 dark:text-surface-100",
+      "px-2 py-1.5 font-semibold text-surface-900 dark:text-surface-100",
       inset && "pl-8",
       className
     )}

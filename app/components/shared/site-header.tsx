@@ -1,26 +1,42 @@
 /* eslint-disable tailwindcss/no-arbitrary-value */
 import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  Button,
   ButtonIcon,
   ButtonIconAnchor,
   ButtonLink,
   buttonVariants,
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
+  DropdownMenuShortcut,
   DropdownMenuTrigger,
   Icon,
   Logo,
+  RemixLinkText,
   RemixNavLink,
 } from "~/components";
 import { ThemeToggleButton } from "~/components";
 import { configSite } from "~/configs";
 import { useRootLoaderData } from "~/hooks";
-import { Github, Menu, Twitter } from "~/icons";
-import { cn } from "~/utils";
+import {
+  CreditCard,
+  Github,
+  Keyboard,
+  LogOut,
+  Menu,
+  Settings,
+  Twitter,
+  User,
+} from "~/icons";
+import { cn, getInitials } from "~/utils";
 
-import type { UserSession } from "~/helpers";
+import type { UserData } from "~/helpers";
 
 interface Props {
   noThemeToggle?: boolean;
@@ -44,20 +60,20 @@ export function SiteHeader({ noThemeToggle }: Props) {
         )}
       >
         <div className="flex w-full items-center justify-between gap-1 sm:gap-2">
-          <NavigationMain noThemeToggle={noThemeToggle} />
-          <NavigationMainItems navItems={configSite?.navItems} />
-          <NavigationButtons user={user} />
+          <HeaderMainLogo noThemeToggle={noThemeToggle} />
+          <HeaderMainNavigation navItems={configSite?.navItems} />
+          <HeaderMainButtons user={user} />
         </div>
 
         <div className="flex lg:hidden">
-          <NavigationDropdownMenu navItems={configSite?.navItems} />
+          <HeaderMenuNavigation navItems={configSite?.navItems} />
         </div>
       </section>
     </header>
   );
 }
 
-export function NavigationMain({ noThemeToggle }: { noThemeToggle?: boolean }) {
+export function HeaderMainLogo({ noThemeToggle }: { noThemeToggle?: boolean }) {
   return (
     <div className="stack-h-center gap-1 lg:gap-2">
       <RemixNavLink
@@ -73,7 +89,7 @@ export function NavigationMain({ noThemeToggle }: { noThemeToggle?: boolean }) {
   );
 }
 
-export function NavigationMainItems({
+export function HeaderMainNavigation({
   navItems,
 }: {
   navItems: typeof configSite.navItems;
@@ -109,7 +125,7 @@ export function NavigationMainItems({
   );
 }
 
-export function NavigationButtons({ user }: { user?: UserSession }) {
+export function HeaderMainButtons({ user }: { user?: UserData }) {
   return (
     <div className="flex grow items-center justify-end space-x-2">
       <nav className="hidden gap-1 md:flex">
@@ -142,19 +158,14 @@ export function NavigationButtons({ user }: { user?: UserSession }) {
             </ButtonLink>
           </>
         )}
-        {user && (
-          <>
-            <ButtonLink variant="outline" to="/user" className="flex">
-              User
-            </ButtonLink>
-          </>
-        )}
+
+        {user && <HeaderUser user={user} />}
       </nav>
     </div>
   );
 }
 
-export function NavigationDropdownMenu({
+export function HeaderMenuNavigation({
   navItems,
 }: {
   navItems: typeof configSite.navItems;
@@ -162,17 +173,13 @@ export function NavigationDropdownMenu({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <ButtonIcon variant="ghost" className="lg:hidden">
-          <Menu />
+        <ButtonIcon variant="ghost" size="lg" className="lg:hidden">
+          <Menu className="size-lg" />
           <span className="sr-only font-bold">Menu</span>
         </ButtonIcon>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent
-        align="start"
-        sideOffset={26}
-        className="mr-2 w-[250px] overflow-scroll sm:mr-4"
-      >
+      <DropdownMenuContent align="end" className="w-56 overflow-scroll">
         <DropdownMenuLabel>
           <RemixNavLink
             to="/"
@@ -190,11 +197,95 @@ export function NavigationDropdownMenu({
             item.to && (
               <DropdownMenuItem key={index} asChild>
                 <RemixNavLink to={item.to} prefetch="intent">
-                  {item.title}
+                  <Icon name={item.icon} />
+                  <span className="ml-2">{item.title}</span>
                 </RemixNavLink>
               </DropdownMenuItem>
             )
         )}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
+export function HeaderUser({ user }: { user: UserData }) {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+          <Avatar>
+            <AvatarImage
+              src={`https://github.com/mhaidarhanif.png`}
+              alt={user.name}
+            />
+            <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
+          </Avatar>
+        </Button>
+      </DropdownMenuTrigger>
+
+      <DropdownMenuContent
+        align="end"
+        className="w-56 overflow-scroll"
+        forceMount
+      >
+        <DropdownMenuLabel>
+          <h5>{user.name}</h5>
+          <h6>
+            <RemixLinkText to={`/${user.username}`}>
+              @{user.username}
+            </RemixLinkText>
+          </h6>
+        </DropdownMenuLabel>
+
+        <DropdownMenuSeparator />
+
+        <DropdownMenuGroup>
+          <DropdownMenuItem asChild>
+            <RemixNavLink to={`/user/profile`}>
+              <User className="size-sm mr-2" />
+              <span>Profile</span>
+              <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+            </RemixNavLink>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem asChild>
+            <RemixNavLink to={`/user/dashboard`}>
+              <User className="size-sm mr-2" />
+              <span>Dashboard</span>
+              <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+            </RemixNavLink>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem asChild>
+            <RemixNavLink to={`/user/settings`}>
+              <Settings className="size-sm mr-2" />
+              <span>Settings</span>
+              <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+            </RemixNavLink>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem>
+            <CreditCard className="size-sm mr-2" />
+            <span>Billing</span>
+            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem>
+            <Keyboard className="size-sm mr-2" />
+            <span>Keyboard shortcuts</span>
+            <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+
+        <DropdownMenuSeparator />
+
+        <DropdownMenuItem asChild>
+          <RemixNavLink to="/logout">
+            <LogOut className="size-sm mr-2" />
+            <span>Log out</span>
+            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+          </RemixNavLink>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

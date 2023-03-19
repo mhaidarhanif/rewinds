@@ -1,5 +1,5 @@
 // https://remix.run/docs/en/main/file-conventions/route-files-v2#md-root-route
-import { json } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -27,11 +27,12 @@ import { authenticator } from "~/services";
 import { themeSessionResolver } from "~/sessions";
 import { cn, createMetaData, getEnv } from "~/utils";
 
+import { userModel } from "./models";
+
 import type {
   HeadersFunction,
   LinksFunction,
   LoaderArgs,
-  LoaderFunction,
   V2_MetaFunction,
   V2_HtmlMetaDescriptor,
 } from "@remix-run/node";
@@ -55,26 +56,40 @@ export const links: LinksFunction = () => {
 };
 
 // Return the theme from the session storage using the loader
-export const loader: LoaderFunction = async ({ request }: LoaderArgs) => {
-  // ENV data
+export async function loader({ request }: LoaderArgs) {
+  // get ENV data from server
   const ENV = getEnv();
 
-  // theme data
+  // get theme function and data from cookie via remix-themes
   const { getTheme } = await themeSessionResolver(request);
   const theme = getTheme();
 
-  // user data
-  const user = await authenticator.isAuthenticated(request);
-  if (!user) {
-    return json({ ENV, theme });
+  // get user data from database, not from session
+  const userSession = await authenticator.isAuthenticated(request);
+
+  // don't do anything extra when not logged in
+  if (!userSession) {
+    return json({
+      ENV,
+      theme,
+    });
   }
 
+  // put user and its profile data
+  const user = await userModel.getUserForSession({ id: userSession.id });
+
+  // but if the user is no longer valid, log it out
+  if (!user) {
+    return redirect("/logout");
+  }
+
+  // finally, put the active user data to the root loader data
   return json({
     ENV,
     theme,
     user,
   });
-};
+}
 
 /**
  * Remix Themes

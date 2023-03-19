@@ -1,7 +1,7 @@
 import { Authenticator } from "remix-auth";
 import { FormStrategy } from "remix-auth-form";
 
-import { verifyLogin } from "~/models";
+import { userModel } from "~/models";
 import { sessionStorage } from "~/sessions/auth-session.server";
 
 import type { UserSession } from "~/helpers";
@@ -15,11 +15,16 @@ authenticator.use(
   new FormStrategy(async ({ form }) => {
     const email = form.get("email")?.toString();
     const password = form.get("password")?.toString();
+
     if (!email || !password) {
       return {} as UserSession;
     }
 
-    const user = (await verifyLogin(email, password)) as UserSession;
+    const user = (await userModel.verifyLogin(
+      email,
+      password
+    )) satisfies UserSession;
+
     if (!user) {
       return {} as UserSession;
     }

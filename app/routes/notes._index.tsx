@@ -3,7 +3,7 @@ import { useLoaderData } from "@remix-run/react";
 
 import { PageHeader, RemixLink, RemixLinkText } from "~/components";
 import { note } from "~/models";
-import { createMetaData, truncate } from "~/utils";
+import { createMetaData, truncateText } from "~/utils";
 
 export const meta = createMetaData({
   title: "Notes",
@@ -26,7 +26,7 @@ export default function NotesIndexRoute() {
       </PageHeader>
 
       <section>
-        <ul className="grid auto-rows-auto grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+        <ul className="grid auto-rows-auto grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {notes.map((note) => {
             return (
               <li key={note.slug} className="card space-y-4">
@@ -34,7 +34,7 @@ export default function NotesIndexRoute() {
                   <h3>{note.title}</h3>
                   <h4>{note.description}</h4>
                 </RemixLink>
-                <p>{truncate(note.content)}</p>
+                <p>{truncateText(note.content)}</p>
                 <p>
                   <span>by </span>
                   <RemixLinkText to={`/users/${note.user.id}`}>
