@@ -63,7 +63,7 @@ export default function ComponentsRoute() {
       isSpaced
       pageHeader={
         <PageHeader>
-          <h2>Components</h2>
+          <h1>Components</h1>
           <p>Like a kitchen sink to see all the components.</p>
         </PageHeader>
       }

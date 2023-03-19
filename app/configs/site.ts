@@ -38,11 +38,7 @@ export const configSite = {
     { to: "/about", title: "About", icon: "about" },
     { to: "/components", title: "Components", icon: "components" },
     { to: "/demo", title: "Demo", icon: "demo" },
-    {
-      to: isDevelopment ? "/database" : null,
-      title: "Database",
-      icon: "database",
-    },
+    { to: "/notes", title: "Notes", icon: "notes" },
   ],
 };
 

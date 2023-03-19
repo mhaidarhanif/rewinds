@@ -96,7 +96,6 @@ export function NavigationMainItems({
                   })
                 )
               }
-              end
             >
               <Icon name={item.icon} />
               <span>{item.title}</span>

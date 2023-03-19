@@ -125,6 +125,8 @@ model Note {
   description String @db.Text
   content     String @db.Text
 
+  isPublished Boolean @default(true)
+
   userId String
   user   User        @relation("UserNotes", fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   images NoteImage[] @relation("NoteImages")

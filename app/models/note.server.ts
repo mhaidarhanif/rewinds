@@ -1,13 +1,21 @@
 import { prisma } from "~/libs";
+import { publicUserFields } from "~/models";
 
-import type { User } from "@prisma/client";
+import type { Note } from "@prisma/client";
 
-export const userNote = {
-  async getAllNotes({ user }: { user: Pick<User, "id"> }) {
+export const note = {
+  async getAllNotes() {
     return prisma.note.findMany({
-      where: { userId: user.id },
-      include: { user: true },
+      where: { isPublished: true },
+      include: { user: { select: publicUserFields } },
       orderBy: { updatedAt: "desc" },
+    });
+  },
+
+  async getNoteBySlug({ slug }: Pick<Note, "slug">) {
+    return prisma.note.findFirst({
+      where: { slug },
+      include: { user: true },
     });
   },
 };

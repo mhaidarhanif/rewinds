@@ -26,7 +26,7 @@ export default function DemoRoute() {
       isSpaced
       pageHeader={
         <PageHeader>
-          <h2>Demo</h2>
+          <h1>Demo</h1>
           <p>Complex showcase, more than just component examples.</p>
         </PageHeader>
       }

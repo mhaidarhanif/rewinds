@@ -5,6 +5,7 @@ import {
   InfoEmpty,
   LayoutLeft,
   Components,
+  Notes,
 } from "~/icons";
 
 /**
@@ -21,6 +22,7 @@ export const iconMaps = {
   default: <Circle />,
   demo: <LayoutLeft />,
   components: <Components />,
+  notes: <Notes />,
 };
 
 export function lookupIcon(lookupObject: any, defaultCase = "default") {

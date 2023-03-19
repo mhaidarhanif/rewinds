@@ -26,7 +26,7 @@ export default function DatabaseRoute() {
       isSpaced
       pageHeader={
         <PageHeader>
-          <h2>Database</h2>
+          <h1>Database</h1>
           <p>To check database connection.</p>
         </PageHeader>
       }

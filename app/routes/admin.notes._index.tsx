@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
@@ -31,12 +30,12 @@ export default function AdminNotesRoute() {
       <ul className="space-y-2">
         {notes.map((note) => {
           return (
-            <RemixLink key={note.id} to={note.id} className="block">
-              <li className="card hover:card-hover">
+            <li key={note.id}>
+              <RemixLink to={note.id} className="card hover:card-hover block">
                 <h4>{note.title}</h4>
                 <p>{note.slug}</p>
-              </li>
-            </RemixLink>
+              </RemixLink>
+            </li>
           );
         })}
       </ul>

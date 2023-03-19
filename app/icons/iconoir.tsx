@@ -10,4 +10,5 @@ export {
   Trash,
   Undo,
   ArrowSeparateVertical,
+  Notes,
 } from "iconoir-react";

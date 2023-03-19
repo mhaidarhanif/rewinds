@@ -7,6 +7,21 @@ import { invariant } from "~/utils";
 import type { UserPassword, User } from "@prisma/client";
 export type { User } from "@prisma/client";
 
+export const publicUserFields = {
+  id: true,
+  name: true,
+  username: true,
+  role: true,
+};
+
+export const privateUserFields = {
+  ...publicUserFields,
+  email: true,
+  phone: true,
+  profile: true,
+  notes: true,
+};
+
 export async function getUserById(id: User["id"]) {
   return prisma.user.findUnique({ where: { id } });
 }
