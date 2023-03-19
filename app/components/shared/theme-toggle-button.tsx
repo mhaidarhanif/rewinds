@@ -7,6 +7,7 @@ interface Props {
   size?: "xs" | "sm" | "lg" | undefined;
 }
 
+// not in components because it depens on the theme config
 export function ThemeToggleButton({ size }: Props) {
   const [theme, setTheme] = useTheme();
 

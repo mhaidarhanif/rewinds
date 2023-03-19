@@ -17,6 +17,7 @@ interface Props {
   size?: "xs" | "sm" | "lg" | undefined;
 }
 
+// not in components because it depens on the theme config
 export function ThemeToggleDropdownMenu({ align = "end", size }: Props) {
   const [, setTheme] = useTheme();
   const isPreferDark = useMediaQuery(COLOR_SCHEME_QUERY);

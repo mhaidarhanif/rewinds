@@ -72,30 +72,62 @@ Why creating this? Well, because I had a lot of recent projects with these same 
 
 Listed here are only the most important parts in the stack.️ Some setup might haven't done yet or still in progress.
 
+More details and references can also be checked from [`catamyst/stack`](https://a.catamyst.com/stack).
+
+## Primary
+
+- Rewinds: Remix Tailwind Stack
+- TRIP: TypeScript/Tailwind Remix/React/Radix Interface Prisma
+
+## Complete
+
 - Core
+  - [Node.js](https://nodejs.org)
+    - [pnpm](https://pnpm.io)
   - [TypeScript](https://typescriptlang.org)
   - [React](https://beta.reactjs.org)
   - [Remix](https://remix.run/docs)
-- Auth
-  - [Remix Auth](https://github.com/sergiodxa/remix-auth)
-- Form
-  - [Zod](https://zod.dev)
-  - [Conform](https://conform.guide)
 - Styling
   - [Tailwind CSS](https://tailwindcss.com)
   - [Fontsource](https://fontsource.org)
   - [Radix UI](https://radix-ui.com)
+- Form
+  - [Zod](https://zod.dev)
+  - [Conform](https://conform.guide)
 - Database
   - [Prisma ORM](https://prisma.io)
   - [PlanetScale](https://planetscale.com)
-- Deployment
-  - [Vercel](https://vercel.com)
+- Auth
+  - [Remix Auth](https://github.com/sergiodxa/remix-auth)
 - Testing
   - [Vitest](https://vitest.dev)
   - [Testing Library](https://testing-library.com)
   - [Playwright](https://playwright.dev)
+- Tooling
+  - [Prettier]()
+  - [ESLint]()
+- Deployment
+  - [Vercel](https://vercel.com)
 
-More details and references can also be checked from [`catamyst/stack`](https://a.catamyst.com/stack)
+## Extra
+
+(Not included in Rewinds) If you need separated backend/server/service:
+
+- Core
+  - GraphQL
+    - [GraphQL](https://graphql.org)
+    - [GraphQL Yoga](https://github.com/dotansimha/graphql-yoga)
+      - [Express](https://expressjs.com)
+    - [Pothos](https://github.com/hayes/pothos)
+  - tRPC
+    - [tRPC](https://trpc.io)
+- Database
+  - [Prisma ORM](https://prisma.io)
+- Auth
+  - [Passport](https://passportjs.org)
+- Payment
+  - [Lemon Squeezy](https://lemonsqueezy.com)
+  - [Stripe](https://stripe.com)
 
 # Development
 
@@ -180,7 +212,7 @@ When you update some significant changes in the TypeScript config, ESLint config
 
 As this repo was made after having run the `create-remix` command and selected "Vercel" as a deployment target, you only need to [import your Git repository](https://vercel.com/new) into Vercel, and it will be deployed.
 
-Just keep in mind to setup the environment variables :
+Just keep in mind to setup the environment variables, especially:
 
 ```sh
 REMIX_APP_NAME=
@@ -188,9 +220,13 @@ REMIX_APP_EMAIL=
 REMIX_ADMIN_EMAIL=
 REMIX_ADMIN_PASSWORD=
 REMIX_SESSION_SECRET=
-
 DATABASE_URL=
 ```
+
+Or if using Doppler, there's the auto sync integration.
+
+- <https://doppler.com/integrations/vercel>
+- <https://vercel.com/integrations/doppler>
 
 If you'd like to avoid using a Git repository, you can also deploy the directory by running [Vercel CLI](https://vercel.com/cli):
 
@@ -251,6 +287,8 @@ npx remix reveal
 ```
 
 ## HMR Workaround
+
+> This setup has been done in this Rewinds template.
 
 To enable HMR and HDR, at least as per Remix v1.14, when not primarily using Express server only (like using Vercel and other server), we have to do this in the `package.json` scripts.
 
@@ -314,16 +352,27 @@ Some other projects using Rewinds:
 - [An Honest Look at Tailwind as an API for CSS | thoughtbot, inc.](https://thoughtbot.com/blog/an-honest-look-at-tailwind-as-an-api-for-css)
 - [Styling Best Practices I Use With Tailwind CSS | theodorusclarence.com](https://theodorusclarence.com/blog/tailwindcss-best-practice)
 
-## Todos
+## Checklist
 
-- [ ] Conform for form management
-- [ ] Auth with Remix Auth
-  - [ ] Auth with Clerk
+What's included
+
+- [x] Remix with HMR/HDR setup
+  - [x] Using React Refresh
+- [x] Tailwind CSS
+  - [x] Custom config
+- [x] Auth with Remix Auth
+- [x] SEO functions
+  - [x] robots.txt
+  - [x] sitemap.xml
+- [x] Lighthouse / Pagespeed optimized
+
+### Todos
+
 - [ ] Lighthouse / Pagespeed reports
 - [ ] Google Webmaster
 - [ ] Analytics
 - [ ] JSON-LD config
-- [ ] Lazy load example
 - [ ] ImageKit example
 - [ ] Mapbox example
+- [ ] Lazy load example
 - [ ] SPF record example

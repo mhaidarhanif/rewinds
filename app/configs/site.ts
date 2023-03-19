@@ -33,12 +33,16 @@ export const configSite = {
     creator: "@mhaidarhanif",
   },
 
-  mainNavItems: [
+  navItems: [
     { to: "/", title: "Home", icon: "home" },
     { to: "/about", title: "About", icon: "about" },
     { to: "/components", title: "Components", icon: "components" },
     { to: "/demo", title: "Demo", icon: "demo" },
-    isDevelopment && { to: "/database", title: "Database", icon: "database" },
+    {
+      to: isDevelopment ? "/database" : null,
+      title: "Database",
+      icon: "database",
+    },
   ],
 };
 
@@ -74,12 +78,4 @@ export const configMeta = {
   },
 
   mailingListName: "Rewind and Catalyze",
-};
-
-export type NavItem = {
-  to?: string;
-  title: string;
-  icon?: string;
-  disabled?: boolean;
-  external?: boolean;
 };

@@ -30,6 +30,7 @@ interface Props
   noThemeToggle?: boolean;
 }
 
+// The site layout with short enough name
 export function Layout({
   variant = "default",
   isSpaced = false,

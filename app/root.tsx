@@ -120,6 +120,7 @@ function App() {
       </head>
 
       <body
+        id="__remix"
         className={cn(
           process.env.NODE_ENV === "development" && "debug-screens"
         )}
@@ -156,7 +157,7 @@ export function RootDocument({
         {title && <title>{title}</title>}
         <Links />
       </head>
-      <body>
+      <body id="__remix">
         {children}
         <ScrollRestoration />
         <Scripts />

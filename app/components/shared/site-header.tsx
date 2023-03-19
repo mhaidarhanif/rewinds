@@ -19,8 +19,6 @@ import { configSite } from "~/configs";
 import { Github, Menu, Twitter } from "~/icons";
 import { cn } from "~/utils";
 
-import type { NavItem } from "~/configs";
-
 interface Props {
   noThemeToggle?: boolean;
 }
@@ -31,26 +29,27 @@ export function SiteHeader({ noThemeToggle }: Props) {
   return (
     <header
       className={cn(
-        "w-full border-b border-b-surface-200 bg-white py-4 dark:border-b-surface-700 dark:bg-surface-900",
+        "border-b border-surface-200 bg-white dark:border-surface-700 dark:bg-surface-900",
+        "w-full border-b py-4",
         "sticky top-0 left-0 right-0 z-40" // to work with the layout and nprogress
       )}
     >
-      <div
+      <section
         className={cn(
-          "h-6 sm:h-8", // height of the site header
-          "contain flex items-center justify-between gap-1 sm:gap-2"
+          "contain flex items-center justify-between gap-1 sm:gap-2",
+          "h-6 sm:h-8" // height of the site header
         )}
       >
         <div className="flex w-full items-center justify-between gap-1 sm:gap-2">
           <NavigationMain noThemeToggle={noThemeToggle} />
-          <NavigationMainItems navItems={configSite?.mainNavItems} />
+          <NavigationMainItems navItems={configSite?.navItems} />
           <NavigationButtons isAuthenticated={isAuthenticated} />
         </div>
 
         <div className="flex lg:hidden">
-          <NavigationDropdownMenu navItems={configSite?.mainNavItems} />
+          <NavigationDropdownMenu navItems={configSite?.navItems} />
         </div>
-      </div>
+      </section>
     </header>
   );
 }
@@ -71,12 +70,16 @@ export function NavigationMain({ noThemeToggle }: { noThemeToggle?: boolean }) {
   );
 }
 
-export function NavigationMainItems({ navItems }: { navItems?: NavItem[] }) {
+export function NavigationMainItems({
+  navItems,
+}: {
+  navItems: typeof configSite.navItems;
+}) {
   return (
     <nav className="hidden gap-1 lg:flex">
       {navItems?.map(
         (item, index) =>
-          item.to && (
+          item?.to && (
             <RemixNavLink
               key={index}
               to={item.to}
@@ -158,7 +161,7 @@ export function NavigationDropdownMenu({
   navItems,
 }: {
   isAuthenticated?: boolean;
-  navItems?: NavItem[];
+  navItems: typeof configSite.navItems;
 }) {
   return (
     <DropdownMenu>
