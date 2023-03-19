@@ -16,15 +16,18 @@ import {
 } from "~/components";
 import { ThemeToggleButton } from "~/components";
 import { configSite } from "~/configs";
+import { useRootLoaderData } from "~/hooks";
 import { Github, Menu, Twitter } from "~/icons";
 import { cn } from "~/utils";
+
+import type { UserSession } from "~/helpers";
 
 interface Props {
   noThemeToggle?: boolean;
 }
 
 export function SiteHeader({ noThemeToggle }: Props) {
-  const isAuthenticated = false;
+  const { user } = useRootLoaderData();
 
   return (
     <header
@@ -43,7 +46,7 @@ export function SiteHeader({ noThemeToggle }: Props) {
         <div className="flex w-full items-center justify-between gap-1 sm:gap-2">
           <NavigationMain noThemeToggle={noThemeToggle} />
           <NavigationMainItems navItems={configSite?.navItems} />
-          <NavigationButtons isAuthenticated={isAuthenticated} />
+          <NavigationButtons user={user} />
         </div>
 
         <div className="flex lg:hidden">
@@ -106,11 +109,7 @@ export function NavigationMainItems({
   );
 }
 
-export function NavigationButtons({
-  isAuthenticated,
-}: {
-  isAuthenticated?: boolean;
-}) {
+export function NavigationButtons({ user }: { user?: UserSession }) {
   return (
     <div className="flex grow items-center justify-end space-x-2">
       <nav className="hidden gap-1 md:flex">
@@ -133,7 +132,7 @@ export function NavigationButtons({
       </nav>
 
       <nav className="flex items-center gap-1">
-        {!isAuthenticated && (
+        {!user && (
           <>
             <ButtonLink variant="ghost" to="/login" className="hidden md:flex">
               Login
@@ -143,7 +142,7 @@ export function NavigationButtons({
             </ButtonLink>
           </>
         )}
-        {isAuthenticated && (
+        {user && (
           <>
             <ButtonLink variant="outline" to="/user" className="flex">
               User
@@ -156,11 +155,11 @@ export function NavigationButtons({
 }
 
 export function NavigationDropdownMenu({
-  isAuthenticated,
   navItems,
+  user,
 }: {
-  isAuthenticated?: boolean;
   navItems: typeof configSite.navItems;
+  user?: boolean;
 }) {
   return (
     <DropdownMenu>

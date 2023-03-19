@@ -10,3 +10,4 @@ export * from "./prettyjson.server";
 export * from "./seo";
 export * from "./sleep";
 export * from "./slug";
+export * from "./text";

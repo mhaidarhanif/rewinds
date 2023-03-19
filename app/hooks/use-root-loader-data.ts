@@ -5,14 +5,6 @@ import type { Theme } from "remix-themes";
 import type { UserSession } from "~/helpers";
 import type { getEnv } from "~/utils";
 
-const DEFAULT_REDIRECT = "/";
-
-export type RootLoaderData = {
-  ENV: ReturnType<typeof getEnv>;
-  theme: Theme | null;
-  user: UserSession | null;
-};
-
 /**
  * This should be used any time the redirect path is user-provided
  * (Like the query string on our login/signup pages). This avoids
@@ -22,16 +14,14 @@ export type RootLoaderData = {
  */
 export function safeRedirect(
   to: FormDataEntryValue | string | null | undefined,
-  defaultRedirect: string = DEFAULT_REDIRECT
+  defaultRedirect = "/"
 ) {
   if (!to || typeof to !== "string") {
     return defaultRedirect;
   }
-
   if (!to.startsWith("/") || to.startsWith("//")) {
     return defaultRedirect;
   }
-
   return to;
 }
 
@@ -41,6 +31,13 @@ export function safeRedirect(
  * @param {string} routeId The route id
  * @returns {JSON|undefined} The router data or undefined if not found
  */
+
+export type RootLoaderData = {
+  ENV: ReturnType<typeof getEnv>;
+  theme: Theme | null;
+  user: UserSession | null;
+};
+
 export function useMatchesData(
   routeId: string
 ): Record<string, unknown> | RootLoaderData {
@@ -59,9 +56,9 @@ export function useRootLoaderData() {
   const data = useMatchesData("root") as RootLoaderData;
 
   return {
-    ENV: data?.ENV,
-    theme: data?.theme,
-    user: data?.user,
-    notifications: null,
+    ENV: data?.ENV || undefined,
+    theme: data?.theme || undefined,
+    user: data?.user || undefined,
+    notifications: undefined,
   };
 }

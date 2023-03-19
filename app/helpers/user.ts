@@ -1,20 +1,10 @@
-import { redirect } from "@remix-run/node";
-
 import { authenticator } from "~/services";
 import { getSession } from "~/sessions";
 
+// other user data need to be retrieved, not stored in cookie
 export type UserSession = {
   id: string;
-  roleSymbol: string;
 };
-
-export function isUser(user: UserSession): user is UserSession {
-  return user && typeof user === "object" && typeof user.id === "string";
-}
-
-export function isUserAdmin(user: UserSession): user is UserSession {
-  return user.roleSymbol.includes("ADMIN" || "MANAGER" || "EDITOR");
-}
 
 /**
  * Authentication logic
@@ -44,18 +34,6 @@ export async function getUserRedirect(request: Request) {
   return authenticator.isAuthenticated(request, {
     failureRedirect: `/login?redirect=${url.pathname}`,
   });
-}
-
-export async function redirectIfNotAdmin(request: Request) {
-  const user = await authenticator.isAuthenticated(request);
-  const url = new URL(request.url);
-
-  if (!user) {
-    throw redirect(`/login?redirect=${url.pathname}`);
-  }
-  if (user.roleSymbol !== "ADMIN") {
-    throw redirect("/");
-  }
 }
 
 export function redirectIfAuthenticated(

@@ -92,8 +92,5 @@ export async function verifyLogin(
   // Without any other sensitive information
   return {
     id: user.id,
-    name: user.name,
-    username: user.username,
-    roleSymbol: user.role?.symbol,
   };
 }
