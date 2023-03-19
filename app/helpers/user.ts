@@ -29,13 +29,15 @@ export async function authenticateUser(request: Request, redirectTo?: string) {
 }
 
 export async function authorizeUser(request: Request) {
-  const userSession = await authenticator.isAuthenticated(request);
+  const userSession = await authenticator.isAuthenticated(request, {
+    failureRedirect: "/login",
+  });
   invariant(userSession, "User session invalid");
 
   const user = await userModel.getUserForSession({ id: userSession.id });
   invariant(user, "User not found");
 
-  return user;
+  return { userSession, user };
 }
 
 export async function getUserRedirect(request: Request) {

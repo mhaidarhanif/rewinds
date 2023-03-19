@@ -7,9 +7,9 @@ import type { SEOHandle } from "~/utils";
 
 export const handle: SEOHandle = {
   getSitemapEntries: async () => {
-    const notes: any = await note.getAllNotes();
-    const notesEntries = notes.map((note: any) => {
-      return { route: `/notes/${note.id}`, priority: 0.8 };
+    const notes = await note.getAllNotes();
+    const notesEntries: any = notes.map((note) => {
+      return { route: `/notes/${note.id}`, priority: 0.7 };
     });
 
     return [{ route: `/notes`, priority: 0.8 }, ...notesEntries];

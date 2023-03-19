@@ -41,14 +41,12 @@
   "Rewinds Remix Route": {
     "prefix": "rwr",
     "body": [
-      "import { Layout } from \"~/layouts\";",
+      "import { Layout } from \"~/components\";",
       "",
-      "export default function $1() {",
+      "export default function $1Route() {",
       "  return (",
       "    <Layout>",
-      "      <header>",
-      "        <h1>$1</h1>",
-      "      </header>",
+      "      <h1>$1</h1>",
       "    </Layout>",
       "  );",
       "}",

@@ -2,6 +2,7 @@ import { Combobox, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 
 import { Check, ChevronsUpDown } from "~/icons";
+import { cn } from "~/utils";
 
 /**
  * Combobox from Headless UI
@@ -80,9 +81,10 @@ export function ComboboxExample() {
                     {({ selected, active }) => (
                       <>
                         <span
-                          className={`truncateText block ${
+                          className={cn(
+                            "block truncate",
                             selected ? "font-medium" : "font-normal"
-                          }`}
+                          )}
                         >
                           {item.name}
                         </span>

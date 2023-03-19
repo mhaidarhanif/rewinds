@@ -2,22 +2,15 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 import { Debug, PageHeader, RemixLinkText } from "~/components";
-import { userModel } from "~/models";
-import { authenticator } from "~/services";
-import { createSitemap, invariant } from "~/utils";
+import { authorizeUser } from "~/helpers";
+import { createSitemap } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
 
 export const handle = createSitemap();
 
 export async function loader({ request }: LoaderArgs) {
-  const userSession = await authenticator.isAuthenticated(request, {
-    failureRedirect: "/login",
-  });
-  invariant(userSession);
-
-  const user = await userModel.getUserForSession({ id: userSession.id });
-  invariant(user, "User not found");
+  const { user } = await authorizeUser(request);
 
   return json({ user });
 }

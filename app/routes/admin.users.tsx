@@ -9,10 +9,10 @@ import {
   RemixForm,
   RemixLink,
 } from "~/components";
+import { authorizeUser } from "~/helpers";
 import { Plus, Trash } from "~/icons";
-import { adminUser, userModel } from "~/models";
-import { authenticator } from "~/services";
-import { createSitemap, invariant } from "~/utils";
+import { adminUser } from "~/models";
+import { createSitemap } from "~/utils";
 
 import type { ActionArgs } from "@remix-run/node";
 
@@ -24,13 +24,7 @@ export async function loader() {
 }
 
 export async function action({ request }: ActionArgs) {
-  const userSession = await authenticator.isAuthenticated(request, {
-    failureRedirect: "/login",
-  });
-  invariant(userSession);
-
-  const user = await userModel.getUserForSession({ id: userSession.id });
-  invariant(user, "User not found");
+  const { user } = await authorizeUser(request);
 
   if (user.role.symbol !== "ADMIN") {
     return json({ message: "Not allowed" }, { status: 400 });

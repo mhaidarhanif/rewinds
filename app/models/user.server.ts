@@ -25,6 +25,15 @@ export const privateUserFields = {
 };
 
 export const userModel = {
+  async getAllUserUsernames() {
+    return prisma.user.findMany({
+      select: {
+        id: true,
+        username: true,
+      },
+    });
+  },
+
   async getMetrics({ id }: Pick<User, "id">) {
     const metrics = await prisma.$transaction([
       prisma.note.count({ where: { userId: id } }),

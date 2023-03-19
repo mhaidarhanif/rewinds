@@ -15,8 +15,8 @@ import {
   RemixForm,
   TextArea,
 } from "~/components";
+import { authorizeUser } from "~/helpers";
 import { adminNote } from "~/models";
-import { authenticator } from "~/services";
 import { createSitemap } from "~/utils";
 
 import type { ActionArgs } from "@remix-run/node";
@@ -35,9 +35,7 @@ export const schemaNote = z.object({
 });
 
 export async function action({ request }: ActionArgs) {
-  const userSession = await authenticator.isAuthenticated(request, {
-    failureRedirect: "/login",
-  });
+  const { userSession } = await authorizeUser(request);
 
   const formData = await request.formData();
   const submission = parse(formData, { schema: schemaNote });

@@ -45,11 +45,11 @@ export function createMetaData({
     },
     {
       name: "application-name",
-      content: title,
+      content: name,
     },
     {
       name: "apple-mobile-web-app-title",
-      content: title,
+      content: name,
     },
     {
       name: "theme-color",

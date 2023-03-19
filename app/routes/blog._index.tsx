@@ -8,8 +8,8 @@ import type { SEOHandle } from "~/utils";
  */
 export const handle: SEOHandle = {
   getSitemapEntries: async () => {
-    const articles: any = await adminNote.getAllNotes();
-    const articleEntries = articles.map((article: any) => {
+    const articles = await adminNote.getAllNotes();
+    const articleEntries: any = articles.map((article) => {
       return { route: `/blog/${article.id}`, priority: 0.8 };
     });
 

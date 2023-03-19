@@ -2,24 +2,21 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 import { Debug, PageAdminHeader } from "~/components";
+import { authorizeUser } from "~/helpers";
 import { useRootLoaderData } from "~/hooks";
 import { admin } from "~/models";
-import { authenticator } from "~/services";
-import { createSitemap, invariant } from "~/utils";
+import { createSitemap } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
 
 export const handle = createSitemap();
 
 export async function loader({ request }: LoaderArgs) {
-  const userSession = await authenticator.isAuthenticated(request, {
-    failureRedirect: "/login",
-  });
-  invariant(userSession);
+  const { user } = await authorizeUser(request);
 
   const metrics = await admin.getMetrics();
 
-  return json({ metrics });
+  return json({ user, metrics });
 }
 
 export default function AdminIndexRoute() {

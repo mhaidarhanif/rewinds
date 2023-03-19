@@ -6,24 +6,36 @@ import { configMeta } from "~/configs";
 import { userModel } from "~/models";
 import { createMetaData, createSitemap, invariant } from "~/utils";
 
-import type { LoaderArgs } from "@remix-run/node";
+import type { LoaderArgs, V2_MetaFunction } from "@remix-run/node";
 
 export const handle = createSitemap();
 
-export const meta = createMetaData({
-  title: "Page Not Found",
-  description: "There is nothing here.",
-});
+export const meta: V2_MetaFunction<typeof loader> = ({ params, data }) => {
+  const { username } = params;
+  const user = data.user;
+
+  if (!user) {
+    return createMetaData({
+      title: "Profile does not exist",
+      description: `Cannot find user with the username ${username}`,
+    });
+  }
+
+  return createMetaData({
+    title: `${user.name} (@${user.username})`,
+    description: `${user.profile.bio || "User has no bio yet."}`,
+  });
+};
 
 /**
  * Splat route can check for:
  * 1. User from database
  * 2. Organization from database
- * 3. If nothing found, return 404 page
+ * 3. If nothing found, tell this account doesn’t exist
  */
 export async function loader({ params }: LoaderArgs) {
   const { username } = params;
-  invariant(username, "userId doesn't exist");
+  invariant(username, "userId doesn not exist");
 
   const user = await userModel.getUserByUsername({ username });
   if (!user) {
@@ -33,7 +45,7 @@ export async function loader({ params }: LoaderArgs) {
   return json({ user });
 }
 
-export default function SplatRoute() {
+export default function SplatUsernameRoute() {
   const { user } = useLoaderData<typeof loader>();
 
   if (user) {

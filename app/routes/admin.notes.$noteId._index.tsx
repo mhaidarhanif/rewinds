@@ -12,9 +12,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "~/components";
+import { authorizeUser } from "~/helpers";
 import { EditPencil, Trash } from "~/icons";
 import { adminNote } from "~/models";
-import { authenticator } from "~/services";
 import {
   createSitemap,
   formatDateTime,
@@ -29,17 +29,14 @@ export const handle = createSitemap();
 
 export async function loader({ params }: LoaderArgs) {
   const { noteId } = params;
-  invariant(noteId, "noteId doesn't exist");
+  invariant(noteId, "noteId doesn not exist");
 
   const note = await adminNote.getNote({ id: noteId });
   return json({ note });
 }
 
 export async function action({ request }: ActionArgs) {
-  const userSession = await authenticator.isAuthenticated(request, {
-    failureRedirect: "/login",
-  });
-  invariant(userSession);
+  await authorizeUser(request);
 
   const formData = await request.formData();
   const submission = parse(formData);
@@ -62,7 +59,7 @@ export default function AdminNotesViewRoute() {
   const { note } = useLoaderData<typeof loader>();
 
   if (!note) {
-    return <p>Note doesn't exist.</p>;
+    return <p>Note doesn not exist.</p>;
   }
 
   return (

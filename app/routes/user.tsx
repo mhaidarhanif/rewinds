@@ -1,19 +1,15 @@
 import { Outlet } from "@remix-run/react";
 
-import { Layout, PageHeader } from "~/components";
-import { authenticator } from "~/services";
-import { createSitemap, invariant } from "~/utils";
+import { Layout } from "~/components";
+import { authorizeUser } from "~/helpers";
+import { createSitemap } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
 
 export const handle = createSitemap();
 
 export async function loader({ request }: LoaderArgs) {
-  const userSession = await authenticator.isAuthenticated(request, {
-    failureRedirect: "/login",
-  });
-  invariant(userSession);
-
+  await authorizeUser(request);
   return null;
 }
 

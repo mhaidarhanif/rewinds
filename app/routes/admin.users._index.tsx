@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import pluralize from "pluralize";

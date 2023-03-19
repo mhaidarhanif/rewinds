@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 import { parse } from "@conform-to/react";
 import { json, redirect } from "@remix-run/node";
 import { Outlet, useLoaderData } from "@remix-run/react";
@@ -10,10 +9,10 @@ import {
   RemixForm,
   RemixLink,
 } from "~/components";
+import { authorizeUser } from "~/helpers";
 import { Plus, Trash } from "~/icons";
 import { adminNote } from "~/models";
-import { authenticator } from "~/services";
-import { createSitemap, invariant } from "~/utils";
+import { createSitemap } from "~/utils";
 
 import type { ActionArgs } from "@remix-run/node";
 
@@ -25,10 +24,7 @@ export async function loader() {
 }
 
 export async function action({ request }: ActionArgs) {
-  const userSession = await authenticator.isAuthenticated(request, {
-    failureRedirect: "/login",
-  });
-  invariant(userSession);
+  await authorizeUser(request);
 
   const formData = await request.formData();
   const submission = parse(formData, {});
