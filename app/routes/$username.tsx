@@ -53,16 +53,28 @@ export default function SplatUsernameRoute() {
       <Layout
         isSpaced
         layoutHeader={
-          <PageHeader size="sm" isTextCentered>
+          <header>
+            <div className="contain-full">
+              <img
+                className="max-h-80 rounded-b-lg"
+                alt="User Cover"
+                src={`https://images.unsplash.com/photo-1571745544682-143ea663cf2c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80`}
+                height={300}
+                width={1440}
+              />
+            </div>
+          </header>
+        }
+      >
+        <section className="mx-auto w-full max-w-lg">
+          <div className="my-4 text-center">
             <h1>
               <Balancer>{user.name}</Balancer>
             </h1>
             <h2 className="text-xl lg:text-2xl">@{user.username}</h2>
-          </PageHeader>
-        }
-      >
-        <section className="contain">
-          <p className="prose-config">{user.profile.bio}</p>
+          </div>
+
+          <p className="prose-config card">{user.profile.bio}</p>
         </section>
       </Layout>
     );
@@ -73,7 +85,9 @@ export default function SplatUsernameRoute() {
       isSpaced
       layoutHeader={
         <PageHeader size="sm">
-          <h1>Oops, Error 404: Page Not Found</h1>
+          <h1>
+            <Balancer>Oops, Error 404: Page Not Found</Balancer>
+          </h1>
           <p>Sorry, this page is not available..</p>
         </PageHeader>
       }

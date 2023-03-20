@@ -252,7 +252,7 @@ export function HeaderUser({ user }: { user: UserData }) {
             <RemixNavLink to={`/user/dashboard`}>
               <User className="size-sm mr-2" />
               <span>Dashboard</span>
-              <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+              <DropdownMenuShortcut>⇧⌘D</DropdownMenuShortcut>
             </RemixNavLink>
           </DropdownMenuItem>
 
@@ -260,19 +260,19 @@ export function HeaderUser({ user }: { user: UserData }) {
             <RemixNavLink to={`/user/settings`}>
               <Settings className="size-sm mr-2" />
               <span>Settings</span>
-              <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+              <DropdownMenuShortcut>⇧⌘S</DropdownMenuShortcut>
             </RemixNavLink>
           </DropdownMenuItem>
 
           <DropdownMenuItem>
             <CreditCard className="size-sm mr-2" />
             <span>Billing</span>
-            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+            <DropdownMenuShortcut>⇧⌘B</DropdownMenuShortcut>
           </DropdownMenuItem>
 
           <DropdownMenuItem>
             <Keyboard className="size-sm mr-2" />
-            <span>Keyboard shortcuts</span>
+            <span>Command Palette</span>
             <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>

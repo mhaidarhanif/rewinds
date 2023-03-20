@@ -30,7 +30,7 @@ export default function NotesIndexRoute() {
           {notes.map((note) => {
             return (
               <li key={note.slug} className="card space-y-4">
-                <RemixLink to={note.slug} className="block">
+                <RemixLink to={note.slug} className="link block">
                   <h3>{note.title}</h3>
                   <h4>{note.description}</h4>
                 </RemixLink>

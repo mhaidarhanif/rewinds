@@ -54,8 +54,19 @@ export const userModel = {
         id: true,
         name: true,
         username: true,
-        role: true,
-        profile: true,
+        email: true,
+        profile: {
+          select: {
+            headline: true,
+            bio: true,
+          },
+        },
+        role: {
+          select: {
+            symbol: true,
+            name: true,
+          },
+        },
       },
     });
   },

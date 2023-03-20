@@ -31,6 +31,7 @@ export async function authenticateUser(request: Request, redirectTo = "/user") {
 }
 
 export async function authorizeUser(request: Request) {
+  // local
   const userSession = await authenticator.isAuthenticated(request, {
     failureRedirect: "/login",
   });
@@ -39,6 +40,7 @@ export async function authorizeUser(request: Request) {
     await deauthenticateUser(request);
   }
 
+  // from database
   const user = await userModel.getUserForSession({ id: userSession.id });
   invariant(user, "User is not available");
   if (!user) {

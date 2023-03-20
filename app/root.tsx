@@ -55,20 +55,19 @@ export const links: LinksFunction = () => {
   return configDocumentLinks;
 };
 
-// Return the theme from the session storage using the loader
 export async function loader({ request }: LoaderArgs) {
-  // get ENV data from server
+  // Get ENV data from server
   const ENV = getEnv();
 
-  // get theme function and data from cookie via remix-themes
+  // Get theme function and data from cookie via remix-themes
   const { getTheme } = await themeSessionResolver(request);
   const theme = getTheme();
 
-  // get user data from database, not from session
-  // but don't redirect if not authenticated
+  // Get user data from database, not from session
+  // But don't redirect if not authenticated
   const userSession = await authenticator.isAuthenticated(request);
 
-  // don't do anything extra when not logged in
+  // Don't do anything extra when not logged in
   if (!userSession) {
     return json({
       ENV,
@@ -76,15 +75,15 @@ export async function loader({ request }: LoaderArgs) {
     });
   }
 
-  // put user and its profile data
+  // Put user and its profile data
   const user = await userModel.getUserForSession({ id: userSession.id });
 
-  // but if the user is no longer valid, log it out
+  // But if the user session is no longer valid, log it out
   if (!user) {
     return redirect("/logout");
   }
 
-  // finally, put the active user data to the root loader data
+  // Finally, put the active user data to the root loader data
   return json({
     ENV,
     theme,
@@ -94,7 +93,7 @@ export async function loader({ request }: LoaderArgs) {
 
 /**
  * Remix Themes
- * Wrap your app with ThemeProvider.
+ * Wrap your App with ThemeProvider.
  * `specifiedTheme` is the stored theme in the session storage.
  * `themeAction` is the action name that's used to change the theme
  * in the session storage.

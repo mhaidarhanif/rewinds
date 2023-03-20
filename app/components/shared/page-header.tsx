@@ -7,26 +7,27 @@ import type { VariantProps } from "class-variance-authority";
 export const pageHeaderVariants = cva("", {
   variants: {
     size: {
-      xs: "py-3 sm:py-6 mb-3",
-      sm: "py-6 sm:py-10 mb-6",
-      default: "py-12 sm:py-20 mb-12",
+      xs: "py-3 sm:py-6",
+      sm: "py-6 sm:py-10",
+      default: "py-12 sm:py-20",
     },
-    isTextCentered: {
-      true: "text-center",
-      false: "",
-    },
+    isTextCentered: { true: "text-center", false: "" },
+    withContainer: { true: "", false: "" },
+    withMarginBottom: { true: "", false: "" },
     withBackground: {
       true: "bg-surface-100 dark:bg-surface-800/20",
       false: "",
     },
-    withContainer: {
-      true: "",
-      false: "",
-    },
   },
+  compoundVariants: [
+    { size: "xs", withMarginBottom: true, class: "mb-3" },
+    { size: "sm", withMarginBottom: true, class: "mb-6" },
+    { size: "default", withMarginBottom: true, class: "mb-12" },
+  ],
   defaultVariants: {
     size: "default",
     isTextCentered: false,
+    withMarginBottom: true,
     withBackground: true,
   },
 });
@@ -38,6 +39,7 @@ interface Props
 export function PageHeader({
   size = "default",
   isTextCentered = false,
+  withMarginBottom = true,
   withBackground = true,
   withContainer = true,
   className,
@@ -50,8 +52,8 @@ export function PageHeader({
         pageHeaderVariants({
           size,
           isTextCentered,
+          withMarginBottom,
           withBackground,
-          withContainer,
           className,
         })
       )}

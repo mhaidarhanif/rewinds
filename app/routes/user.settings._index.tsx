@@ -25,14 +25,13 @@ export default function UserSettingsRoute() {
       </PageHeader>
 
       <section className="space-y-2">
-        <h2>Change your profile, email, password, etc</h2>
-        <h3>
+        <h2>
           <span>Settings for </span>
           <RemixLinkText to={`/${user.username}`}>
             @{user.username}
           </RemixLinkText>
-          <span> / {user.name}</span>
-        </h3>
+        </h2>
+        <h3>Change your profile, email, password, etc</h3>
       </section>
 
       <Debug name="user">{user}</Debug>
