@@ -133,6 +133,35 @@ export const userModel = {
   }: Pick<User, "name" | "username" | "email"> & {
     password: UserPassword["hash"];
   }) {
+    const userUsername = await prisma.user.findUnique({ where: { username } });
+
+    if (userUsername) {
+      return {
+        error: {
+          name: "",
+          username: "Username already taken",
+          email: "",
+          password: "",
+        },
+      };
+    }
+
+    const userEmail = await prisma.user.findUnique({
+      where: { email },
+      include: { password: true },
+    });
+
+    if (userEmail) {
+      return {
+        error: {
+          name: "",
+          username: "",
+          email: "Email is already used",
+          password: "",
+        },
+      };
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const defaultUserRole = await prisma.userRole.findFirst({
@@ -140,7 +169,7 @@ export const userModel = {
     });
     invariant(defaultUserRole, "User Role with symbol NORMAL is not found");
 
-    return prisma.user.create({
+    const user = await prisma.user.create({
       data: {
         name,
         username,
@@ -155,6 +184,11 @@ export const userModel = {
         },
       },
     });
+
+    return {
+      user,
+      error: null,
+    };
   },
 
   async deleteUserByEmail(email: User["email"]) {

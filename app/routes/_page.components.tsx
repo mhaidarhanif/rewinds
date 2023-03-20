@@ -9,9 +9,6 @@ import {
   ButtonIcon,
   ButtonLink,
   CopyButton,
-  FormInput,
-  FormSubmitButton,
-  FormTextArea,
   Input,
   Label,
   Layout,
@@ -20,7 +17,6 @@ import {
   RemixForm,
   RemixLink,
   RemixLinkText,
-  RemixValidatedForm,
   TextArea,
   ToastAction,
 } from "~/components";
@@ -371,7 +367,7 @@ export function ExampleForm() {
       </header>
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
-        <RemixForm method="post" className="space-y-4">
+        <RemixForm method="post" className="space-y-2">
           <div className="space-y-1">
             <Label htmlFor="email">Email</Label>
             <Input
@@ -399,6 +395,7 @@ export function ExampleForm() {
             <TextArea
               id="example-message"
               placeholder="Type your message here..."
+              rows={5}
             />
             <p className="text-sm text-surface-500">
               Your message will be sent to our team.
@@ -414,32 +411,6 @@ export function ExampleForm() {
             </Button>
           </div>
         </RemixForm>
-
-        <RemixValidatedForm
-          validator={{} as any}
-          method="post"
-          className="space-y-4"
-        >
-          <FormInput
-            name="name"
-            label="Name"
-            helpText="Min. of 3 characters, max. of 30 characters"
-            placeholder="First Last"
-          />
-          <FormTextArea
-            name="description"
-            label="Description"
-            helpText="Min. of 10 characters, max. of 140 characters"
-            placeholder="Some long text..."
-            rows={12}
-          />
-          <FormSubmitButton
-            loadingChildren={"Submitting..."}
-            className="w-full"
-          >
-            Submit Validated Form
-          </FormSubmitButton>
-        </RemixValidatedForm>
       </div>
     </section>
   );

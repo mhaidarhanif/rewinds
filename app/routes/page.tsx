@@ -20,7 +20,7 @@ export default function PageRoute() {
       isSpaced
       layoutHeader={
         <PageHeader>
-          <h2>Blank Page</h2>
+          <h1>Blank Page</h1>
           <p>Just a minimal page layout and content to start with.</p>
         </PageHeader>
       }

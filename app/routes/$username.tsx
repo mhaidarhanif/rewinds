@@ -73,7 +73,7 @@ export default function SplatUsernameRoute() {
       isSpaced
       layoutHeader={
         <PageHeader size="sm">
-          <h2>Oops, Error 404: Page Not Found</h2>
+          <h1>Oops, Error 404: Page Not Found</h1>
           <p>Sorry, this page is not available..</p>
         </PageHeader>
       }

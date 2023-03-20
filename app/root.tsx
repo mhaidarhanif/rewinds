@@ -193,7 +193,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
         isSpaced
         layoutHeader={
           <PageHeader size="sm">
-            <h2>Error from Rewinds: {error.message}</h2>
+            <h1>Error from Rewinds: {error.message}</h1>
           </PageHeader>
         }
       >
@@ -228,9 +228,9 @@ export function CatchBoundary() {
         isSpaced
         layoutHeader={
           <PageHeader size="sm">
-            <h2>
+            <h1>
               Sorry, error {caught.status}: {caught.statusText}
-            </h2>
+            </h1>
             <p>{message}</p>
           </PageHeader>
         }

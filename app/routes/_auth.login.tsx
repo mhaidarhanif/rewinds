@@ -19,10 +19,29 @@ import {
 import { configSite } from "~/configs";
 import { Loader2 } from "~/icons";
 import { userModel } from "~/models";
-import { authenticator } from "~/services/auth-service.server";
-import { createMetaData, getRedirectTo, useRedirectTo } from "~/utils";
+import { authenticator } from "~/services";
+import {
+  createDocumentLinks,
+  createMetaData,
+  getRedirectTo,
+  useRedirectTo,
+} from "~/utils";
 
-import type { V2_MetaFunction, ActionArgs, LoaderArgs } from "@remix-run/node";
+import type {
+  V2_MetaFunction,
+  ActionArgs,
+  LoaderArgs,
+  LinksFunction,
+} from "@remix-run/node";
+
+export const schemaLogin = z.object({
+  email: z
+    .string({ required_error: "Email is required" })
+    .email("Email is invalid"),
+  password: z
+    .string({ required_error: "Password is required" })
+    .min(8, "Password length at least 8 characters"),
+});
 
 export const meta: V2_MetaFunction = () => {
   return createMetaData({
@@ -31,15 +50,9 @@ export const meta: V2_MetaFunction = () => {
   });
 };
 
-export const schemaLogin = z.object({
-  email: z
-    .string({ required_error: "Email is required" })
-    .min(1, "Email is required")
-    .email("Email is invalid"),
-  password: z
-    .string({ required_error: "Password is required" })
-    .min(8, "Password length at least 8 characters"),
-});
+export const links: LinksFunction = () => {
+  return createDocumentLinks({ canonicalPath: "/login" });
+};
 
 export async function loader({ request }: LoaderArgs) {
   return await authenticator.isAuthenticated(request, {
@@ -47,6 +60,9 @@ export async function loader({ request }: LoaderArgs) {
   });
 }
 
+/**
+ * This also applicable in the _auth.register route action function
+ */
 export async function action({ request }: ActionArgs) {
   // Clone Request/ReadableStream to prevent the stream being locked
   // Because we're using the request later too for Remix-Auth Authenticator
@@ -107,8 +123,8 @@ export default function AuthLoginRoute() {
     <Layout
       isSpaced
       layoutHeader={
-        <PageHeader size="sm" isTextCentered>
-          <h2>Login to continue</h2>
+        <PageHeader size="xs" isTextCentered>
+          <h1>Login to continue</h1>
           <p>Use your {configSite.name} account</p>
         </PageHeader>
       }
@@ -120,7 +136,7 @@ export default function AuthLoginRoute() {
             <Input
               {...conform.input(email)}
               type="email"
-              placeholder="ryanwathan@hey.com"
+              placeholder="you@email.com"
               autoComplete="email"
               autoFocus
               required
@@ -138,6 +154,7 @@ export default function AuthLoginRoute() {
               {...conform.input(password)}
               type="password"
               autoComplete="current-password"
+              placeholder="Enter password"
               required
             />
             {password.error && (
@@ -145,7 +162,7 @@ export default function AuthLoginRoute() {
                 {password.error}
               </Alert>
             )}
-            <p className="text-sm text-surface-500">At least 8 characters</p>
+            <p className="text-xs text-surface-500">At least 8 characters</p>
           </div>
 
           {/* TODO: Implement later */}
@@ -170,14 +187,14 @@ export default function AuthLoginRoute() {
           </Button>
 
           <p className="text-center">
-            <span>Need an account? </span>
+            <span>New to {configSite.name}? </span>
             <RemixLinkText
               to={{
                 pathname: "/register",
                 search: searchParams.toString(),
               }}
             >
-              Register
+              Register for free
             </RemixLinkText>
           </p>
         </RemixForm>
