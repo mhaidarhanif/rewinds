@@ -1,15 +1,13 @@
-import { authenticator } from "~/services";
+import { authorizeUser, deauthenticateUser } from "~/helpers";
 
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 
 export async function action({ request }: ActionArgs) {
-  await authenticator.logout(request, { redirectTo: "/login" });
+  await deauthenticateUser(request, "/login");
 }
 
 export async function loader({ request }: LoaderArgs) {
-  await authenticator.isAuthenticated(request, {
-    failureRedirect: "/",
-  });
+  await authorizeUser(request);
 
-  await authenticator.logout(request, { redirectTo: "/login" });
+  await deauthenticateUser(request, "/login");
 }

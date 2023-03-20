@@ -25,6 +25,7 @@ export default function UserSettingsRoute() {
       </PageHeader>
 
       <section className="space-y-2">
+        <h2>Change your profile, email, password, etc</h2>
         <h3>
           <span>Settings for </span>
           <RemixLinkText to={`/${user.username}`}>

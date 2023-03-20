@@ -184,7 +184,7 @@ export function ExampleButton() {
         <div className="stack-h-center">
           <Button size="sm" disabled>
             <Loader2 className="size-sm mr-2 animate-spin" />
-            <span> Loading...</span>
+            <span>Loading...</span>
           </Button>
         </div>
       </div>

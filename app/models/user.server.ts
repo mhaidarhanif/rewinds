@@ -1,9 +1,8 @@
 import bcrypt from "bcryptjs";
-import { AuthorizationError as RemixAuthError } from "remix-auth";
 
 import { configUser } from "~/configs";
 import { prisma } from "~/libs";
-import { createNanoID } from "~/utils";
+import { createNanoID, invariant } from "~/utils";
 
 import type { UserPassword, User } from "@prisma/client";
 export type { User } from "@prisma/client";
@@ -83,20 +82,30 @@ export const userModel = {
     });
   },
 
-  async verifyLogin(email: User["email"], password: UserPassword["hash"]) {
-    if (!email) throw new RemixAuthError("Email diperlukan");
-    if (!password) throw new RemixAuthError("Password diperlukan");
+  async getUserByEmail({ email }: Pick<User, "email">) {
+    return prisma.user.findUnique({
+      where: { email },
+      select: { id: true },
+    });
+  },
 
+  async loginUserPassword({
+    email,
+    password,
+  }: {
+    email: User["email"];
+    password: string; // from the form field, but it is not the hash
+  }) {
     const user = await prisma.user.findUnique({
       where: { email },
-      include: {
-        password: true,
-        role: true,
-      },
+      include: { password: true },
     });
 
-    if (!user || !user.password) {
-      throw new RemixAuthError("Email tidak ditemukan");
+    if (!user) {
+      return { error: { email: "Email is not registered yet", password: "" } };
+    }
+    if (!user.password) {
+      return { error: { email: "User has no password", password: "" } };
     }
 
     const isPasswordCorrect = await bcrypt.compare(
@@ -105,46 +114,50 @@ export const userModel = {
     );
 
     if (!isPasswordCorrect) {
-      throw new RemixAuthError("Password salah");
+      return { error: { email: "", password: "Password is incorrect" } };
     }
 
     // To make sure we only have the essential data in the session
     // Without any other sensitive information
     return {
-      id: user.id,
+      user,
+      error: null,
     };
   },
+
+  async registerUserPassword({
+    name,
+    username,
+    email,
+    password,
+  }: Pick<User, "name" | "username" | "email"> & {
+    password: UserPassword["hash"];
+  }) {
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const defaultUserRole = await prisma.userRole.findFirst({
+      where: { symbol: "NORMAL" },
+    });
+    invariant(defaultUserRole, "User Role with symbol NORMAL is not found");
+
+    return prisma.user.create({
+      data: {
+        name,
+        username,
+        email,
+        password: { create: { hash: hashedPassword } },
+        role: { connect: { id: defaultUserRole.id } },
+        profile: {
+          create: {
+            headline: "I am new here",
+            bio: "This is my profile bio.",
+          },
+        },
+      },
+    });
+  },
+
+  async deleteUserByEmail(email: User["email"]) {
+    return prisma.user.delete({ where: { email } });
+  },
 };
-
-// export async function createUser({
-//   name,
-//   username,
-//   email,
-//   password,
-// }: Pick<User, "name" | "username" | "email"> & {
-//   password: string; // because it's not inside User model
-// }) {
-//   const hashedPassword = await bcrypt.hash(password, 10);
-
-//   const defaultUserRole = await prisma.userRole.findFirst({
-//     where: { symbol: "NORMAL" },
-//   });
-//   invariant(defaultUserRole, "User Role with symbol NORMAL is not found");
-
-//   return prisma.user.create({
-//     data: {
-//       name,
-//       username,
-//       email,
-//       password: { create: { hash: hashedPassword } },
-//       role: { connect: { id: defaultUserRole.id } },
-//       profile: {
-//         create: { headline: "I am new here", bio: "My profile bio." },
-//       },
-//     },
-//   });
-// }
-
-// export async function deleteUserByEmail(email: User["email"]) {
-//   return prisma.user.delete({ where: { email } });
-// }

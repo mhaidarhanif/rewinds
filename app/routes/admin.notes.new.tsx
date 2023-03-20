@@ -1,4 +1,4 @@
-import { conform, useForm as useConform } from "@conform-to/react";
+import { conform, useForm } from "@conform-to/react";
 import { getFieldsetConstraint, parse } from "@conform-to/zod";
 import { redirect } from "@remix-run/node";
 import { json } from "@remix-run/node";
@@ -62,7 +62,7 @@ export default function AdminNotesNewRoute() {
   const actionData = useActionData<typeof action>();
 
   const id = useId();
-  const [form, { title, description, content }] = useConform<
+  const [form, { title, description, content }] = useForm<
     z.infer<typeof schemaNote>
   >({
     id,

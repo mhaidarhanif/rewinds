@@ -65,6 +65,7 @@ export async function loader({ request }: LoaderArgs) {
   const theme = getTheme();
 
   // get user data from database, not from session
+  // but don't redirect if not authenticated
   const userSession = await authenticator.isAuthenticated(request);
 
   // don't do anything extra when not logged in

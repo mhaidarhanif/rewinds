@@ -37,7 +37,7 @@ export default function NotesIndexRoute() {
                 <p>{truncateText(note.content)}</p>
                 <p>
                   <span>by </span>
-                  <RemixLinkText to={`/users/${note.user.id}`}>
+                  <RemixLinkText to={`/${note.user.username}`}>
                     {note.user.name}
                   </RemixLinkText>
                 </p>

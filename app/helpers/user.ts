@@ -16,11 +16,13 @@ export type UserData = NonNullable<
 >;
 
 /**
- * Authentication logic
- * After submitting the correct email and password with user-pass strategy
+ * Authentication/Authorization
+ *
+ * Authenticate: After submitting the correct credentials on login
+ * Authorize: Before doing something sensitive
  */
 
-export async function authenticateUser(request: Request, redirectTo?: string) {
+export async function authenticateUser(request: Request, redirectTo = "/user") {
   return authenticator.authenticate("user-pass", request, {
     successRedirect: redirectTo ? redirectTo : "/user",
     failureRedirect: "/login",
@@ -32,12 +34,25 @@ export async function authorizeUser(request: Request) {
   const userSession = await authenticator.isAuthenticated(request, {
     failureRedirect: "/login",
   });
-  invariant(userSession, "User session invalid");
+  invariant(userSession, "User Session is not available");
+  if (!userSession) {
+    await deauthenticateUser(request);
+  }
 
   const user = await userModel.getUserForSession({ id: userSession.id });
-  invariant(user, "User not found");
+  invariant(user, "User is not available");
+  if (!user) {
+    await deauthenticateUser(request);
+  }
 
   return { userSession, user };
+}
+
+export async function deauthenticateUser(
+  request: Request,
+  redirectTo = "/login"
+) {
+  await authenticator.logout(request, { redirectTo });
 }
 
 export async function getUserRedirect(request: Request) {

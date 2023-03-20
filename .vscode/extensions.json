@@ -1,12 +1,12 @@
 {
   "recommendations": [
-    "amimaro.remix-run-snippets",
     "bradlc.vscode-tailwindcss",
     "csstools.postcss",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "moalamri.inline-fold",
     "prisma.prisma",
-    "yzhang.markdown-all-in-one"
+    "yzhang.markdown-all-in-one",
+    "chiangs.remix-ts-snippets"
   ]
 }
