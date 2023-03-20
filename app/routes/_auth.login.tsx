@@ -6,6 +6,7 @@ import { useId } from "react";
 import { z } from "zod";
 
 import {
+  Alert,
   Button,
   Debug,
   Input,
@@ -113,7 +114,7 @@ export default function AuthLoginRoute() {
       }
     >
       <div data-id="auth-login" className="mx-auto w-full max-w-xs">
-        <RemixForm {...form.props} method="post" className="space-y-4">
+        <RemixForm {...form.props} method="post" className="space-y-2">
           <div className="space-y-1">
             <Label htmlFor={email.id}>Email address</Label>
             <Input
@@ -124,9 +125,11 @@ export default function AuthLoginRoute() {
               autoFocus
               required
             />
-            <p id={email.errorId} role="alert">
-              {email.error}
-            </p>
+            {email.error && (
+              <Alert variant="danger" id={email.errorId}>
+                {email.error}
+              </Alert>
+            )}
           </div>
 
           <div className="space-y-1">
@@ -137,9 +140,11 @@ export default function AuthLoginRoute() {
               autoComplete="current-password"
               required
             />
-            <p id={password.errorId} role="alert">
-              {password.error}
-            </p>
+            {password.error && (
+              <Alert variant="danger" id={password.errorId}>
+                {password.error}
+              </Alert>
+            )}
             <p className="text-sm text-surface-500">At least 8 characters</p>
           </div>
 

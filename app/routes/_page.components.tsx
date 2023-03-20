@@ -1,6 +1,7 @@
 import { json } from "@remix-run/node";
 
 import {
+  Alert,
   Anchor,
   AnchorText,
   Button,
@@ -76,6 +77,7 @@ export default function ComponentsRoute() {
         <ExampleLink />
         <ExampleButton />
         <ExampleButtonIcon />
+        <ExampleAlert />
         <ExampleToast />
       </div>
 
@@ -268,6 +270,34 @@ export function ExampleLogo() {
           <Logo size="sm" />
           <Logo />
           <Logo size="lg" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function ExampleAlert() {
+  return (
+    <section id="example-alert" className="card space-y-8">
+      <h3>Alert</h3>
+
+      <div className="stack-v">
+        <h4>Variant</h4>
+        <div className="stack-v">
+          <Alert>Alert default.</Alert>
+          <Alert variant="info">Alert info.</Alert>
+          <Alert variant="success">Alert success.</Alert>
+          <Alert variant="warning">Alert warning.</Alert>
+          <Alert variant="danger">Alert danger.</Alert>
+        </div>
+      </div>
+
+      <div className="stack-v">
+        <h4>Size</h4>
+        <div className="stack-v">
+          <Alert size="sm">Alert small.</Alert>
+          <Alert>Alert medium default.</Alert>
+          <Alert size="lg">Alert large.</Alert>
         </div>
       </div>
     </section>
