@@ -35,17 +35,17 @@ export async function authorizeUser(request: Request) {
   const userSession = await authenticator.isAuthenticated(request, {
     failureRedirect: "/login",
   });
-  invariant(userSession, "User Session is not available");
   if (!userSession) {
     await deauthenticateUser(request);
   }
+  invariant(userSession, "User Session is not available");
 
   // from database
   const user = await userModel.getUserForSession({ id: userSession.id });
-  invariant(user, "User is not available");
   if (!user) {
     await deauthenticateUser(request);
   }
+  invariant(user, "User is not available");
 
   return { userSession, user };
 }

@@ -130,69 +130,71 @@ export default function AuthLoginRoute() {
       }
     >
       <div data-id="auth-login" className="mx-auto w-full max-w-xs">
-        <RemixForm {...form.props} method="post" className="space-y-2">
-          <div className="space-y-1">
-            <Label htmlFor={email.id}>Email address</Label>
-            <Input
-              {...conform.input(email)}
-              type="email"
-              placeholder="you@email.com"
-              autoComplete="email"
-              autoFocus
-              required
-            />
-            {email.error && (
-              <Alert variant="danger" id={email.errorId}>
-                {email.error}
-              </Alert>
-            )}
-          </div>
+        <RemixForm {...form.props} method="post" className="space-y-4">
+          <fieldset
+            className="space-y-2 disabled:opacity-80"
+            disabled={isSubmitting}
+          >
+            <div className="space-y-1">
+              <Label htmlFor={email.id}>Email address</Label>
+              <Input
+                {...conform.input(email)}
+                type="email"
+                placeholder="you@email.com"
+                autoComplete="email"
+                autoFocus
+                required
+              />
+              {email.error && (
+                <Alert variant="danger" id={email.errorId}>
+                  {email.error}
+                </Alert>
+              )}
+            </div>
 
-          <div className="space-y-1">
-            <Label htmlFor={password.id}>Password</Label>
-            <Input
-              {...conform.input(password)}
-              type="password"
-              autoComplete="current-password"
-              placeholder="Enter password"
-              required
-            />
-            {password.error && (
-              <Alert variant="danger" id={password.errorId}>
-                {password.error}
-              </Alert>
-            )}
-            <p className="text-xs text-surface-500">At least 8 characters</p>
-          </div>
+            <div className="space-y-1">
+              <Label htmlFor={password.id}>Password</Label>
+              <Input
+                {...conform.input(password)}
+                type="password"
+                autoComplete="current-password"
+                placeholder="Enter password"
+                required
+              />
+              {password.error && (
+                <Alert variant="danger" id={password.errorId}>
+                  {password.error}
+                </Alert>
+              )}
+              <p className="text-xs text-surface-500">At least 8 characters</p>
+            </div>
 
-          {/* TODO: Implement later */}
-          {/* <div className="flex gap-1">
+            {/* TODO: Implement later */}
+            {/* <div className="flex gap-1">
             <Checkbox id="remember" name="remember" />
             <Label htmlFor="remember" className="cursor-pointer">
               Remember me
             </Label>
           </div> */}
 
-          <Input type="hidden" name="redirectTo" value={redirectTo} />
+            <Input type="hidden" name="redirectTo" value={redirectTo} />
 
-          <Button
-            type="submit"
-            className="w-full"
-            name="intent"
-            value="submit"
-            disabled={isSubmitting}
-          >
-            {isSubmitting && <Loader2 className="animate-spin" />}
-            {isSubmitting ? "Logging in..." : "Log in"}
-          </Button>
+            <Button
+              type="submit"
+              className="w-full"
+              name="intent"
+              value="submit"
+              disabled={isSubmitting}
+            >
+              {isSubmitting && <Loader2 className="animate-spin" />}
+              {isSubmitting ? "Logging in..." : "Log in"}
+            </Button>
+          </fieldset>
 
           <p className="text-center">
             <span>New to {configSite.name}? </span>
             <RemixLinkText
-              to={{
-                pathname: "/register",
-                search: searchParams.toString(),
-              }}
+              to={{ pathname: "/register", search: searchParams.toString() }}
             >
               Register for free
             </RemixLinkText>

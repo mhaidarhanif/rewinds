@@ -151,7 +151,7 @@ export function HeaderMainButtons({ user }: { user?: UserData }) {
         {!user && (
           <>
             <ButtonLink variant="ghost" to="/login" className="hidden md:flex">
-              Login
+              Log in
             </ButtonLink>
             <ButtonLink variant="subtle" to="/register" className="flex">
               Register

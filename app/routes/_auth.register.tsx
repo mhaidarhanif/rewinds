@@ -41,7 +41,7 @@ export const schemaRegister = z.object({
     .max(50, "Full Name limited to 50 characters"),
   username: z
     .string({ required_error: "Username is required" })
-    .regex(/^[a-zA-Z0-9]+$/, "Only alphabet and number allowed")
+    .regex(/^[a-zA-Z0-9_]+$/, "Only alphabet, number, underscore allowed")
     .min(5, "Username at least 5 characters")
     .max(20, "Username limited to 20 characters"),
   email: z
@@ -127,98 +127,99 @@ export default function AuthRegisterRoute() {
       }
     >
       <div className="mx-auto w-full max-w-xs">
-        <RemixForm {...form.props} method="post" className="space-y-2">
-          <div className="space-y-1">
-            <Label htmlFor={name.id}>Full Name</Label>
-            <Input
-              {...conform.input(name)}
-              type="text"
-              placeholder="Your Full Name"
-              autoComplete="name"
-              autoFocus
-              required
-            />
-            {name.error && (
-              <Alert variant="danger" id={name.errorId}>
-                {name.error}
-              </Alert>
-            )}
-          </div>
-
-          <div className="space-y-1">
-            <Label htmlFor={username.id}>Username</Label>
-            <Input
-              {...conform.input(username)}
-              type="text"
-              placeholder="yourname"
-              autoComplete="username"
-              autoFocus
-              required
-            />
-            {username.error && (
-              <Alert variant="danger" id={username.errorId}>
-                {username.error}
-              </Alert>
-            )}
-            <p className="text-xs text-surface-500">
-              Alphanumeric only and between 5 to 20 characters
-            </p>
-          </div>
-
-          <div className="space-y-1">
-            <Label htmlFor={email.id}>Email address</Label>
-            <Input
-              {...conform.input(email)}
-              type="email"
-              placeholder="you@email.com"
-              autoComplete="email"
-              required
-            />
-            {email.error && (
-              <Alert variant="danger" id={email.errorId}>
-                {email.error}
-              </Alert>
-            )}
-          </div>
-
-          <div className="space-y-1">
-            <Label htmlFor={password.id}>Password</Label>
-            <Input
-              {...conform.input(password)}
-              type="password"
-              autoComplete="current-password"
-              placeholder="Enter password"
-              required
-            />
-            {password.error && (
-              <Alert variant="danger" id={password.errorId}>
-                {password.error}
-              </Alert>
-            )}
-            <p className="text-xs text-surface-500">At least 8 characters</p>
-          </div>
-
-          <input type="hidden" name="redirectTo" value={redirectTo} />
-
-          <Button
-            type="submit"
-            className="w-full"
-            name="intent"
-            value="submit"
+        <RemixForm {...form.props} method="post" className="space-y-4">
+          <fieldset
+            className="space-y-2 disabled:opacity-80"
             disabled={isSubmitting}
           >
-            {isSubmitting && <Loader2 className="animate-spin" />}
-            {isSubmitting ? "Creating account..." : "Create account"}
-          </Button>
+            <div className="space-y-1">
+              <Label htmlFor={name.id}>Full Name</Label>
+              <Input
+                {...conform.input(name)}
+                type="text"
+                placeholder="Your Full Name"
+                autoComplete="name"
+                autoFocus
+                required
+              />
+              {name.error && (
+                <Alert variant="danger" id={name.errorId}>
+                  {name.error}
+                </Alert>
+              )}
+            </div>
+
+            <div className="space-y-1">
+              <Label htmlFor={username.id}>Username</Label>
+              <Input
+                {...conform.input(username)}
+                type="text"
+                placeholder="yourname"
+                autoComplete="username"
+                required
+              />
+              {username.error && (
+                <Alert variant="danger" id={username.errorId}>
+                  {username.error}
+                </Alert>
+              )}
+              <p className="text-xs text-surface-500">
+                Between 5 to 20 characters, alphanumeric/underscore
+              </p>
+            </div>
+
+            <div className="space-y-1">
+              <Label htmlFor={email.id}>Email address</Label>
+              <Input
+                {...conform.input(email)}
+                type="email"
+                placeholder="you@email.com"
+                autoComplete="email"
+                required
+              />
+              {email.error && (
+                <Alert variant="danger" id={email.errorId}>
+                  {email.error}
+                </Alert>
+              )}
+            </div>
+
+            <div className="space-y-1">
+              <Label htmlFor={password.id}>Password</Label>
+              <Input
+                {...conform.input(password)}
+                type="password"
+                autoComplete="current-password"
+                placeholder="Enter password"
+                required
+              />
+              {password.error && (
+                <Alert variant="danger" id={password.errorId}>
+                  {password.error}
+                </Alert>
+              )}
+              <p className="text-xs text-surface-500">At least 8 characters</p>
+            </div>
+
+            <input type="hidden" name="redirectTo" value={redirectTo} />
+
+            <Button
+              type="submit"
+              className="w-full"
+              name="intent"
+              value="submit"
+              disabled={isSubmitting}
+            >
+              {isSubmitting && <Loader2 className="animate-spin" />}
+              {isSubmitting ? "Creating account..." : "Create account"}
+            </Button>
+          </fieldset>
 
           <div>
             <p className="text-center">
               <span>Have an account? Please </span>
               <RemixLinkText
-                to={{
-                  pathname: "/login",
-                  search: searchParams.toString(),
-                }}
+                to={{ pathname: "/login", search: searchParams.toString() }}
               >
                 Log in
               </RemixLinkText>

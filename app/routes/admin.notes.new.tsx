@@ -2,7 +2,7 @@ import { conform, useForm } from "@conform-to/react";
 import { getFieldsetConstraint, parse } from "@conform-to/zod";
 import { redirect } from "@remix-run/node";
 import { json } from "@remix-run/node";
-import { useActionData, useCatch } from "@remix-run/react";
+import { useActionData, useCatch, useNavigation } from "@remix-run/react";
 import { useId } from "react";
 import { z } from "zod";
 
@@ -60,6 +60,8 @@ export async function action({ request }: ActionArgs) {
 
 export default function AdminNotesNewRoute() {
   const actionData = useActionData<typeof action>();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
 
   const id = useId();
   const [form, { title, description, content }] = useForm<
@@ -87,70 +89,75 @@ export default function AdminNotesNewRoute() {
         method="post"
         className="card max-w-lg space-y-4"
       >
-        <header>
+        <fieldset
+          className="space-y-2 disabled:opacity-80"
+          disabled={isSubmitting}
+        >
+          <header>
+            <div className="space-y-1">
+              <Label htmlFor={title.id}>Title</Label>
+              <Input
+                {...conform.input(title)}
+                type="text"
+                placeholder="Note title or what's on your mind?"
+                defaultValue={isDevelopment ? "A new example" : ""}
+                autoFocus
+              />
+              <p id={title.errorId} role="alert">
+                {title.error}
+              </p>
+            </div>
+
+            <div className="space-y-1">
+              <Label htmlFor={description.id}>Description</Label>
+              <Input
+                {...conform.input(description)}
+                type="text"
+                placeholder="Add a short description"
+                defaultValue={isDevelopment ? "The description" : ""}
+              />
+              <p id={description.errorId} role="alert">
+                {description.error}
+              </p>
+            </div>
+          </header>
+
           <div className="space-y-1">
-            <Label htmlFor={title.id}>Title</Label>
-            <Input
-              {...conform.input(title)}
-              type="text"
-              placeholder="Note title or what's on your mind?"
-              defaultValue={isDevelopment ? "A new example" : ""}
-              autoFocus
+            <Label htmlFor={content.id}>Content</Label>
+            <TextArea
+              {...conform.input(content)}
+              placeholder="Type your longer content here..."
+              rows={10}
+              defaultValue={
+                isDevelopment ? "Here is the long content about the note." : ""
+              }
             />
-            <p id={title.errorId} role="alert">
-              {title.error}
+            <p id={content.errorId} role="alert">
+              {content.error}
+            </p>
+            <p className="text-sm text-surface-500">
+              The note has a maximum content length of 1,000 characters.
             </p>
           </div>
 
-          <div className="space-y-1">
-            <Label htmlFor={description.id}>Description</Label>
-            <Input
-              {...conform.input(description)}
-              type="text"
-              placeholder="Add a short description"
-              defaultValue={isDevelopment ? "The description" : ""}
-            />
-            <p id={description.errorId} role="alert">
-              {description.error}
-            </p>
+          <div className="flex gap-2">
+            <Button
+              type="submit"
+              variant="subtle"
+              className="grow"
+              name="intent"
+              value="submit"
+            >
+              Save Note
+            </Button>
+            <Button type="reset" variant="ghost">
+              Reset
+            </Button>
+            <ButtonLink to={`/admin/notes`} variant="link" accent="red">
+              <span>Cancel</span>
+            </ButtonLink>
           </div>
-        </header>
-
-        <div className="space-y-1">
-          <Label htmlFor={content.id}>Content</Label>
-          <TextArea
-            {...conform.input(content)}
-            placeholder="Type your longer content here..."
-            rows={10}
-            defaultValue={
-              isDevelopment ? "Here is the long content about the note." : ""
-            }
-          />
-          <p id={content.errorId} role="alert">
-            {content.error}
-          </p>
-          <p className="text-sm text-surface-500">
-            The note has a maximum content length of 1,000 characters.
-          </p>
-        </div>
-
-        <div className="flex gap-2">
-          <Button
-            type="submit"
-            variant="subtle"
-            className="grow"
-            name="intent"
-            value="submit"
-          >
-            Save Note
-          </Button>
-          <Button type="reset" variant="ghost">
-            Reset
-          </Button>
-          <ButtonLink to={`/admin/notes`} variant="link" accent="red">
-            <span>Cancel</span>
-          </ButtonLink>
-        </div>
+        </fieldset>
       </RemixForm>
 
       <Debug name="actionData">
