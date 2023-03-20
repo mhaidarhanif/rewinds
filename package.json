@@ -9,9 +9,6 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "postinstall": "nr clean && nr prisma:generate",
-    "reveal": "remix reveal",
-    "clean": "rm -rf build public/build",
     "dev": "run-p dev:*",
     "dev:remix": "cross-env NODE_ENV=development remix dev",
     "dev:serve": "cross-env NODE_ENV=development nodemon --require dotenv/config ./server-express.js --watch ./server-express.js",
@@ -24,16 +21,19 @@
     "prisma:push:seed": "prisma db push && prisma db seed",
     "prisma:seed": "prisma db seed",
     "prisma:reset": "prisma db push --force-reset",
-    "fix": "nr format:fix && nr eslint:fix",
     "check": "run-p check:*",
     "check:types": "tsc --noEmit",
-    "check:lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
-    "eslint": "DEBUG=eslint:cli-engine nr check:lint",
-    "eslint:fix": "eslint . --fix --cache --cache-location ./node_modules/.cache/eslint .",
-    "stylelint": "stylelint ./app/styles/*.css",
-    "stylelint:fix": "stylelint --fix ./app/styles/*.css",
-    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
-    "format:fix": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache"
+    "check:format": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
+    "check:eslint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
+    "check:stylelint": "stylelint ./app/styles/*.css",
+    "fix": "run-p fix:*",
+    "fix:format": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
+    "fix:eslint": "eslint . --fix --cache --cache-location ./node_modules/.cache/eslint .",
+    "fix:stylelint": "stylelint --fix ./app/styles/*.css",
+    "debug:eslint": "DEBUG=eslint:cli-engine nr check:lint",
+    "reveal": "remix reveal",
+    "clean": "rm -rf build public/build",
+    "postinstall": "nr clean && nr prisma:generate"
   },
   "engines": {
     "node": ">=14"
