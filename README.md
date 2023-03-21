@@ -117,8 +117,9 @@ More details and references can also be checked from [`catamyst/stack`](https://
   - [Testing Library](https://testing-library.com)
   - [Playwright](https://playwright.dev)
 - Tooling
-  - [Prettier]()
-  - [ESLint]()
+  - [Prettier](https://prettier.io)
+  - [ESLint](https://eslint.org)
+  - [Doppler](https://doppler.com)
 - Deployment
   - [Vercel](https://vercel.com)
 
@@ -171,7 +172,7 @@ cp -i .env.example .env
 # then edit `.env` as you prefer
 ```
 
-Or use [Doppler](htts://doppler.com) CLI to manage them:
+Or use [Doppler](https://doppler.com) CLI to manage them:
 
 ```sh
 doppler secrets download --no-file --format env > .env

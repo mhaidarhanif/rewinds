@@ -56,7 +56,7 @@ export default function SplatUsernameRoute() {
           <header>
             <div className="contain-full">
               <img
-                className="max-h-80 rounded-b-lg"
+                className="h-40 rounded-b-lg sm:h-60 md:h-80"
                 alt="User Cover"
                 src={`https://images.unsplash.com/photo-1571745544682-143ea663cf2c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80`}
                 height={300}
