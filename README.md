@@ -1,4 +1,4 @@
-# ⏪ Rewinds — Remix Tailwind Starter Kit
+# ⏪ Rewinds
 
 # Introduction
 
@@ -19,6 +19,15 @@ Check out the code and the demo:
 - [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com)
 - [rewinds.vercel.app](https://rewinds.vercel.app)
 - [rewinds.dev](https://rewinds.dev) (Sooner or later)
+
+You can use this to build any web app. Also what I'm using Rewinds for.
+
+- Learning platform
+- Content management system
+- Ecommerce
+- Social media
+- Gallery
+- Inventory
 
 As for now, this README is the only main documentation.
 
@@ -43,13 +52,16 @@ Why creating this? Well, because I had a lot of recent projects with these same 
 
 # Table of Contents
 
-- [⏪ Rewinds — Remix Tailwind Starter Kit](#-rewinds--remix-tailwind-starter-kit)
+- [⏪ Rewinds](#-rewinds)
 - [Introduction](#introduction)
   - [Some Screenshots](#some-screenshots)
   - [Some Details](#some-details)
   - [Some Background](#some-background)
 - [Table of Contents](#table-of-contents)
 - [Tech Stack](#tech-stack)
+  - [Primary](#primary)
+  - [Complete](#complete)
+  - [Extra](#extra)
 - [Development](#development)
   - [Install Dependencies](#install-dependencies)
   - [Setup Environment Variables](#setup-environment-variables)
@@ -66,7 +78,8 @@ Why creating this? Well, because I had a lot of recent projects with these same 
     - [Rewinds In The Wild](#rewinds-in-the-wild)
     - [React](#react)
     - [Tailwind CSS](#tailwind-css)
-  - [Todos](#todos)
+  - [Checklist](#checklist)
+    - [Todos](#todos)
 
 # Tech Stack
 

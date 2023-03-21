@@ -1,3 +1,3 @@
 # Rewinds
 
-Remix Tailwind Starter Kit.
+Web app starter kit with Remix and Tailwind.

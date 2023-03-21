@@ -190,7 +190,7 @@ export default function AuthRegisterRoute() {
                 {...conform.input(password)}
                 type="password"
                 autoComplete="current-password"
-                placeholder="Enter password"
+                placeholder="Password (at least 8 characters)"
                 required
               />
               {password.error && (
@@ -217,11 +217,10 @@ export default function AuthRegisterRoute() {
 
           <div>
             <p className="text-center">
-              <span>Have an account? Please </span>
               <RemixLinkText
                 to={{ pathname: "/login", search: searchParams.toString() }}
               >
-                Log in
+                Have an account? Log in
               </RemixLinkText>
             </p>
           </div>

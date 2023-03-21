@@ -1,7 +1,7 @@
 {
   "name": "Rewinds",
   "short_name": "Rewinds",
-  "description": "Remix Tailwind Starter Kit",
+  "description": "Web app starter kit with Remix and Tailwind",
   "start_url": "https://rewinds.mhaidarhanif.com",
   "icons": [
     {

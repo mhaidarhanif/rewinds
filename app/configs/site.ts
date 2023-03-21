@@ -12,9 +12,9 @@ export const configSite = {
 
   slug: "rewinds",
   name: "Rewinds",
-  title: "Rewinds: Remix Tailwind Starter Kit",
+  title: "Rewinds: a web app starter kit",
   description:
-    "Rewinds is a Remix stack with Tailwind CSS, Radix UI, and their ecosystem. Made by @mhaidarhanif.",
+    "Rewinds is a web app starter kit with Remix, Tailwind CSS, Radix UI, and their ecosystem. Made by @mhaidarhanif.",
 
   links: {
     website: "https://mhaidarhanif.com",

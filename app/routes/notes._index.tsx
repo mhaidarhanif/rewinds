@@ -26,7 +26,7 @@ export default function NotesIndexRoute() {
       </PageHeader>
 
       <section>
-        <ul className="grid auto-rows-auto grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <ul className="grid auto-rows-auto grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {notes.map((note) => {
             return (
               <li key={note.slug} className="card space-y-4">

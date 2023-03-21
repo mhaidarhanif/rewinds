@@ -192,11 +192,10 @@ export default function AuthLoginRoute() {
           </fieldset>
 
           <p className="text-center">
-            <span>New to {configSite.name}? </span>
             <RemixLinkText
               to={{ pathname: "/register", search: searchParams.toString() }}
             >
-              Register for free
+              New to {configSite.name}? Register for free
             </RemixLinkText>
           </p>
         </RemixForm>
