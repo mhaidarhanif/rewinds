@@ -35,7 +35,7 @@ export const meta: V2_MetaFunction<typeof loader> = ({ params, data }) => {
  */
 export async function loader({ params }: LoaderArgs) {
   const { username } = params;
-  invariant(username, "userId doesn not exist");
+  invariant(username, "userId does not exist");
 
   const user = await userModel.getUserByUsername({ username });
   if (!user) {

@@ -26,7 +26,7 @@ export const handle = createSitemap();
 
 export async function loader({ params }: LoaderArgs) {
   const { userId } = params;
-  invariant(userId, "userId doesn not exist");
+  invariant(userId, "userId does not exist");
 
   const user = await adminUser.getUser({ id: userId });
   return json({ user });
@@ -41,7 +41,7 @@ export default function AdminUsersViewRoute() {
   const { user } = useLoaderData<typeof loader>();
 
   if (!user) {
-    return <p>User doesn not exist.</p>;
+    return <p>User does not exist.</p>;
   }
 
   return (

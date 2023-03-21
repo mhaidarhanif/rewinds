@@ -19,7 +19,7 @@ export const handle = createSitemap();
 
 export async function loader({ params }: LoaderArgs) {
   const { noteId } = params;
-  invariant(noteId, "noteId doesn not exist");
+  invariant(noteId, "noteId does not exist");
 
   const note = await adminNote.getNote({ id: noteId });
   return json({ note });
@@ -27,7 +27,7 @@ export async function loader({ params }: LoaderArgs) {
 
 export async function action({ params }: ActionArgs) {
   const { noteId } = params;
-  invariant(noteId, "noteId doesn not exist");
+  invariant(noteId, "noteId does not exist");
 
   return redirect(`/admin/notes/${noteId}`);
 }
@@ -37,7 +37,7 @@ export default function AdminNotesEditRoute() {
   const { note } = useLoaderData<typeof loader>();
 
   if (!note) {
-    return <p>Note doesn not exist.</p>;
+    return <p>Note does not exist.</p>;
   }
 
   return (

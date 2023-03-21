@@ -11,7 +11,7 @@ export const handle = createSitemap();
 
 export async function loader({ params }: LoaderArgs) {
   const { noteSlug } = params;
-  invariant(noteSlug, "noteSlug doesn not exist");
+  invariant(noteSlug, "noteSlug does not exist");
 
   return json({
     note: await note.getNoteBySlug({ slug: noteSlug }),
@@ -23,7 +23,7 @@ export default function NotesViewRoute() {
   const { note } = useLoaderData<typeof loader>();
 
   if (!note) {
-    return <p>Note doesn not exist or maybe still unpublished.</p>;
+    return <p>Note does not exist or maybe still unpublished.</p>;
   }
 
   return (
