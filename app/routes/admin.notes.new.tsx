@@ -4,7 +4,6 @@ import { redirect } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useActionData, useCatch, useNavigation } from "@remix-run/react";
 import { useId } from "react";
-import { z } from "zod";
 
 import {
   Button,
@@ -17,22 +16,15 @@ import {
 } from "~/components";
 import { authorizeUser } from "~/helpers";
 import { adminNote } from "~/models";
+import { schemaNote } from "~/schemas";
 import { createSitemap } from "~/utils";
 
 import type { ActionArgs } from "@remix-run/node";
+import type { z } from "zod";
 
 const isDevelopment = process.env.NODE_ENV === "development";
 
 export const handle = createSitemap();
-
-export const schemaNote = z.object({
-  title: z.string().min(1, "Title is required"),
-  description: z.string().min(1, "Description is required"),
-  content: z
-    .string()
-    .min(1, "Content is required")
-    .max(1000, "Content length max of 1000 characters"),
-});
 
 export async function action({ request }: ActionArgs) {
   const { userSession } = await authorizeUser(request);
@@ -70,11 +62,9 @@ export default function AdminNotesNewRoute() {
     id,
     initialReport: "onSubmit",
     lastSubmission: actionData,
-    // client-side validation that can be overriden
     onValidate({ formData }) {
       return parse(formData, { schema: schemaNote });
     },
-    // more schema details
     constraint: getFieldsetConstraint(schemaNote),
   });
 

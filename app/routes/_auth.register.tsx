@@ -3,7 +3,6 @@ import { getFieldsetConstraint, parse } from "@conform-to/zod";
 import { json } from "@remix-run/node";
 import { useActionData, useNavigation } from "@remix-run/react";
 import { useId } from "react";
-import { z } from "zod";
 
 import {
   Alert,
@@ -19,6 +18,7 @@ import {
 import { configSite } from "~/configs";
 import { Loader2 } from "~/icons";
 import { userModel } from "~/models";
+import { schemaUserRegister } from "~/schemas";
 import { authenticator } from "~/services";
 import {
   createDocumentLinks,
@@ -33,25 +33,7 @@ import type {
   V2_MetaFunction,
   LinksFunction,
 } from "@remix-run/node";
-
-export const schemaRegister = z.object({
-  name: z
-    .string({ required_error: "Full Name is required" })
-    .min(1, "Full Name at least 1 character")
-    .max(50, "Full Name limited to 50 characters"),
-  username: z
-    .string({ required_error: "Username is required" })
-    .regex(/^[a-zA-Z0-9_]+$/, "Only alphabet, number, underscore allowed")
-    .min(5, "Username at least 5 characters")
-    .max(20, "Username limited to 20 characters"),
-  email: z
-    .string({ required_error: "Email is required" })
-    .email("Email is invalid"),
-  password: z
-    .string({ required_error: "Password is required" })
-    .min(8, "Password length at least 8 characters")
-    .max(100, "Password length limited to 100 characters"),
-});
+import type { z } from "zod";
 
 export const meta: V2_MetaFunction = () => {
   return createMetaData({
@@ -78,7 +60,7 @@ export async function action({ request }: ActionArgs) {
   const clonedRequest = request.clone();
 
   const formData = await clonedRequest.formData();
-  const submission = parse(formData, { schema: schemaRegister });
+  const submission = parse(formData, { schema: schemaUserRegister });
   if (!submission.value || submission.intent !== "submit") {
     return json(submission, { status: 400 });
   }
@@ -105,13 +87,13 @@ export default function AuthRegisterRoute() {
   const actionData = useActionData<typeof action>();
 
   const id = useId();
-  const [form, fields] = useForm<z.infer<typeof schemaRegister>>({
+  const [form, fields] = useForm<z.infer<typeof schemaUserRegister>>({
     id,
     initialReport: "onSubmit",
     lastSubmission: actionData,
-    constraint: getFieldsetConstraint(schemaRegister),
+    constraint: getFieldsetConstraint(schemaUserRegister),
     onValidate({ formData }) {
-      return parse(formData, { schema: schemaRegister });
+      return parse(formData, { schema: schemaUserRegister });
     },
   });
   const { name, username, email, password } = fields;

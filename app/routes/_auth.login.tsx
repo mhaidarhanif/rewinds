@@ -3,7 +3,6 @@ import { getFieldsetConstraint, parse } from "@conform-to/zod";
 import { json } from "@remix-run/node";
 import { useActionData, useNavigation } from "@remix-run/react";
 import { useId } from "react";
-import { z } from "zod";
 
 import {
   Alert,
@@ -19,6 +18,7 @@ import {
 import { configSite } from "~/configs";
 import { Loader2 } from "~/icons";
 import { userModel } from "~/models";
+import { schemaUserLogin } from "~/schemas";
 import { authenticator } from "~/services";
 import {
   createDocumentLinks,
@@ -33,15 +33,7 @@ import type {
   LoaderArgs,
   LinksFunction,
 } from "@remix-run/node";
-
-export const schemaLogin = z.object({
-  email: z
-    .string({ required_error: "Email is required" })
-    .email("Email is invalid"),
-  password: z
-    .string({ required_error: "Password is required" })
-    .min(8, "Password length at least 8 characters"),
-});
+import type { z } from "zod";
 
 export const meta: V2_MetaFunction = () => {
   return createMetaData({
@@ -69,7 +61,7 @@ export async function action({ request }: ActionArgs) {
   const clonedRequest = request.clone();
 
   const formData = await clonedRequest.formData();
-  const submission = parse(formData, { schema: schemaLogin });
+  const submission = parse(formData, { schema: schemaUserLogin });
   if (!submission.value || submission.intent !== "submit") {
     return json(submission, { status: 400 });
   }
@@ -108,13 +100,13 @@ export default function AuthLoginRoute() {
   const actionData = useActionData<typeof action>();
 
   const id = useId();
-  const [form, fields] = useForm<z.infer<typeof schemaLogin>>({
+  const [form, fields] = useForm<z.infer<typeof schemaUserLogin>>({
     id,
     initialReport: "onSubmit",
     lastSubmission: actionData,
-    constraint: getFieldsetConstraint(schemaLogin),
+    constraint: getFieldsetConstraint(schemaUserLogin),
     onValidate({ formData }) {
-      return parse(formData, { schema: schemaLogin });
+      return parse(formData, { schema: schemaUserLogin });
     },
   });
   const { email, password } = fields;
