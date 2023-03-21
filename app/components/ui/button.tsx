@@ -124,9 +124,12 @@ export const buttonVariants = cva(
     ],
     defaultVariants: {
       variant: "default",
-      align: "default",
-      weight: "default",
+      accent: "default",
       size: "default",
+      weight: "default",
+      radius: "default",
+      align: "default",
+      isIcon: false,
     },
   }
 );
@@ -155,11 +158,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           buttonVariants({
             variant,
             accent,
+            size,
             weight,
             radius,
             align,
             isIcon: false,
-            size,
             className,
           })
         )}

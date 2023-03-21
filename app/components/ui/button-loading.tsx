@@ -16,14 +16,16 @@ export interface ButtonLoadingProps
 export const ButtonLoading = forwardRef<HTMLButtonElement, ButtonLoadingProps>(
   (
     {
-      variant,
-      accent,
-      size,
-      radius,
+      variant = "default",
+      accent = "default",
+      size = "default",
+      weight = "default",
+      radius = "default",
+      align = "default",
       className,
+      children,
       isSubmitting,
       loadingText,
-      children,
       ...props
     },
     ref
@@ -34,8 +36,11 @@ export const ButtonLoading = forwardRef<HTMLButtonElement, ButtonLoadingProps>(
           buttonVariants({
             variant,
             accent,
-            radius,
             size,
+            weight,
+            radius,
+            align,
+            isIcon: false,
             className,
           })
         )}
