@@ -52,7 +52,7 @@ export default function AdminUsersViewRoute() {
 
           <ButtonLink to="edit" size="xs" variant="info">
             <EditPencil className="size-xs" />
-            <span> Edit</span>
+            <span>Edit</span>
           </ButtonLink>
 
           <RemixForm method="delete">
@@ -63,7 +63,7 @@ export default function AdminUsersViewRoute() {
               value="delete-user"
             >
               <Trash className="size-xs" />
-              <span> Delete</span>
+              <span>Delete</span>
             </Button>
           </RemixForm>
         </div>

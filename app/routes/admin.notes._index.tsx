@@ -1,7 +1,8 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import { Debug, RemixLink } from "~/components";
+import { ButtonLink, Debug, RemixLink } from "~/components";
+import { Eye } from "~/icons";
 import { adminNote } from "~/models";
 import { createSitemap } from "~/utils";
 
@@ -24,7 +25,13 @@ export default function AdminNotesRoute() {
   return (
     <div className="stack-v">
       <header>
-        <span>All Notes</span>
+        <div className="stack-h-center">
+          <span>All Notes</span>
+          <ButtonLink to="/notes" size="xs" variant="info">
+            <Eye className="size-xs" />
+            <span>View All</span>
+          </ButtonLink>
+        </div>
       </header>
 
       <ul className="space-y-2">

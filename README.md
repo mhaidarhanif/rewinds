@@ -347,13 +347,21 @@ module.exports = {
 
 ## References
 
-### Rewinds In The Wild
+### Rewinds in the Wild
 
 Some other projects using Rewinds:
 
 - [M Haidar Hanif Website](https://github.com/mhaidarhanif/mhaidarhanif-web)
 - [Catamyst](https://github.com/catamyst/catamyst-web)
 - [Super Duper Gallery](https://github.com/jonathannicolasdev/superduper)
+
+### Remix
+
+- [Remix Docs](http://remix.run)
+- [Remix Blog Tutorial](http://remix.run/docs/en/main/tutorials/blog)
+- [Up and Running with Remix - Kent C. Dodds - egghead.io](https://egghead.io/courses/up-and-running-with-remix-b82b6bb6)
+- [Build a Fullstack App with Remix and Prisma - Prisma YouTub Playlist](https://www.youtube.com/watch?v=4tXGRe5CDDg&list=PLn2e1F9Rfr6kPDIAbfkOxgDLf4N3bFiMn)
+- [Build a Fullstack App with Remix and Prisma - Prisma Blog](https://prisma.io/blog/fullstack-remix-prisma-mongodb-1-7D0BfTXBmB6r)
 
 ### React
 

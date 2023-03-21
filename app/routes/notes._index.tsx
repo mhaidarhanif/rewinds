@@ -21,7 +21,7 @@ export default function NotesIndexRoute() {
   return (
     <div>
       <PageHeader isTextCentered withBackground={false} size="sm">
-        <h1>All notes</h1>
+        <h1>All Notes</h1>
         <p>All published notes from the users.</p>
       </PageHeader>
 

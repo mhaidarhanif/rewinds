@@ -9,6 +9,7 @@ export {
   Cloud,
   Copy,
   CreditCard,
+  Eye,
   File,
   Github,
   Globe,

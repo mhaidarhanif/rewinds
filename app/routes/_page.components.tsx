@@ -154,19 +154,19 @@ export function ExampleButton() {
         <div className="stack-h-center">
           <Button size="sm">
             <Mail className="size-sm" />
-            <span> Login with Email</span>
+            <span>Login with Email</span>
           </Button>
           <Button size="sm" variant="success">
-            <span> Mark as Complete</span>
+            <span>Mark as Complete</span>
             <CheckCircle className="size-sm" />
           </Button>
           <Button size="xs" variant="info">
             <EditPencil className="size-xs" />
-            <span> Edit</span>
+            <span>Edit</span>
           </Button>
           <Button size="xs" variant="danger">
             <Trash className="size-xs" />
-            <span> Delete</span>
+            <span>Delete</span>
           </Button>
           <CopyButton
             variant="ghost"

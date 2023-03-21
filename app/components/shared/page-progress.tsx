@@ -48,7 +48,7 @@ export function PageProgress({
       <div>
         <Button variant="success" onClick={handleMarkAsComplete}>
           <CheckCircle className="size-md" />
-          <span> Mark as Complete</span>
+          <span>Mark as Complete</span>
         </Button>
       </div>
     </aside>

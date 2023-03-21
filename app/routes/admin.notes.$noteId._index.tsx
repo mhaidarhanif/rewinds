@@ -13,7 +13,7 @@ import {
   TooltipTrigger,
 } from "~/components";
 import { authorizeUser } from "~/helpers";
-import { EditPencil, Trash } from "~/icons";
+import { EditPencil, Eye, Trash } from "~/icons";
 import { adminNote } from "~/models";
 import {
   createSitemap,
@@ -67,12 +67,14 @@ export default function AdminNotesViewRoute() {
       <header>
         <div className="stack-h-center">
           <span>View Note</span>
-
-          <ButtonLink to="edit" size="xs" variant="info">
-            <EditPencil className="size-xs" />
-            <span> Edit</span>
+          <ButtonLink to={`/notes/${note.slug}`} size="xs" variant="info">
+            <Eye className="size-xs" />
+            <span>View</span>
           </ButtonLink>
-
+          <ButtonLink to="edit" size="xs" variant="warning">
+            <EditPencil className="size-xs" />
+            <span>Edit</span>
+          </ButtonLink>
           <RemixForm method="delete">
             <input type="hidden" name="noteId" value={note.id} />
             <Button
@@ -82,7 +84,7 @@ export default function AdminNotesViewRoute() {
               value="delete-note"
             >
               <Trash className="size-xs" />
-              <span> Delete</span>
+              <span>Delete</span>
             </Button>
           </RemixForm>
         </div>
