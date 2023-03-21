@@ -20,9 +20,9 @@ export const pageHeaderVariants = cva("", {
     },
   },
   compoundVariants: [
-    { size: "xs", withMarginBottom: true, class: "mb-3" },
-    { size: "sm", withMarginBottom: true, class: "mb-6" },
-    { size: "default", withMarginBottom: true, class: "mb-12" },
+    { size: "xs", withMarginBottom: true, class: "mb-4" },
+    { size: "sm", withMarginBottom: true, class: "mb-8" },
+    { size: "default", withMarginBottom: true, class: "mb-16" },
   ],
   defaultVariants: {
     size: "default",

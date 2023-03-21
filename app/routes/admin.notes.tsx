@@ -68,7 +68,7 @@ export default function AdminNotesRoute() {
         )}
       </PageAdminHeader>
 
-      <div data-id="admin-notes-outlet" className="p-2 sm:p-4">
+      <div data-id="admin-notes-outlet" className="px-2 sm:px-4">
         <Outlet />
       </div>
     </div>

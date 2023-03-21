@@ -6,7 +6,7 @@ import { useId } from "react";
 
 import {
   Alert,
-  Button,
+  ButtonLoading,
   Debug,
   Input,
   Label,
@@ -16,7 +16,6 @@ import {
   RemixLinkText,
 } from "~/components";
 import { configSite } from "~/configs";
-import { Loader2 } from "~/icons";
 import { userModel } from "~/models";
 import { schemaUserRegister } from "~/schemas";
 import { authenticator } from "~/services";
@@ -185,16 +184,16 @@ export default function AuthRegisterRoute() {
 
             <input type="hidden" name="redirectTo" value={redirectTo} />
 
-            <Button
+            <ButtonLoading
               type="submit"
               className="w-full"
               name="intent"
               value="submit"
-              disabled={isSubmitting}
+              isSubmitting={isSubmitting}
+              loadingText="Creating account..."
             >
-              {isSubmitting && <Loader2 className="animate-spin" />}
-              {isSubmitting ? "Creating account..." : "Create account"}
-            </Button>
+              Create account
+            </ButtonLoading>
           </fieldset>
 
           <div>

@@ -31,7 +31,7 @@ export async function authenticateUser(request: Request, redirectTo = "/user") {
 }
 
 export async function authorizeUser(request: Request) {
-  // local
+  // user session from app cookie
   const userSession = await authenticator.isAuthenticated(request, {
     failureRedirect: "/login",
   });
@@ -40,7 +40,7 @@ export async function authorizeUser(request: Request) {
   }
   invariant(userSession, "User Session is not available");
 
-  // from database
+  // user data from database
   const user = await userModel.getUserForSession({ id: userSession.id });
   if (!user) {
     await deauthenticateUser(request);

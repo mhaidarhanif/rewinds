@@ -8,6 +8,7 @@ import { useId } from "react";
 import {
   Button,
   ButtonLink,
+  ButtonLoading,
   Debug,
   Input,
   Label,
@@ -16,7 +17,7 @@ import {
 } from "~/components";
 import { authorizeUser } from "~/helpers";
 import { adminNote } from "~/models";
-import { schemaNote } from "~/schemas";
+import { schemaNoteNew } from "~/schemas";
 import { createSitemap } from "~/utils";
 
 import type { ActionArgs } from "@remix-run/node";
@@ -30,7 +31,7 @@ export async function action({ request }: ActionArgs) {
   const { userSession } = await authorizeUser(request);
 
   const formData = await request.formData();
-  const submission = parse(formData, { schema: schemaNote });
+  const submission = parse(formData, { schema: schemaNoteNew });
   if (!submission.value || submission.intent !== "submit") {
     return json(submission, { status: 400 });
   }
@@ -57,15 +58,15 @@ export default function AdminNotesNewRoute() {
 
   const id = useId();
   const [form, { title, description, content }] = useForm<
-    z.infer<typeof schemaNote>
+    z.infer<typeof schemaNoteNew>
   >({
     id,
     initialReport: "onSubmit",
     lastSubmission: actionData,
     onValidate({ formData }) {
-      return parse(formData, { schema: schemaNote });
+      return parse(formData, { schema: schemaNoteNew });
     },
-    constraint: getFieldsetConstraint(schemaNote),
+    constraint: getFieldsetConstraint(schemaNoteNew),
   });
 
   return (
@@ -80,8 +81,8 @@ export default function AdminNotesNewRoute() {
         className="card max-w-lg space-y-4"
       >
         <fieldset
-          className="space-y-2 disabled:opacity-80"
           disabled={isSubmitting}
+          className="space-y-2 disabled:opacity-80"
         >
           <header>
             <div className="space-y-1">
@@ -131,15 +132,17 @@ export default function AdminNotesNewRoute() {
           </div>
 
           <div className="flex gap-2">
-            <Button
+            <ButtonLoading
               type="submit"
               variant="subtle"
               className="grow"
               name="intent"
               value="submit"
+              isSubmitting={isSubmitting}
+              loadingText="Saving..."
             >
-              Save Note
-            </Button>
+              Save
+            </ButtonLoading>
             <Button type="reset" variant="ghost">
               Reset
             </Button>
@@ -149,10 +152,6 @@ export default function AdminNotesNewRoute() {
           </div>
         </fieldset>
       </RemixForm>
-
-      <Debug name="actionData">
-        {{ actionData, title, description, content }}
-      </Debug>
     </div>
   );
 }
@@ -162,10 +161,8 @@ export function CatchBoundary() {
 
   return (
     <div>
-      <h1>Error {caught.status}</h1>
-      <pre>
-        <code>{JSON.stringify(caught.data, null, 2)}</code>
-      </pre>
+      <h1>Error when add new: {caught.status}</h1>
+      <Debug name="caught.data">{caught.data}</Debug>
     </div>
   );
 }

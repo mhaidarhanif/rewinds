@@ -164,9 +164,9 @@
       "    <div>",
       "      <h1>Caught</h1>",
       "      <p>Status: {caught.status}</p>",
-      "      <pre>",
-      "        <code>{JSON.stringify(caught.data, null, 2)}</code>",
-      "      </pre>",
+      "      <Debug name=\"caught.data\">",
+      "        {caught.data}",
+      "      </Debug>",
       "    </div>",
       "  );",
       "}"

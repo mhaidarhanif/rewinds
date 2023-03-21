@@ -1,5 +1,5 @@
 import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, useParams } from "@remix-run/react";
 
 import { AnchorText, Balancer, Layout, PageHeader } from "~/components";
 import { configMeta } from "~/configs";
@@ -47,6 +47,7 @@ export async function loader({ params }: LoaderArgs) {
 
 export default function SplatUsernameRoute() {
   const { user } = useLoaderData<typeof loader>();
+  const params = useParams();
 
   if (user) {
     return (
@@ -88,7 +89,9 @@ export default function SplatUsernameRoute() {
           <h1>
             <Balancer>Oops, Error 404: Page Not Found</Balancer>
           </h1>
-          <p>Sorry, this page is not available..</p>
+          <h2>
+            Sorry, this page <b>/{params.username}</b> is not available.
+          </h2>
         </PageHeader>
       }
     >

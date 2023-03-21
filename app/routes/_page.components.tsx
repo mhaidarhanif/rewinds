@@ -8,6 +8,7 @@ import {
   ButtonAnchor,
   ButtonIcon,
   ButtonLink,
+  ButtonLoading,
   CopyButton,
   Input,
   Label,
@@ -181,9 +182,18 @@ export function ExampleButton() {
         <h4>With Loading Icon</h4>
         <div className="stack-h-center">
           <Button size="sm" disabled>
-            <Loader2 className="size-sm mr-2 animate-spin" />
+            <Loader2 className="size-sm animate-spin" />
             <span>Loading...</span>
           </Button>
+          <ButtonLoading
+            className="w-full"
+            name="intent"
+            value="submit"
+            isSubmitting={true}
+            loadingText="Button is loading..."
+          >
+            Button is not loading
+          </ButtonLoading>
         </div>
       </div>
     </section>

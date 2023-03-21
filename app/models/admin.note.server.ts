@@ -1,4 +1,4 @@
-import { createNoteSlug } from "~/helpers";
+import { createNoteSlug, updateNoteSlug } from "~/helpers";
 import { prisma } from "~/libs";
 import { publicUserFields } from "~/models";
 
@@ -19,20 +19,39 @@ export const adminNote = {
   async getNote({ id }: Pick<Note, "id">) {
     return prisma.note.findFirst({
       where: { id },
-      include: { user: true },
+      include: { user: { select: publicUserFields } },
     });
   },
 
   async addNewNote({
     user,
     note,
-  }: { user: Pick<User, "id"> } & {
+  }: {
+    user: Pick<User, "id">;
     note: Pick<Note, "title" | "description" | "content">;
   }) {
     return prisma.note.create({
       data: {
         user: { connect: { id: user.id } },
         slug: createNoteSlug(note),
+        title: note.title.trim(),
+        description: note.description.trim(),
+        content: note.content.trim(),
+      },
+    });
+  },
+
+  async updateNote({
+    note,
+  }: {
+    note: Pick<Note, "id" | "slug" | "title" | "description" | "content">;
+  }) {
+    return prisma.note.update({
+      where: {
+        id: note.id,
+      },
+      data: {
+        slug: updateNoteSlug(note),
         title: note.title.trim(),
         description: note.description.trim(),
         content: note.content.trim(),

@@ -32,8 +32,11 @@ export default function NotesViewRoute() {
         <h1>
           <Balancer>{note.title}</Balancer>
         </h1>
-        {note.description && <h2>{note.description}</h2>}
-        <p>{note.content}</p>
+        <h2>{note.description}</h2>
+
+        <div className="prose-config whitespace-pre-wrap sm:prose-xl sm:py-4">
+          {note.content}
+        </div>
       </article>
     </div>
   );

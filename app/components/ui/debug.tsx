@@ -17,7 +17,7 @@ export function Debug({
     return null;
   }
 
-  if (configDev.enableDebugComponent !== true) {
+  if (configDev.features.debugComponent !== true) {
     return null;
   }
 
@@ -33,6 +33,7 @@ export function Debug({
         className={cn(
           "my-1 overflow-scroll rounded border border-brand-500 p-1 text-xs",
           "bg-white dark:bg-black",
+          "whitespace-pre-wrap", // alternative: break-spaces
           className
         )}
       >

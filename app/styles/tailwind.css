@@ -19,13 +19,13 @@
     @apply text-4xl lg:text-5xl;
   }
   h2 {
-    @apply text-3xl lg:text-4xl;
+    @apply text-2xl lg:text-3xl;
   }
   h3 {
-    @apply text-xl lg:text-2xl;
+    @apply text-lg lg:text-xl;
   }
   h4 {
-    @apply text-lg lg:text-xl;
+    @apply text-base lg:text-lg;
   }
   h5 {
     @apply lg:text-lg;

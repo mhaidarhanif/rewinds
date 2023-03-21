@@ -6,7 +6,7 @@ import { useId } from "react";
 
 import {
   Alert,
-  Button,
+  ButtonLoading,
   Debug,
   Input,
   Label,
@@ -16,7 +16,6 @@ import {
   RemixLinkText,
 } from "~/components";
 import { configSite } from "~/configs";
-import { Loader2 } from "~/icons";
 import { userModel } from "~/models";
 import { schemaUserLogin } from "~/schemas";
 import { authenticator } from "~/services";
@@ -171,16 +170,16 @@ export default function AuthLoginRoute() {
 
             <Input type="hidden" name="redirectTo" value={redirectTo} />
 
-            <Button
+            <ButtonLoading
               type="submit"
               className="w-full"
               name="intent"
               value="submit"
-              disabled={isSubmitting}
+              isSubmitting={isSubmitting}
+              loadingText="Logging in..."
             >
-              {isSubmitting && <Loader2 className="animate-spin" />}
-              {isSubmitting ? "Logging in..." : "Log in"}
-            </Button>
+              Log in
+            </ButtonLoading>
           </fieldset>
 
           <p className="text-center">

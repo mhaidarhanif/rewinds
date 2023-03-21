@@ -15,7 +15,7 @@ export const note = {
   async getNoteBySlug({ slug }: Pick<Note, "slug">) {
     return prisma.note.findFirst({
       where: { slug },
-      include: { user: true },
+      include: { user: { select: publicUserFields } },
     });
   },
 };

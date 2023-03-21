@@ -236,7 +236,7 @@ export function CatchBoundary() {
       >
         <div>
           <p>Here's the error information that can be informed to Rewinds.</p>
-          <Debug>{caught}</Debug>
+          <Debug name="caught">{caught}</Debug>
         </div>
       </Layout>
     </RootDocument>

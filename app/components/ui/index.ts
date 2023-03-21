@@ -10,6 +10,7 @@ export * from "./button-anchor";
 export * from "./button-icon";
 export * from "./button-icon-anchor";
 export * from "./button-link";
+export * from "./button-loading";
 export * from "./checkbox";
 export * from "./collapsible";
 export * from "./combobox";

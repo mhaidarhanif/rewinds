@@ -9,7 +9,7 @@ export interface ButtonIconProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {}
 
-const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
+export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
   ({ variant, accent, size, radius, className, ...props }, ref) => {
     return (
       <button
@@ -30,5 +30,3 @@ const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
   }
 );
 ButtonIcon.displayName = "ButtonIcon";
-
-export { ButtonIcon };

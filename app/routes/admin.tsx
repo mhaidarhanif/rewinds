@@ -30,7 +30,7 @@ export async function loader({ request }: LoaderArgs) {
 
 export default function AdminLayoutRoute() {
   return (
-    <div data-id="admin-layout-route" className="flex">
+    <div data-id="admin-layout-route" className="flex pb-10">
       <AdminSidebar />
 
       <div data-id="admin-layout-outlet" className="grow">
@@ -42,7 +42,12 @@ export default function AdminLayoutRoute() {
 
 export function AdminSidebar() {
   return (
-    <aside className="card flex min-h-screen min-w-fit flex-col space-y-4">
+    <aside
+      className={cn(
+        "card min-h-screen min-w-fit flex-col space-y-4",
+        "hidden sm:flex"
+      )}
+    >
       <div className="stack-h-center">
         <RemixNavLink
           to="/admin"

@@ -4,6 +4,8 @@ import { configUser } from "~/configs";
 import { prisma } from "~/libs";
 import { createNanoID, invariant } from "~/utils";
 
+import { publicUserRoleFields } from "./user-role.server";
+
 import type { UserPassword, User } from "@prisma/client";
 export type { User } from "@prisma/client";
 
@@ -11,8 +13,7 @@ export const publicUserFields = {
   id: true,
   name: true,
   username: true,
-  role: true,
-  notes: true,
+  role: { select: publicUserRoleFields },
 };
 
 export const privateUserFields = {

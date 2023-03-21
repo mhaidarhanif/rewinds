@@ -5,6 +5,7 @@ import { useLoaderData } from "@remix-run/react";
 import {
   Button,
   ButtonLink,
+  Debug,
   RemixForm,
   RemixLinkText,
   Tooltip,
@@ -151,7 +152,7 @@ export default function AdminNotesViewRoute() {
         </div>
       </section>
 
-      {/* <Debug name="note">{note}</Debug> */}
+      <Debug name="note">{note}</Debug>
     </div>
   );
 }
