@@ -20,8 +20,36 @@ Check out the code and the demo:
 - [rewinds.vercel.app](https://rewinds.vercel.app)
 - [rewinds.dev](https://rewinds.dev) (Sooner or later)
 
+Included features:
+
+- [x] Light and dark mode theme
+- [x] Register, log in, log out
+- [x] Admin dashboard
+  - [x] Manage users and notes
+- [x] User dashboard, profile, settings
+  - [x] Manage notes
+- [x] Various others
+  - [ ] Image assets
+  - [ ] Map viewer
+
+Included setup:
+
+- [x] Full stack type safety with Remix
+  - [x] Enabled for HMR/HDR (hot module/data reload)
+  - [x] v2 futur flags
+- [x] UI components with React and Radix UI, ready to use and 100% customizable
+- [x] Styles, colors, fonts, icons, responsive design with Tailwind CSS
+- [x] Database with Prisma ORM and PlanetScale
+- [x] Auth with Remix Auth using session cookie
+- [x] Form and data validation with Conform and Zod
+- [x] SEO functions with meta tags, `robots.txt`, `sitemap.xml`, `canonical`
+- [x] Various utilities with external libraries
+- [x] Lighthouse/Pagespeed optimized
+- [x] pnpm, Prettier, ESLint, Stylelint, and much more
+
 You can use this to build any web app. Also what I'm using Rewinds for.
 
+- Todo list
 - Learning platform
 - Content management system
 - Ecommerce
@@ -75,11 +103,10 @@ Why creating this? Well, because I had a lot of recent projects with these same 
   - [Remix Entry Files](#remix-entry-files)
   - [HMR Workaround](#hmr-workaround)
   - [References](#references)
-    - [Rewinds In The Wild](#rewinds-in-the-wild)
+    - [Remix](#remix)
     - [React](#react)
     - [Tailwind CSS](#tailwind-css)
-  - [Checklist](#checklist)
-    - [Todos](#todos)
+    - [Rewinds in the Wild](#rewinds-in-the-wild)
 
 # Tech Stack
 
@@ -348,14 +375,6 @@ module.exports = {
 
 ## References
 
-### Rewinds in the Wild
-
-Some other projects using Rewinds:
-
-- [M Haidar Hanif Website](https://github.com/mhaidarhanif/mhaidarhanif-web)
-- [Catamyst](https://github.com/catamyst/catamyst-web)
-- [Super Duper Gallery](https://github.com/jonathannicolasdev/superduper)
-
 ### Remix
 
 - [Remix Docs](http://remix.run)
@@ -374,27 +393,10 @@ Some other projects using Rewinds:
 - [An Honest Look at Tailwind as an API for CSS | thoughtbot, inc.](https://thoughtbot.com/blog/an-honest-look-at-tailwind-as-an-api-for-css)
 - [Styling Best Practices I Use With Tailwind CSS | theodorusclarence.com](https://theodorusclarence.com/blog/tailwindcss-best-practice)
 
-## Checklist
+### Rewinds in the Wild
 
-What's included
+Some other projects using Rewinds:
 
-- [x] Remix with HMR/HDR setup
-  - [x] Using React Refresh
-- [x] Tailwind CSS
-  - [x] Custom config
-- [x] Auth with Remix Auth
-- [x] SEO functions
-  - [x] robots.txt
-  - [x] sitemap.xml
-- [x] Lighthouse / Pagespeed optimized
-
-### Todos
-
-- [ ] Lighthouse / Pagespeed reports
-- [ ] Google Webmaster
-- [ ] Analytics
-- [ ] JSON-LD config
-- [ ] ImageKit example
-- [ ] Mapbox example
-- [ ] Lazy load example
-- [ ] SPF record example
+- [M Haidar Hanif Website](https://github.com/mhaidarhanif/mhaidarhanif-web)
+- [Catamyst](https://github.com/catamyst/catamyst-web)
+- [Super Duper Gallery](https://github.com/jonathannicolasdev/superduper)
