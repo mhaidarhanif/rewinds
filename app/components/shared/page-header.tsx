@@ -11,7 +11,7 @@ export const pageHeaderVariants = cva("", {
       sm: "py-6 sm:py-10",
       default: "py-12 sm:py-20",
     },
-    isTextCentered: { true: "text-left sm:text-center", false: "" },
+    isTextCentered: { true: "text-center", false: "" },
     withContainer: { true: "", false: "" },
     withMarginBottom: { true: "", false: "" },
     withBackground: {
