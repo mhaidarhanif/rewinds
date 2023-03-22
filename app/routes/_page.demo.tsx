@@ -2,7 +2,7 @@ import {
   AnchorText,
   ItemActionContextMenuDemo,
   Layout,
-  MusicPlayer,
+  MusicPlayerDemo,
   PageHeader,
 } from "~/components";
 import { createDocumentLinks, createMetaData, createSitemap } from "~/utils";
@@ -52,7 +52,7 @@ export function DemoMusicPlayer() {
           landing page. Just beware, this example wouldn't work on mobile yet.
         </p>
       </header>
-      <MusicPlayer />
+      <MusicPlayerDemo />
     </section>
   );
 }

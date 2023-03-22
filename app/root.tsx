@@ -192,12 +192,13 @@ export function ErrorBoundary({ error }: { error: Error }) {
         isSpaced
         layoutHeader={
           <PageHeader size="sm">
-            <h1>Error from Rewinds: {error.message}</h1>
+            <h1>Error from Rewinds:</h1>
           </PageHeader>
         }
       >
         <div>
           <p>Here's the error information that can be informed to Rewinds.</p>
+          <p>{error.message}</p>
           <Debug>{error}</Debug>
         </div>
       </Layout>

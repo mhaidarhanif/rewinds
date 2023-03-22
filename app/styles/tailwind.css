@@ -70,11 +70,11 @@
   }
 
   /* Layouts */
-  .contain {
-    @apply mx-auto w-full max-w-7xl px-2 sm:px-4;
-  }
   .contain-full {
     @apply mx-auto w-full max-w-7xl;
+  }
+  .contain {
+    @apply contain-full px-2 sm:px-4;
   }
   .stack {
     @apply flex flex-wrap gap-2 sm:gap-4;

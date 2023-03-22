@@ -1,4 +1,5 @@
 export {
+  ArrowRight,
   Calendar,
   Check,
   CheckCircle,
@@ -10,8 +11,10 @@ export {
   Copy,
   CreditCard,
   Eye,
+  FastForward,
   File,
   Github,
+  GitCommit,
   Globe,
   Hexagon,
   Image,
@@ -31,6 +34,7 @@ export {
   Mic,
   Mic2,
   Moon,
+  MousePointerClick,
   Music,
   Music2,
   PlayCircle,
@@ -46,7 +50,6 @@ export {
   User,
   UserPlus,
   Users,
-  MousePointerClick,
   X,
 } from "lucide-react";
 export type { Icon as LucideIcon, LucideProps } from "lucide-react";

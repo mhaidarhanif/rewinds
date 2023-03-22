@@ -4,6 +4,10 @@ import {
   Alert,
   Anchor,
   AnchorText,
+  Breadcrumb,
+  BreadcrumbAuto,
+  BreadcrumbItem,
+  BreadcrumbLink,
   Button,
   ButtonAnchor,
   ButtonIcon,
@@ -24,9 +28,11 @@ import {
 } from "~/components";
 import { useToast } from "~/hooks";
 import {
+  ArrowRight,
   Calendar,
   CheckCircle,
   EditPencil,
+  GitCommit,
   Loader2,
   Mail,
   Star,
@@ -56,7 +62,7 @@ export async function action({ request }: ActionArgs) {
   return json({});
 }
 
-export default function ComponentsRoute() {
+export default function PageComponentsRoute() {
   return (
     <Layout
       isSpaced
@@ -77,6 +83,7 @@ export default function ComponentsRoute() {
         <ExampleButtonIcon />
         <ExampleAlert />
         <ExampleToast />
+        <ExampleBreadcrumb />
       </div>
 
       <div className="stack-v">
@@ -353,6 +360,109 @@ export function ExampleToast() {
             <Trash className="size-sm" />
             <span>Delete</span>
           </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function ExampleBreadcrumb() {
+  return (
+    <section id="example-breadcrumb" className="card space-y-8">
+      <h3>Breadcrumb</h3>
+
+      <div className="stack-v">
+        <h4>Default</h4>
+        <Breadcrumb>
+          <BreadcrumbItem>
+            <BreadcrumbLink to="/">App</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbItem>
+            <BreadcrumbLink to="/components">Components</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbItem isCurrentPage>
+            <BreadcrumbLink to="/components/breadcrumb">
+              Breadcrumb
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        </Breadcrumb>
+      </div>
+
+      <div className="stack-v">
+        <h4>Custom Separator</h4>
+        <Breadcrumb separator="/">
+          <BreadcrumbItem>
+            <BreadcrumbLink to="/">App</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbItem>
+            <BreadcrumbLink to="/components">Components</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbItem isCurrentPage>
+            <BreadcrumbLink to="/components/breadcrumb">
+              Breadcrumb
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        </Breadcrumb>
+      </div>
+
+      <div className="stack-v">
+        <h4>Routing Link</h4>
+        <div className="stack-v">
+          <Breadcrumb>
+            <BreadcrumbItem>
+              <BreadcrumbLink as={RemixLink} to="/">
+                <Logo size="xs" />
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink as={RemixLink} to="/components">
+                Components
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem isCurrentPage>
+              <BreadcrumbLink
+                as={RemixLink}
+                to="/components#example-breadcrumb"
+              >
+                Breadcrumb
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+
+          <Breadcrumb separator={<ArrowRight className="size-sm" />}>
+            <BreadcrumbItem>
+              <BreadcrumbLink as={RemixLink} to="/">
+                App
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink as={RemixLink} to="/components">
+                Components
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem isCurrentPage>
+              <BreadcrumbLink
+                as={RemixLink}
+                to="/components#example-breadcrumb"
+              >
+                Breadcrumb
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </div>
+      </div>
+
+      <div className="stack-v">
+        <h4>Auto Generate</h4>
+        <div className="stack-v">
+          <BreadcrumbAuto
+            separator={<GitCommit className="size-sm" />}
+            items={[
+              { to: "/", name: "App" },
+              { to: "/page", name: "Page" },
+              { to: "/page/example", name: "example", isCurrentPage: true },
+            ]}
+          />
         </div>
       </div>
     </section>
