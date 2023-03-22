@@ -159,7 +159,6 @@ export default function AdminNotesEditRoute() {
           <div className="flex gap-2">
             <ButtonLoading
               type="submit"
-              variant="subtle"
               className="grow"
               name="intent"
               value="submit"
@@ -168,15 +167,11 @@ export default function AdminNotesEditRoute() {
             >
               Save
             </ButtonLoading>
-            <Button type="reset" variant="ghost">
-              <span>Reset</span>
+            <Button type="reset" variant="subtle">
+              Reset
             </Button>
-            <ButtonLink
-              to={`/admin/notes/${note.id}`}
-              variant="link"
-              accent="red"
-            >
-              <span>Cancel</span>
+            <ButtonLink to=".." variant="ghost" accent="red">
+              Cancel
             </ButtonLink>
           </div>
         </fieldset>
