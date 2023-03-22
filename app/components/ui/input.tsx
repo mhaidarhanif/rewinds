@@ -15,7 +15,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           className
         )}
         ref={ref}
-        spellCheck="false"
+        spellCheck={false}
         {...props}
       />
     );

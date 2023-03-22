@@ -18,4 +18,23 @@ export const note = {
       include: { user: { select: publicUserFields } },
     });
   },
+
+  async searchNotes({ q }: { q: string | undefined }) {
+    return prisma.note.findMany({
+      where: {
+        isPublished: true,
+        OR: [
+          { title: { contains: q } },
+          { slug: { contains: q } },
+          { description: { contains: q } },
+          { content: { contains: q } },
+        ],
+      },
+      include: {
+        images: true,
+        user: { select: publicUserFields },
+      },
+      orderBy: [{ updatedAt: "desc" }],
+    });
+  },
 };

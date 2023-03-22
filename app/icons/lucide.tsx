@@ -38,7 +38,6 @@ export {
   PlusCircle,
   Podcast,
   Radio,
-  Search,
   Settings,
   Star,
   Sun,

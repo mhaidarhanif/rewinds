@@ -1,4 +1,5 @@
 export {
+  ArrowSeparateVertical,
   Db as Database,
   Edit,
   EditPencil,
@@ -6,9 +7,9 @@ export {
   Iconoir,
   InfoEmpty,
   LayoutLeft,
+  Search,
   Svg3DSelectFace as Components,
   Trash,
   Undo,
-  ArrowSeparateVertical,
   Notes,
 } from "iconoir-react";

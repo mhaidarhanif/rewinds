@@ -17,7 +17,10 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
   Icon,
+  Input,
+  Label,
   Logo,
+  RemixForm,
   RemixLinkText,
   RemixNavLink,
 } from "~/components";
@@ -30,6 +33,7 @@ import {
   Keyboard,
   LogOut,
   Menu,
+  Search,
   Settings,
   Twitter,
   User,
@@ -55,13 +59,16 @@ export function SiteHeader({ noThemeToggle }: Props) {
     >
       <section
         className={cn(
-          "contain flex items-center justify-between gap-1 sm:gap-2",
+          "contain flex w-full items-center justify-between gap-1 sm:gap-2",
           "h-6 sm:h-8" // height of the site header
         )}
       >
-        <div className="flex w-full items-center justify-between gap-1 sm:gap-2">
+        <div className="flex w-full items-center gap-1 sm:gap-2">
           <HeaderMainLogo noThemeToggle={noThemeToggle} />
           <HeaderMainNavigation navItems={configSite?.navItems} />
+          <div className="hidden w-full lg:flex">
+            <HeaderMainSearch />
+          </div>
           <HeaderMainButtons user={user} />
         </div>
 
@@ -116,6 +123,26 @@ export function HeaderMainNavigation({
           )
       )}
     </nav>
+  );
+}
+
+export function HeaderMainSearch() {
+  return (
+    <RemixForm method="get" action="/search" className="w-full">
+      <fieldset className="relative flex items-center gap-1">
+        <Label className="sr-only">Search</Label>
+        <Input
+          name="q"
+          type="search"
+          placeholder="Search..."
+          autoComplete="off"
+          className="block w-full pl-9 placeholder:text-surface-500 dark:placeholder:text-surface-400"
+        />
+        <span className="pointer-events-none absolute flex pl-3">
+          <Search className="size-sm" />
+        </span>
+      </fieldset>
+    </RemixForm>
   );
 }
 
