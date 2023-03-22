@@ -4,7 +4,7 @@ import { publicUserFields } from "~/models";
 
 import type { Note, User } from "@prisma/client";
 
-export const adminNote = {
+export const adminNoteModel = {
   async getNoteCount() {
     return prisma.note.count();
   },
@@ -42,8 +42,10 @@ export const adminNote = {
   },
 
   async updateNote({
+    user,
     note,
   }: {
+    user: Pick<User, "id">;
     note: Pick<Note, "id" | "slug" | "title" | "description" | "content">;
   }) {
     return prisma.note.update({

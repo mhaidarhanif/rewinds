@@ -3,7 +3,7 @@ import { useLoaderData } from "@remix-run/react";
 
 import { ButtonLink, Debug, RemixLink } from "~/components";
 import { Eye } from "~/icons";
-import { adminNote } from "~/models";
+import { adminNoteModel } from "~/models";
 import { createSitemap } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
@@ -11,7 +11,7 @@ import type { LoaderArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader({ request }: LoaderArgs) {
-  const notes = await adminNote.getAllNotes();
+  const notes = await adminNoteModel.getAllNotes();
   return json({ notes });
 }
 

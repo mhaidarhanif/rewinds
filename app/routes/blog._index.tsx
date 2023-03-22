@@ -1,5 +1,5 @@
 import { Layout, PageHeader } from "~/components";
-import { adminNote } from "~/models";
+import { adminNoteModel } from "~/models";
 
 import type { SEOHandle } from "~/utils";
 
@@ -8,7 +8,7 @@ import type { SEOHandle } from "~/utils";
  */
 export const handle: SEOHandle = {
   getSitemapEntries: async () => {
-    const articles = await adminNote.getAllNotes();
+    const articles = await adminNoteModel.getAllNotes();
     const articleEntries: any = articles.map((article) => {
       return { route: `/blog/${article.id}`, priority: 0.8 };
     });

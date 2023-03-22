@@ -38,7 +38,7 @@ export async function loader({ request }: LoaderArgs) {
 
 export default function SearchRoute() {
   const { q, notes, users } = useLoaderData<typeof loader>();
-  const totalItems = notes.length + users.length;
+  const itemsCount = notes.length + users.length;
 
   return (
     <Layout
@@ -47,7 +47,7 @@ export default function SearchRoute() {
         <PageHeader size="xs">
           <h1>Search results</h1>
           <h2>
-            <span>{formatPluralItems("item", totalItems)} found </span>
+            <span>{formatPluralItems("item", itemsCount)} found </span>
             {q && <span>with keyword: {q}</span>}
             {q && <span>with no specific keyword</span>}
           </h2>
@@ -55,7 +55,7 @@ export default function SearchRoute() {
       }
     >
       <section className="space-y-4">
-        {totalItems <= 0 && <h3>Sorry, nothing found.</h3>}
+        {itemsCount <= 0 && <h3>Sorry, nothing found.</h3>}
 
         {notes.length > 0 && (
           <div className="space-y-2">

@@ -35,8 +35,9 @@ export const meta: V2_MetaFunction<typeof loader> = ({ params, data }) => {
  */
 export async function loader({ params }: LoaderArgs) {
   const { username } = params;
-  invariant(username, "userId does not exist");
+  invariant(username, "username does not exist");
 
+  // This is not using authorizeUser because anyone public can get the data
   const user = await userModel.getUserByUsername({ username });
   if (!user) {
     return json({ user: null }, { status: 404 });
@@ -67,7 +68,7 @@ export default function SplatUsernameRoute() {
           </header>
         }
       >
-        <section className="mx-auto w-full max-w-lg">
+        <section className="mx-auto w-full max-w-lg space-y-2">
           <div className="my-4 text-center">
             <h1>
               <Balancer>{user.name}</Balancer>

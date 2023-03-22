@@ -56,9 +56,9 @@ export function useRootLoaderData() {
   const data = useMatchesData("root") as RootLoaderData;
 
   return {
-    ENV: data?.ENV || undefined,
-    theme: data?.theme || undefined,
-    user: data?.user || undefined,
-    notifications: undefined,
+    ENV: data?.ENV,
+    theme: data?.theme,
+    user: data?.user,
+    notifications: [],
   };
 }

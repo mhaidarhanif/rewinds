@@ -41,8 +41,8 @@ export const userModel = {
 
     return configUser.navigationItems.map((item, index) => {
       return {
-        id: createNanoID(),
         ...item,
+        id: createNanoID(),
         count: metrics[index],
       };
     });

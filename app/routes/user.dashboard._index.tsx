@@ -26,7 +26,7 @@ export default function UserDashboardRoute() {
   return (
     <div data-id="user-dashboard" className="space-y-4">
       <PageHeader size="xs" withBackground={false} withContainer={false}>
-        <h1>User Dashboard</h1>
+        <h1>Dashboard</h1>
       </PageHeader>
 
       <section className="space-y-2">
@@ -45,8 +45,11 @@ export default function UserDashboardRoute() {
             return (
               <li key={metric.id}>
                 <RemixLink
-                  to={`/${user.username}`}
-                  className={cn("card", "flex flex-col p-4 text-center")}
+                  to={`/user/${metric.slug}`}
+                  className={cn(
+                    "card hover:card-hover",
+                    "flex flex-col text-center"
+                  )}
                 >
                   <h3 className="text-4xl font-extrabold">{metric.count}</h3>
                   <span className="mt-2 text-sm">{metric.name}</span>

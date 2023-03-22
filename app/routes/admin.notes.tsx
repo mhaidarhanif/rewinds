@@ -11,7 +11,7 @@ import {
 } from "~/components";
 import { authorizeUser } from "~/helpers";
 import { Plus, Trash } from "~/icons";
-import { adminNote } from "~/models";
+import { adminNoteModel } from "~/models";
 import { createSitemap } from "~/utils";
 
 import type { ActionArgs } from "@remix-run/node";
@@ -19,7 +19,7 @@ import type { ActionArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader() {
-  const notesCount = await adminNote.getNoteCount();
+  const notesCount = await adminNoteModel.getNoteCount();
   return json({ notesCount });
 }
 
@@ -29,8 +29,8 @@ export async function action({ request }: ActionArgs) {
   const formData = await request.formData();
   const submission = parse(formData, {});
 
-  if (submission.payload.intent === "delete-all-notes") {
-    await adminNote.deleteAllNotes();
+  if (submission.payload.intent === "admin-delete-all-notes") {
+    await adminNoteModel.deleteAllNotes();
     return json(submission);
   }
 
@@ -58,7 +58,7 @@ export default function AdminNotesRoute() {
               size="sm"
               variant="danger"
               name="intent"
-              value="delete-all-notes"
+              value="admin-delete-all-notes"
               disabled={notesCount <= 0}
             >
               <Trash className="size-sm" />

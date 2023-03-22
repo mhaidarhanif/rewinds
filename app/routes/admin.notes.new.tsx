@@ -16,7 +16,7 @@ import {
   TextArea,
 } from "~/components";
 import { authorizeUser } from "~/helpers";
-import { adminNote } from "~/models";
+import { adminNoteModel } from "~/models";
 import { schemaNoteNew } from "~/schemas";
 import { createSitemap } from "~/utils";
 
@@ -37,7 +37,7 @@ export async function action({ request }: ActionArgs) {
   }
 
   try {
-    const newNote = await adminNote.addNewNote({
+    const newNote = await adminNoteModel.addNewNote({
       user: userSession,
       note: submission.value,
     });

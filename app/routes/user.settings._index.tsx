@@ -21,7 +21,7 @@ export default function UserSettingsRoute() {
   return (
     <div data-id="user-settings" className="space-y-4">
       <PageHeader size="xs" withBackground={false} withContainer={false}>
-        <h1>User Settings</h1>
+        <h1>Settings</h1>
       </PageHeader>
 
       <section className="space-y-2">

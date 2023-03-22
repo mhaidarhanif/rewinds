@@ -17,13 +17,13 @@ export const buttonVariants = cva(
       variant: {
         default:
           "text-white bg-brand-600 hover:bg-brand-700 border-2 border-brand-800 dark:border-brand-400",
-        info: "text-blue-50 bg-blue-600 hover:bg-blue-700 border-2 border-blue-800 dark:border-blue-500",
+        info: "text-blue-50 bg-blue-600 hover:bg-blue-700 border-2 border-blue-800 dark:border-blue-400",
         success:
-          "text-green-50 bg-green-600 hover:bg-green-700 border-2 border-green-800 dark:border-green-500",
+          "text-green-50 bg-green-600 hover:bg-green-700 border-2 border-green-800 dark:border-green-400",
         warning:
-          "text-yellow-50 bg-yellow-600 hover:bg-yellow-700 border-2 border-yellow-800 dark:border-yellow-500",
+          "text-yellow-50 bg-yellow-600 hover:bg-yellow-700 border-2 border-yellow-800 dark:border-yellow-400",
         danger:
-          "text-red-50 bg-red-600 hover:bg-red-700 border-2 border-red-800 dark:border-red-500",
+          "text-red-50 bg-red-600 hover:bg-red-700 border-2 border-red-800 dark:border-red-400",
         subtle:
           "text-brand-800 bg-brand-500/20 hover:bg-brand-500/50 dark:text-brand-200 dark:bg-brand-900 hover:dark:bg-brand-800",
         outline:
