@@ -75,7 +75,7 @@ export function SiteHeader({ noThemeToggle }: Props) {
 
 export function HeaderMainLogo({ noThemeToggle }: { noThemeToggle?: boolean }) {
   return (
-    <div className="stack-h-center gap-1 lg:gap-2">
+    <div className="flex items-center gap-1">
       <RemixNavLink
         to="/"
         prefetch="intent"
@@ -90,9 +90,9 @@ export function HeaderMainLogo({ noThemeToggle }: { noThemeToggle?: boolean }) {
 }
 
 export function HeaderMainNavigation({
-  navItems,
+  navItems = configSite.navItems,
 }: {
-  navItems: typeof configSite.navItems;
+  navItems?: typeof configSite.navItems;
 }) {
   return (
     <nav className="hidden gap-1 lg:flex">
@@ -105,14 +105,8 @@ export function HeaderMainNavigation({
               prefetch="intent"
               className={({ isActive }) =>
                 cn(
-                  "flex gap-2 p-2",
-                  buttonVariants({
-                    variant: "navlink",
-                    radius: "default",
-                    weight: "default",
-                    size: "default",
-                    isActive,
-                  })
+                  "flex gap-2",
+                  buttonVariants({ variant: "navlink", isActive })
                 )
               }
             >
@@ -128,7 +122,7 @@ export function HeaderMainNavigation({
 export function HeaderMainButtons({ user }: { user?: UserData }) {
   return (
     <div className="flex grow items-center justify-end space-x-2">
-      <nav className="hidden gap-1 md:flex">
+      <nav className="hidden gap-1 lg:flex">
         <ButtonIconAnchor
           href={configSite?.links.github}
           variant="ghost"
@@ -150,10 +144,10 @@ export function HeaderMainButtons({ user }: { user?: UserData }) {
       <nav className="flex items-center gap-1">
         {!user && (
           <>
-            <ButtonLink variant="ghost" to="/login" className="hidden md:flex">
+            <ButtonLink variant="ghost" to="/login">
               Log in
             </ButtonLink>
-            <ButtonLink variant="subtle" to="/register" className="flex">
+            <ButtonLink variant="subtle" to="/register">
               Register
             </ButtonLink>
           </>
@@ -166,20 +160,22 @@ export function HeaderMainButtons({ user }: { user?: UserData }) {
 }
 
 export function HeaderMenuNavigation({
-  navItems,
+  navItems = configSite.navItems,
+  align = "end",
 }: {
-  navItems: typeof configSite.navItems;
+  navItems?: typeof configSite.navItems;
+  align?: "center" | "start" | "end" | undefined;
 }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <ButtonIcon variant="ghost" size="lg" className="lg:hidden">
+        <ButtonIcon variant="ghost" size="lg">
           <Menu className="size-lg" />
           <span className="sr-only font-bold">Menu</span>
         </ButtonIcon>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align="end" className="w-56 overflow-scroll">
+      <DropdownMenuContent align={align} className="w-56 overflow-scroll">
         <DropdownMenuLabel>
           <RemixNavLink
             to="/"

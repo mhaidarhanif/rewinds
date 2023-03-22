@@ -1,5 +1,6 @@
 import {
   AnchorText,
+  Balancer,
   ButtonAnchor,
   ButtonLink,
   LandingImage,
@@ -26,17 +27,19 @@ export default function IndexRoute() {
       >
         <div className="max-w-2xl space-y-4">
           <div className="prose-config sm:prose-xl">
-            <h1>Rewinds, a Remix Stack </h1>
+            <h1>
+              <Balancer>Rewinds, a Remix Stack</Balancer>
+            </h1>
             <p>
-              👋😎 Hey, it's just another web app starter kit made by{" "}
+              👋 Hey, it's just another web app starter kit made by{" "}
               <AnchorText href="https://mhaidarhanif.com">
                 M Haidar Hanif
               </AnchorText>
             </p>
             <p>
               💿 Rewinds is a Remix Tailwind Stack with Tailwind CSS family of
-              libraries, React components, and the JavaScript/TypeScript/Node.js
-              ecosystem
+              libraries, React components, along with the JavaScript,
+              TypeScript, and Node.js ecosystem
             </p>
             <p>
               📦 Including other tech stack such as mostly React, Radix UI,

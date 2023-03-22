@@ -47,7 +47,7 @@ export const links: LinksFunction = () => {
 
 export async function loader({ request }: LoaderArgs) {
   return await authenticator.isAuthenticated(request, {
-    successRedirect: "/user/profile",
+    successRedirect: "/user/dashboard",
   });
 }
 
@@ -84,7 +84,7 @@ export async function action({ request }: ActionArgs) {
    * But this won't check the email and password again
    */
   await authenticator.authenticate("user-pass", request, {
-    successRedirect: getRedirectTo(request) || "/user/profile",
+    successRedirect: getRedirectTo(request) || "/user/dashboard",
     failureRedirect: "/login",
   });
   return json(submission);

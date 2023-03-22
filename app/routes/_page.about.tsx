@@ -38,7 +38,7 @@ export default function AboutRoute() {
           and its tech stack for various projects.
         </p>
         <p>
-          As informed in the landing page, Rewinds is a Remix Tailwind Stack
+          As informed on the landing page, Rewinds is a Remix Tailwind Stack
           with Tailwind CSS family of libraries, interactive components, and the
           TypeScript ecosystem. Compared to the{" "}
           <Anchor href="https://github.com/mhaidarhanif/rewinds-legacy">

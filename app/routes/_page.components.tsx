@@ -10,6 +10,7 @@ import {
   ButtonLink,
   ButtonLoading,
   CopyButton,
+  HeaderMenuNavigation,
   Input,
   Label,
   Layout,
@@ -185,13 +186,7 @@ export function ExampleButton() {
             <Loader2 className="size-sm animate-spin" />
             <span>Loading...</span>
           </Button>
-          <ButtonLoading
-            className="w-full"
-            name="intent"
-            value="submit"
-            isSubmitting={true}
-            loadingText="Button is loading..."
-          >
+          <ButtonLoading isSubmitting={true} loadingText="Button is loading...">
             Button is not loading
           </ButtonLoading>
         </div>
@@ -209,31 +204,31 @@ export function ExampleButtonIcon() {
         <h4>Variant</h4>
         <div className="stack-h-center">
           <ButtonIcon>
-            <Star />
+            <Star className="size-md" />
           </ButtonIcon>
           <ButtonIcon variant="info">
-            <Star />
+            <Star className="size-md" />
           </ButtonIcon>
           <ButtonIcon variant="success">
-            <Star />
+            <Star className="size-md" />
           </ButtonIcon>
           <ButtonIcon variant="warning">
-            <Star />
+            <Star className="size-md" />
           </ButtonIcon>
           <ButtonIcon variant="danger">
-            <Star />
+            <Star className="size-md" />
           </ButtonIcon>
           <ButtonIcon variant="subtle">
-            <Star />
+            <Star className="size-md" />
           </ButtonIcon>
           <ButtonIcon variant="outline">
-            <Star />
+            <Star className="size-md" />
           </ButtonIcon>
           <ButtonIcon variant="ghost">
-            <Star />
+            <Star className="size-md" />
           </ButtonIcon>
           <ButtonIcon variant="link">
-            <Star />
+            <Star className="size-md" />
           </ButtonIcon>
         </div>
       </div>
@@ -241,6 +236,9 @@ export function ExampleButtonIcon() {
       <div className="stack-v">
         <h4>Size</h4>
         <div className="stack-h-center">
+          <ButtonIcon size="xs">
+            <Star className="size-xs" />
+          </ButtonIcon>
           <ButtonIcon size="sm">
             <Star className="size-sm" />
           </ButtonIcon>
@@ -250,6 +248,13 @@ export function ExampleButtonIcon() {
           <ButtonIcon size="lg">
             <Star className="size-lg" />
           </ButtonIcon>
+        </div>
+      </div>
+
+      <div className="stack-v">
+        <h4>Use Case</h4>
+        <div className="flex">
+          <HeaderMenuNavigation align="start" />
         </div>
       </div>
     </section>

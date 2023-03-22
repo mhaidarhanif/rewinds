@@ -47,7 +47,7 @@ export const buttonVariants = cva(
         blue: "text-blue-800 dark:text-blue-500",
       },
       radius: {
-        default: "rounded",
+        default: "",
         full: "rounded-full",
       },
       weight: {
@@ -59,7 +59,6 @@ export const buttonVariants = cva(
         sm: "",
         default: "",
         lg: "",
-        fixed: "",
       },
       noIndicator: {
         true: "",
@@ -97,9 +96,9 @@ export const buttonVariants = cva(
         class: "h-11 sm:h-12 px-4 sm:px-5 rounded-lg text-lg gap-3",
       },
       {
-        isIcon: true,
-        size: "fixed",
-        class: "rounded-md h-10 w-10",
+        isIcon: false,
+        variant: "navlink",
+        class: "h-9 sm:h-10 px-2 sm:px-3 rounded-md gap-2",
       },
       {
         isIcon: true,

@@ -47,7 +47,7 @@ export const links: LinksFunction = () => {
 
 export async function loader({ request }: LoaderArgs) {
   return await authenticator.isAuthenticated(request, {
-    successRedirect: "/user/profile",
+    successRedirect: "/user/dashboard",
   });
 }
 
@@ -71,7 +71,7 @@ export async function action({ request }: ActionArgs) {
   }
 
   await authenticator.authenticate("user-pass", request, {
-    successRedirect: getRedirectTo(request) || "/user/profile",
+    successRedirect: getRedirectTo(request) || "/user/dashboard",
     failureRedirect: "/register",
   });
   return json(submission);
