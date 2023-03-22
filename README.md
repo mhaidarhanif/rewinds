@@ -20,6 +20,19 @@ Check out the code and the demo:
 - [rewinds.vercel.app](https://rewinds.vercel.app)
 - [rewinds.dev](https://rewinds.dev) (Sooner or later)
 
+As for now, this README is the only main documentation.
+
+## Some Screenshots
+
+<div style="max-width: 720px;">
+
+[![Dark](public/assets/screenshots/rewinds-screenshot-dark.png)](https://rewinds.mhaidarhanif.com)
+[![Light](public/assets/screenshots/rewinds-screenshot-light.png)](https://rewinds.mhaidarhanif.com)
+
+</div>
+
+## Some Checklists
+
 Included example features:
 
 - [x] Light and dark mode theme
@@ -48,6 +61,8 @@ Included setup:
 - [x] Lighthouse/Pagespeed optimized
 - [x] pnpm, Prettier, ESLint, Stylelint, and much more
 
+## Some Ideas
+
 You can use this to build any web app. Also what I'm using Rewinds for.
 
 - Todo List
@@ -57,17 +72,6 @@ You can use this to build any web app. Also what I'm using Rewinds for.
 - Social Media
 - Gallery
 - Inventory
-
-As for now, this README is the only main documentation.
-
-## Some Screenshots
-
-<div style="max-width: 720px;">
-
-[![Dark](public/assets/screenshots/rewinds-screenshot-dark.png)](https://rewinds.mhaidarhanif.com)
-[![Light](public/assets/screenshots/rewinds-screenshot-light.png)](https://rewinds.mhaidarhanif.com)
-
-</div>
 
 ## Some Details
 
@@ -84,6 +88,8 @@ Why create this? Well, because I had a lot of recent projects with this same sta
 - [⏪ Rewinds](#-rewinds)
 - [Introduction](#introduction)
   - [Some Screenshots](#some-screenshots)
+  - [Some Checklists](#some-checklists)
+  - [Some Ideas](#some-ideas)
   - [Some Details](#some-details)
   - [Some Background](#some-background)
 - [Table of Contents](#table-of-contents)
