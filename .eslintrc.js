@@ -5,7 +5,7 @@ module.exports = {
   plugins: [
     "@typescript-eslint",
     "tailwindcss",
-    // "import",
+    "import",
     // "sort-export-all",
   ],
   extends: [
