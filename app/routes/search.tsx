@@ -2,7 +2,8 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 import { Layout, PageHeader, RemixLink } from "~/components";
-import { note } from "~/models";
+import { prisma } from "~/libs";
+import { noteModel, userModel } from "~/models";
 import {
   createMetaData,
   createSitemap,
@@ -23,17 +24,21 @@ export const handle = createSitemap("/page", 0.9);
 export async function loader({ request }: LoaderArgs) {
   const { q } = getAllSearchQuery({ request });
 
-  const notes = await note.searchNotes({ q });
+  const [notes, users] = await prisma.$transaction([
+    noteModel.searchNotes({ q }),
+    userModel.searchUsers({ q }),
+  ]);
 
   return json({
-    notes,
     q,
+    notes,
+    users,
   });
 }
 
 export default function SearchRoute() {
-  const { notes, q } = useLoaderData<typeof loader>();
-  const totalItems = notes.length;
+  const { q, notes, users } = useLoaderData<typeof loader>();
+  const totalItems = notes.length + users.length;
 
   return (
     <Layout
@@ -44,26 +49,42 @@ export default function SearchRoute() {
           <h2>
             <span>{formatPluralItems("item", totalItems)} found </span>
             {q && <span>with keyword: {q}</span>}
+            {q && <span>with no specific keyword</span>}
           </h2>
         </PageHeader>
       }
     >
-      <section>
-        {!notes && <p>Sorry, nothing found.</p>}
+      <section className="space-y-4">
+        {totalItems <= 0 && <h3>Sorry, nothing found.</h3>}
 
         {notes.length > 0 && (
-          <div>
-            <h3>Notes:</h3>
-            <ul className="flex flex-col gap-4">
+          <div className="space-y-2">
+            <h3>Notes</h3>
+            <ul className="space-y-1">
               {notes.map((note) => {
                 return (
-                  <li key={note.slug} className="card hover:card-hover">
-                    <RemixLink
-                      to={`/notes/${note.slug}`}
-                      className="block space-y-1"
-                    >
-                      <h3>{note.title}</h3>
+                  <li key={note.id} className="card-sm hover:card-hover">
+                    <RemixLink to={`/notes/${note.slug}`} className="block">
+                      <h4>{note.title}</h4>
                       <p>{truncateText(note.content)}</p>
+                    </RemixLink>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
+
+        {users.length > 0 && (
+          <div className="space-y-2">
+            <h3>Users</h3>
+            <ul className="space-y-1">
+              {users.map((user) => {
+                return (
+                  <li key={user.id} className="card-sm hover:card-hover">
+                    <RemixLink to={`/${user.username}`} className="block">
+                      <h4>{user.name}</h4>
+                      <p>@{user.username}</p>
                     </RemixLink>
                   </li>
                 );

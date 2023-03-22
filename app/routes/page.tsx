@@ -1,5 +1,10 @@
 import { Layout, PageHeader } from "~/components";
-import { createDocumentLinks, createMetaData, createSitemap } from "~/utils";
+import {
+  cn,
+  createDocumentLinks,
+  createMetaData,
+  createSitemap,
+} from "~/utils";
 
 import type { LinksFunction } from "@remix-run/node";
 
@@ -25,8 +30,10 @@ export default function PageRoute() {
         </PageHeader>
       }
     >
-      <p>Change something here.</p>
-      <p>Copy this file to create a new route.</p>
+      <section className={cn("prose-config")}>
+        <p>Change something here.</p>
+        <p>Copy this file to create a new route.</p>
+      </section>
     </Layout>
   );
 }

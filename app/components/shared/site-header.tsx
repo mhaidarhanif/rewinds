@@ -59,21 +59,31 @@ export function SiteHeader({ noThemeToggle }: Props) {
     >
       <section
         className={cn(
-          "contain flex w-full items-center justify-between gap-1 sm:gap-2",
+          "contain flex items-center justify-between",
           "h-6 sm:h-8" // height of the site header
         )}
       >
-        <div className="flex w-full items-center gap-1 sm:gap-2">
+        <div
+          id="site-header-left"
+          data-id="site-header-left"
+          className="flex items-center gap-1 sm:gap-2"
+        >
           <HeaderMainLogo noThemeToggle={noThemeToggle} />
           <HeaderMainNavigation navItems={configSite?.navItems} />
-          <div className="hidden w-full lg:flex">
+          <div className="hidden lg:flex">
             <HeaderMainSearch />
           </div>
-          <HeaderMainButtons user={user} />
         </div>
 
-        <div className="flex lg:hidden">
-          <HeaderMenuNavigation navItems={configSite?.navItems} />
+        <div
+          id="site-header-right"
+          data-id="site-header-right"
+          className="flex items-center gap-1 sm:gap-2"
+        >
+          <HeaderMainButtons user={user} />
+          <div className="flex lg:hidden">
+            <HeaderMenuNavigation navItems={configSite?.navItems} />
+          </div>
         </div>
       </section>
     </header>
@@ -82,11 +92,11 @@ export function SiteHeader({ noThemeToggle }: Props) {
 
 export function HeaderMainLogo({ noThemeToggle }: { noThemeToggle?: boolean }) {
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex min-w-fit items-center gap-1">
       <RemixNavLink
         to="/"
         prefetch="intent"
-        className="transition-opacity hover:opacity-80"
+        className="block min-w-fit transition-opacity hover:opacity-80"
       >
         <Logo />
       </RemixNavLink>
@@ -128,7 +138,7 @@ export function HeaderMainNavigation({
 
 export function HeaderMainSearch() {
   return (
-    <RemixForm method="get" action="/search" className="w-full">
+    <RemixForm method="get" action="/search">
       <fieldset className="relative flex items-center gap-1">
         <Label className="sr-only">Search</Label>
         <Input
@@ -149,7 +159,7 @@ export function HeaderMainSearch() {
 export function HeaderMainButtons({ user }: { user?: UserData }) {
   return (
     <div className="flex grow items-center justify-end space-x-2">
-      <nav className="hidden gap-1 lg:flex">
+      <nav className="hidden gap-1 xl:flex">
         <ButtonIconAnchor
           href={configSite?.links.github}
           variant="ghost"
@@ -172,7 +182,7 @@ export function HeaderMainButtons({ user }: { user?: UserData }) {
         {!user && (
           <>
             <ButtonLink variant="ghost" to="/login">
-              Log in
+              Login
             </ButtonLink>
             <ButtonLink variant="subtle" to="/register">
               Register

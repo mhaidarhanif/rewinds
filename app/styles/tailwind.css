@@ -43,11 +43,17 @@
 
 @layer components {
   /* shouldn't be a React component, because any element can be styled as a card */
+  .card-base {
+    @apply rounded border border-surface-200 bg-white dark:border-surface-700 dark:bg-surface-800/20;
+  }
   .card {
-    @apply rounded border border-surface-100 bg-white p-4 dark:border-surface-700 dark:bg-surface-800/20;
+    @apply card-base p-4;
+  }
+  .card-sm {
+    @apply card-base p-2;
   }
   .card-hover {
-    @apply bg-surface-100 dark:bg-surface-800/50;
+    @apply bg-surface-100/50 dark:bg-surface-800/50;
   }
   .card-action {
     @apply bg-surface-100 dark:bg-black;

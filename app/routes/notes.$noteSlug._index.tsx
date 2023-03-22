@@ -2,7 +2,7 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 import { Balancer } from "~/components";
-import { note } from "~/models";
+import { noteModel } from "~/models";
 import { createSitemap, invariant } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
@@ -14,7 +14,7 @@ export async function loader({ params }: LoaderArgs) {
   invariant(noteSlug, "noteSlug does not exist");
 
   return json({
-    note: await note.getNoteBySlug({ slug: noteSlug }),
+    note: await noteModel.getNoteBySlug({ slug: noteSlug }),
   });
 }
 

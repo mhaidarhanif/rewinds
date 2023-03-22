@@ -22,7 +22,6 @@ export const ButtonLink = ({
     <RemixLink
       to={to}
       className={cn(
-        "inline-flex gap-2",
         buttonVariants({
           variant,
           accent,

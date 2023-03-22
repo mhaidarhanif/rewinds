@@ -23,7 +23,7 @@ Check out the code and the demo:
 Included features:
 
 - [x] Light and dark mode theme
-- [x] Register, log in, log out
+- [x] Register, login, log out
 - [x] Admin dashboard
   - [x] Manage users and notes
 - [x] User dashboard, profile, settings

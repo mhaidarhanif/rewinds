@@ -3,8 +3,8 @@ import { publicUserFields } from "~/models";
 
 import type { Note } from "@prisma/client";
 
-export const note = {
-  async getAllNotes() {
+export const noteModel = {
+  getAllNotes() {
     return prisma.note.findMany({
       where: { isPublished: true },
       include: { user: { select: publicUserFields } },
@@ -12,14 +12,14 @@ export const note = {
     });
   },
 
-  async getNoteBySlug({ slug }: Pick<Note, "slug">) {
+  getNoteBySlug({ slug }: Pick<Note, "slug">) {
     return prisma.note.findFirst({
       where: { slug },
       include: { user: { select: publicUserFields } },
     });
   },
 
-  async searchNotes({ q }: { q: string | undefined }) {
+  searchNotes({ q }: { q: string | undefined }) {
     return prisma.note.findMany({
       where: {
         isPublished: true,

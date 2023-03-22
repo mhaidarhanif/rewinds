@@ -201,7 +201,7 @@ export default function AuthRegisterRoute() {
               <RemixLinkText
                 to={{ pathname: "/login", search: searchParams.toString() }}
               >
-                Have an account? Log in
+                Have an account? Login
               </RemixLinkText>
             </p>
           </div>

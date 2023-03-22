@@ -178,7 +178,7 @@ export default function AuthLoginRoute() {
               isSubmitting={isSubmitting}
               loadingText="Logging in..."
             >
-              Log in
+              Login
             </ButtonLoading>
           </fieldset>
 

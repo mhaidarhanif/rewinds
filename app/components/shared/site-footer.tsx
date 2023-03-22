@@ -1,10 +1,12 @@
 import {
   Anchor,
   AnchorText,
+  ButtonIconAnchor,
   TextCode,
   ThemeToggleDropdownMenu,
 } from "~/components";
 import { configMeta, configSite } from "~/configs";
+import { Github, Twitter } from "~/icons";
 import { cn, getCurrentYear } from "~/utils";
 
 interface Props {
@@ -44,7 +46,23 @@ export function SiteFooter({ noThemeToggle }: Props) {
           </p>
         </div>
 
-        <div className="flex w-full justify-end sm:w-min">
+        <div className="flex w-full justify-end gap-1 sm:w-min sm:gap-2">
+          <ButtonIconAnchor
+            href={configSite?.links.github}
+            variant="ghost"
+            accent="surface"
+          >
+            <Github />
+            <span className="sr-only">GitHub</span>
+          </ButtonIconAnchor>
+          <ButtonIconAnchor
+            href={configSite?.links.twitter}
+            variant="ghost"
+            accent="surface"
+          >
+            <Twitter />
+            <span className="sr-only">Twitter</span>
+          </ButtonIconAnchor>
           {!noThemeToggle && <ThemeToggleDropdownMenu align="end" />}
         </div>
       </section>

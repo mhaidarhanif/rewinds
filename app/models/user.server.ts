@@ -25,7 +25,7 @@ export const privateUserFields = {
 };
 
 export const userModel = {
-  async getAllUserUsernames() {
+  getAllUserUsernames() {
     return prisma.user.findMany({
       select: {
         id: true,
@@ -48,7 +48,7 @@ export const userModel = {
     });
   },
 
-  async getUserForSession({ id }: Pick<User, "id">) {
+  getUserForSession({ id }: Pick<User, "id">) {
     return prisma.user.findUnique({
       where: { id },
       select: {
@@ -72,7 +72,7 @@ export const userModel = {
     });
   },
 
-  async getUserById({ id }: Pick<User, "id">) {
+  getUserById({ id }: Pick<User, "id">) {
     return prisma.user.findUnique({
       where: { id },
       include: {
@@ -83,7 +83,7 @@ export const userModel = {
     });
   },
 
-  async getUserByUsername({ username }: Pick<User, "username">) {
+  getUserByUsername({ username }: Pick<User, "username">) {
     return prisma.user.findUnique({
       where: { username },
       include: {
@@ -94,10 +94,20 @@ export const userModel = {
     });
   },
 
-  async getUserByEmail({ email }: Pick<User, "email">) {
+  getUserByEmail({ email }: Pick<User, "email">) {
     return prisma.user.findUnique({
       where: { email },
       select: { id: true },
+    });
+  },
+
+  searchUsers({ q }: { q: string | undefined }) {
+    return prisma.user.findMany({
+      where: {
+        OR: [{ name: { contains: q } }, { username: { contains: q } }],
+      },
+      select: publicUserFields,
+      orderBy: [{ username: "desc" }],
     });
   },
 
@@ -203,7 +213,7 @@ export const userModel = {
     };
   },
 
-  async deleteUserByEmail(email: User["email"]) {
+  deleteUserByEmail(email: User["email"]) {
     return prisma.user.delete({ where: { email } });
   },
 };
