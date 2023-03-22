@@ -11,7 +11,7 @@
 ![PlanetScale](https://img.shields.io/badge/PlanetScale-000000?style=flat-square&logo=planetscale&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
-Rewinds is a Remix Tailwind Stack with Tailwind CSS family of libraries, interactive components, and the TypeScript ecosystem. The core stack as listed on the badges, includes: TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Prisma ORM, PlanetScale, and Vercel.
+Rewinds is a web app starter kit with Remix and Tailwind family of libraries, interactive UI components, and the TypeScript ecosystem. The core stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel.
 
 Check out the code and the demo:
 
@@ -20,15 +20,16 @@ Check out the code and the demo:
 - [rewinds.vercel.app](https://rewinds.vercel.app)
 - [rewinds.dev](https://rewinds.dev) (Sooner or later)
 
-Included features:
+Included example features:
 
 - [x] Light and dark mode theme
-- [x] Register, login, log out
+- [x] Register, log in, log out
 - [x] Admin dashboard
   - [x] Manage users and notes
 - [x] User dashboard, profile, settings
-  - [x] Manage notes
+  - [ ] Manage notes
 - [x] Various others
+  - [x] Search data
   - [ ] Image assets
   - [ ] Map viewer
 
@@ -36,11 +37,11 @@ Included setup:
 
 - [x] Full stack type safety with Remix
   - [x] Enabled for HMR/HDR (hot module/data reload)
-  - [x] v2 futur flags
+  - [x] v2 future flags
 - [x] UI components with React and Radix UI, ready to use and 100% customizable
-- [x] Styles, colors, fonts, icons, responsive design with Tailwind CSS
+- [x] Styles, colors, fonts, icons, and responsive design with Tailwind CSS
 - [x] Database with Prisma ORM and PlanetScale
-- [x] Auth with Remix Auth using session cookie
+- [x] Auth with Remix Auth using a session cookie
 - [x] Form and data validation with Conform and Zod
 - [x] SEO functions with meta tags, `robots.txt`, `sitemap.xml`, `canonical`
 - [x] Various utilities with external libraries
@@ -49,11 +50,11 @@ Included setup:
 
 You can use this to build any web app. Also what I'm using Rewinds for.
 
-- Todo list
-- Learning platform
-- Content management system
-- Ecommerce
-- Social media
+- Todo List
+- Learning Platform
+- Content Management System
+- E-Commerce
+- Social Media
 - Gallery
 - Inventory
 
@@ -72,11 +73,11 @@ As for now, this README is the only main documentation.
 
 This repo is kind of over-engineered to have high flexibility and cover a lot of use cases for different applications/projects/products (especially what I'm working with several other people). Currently includes the Remix HMR & HDR setup with both Vercel config and Express server on development as per Remix `v1.14`. The config is just combining the templates from Remix with Express and Vercel based on the environment.
 
-Compared to the [the older `rewinds`](https://github.com/mhaidarhanif/rewinds-legacy), this newer version uses [`shadcn/ui`](https://github.com/shadcn/ui) as the base components style and setup for full stack app development is inspired by [T3 Stack](https://create.t3.gg). The main adaptation reason is that this repo uses Remix, not Next.js as the full stack framework.
+Compared to [the older `rewinds`](https://github.com/mhaidarhanif/rewinds-legacy), this newer version uses [`shadcn/ui`](https://github.com/shadcn/ui) as the base components style and setup for full stack app development inspired by [T3 Stack](https://create.t3.gg). The main adaptation reason is that this repo uses Remix, not Next.js as the full-stack framework.
 
 ## Some Background
 
-Why creating this? Well, because I had a lot of recent projects with these same stack.
+Why create this? Well, because I had a lot of recent projects with this same stack.
 
 # Table of Contents
 
@@ -152,7 +153,7 @@ More details and references can also be checked from [`catamyst/stack`](https://
 
 ## Extra
 
-(Not included in Rewinds) If you need separated backend/server/service:
+(Not included in Rewinds) If you need separate backend/server/service:
 
 - Core
   - GraphQL
@@ -209,7 +210,7 @@ doppler secrets download --no-file --format env > .env
 
 ## Prisma ORM and Database Connection
 
-It's up to you which database/DBMS you want to use with the app. This repo recommends to use MySQL on PlanetScale. But avoid using SQLite because it doesn's have `model.createMany()` function. For example:
+It's up to you which database/DBMS you want to use with the app. This repo recommends using MySQL on PlanetScale. But avoid using SQLite because it doesn't have `model`.createMany()` function. For example:
 
 ```sh
 DATABASE_URL='mysql://username:pscale_pw_password@region.connect.psdb.cloud/name?sslaccept=strict'
@@ -219,13 +220,13 @@ While in development, you can also visualize the schema with [Prismaliser](https
 
 ## Run Development Server
 
-Afterwards, start the Remix development server like so:
+Afterward, start the Remix development server like so:
 
 ```sh
 nr dev
 ```
 
-This will run both the Remix server and Express server with HMR enabled. Then wait until you see these info on the terminal:
+This will run both the Remix server and Express server with HMR enabled. Then wait until you see this info on the terminal:
 
 ```sh
 📀 Remix on Express server listening on port :3000
@@ -239,7 +240,7 @@ If you're used to using the `vercel dev` command provided by [Vercel CLI](https:
 
 ## TypeScript and ESLint Server
 
-When you update some significant changes in the TypeScript config, ESLint config, or just generated a new Prisma schema, you can restart .
+When you update some significant changes in the TypeScript config, ESLint config, or just generated a new Prisma schema, you can restart.
 
 ```sh
 > TypeScript: Restart TS Server
@@ -253,7 +254,7 @@ When you update some significant changes in the TypeScript config, ESLint config
 
 As this repo was made after having run the `create-remix` command and selected "Vercel" as a deployment target, you only need to [import your Git repository](https://vercel.com/new) into Vercel, and it will be deployed.
 
-Just keep in mind to setup the environment variables, especially:
+Just keep in mind to set up the environment variables, especially:
 
 ```sh
 REMIX_APP_NAME=
@@ -321,7 +322,7 @@ module.exports = {
 
 ## Remix Entry Files
 
-Since Remix v1.14, you might notice that the entry files are implicitly defined. At the moment, if you need to deploy a Remix app I still suggest to reveal or explicitly define the entry files to make it work smoothly. Althought this repo already have the entry files.
+Since Remix v1.14, you might notice that the entry files are implicitly defined. At the moment, if you need to deploy a Remix app I still suggest revealing or explicitly defining the entry files to make it work smoothly. Although this repo already has the entry files.
 
 ```sh
 npx remix reveal
@@ -331,7 +332,7 @@ npx remix reveal
 
 > This setup has been done in this Rewinds template.
 
-To enable HMR and HDR, at least as per Remix v1.14, when not primarily using Express server only (like using Vercel and other server), we have to do this in the `package.json` scripts.
+To enable HMR and HDR, at least as per Remix v1.14, when not primarily using Express server only (like using Vercel and another server), we have to do this in the `package.json` scripts.
 
 ```json
 {
@@ -353,7 +354,7 @@ If using pnpm, you also have to install `react-refresh` to resolve the HMR depen
 ni -D react-refresh
 ```
 
-When running locally in development mode, use either the Express server or Vercel. This by default does not understand the Vercel lambda module format, so we fallback to the standard build output.
+When running locally in development mode, use either the Express server or Vercel. This by default does not understand the Vercel lambda module format, so we fall back to the standard build output.
 
 ```js
 const isDevelopment = process.env.NODE_ENV === "development";
@@ -385,7 +386,7 @@ module.exports = {
 
 ### React
 
-- [Bulletproof React - A simple, scalable, and powerful architecture for building production ready React applications](https://github.com/alan2207/bulletproof-react)
+- [Bulletproof React - A simple, scalable, and powerful architecture for building production-ready React applications](https://github.com/alan2207/bulletproof-react)
 
 ### Tailwind CSS
 
