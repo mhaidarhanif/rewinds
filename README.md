@@ -78,7 +78,8 @@ Included setup:
 
 Recommended extra setup:
 
-- Use Google Search Console to check the sitemap and SERP-related stuffs
+- Use [Google Search Console](https://search.google.com/search-console/about) to check the sitemap and SERP-related stuffs
+- Use [Clerk](https://clerk.com) to [replace Remix Auth](https://clerk.com/docs/quickstarts/get-started-with-remix) if you need more than this
 - Connect Vercel project to Axiom for better log management
 - Connect to Highlight to report and analyze errors
 
