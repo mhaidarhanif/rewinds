@@ -48,7 +48,7 @@ export default function AdminNotesRoute() {
   const { notes, notesCount } = useLoaderData<typeof loader>();
 
   return (
-    <div data-id="user-notes" className="mx-auto max-w-2xl space-y-4">
+    <div data-id="user-notes" className="contain-sm space-y-4">
       <PageHeader size="xs" withBackground={false} withContainer={false}>
         <div className="stack-h-center">
           <RemixLink to=".">

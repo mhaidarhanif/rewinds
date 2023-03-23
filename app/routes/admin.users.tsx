@@ -72,7 +72,7 @@ export default function AdminUsersRoute() {
         )}
       </PageAdminHeader>
 
-      <div data-id="admin-users-outlet" className="px-2 sm:px-4">
+      <div data-id="admin-users-outlet" className="p-layout">
         <Outlet />
       </div>
     </div>

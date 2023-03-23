@@ -1,7 +1,7 @@
 import { cloneElement, forwardRef } from "react";
 
 import { RemixLink } from "~/components";
-import { ArrowRight, ChevronRight } from "~/icons";
+import { ChevronRight } from "~/icons";
 import { cn, getValidChildren } from "~/utils";
 
 import type { RemixLinkProps } from "@remix-run/react/dist/components";
