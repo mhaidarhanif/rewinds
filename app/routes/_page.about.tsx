@@ -2,7 +2,7 @@ import {
   Anchor,
   Layout,
   Image,
-  VideoYouTube,
+  YouTubeVideo,
   AspectRatio,
   PageProgress,
   Balancer,
@@ -78,7 +78,7 @@ export default function AboutRoute() {
           eligendi minus mollitia sint.
         </p>
         <AspectRatio ratio={16 / 9}>
-          <VideoYouTube title="Example" youtubeEmbedId={"c3uJUrvI2zc"} />
+          <YouTubeVideo title="Example" youtubeEmbedId={"c3uJUrvI2zc"} />
         </AspectRatio>
         <h3>Heading Three</h3>
         <p>

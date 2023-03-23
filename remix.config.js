@@ -1,12 +1,12 @@
-/** @type {import('@remix-run/dev').AppConfig} */
-
 const isDevelopment = process.env.NODE_ENV === "development";
 
+/** @type {import('@remix-run/dev').AppConfig} */
 module.exports = {
   ignoredRouteFiles: ["**/.*"],
   appDirectory: "app",
   assetsBuildDirectory: "public/build",
   publicPath: "/build/",
+  sourceMap: true,
 
   // change this if you are not using Vercel
   server: isDevelopment ? undefined : "./server-vercel.js",

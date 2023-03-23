@@ -5,12 +5,13 @@ import { invariant } from "~/utils";
 
 import type { Prisma } from "@prisma/client";
 
-// limited user data in auth cookie
+// limited user data stored in the auth cookie
 export type UserSession = {
   id: string;
 };
 
-// more user data that can be retrieved, not stored in cookie
+// more complete user data that can be retrieved
+// but not stored in the auth cookie
 export type UserData = NonNullable<
   Prisma.PromiseReturnType<typeof userModel.getUserForSession>
 >;

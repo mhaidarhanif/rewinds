@@ -164,9 +164,9 @@ export default function AdminNotesEditRoute() {
               name="intent"
               value="submit"
               isSubmitting={isSubmitting}
-              loadingText="Saving..."
+              loadingText="Updating..."
             >
-              Save
+              Update
             </ButtonLoading>
             <Button type="reset" variant="subtle">
               Reset

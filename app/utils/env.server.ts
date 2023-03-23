@@ -4,6 +4,8 @@
  * Never expose the REMIX_SESSION_SECRET or any server/node/non-browser env
  */
 
+// TODO: use Zod schema
+
 export function getEnv() {
   return {
     NODE_ENV: process.env.NODE_ENV || "development", // development | test | production

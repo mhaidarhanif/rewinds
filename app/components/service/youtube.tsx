@@ -6,7 +6,7 @@ interface Props
   youtubeEmbedId: string;
 }
 
-export const VideoYouTube = ({
+export const YouTubeVideo = ({
   youtubeEmbedId,
   title,
   className,

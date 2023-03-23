@@ -31,10 +31,23 @@ As for now, this README is the only main documentation.
 
 </div>
 
+## Some Ideas
+
+You can use this to build any web app. Also what I'm using Rewinds for.
+
+- Todo List
+- Learning Platform
+- Content Management System
+- E-Commerce
+- Social Media
+- Gallery
+- Inventory
+
 ## Some Checklists
 
 Included example features:
 
+- [x] Site layout and routes/pages
 - [x] Light and dark mode theme
 - [x] Register, log in, log out
 - [x] Admin dashboard
@@ -48,30 +61,25 @@ Included example features:
 
 Included setup:
 
-- [x] Full stack type safety with Remix
+- [x] Full stack type safety with Remix and TypeScript
   - [x] Enabled for HMR/HDR (hot module/data reload)
   - [x] v2 future flags
 - [x] UI components with React and Radix UI, ready to use and 100% customizable
 - [x] Styles, colors, fonts, icons, and responsive design with Tailwind CSS
-- [x] Database with Prisma ORM and PlanetScale
+- [x] Database with Prisma ORM and MySQL on PlanetScale
 - [x] Auth with Remix Auth using a session cookie
 - [x] Form and data validation with Conform and Zod
+- [x] No need for loading screens, only loading bar on top and loading button state
 - [x] SEO functions with meta tags, `robots.txt`, `sitemap.xml`, `canonical`
 - [x] Various utilities with external libraries
-- [x] Lighthouse/Pagespeed optimized
+- [x] Lighthouse or [Pagespeed Insights](https://pagespeed.web.dev/analysis/https-rewinds-mhaidarhanif-com/dzhozpocxy?form_factor=desktop) optimized
 - [x] pnpm, Prettier, ESLint, Stylelint, and much more
 
-## Some Ideas
+Recommended extra setup:
 
-You can use this to build any web app. Also what I'm using Rewinds for.
-
-- Todo List
-- Learning Platform
-- Content Management System
-- E-Commerce
-- Social Media
-- Gallery
-- Inventory
+- Use Google Search Console to check the sitemap and SERP-related stuffs
+- Connect Vercel project to Axiom for better log management
+- Connect to Highlight to report and analyze errors
 
 ## Some Details
 
@@ -88,8 +96,8 @@ Why create this? Well, because I had a lot of recent projects with this same sta
 - [⏪ Rewinds](#-rewinds)
 - [Introduction](#introduction)
   - [Some Screenshots](#some-screenshots)
-  - [Some Checklists](#some-checklists)
   - [Some Ideas](#some-ideas)
+  - [Some Checklists](#some-checklists)
   - [Some Details](#some-details)
   - [Some Background](#some-background)
 - [Table of Contents](#table-of-contents)
@@ -157,6 +165,8 @@ More details and references can also be checked from [`catamyst/stack`](https://
 - Deployment
   - [Vercel](https://vercel.com)
 
+[Check the GUIDE.md](./GUIDE.md) if you need some guide into the project setup, structure, and files.
+
 ## Extra
 
 (Not included in Rewinds) If you need separate backend/server/service:
@@ -216,7 +226,9 @@ doppler secrets download --no-file --format env > .env
 
 ## Prisma ORM and Database Connection
 
-It's up to you which database/DBMS you want to use with the app. This repo recommends using MySQL on PlanetScale. But avoid using SQLite because it doesn't have `model`.createMany()` function. For example:
+It's up to you which database/DBMS you want to use with the app. This repo is suited to use either your own MySQL instance or MySQL on PlanetScale. But don't use SQLite because it doesn't have `@db.Text` annotation and `model`.createMany()` function.
+
+For example:
 
 ```sh
 DATABASE_URL='mysql://username:pscale_pw_password@region.connect.psdb.cloud/name?sslaccept=strict'

@@ -80,9 +80,7 @@ export function PageAdminHeader({
       {...props}
     >
       <div
-        className={cn(
-          "flex flex-wrap items-center gap-2 px-2 sm:gap-4 sm:px-4"
-        )}
+        className={cn("p-layout flex flex-wrap items-center gap-2 sm:gap-4")}
       >
         {children}
       </div>
