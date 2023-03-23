@@ -26,7 +26,7 @@ export default function AdminNotesRoute() {
     <div className="stack-v">
       <header>
         <div className="stack-h-center">
-          <span>Notes</span>
+          <span>All Notes</span>
           <ButtonLink to="/notes" size="xs" variant="info">
             <Eye className="size-xs" />
             <span>View All</span>
@@ -39,8 +39,11 @@ export default function AdminNotesRoute() {
           return (
             <li key={note.id}>
               <RemixLink to={note.id} className="card hover:card-hover block">
-                <h4>{note.title}</h4>
-                <p>{note.slug}</p>
+                <h3>{note.title}</h3>
+                <p>
+                  Created by {note.user.name} (@{note.user.username})
+                </p>
+                <p className="text-xs">{note.slug}</p>
               </RemixLink>
             </li>
           );

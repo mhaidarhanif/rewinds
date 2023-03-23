@@ -44,7 +44,7 @@ export async function action({ request }: ActionArgs) {
     if (!newNote) {
       return json(submission, { status: 500 });
     }
-    return redirect(`/admin/notes/${newNote.id}`);
+    return redirect(`../${newNote.id}`);
   } catch (error) {
     console.error(error);
     return json(submission, { status: 400 });

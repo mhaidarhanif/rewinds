@@ -25,7 +25,7 @@ export default function AdminUsersRoute() {
   return (
     <div className="stack-v">
       <header>
-        <span>Users</span>
+        <span>All Users</span>
       </header>
 
       <ul className="space-y-2">
@@ -34,8 +34,10 @@ export default function AdminUsersRoute() {
           return (
             <RemixLink key={user.id} to={user.id} className="block">
               <li className="card hover:card-hover">
-                <h3>{user.name}</h3>
-                <h6>@{user.username}</h6>
+                <h3>
+                  {user.name} (@{user.username})
+                </h3>
+                <h4>{user.email}</h4>
                 <p>
                   {userNotesCount} {pluralize("note", userNotesCount)}
                 </p>

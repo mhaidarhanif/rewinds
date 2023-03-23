@@ -39,11 +39,6 @@ export async function loader({ params }: LoaderArgs) {
 export async function action({ request, params }: ActionArgs) {
   const { userSession } = await requireUserSession(request);
 
-  invariant(params.noteId, `Note with id ${params.noteId} does not exist`);
-  if (!params.noteId) {
-    return redirect(`/admin/notes`);
-  }
-
   const formData = await request.formData();
   const submission = parse(formData, { schema: schemaNoteEdit });
   if (!submission.value || submission.intent !== "submit") {
@@ -58,7 +53,7 @@ export async function action({ request, params }: ActionArgs) {
     if (!updatedNote) {
       return json(submission, { status: 500 });
     }
-    return redirect(`/admin/notes/${updatedNote.id}`);
+    return redirect(`../${updatedNote.id}`);
   } catch (error) {
     console.error(error);
     return json(submission, { status: 400 });
@@ -99,7 +94,7 @@ export default function AdminNotesEditRoute() {
           className="space-y-2 disabled:opacity-80"
         >
           <header>
-            <div className="flex flex-wrap gap-2 text-xs opacity-50">
+            <div className="flex flex-wrap gap-2 text-xs">
               <p>
                 ID: <b>{note.id}</b>
               </p>

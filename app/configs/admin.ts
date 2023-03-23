@@ -12,7 +12,7 @@ export const configAdmin = {
     {
       to: "users",
       name: "Users",
-      icon: "home",
+      icon: "users",
       items: [
         {
           to: "user-roles",

@@ -19,7 +19,7 @@ export default function AdminNoteStatusesRoute() {
   return (
     <div className="stack-v">
       <header>
-        <span>Note Statuses</span>
+        <span>All Note Statuses</span>
       </header>
 
       {noteStatuses.length <= 0 && <span>No note statuses. Please add.</span>}

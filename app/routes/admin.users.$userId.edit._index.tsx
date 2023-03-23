@@ -29,17 +29,12 @@ import type { z } from "zod";
 export const handle = createSitemap();
 
 export async function loader({ params }: LoaderArgs) {
-  invariant(params.userId, "userId does not exist");
+  invariant(params.userId, `User with id ${params.userId} does not exist`);
   const user = await model.adminUser.query.getById({ id: params.userId });
   return json({ user });
 }
 
-export async function action({ request, params }: ActionArgs) {
-  invariant(params.userId, `User with id ${params.userId} does not exist`);
-  if (!params.userId) {
-    return redirect(`/admin/users`);
-  }
-
+export async function action({ request }: ActionArgs) {
   const formData = await request.formData();
   const submission = parse(formData, { schema: schemaAdminUserEdit });
   if (!submission.value || submission.intent !== "submit") {
@@ -53,7 +48,7 @@ export async function action({ request, params }: ActionArgs) {
     if (!updatedUser) {
       return json(submission, { status: 500 });
     }
-    return redirect(`/admin/users/${updatedUser.id}`);
+    return redirect(`../${updatedUser.id}`);
   } catch (error) {
     console.error(error);
     return json(submission, { status: 400 });
@@ -94,7 +89,7 @@ export default function AdminUsersEditRoute() {
           className="space-y-2 disabled:opacity-80"
         >
           <header>
-            <div className="flex flex-wrap gap-2 text-xs opacity-50">
+            <div className="flex flex-wrap gap-2 text-xs">
               <p>
                 ID: <b>{user.id}</b>
               </p>

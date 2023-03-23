@@ -42,7 +42,7 @@ export async function action({ request }: ActionArgs) {
 }
 
 // Admin doesn't need separated Layout component
-// Becaus this is already the Layout route for all /admin/* routes
+// Becaus this is already the Layout route for all admin routes
 export default function AdminLayoutRoute() {
   return (
     <div data-id="admin-layout-route" className="flex">

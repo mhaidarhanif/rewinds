@@ -79,7 +79,7 @@ export async function loader({ request }: LoaderArgs) {
 
   // But if the user session is no longer valid, log it out
   if (!user) {
-    return redirect("/logout");
+    return redirect(`/logout`);
   }
 
   // Finally, put the active user data to the root loader data

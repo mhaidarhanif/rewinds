@@ -49,7 +49,7 @@ export default function SearchRoute() {
           <h2>
             <span>{formatPluralItems("item", itemsCount)} found </span>
             {q && <span>with keyword: {q}</span>}
-            {q && <span>with no specific keyword</span>}
+            {!q && <span>with no specific keyword</span>}
           </h2>
         </PageHeader>
       }

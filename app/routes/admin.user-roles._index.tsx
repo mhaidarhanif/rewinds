@@ -19,7 +19,7 @@ export default function AdminUserRolesRoute() {
   return (
     <div className="stack-v">
       <header>
-        <span>User Roles</span>
+        <span>All User Roles</span>
       </header>
 
       {userRoles.length <= 0 && <span>No user roles. Please add.</span>}

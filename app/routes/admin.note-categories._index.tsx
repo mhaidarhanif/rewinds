@@ -19,7 +19,7 @@ export default function AdminNoteCategoriesRoute() {
   return (
     <div className="stack-v">
       <header>
-        <span>Note Categories</span>
+        <span>All Note Categories</span>
       </header>
 
       {noteCategories.length <= 0 && (

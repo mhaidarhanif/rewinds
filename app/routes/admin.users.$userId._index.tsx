@@ -31,7 +31,7 @@ export async function loader({ params }: LoaderArgs) {
 }
 
 export async function action({ request }: ActionArgs) {
-  return redirect(`/admin/users`);
+  return redirect(`..`);
 }
 
 // Similar with "admin-users-edit"
@@ -71,7 +71,7 @@ export default function AdminUsersViewRoute() {
         <header>
           <div
             data-id="user-view-id-slug"
-            className="flex flex-wrap gap-2 text-xs opacity-50"
+            className="flex flex-wrap gap-2 text-xs"
           >
             <p>
               ID: <b>{user.id}</b>
@@ -79,12 +79,12 @@ export default function AdminUsersViewRoute() {
           </div>
 
           <TooltipProvider>
-            <div className="flex flex-wrap gap-2 text-xs opacity-50">
+            <div className="flex flex-wrap gap-2 text-xs">
               <Tooltip>
                 <TooltipTrigger>
                   <p>
-                    <span>Created </span>
-                    <b>{formatRelativeTime(user.createdAt)} </b>
+                    <span>Created: </span>
+                    <b>{formatRelativeTime(user.createdAt)}</b>
                   </p>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -94,8 +94,8 @@ export default function AdminUsersViewRoute() {
               <Tooltip>
                 <TooltipTrigger>
                   <p>
-                    <span>Updated </span>
-                    <b>{formatRelativeTime(user.updatedAt)} </b>
+                    <span>Updated: </span>
+                    <b>{formatRelativeTime(user.updatedAt)}</b>
                   </p>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -106,15 +106,17 @@ export default function AdminUsersViewRoute() {
           </TooltipProvider>
         </header>
 
-        <h2>{user.name}</h2>
+        <section>
+          <h2>
+            {user.name} (@{user.username})
+          </h2>
+          <h3>{user.email}</h3>
+        </section>
 
-        <h3>
-          <b>@{user.username}</b>
-        </h3>
-
-        <h4>{user.profile.headline}</h4>
-
-        <p>{user.profile.bio}</p>
+        <article>
+          <h4>{user.profile.headline}</h4>
+          <p>{user.profile.bio}</p>
+        </article>
 
         {/* <div className="prose-config sm:prose-xl sm:py-4">{user.profile.story}</div> */}
       </section>

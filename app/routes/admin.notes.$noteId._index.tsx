@@ -45,14 +45,12 @@ export async function action({ request }: ActionArgs) {
       await model.adminNote.mutation.deleteById({
         id: submission.payload.noteId,
       });
-      return redirect(`/admin/notes`);
+      return redirect(`..`);
     } catch (error) {
       console.error(error);
       return json(submission, { status: 400 });
     }
   }
-
-  return redirect(`/admin/notes`);
 }
 
 // Similar with "admin-notes-edit"
@@ -95,7 +93,7 @@ export default function AdminNotesViewRoute() {
         <header>
           <div
             data-id="note-view-id-slug"
-            className="flex flex-wrap gap-2 text-xs opacity-50"
+            className="flex flex-wrap gap-2 text-xs"
           >
             <p>
               ID: <b>{note.id}</b>
@@ -106,9 +104,9 @@ export default function AdminNotesViewRoute() {
           </div>
 
           <TooltipProvider>
-            <div className="flex flex-wrap gap-2 text-xs opacity-50">
+            <div className="flex flex-wrap gap-2 text-xs">
               <p>
-                <span>Made by </span>
+                <span>Created by: </span>
                 <RemixLinkText to={`/admin/users/${note.user.id}`}>
                   {note.user.name}
                 </RemixLinkText>
@@ -116,8 +114,8 @@ export default function AdminNotesViewRoute() {
               <Tooltip>
                 <TooltipTrigger>
                   <p>
-                    <span>Created </span>
-                    <b>{formatRelativeTime(note.createdAt)} </b>
+                    <span>Created: </span>
+                    <b>{formatRelativeTime(note.createdAt)}</b>
                   </p>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -127,8 +125,8 @@ export default function AdminNotesViewRoute() {
               <Tooltip>
                 <TooltipTrigger>
                   <p>
-                    <span>Updated </span>
-                    <b>{formatRelativeTime(note.updatedAt)} </b>
+                    <span>Updated: </span>
+                    <b>{formatRelativeTime(note.updatedAt)}</b>
                   </p>
                 </TooltipTrigger>
                 <TooltipContent>

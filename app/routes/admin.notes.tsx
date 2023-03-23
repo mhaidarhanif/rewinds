@@ -35,7 +35,7 @@ export async function action({ request }: ActionArgs) {
     return json(submission);
   }
 
-  return redirect(`/admin/notes`);
+  return redirect(`.`);
 }
 
 export default function AdminNotesRoute() {

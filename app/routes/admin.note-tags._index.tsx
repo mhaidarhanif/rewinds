@@ -23,7 +23,7 @@ export default function AdminNoteTagsRoute() {
   return (
     <div className="stack-v">
       <header>
-        <span>Note Tags</span>
+        <span>All Note Tags</span>
       </header>
 
       {noteTags.length <= 0 && <span>No note tags. Please add.</span>}

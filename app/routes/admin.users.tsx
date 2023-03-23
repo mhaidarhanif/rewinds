@@ -38,7 +38,7 @@ export async function action({ request }: ActionArgs) {
     return json(submission);
   }
 
-  return redirect(`/admin/users`);
+  return redirect(`.`);
 }
 
 export default function AdminUsersRoute() {
