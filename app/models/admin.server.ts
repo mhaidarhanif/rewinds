@@ -8,7 +8,7 @@ export const admin = {
       prisma.note.count(),
     ]);
 
-    return configAdmin.navigationItems.map((item, index) => {
+    return configAdmin.navItems.map((item, index) => {
       return {
         ...item,
         count: counts[index],

@@ -55,6 +55,7 @@ export function SiteFooter({ noThemeToggle }: Props) {
             <Github />
             <span className="sr-only">GitHub</span>
           </ButtonIconAnchor>
+
           <ButtonIconAnchor
             href={configSite?.links.twitter}
             variant="ghost"
@@ -63,6 +64,7 @@ export function SiteFooter({ noThemeToggle }: Props) {
             <Twitter />
             <span className="sr-only">Twitter</span>
           </ButtonIconAnchor>
+
           {!noThemeToggle && <ThemeToggleDropdownMenu align="end" />}
         </div>
       </section>

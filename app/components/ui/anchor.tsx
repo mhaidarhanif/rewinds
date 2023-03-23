@@ -24,7 +24,7 @@ export function Anchor({
       rel="noreferrer noopener"
       className={cn(
         "cursor-pointer leading-[initial]",
-        !noIndicator && "after:content-['_↗']", // TODO: change to SVG
+        !noIndicator && "after:content-['_↗']",
         className
       )}
     >

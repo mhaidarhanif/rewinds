@@ -2,9 +2,9 @@ import { redirect } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 
 import {
-  ButtonNavLink,
   buttonVariants,
   HeaderUserMenu,
+  Icon,
   Logo,
   RemixNavLink,
   ThemeToggleButton,
@@ -41,14 +41,16 @@ export async function action({ request }: ActionArgs) {
   return null;
 }
 
+// Admin doesn't need separated Layout component
+// Becaus this is already the Layout route for all /admin/* routes
 export default function AdminLayoutRoute() {
   return (
     <div data-id="admin-layout-route" className="flex">
       <AdminSidebar />
 
-      <div data-id="admin-layout-outlet" className="grow pb-10">
+      <main data-id="admin-layout-outlet" className="grow pb-10">
         <Outlet />
-      </div>
+      </main>
     </div>
   );
 }
@@ -57,8 +59,9 @@ export function AdminSidebar() {
   return (
     <aside
       className={cn(
-        "card min-h-screen min-w-fit flex-col space-y-4",
-        "hidden sm:flex"
+        "sticky top-0 h-screen", // sticky sidebar
+        "min-w-fit space-y-4 p-2 sm:flex sm:flex-col sm:p-4",
+        "border-r border-surface-200 bg-white dark:border-surface-700 dark:bg-surface-900"
       )}
     >
       <div className="stack-h-center">
@@ -74,12 +77,12 @@ export function AdminSidebar() {
       </div>
 
       <ul className="grow space-y-1">
-        {configAdmin.navigationItems.map(({ name, to }) => {
+        {configAdmin.navItems.map((item) => {
           return (
-            <li key={name}>
+            <li key={item.name}>
               <RemixNavLink
-                key={name}
-                to={to}
+                key={item.name}
+                to={item.to}
                 prefetch="intent"
                 className={({ isActive }) =>
                   cn(
@@ -92,22 +95,12 @@ export function AdminSidebar() {
                   )
                 }
               >
-                {name}
+                <Icon name={item.icon} />
+                <span>{item.name}</span>
               </RemixNavLink>
             </li>
           );
         })}
-        <li>
-          <ButtonNavLink
-            to="/"
-            variant="navlink"
-            align="left"
-            weight="bold"
-            className="w-full"
-          >
-            Go to site
-          </ButtonNavLink>
-        </li>
       </ul>
     </aside>
   );

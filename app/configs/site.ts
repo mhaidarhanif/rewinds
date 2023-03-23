@@ -34,11 +34,11 @@ export const configSite = {
   },
 
   navItems: [
-    { to: "/", title: "Home", icon: "home" },
-    { to: "/about", title: "About", icon: "about" },
-    { to: "/components", title: "Components", icon: "components" },
-    { to: "/demo", title: "Demo", icon: "demo" },
-    { to: "/notes", title: "Notes", icon: "notes" },
+    { to: "/", name: "Home", icon: "home" },
+    { to: "/about", name: "About", icon: "about" },
+    { to: "/components", name: "Components", icon: "components" },
+    { to: "/demo", name: "Demo", icon: "demo" },
+    { to: "/notes", name: "Notes", icon: "notes" },
   ],
 };
 

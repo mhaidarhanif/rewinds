@@ -6,6 +6,7 @@ import {
   LayoutLeft,
   Components,
   Notes,
+  Cloud,
 } from "~/icons";
 
 /**
@@ -16,13 +17,14 @@ import {
  */
 
 export const iconMaps = {
-  home: <Home />,
   about: <InfoEmpty />,
+  components: <Components />,
   database: <Database />,
   default: <Circle />,
   demo: <LayoutLeft />,
-  components: <Components />,
+  home: <Home />,
   notes: <Notes />,
+  site: <Cloud />,
 };
 
 export function lookupIcon(lookupObject: any, defaultCase = "default") {

@@ -1,8 +1,11 @@
 import { createCookieSessionStorage } from "@remix-run/node";
 
-import { envServer, invariant } from "~/utils";
+import { getEnv, getEnvPrivate, invariant } from "~/utils";
 
-invariant(envServer.REMIX_SESSION_SECRET, "REMIX_SESSION_SECRET must be set");
+const env = getEnv();
+const envPrivate = getEnvPrivate();
+
+invariant(envPrivate.REMIX_SESSION_SECRET, "REMIX_SESSION_SECRET must be set");
 
 // export the whole sessionStorage object
 export const authSessionStorage = createCookieSessionStorage({
@@ -11,8 +14,8 @@ export const authSessionStorage = createCookieSessionStorage({
     httpOnly: true,
     path: "/",
     sameSite: "lax",
-    secrets: [envServer.REMIX_SESSION_SECRET],
-    secure: process.env.NODE_ENV === "production",
+    secrets: [envPrivate.REMIX_SESSION_SECRET],
+    secure: env.NODE_ENV === "production",
   },
 });
 

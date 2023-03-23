@@ -23,13 +23,20 @@ export default function AdminIndexRoute() {
   const rootLoaderData = useRootLoaderData();
   const loaderData = useLoaderData<typeof loader>();
 
+  const { user } = loaderData;
+
   return (
-    <div data-id="admin-index">
+    <div data-id="admin-index" className="stack-v">
       <PageAdminHeader size="xs">
         <h1>Admin Dashboard</h1>
       </PageAdminHeader>
 
-      <div className="stack-v px-layout">
+      <section className="px-layout space-y-2">
+        <h2>Welcome, {user.name}!</h2>
+        <h3>Your role is {user.role.name}</h3>
+      </section>
+
+      <div className="px-layout space-y-2">
         <Debug name="rootLoaderData">{rootLoaderData}</Debug>
         <Debug name="loaderData">{loaderData}</Debug>
       </div>

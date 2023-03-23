@@ -116,14 +116,11 @@ export function HeaderMainNavigation({
               to={item.to}
               prefetch="intent"
               className={({ isActive }) =>
-                cn(
-                  "flex gap-2",
-                  buttonVariants({ variant: "navlink", isActive })
-                )
+                cn(buttonVariants({ variant: "navlink", isActive }))
               }
             >
               <Icon name={item.icon} />
-              <span>{item.title}</span>
+              <span>{item.name}</span>
             </RemixNavLink>
           )
       )}
@@ -228,7 +225,7 @@ export function HeaderNavigationMenu({
               <DropdownMenuItem key={index} asChild>
                 <RemixNavLink to={item.to} prefetch="intent">
                   <Icon name={item.icon} />
-                  <span className="ml-2">{item.title}</span>
+                  <span>{item.name}</span>
                 </RemixNavLink>
               </DropdownMenuItem>
             )

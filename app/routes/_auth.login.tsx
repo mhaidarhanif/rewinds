@@ -160,7 +160,7 @@ export default function AuthLoginRoute() {
               <p className="text-xs text-surface-500">At least 8 characters</p>
             </div>
 
-            {/* TODO: Implement later */}
+            {/* TODO: Can change the cookie session maxAge */}
             {/* <div className="flex gap-1">
             <Checkbox id="remember" name="remember" />
             <Label htmlFor="remember" className="cursor-pointer">

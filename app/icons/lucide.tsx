@@ -6,8 +6,6 @@ export {
   ChevronDown,
   ChevronRight,
   ChevronsUpDown,
-  Circle,
-  Cloud,
   Copy,
   CreditCard,
   Eye,

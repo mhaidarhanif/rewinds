@@ -8,12 +8,14 @@
  */
 
 export const configAdmin = {
-  navigationItems: [
-    { to: "users", name: "Users" },
+  navItems: [
+    { to: "users", name: "Users", icon: "home" },
 
-    { to: "notes", name: "Notes" },
+    { to: "notes", name: "Notes", icon: "notes" },
     // { to: "note-statuses", name: "Note Statuses" },
     // { to: "note-categories", name: "Note Categories" },
     // { to: "note-tags", name: "Note Tags" },
+
+    { to: "/", name: " Go to site", icon: "site" },
   ],
 };
