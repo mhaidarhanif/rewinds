@@ -4,11 +4,13 @@
  * Site-wide info and meta data, mostly for information and SEO purpose
  */
 
-const isDevelopment = process.env.NODE_ENV === "development";
+import { configDev } from "~/configs";
 
 // For general
 export const configSite = {
-  domain: isDevelopment ? "localhost:3000" : "rewinds.mhaidarhanif.com",
+  domain: configDev.isDevelopment
+    ? "localhost:3000"
+    : "rewinds.mhaidarhanif.com",
 
   slug: "rewinds",
   name: "Rewinds",

@@ -9,6 +9,7 @@ import {
   RemixForm,
   RemixLink,
 } from "~/components";
+import { configDev } from "~/configs";
 import { requireUserSession } from "~/helpers";
 import { Plus, Trash } from "~/icons";
 import { model } from "~/models";
@@ -37,8 +38,6 @@ export async function action({ request }: ActionArgs) {
   return redirect(`/admin/notes`);
 }
 
-const isDevelopment = process.env.NODE_ENV === "development";
-
 export default function AdminNotesRoute() {
   const { notesCount } = useLoaderData<typeof loader>();
 
@@ -52,7 +51,7 @@ export default function AdminNotesRoute() {
           <Plus className="size-sm" />
           <span>New note</span>
         </ButtonLink>
-        {isDevelopment && (
+        {configDev.isDevelopment && (
           <RemixForm method="delete">
             <Button
               size="sm"

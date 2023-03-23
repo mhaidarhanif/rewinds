@@ -15,6 +15,7 @@ import {
   RemixForm,
   TextArea,
 } from "~/components";
+import { configDev } from "~/configs";
 import { requireUserSession } from "~/helpers";
 import { model } from "~/models";
 import { schemaNoteNew } from "~/schemas";
@@ -22,8 +23,6 @@ import { createSitemap } from "~/utils";
 
 import type { ActionArgs } from "@remix-run/node";
 import type { z } from "zod";
-
-const isDevelopment = process.env.NODE_ENV === "development";
 
 export const handle = createSitemap();
 
@@ -91,7 +90,7 @@ export default function AdminNotesNewRoute() {
                 {...conform.input(title)}
                 type="text"
                 placeholder="Note title or what's on your mind?"
-                defaultValue={isDevelopment ? "A new example" : ""}
+                defaultValue={configDev.isDevelopment ? "A new example" : ""}
                 autoFocus
               />
               <p id={title.errorId} role="alert">
@@ -105,7 +104,7 @@ export default function AdminNotesNewRoute() {
                 {...conform.input(description)}
                 type="text"
                 placeholder="Add a short description"
-                defaultValue={isDevelopment ? "The description" : ""}
+                defaultValue={configDev.isDevelopment ? "The description" : ""}
               />
               <p id={description.errorId} role="alert">
                 {description.error}
@@ -120,7 +119,9 @@ export default function AdminNotesNewRoute() {
               placeholder="Type your longer content here..."
               rows={10}
               defaultValue={
-                isDevelopment ? "Here is the long content about the note." : ""
+                configDev.isDevelopment
+                  ? "Here is the long content about the note."
+                  : ""
               }
             />
             <p id={content.errorId} role="alert">

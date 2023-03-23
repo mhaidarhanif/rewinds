@@ -220,6 +220,8 @@ cp -i .env.example .env
 Or use [Doppler](https://doppler.com) CLI or [Dotenv](https://dotenv.org) CLI to manage them:
 
 ```sh
+doppler login
+doppler setup
 doppler secrets download --no-file --format env > .env
 ```
 

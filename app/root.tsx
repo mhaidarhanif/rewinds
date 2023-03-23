@@ -22,7 +22,7 @@ import {
 } from "remix-themes";
 
 import { Debug, Layout, PageHeader, Toaster } from "~/components";
-import { configDocumentLinks } from "~/configs";
+import { configDev, configDocumentLinks } from "~/configs";
 import { model } from "~/models";
 import { authenticator } from "~/services";
 import { themeSessionResolver } from "~/sessions";
@@ -137,9 +137,7 @@ function App() {
 
       <body
         id="__remix"
-        className={cn(
-          process.env.NODE_ENV === "development" && "debug-screens"
-        )}
+        className={cn(configDev.isDevelopment && "debug-screens")}
       >
         <IconoirProvider
           iconProps={{ strokeWidth: 2, width: "1.5em", height: "1.5em" }}

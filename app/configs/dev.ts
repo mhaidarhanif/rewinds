@@ -4,10 +4,8 @@
  * Mostly for development purpose
  */
 
-const isDevelopment = process.env.NODE_ENV === "development";
-
 export const configDev = {
-  isDevelopment,
+  isDevelopment: process.env.NODE_ENV === "development",
   features: {
     debugComponent: true,
   },

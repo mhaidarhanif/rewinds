@@ -9,6 +9,7 @@ import {
   RemixForm,
   RemixLink,
 } from "~/components";
+import { configDev } from "~/configs";
 import { requireUserRole, requireUserSession } from "~/helpers";
 import { Plus, Trash } from "~/icons";
 import { model } from "~/models";
@@ -40,8 +41,6 @@ export async function action({ request }: ActionArgs) {
   return redirect(`/admin/users`);
 }
 
-const isDevelopment = process.env.NODE_ENV === "development";
-
 export default function AdminUsersRoute() {
   const { userCount } = useLoaderData<typeof loader>();
 
@@ -55,7 +54,7 @@ export default function AdminUsersRoute() {
           <Plus className="size-sm" />
           <span>New user</span>
         </ButtonLink>
-        {isDevelopment && (
+        {configDev.isDevelopment && (
           <RemixForm method="delete">
             <Button
               size="sm"

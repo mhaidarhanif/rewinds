@@ -1,8 +1,7 @@
+import { configDev } from "~/configs";
 import { prisma } from "~/libs";
 
 import type { LoaderArgs } from "@remix-run/node";
-
-const isDevelopment = process.env.NODE_ENV === "development";
 
 export async function loader({ request }: LoaderArgs) {
   const host =
@@ -11,7 +10,7 @@ export async function loader({ request }: LoaderArgs) {
   try {
     const url = new URL(
       "/",
-      isDevelopment ? `http://${host}` : `https://${host}`
+      configDev.isDevelopment ? `http://${host}` : `https://${host}`
     );
     // if we can connect to the database and make a simple query
     // and make a HEAD request to ourselves, then we're good.
