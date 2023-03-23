@@ -1,4 +1,4 @@
-import { userModel } from "~/models";
+import { model } from "~/models";
 import { authenticator } from "~/services";
 import { getSession } from "~/sessions";
 import { invariant } from "~/utils";
@@ -13,7 +13,7 @@ export type UserSession = {
 // User Data is a more complete user data that can be retrieved,
 // but not stored in the auth cookie
 export type UserData = NonNullable<
-  Prisma.PromiseReturnType<typeof userModel.getUserForSession>
+  Prisma.PromiseReturnType<typeof model.user.query.getForSession>
 >;
 
 // Remix way to protect routes
@@ -33,7 +33,7 @@ export async function requireUserSession(
   invariant(userSession, "User Session is not available");
 
   // Get user data from database
-  const user = await userModel.getUserForSession({ id: userSession.id });
+  const user = await model.user.query.getForSession({ id: userSession.id });
   if (!user) {
     await authenticator.logout(request, { redirectTo: "/login" });
   }

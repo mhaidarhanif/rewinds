@@ -2,16 +2,18 @@ import { prisma } from "~/libs";
 
 import type { User } from "@prisma/client";
 
-export const userNotification = {
-  getAllUserNotifications(userId: User["id"]) {
+export const query = {
+  count() {
+    return prisma.userNotification.count();
+  },
+  getAll({ user }: { user: Pick<User, "id"> }) {
     return prisma.userNotification.findMany({
-      where: { userId },
+      where: { userId: user.id },
     });
   },
-
-  getLatestUserNotifications(userId: User["id"]) {
+  getLatest({ user }: { user: Pick<User, "id"> }) {
     return prisma.userNotification.findMany({
-      where: { userId },
+      where: { userId: user.id },
       take: 10,
     });
   },

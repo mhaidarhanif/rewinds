@@ -15,7 +15,7 @@ import {
 } from "~/components";
 import { requireUserSession } from "~/helpers";
 import { EditPencil, Eye, Trash } from "~/icons";
-import { adminNoteModel } from "~/models";
+import { model } from "~/models";
 import {
   createSitemap,
   formatDateTime,
@@ -32,7 +32,7 @@ export async function loader({ params }: LoaderArgs) {
   const { noteId } = params;
   invariant(noteId, "noteId does not exist");
 
-  const note = await adminNoteModel.getNote({ id: noteId });
+  const note = await model.adminNote.query.getById({ id: noteId });
   return json({ note });
 }
 
@@ -44,7 +44,9 @@ export async function action({ request }: ActionArgs) {
 
   if (submission.payload.intent === "delete-note") {
     try {
-      await adminNoteModel.deleteNote({ id: submission.payload.noteId });
+      await model.adminNote.mutation.deleteById({
+        id: submission.payload.noteId,
+      });
       return redirect(`/admin/notes`);
     } catch (error) {
       console.error(error);

@@ -4,7 +4,7 @@ import { useLoaderData } from "@remix-run/react";
 import { Debug, PageAdminHeader } from "~/components";
 import { requireUserSession } from "~/helpers";
 import { useRootLoaderData } from "~/hooks";
-import { admin } from "~/models";
+import { model } from "~/models";
 import { createSitemap } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
@@ -14,7 +14,7 @@ export const handle = createSitemap();
 export async function loader({ request }: LoaderArgs) {
   const { userSession, user } = await requireUserSession(request);
 
-  const metrics = await admin.getMetrics();
+  const metrics = await model.admin.query.getMetrics();
 
   return json({ userSession, user, metrics });
 }

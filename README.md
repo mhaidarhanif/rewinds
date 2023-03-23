@@ -67,6 +67,7 @@ Included setup:
 - [x] UI components with React and Radix UI, ready to use and 100% customizable
 - [x] Styles, colors, fonts, icons, and responsive design with Tailwind CSS
 - [x] Database with Prisma ORM and MySQL on PlanetScale
+  - [x] GraphQL/tRPC-style file models structure
 - [x] Auth with Remix Auth using a session cookie
 - [x] Form and data validation with Conform and Zod
 - [x] No need for loading screens, only loading bar on top and loading button state
@@ -161,7 +162,7 @@ More details and references can also be checked from [`catamyst/stack`](https://
 - Tooling
   - [Prettier](https://prettier.io)
   - [ESLint](https://eslint.org)
-  - [Doppler](https://doppler.com)
+  - [Doppler](https://doppler.com) / [Dotenv](https://dotenv.org)
 - Deployment
   - [Vercel](https://vercel.com)
 
@@ -216,13 +217,13 @@ cp -i .env.example .env
 # then edit `.env` as you prefer
 ```
 
-Or use [Doppler](https://doppler.com) CLI to manage them:
+Or use [Doppler](https://doppler.com) CLI or [Dotenv](https://dotenv.org) CLI to manage them:
 
 ```sh
 doppler secrets download --no-file --format env > .env
 ```
 
-> ⚠️ Make sure to setup the environment variables here, on Vercel, or on your preferred deployment target. Otherwise the app will break on production. That's why Doppler is recommended and there are some preset strings in the `.env.example` which you can copy directly.
+> ⚠️ Make sure to setup the environment variables here, on Vercel, or on your preferred deployment target. Otherwise the app will break on production. That's why Doppler or Dotenv are recommended to manage them easily. There are also some preset strings in the `.env.example` which you can copy directly.
 
 ## Prisma ORM and Database Connection
 

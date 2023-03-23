@@ -2,29 +2,36 @@ import bcrypt from "bcryptjs";
 
 import { configUser } from "~/configs";
 import { prisma } from "~/libs";
-import { publicUserRoleFields } from "~/models";
+import { model } from "~/models";
 import { createNanoID, invariant } from "~/utils";
 
 import type { UserPassword, User } from "@prisma/client";
 export type { User } from "@prisma/client";
 
-export const publicUserFields = {
-  id: true,
-  name: true,
-  username: true,
-  role: { select: publicUserRoleFields },
+export const fields = {
+  public: {
+    id: true,
+    name: true,
+    username: true,
+    role: { select: model.userRole.fields.public },
+  },
+  private: {
+    id: true,
+    name: true,
+    username: true,
+    role: { select: model.userRole.fields.public },
+    email: true,
+    phone: true,
+    profile: true,
+    notes: true,
+  },
 };
 
-export const privateUserFields = {
-  ...publicUserFields,
-  email: true,
-  phone: true,
-  profile: true,
-  notes: true,
-};
-
-export const userModel = {
-  getAllUserUsernames() {
+export const query = {
+  count() {
+    return prisma.user.count();
+  },
+  getAllUsernames() {
     return prisma.user.findMany({
       select: {
         id: true,
@@ -32,22 +39,7 @@ export const userModel = {
       },
     });
   },
-
-  async getMetrics({ id }: Pick<User, "id">) {
-    const metrics = await prisma.$transaction([
-      prisma.note.count({ where: { userId: id } }),
-    ]);
-
-    return configUser.navigationItems.map((item, index) => {
-      return {
-        ...item,
-        id: createNanoID(),
-        count: metrics[index],
-      };
-    });
-  },
-
-  getUserForSession({ id }: Pick<User, "id">) {
+  getForSession({ id }: Pick<User, "id">) {
     return prisma.user.findUnique({
       where: { id },
       select: {
@@ -70,8 +62,7 @@ export const userModel = {
       },
     });
   },
-
-  getUserById({ id }: Pick<User, "id">) {
+  getById({ id }: Pick<User, "id">) {
     return prisma.user.findUnique({
       where: { id },
       include: {
@@ -81,8 +72,7 @@ export const userModel = {
       },
     });
   },
-
-  getUserByUsername({ username }: Pick<User, "username">) {
+  getByUsername({ username }: Pick<User, "username">) {
     return prisma.user.findUnique({
       where: { username },
       include: {
@@ -92,25 +82,38 @@ export const userModel = {
       },
     });
   },
-
-  getUserByEmail({ email }: Pick<User, "email">) {
+  getByEmail({ email }: Pick<User, "email">) {
     return prisma.user.findUnique({
       where: { email },
       select: { id: true },
     });
   },
-
-  searchUsers({ q }: { q: string | undefined }) {
+  search({ q }: { q: string | undefined }) {
     return prisma.user.findMany({
       where: {
         OR: [{ name: { contains: q } }, { username: { contains: q } }],
       },
-      select: publicUserFields,
+      select: fields.public,
       orderBy: [{ username: "desc" }],
     });
   },
+  async getMetrics({ id }: Pick<User, "id">) {
+    const metrics = await prisma.$transaction([
+      prisma.note.count({ where: { userId: id } }),
+    ]);
 
-  async loginUserPassword({
+    return configUser.navigationItems.map((item, index) => {
+      return {
+        ...item,
+        id: createNanoID(),
+        count: metrics[index],
+      };
+    });
+  },
+};
+
+export const mutation = {
+  async login({
     email,
     password,
   }: {
@@ -146,7 +149,7 @@ export const userModel = {
     };
   },
 
-  async registerUserPassword({
+  async register({
     name,
     username,
     email,
@@ -212,7 +215,7 @@ export const userModel = {
     };
   },
 
-  deleteUserByEmail(email: User["email"]) {
+  deleteByEmail(email: User["email"]) {
     return prisma.user.delete({ where: { email } });
   },
 };

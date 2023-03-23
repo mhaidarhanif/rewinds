@@ -1,25 +1,26 @@
 import { prisma } from "~/libs";
-import { publicUserFields } from "~/models";
+import { model } from "~/models";
 
 import type { Note } from "@prisma/client";
 
-export const noteModel = {
-  getAllNotes() {
+export const query = {
+  count() {
+    return prisma.note.count();
+  },
+  getAll() {
     return prisma.note.findMany({
       where: { isPublished: true },
-      include: { user: { select: publicUserFields } },
+      include: { user: { select: model.user.fields.public } },
       orderBy: { updatedAt: "desc" },
     });
   },
-
-  getNoteBySlug({ slug }: Pick<Note, "slug">) {
+  getBySlug({ slug }: Pick<Note, "slug">) {
     return prisma.note.findFirst({
       where: { slug },
-      include: { user: { select: publicUserFields } },
+      include: { user: { select: model.user.fields.public } },
     });
   },
-
-  searchNotes({ q }: { q: string | undefined }) {
+  search({ q }: { q: string | undefined }) {
     return prisma.note.findMany({
       where: {
         isPublished: true,
@@ -32,7 +33,7 @@ export const noteModel = {
       },
       include: {
         images: true,
-        user: { select: publicUserFields },
+        user: { select: model.user.fields.public },
       },
       orderBy: [{ updatedAt: "desc" }],
     });

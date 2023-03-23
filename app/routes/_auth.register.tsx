@@ -16,7 +16,7 @@ import {
   RemixLinkText,
 } from "~/components";
 import { configSite } from "~/configs";
-import { userModel } from "~/models";
+import { model } from "~/models";
 import { schemaUserRegister } from "~/schemas";
 import { authenticator } from "~/services";
 import {
@@ -64,7 +64,7 @@ export async function action({ request }: ActionArgs) {
     return json(submission, { status: 400 });
   }
 
-  const result = await userModel.registerUserPassword(submission.value);
+  const result = await model.user.mutation.register(submission.value);
 
   if (result.error) {
     return json({ ...submission, error: result.error }, { status: 403 });

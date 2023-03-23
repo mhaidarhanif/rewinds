@@ -1,29 +1,29 @@
 import { createNoteSlug, updateNoteSlug } from "~/helpers";
 import { prisma } from "~/libs";
-import { publicUserFields } from "~/models";
+import { model } from "~/models";
 
 import type { Note, User } from "@prisma/client";
 
-export const adminNoteModel = {
-  async getNoteCount() {
+export const query = {
+  count() {
     return prisma.note.count();
   },
-
-  async getAllNotes() {
+  getAll() {
     return prisma.note.findMany({
-      include: { user: { select: publicUserFields } },
+      include: { user: { select: model.user.fields.public } },
       orderBy: { updatedAt: "desc" },
     });
   },
-
-  async getNote({ id }: Pick<Note, "id">) {
+  getById({ id }: Pick<Note, "id">) {
     return prisma.note.findFirst({
       where: { id },
-      include: { user: { select: publicUserFields } },
+      include: { user: { select: model.user.fields.public } },
     });
   },
+};
 
-  async addNewNote({
+export const mutation = {
+  addNew({
     user,
     note,
   }: {
@@ -40,8 +40,7 @@ export const adminNoteModel = {
       },
     });
   },
-
-  async updateNote({
+  update({
     user,
     note,
   }: {
@@ -60,12 +59,10 @@ export const adminNoteModel = {
       },
     });
   },
-
-  async deleteAllNotes() {
+  deleteAll() {
     return prisma.note.deleteMany();
   },
-
-  async deleteNote({ id }: Pick<Note, "id">) {
+  deleteById({ id }: Pick<Note, "id">) {
     return prisma.note.delete({
       where: { id },
     });

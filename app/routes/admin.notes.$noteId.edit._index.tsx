@@ -19,7 +19,7 @@ import {
   TextArea,
 } from "~/components";
 import { requireUserSession } from "~/helpers";
-import { adminNoteModel } from "~/models";
+import { model } from "~/models";
 import { schemaNoteEdit } from "~/schemas";
 import { createSitemap, invariant } from "~/utils";
 
@@ -33,7 +33,7 @@ export async function loader({ params }: LoaderArgs) {
   const { noteId } = params;
   invariant(noteId, "noteId does not exist");
 
-  const note = await adminNoteModel.getNote({ id: noteId });
+  const note = await model.adminNote.query.getById({ id: noteId });
   return json({ note });
 }
 
@@ -53,7 +53,7 @@ export async function action({ request, params }: ActionArgs) {
   }
 
   try {
-    const updatedNote = await adminNoteModel.updateNote({
+    const updatedNote = await model.adminNote.mutation.update({
       user: userSession,
       note: submission.value,
     });

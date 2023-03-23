@@ -11,7 +11,7 @@ import {
   TooltipTrigger,
 } from "~/components";
 import { EditPencil, Trash } from "~/icons";
-import { adminUser } from "~/models";
+import { model } from "~/models";
 import {
   createSitemap,
   formatDateTime,
@@ -28,7 +28,7 @@ export async function loader({ params }: LoaderArgs) {
   const { userId } = params;
   invariant(userId, "userId does not exist");
 
-  const user = await adminUser.getUser({ id: userId });
+  const user = await model.adminUser.query.getById({ id: userId });
   return json({ user });
 }
 

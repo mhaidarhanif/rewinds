@@ -1,17 +1,17 @@
 import { prisma } from "~/libs";
-import { publicUserRoleFields } from "~/models";
+import { model } from "~/models";
 
 import type { User } from "@prisma/client";
 
-export const adminUser = {
-  async getUserCount() {
+export const query = {
+  async count() {
     return prisma.user.count();
   },
 
-  async getAllUsers() {
+  async getAll() {
     return prisma.user.findMany({
       include: {
-        role: { select: publicUserRoleFields },
+        role: { select: model.userRole.fields.public },
         notes: {
           select: {
             id: true,
@@ -21,7 +21,7 @@ export const adminUser = {
     });
   },
 
-  async getUser({ id }: Pick<User, "id">) {
+  async getById({ id }: Pick<User, "id">) {
     return prisma.user.findFirst({
       where: { id },
       include: {
@@ -30,8 +30,10 @@ export const adminUser = {
       },
     });
   },
+};
 
-  async deleteAllUsers() {
+export const mutation = {
+  async deleteAll() {
     return prisma.user.deleteMany();
   },
 };

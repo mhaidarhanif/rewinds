@@ -16,7 +16,7 @@ import {
   RemixLinkText,
 } from "~/components";
 import { configSite } from "~/configs";
-import { userModel } from "~/models";
+import { model } from "~/models";
 import { schemaUserLogin } from "~/schemas";
 import { authenticator } from "~/services";
 import {
@@ -66,7 +66,7 @@ export async function action({ request }: ActionArgs) {
   }
 
   // Check user email and password
-  const result = await userModel.loginUserPassword(submission.value);
+  const result = await model.user.mutation.login(submission.value);
 
   // Use custom error for Conform submission
   if (result.error) {

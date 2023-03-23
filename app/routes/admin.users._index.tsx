@@ -3,7 +3,7 @@ import { useLoaderData } from "@remix-run/react";
 import pluralize from "pluralize";
 
 import { Debug, RemixLink } from "~/components";
-import { adminUser } from "~/models";
+import { model } from "~/models";
 import { createSitemap } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
@@ -11,7 +11,7 @@ import type { LoaderArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader({ request }: LoaderArgs) {
-  const users = await adminUser.getAllUsers();
+  const users = await model.adminUser.query.getAll();
   return json({ users });
 }
 

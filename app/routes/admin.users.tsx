@@ -11,7 +11,7 @@ import {
 } from "~/components";
 import { requireUserRole, requireUserSession } from "~/helpers";
 import { Plus, Trash } from "~/icons";
-import { adminUser } from "~/models";
+import { model } from "~/models";
 import { createSitemap } from "~/utils";
 
 import type { ActionArgs } from "@remix-run/node";
@@ -19,7 +19,7 @@ import type { ActionArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader() {
-  const userCount = await adminUser.getUserCount();
+  const userCount = await model.adminUser.query.count();
   return json({ userCount });
 }
 
@@ -33,7 +33,7 @@ export async function action({ request }: ActionArgs) {
   const submission = parse(formData, {});
 
   if (submission.payload.intent === "delete-all-users") {
-    await adminUser.deleteAllUsers();
+    await model.adminUser.mutation.deleteAll();
     return json(submission);
   }
 

@@ -1,6 +1,7 @@
 import { prisma } from "~/libs";
 
 import type { LoaderArgs } from "@remix-run/node";
+
 const isDevelopment = process.env.NODE_ENV === "development";
 
 export async function loader({ request }: LoaderArgs) {

@@ -3,7 +3,7 @@ import { useLoaderData } from "@remix-run/react";
 
 import { Layout, PageHeader, RemixLink } from "~/components";
 import { prisma } from "~/libs";
-import { noteModel, userModel } from "~/models";
+import { model } from "~/models";
 import {
   createMetaData,
   createSitemap,
@@ -25,8 +25,8 @@ export async function loader({ request }: LoaderArgs) {
   const { q } = getAllSearchQuery({ request });
 
   const [notes, users] = await prisma.$transaction([
-    noteModel.searchNotes({ q }),
-    userModel.searchUsers({ q }),
+    model.note.query.search({ q }),
+    model.user.query.search({ q }),
   ]);
 
   return json({

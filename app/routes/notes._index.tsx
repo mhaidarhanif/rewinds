@@ -2,7 +2,7 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 import { Balancer, PageHeader, RemixLink } from "~/components";
-import { noteModel } from "~/models";
+import { model } from "~/models";
 import { createMetaData, truncateText } from "~/utils";
 
 export const meta = createMetaData({
@@ -11,7 +11,7 @@ export const meta = createMetaData({
 });
 
 export async function loader() {
-  const notes = await noteModel.getAllNotes();
+  const notes = await model.note.query.getAll();
   return json({ notes });
 }
 

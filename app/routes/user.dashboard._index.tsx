@@ -3,7 +3,7 @@ import { useLoaderData } from "@remix-run/react";
 
 import { ButtonLink, PageHeader, RemixLink, RemixLinkText } from "~/components";
 import { requireUserRole, requireUserSession } from "~/helpers";
-import { userModel } from "~/models";
+import { model } from "~/models";
 import { cn, createSitemap, invariant } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
@@ -13,7 +13,7 @@ export const handle = createSitemap();
 export async function loader({ request }: LoaderArgs) {
   const { userSession, user } = await requireUserSession(request);
 
-  const metrics = await userModel.getMetrics({ id: userSession.id });
+  const metrics = await model.user.query.getMetrics({ id: userSession.id });
   invariant(metrics, "User metrics not available");
 
   return json({ user, metrics });

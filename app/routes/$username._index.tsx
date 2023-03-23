@@ -3,7 +3,7 @@ import { useLoaderData, useParams } from "@remix-run/react";
 
 import { AnchorText, Balancer, Layout, PageHeader } from "~/components";
 import { configMeta } from "~/configs";
-import { userModel } from "~/models";
+import { model } from "~/models";
 import { createMetaData, createSitemap, invariant } from "~/utils";
 
 import type { LoaderArgs, V2_MetaFunction } from "@remix-run/node";
@@ -38,7 +38,7 @@ export async function loader({ params }: LoaderArgs) {
   invariant(username, "username does not exist");
 
   // This is not using requireUserSession because anyone public can get the data
-  const user = await userModel.getUserByUsername({ username });
+  const user = await model.user.query.getByUsername({ username });
   if (!user) {
     return json({ user: null }, { status: 404 });
   }

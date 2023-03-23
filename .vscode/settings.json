@@ -1,4 +1,5 @@
 {
+  "dotenv.enableAutocloaking": true,
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   // "editor.renderWhitespace": "boundary",

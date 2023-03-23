@@ -12,7 +12,7 @@ import {
 import { requireUserSession } from "~/helpers";
 import { Plus, Trash } from "~/icons";
 import { prisma } from "~/libs";
-import { userNoteModel } from "~/models";
+import { model } from "~/models";
 import { createSitemap, formatPluralItems, truncateText } from "~/utils";
 
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
@@ -23,8 +23,8 @@ export async function loader({ request }: LoaderArgs) {
   const { userSession, user } = await requireUserSession(request);
 
   const [notes, notesCount] = await prisma.$transaction([
-    userNoteModel.getAllNotes({ user: userSession }),
-    userNoteModel.getNoteCount({ user: userSession }),
+    model.userNote.query.getAll({ user: userSession }),
+    model.userNote.query.count({ user: userSession }),
   ]);
 
   return json({ user, notes, notesCount });
@@ -37,7 +37,7 @@ export async function action({ request }: ActionArgs) {
   const submission = parse(formData, {});
 
   if (submission.payload.intent === "user-delete-all-notes") {
-    await userNoteModel.deleteAllNotes({ user: userSession });
+    await model.userNote.mutation.deleteAll({ user: userSession });
     return json(submission);
   }
 

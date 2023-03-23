@@ -1,7 +1,7 @@
 import { Authenticator, AuthorizationError } from "remix-auth";
 import { FormStrategy } from "remix-auth-form";
 
-import { userModel } from "~/models";
+import { model } from "~/models";
 import { authSessionStorage } from "~/sessions/auth-session.server";
 
 import type { UserSession } from "~/helpers";
@@ -20,11 +20,12 @@ import type { UserSession } from "~/helpers";
 export const authenticator = new Authenticator<UserSession>(authSessionStorage);
 
 /**
- * Tell the Authenticator to use the form strategy.
+ * Authenticator Strategy
+ *
  * This is just for the Login, not the Register.
- * But the complete login with password logic is in the login route action.
+ * Note that the complete login with password logic is in the login route action.
  * Because we want to do inline error message along with Conform,
- * not using the error session thrown by Remix Auth AuthorizationError.
+ * not using the error session thrown by Remix Auth's AuthorizationError.
  */
 authenticator.use(
   new FormStrategy(async ({ form }) => {
@@ -35,7 +36,7 @@ authenticator.use(
       throw new AuthorizationError("User and password are required");
     }
 
-    const user = (await userModel.getUserByEmail({ email })) as UserSession;
+    const user = (await model.user.query.getByEmail({ email })) as UserSession;
 
     if (!user.id) {
       throw new AuthorizationError("User is not found");

@@ -23,7 +23,7 @@ import {
 
 import { Debug, Layout, PageHeader, Toaster } from "~/components";
 import { configDocumentLinks } from "~/configs";
-import { userModel } from "~/models";
+import { model } from "~/models";
 import { authenticator } from "~/services";
 import { themeSessionResolver } from "~/sessions";
 import { cn, createMetaData, getEnv } from "~/utils";
@@ -75,7 +75,7 @@ export async function loader({ request }: LoaderArgs) {
   }
 
   // Put user and its profile data
-  const user = await userModel.getUserForSession({ id: userSession.id });
+  const user = await model.user.query.getForSession({ id: userSession.id });
 
   // But if the user session is no longer valid, log it out
   if (!user) {

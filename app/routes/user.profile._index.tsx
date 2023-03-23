@@ -9,6 +9,5 @@ export async function loader({ request }: LoaderArgs) {
   if (!user) {
     return redirect("/login");
   }
-
   return redirect(`/${user.username}`);
 }
