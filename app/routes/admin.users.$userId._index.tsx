@@ -25,10 +25,8 @@ import type { ActionArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader({ params }: LoaderArgs) {
-  const { userId } = params;
-  invariant(userId, "userId does not exist");
-
-  const user = await model.adminUser.query.getById({ id: userId });
+  invariant(params.userId, "userId does not exist");
+  const user = await model.adminUser.query.getById({ id: params.userId });
   return json({ user });
 }
 

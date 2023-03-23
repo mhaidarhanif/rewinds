@@ -6,6 +6,7 @@ import { useActionData, useCatch, useNavigation } from "@remix-run/react";
 import { useId } from "react";
 
 import {
+  Alert,
   Button,
   ButtonLink,
   ButtonLoading,
@@ -93,9 +94,7 @@ export default function AdminNotesNewRoute() {
                 defaultValue={configDev.isDevelopment ? "A new example" : ""}
                 autoFocus
               />
-              <p id={title.errorId} role="alert">
-                {title.error}
-              </p>
+              <Alert id={title.errorId}>{title.error}</Alert>
             </div>
 
             <div className="space-y-1">
@@ -106,9 +105,7 @@ export default function AdminNotesNewRoute() {
                 placeholder="Add a short description"
                 defaultValue={configDev.isDevelopment ? "The description" : ""}
               />
-              <p id={description.errorId} role="alert">
-                {description.error}
-              </p>
+              <Alert id={description.errorId}>{description.error}</Alert>
             </div>
           </header>
 
@@ -124,9 +121,7 @@ export default function AdminNotesNewRoute() {
                   : ""
               }
             />
-            <p id={content.errorId} role="alert">
-              {content.error}
-            </p>
+            <Alert id={content.errorId}>{content.error}</Alert>
             <p className="text-sm text-surface-500">
               The note has a maximum content length of 1,000 characters.
             </p>

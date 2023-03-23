@@ -29,10 +29,8 @@ import type { ActionArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader({ params }: LoaderArgs) {
-  const { noteId } = params;
-  invariant(noteId, "noteId does not exist");
-
-  const note = await model.adminNote.query.getById({ id: noteId });
+  invariant(params.noteId, "noteId does not exist");
+  const note = await model.adminNote.query.getById({ id: params.noteId });
   return json({ note });
 }
 

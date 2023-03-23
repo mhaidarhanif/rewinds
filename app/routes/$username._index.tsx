@@ -11,13 +11,12 @@ import type { LoaderArgs, V2_MetaFunction } from "@remix-run/node";
 export const handle = createSitemap();
 
 export const meta: V2_MetaFunction<typeof loader> = ({ params, data }) => {
-  const { username } = params;
   const user = data.user;
 
   if (!user) {
     return createMetaData({
       title: "Profile does not exist",
-      description: `Cannot find user with the username ${username}`,
+      description: `Cannot find user with the username ${params.username}`,
     });
   }
 
@@ -34,11 +33,12 @@ export const meta: V2_MetaFunction<typeof loader> = ({ params, data }) => {
  * 3. If nothing found, tell this account doesn’t exist
  */
 export async function loader({ params }: LoaderArgs) {
-  const { username } = params;
-  invariant(username, "username does not exist");
+  invariant(params.username, "username does not exist");
 
   // This is not using requireUserSession because anyone public can get the data
-  const user = await model.user.query.getByUsername({ username });
+  const user = await model.user.query.getByUsername({
+    username: params.username,
+  });
   if (!user) {
     return json({ user: null }, { status: 404 });
   }

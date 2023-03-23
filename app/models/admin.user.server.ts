@@ -28,7 +28,19 @@ export const query = {
 };
 
 export const mutation = {
-  async deleteAll() {
+  deleteAll() {
     return prisma.user.deleteMany();
+  },
+  update({ user }: { user: Pick<User, "id" | "name" | "username" | "email"> }) {
+    return prisma.user.update({
+      where: {
+        id: user.id,
+      },
+      data: {
+        name: user.name,
+        username: user.username,
+        email: user.email,
+      },
+    });
   },
 };

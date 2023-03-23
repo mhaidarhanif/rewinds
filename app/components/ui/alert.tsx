@@ -46,6 +46,10 @@ export function Alert({
   children,
   ...props
 }: Props) {
+  if (!children) {
+    return null;
+  }
+
   return (
     <div
       className={cn(

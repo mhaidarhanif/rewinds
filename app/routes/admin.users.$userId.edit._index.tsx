@@ -17,11 +17,9 @@ import {
   Input,
   Label,
   RemixForm,
-  TextArea,
 } from "~/components";
-import { requireUserSession } from "~/helpers";
 import { model } from "~/models";
-import { schemaNoteEdit } from "~/schemas";
+import { schemaAdminUserEdit } from "~/schemas";
 import { createSitemap, invariant } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
@@ -31,66 +29,63 @@ import type { z } from "zod";
 export const handle = createSitemap();
 
 export async function loader({ params }: LoaderArgs) {
-  invariant(params.noteId, "noteId does not exist");
-  const note = await model.adminNote.query.getById({ id: params.noteId });
-  return json({ note });
+  invariant(params.userId, "userId does not exist");
+  const user = await model.adminUser.query.getById({ id: params.userId });
+  return json({ user });
 }
 
 export async function action({ request, params }: ActionArgs) {
-  const { userSession } = await requireUserSession(request);
-
-  invariant(params.noteId, `Note with id ${params.noteId} does not exist`);
-  if (!params.noteId) {
-    return redirect(`/admin/notes`);
+  invariant(params.userId, `User with id ${params.userId} does not exist`);
+  if (!params.userId) {
+    return redirect(`/admin/users`);
   }
 
   const formData = await request.formData();
-  const submission = parse(formData, { schema: schemaNoteEdit });
+  const submission = parse(formData, { schema: schemaAdminUserEdit });
   if (!submission.value || submission.intent !== "submit") {
     return json(submission, { status: 400 });
   }
 
   try {
-    const updatedNote = await model.adminNote.mutation.update({
-      user: userSession,
-      note: submission.value,
+    const updatedUser = await model.adminUser.mutation.update({
+      user: submission.value,
     });
-    if (!updatedNote) {
+    if (!updatedUser) {
       return json(submission, { status: 500 });
     }
-    return redirect(`/admin/notes/${updatedNote.id}`);
+    return redirect(`/admin/users/${updatedUser.id}`);
   } catch (error) {
     console.error(error);
     return json(submission, { status: 400 });
   }
 }
 
-// Similar with "admin-notes-view"
-export default function AdminNotesEditRoute() {
-  const { note } = useLoaderData<typeof loader>();
+// Similar with "admin-users-view"
+export default function AdminUsersEditRoute() {
+  const { user } = useLoaderData<typeof loader>();
   const actionData = useActionData<typeof action>();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
-  const [form, { id, slug, title, description, content }] = useForm<
-    z.infer<typeof schemaNoteEdit>
+  const [form, { id, name, username, email }] = useForm<
+    z.infer<typeof schemaAdminUserEdit>
   >({
     initialReport: "onSubmit",
     lastSubmission: actionData,
     onValidate({ formData }) {
-      return parse(formData, { schema: schemaNoteEdit });
+      return parse(formData, { schema: schemaAdminUserEdit });
     },
-    constraint: getFieldsetConstraint(schemaNoteEdit),
+    constraint: getFieldsetConstraint(schemaAdminUserEdit),
   });
 
-  if (!note) {
-    return <p>Note does not exist.</p>;
+  if (!user) {
+    return <p>User does not exist.</p>;
   }
 
   return (
-    <div data-id="admin-notes-edit" className="stack-v">
+    <div data-id="admin-users-edit" className="stack-v">
       <header>
-        <span>Edit Note</span>
+        <span>Edit User</span>
       </header>
 
       <RemixForm {...form.props} method="put" className="card stack-v max-w-lg">
@@ -101,53 +96,45 @@ export default function AdminNotesEditRoute() {
           <header>
             <div className="flex flex-wrap gap-2 text-xs opacity-50">
               <p>
-                ID: <b>{note.id}</b>
-              </p>
-              <p>
-                Slug: <b>{note.slug}</b>
+                ID: <b>{user.id}</b>
               </p>
             </div>
 
-            <input hidden {...conform.input(id)} defaultValue={note.id} />
-            <input hidden {...conform.input(slug)} defaultValue={note.slug} />
+            <input hidden {...conform.input(id)} defaultValue={user.id} />
 
             <div className="space-y-1">
-              <Label htmlFor={title.id}>Title</Label>
+              <Label htmlFor={name.id}>Name</Label>
               <Input
-                {...conform.input(title)}
+                {...conform.input(name)}
                 type="text"
-                placeholder="Note title or what's on your mind?"
-                autoFocus
-                defaultValue={note.title}
+                placeholder="Full Name"
+                defaultValue={user.name}
               />
-              <Alert id={title.errorId}>{title.error}</Alert>
+              <Alert id={name.errorId}>{name.error}</Alert>
             </div>
 
             <div className="space-y-1">
-              <Label htmlFor={description.id}>Description</Label>
+              <Label htmlFor={username.id}>Username</Label>
               <Input
-                {...conform.input(description)}
+                {...conform.input(username)}
                 type="text"
-                placeholder="Add a short description"
-                defaultValue={note.description}
+                placeholder="username"
+                defaultValue={user.username}
               />
-              <Alert id={description.errorId}>{description.error}</Alert>
+              <Alert id={username.errorId}>{username.error}</Alert>
+            </div>
+
+            <div className="space-y-1">
+              <Label htmlFor={email.id}>email</Label>
+              <Input
+                {...conform.input(email)}
+                type="email"
+                placeholder="name@email.com"
+                defaultValue={user.email}
+              />
+              <Alert id={email.errorId}>{email.error}</Alert>
             </div>
           </header>
-
-          <div className="space-y-1">
-            <Label htmlFor={content.id}>Content</Label>
-            <TextArea
-              {...conform.input(content)}
-              placeholder="Type your longer content here..."
-              rows={10}
-              defaultValue={note.content}
-            />
-            <Alert id={content.errorId}>{content.error}</Alert>
-            <p className="text-sm text-surface-500">
-              The note has a maximum content length of 1,000 characters.
-            </p>
-          </div>
 
           <div className="flex gap-2">
             <ButtonLoading

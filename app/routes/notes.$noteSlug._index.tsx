@@ -10,11 +10,13 @@ import type { LoaderArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader({ params }: LoaderArgs) {
-  const { noteSlug } = params;
-  invariant(noteSlug, "noteSlug does not exist");
+  invariant(
+    params.noteSlug,
+    `note with slug ${params.noteSlug} does not exist`
+  );
 
   return json({
-    note: await model.note.query.getBySlug({ slug: noteSlug }),
+    note: await model.note.query.getBySlug({ slug: params.noteSlug }),
   });
 }
 
