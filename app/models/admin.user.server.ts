@@ -1,5 +1,4 @@
 import { prisma } from "~/libs";
-import { model } from "~/models";
 
 import type { User } from "@prisma/client";
 
@@ -11,12 +10,8 @@ export const query = {
   async getAll() {
     return prisma.user.findMany({
       include: {
-        role: { select: model.userRole.fields.public },
-        notes: {
-          select: {
-            id: true,
-          },
-        },
+        role: { select: { symbol: true, name: true, description: true } },
+        notes: { select: { id: true } },
       },
     });
   },

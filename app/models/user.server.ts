@@ -2,7 +2,6 @@ import bcrypt from "bcryptjs";
 
 import { configUser } from "~/configs";
 import { prisma } from "~/libs";
-import { model } from "~/models";
 import { createNanoID, invariant } from "~/utils";
 
 import type { UserPassword, User } from "@prisma/client";
@@ -13,13 +12,13 @@ export const fields = {
     id: true,
     name: true,
     username: true,
-    role: { select: model.userRole.fields.public },
+    role: { select: { symbol: true, name: true, description: true } },
   },
   private: {
     id: true,
     name: true,
     username: true,
-    role: { select: model.userRole.fields.public },
+    role: { select: { symbol: true, name: true, description: true } },
     email: true,
     phone: true,
     profile: true,
@@ -47,16 +46,11 @@ export const query = {
         name: true,
         username: true,
         email: true,
+        role: { select: { symbol: true, name: true } },
         profile: {
           select: {
             headline: true,
             bio: true,
-          },
-        },
-        role: {
-          select: {
-            symbol: true,
-            name: true,
           },
         },
       },

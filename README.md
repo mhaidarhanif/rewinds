@@ -248,7 +248,7 @@ nr dev
 This will run both the Remix server and Express server with HMR enabled. Then wait until you see this info on the terminal:
 
 ```sh
-📀 Remix on Express server listening on port :3000
+📀 Remix on Express server port :3000
 Loading environment variables from .env
 💿 Built in 0s
 ```

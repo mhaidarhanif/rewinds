@@ -8,12 +8,12 @@ import * as userNote from "./user.note.server";
 import * as user from "./user.server";
 
 export const model = {
-  adminNote,
   admin,
+  adminNote,
   adminUser,
   note,
+  user,
+  userNote,
   userNotification,
   userRole,
-  userNote,
-  user,
 };

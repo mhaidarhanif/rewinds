@@ -44,7 +44,7 @@ app.all(
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-  console.log(`📀 Remix on Express server listening on port :${port}`);
+  console.log(`📀 Remix on Express server port :${port}`);
 });
 
 function purgeRequireCache() {
