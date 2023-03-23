@@ -52,7 +52,7 @@ export const configMeta = {
   defaultDescription: configSite?.description,
 
   locale: "en_US",
-  url: isDevelopment
+  url: configDev.isDevelopment
     ? "http://localhost:3000"
     : `https://${configSite?.domain}`,
   canonicalPath: "/",
