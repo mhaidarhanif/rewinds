@@ -13,7 +13,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "~/components";
-import { authorizeUser } from "~/helpers";
+import { requireUserSession } from "~/helpers";
 import { EditPencil, Eye, Trash } from "~/icons";
 import { adminNoteModel } from "~/models";
 import {
@@ -37,7 +37,7 @@ export async function loader({ params }: LoaderArgs) {
 }
 
 export async function action({ request }: ActionArgs) {
-  await authorizeUser(request);
+  await requireUserSession(request);
 
   const formData = await request.formData();
   const submission = parse(formData);

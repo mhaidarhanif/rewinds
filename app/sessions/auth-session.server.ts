@@ -5,7 +5,7 @@ import { envServer, invariant } from "~/utils";
 invariant(envServer.REMIX_SESSION_SECRET, "REMIX_SESSION_SECRET must be set");
 
 // export the whole sessionStorage object
-export const sessionStorage = createCookieSessionStorage({
+export const authSessionStorage = createCookieSessionStorage({
   cookie: {
     name: "__auth-session",
     httpOnly: true,
@@ -17,4 +17,4 @@ export const sessionStorage = createCookieSessionStorage({
 });
 
 // you can also export the methods individually for your own usage
-export const { getSession, commitSession, destroySession } = sessionStorage;
+export const { getSession, commitSession, destroySession } = authSessionStorage;

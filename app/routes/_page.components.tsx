@@ -14,7 +14,7 @@ import {
   ButtonLink,
   ButtonLoading,
   CopyButton,
-  HeaderMenuNavigation,
+  HeaderNavigationMenu,
   Input,
   Label,
   Layout,
@@ -261,7 +261,7 @@ export function ExampleButtonIcon() {
       <div className="stack-v">
         <h4>Use Case</h4>
         <div className="flex">
-          <HeaderMenuNavigation align="start" />
+          <HeaderNavigationMenu align="start" />
         </div>
       </div>
     </section>

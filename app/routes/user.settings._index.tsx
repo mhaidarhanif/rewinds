@@ -2,7 +2,7 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 import { Debug, PageHeader, RemixLinkText } from "~/components";
-import { authorizeUser } from "~/helpers";
+import { requireUserSession } from "~/helpers";
 import { createSitemap } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
@@ -10,7 +10,7 @@ import type { LoaderArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader({ request }: LoaderArgs) {
-  const { user } = await authorizeUser(request);
+  const { user } = await requireUserSession(request);
 
   return json({ user });
 }

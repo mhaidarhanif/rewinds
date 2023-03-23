@@ -9,7 +9,7 @@ import {
   RemixForm,
   RemixLink,
 } from "~/components";
-import { authorizeUser } from "~/helpers";
+import { requireUserRole, requireUserSession } from "~/helpers";
 import { Plus, Trash } from "~/icons";
 import { adminUser } from "~/models";
 import { createSitemap } from "~/utils";
@@ -24,9 +24,8 @@ export async function loader() {
 }
 
 export async function action({ request }: ActionArgs) {
-  const { user } = await authorizeUser(request);
-
-  if (user.role.symbol !== "ADMIN") {
+  const { user } = await requireUserSession(request);
+  if (!requireUserRole(user, ["ADMIN", "MANAGER"])) {
     return json({ message: "Not allowed" }, { status: 400 });
   }
 
@@ -72,7 +71,7 @@ export default function AdminUsersRoute() {
         )}
       </PageAdminHeader>
 
-      <div data-id="admin-users-outlet" className="p-layout">
+      <div data-id="admin-users-outlet" className="px-layout">
         <Outlet />
       </div>
     </div>

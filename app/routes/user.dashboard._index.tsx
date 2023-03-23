@@ -2,7 +2,7 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 import { ButtonLink, PageHeader, RemixLink, RemixLinkText } from "~/components";
-import { authorizeUser } from "~/helpers";
+import { requireUserRole, requireUserSession } from "~/helpers";
 import { userModel } from "~/models";
 import { cn, createSitemap, invariant } from "~/utils";
 
@@ -11,7 +11,7 @@ import type { LoaderArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader({ request }: LoaderArgs) {
-  const { userSession, user } = await authorizeUser(request);
+  const { userSession, user } = await requireUserSession(request);
 
   const metrics = await userModel.getMetrics({ id: userSession.id });
   invariant(metrics, "User metrics not available");
@@ -21,7 +21,7 @@ export async function loader({ request }: LoaderArgs) {
 
 export default function UserDashboardRoute() {
   const { user, metrics } = useLoaderData<typeof loader>();
-  const isAdmin = user.role.symbol === "ADMIN";
+  const isAllowed = requireUserRole(user, ["ADMIN", "MANAGER", "EDITOR"]);
 
   return (
     <div data-id="user-dashboard" className="space-y-4">
@@ -65,7 +65,7 @@ export default function UserDashboardRoute() {
           <ButtonLink variant="danger" size="sm" to="/logout">
             Log out
           </ButtonLink>
-          {isAdmin && (
+          {isAllowed && (
             <ButtonLink variant="info" size="sm" to="/admin">
               Admin
             </ButtonLink>

@@ -2,7 +2,7 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 import { Debug, PageAdminHeader } from "~/components";
-import { authorizeUser } from "~/helpers";
+import { requireUserSession } from "~/helpers";
 import { useRootLoaderData } from "~/hooks";
 import { admin } from "~/models";
 import { createSitemap } from "~/utils";
@@ -12,16 +12,16 @@ import type { LoaderArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader({ request }: LoaderArgs) {
-  const { user } = await authorizeUser(request);
+  const { userSession, user } = await requireUserSession(request);
 
   const metrics = await admin.getMetrics();
 
-  return json({ user, metrics });
+  return json({ userSession, user, metrics });
 }
 
 export default function AdminIndexRoute() {
   const rootLoaderData = useRootLoaderData();
-  const { metrics } = useLoaderData<typeof loader>();
+  const loaderData = useLoaderData<typeof loader>();
 
   return (
     <div data-id="admin-index">
@@ -29,9 +29,9 @@ export default function AdminIndexRoute() {
         <h1>Admin Dashboard</h1>
       </PageAdminHeader>
 
-      <div className="stack-v">
-        <Debug name="metrics">{metrics}</Debug>
+      <div className="stack-v px-layout">
         <Debug name="rootLoaderData">{rootLoaderData}</Debug>
+        <Debug name="loaderData">{loaderData}</Debug>
       </div>
     </div>
   );

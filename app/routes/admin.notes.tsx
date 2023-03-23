@@ -9,7 +9,7 @@ import {
   RemixForm,
   RemixLink,
 } from "~/components";
-import { authorizeUser } from "~/helpers";
+import { requireUserSession } from "~/helpers";
 import { Plus, Trash } from "~/icons";
 import { adminNoteModel } from "~/models";
 import { createSitemap } from "~/utils";
@@ -24,7 +24,7 @@ export async function loader() {
 }
 
 export async function action({ request }: ActionArgs) {
-  await authorizeUser(request);
+  await requireUserSession(request);
 
   const formData = await request.formData();
   const submission = parse(formData, {});
@@ -68,7 +68,7 @@ export default function AdminNotesRoute() {
         )}
       </PageAdminHeader>
 
-      <div data-id="admin-notes-outlet" className="p-layout">
+      <div data-id="admin-notes-outlet" className="px-layout">
         <Outlet />
       </div>
     </div>

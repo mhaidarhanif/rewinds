@@ -1,15 +1,20 @@
 import { Outlet } from "@remix-run/react";
 
 import { Layout } from "~/components";
-import { authorizeUser } from "~/helpers";
+import { requireUserSession } from "~/helpers";
 import { createSitemap } from "~/utils";
 
-import type { LoaderArgs } from "@remix-run/node";
+import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 
 export const handle = createSitemap();
 
 export async function loader({ request }: LoaderArgs) {
-  await authorizeUser(request);
+  await requireUserSession(request);
+  return null;
+}
+
+export async function action({ request }: ActionArgs) {
+  await requireUserSession(request);
   return null;
 }
 

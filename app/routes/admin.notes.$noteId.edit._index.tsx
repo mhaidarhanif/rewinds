@@ -18,7 +18,7 @@ import {
   RemixForm,
   TextArea,
 } from "~/components";
-import { authorizeUser } from "~/helpers";
+import { requireUserSession } from "~/helpers";
 import { adminNoteModel } from "~/models";
 import { schemaNoteEdit } from "~/schemas";
 import { createSitemap, invariant } from "~/utils";
@@ -38,7 +38,7 @@ export async function loader({ params }: LoaderArgs) {
 }
 
 export async function action({ request, params }: ActionArgs) {
-  const { userSession } = await authorizeUser(request);
+  const { userSession } = await requireUserSession(request);
 
   const { noteId } = params;
   invariant(noteId, `Note with id ${noteId} does not exist`);

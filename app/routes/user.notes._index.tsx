@@ -9,7 +9,7 @@ import {
   RemixForm,
   RemixLink,
 } from "~/components";
-import { authorizeUser } from "~/helpers";
+import { requireUserSession } from "~/helpers";
 import { Plus, Trash } from "~/icons";
 import { prisma } from "~/libs";
 import { userNoteModel } from "~/models";
@@ -20,7 +20,7 @@ import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader({ request }: LoaderArgs) {
-  const { userSession, user } = await authorizeUser(request);
+  const { userSession, user } = await requireUserSession(request);
 
   const [notes, notesCount] = await prisma.$transaction([
     userNoteModel.getAllNotes({ user: userSession }),
@@ -31,7 +31,7 @@ export async function loader({ request }: LoaderArgs) {
 }
 
 export async function action({ request }: ActionArgs) {
-  const { userSession } = await authorizeUser(request);
+  const { userSession } = await requireUserSession(request);
 
   const formData = await request.formData();
   const submission = parse(formData, {});

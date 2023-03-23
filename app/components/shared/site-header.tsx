@@ -40,15 +40,11 @@ import {
 } from "~/icons";
 import { cn, getInitials } from "~/utils";
 
-import type { UserData } from "~/helpers";
-
 interface Props {
   noThemeToggle?: boolean;
 }
 
 export function SiteHeader({ noThemeToggle }: Props) {
-  const { user } = useRootLoaderData();
-
   return (
     <header
       className={cn(
@@ -80,9 +76,9 @@ export function SiteHeader({ noThemeToggle }: Props) {
           data-id="site-header-right"
           className="flex items-center gap-1 sm:gap-2"
         >
-          <HeaderMainButtons user={user} />
+          <HeaderMainButtons />
           <div className="flex lg:hidden">
-            <HeaderMenuNavigation navItems={configSite?.navItems} />
+            <HeaderNavigationMenu navItems={configSite?.navItems} />
           </div>
         </div>
       </section>
@@ -95,7 +91,6 @@ export function HeaderMainLogo({ noThemeToggle }: { noThemeToggle?: boolean }) {
     <div className="flex min-w-fit items-center gap-1">
       <RemixNavLink
         to="/"
-        prefetch="intent"
         className="block min-w-fit transition-opacity hover:opacity-80"
       >
         <Logo />
@@ -156,7 +151,9 @@ export function HeaderMainSearch() {
   );
 }
 
-export function HeaderMainButtons({ user }: { user?: UserData }) {
+export function HeaderMainButtons() {
+  const { user } = useRootLoaderData();
+
   return (
     <div className="flex grow items-center justify-end space-x-2">
       <nav className="hidden gap-1 xl:flex">
@@ -190,13 +187,13 @@ export function HeaderMainButtons({ user }: { user?: UserData }) {
           </>
         )}
 
-        {user && <HeaderUser user={user} />}
+        {user && <HeaderUserMenu />}
       </nav>
     </div>
   );
 }
 
-export function HeaderMenuNavigation({
+export function HeaderNavigationMenu({
   navItems = configSite.navItems,
   align = "end",
 }: {
@@ -241,7 +238,17 @@ export function HeaderMenuNavigation({
   );
 }
 
-export function HeaderUser({ user }: { user: UserData }) {
+export function HeaderUserMenu({
+  align = "end",
+}: {
+  align?: "center" | "start" | "end" | undefined;
+}) {
+  const { user } = useRootLoaderData();
+
+  if (!user) {
+    return null;
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -257,7 +264,7 @@ export function HeaderUser({ user }: { user: UserData }) {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
-        align="end"
+        align={align}
         className="w-56 overflow-scroll"
         forceMount
       >

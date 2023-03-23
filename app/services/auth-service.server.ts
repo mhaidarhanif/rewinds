@@ -2,15 +2,22 @@ import { Authenticator, AuthorizationError } from "remix-auth";
 import { FormStrategy } from "remix-auth-form";
 
 import { userModel } from "~/models";
-import { sessionStorage } from "~/sessions/auth-session.server";
+import { authSessionStorage } from "~/sessions/auth-session.server";
 
 import type { UserSession } from "~/helpers";
+
+/**
+ * Authentication/Authorization
+ *
+ * Authenticate: After submitting the correct credentials on login
+ * Authorize: Before doing something sensitive
+ */
 
 /**
  * Create an instance of the authenticator, pass a generic with what
  * strategies will return and will store in the session.
  */
-export const authenticator = new Authenticator<UserSession>(sessionStorage);
+export const authenticator = new Authenticator<UserSession>(authSessionStorage);
 
 /**
  * Tell the Authenticator to use the form strategy.

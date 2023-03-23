@@ -70,7 +70,7 @@
   }
 
   /* Layouts */
-  .p-layout {
+  .px-layout {
     @apply px-2 sm:px-4;
   }
   .contain-full {
@@ -80,10 +80,10 @@
     @apply mx-auto w-full max-w-2xl;
   }
   .contain {
-    @apply contain-full p-layout;
+    @apply contain-full px-layout;
   }
   .contain-sm {
-    @apply contain-sm-full p-layout;
+    @apply contain-sm-full px-layout;
   }
   .stack {
     @apply flex flex-wrap gap-2 sm:gap-4;

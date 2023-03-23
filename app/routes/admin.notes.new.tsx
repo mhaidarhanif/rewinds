@@ -15,7 +15,7 @@ import {
   RemixForm,
   TextArea,
 } from "~/components";
-import { authorizeUser } from "~/helpers";
+import { requireUserSession } from "~/helpers";
 import { adminNoteModel } from "~/models";
 import { schemaNoteNew } from "~/schemas";
 import { createSitemap } from "~/utils";
@@ -28,7 +28,7 @@ const isDevelopment = process.env.NODE_ENV === "development";
 export const handle = createSitemap();
 
 export async function action({ request }: ActionArgs) {
-  const { userSession } = await authorizeUser(request);
+  const { userSession } = await requireUserSession(request);
 
   const formData = await request.formData();
   const submission = parse(formData, { schema: schemaNoteNew });

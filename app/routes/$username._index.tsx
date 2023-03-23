@@ -37,7 +37,7 @@ export async function loader({ params }: LoaderArgs) {
   const { username } = params;
   invariant(username, "username does not exist");
 
-  // This is not using authorizeUser because anyone public can get the data
+  // This is not using requireUserSession because anyone public can get the data
   const user = await userModel.getUserByUsername({ username });
   if (!user) {
     return json({ user: null }, { status: 404 });

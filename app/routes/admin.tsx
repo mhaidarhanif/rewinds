@@ -1,39 +1,52 @@
-import { json, redirect } from "@remix-run/node";
+import { redirect } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 
 import {
   ButtonNavLink,
   buttonVariants,
+  HeaderUserMenu,
   Logo,
   RemixNavLink,
   ThemeToggleButton,
 } from "~/components";
 import { configAdmin } from "~/configs";
-import { authorizeUser } from "~/helpers";
+import { requireUserSession } from "~/helpers";
 import { cn, createSitemap } from "~/utils";
 
-import type { LoaderArgs } from "@remix-run/node";
+import type { LoaderArgs, ActionArgs } from "@remix-run/node";
 
 export const handle = createSitemap();
 
 export async function loader({ request }: LoaderArgs) {
-  // get the user data or redirect to login if it failed
-  const { user } = await authorizeUser(request);
-
-  // if user is not an admin, redirect to landing/home
-  if (user.role.symbol !== "ADMIN") {
-    redirect(`/`);
+  const { isAllowed } = await requireUserSession(request, [
+    "ADMIN",
+    "MANAGER",
+    "EDITOR",
+  ]);
+  if (!isAllowed) {
+    return redirect(`/`);
   }
+  return null;
+}
 
-  return json({});
+export async function action({ request }: ActionArgs) {
+  const { isAllowed } = await requireUserSession(request, [
+    "ADMIN",
+    "MANAGER",
+    "EDITOR",
+  ]);
+  if (!isAllowed) {
+    return redirect(`/`);
+  }
+  return null;
 }
 
 export default function AdminLayoutRoute() {
   return (
-    <div data-id="admin-layout-route" className="flex pb-10">
+    <div data-id="admin-layout-route" className="flex">
       <AdminSidebar />
 
-      <div data-id="admin-layout-outlet" className="grow">
+      <div data-id="admin-layout-outlet" className="grow pb-10">
         <Outlet />
       </div>
     </div>
@@ -52,11 +65,12 @@ export function AdminSidebar() {
         <RemixNavLink
           to="/admin"
           prefetch="intent"
-          className="transition-opacity hover:opacity-80"
+          className="block min-w-fit transition-opacity hover:opacity-80"
         >
           <Logo />
         </RemixNavLink>
-        <ThemeToggleButton size="sm" />
+        <ThemeToggleButton />
+        <HeaderUserMenu align="center" />
       </div>
 
       <ul className="grow space-y-1">
@@ -69,12 +83,9 @@ export function AdminSidebar() {
                 prefetch="intent"
                 className={({ isActive }) =>
                   cn(
-                    "inline-flex w-full gap-2 p-2",
+                    "w-full",
                     buttonVariants({
                       variant: "navlink",
-                      radius: "default",
-                      weight: "default",
-                      size: "sm",
                       align: "left",
                       isActive,
                     })
@@ -86,13 +97,18 @@ export function AdminSidebar() {
             </li>
           );
         })}
+        <li>
+          <ButtonNavLink
+            to="/"
+            variant="navlink"
+            align="left"
+            weight="bold"
+            className="w-full"
+          >
+            Go to site
+          </ButtonNavLink>
+        </li>
       </ul>
-
-      <div>
-        <ButtonNavLink size="sm" variant="ghost" to="/">
-          Go to site
-        </ButtonNavLink>
-      </div>
     </aside>
   );
 }
