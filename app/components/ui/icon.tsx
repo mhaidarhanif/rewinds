@@ -1,12 +1,17 @@
 import {
   Circle,
+  Cloud,
+  Components,
   Database,
+  Group,
   Home,
   InfoEmpty,
   LayoutLeft,
-  Components,
-  Notes,
-  Cloud,
+  MultiplePages,
+  PageEdit,
+  PageSearch,
+  PageStar,
+  UserCrown,
 } from "~/icons";
 
 /**
@@ -23,8 +28,13 @@ export const iconMaps = {
   default: <Circle />,
   demo: <LayoutLeft />,
   home: <Home />,
-  notes: <Notes />,
+  noteCategory: <PageSearch />,
+  notes: <MultiplePages />,
+  noteStatus: <PageStar />,
+  noteTag: <PageEdit />,
   site: <Cloud />,
+  userRole: <UserCrown />,
+  users: <Group />,
 };
 
 export function lookupIcon(lookupObject: any, defaultCase = "default") {

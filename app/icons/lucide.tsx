@@ -1,3 +1,8 @@
+/**
+ * Lucide icon set
+ * has 900+ icons
+ */
+
 export {
   ArrowRight,
   Calendar,
@@ -45,7 +50,6 @@ export {
   Sun,
   SunMedium,
   Twitter,
-  User,
   UserPlus,
   Users,
   X,

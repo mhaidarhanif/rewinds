@@ -25,7 +25,7 @@ export default function AdminUsersRoute() {
   return (
     <div className="stack-v">
       <header>
-        <span>All Users</span>
+        <span>Users</span>
       </header>
 
       <ul className="space-y-2">

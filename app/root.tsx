@@ -23,11 +23,10 @@ import {
 
 import { Debug, Layout, PageHeader, Toaster } from "~/components";
 import { configDocumentLinks } from "~/configs";
+import { userModel } from "~/models";
 import { authenticator } from "~/services";
 import { themeSessionResolver } from "~/sessions";
 import { cn, createMetaData, getEnv } from "~/utils";
-
-import { userModel } from "./models";
 
 import type {
   HeadersFunction,

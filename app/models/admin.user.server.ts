@@ -1,4 +1,5 @@
 import { prisma } from "~/libs";
+import { publicUserRoleFields } from "~/models";
 
 import type { User } from "@prisma/client";
 
@@ -10,8 +11,12 @@ export const adminUser = {
   async getAllUsers() {
     return prisma.user.findMany({
       include: {
-        role: true,
-        notes: true,
+        role: { select: publicUserRoleFields },
+        notes: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   },

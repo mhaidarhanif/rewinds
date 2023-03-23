@@ -9,13 +9,47 @@
 
 export const configAdmin = {
   navItems: [
-    { to: "users", name: "Users", icon: "home" },
+    {
+      to: "users",
+      name: "Users",
+      icon: "home",
+      items: [
+        {
+          to: "user-roles",
+          name: "User Roles",
+          icon: "userRole",
+        },
+      ],
+    },
 
-    { to: "notes", name: "Notes", icon: "notes" },
-    // { to: "note-statuses", name: "Note Statuses" },
-    // { to: "note-categories", name: "Note Categories" },
-    // { to: "note-tags", name: "Note Tags" },
+    {
+      to: "notes",
+      name: "Notes",
+      icon: "notes",
+      items: [
+        {
+          to: "note-statuses",
+          name: "Note Statuses",
+          icon: "noteStatus",
+        },
+        {
+          to: "note-categories",
+          name: "Note Categories",
+          icon: "noteCategory",
+        },
+        {
+          to: "note-tags",
+          name: "Note Tags",
+          icon: "noteTag",
+        },
+      ],
+    },
 
-    { to: "/", name: " Go to site", icon: "site" },
+    {
+      to: "/",
+      name: " Go to site",
+      icon: "site",
+      items: [],
+    },
   ],
 };

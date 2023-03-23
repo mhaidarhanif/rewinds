@@ -2,9 +2,8 @@ import bcrypt from "bcryptjs";
 
 import { configUser } from "~/configs";
 import { prisma } from "~/libs";
+import { publicUserRoleFields } from "~/models";
 import { createNanoID, invariant } from "~/utils";
-
-import { publicUserRoleFields } from "./user-role.server";
 
 import type { UserPassword, User } from "@prisma/client";
 export type { User } from "@prisma/client";

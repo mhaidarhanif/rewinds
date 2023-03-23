@@ -26,7 +26,7 @@ export default function AdminNotesRoute() {
     <div className="stack-v">
       <header>
         <div className="stack-h-center">
-          <span>All Notes</span>
+          <span>Notes</span>
           <ButtonLink to="/notes" size="xs" variant="info">
             <Eye className="size-xs" />
             <span>View All</span>

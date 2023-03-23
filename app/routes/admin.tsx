@@ -76,13 +76,13 @@ export function AdminSidebar() {
         <HeaderUserMenu align="center" />
       </div>
 
-      <ul className="grow space-y-1">
-        {configAdmin.navItems.map((item) => {
+      <ul className="grow space-y-2">
+        {configAdmin.navItems.map((navItem) => {
           return (
-            <li key={item.name}>
+            <li key={navItem.name} className="space-y-1">
               <RemixNavLink
-                key={item.name}
-                to={item.to}
+                key={navItem.name}
+                to={navItem.to}
                 prefetch="intent"
                 className={({ isActive }) =>
                   cn(
@@ -95,9 +95,37 @@ export function AdminSidebar() {
                   )
                 }
               >
-                <Icon name={item.icon} />
-                <span>{item.name}</span>
+                <Icon name={navItem.icon} />
+                <span>{navItem.name}</span>
               </RemixNavLink>
+              {navItem.items.length > 0 && (
+                <ul className="ml-4 space-y-1">
+                  {navItem.items.map((item) => {
+                    return (
+                      <li key={item.name}>
+                        <RemixNavLink
+                          key={item.name}
+                          to={item.to}
+                          prefetch="intent"
+                          className={({ isActive }) =>
+                            cn(
+                              "w-full",
+                              buttonVariants({
+                                variant: "navlink",
+                                align: "left",
+                                isActive,
+                              })
+                            )
+                          }
+                        >
+                          <Icon name={item.icon} />
+                          <span>{item.name}</span>
+                        </RemixNavLink>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
             </li>
           );
         })}
