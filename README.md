@@ -22,6 +22,10 @@ Check out the code and the demo:
 
 As for now, this README is the only main documentation.
 
+Also as a reminder:
+
+> "Software is a just a tool to help accomplish something for people - many programmers never understood that. Keep your eyes on the delivered value, and don’t over focus on the specifics of the tools" — John Carmack
+
 ## Some Screenshots
 
 <div style="max-width: 720px;">
@@ -150,8 +154,8 @@ More details and references can also be checked from [`catamyst/stack`](https://
   - [Node.js](https://nodejs.org)
     - [pnpm](https://pnpm.io)
   - [TypeScript](https://typescriptlang.org)
-  - [React](https://beta.reactjs.org)
-  - [Remix](https://remix.run/docs)
+  - [React](https://react.dev)
+  - [Remix](https://remix.run)
 - Styling
   - [Tailwind CSS](https://tailwindcss.com)
   - [Fontsource](https://fontsource.org)
@@ -408,6 +412,11 @@ module.exports = {
 
 ## References
 
+### General
+
+- [web.dev](https://web.dev)
+- [The Web’s Next Transition - Epic Web Dev by Kent C. Dodds](https://www.epicweb.dev/the-webs-next-transition)
+
 ### Remix
 
 - [Remix Docs](http://remix.run)
@@ -418,10 +427,13 @@ module.exports = {
 
 ### React
 
+- [React](https://react.dev)
+- [Rethinking React best practices - Frontend Mastery](https://frontendmastery.com/posts/rethinking-react-best-practices)
 - [Bulletproof React - A simple, scalable, and powerful architecture for building production-ready React applications](https://github.com/alan2207/bulletproof-react)
 
 ### Tailwind CSS
 
+- [Tailwind CSS](https://tailwindcss.com)
 - [Why we use Tailwind CSS as our primary framework | Clean Commit](https://cleancommit.io/blog/why-we-use-tailwind-css-as-our-primary-framework)
 - [An Honest Look at Tailwind as an API for CSS | thoughtbot, inc.](https://thoughtbot.com/blog/an-honest-look-at-tailwind-as-an-api-for-css)
 - [Styling Best Practices I Use With Tailwind CSS | theodorusclarence.com](https://theodorusclarence.com/blog/tailwindcss-best-practice)
