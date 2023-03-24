@@ -1,9 +1,9 @@
 import { conform, useForm } from "@conform-to/react";
 import { getFieldsetConstraint, parse } from "@conform-to/zod";
 import { redirect } from "@remix-run/node";
-import { json } from "@remix-run/node";
 import { useActionData, useCatch, useNavigation } from "@remix-run/react";
 import { useId } from "react";
+import { badRequest, serverError } from "remix-utils";
 
 import {
   Alert,
@@ -33,7 +33,7 @@ export async function action({ request }: ActionArgs) {
   const formData = await request.formData();
   const submission = parse(formData, { schema: schemaNoteNew });
   if (!submission.value || submission.intent !== "submit") {
-    return json(submission, { status: 400 });
+    return badRequest(submission);
   }
 
   try {
@@ -42,12 +42,12 @@ export async function action({ request }: ActionArgs) {
       note: submission.value,
     });
     if (!newNote) {
-      return json(submission, { status: 500 });
+      return serverError(submission);
     }
     return redirect(`../${newNote.id}`);
   } catch (error) {
     console.error(error);
-    return json(submission, { status: 400 });
+    return badRequest(submission);
   }
 }
 

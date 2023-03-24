@@ -27,7 +27,7 @@ export default function UserSettingsRoute() {
       <section className="space-y-2">
         <h2>
           <span>Settings for </span>
-          <RemixLinkText to={`/${user.username}`}>
+          <RemixLinkText prefetch="intent" to={`/${user.username}`}>
             @{user.username}
           </RemixLinkText>
         </h2>

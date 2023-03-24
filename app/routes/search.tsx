@@ -64,7 +64,11 @@ export default function SearchRoute() {
               {notes.map((note) => {
                 return (
                   <li key={note.id} className="card-sm hover:card-hover">
-                    <RemixLink to={`/notes/${note.slug}`} className="block">
+                    <RemixLink
+                      prefetch="intent"
+                      to={`/notes/${note.slug}`}
+                      className="block"
+                    >
                       <h4>{note.title}</h4>
                       <p>{truncateText(note.content)}</p>
                     </RemixLink>
@@ -82,7 +86,11 @@ export default function SearchRoute() {
               {users.map((user) => {
                 return (
                   <li key={user.id} className="card-sm hover:card-hover">
-                    <RemixLink to={`/${user.username}`} className="block">
+                    <RemixLink
+                      prefetch="intent"
+                      to={`/${user.username}`}
+                      className="block"
+                    >
                       <h4>{user.name}</h4>
                       <p>@{user.username}</p>
                     </RemixLink>

@@ -13,13 +13,13 @@ const TooltipTrigger = TooltipPrimitive.Trigger;
 const TooltipContent = forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
->(({ className, sideOffset = 4, ...props }, ref) => (
+>(({ className, sideOffset = 0, ...props }, ref) => (
   <TooltipPrimitive.Content
     ref={ref}
     sideOffset={sideOffset}
     className={cn(
-      "z-50 overflow-hidden rounded border px-3 py-1.5 text-sm shadow-md animate-in fade-in-50",
-      "border-surface-100 bg-white text-surface-900 dark:border-surface-700 dark:bg-surface-800 dark:text-surface-100",
+      "z-50 overflow-hidden px-2 py-1 text-sm shadow animate-in fade-in-50",
+      "rounded border border-surface-200 bg-white dark:border-surface-700 dark:bg-surface-900",
       "data-[side=bottom]:slide-in-from-top-1 data-[side=top]:slide-in-from-bottom-1 data-[side=left]:slide-in-from-right-1 data-[side=right]:slide-in-from-left-1",
       className
     )}

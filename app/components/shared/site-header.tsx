@@ -268,7 +268,7 @@ export function HeaderUserMenu({
         <DropdownMenuLabel>
           <h5>{user.name}</h5>
           <h6>
-            <RemixLinkText to={`/${user.username}`}>
+            <RemixLinkText prefetch="intent" to={`/${user.username}`}>
               @{user.username}
             </RemixLinkText>
           </h6>
@@ -278,7 +278,7 @@ export function HeaderUserMenu({
 
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <RemixNavLink to={`/user/profile`}>
+            <RemixNavLink prefetch="intent" to={`/${user.username}`}>
               <User className="size-sm mr-2" />
               <span>Profile</span>
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
@@ -286,7 +286,7 @@ export function HeaderUserMenu({
           </DropdownMenuItem>
 
           <DropdownMenuItem asChild>
-            <RemixNavLink to={`/user/dashboard`}>
+            <RemixNavLink prefetch="intent" to={`/user/dashboard`}>
               <User className="size-sm mr-2" />
               <span>Dashboard</span>
               <DropdownMenuShortcut>⇧⌘D</DropdownMenuShortcut>

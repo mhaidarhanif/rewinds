@@ -19,7 +19,7 @@ import { MousePointerClick } from "~/icons";
 export function ItemActionContextMenuDemo() {
   return (
     <ContextMenu>
-      <ContextMenuTrigger className="card-action flex h-40 w-80 items-center justify-center rounded-md border border-dashed border-slate-300 dark:border-slate-600">
+      <ContextMenuTrigger className="card-action flex h-40 w-80 select-none items-center justify-center rounded-md border border-dashed border-slate-300 dark:border-slate-600">
         <div className="stack-h-center">
           <MousePointerClick />
           <span className="font-bold">Right click here</span>
@@ -59,13 +59,14 @@ export function ItemActionContextMenuDemo() {
         </ContextMenuCheckboxItem>
         <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
         <ContextMenuSeparator />
-        <ContextMenuRadioGroup value="pedro">
+        <ContextMenuRadioGroup value="haidar">
           <ContextMenuLabel inset>People</ContextMenuLabel>
           <ContextMenuSeparator />
-          <ContextMenuRadioItem value="pedro">
-            Pedro Duarte
+          <ContextMenuRadioItem value="haidar">
+            M Haidar Hanif
           </ContextMenuRadioItem>
-          <ContextMenuRadioItem value="colm">Colm Tuite</ContextMenuRadioItem>
+          <ContextMenuRadioItem value="tony">Tony Stark</ContextMenuRadioItem>
+          <ContextMenuRadioItem value="bruce">Bruce Wayne</ContextMenuRadioItem>
         </ContextMenuRadioGroup>
       </ContextMenuContent>
     </ContextMenu>

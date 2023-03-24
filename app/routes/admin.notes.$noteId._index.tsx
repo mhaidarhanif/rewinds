@@ -1,6 +1,7 @@
 import { parse } from "@conform-to/react";
 import { json, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import { badRequest } from "remix-utils";
 
 import {
   Button,
@@ -48,7 +49,7 @@ export async function action({ request }: ActionArgs) {
       return redirect(`..`);
     } catch (error) {
       console.error(error);
-      return json(submission, { status: 400 });
+      return badRequest(submission);
     }
   }
 }

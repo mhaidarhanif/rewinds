@@ -3,6 +3,7 @@ import { getFieldsetConstraint, parse } from "@conform-to/zod";
 import { json } from "@remix-run/node";
 import { useActionData, useNavigation } from "@remix-run/react";
 import { useId } from "react";
+import { badRequest, forbidden } from "remix-utils";
 
 import {
   Alert,
@@ -28,9 +29,9 @@ import {
 
 import type {
   ActionArgs,
+  LinksFunction,
   LoaderArgs,
   V2_MetaFunction,
-  LinksFunction,
 } from "@remix-run/node";
 import type { z } from "zod";
 
@@ -61,13 +62,13 @@ export async function action({ request }: ActionArgs) {
   const formData = await clonedRequest.formData();
   const submission = parse(formData, { schema: schemaUserRegister });
   if (!submission.value || submission.intent !== "submit") {
-    return json(submission, { status: 400 });
+    return badRequest(submission);
   }
 
   const result = await model.user.mutation.register(submission.value);
 
   if (result.error) {
-    return json({ ...submission, error: result.error }, { status: 403 });
+    return forbidden({ ...submission, error: result.error });
   }
 
   await authenticator.authenticate("user-pass", request, {

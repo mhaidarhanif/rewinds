@@ -4,7 +4,7 @@ import { useLoaderData } from "@remix-run/react";
 import { ButtonLink, PageHeader, RemixLink, RemixLinkText } from "~/components";
 import { requireUserRole, requireUserSession } from "~/helpers";
 import { model } from "~/models";
-import { cn, createSitemap, invariant } from "~/utils";
+import { cn, createCacheHeaders, createSitemap, invariant } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
 
@@ -16,7 +16,7 @@ export async function loader({ request }: LoaderArgs) {
   const metrics = await model.user.query.getMetrics({ id: userSession.id });
   invariant(metrics, "User metrics not available");
 
-  return json({ user, metrics });
+  return json({ user, metrics }, { headers: createCacheHeaders(request) });
 }
 
 export default function UserDashboardRoute() {
@@ -33,7 +33,7 @@ export default function UserDashboardRoute() {
         <h2>Welcome, {user.name}!</h2>
         <h3>
           <span>Dashboard for </span>
-          <RemixLinkText to={`/${user.username}`}>
+          <RemixLinkText prefetch="intent" to={`/${user.username}`}>
             @{user.username}
           </RemixLinkText>
         </h3>

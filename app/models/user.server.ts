@@ -13,6 +13,7 @@ export const fields = {
     name: true,
     username: true,
     role: { select: { symbol: true, name: true, description: true } },
+    profile: { select: { headline: true, bio: true } },
   },
   private: {
     id: true,
@@ -85,7 +86,12 @@ export const query = {
   search({ q }: { q: string | undefined }) {
     return prisma.user.findMany({
       where: {
-        OR: [{ name: { contains: q } }, { username: { contains: q } }],
+        OR: [
+          { name: { contains: q } },
+          {
+            username: { contains: q },
+          },
+        ],
       },
       select: fields.public,
       orderBy: [{ username: "desc" }],

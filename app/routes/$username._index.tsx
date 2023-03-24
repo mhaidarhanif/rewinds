@@ -1,10 +1,23 @@
 import { json } from "@remix-run/node";
 import { useLoaderData, useParams } from "@remix-run/react";
+import { notFound } from "remix-utils";
 
-import { AnchorText, Balancer, Layout, PageHeader } from "~/components";
+import {
+  AnchorText,
+  Balancer,
+  Layout,
+  PageHeader,
+  RemixLink,
+} from "~/components";
 import { configMeta } from "~/configs";
 import { model } from "~/models";
-import { createMetaData, createSitemap, invariant } from "~/utils";
+import {
+  createCacheHeaders,
+  createMetaData,
+  createSitemap,
+  invariant,
+  truncateText,
+} from "~/utils";
 
 import type { LoaderArgs, V2_MetaFunction } from "@remix-run/node";
 
@@ -32,7 +45,7 @@ export const meta: V2_MetaFunction<typeof loader> = ({ params, data }) => {
  * 2. Organization from database
  * 3. If nothing found, tell this account doesn’t exist
  */
-export async function loader({ params }: LoaderArgs) {
+export async function loader({ request, params }: LoaderArgs) {
   invariant(params.username, "username does not exist");
 
   // This is not using requireUserSession because anyone public can get the data
@@ -40,10 +53,10 @@ export async function loader({ params }: LoaderArgs) {
     username: params.username,
   });
   if (!user) {
-    return json({ user: null }, { status: 404 });
+    return notFound({ user: null });
   }
 
-  return json({ user });
+  return json({ user }, { headers: createCacheHeaders(request) });
 }
 
 export default function SplatUsernameRoute() {
@@ -68,7 +81,7 @@ export default function SplatUsernameRoute() {
           </header>
         }
       >
-        <section className="mx-auto w-full max-w-lg space-y-2">
+        <section className="contain-sm space-y-2">
           <div className="my-4 text-center">
             <h1>
               <Balancer>{user.name}</Balancer>
@@ -76,7 +89,23 @@ export default function SplatUsernameRoute() {
             <h2 className="text-xl lg:text-2xl">@{user.username}</h2>
           </div>
 
-          <p className="prose-config card">{user.profile.bio}</p>
+          <p className="prose-config">{user.profile.bio}</p>
+
+          <ul className="space-y-2">
+            {user.notes.map((note) => {
+              return (
+                <li key={note.id}>
+                  <RemixLink
+                    to={note.slug}
+                    className="card hover:card-hover block"
+                  >
+                    <h3>{note.title}</h3>
+                    <p>{truncateText(note.content)}</p>
+                  </RemixLink>
+                </li>
+              );
+            })}
+          </ul>
         </section>
       </Layout>
     );

@@ -50,6 +50,7 @@ Included example features:
 - [x] Site layout and routes/pages
 - [x] Light and dark mode theme
 - [x] Register, log in, log out
+  - [ ] Send welcome or verification email
 - [x] Admin dashboard
   - [x] Manage users and notes
 - [x] User dashboard, profile, settings
@@ -148,6 +149,7 @@ More details and references can also be checked from [`catamyst/stack`](https://
   - [Tailwind CSS](https://tailwindcss.com)
   - [Fontsource](https://fontsource.org)
   - [Radix UI](https://radix-ui.com)
+  - [React Email](https://react.email)
 - Form
   - [Zod](https://zod.dev)
   - [Conform](https://conform.guide)

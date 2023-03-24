@@ -3,6 +3,7 @@ import { getFieldsetConstraint, parse } from "@conform-to/zod";
 import { json } from "@remix-run/node";
 import { useActionData, useNavigation } from "@remix-run/react";
 import { useId } from "react";
+import { badRequest, forbidden } from "remix-utils";
 
 import {
   Alert,
@@ -62,7 +63,7 @@ export async function action({ request }: ActionArgs) {
   const formData = await clonedRequest.formData();
   const submission = parse(formData, { schema: schemaUserLogin });
   if (!submission.value || submission.intent !== "submit") {
-    return json(submission, { status: 400 });
+    return badRequest(submission);
   }
 
   // Check user email and password
@@ -70,7 +71,7 @@ export async function action({ request }: ActionArgs) {
 
   // Use custom error for Conform submission
   if (result.error) {
-    return json({ ...submission, error: result.error }, { status: 403 });
+    return forbidden({ ...submission, error: result.error });
   }
 
   /**

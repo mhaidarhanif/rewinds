@@ -7,6 +7,7 @@ import {
   useLoaderData,
   useNavigation,
 } from "@remix-run/react";
+import { badRequest, serverError } from "remix-utils";
 
 import {
   Alert,
@@ -42,7 +43,7 @@ export async function action({ request, params }: ActionArgs) {
   const formData = await request.formData();
   const submission = parse(formData, { schema: schemaNoteEdit });
   if (!submission.value || submission.intent !== "submit") {
-    return json(submission, { status: 400 });
+    return badRequest(submission);
   }
 
   try {
@@ -51,12 +52,12 @@ export async function action({ request, params }: ActionArgs) {
       note: submission.value,
     });
     if (!updatedNote) {
-      return json(submission, { status: 500 });
+      return serverError(submission);
     }
     return redirect(`../${updatedNote.id}`);
   } catch (error) {
     console.error(error);
-    return json(submission, { status: 400 });
+    return badRequest(submission);
   }
 }
 

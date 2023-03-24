@@ -3,24 +3,20 @@ import { useLoaderData } from "@remix-run/react";
 
 import { Balancer } from "~/components";
 import { model } from "~/models";
-import { createSitemap, invariant } from "~/utils";
+import { createCacheHeaders, createSitemap, invariant } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
 
 export const handle = createSitemap();
 
-export async function loader({ params }: LoaderArgs) {
-  invariant(
-    params.noteSlug,
-    `note with slug ${params.noteSlug} does not exist`
-  );
+export async function loader({ request, params }: LoaderArgs) {
+  invariant(params.noteSlug, `noteSlug does not exist`);
 
-  return json({
-    note: await model.note.query.getBySlug({ slug: params.noteSlug }),
-  });
+  const note = await model.note.query.getBySlug({ slug: params.noteSlug });
+
+  return json({ note }, { headers: createCacheHeaders(request) });
 }
 
-// Similar with "admin-notes-edit"
 export default function NotesViewRoute() {
   const { note } = useLoaderData<typeof loader>();
 

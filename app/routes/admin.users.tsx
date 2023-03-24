@@ -1,6 +1,7 @@
 import { parse } from "@conform-to/react";
 import { json, redirect } from "@remix-run/node";
 import { Outlet, useLoaderData } from "@remix-run/react";
+import { forbidden } from "remix-utils";
 
 import {
   Button,
@@ -27,7 +28,7 @@ export async function loader() {
 export async function action({ request }: ActionArgs) {
   const { user } = await requireUserSession(request);
   if (!requireUserRole(user, ["ADMIN", "MANAGER"])) {
-    return json({ message: "Not allowed" }, { status: 400 });
+    return forbidden({ message: "Not allowed" });
   }
 
   const formData = await request.formData();
