@@ -43,11 +43,7 @@ import type {
 } from "@remix-run/node";
 
 export const meta: V2_MetaFunction = () => {
-  return [
-    { charSet: "utf-8" },
-    { name: "viewport", content: "width=device-width,initial-scale=1" },
-    ...createMetaData(),
-  ] satisfies V2_HtmlMetaDescriptor[];
+  return createMetaData() satisfies V2_HtmlMetaDescriptor[];
 };
 
 export const headers: HeadersFunction = () => {
@@ -136,6 +132,8 @@ function App() {
   return (
     <html lang="en" data-theme={theme ?? ""}>
       <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <Meta />
         <PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
         <Links />
@@ -162,7 +160,7 @@ function App() {
   );
 }
 
-export function RootDocument({
+export function RootDocumentBoundary({
   children,
   title,
 }: {
@@ -173,6 +171,8 @@ export function RootDocument({
   return (
     <html lang="en" data-theme={Theme.DARK}>
       <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <Meta />
         {title && <title>{title}</title>}
         <Links />
@@ -189,7 +189,7 @@ export function RootDocument({
 
 export function ErrorBoundary({ error }: { error: Error }) {
   return (
-    <RootDocument title="Sorry, unexpected error occured.">
+    <RootDocumentBoundary title="Sorry, unexpected error occured.">
       <Layout
         noThemeToggle
         isSpaced
@@ -205,7 +205,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
           <Debug>{error}</Debug>
         </div>
       </Layout>
-    </RootDocument>
+    </RootDocumentBoundary>
   );
 }
 
@@ -225,7 +225,7 @@ export function CatchBoundary() {
   }
 
   return (
-    <RootDocument title={message}>
+    <RootDocumentBoundary title={message}>
       <Layout
         noThemeToggle
         isSpaced
@@ -242,6 +242,6 @@ export function CatchBoundary() {
           <Debug name="caught">{caught}</Debug>
         </div>
       </Layout>
-    </RootDocument>
+    </RootDocumentBoundary>
   );
 }
