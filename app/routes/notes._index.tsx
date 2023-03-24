@@ -40,7 +40,11 @@ export default function NotesIndexRoute() {
           {notes.map((note) => {
             return (
               <li key={note.slug} className="card hover:card-hover">
-                <RemixLink to={note.slug} className="block space-y-1">
+                <RemixLink
+                  prefetch="intent"
+                  to={note.slug}
+                  className="block space-y-1"
+                >
                   <h3>{note.title}</h3>
                   <p>{truncateText(note.content)}</p>
                   <p>

@@ -14,7 +14,7 @@ export const seoRoutes: Record<string, Handler> = {
     return generateSitemap(request, remixContext, {
       siteUrl: configMeta?.url,
       headers: {
-        "Cache-Control": `public, max-age=${60 * 5}`,
+        "Cache-Control": `public, max-age=${60}`,
       },
     });
   },

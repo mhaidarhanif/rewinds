@@ -25,11 +25,8 @@ export const links: LinksFunction = () => {
 
 export default function AboutRoute() {
   return (
-    <Layout className="space-y-20">
-      <article
-        data-id="about-content"
-        className="prose-config contain-sm mt-10"
-      >
+    <Layout className="contain-sm space-y-20">
+      <article data-id="about-content" className="prose-config mt-10">
         <h1>
           <Balancer>About the Remix starter kit called Rewinds</Balancer>
         </h1>

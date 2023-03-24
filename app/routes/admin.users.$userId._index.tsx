@@ -6,6 +6,7 @@ import { badRequest } from "remix-utils";
 import {
   Button,
   ButtonLink,
+  Debug,
   RemixForm,
   Tooltip,
   TooltipContent,
@@ -132,11 +133,9 @@ export default function AdminUsersViewRoute() {
           <h4>{user.profile.headline}</h4>
           <p>{user.profile.bio}</p>
         </article>
-
-        {/* <div className="prose-config sm:prose-xl sm:py-4">{user.profile.story}</div> */}
       </section>
 
-      {/* <Debug name="user">{user}</Debug> */}
+      <Debug name="user">{user}</Debug>
     </div>
   );
 }

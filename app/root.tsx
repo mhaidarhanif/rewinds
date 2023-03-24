@@ -22,7 +22,7 @@ import {
 } from "remix-themes";
 
 import { Debug, Layout, PageHeader, Toaster } from "~/components";
-import { configDev, configDocumentLinks } from "~/configs";
+import { configDev, configDocumentLinks, configSite } from "~/configs";
 import { model } from "~/models";
 import { authenticator } from "~/services";
 import { themeSessionResolver } from "~/sessions";
@@ -189,7 +189,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
         isSpaced
         layoutHeader={
           <PageHeader size="sm">
-            <h1>Error from Rewinds:</h1>
+            <h1>Error from {configSite.name}</h1>
           </PageHeader>
         }
       >
@@ -225,9 +225,8 @@ export function CatchBoundary() {
         isSpaced
         layoutHeader={
           <PageHeader size="sm">
-            <h1>
-              Sorry, error {caught.status}: {caught.statusText}
-            </h1>
+            <h1>Error {caught.status}</h1>
+            {caught.statusText && <h2>caught.statusText</h2>}
             <p>{message}</p>
           </PageHeader>
         }

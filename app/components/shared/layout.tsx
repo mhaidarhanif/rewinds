@@ -36,7 +36,7 @@ export function Layout({
   isSpaced = false,
   className,
 
-  layoutHeader, // by default should be none
+  layoutHeader, // custom page header, by default should be none
 
   noThemeToggle = false, // not a styling variant
 
@@ -46,7 +46,6 @@ export function Layout({
     <div className={cn("flex min-h-screen flex-col")}>
       <SiteHeader noThemeToggle={noThemeToggle} />
 
-      {/* Custom page header */}
       {layoutHeader}
 
       <main
