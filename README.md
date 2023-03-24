@@ -35,13 +35,20 @@ As for now, this README is the only main documentation.
 
 You can use this to build any web app. Also what I'm using Rewinds for.
 
+- Personal Website
+- Company Profile
 - Todo List
-- Learning Platform
-- Content Management System
-- E-Commerce
+- Blog or News
 - Social Media
-- Gallery
-- Inventory
+- Community Forum
+- Support Desk
+- Art Gallery
+- E-Commerce
+- Inventory Management
+- Events Management
+- Knowledge Management
+- Content Management System (CMS)
+- Learning Management System (LMS)
 
 ## Some Checklists
 
@@ -422,6 +429,6 @@ module.exports = {
 
 Some other projects using Rewinds:
 
-- [M Haidar Hanif Website](https://github.com/mhaidarhanif/mhaidarhanif-web)
-- [Catamyst](https://github.com/catamyst/catamyst-web)
-- [Super Duper Gallery](https://github.com/jonathannicolasdev/superduper)
+- [M Haidar Hanif Website](https://github.com/mhaidarhanif/mhaidarhanif-web): Personal Website
+- [Catamyst](https://github.com/catamyst/catamyst-web): Learning Management System (LMS)
+- [Super Duper Gallery](https://github.com/jonathannicolasdev/superduper): Art Gallery
