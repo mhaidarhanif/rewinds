@@ -169,6 +169,7 @@ More details and references can also be checked from [`catamyst/stack`](https://
   - [Vitest](https://vitest.dev)
   - [Testing Library](https://testing-library.com)
   - [Playwright](https://playwright.dev)
+  - [Ladle](https://ladle.dev)
 - Tooling
   - [Prettier](https://prettier.io)
   - [ESLint](https://eslint.org)

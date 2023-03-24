@@ -117,7 +117,7 @@
 
   /* Prose */
   .prose-config {
-    @apply prose dark:prose-invert;
+    @apply prose dark:prose-invert sm:prose-lg;
     @apply prose-p:prose-p-styles;
     @apply prose-a:prose-a-styles;
     @apply prose-ul:prose-list-styles;

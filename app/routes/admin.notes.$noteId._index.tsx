@@ -54,7 +54,6 @@ export async function action({ request }: ActionArgs) {
   }
 }
 
-// Similar with "admin-notes-edit"
 export default function AdminNotesViewRoute() {
   const { note } = useLoaderData<typeof loader>();
 
@@ -108,7 +107,10 @@ export default function AdminNotesViewRoute() {
             <div className="flex flex-wrap gap-2 text-xs">
               <p>
                 <span>Created by: </span>
-                <RemixLinkText to={`/admin/users/${note.user.id}`}>
+                <RemixLinkText
+                  prefetch="intent"
+                  to={`/admin/users/${note.user.id}`}
+                >
                   {note.user.name}
                 </RemixLinkText>
               </p>
@@ -146,7 +148,7 @@ export default function AdminNotesViewRoute() {
           )}
         </h3>
 
-        <div className="prose-config whitespace-pre-wrap sm:prose-xl sm:py-4">
+        <div className="prose-config whitespace-pre-wrap sm:py-4">
           {note.content}
         </div>
       </section>

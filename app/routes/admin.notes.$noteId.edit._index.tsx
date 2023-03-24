@@ -54,14 +54,13 @@ export async function action({ request, params }: ActionArgs) {
     if (!updatedNote) {
       return serverError(submission);
     }
-    return redirect(`../${updatedNote.id}`);
+    return redirect(`..`);
   } catch (error) {
     console.error(error);
     return badRequest(submission);
   }
 }
 
-// Similar with "admin-notes-view"
 export default function AdminNotesEditRoute() {
   const { note } = useLoaderData<typeof loader>();
   const actionData = useActionData<typeof action>();

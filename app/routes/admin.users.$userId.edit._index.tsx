@@ -49,14 +49,13 @@ export async function action({ request }: ActionArgs) {
     if (!updatedUser) {
       return serverError(submission);
     }
-    return redirect(`../${updatedUser.id}`);
+    return redirect(`..`);
   } catch (error) {
     console.error(error);
     return badRequest(submission);
   }
 }
 
-// Similar with "admin-users-view"
 export default function AdminUsersEditRoute() {
   const { user } = useLoaderData<typeof loader>();
   const actionData = useActionData<typeof action>();

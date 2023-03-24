@@ -5,7 +5,7 @@ import { Debug, PageAdminHeader } from "~/components";
 import { requireUserSession } from "~/helpers";
 import { useRootLoaderData } from "~/hooks";
 import { model } from "~/models";
-import { createSitemap } from "~/utils";
+import { createCacheHeaders, createSitemap } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
 
@@ -16,7 +16,10 @@ export async function loader({ request }: LoaderArgs) {
 
   const metrics = await model.admin.query.getMetrics();
 
-  return json({ userSession, user, metrics });
+  return json(
+    { userSession, user, metrics },
+    { headers: createCacheHeaders(request) }
+  );
 }
 
 export default function AdminIndexRoute() {

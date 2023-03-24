@@ -32,7 +32,12 @@ export default function AdminUsersRoute() {
         {users.map((user) => {
           const userNotesCount = user.notes?.length;
           return (
-            <RemixLink key={user.id} to={user.id} className="block">
+            <RemixLink
+              prefetch="intent"
+              key={user.id}
+              to={user.id}
+              className="block"
+            >
               <li className="card hover:card-hover">
                 <h3>
                   {user.name} (@{user.username})

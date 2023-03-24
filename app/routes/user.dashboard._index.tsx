@@ -66,7 +66,7 @@ export default function UserDashboardRoute() {
             Log out
           </ButtonLink>
           {isAllowed && (
-            <ButtonLink variant="info" size="sm" to="/admin">
+            <ButtonLink prefetch="intent" variant="info" size="sm" to="/admin">
               Admin
             </ButtonLink>
           )}

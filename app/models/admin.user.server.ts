@@ -31,6 +31,11 @@ export const mutation = {
   deleteAll() {
     return prisma.user.deleteMany();
   },
+  deleteById({ id }: Pick<User, "id">) {
+    return prisma.user.delete({
+      where: { id },
+    });
+  },
   update({ user }: { user: Pick<User, "id" | "name" | "username" | "email"> }) {
     return prisma.user.update({
       where: {

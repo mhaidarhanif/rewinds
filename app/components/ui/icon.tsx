@@ -11,6 +11,7 @@ import {
   PageEdit,
   PageSearch,
   PageStar,
+  Search,
   UserCrown,
 } from "~/icons";
 
@@ -32,6 +33,7 @@ export const iconMaps = {
   notes: <MultiplePages />,
   noteStatus: <PageStar />,
   noteTag: <PageEdit />,
+  search: <Search />,
   site: <Cloud />,
   userRole: <UserCrown />,
   users: <Group />,

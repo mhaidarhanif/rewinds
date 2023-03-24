@@ -66,8 +66,8 @@ export function AdminSidebar() {
     >
       <div className="stack-h-center">
         <RemixNavLink
-          to="/admin"
           prefetch="intent"
+          to="/admin"
           className="block min-w-fit transition-opacity hover:opacity-80"
         >
           <Logo />

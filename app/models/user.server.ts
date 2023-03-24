@@ -94,7 +94,7 @@ export const query = {
         ],
       },
       select: fields.public,
-      orderBy: [{ username: "desc" }],
+      orderBy: [{ name: "asc" }],
     });
   },
   async getMetrics({ id }: Pick<User, "id">) {

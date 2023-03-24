@@ -46,8 +46,15 @@ export const configAdmin = {
     },
 
     {
+      to: "/search",
+      name: "Search",
+      icon: "search",
+      items: [],
+    },
+
+    {
       to: "/",
-      name: " Go to site",
+      name: "Go to site",
       icon: "site",
       items: [],
     },

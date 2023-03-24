@@ -5,6 +5,7 @@ import { Layout, PageHeader, RemixLink } from "~/components";
 import { prisma } from "~/libs";
 import { model } from "~/models";
 import {
+  createCacheHeaders,
   createMetaData,
   createSitemap,
   formatPluralItems,
@@ -29,11 +30,7 @@ export async function loader({ request }: LoaderArgs) {
     model.user.query.search({ q }),
   ]);
 
-  return json({
-    q,
-    notes,
-    users,
-  });
+  return json({ q, notes, users }, { headers: createCacheHeaders(request) });
 }
 
 export default function SearchRoute() {

@@ -50,7 +50,7 @@ export const query = {
         images: true,
         user: { select: model.user.fields.public },
       },
-      orderBy: [{ updatedAt: "desc" }],
+      orderBy: [{ title: "asc" }],
     });
   },
 };
