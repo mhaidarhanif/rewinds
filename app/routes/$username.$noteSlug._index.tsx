@@ -64,7 +64,7 @@ export default function UsernameNoteSlugViewRoute() {
             <b>{formatRelativeTime(note.createdAt)}</b>
           </TooltipAuto>
           <span>·</span>
-          <TooltipAuto content={<b>{formatDateTime(note.createdAt)}</b>}>
+          <TooltipAuto content={<b>{formatDateTime(note.updatedAt)}</b>}>
             <span>Updated </span>
             <b>{formatRelativeTime(note.updatedAt)}</b>
           </TooltipAuto>

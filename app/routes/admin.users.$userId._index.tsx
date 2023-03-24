@@ -100,7 +100,7 @@ export default function AdminUsersViewRoute() {
               <b>{formatRelativeTime(user.createdAt)}</b>
             </TooltipAuto>
             <span>·</span>
-            <TooltipAuto content={<b>{formatDateTime(user.createdAt)}</b>}>
+            <TooltipAuto content={<b>{formatDateTime(user.updatedAt)}</b>}>
               <span>Updated at: </span>
               <b>{formatRelativeTime(user.updatedAt)}</b>
             </TooltipAuto>

@@ -38,9 +38,10 @@ import type {
   HeadersFunction,
   LinksFunction,
   LoaderArgs,
-  V2_MetaFunction,
   V2_HtmlMetaDescriptor,
+  V2_MetaFunction,
 } from "@remix-run/node";
+import type { RootLoaderData } from "~/hooks";
 
 export const meta: V2_MetaFunction = () => {
   return createMetaData() satisfies V2_HtmlMetaDescriptor[];
@@ -85,11 +86,13 @@ export async function loader({ request }: LoaderArgs) {
   }
 
   // Finally, put the active user data to the root loader data
-  return json({
+  const loaderData = {
     ENV,
     theme,
     user,
-  });
+  } satisfies RootLoaderData;
+
+  return json(loaderData);
 }
 
 /**
@@ -143,14 +146,16 @@ function App() {
         id="__remix"
         className={cn(configDev.isDevelopment && "debug-screens")}
       >
-        <IconoirProvider
-          iconProps={{ strokeWidth: 2, width: "1.5em", height: "1.5em" }}
-        >
-          <TooltipProvider>
-            <Outlet />
-            <Toaster />
-          </TooltipProvider>
-        </IconoirProvider>
+        <TooltipProvider>
+          <IconoirProvider
+            iconProps={{ strokeWidth: 2, width: "1.5em", height: "1.5em" }}
+          >
+            <>
+              <Outlet />
+              <Toaster />
+            </>
+          </IconoirProvider>
+        </TooltipProvider>
 
         <ScrollRestoration />
         <Scripts />

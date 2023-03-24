@@ -1,3 +1,4 @@
+export * from "./avatar";
 export * from "./cache.server";
 export * from "./classnames";
 export * from "./currency";

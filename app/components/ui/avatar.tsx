@@ -1,7 +1,9 @@
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import { forwardRef } from "react";
 
-import { cn } from "~/utils";
+import { cn, createAvatarPlaceholderURL, getInitials } from "~/utils";
+
+import type { UserData } from "~/helpers";
 
 const Avatar = forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
@@ -11,6 +13,7 @@ const Avatar = forwardRef<
     ref={ref}
     className={cn(
       "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full",
+      "bg-surface-100 dark:bg-surface-800",
       className
     )}
     {...props}
@@ -46,3 +49,19 @@ const AvatarFallback = forwardRef<
 AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;
 
 export { Avatar, AvatarImage, AvatarFallback };
+
+export function AvatarAuto({
+  user,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement> & {
+  user: Pick<UserData, "username" | "name">;
+}) {
+  const imageURL = createAvatarPlaceholderURL(user);
+
+  return (
+    <Avatar {...props}>
+      <AvatarImage src={imageURL} alt={user.name} />
+      {!imageURL && <AvatarFallback>{getInitials(user.name)}</AvatarFallback>}
+    </Avatar>
+  );
+}

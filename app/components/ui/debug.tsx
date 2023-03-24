@@ -4,7 +4,6 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-  TextCode,
 } from "~/components";
 import { configDev } from "~/configs";
 import { useRootLoaderData } from "~/hooks";
@@ -19,7 +18,7 @@ export function Debug({
   name?: string;
   isCollapsibleOpen?: boolean;
   className?: string;
-  children: unknown;
+  children: string | any | unknown | null | undefined | React.ReactNode;
 }) {
   const [isOpen, setIsOpen] = useState(isCollapsibleOpen);
 
@@ -37,10 +36,9 @@ export function Debug({
     <div className="my-1">
       <Collapsible open={isOpen} onOpenChange={setIsOpen} className="space-y-1">
         <CollapsibleTrigger asChild>
-          <TextCode className="cursor-pointer text-xs">
-            <span className="font-bold">DEBUG: </span>
-            <code>{name}</code>
-          </TextCode>
+          <code className="code cursor-pointer text-xs">
+            <span className="font-bold">DEBUG: {name}</span>
+          </code>
         </CollapsibleTrigger>
 
         <CollapsibleContent>

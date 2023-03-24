@@ -4,6 +4,7 @@ import { notFound } from "remix-utils";
 
 import {
   AnchorText,
+  AvatarAuto,
   Balancer,
   Layout,
   PageHeader,
@@ -12,6 +13,7 @@ import {
 import { configMeta } from "~/configs";
 import { model } from "~/models";
 import {
+  cn,
   createCacheHeaders,
   createMetaData,
   createSitemap,
@@ -71,42 +73,54 @@ export default function SplatUsernameRoute() {
           <header>
             <div className="contain-full">
               <img
-                className="h-40 rounded-b-lg sm:h-60 md:h-80"
+                className="h-40 rounded-b-lg object-cover sm:h-48 md:h-56"
                 alt="User Cover"
                 src={`https://images.unsplash.com/photo-1571745544682-143ea663cf2c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80`}
-                height={300}
+                height={240}
                 width={1440}
               />
             </div>
           </header>
         }
       >
-        <section className="contain-sm space-y-2">
-          <div className="my-4 text-center">
-            <h1>
-              <Balancer>{user.name}</Balancer>
-            </h1>
-            <h2 className="text-xl lg:text-2xl">@{user.username}</h2>
-          </div>
+        <div className="contain-sm space-y-4 sm:space-y-8">
+          <section data-id="user-avatar-name" className="my-4 space-y-2">
+            <AvatarAuto
+              user={user}
+              className={cn(
+                "-mt-16 h-20 w-20",
+                "sm:-mt-24 sm:h-28 sm:w-28",
+                "outline outline-4 outline-surface-50 dark:outline-surface-900"
+              )}
+            />
+            <h1>{user.name}</h1>
+            <h2>@{user.username}</h2>
+          </section>
 
-          <p className="prose-config">{user.profile.bio}</p>
+          <section>
+            <p className="prose-config">{user.profile.bio}</p>
+          </section>
 
-          <ul className="space-y-2">
-            {user.notes.map((note) => {
-              return (
-                <li key={note.id}>
-                  <RemixLink
-                    to={note.slug}
-                    className="card hover:card-hover block"
-                  >
-                    <h3>{note.title}</h3>
-                    <p>{truncateText(note.content)}</p>
-                  </RemixLink>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
+          <section className="space-y-2">
+            <h3>Notes</h3>
+            <ul className="space-y-2">
+              {user.notes.length <= 0 && <p>No notes yet.</p>}
+              {user.notes.map((note) => {
+                return (
+                  <li key={note.id}>
+                    <RemixLink
+                      to={note.slug}
+                      className="card hover:card-hover block"
+                    >
+                      <h4>{note.title}</h4>
+                      <p>{truncateText(note.content)}</p>
+                    </RemixLink>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        </div>
       </Layout>
     );
   }

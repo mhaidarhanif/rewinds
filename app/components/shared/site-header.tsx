@@ -1,8 +1,6 @@
 /* eslint-disable tailwindcss/no-arbitrary-value */
 import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
+  AvatarAuto,
   Button,
   ButtonIcon,
   ButtonIconAnchor,
@@ -23,8 +21,8 @@ import {
   RemixForm,
   RemixLinkText,
   RemixNavLink,
+  ThemeToggleButton,
 } from "~/components";
-import { ThemeToggleButton } from "~/components";
 import { configSite } from "~/configs";
 import { useRootLoaderData } from "~/hooks";
 import {
@@ -38,7 +36,7 @@ import {
   Twitter,
   User,
 } from "~/icons";
-import { cn, getInitials } from "~/utils";
+import { cn } from "~/utils";
 
 interface Props {
   noThemeToggle?: boolean;
@@ -256,13 +254,7 @@ export function HeaderUserMenu({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-          <Avatar>
-            <AvatarImage
-              src={`https://github.com/mhaidarhanif.png`}
-              alt={user.name}
-            />
-            <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
-          </Avatar>
+          <AvatarAuto user={user} />
         </Button>
       </DropdownMenuTrigger>
 

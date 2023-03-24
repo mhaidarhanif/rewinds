@@ -17,16 +17,14 @@ export async function loader() {
   });
 }
 
-export default function DebugRoute() {
-  const { ENV, theme, user } = useRootLoaderData();
-  const { initialNumber, numbers } = useLoaderData<typeof loader>();
+export default function PageDebugRoute() {
+  const loaderData = useLoaderData<typeof loader>();
+  const rootLoaderData = useRootLoaderData();
 
   return (
     <Layout isSpaced>
-      <Debug name="numbers">{{ initialNumber, numbers }}</Debug>
-      <Debug name="ENV">{{ ENV }}</Debug>
-      <Debug name="theme">{{ theme }}</Debug>
-      <Debug name="user">{{ user }}</Debug>
+      <Debug name="loaderData">{loaderData}</Debug>
+      <Debug name="rootLoaderData">{rootLoaderData}</Debug>
     </Layout>
   );
 }

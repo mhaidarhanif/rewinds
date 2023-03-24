@@ -12,6 +12,9 @@ module.exports = {
   server: isDevelopment ? undefined : "./server-vercel.js",
   serverBuildPath: isDevelopment ? "build/index.js" : "api/index.js",
 
+  // https://remix.run/docs/en/1.14.3/file-conventions/remix-config#serverdependenciestobundle
+  serverDependenciesToBundle: [],
+
   // https://remix.run/docs/en/v1/file-conventions/route-files-v2#route-file-naming-v2
   future: {
     v2_routeConvention: true,
