@@ -8,12 +8,10 @@ import {
   ButtonLink,
   Debug,
   RemixForm,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
+  RemixLink,
+  TooltipAuto,
 } from "~/components";
-import { EditPencil, Trash } from "~/icons";
+import { EditPencil, Eye, Trash } from "~/icons";
 import { model } from "~/models";
 import {
   createCacheHeaders,
@@ -63,7 +61,12 @@ export default function AdminUsersViewRoute() {
         <div className="stack-h-center">
           <span>View User</span>
 
-          <ButtonLink to="edit" size="xs" variant="info">
+          <ButtonLink to={`/${user.username}`} size="xs" variant="info">
+            <Eye className="size-xs" />
+            <span>View on Site</span>
+          </ButtonLink>
+
+          <ButtonLink to="edit" size="xs" variant="warning">
             <EditPencil className="size-xs" />
             <span>Edit</span>
           </ButtonLink>
@@ -85,41 +88,23 @@ export default function AdminUsersViewRoute() {
 
       <section className="card stack-v">
         <header>
-          <div
-            data-id="user-view-id-slug"
-            className="flex flex-wrap gap-2 text-xs"
-          >
+          <div data-id="user-view-id-slug" className="stack-h-center text-xs">
             <p>
               ID: <b>{user.id}</b>
             </p>
           </div>
 
-          <TooltipProvider>
-            <div className="flex flex-wrap gap-2 text-xs">
-              <Tooltip>
-                <TooltipTrigger>
-                  <p>
-                    <span>Created: </span>
-                    <b>{formatRelativeTime(user.createdAt)}</b>
-                  </p>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <b>{formatDateTime(user.createdAt)}</b>
-                </TooltipContent>
-              </Tooltip>
-              <Tooltip>
-                <TooltipTrigger>
-                  <p>
-                    <span>Updated: </span>
-                    <b>{formatRelativeTime(user.updatedAt)}</b>
-                  </p>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <b>{formatDateTime(user.createdAt)}</b>
-                </TooltipContent>
-              </Tooltip>
-            </div>
-          </TooltipProvider>
+          <div className="stack-h-center text-xs">
+            <TooltipAuto content={<b>{formatDateTime(user.createdAt)}</b>}>
+              <span>Created at: </span>
+              <b>{formatRelativeTime(user.createdAt)}</b>
+            </TooltipAuto>
+            <span>·</span>
+            <TooltipAuto content={<b>{formatDateTime(user.createdAt)}</b>}>
+              <span>Updated at: </span>
+              <b>{formatRelativeTime(user.updatedAt)}</b>
+            </TooltipAuto>
+          </div>
         </header>
 
         <section>
@@ -133,6 +118,25 @@ export default function AdminUsersViewRoute() {
           <h4>{user.profile.headline}</h4>
           <p>{user.profile.bio}</p>
         </article>
+      </section>
+
+      <section>
+        <h5>Notes</h5>
+        <ul className="space-y-1">
+          {user.notes.map((note) => {
+            return (
+              <li key={note.id}>
+                <RemixLink
+                  prefetch="intent"
+                  to={`/admin/notes/${note.id}`}
+                  className="card-sm hover:card-hover"
+                >
+                  {note.title}
+                </RemixLink>
+              </li>
+            );
+          })}
+        </ul>
       </section>
 
       <Debug name="user">{user}</Debug>

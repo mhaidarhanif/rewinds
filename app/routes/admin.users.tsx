@@ -53,7 +53,7 @@ export default function AdminUsersRoute() {
         </RemixLink>
         <ButtonLink to="new" size="sm">
           <Plus className="size-sm" />
-          <span>Add New</span>
+          <span>Register User</span>
         </ButtonLink>
         {configDev.isDevelopment && (
           <RemixForm method="delete">
@@ -65,7 +65,7 @@ export default function AdminUsersRoute() {
               disabled={userCount <= 0}
             >
               <Trash className="size-sm" />
-              <span>Delete All</span>
+              <span>Delete All Users</span>
             </Button>
           </RemixForm>
         )}

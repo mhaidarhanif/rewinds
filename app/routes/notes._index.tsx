@@ -1,7 +1,7 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import { Balancer, PageHeader, RemixLink } from "~/components";
+import { Layout, PageHeader, RemixLink } from "~/components";
 import { model } from "~/models";
 import { createMetaData, truncateText } from "~/utils";
 
@@ -19,22 +19,16 @@ export default function NotesIndexRoute() {
   const { notes } = useLoaderData<typeof loader>();
 
   return (
-    <div>
-      <PageHeader
-        size="sm"
-        isTextCentered
-        withBackground={false}
-        withMarginBottom={false}
-      >
-        <h1>All Notes</h1>
-        <h2>
-          <Balancer>All published notes from the users</Balancer>
-        </h2>
-        <p>
-          <Balancer>Frequently changed for this example demo</Balancer>
-        </p>
-      </PageHeader>
-
+    <Layout
+      isSpaced
+      layoutHeader={
+        <PageHeader size="sm" withBackground={false} withMarginBottom={false}>
+          <h1>All Notes</h1>
+          <h2>All published notes from the users</h2>
+          <p>Frequently changed for this example demo</p>
+        </PageHeader>
+      }
+    >
       <section>
         <ul className="grid auto-rows-auto grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {notes.map((note) => {
@@ -56,6 +50,6 @@ export default function NotesIndexRoute() {
           })}
         </ul>
       </section>
-    </div>
+    </Layout>
   );
 }

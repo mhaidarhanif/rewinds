@@ -126,7 +126,7 @@ export function ImageKitUploadsPreviewer({
 }) {
   return (
     <div>
-      <div className="mt-2 flex flex-wrap gap-2 rounded border bg-surface-50 p-2 dark:bg-surface-200">
+      <div className="stack-h-center mt-2 rounded border bg-surface-50 p-2 dark:bg-surface-200">
         {!imageAssets.length && (
           <div className="h-24 w-24 select-none flex-wrap items-center justify-center rounded border bg-white">
             <p className="break-words text-center text-xs font-bold">

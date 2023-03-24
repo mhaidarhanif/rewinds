@@ -2,7 +2,7 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { notFound } from "remix-utils";
 
-import { Balancer } from "~/components";
+import { Balancer, Layout } from "~/components";
 import { model } from "~/models";
 import { createCacheHeaders, createSitemap, invariant } from "~/utils";
 
@@ -28,17 +28,19 @@ export default function NotesNoteSlugViewRoute() {
   const { note } = useLoaderData<typeof loader>();
 
   return (
-    <div className="contain-sm">
-      <article className="prose-config mt-10 whitespace-pre-wrap">
-        <header className="pb-10">
-          <h1>
-            <Balancer>{note.title}</Balancer>
-          </h1>
-          <h2>{note.description}</h2>
-        </header>
+    <Layout isSpaced>
+      <div className="contain-sm">
+        <article className="prose-config mt-10 whitespace-pre-wrap">
+          <header className="pb-10">
+            <h1>
+              <Balancer>{note.title}</Balancer>
+            </h1>
+            <h2>{note.description}</h2>
+          </header>
 
-        {note.content}
-      </article>
-    </div>
+          {note.content}
+        </article>
+      </div>
+    </Layout>
   );
 }

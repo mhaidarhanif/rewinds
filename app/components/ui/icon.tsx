@@ -1,17 +1,19 @@
 import {
+  AppWindow,
   Circle,
   Cloud,
   Components,
   Database,
+  DbSearch,
   Group,
   Home,
   InfoEmpty,
+  InputSearch,
   LayoutLeft,
   MultiplePages,
   PageEdit,
   PageSearch,
   PageStar,
-  Search,
   UserCrown,
 } from "~/icons";
 
@@ -24,6 +26,7 @@ import {
 
 export const iconMaps = {
   about: <InfoEmpty />,
+  appWindow: <AppWindow />,
   components: <Components />,
   database: <Database />,
   default: <Circle />,
@@ -33,7 +36,8 @@ export const iconMaps = {
   notes: <MultiplePages />,
   noteStatus: <PageStar />,
   noteTag: <PageEdit />,
-  search: <Search />,
+  search: <InputSearch />,
+  searchAdmin: <DbSearch />,
   site: <Cloud />,
   userRole: <UserCrown />,
   users: <Group />,

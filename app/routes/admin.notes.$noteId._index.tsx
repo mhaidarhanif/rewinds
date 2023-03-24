@@ -9,10 +9,7 @@ import {
   Debug,
   RemixForm,
   RemixLinkText,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
+  TooltipAuto,
 } from "~/components";
 import { requireUserSession } from "~/helpers";
 import { EditPencil, Eye, Trash } from "~/icons";
@@ -24,8 +21,7 @@ import {
   invariant,
 } from "~/utils";
 
-import type { LoaderArgs } from "@remix-run/node";
-import type { ActionArgs } from "@remix-run/node";
+import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 
 export const handle = createSitemap();
 
@@ -68,7 +64,7 @@ export default function AdminNotesViewRoute() {
           <span>View Note</span>
           <ButtonLink to={`/notes/${note.slug}`} size="xs" variant="info">
             <Eye className="size-xs" />
-            <span>View</span>
+            <span>View on Site</span>
           </ButtonLink>
           <ButtonLink to="edit" size="xs" variant="warning">
             <EditPencil className="size-xs" />
@@ -91,64 +87,46 @@ export default function AdminNotesViewRoute() {
 
       <section className="card stack-v">
         <header>
-          <div
-            data-id="note-view-id-slug"
-            className="flex flex-wrap gap-2 text-xs"
-          >
+          <div data-id="note-view-id-slug" className="stack-h-center text-xs">
             <p>
               ID: <b>{note.id}</b>
             </p>
+            <span>·</span>
             <p>
               Slug: <b>{note.slug}</b>
             </p>
           </div>
 
-          <TooltipProvider>
-            <div className="flex flex-wrap gap-2 text-xs">
-              <p>
-                <span>Created by: </span>
-                <RemixLinkText
-                  prefetch="intent"
-                  to={`/admin/users/${note.user.id}`}
-                >
-                  {note.user.name}
-                </RemixLinkText>
-              </p>
-              <Tooltip>
-                <TooltipTrigger>
-                  <p>
-                    <span>Created: </span>
-                    <b>{formatRelativeTime(note.createdAt)}</b>
-                  </p>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <b>{formatDateTime(note.createdAt)}</b>
-                </TooltipContent>
-              </Tooltip>
-              <Tooltip>
-                <TooltipTrigger>
-                  <p>
-                    <span>Updated: </span>
-                    <b>{formatRelativeTime(note.updatedAt)}</b>
-                  </p>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <b>{formatDateTime(note.createdAt)}</b>
-                </TooltipContent>
-              </Tooltip>
-            </div>
-          </TooltipProvider>
+          <div className="stack-h-center text-xs">
+            <p>
+              <span>Created by: </span>
+              <RemixLinkText
+                prefetch="intent"
+                to={`/admin/users/${note.user.id}`}
+              >
+                {note.user.name}
+              </RemixLinkText>
+            </p>
+            <span>·</span>
+            <TooltipAuto content={<b>{formatDateTime(note.createdAt)}</b>}>
+              <span>Created at: </span>
+              <b>{formatRelativeTime(note.createdAt)}</b>
+            </TooltipAuto>
+            <span>·</span>
+            <TooltipAuto content={<b>{formatDateTime(note.createdAt)}</b>}>
+              <span>Updated at: </span>
+              <b>{formatRelativeTime(note.updatedAt)}</b>
+            </TooltipAuto>
+          </div>
         </header>
 
-        <h2>{note.title}</h2>
-
-        <h3>
-          {note.description || (
-            <span className="opacity-30">No description</span>
-          )}
-        </h3>
-
         <div className="prose-config whitespace-pre-wrap sm:py-4">
+          <h1>{note.title}</h1>
+          <h2>
+            {note.description || (
+              <span className="opacity-30">No description</span>
+            )}
+          </h2>
           {note.content}
         </div>
       </section>

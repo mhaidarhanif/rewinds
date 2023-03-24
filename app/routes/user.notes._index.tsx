@@ -56,7 +56,7 @@ export default function AdminNotesRoute() {
           </RemixLink>
           <ButtonLink to="new" size="sm">
             <Plus className="size-sm" />
-            <span>New note</span>
+            <span>Add Note</span>
           </ButtonLink>
           <RemixForm method="delete">
             <Button
@@ -78,8 +78,11 @@ export default function AdminNotesRoute() {
         <ul className="space-y-1">
           {notes.map((note) => {
             return (
-              <li key={note.id} className="card-sm hover:card-hover">
-                <RemixLink to={`/notes/${note.slug}`} className="block">
+              <li key={note.id}>
+                <RemixLink
+                  to={`/notes/${note.slug}`}
+                  className="card-sm hover:card-hover"
+                >
                   <h4>{note.title}</h4>
                   <p>{truncateText(note.content)}</p>
                 </RemixLink>

@@ -1,6 +1,5 @@
 import { Outlet } from "@remix-run/react";
 
-import { Layout } from "~/components";
 import { model } from "~/models";
 
 import type { SEOHandle } from "~/utils";
@@ -17,9 +16,5 @@ export const handle: SEOHandle = {
 };
 
 export default function NotesRoute() {
-  return (
-    <Layout>
-      <Outlet />
-    </Layout>
-  );
+  return <Outlet />;
 }

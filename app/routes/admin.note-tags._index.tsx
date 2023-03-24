@@ -16,10 +16,6 @@ export async function loader({ request }: LoaderArgs) {
 export default function AdminNoteTagsRoute() {
   const { noteTags } = useLoaderData<typeof loader>();
 
-  if (noteTags.length <= 0) {
-    return <span>No note tags. Please add.</span>;
-  }
-
   return (
     <div className="stack-v">
       <header>

@@ -21,7 +21,13 @@ import {
   useTheme,
 } from "remix-themes";
 
-import { Debug, Layout, PageHeader, Toaster } from "~/components";
+import {
+  Debug,
+  Layout,
+  PageHeader,
+  Toaster,
+  TooltipProvider,
+} from "~/components";
 import { configDev, configDocumentLinks, configSite } from "~/configs";
 import { model } from "~/models";
 import { authenticator } from "~/services";
@@ -142,10 +148,10 @@ function App() {
         <IconoirProvider
           iconProps={{ strokeWidth: 2, width: "1.5em", height: "1.5em" }}
         >
-          <>
+          <TooltipProvider>
             <Outlet />
             <Toaster />
-          </>
+          </TooltipProvider>
         </IconoirProvider>
 
         <ScrollRestoration />

@@ -60,11 +60,11 @@ export default function SearchRoute() {
             <ul className="space-y-1">
               {notes.map((note) => {
                 return (
-                  <li key={note.id} className="card-sm hover:card-hover">
+                  <li key={note.id}>
                     <RemixLink
                       prefetch="intent"
                       to={`/notes/${note.slug}`}
-                      className="block"
+                      className="card-sm hover:card-hover"
                     >
                       <h4>{note.title}</h4>
                       <p>{truncateText(note.content)}</p>

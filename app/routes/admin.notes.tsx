@@ -49,7 +49,7 @@ export default function AdminNotesRoute() {
         </RemixLink>
         <ButtonLink to="new" size="sm">
           <Plus className="size-sm" />
-          <span>New note</span>
+          <span>Add Note</span>
         </ButtonLink>
         {configDev.isDevelopment && (
           <RemixForm method="delete">
