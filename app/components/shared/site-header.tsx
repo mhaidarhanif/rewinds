@@ -223,7 +223,13 @@ export function HeaderNavigationMenu({
           (item, index) =>
             item.to && (
               <DropdownMenuItem key={index} asChild>
-                <RemixNavLink to={item.to} prefetch="intent">
+                <RemixNavLink
+                  to={item.to}
+                  prefetch="intent"
+                  className={({ isActive }) =>
+                    cn(buttonVariants({ variant: "navlink", isActive }))
+                  }
+                >
                   <Icon name={item.icon} />
                   <span>{item.name}</span>
                 </RemixNavLink>
