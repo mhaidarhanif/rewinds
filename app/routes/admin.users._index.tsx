@@ -4,7 +4,7 @@ import pluralize from "pluralize";
 
 import { AvatarAuto, Debug, RemixLink } from "~/components";
 import { model } from "~/models";
-import { createSitemap } from "~/utils";
+import { createSitemap, formatPluralItems } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
 
@@ -12,11 +12,12 @@ export const handle = createSitemap();
 
 export async function loader({ request }: LoaderArgs) {
   const users = await model.adminUser.query.getAll();
-  return json({ users });
+  const usersCount = users.length;
+  return json({ users, usersCount });
 }
 
 export default function AdminUsersRoute() {
-  const { users } = useLoaderData<typeof loader>();
+  const { users, usersCount } = useLoaderData<typeof loader>();
 
   if (users.length <= 0) {
     return <span>No users. Please register new.</span>;
@@ -25,7 +26,7 @@ export default function AdminUsersRoute() {
   return (
     <div className="stack-v">
       <header>
-        <span>All Users</span>
+        <span>{formatPluralItems("user", usersCount)}</span>
       </header>
 
       <ul className="space-y-2">

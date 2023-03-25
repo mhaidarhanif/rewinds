@@ -13,7 +13,7 @@ import { configDev } from "~/configs";
 import { requireUserSession } from "~/helpers";
 import { Plus, Trash } from "~/icons";
 import { model } from "~/models";
-import { createSitemap } from "~/utils";
+import { createSitemap, formatPluralItems } from "~/utils";
 
 import type { ActionArgs } from "@remix-run/node";
 
@@ -61,7 +61,7 @@ export default function AdminNotesRoute() {
               disabled={notesCount <= 0}
             >
               <Trash className="size-sm" />
-              <span>Delete All Notes</span>
+              <span>Delete All {formatPluralItems("Note", notesCount)}</span>
             </Button>
           </RemixForm>
         )}

@@ -4,7 +4,7 @@ import { useLoaderData } from "@remix-run/react";
 import { AvatarAuto, ButtonLink, Debug, RemixLink } from "~/components";
 import { Eye } from "~/icons";
 import { model } from "~/models";
-import { createSitemap } from "~/utils";
+import { createSitemap, formatPluralItems } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
 
@@ -12,11 +12,12 @@ export const handle = createSitemap();
 
 export async function loader({ request }: LoaderArgs) {
   const notes = await model.adminNote.query.getAll();
-  return json({ notes });
+  const notesCount = notes.length;
+  return json({ notes, notesCount });
 }
 
 export default function AdminNotesRoute() {
-  const { notes } = useLoaderData<typeof loader>();
+  const { notes, notesCount } = useLoaderData<typeof loader>();
 
   if (notes.length <= 0) {
     return <span>No notes. Please add new.</span>;
@@ -26,7 +27,7 @@ export default function AdminNotesRoute() {
     <div className="stack-v">
       <header>
         <div className="stack-h-center">
-          <span>All Notes</span>
+          <span>{formatPluralItems("note", notesCount)}</span>
           <ButtonLink to="/notes" size="xs" variant="info">
             <Eye className="size-xs" />
             <span>View All</span>

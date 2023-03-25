@@ -14,7 +14,7 @@ import { configDev } from "~/configs";
 import { requireUserRole, requireUserSession } from "~/helpers";
 import { Plus, Trash } from "~/icons";
 import { model } from "~/models";
-import { createSitemap } from "~/utils";
+import { createSitemap, formatPluralItems } from "~/utils";
 
 import type { ActionArgs } from "@remix-run/node";
 
@@ -65,7 +65,7 @@ export default function AdminUsersRoute() {
               disabled={userCount <= 0}
             >
               <Trash className="size-sm" />
-              <span>Delete All Users</span>
+              <span>Delete All {formatPluralItems("User", userCount)}</span>
             </Button>
           </RemixForm>
         )}

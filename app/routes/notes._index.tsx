@@ -1,9 +1,9 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import { Layout, PageHeader, RemixLink } from "~/components";
+import { AvatarAuto, Layout, PageHeader, RemixLink } from "~/components";
 import { model } from "~/models";
-import { createMetaData, truncateText } from "~/utils";
+import { createMetaData, formatPluralItems, truncateText } from "~/utils";
 
 export const meta = createMetaData({
   title: "Notes",
@@ -12,19 +12,20 @@ export const meta = createMetaData({
 
 export async function loader() {
   const notes = await model.note.query.getAll();
-  return json({ notes });
+  const notesCount = notes.length;
+  return json({ notes, notesCount });
 }
 
 export default function NotesIndexRoute() {
-  const { notes } = useLoaderData<typeof loader>();
+  const { notes, notesCount } = useLoaderData<typeof loader>();
 
   return (
     <Layout
       isSpaced
       layoutHeader={
         <PageHeader size="sm" withBackground={false} withMarginBottom={false}>
-          <h1>All Notes</h1>
-          <h2>All published notes from the users</h2>
+          <h1>All {formatPluralItems("note", notesCount)}</h1>
+          <h2>Published notes from the users</h2>
           <p>Frequently changed for this example demo</p>
         </PageHeader>
       }
@@ -36,14 +37,15 @@ export default function NotesIndexRoute() {
               <li key={note.slug}>
                 <RemixLink
                   prefetch="intent"
-                  to={note.slug}
-                  className="card hover:card-hover space-y-1"
+                  to={`/${note.user.username}/${note.slug}`}
+                  className="card hover:card-hover flex h-full flex-col space-y-2"
                 >
                   <h3>{note.title}</h3>
+                  <div className="stack-h-center">
+                    <AvatarAuto user={note.user} className="size-md" />
+                    <b>{note.user.name}</b>
+                  </div>
                   <p>{truncateText(note.content)}</p>
-                  <p>
-                    by <b>{note.user.name}</b>
-                  </p>
                 </RemixLink>
               </li>
             );

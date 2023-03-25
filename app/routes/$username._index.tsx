@@ -73,7 +73,10 @@ export default function SplatUsernameRoute() {
           <header>
             <div className="contain-full">
               <img
-                className="h-40 rounded-b-lg object-cover sm:h-48 md:h-56"
+                className={cn(
+                  "h-48 sm:h-60 md:h-72",
+                  "rounded-b-lg object-cover"
+                )}
                 alt="User Cover"
                 src={`https://images.unsplash.com/photo-1571745544682-143ea663cf2c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80`}
                 height={240}
@@ -83,13 +86,13 @@ export default function SplatUsernameRoute() {
           </header>
         }
       >
-        <div className="contain-sm space-y-4 sm:space-y-8">
+        <div className="contain-sm space-y-8">
           <section data-id="user-avatar-name" className="my-4 space-y-2">
             <AvatarAuto
               user={user}
               className={cn(
                 "-mt-16 sm:-mt-24",
-                "size-2xl sm:size-3xl",
+                "size-3xl sm:size-4xl",
                 "outline outline-4 outline-surface-50 dark:outline-surface-900"
               )}
             />

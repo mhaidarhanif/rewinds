@@ -50,8 +50,8 @@ export function SiteHeader({ noThemeToggle }: Props) {
     >
       <section
         className={cn(
-          "contain flex items-center justify-between",
-          "h-6 sm:h-8" // height of the site header
+          "h-6", // height of the site header
+          "contain flex items-center justify-between"
         )}
       >
         <div
@@ -197,7 +197,7 @@ export function HeaderNavigationMenu({
         {navItems?.map(
           (item, index) =>
             item.to && (
-              <DropdownMenuItem key={index} asChild>
+              <DropdownMenuItem key={index} className="flex gap-2" asChild>
                 <RemixNavLink
                   to={item.to}
                   prefetch="intent"

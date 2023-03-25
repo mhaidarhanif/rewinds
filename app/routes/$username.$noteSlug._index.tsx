@@ -2,7 +2,13 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { notFound } from "remix-utils";
 
-import { Balancer, Layout, RemixLink, TooltipAuto } from "~/components";
+import {
+  AvatarAuto,
+  Balancer,
+  Layout,
+  RemixLink,
+  TooltipAuto,
+} from "~/components";
 import { model } from "~/models";
 import {
   createCacheHeaders,
@@ -54,20 +60,25 @@ export default function UsernameNoteSlugViewRoute() {
         </header>
       }
     >
-      <aside className="contain-sm">
-        <h3>
-          <RemixLink to={`/${note.user.username}`}>{note.user.name}</RemixLink>
-        </h3>
-        <div className="flex gap-2">
-          <TooltipAuto content={<b>{formatDateTime(note.createdAt)}</b>}>
-            <span>Posted </span>
-            <b>{formatRelativeTime(note.createdAt)}</b>
-          </TooltipAuto>
-          <span>·</span>
-          <TooltipAuto content={<b>{formatDateTime(note.updatedAt)}</b>}>
-            <span>Updated </span>
-            <b>{formatRelativeTime(note.updatedAt)}</b>
-          </TooltipAuto>
+      <aside className="contain-sm stack-h-center sm:gap-4">
+        <AvatarAuto user={note.user} className="size-2xl" />
+        <div>
+          <h4>
+            <RemixLink to={`/${note.user.username}`} className="hover:link">
+              {note.user.name} (@{note.user.username})
+            </RemixLink>
+          </h4>
+          <div className="flex gap-2">
+            <TooltipAuto content={<b>{formatDateTime(note.createdAt)}</b>}>
+              <span>Posted </span>
+              <b>{formatRelativeTime(note.createdAt)}</b>
+            </TooltipAuto>
+            <span>·</span>
+            <TooltipAuto content={<b>{formatDateTime(note.updatedAt)}</b>}>
+              <span>Updated </span>
+              <b>{formatRelativeTime(note.updatedAt)}</b>
+            </TooltipAuto>
+          </div>
         </div>
       </aside>
 

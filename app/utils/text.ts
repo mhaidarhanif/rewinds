@@ -8,7 +8,7 @@ export function getInitials(name = "First Last") {
     .join("");
 }
 
-export function truncateText(text: string, maxLength = 50) {
+export function truncateText(text: string, maxLength = 140) {
   return text.length > maxLength
     ? text.substring(0, maxLength - 3) + "..."
     : text;

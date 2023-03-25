@@ -67,7 +67,7 @@ export default function AdminNotesRoute() {
               disabled={notesCount <= 0}
             >
               <Trash className="size-sm" />
-              <span>Delete All My Notes</span>
+              <span>Delete All My {formatPluralItems("Note", notesCount)}</span>
             </Button>
           </RemixForm>
         </div>
