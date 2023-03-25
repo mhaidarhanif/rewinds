@@ -238,7 +238,7 @@ export function CatchBoundary() {
         layoutHeader={
           <PageHeader size="sm">
             <h1>Error {caught.status}</h1>
-            {caught.statusText && <h2>caught.statusText</h2>}
+            {caught.statusText && <h2>{caught.statusText}</h2>}
             <p>{message}</p>
           </PageHeader>
         }
