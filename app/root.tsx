@@ -120,8 +120,9 @@ export default function AppWithProviders() {
  */
 function App() {
   const data = useLoaderData();
-  const [theme] = useTheme();
   const navigation = useNavigation();
+  const [theme] = useTheme();
+  const defaultTheme = theme ? theme : "dark";
 
   /**
    * NProgress loading bar
@@ -133,7 +134,7 @@ function App() {
   }, [navigation.state]);
 
   return (
-    <html lang="en" data-theme={theme ?? ""}>
+    <html lang="en" data-theme={defaultTheme}>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -144,7 +145,7 @@ function App() {
 
       <body
         id="__remix"
-        className={cn(configDev.isDevelopment && "debug-screens")}
+        className={cn(defaultTheme, configDev.isDevelopment && "debug-screens")}
       >
         <TooltipProvider>
           <IconoirProvider

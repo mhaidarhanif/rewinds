@@ -80,7 +80,8 @@ export default function AdminNotesRoute() {
             return (
               <li key={note.id}>
                 <RemixLink
-                  to={`/notes/${note.slug}`}
+                  prefetch="intent"
+                  to={`/${note.user.username}/${note.slug}`}
                   className="card-sm hover:card-hover"
                 >
                   <h4>{note.title}</h4>

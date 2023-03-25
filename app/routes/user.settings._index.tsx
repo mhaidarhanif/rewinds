@@ -19,7 +19,7 @@ export default function UserSettingsRoute() {
   const { user } = useLoaderData<typeof loader>();
 
   return (
-    <div data-id="user-settings" className="space-y-4">
+    <div data-id="user-settings" className="contain-sm space-y-4">
       <PageHeader size="xs" withBackground={false} withContainer={false}>
         <h1>Settings</h1>
       </PageHeader>

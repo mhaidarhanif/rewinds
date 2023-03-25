@@ -66,7 +66,7 @@ export default function SearchRoute() {
                   <li key={note.id}>
                     <RemixLink
                       prefetch="intent"
-                      to={`/notes/${note.slug}`}
+                      to={`/${note.user.username}/${note.slug}`}
                       className="card-sm hover:card-hover"
                     >
                       <h4>{note.title}</h4>

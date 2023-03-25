@@ -34,10 +34,7 @@ export function PageProgress({
 
   return (
     <aside
-      className={cn(
-        "mx-auto flex w-full max-w-prose flex-wrap justify-between gap-4",
-        className
-      )}
+      className={cn("flex w-full flex-wrap justify-between gap-4", className)}
       {...props}
     >
       <div className="w-full max-w-xs space-y-2">

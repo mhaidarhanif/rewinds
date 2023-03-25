@@ -24,7 +24,7 @@ export default function UserDashboardRoute() {
   const isAllowed = requireUserRole(user, ["ADMIN", "MANAGER", "EDITOR"]);
 
   return (
-    <div data-id="user-dashboard" className="space-y-4">
+    <div data-id="user-dashboard" className="contain-sm space-y-4">
       <PageHeader size="xs" withBackground={false} withContainer={false}>
         <h1>Dashboard</h1>
       </PageHeader>

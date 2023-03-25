@@ -62,7 +62,11 @@ export default function AdminNotesViewRoute() {
       <header>
         <div className="stack-h-center">
           <span>View Note</span>
-          <ButtonLink to={`/notes/${note.slug}`} size="xs" variant="info">
+          <ButtonLink
+            to={`/${note.user.username}/${note.slug}`}
+            size="xs"
+            variant="info"
+          >
             <Eye className="size-xs" />
             <span>View on Site</span>
           </ButtonLink>
