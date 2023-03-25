@@ -1,0 +1,22 @@
+import { Input, Label, RemixForm } from "~/components";
+import { Search } from "~/icons";
+
+export function SearchForm({ action = "/search" }: { action?: string }) {
+  return (
+    <RemixForm method="get" action={action}>
+      <fieldset className="relative flex items-center gap-1">
+        <Label className="sr-only">Search</Label>
+        <Input
+          name="q"
+          type="search"
+          placeholder="Search..."
+          autoComplete="off"
+          className="block w-full pl-9 placeholder:text-surface-500 dark:placeholder:text-surface-400"
+        />
+        <span className="pointer-events-none absolute flex pl-3">
+          <Search className="size-sm" />
+        </span>
+      </fieldset>
+    </RemixForm>
+  );
+}

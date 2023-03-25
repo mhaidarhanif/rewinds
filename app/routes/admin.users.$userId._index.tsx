@@ -4,6 +4,7 @@ import { useLoaderData } from "@remix-run/react";
 import { badRequest } from "remix-utils";
 
 import {
+  AvatarAuto,
   Button,
   ButtonLink,
   Debug,
@@ -88,13 +89,13 @@ export default function AdminUsersViewRoute() {
 
       <section className="card stack-v">
         <header>
-          <div data-id="user-view-id-slug" className="stack-h-center text-xs">
+          <div data-id="user-view-id-slug" className="flex gap-2 text-xs">
             <p>
               ID: <b>{user.id}</b>
             </p>
           </div>
 
-          <div className="stack-h-center text-xs">
+          <div className="flex gap-2 text-xs">
             <TooltipAuto content={<b>{formatDateTime(user.createdAt)}</b>}>
               <span>Created at: </span>
               <b>{formatRelativeTime(user.createdAt)}</b>
@@ -107,11 +108,14 @@ export default function AdminUsersViewRoute() {
           </div>
         </header>
 
-        <section>
-          <h2>
-            {user.name} (@{user.username})
-          </h2>
-          <h3>{user.email}</h3>
+        <section className="stack-h-center">
+          <AvatarAuto user={user} className="size-2xl" />
+          <div>
+            <h2>
+              {user.name} (@{user.username})
+            </h2>
+            <h3>{user.email}</h3>
+          </div>
         </section>
 
         <article>
@@ -123,6 +127,7 @@ export default function AdminUsersViewRoute() {
       <section>
         <h5>Notes</h5>
         <ul className="space-y-1">
+          {user.notes.length <= 0 && <p>No notes yet.</p>}
           {user.notes.map((note) => {
             return (
               <li key={note.id}>

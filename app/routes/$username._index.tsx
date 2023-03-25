@@ -88,8 +88,8 @@ export default function SplatUsernameRoute() {
             <AvatarAuto
               user={user}
               className={cn(
-                "-mt-16 h-20 w-20",
-                "sm:-mt-24 sm:h-28 sm:w-28",
+                "-mt-16 sm:-mt-24",
+                "size-2xl sm:size-3xl",
                 "outline outline-4 outline-surface-50 dark:outline-surface-900"
               )}
             />
@@ -97,7 +97,8 @@ export default function SplatUsernameRoute() {
             <h2>@{user.username}</h2>
           </section>
 
-          <section>
+          <section className="space-y-2">
+            <h3>{user.profile.headline}</h3>
             <p className="prose-config">{user.profile.bio}</p>
           </section>
 

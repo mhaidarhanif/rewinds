@@ -94,7 +94,7 @@ export default function AdminNotesEditRoute() {
           className="space-y-2 disabled:opacity-80"
         >
           <header>
-            <div className="stack-h-center text-xs">
+            <div className="flex gap-2 text-xs">
               <p>
                 ID: <b>{note.id}</b>
               </p>

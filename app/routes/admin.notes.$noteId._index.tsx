@@ -87,7 +87,7 @@ export default function AdminNotesViewRoute() {
 
       <section className="card stack-v">
         <header>
-          <div data-id="note-view-id-slug" className="stack-h-center text-xs">
+          <div data-id="note-view-id-slug" className="flex gap-2 text-xs">
             <p>
               ID: <b>{note.id}</b>
             </p>
@@ -97,7 +97,7 @@ export default function AdminNotesViewRoute() {
             </p>
           </div>
 
-          <div className="stack-h-center text-xs">
+          <div className="flex gap-2 text-xs">
             <p>
               <span>Created by: </span>
               <RemixLinkText

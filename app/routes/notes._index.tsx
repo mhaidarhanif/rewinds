@@ -33,11 +33,11 @@ export default function NotesIndexRoute() {
         <ul className="grid auto-rows-auto grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {notes.map((note) => {
             return (
-              <li key={note.slug} className="card hover:card-hover">
+              <li key={note.slug}>
                 <RemixLink
                   prefetch="intent"
                   to={note.slug}
-                  className="block space-y-1"
+                  className="card hover:card-hover space-y-1"
                 >
                   <h3>{note.title}</h3>
                   <p>{truncateText(note.content)}</p>

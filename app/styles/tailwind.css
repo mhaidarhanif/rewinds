@@ -24,10 +24,10 @@
     @apply text-2xl lg:text-3xl;
   }
   h3 {
-    @apply text-lg lg:text-xl;
+    @apply text-xl lg:text-2xl;
   }
   h4 {
-    @apply text-base lg:text-lg;
+    @apply text-lg lg:text-xl;
   }
   h5 {
     @apply lg:text-lg;
@@ -118,6 +118,15 @@
   }
   .size-lg {
     @apply h-7 w-7;
+  }
+  .size-xl {
+    @apply h-10 w-10;
+  }
+  .size-2xl {
+    @apply h-20 w-20;
+  }
+  .size-3xl {
+    @apply h-28 w-28;
   }
 
   /* Prose */

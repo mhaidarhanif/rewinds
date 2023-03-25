@@ -1,7 +1,7 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import { ButtonLink, Debug, RemixLink } from "~/components";
+import { AvatarAuto, ButtonLink, Debug, RemixLink } from "~/components";
 import { Eye } from "~/icons";
 import { model } from "~/models";
 import { createSitemap } from "~/utils";
@@ -38,12 +38,18 @@ export default function AdminNotesRoute() {
         {notes.map((note) => {
           return (
             <li key={note.id}>
-              <RemixLink to={note.id} className="card hover:card-hover block">
+              <RemixLink
+                to={note.id}
+                className="card hover:card-hover block space-y-1"
+              >
                 <h3>{note.title}</h3>
-                <p>
-                  Created by {note.user.name} (@{note.user.username})
-                </p>
                 <p className="text-xs">{note.slug}</p>
+                <div className="flex gap-2">
+                  <AvatarAuto user={note.user} className="size-md" />
+                  <p>
+                    {note.user.name} (@{note.user.username})
+                  </p>
+                </div>
               </RemixLink>
             </li>
           );

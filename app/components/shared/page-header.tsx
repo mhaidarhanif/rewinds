@@ -11,6 +11,10 @@ export const pageHeaderVariants = cva("", {
       sm: "py-6 sm:py-10",
       default: "py-12 sm:py-20",
     },
+    direction: {
+      row: "flex-row items-center",
+      col: "flex-col",
+    },
     isTextCentered: { true: "text-center", false: "" },
     withContainer: { true: "", false: "" },
     withMarginBottom: { true: "", false: "" },
@@ -26,6 +30,7 @@ export const pageHeaderVariants = cva("", {
   ],
   defaultVariants: {
     size: "default",
+    direction: "row",
     isTextCentered: false,
     withMarginBottom: true,
     withBackground: true,
@@ -66,6 +71,7 @@ export function PageHeader({
 
 export function PageAdminHeader({
   size,
+  direction,
   isTextCentered,
   withBackground,
   className,
@@ -75,15 +81,18 @@ export function PageAdminHeader({
   return (
     <header
       className={cn(
-        pageHeaderVariants({ size, isTextCentered, withBackground, className })
+        "px-layout flex flex-wrap gap-2 sm:gap-4",
+        pageHeaderVariants({
+          size,
+          direction,
+          isTextCentered,
+          withBackground,
+          className,
+        })
       )}
       {...props}
     >
-      <div
-        className={cn("px-layout flex flex-wrap items-center gap-2 sm:gap-4")}
-      >
-        {children}
-      </div>
+      {children}
     </header>
   );
 }

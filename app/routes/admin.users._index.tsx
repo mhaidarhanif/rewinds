@@ -2,7 +2,7 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import pluralize from "pluralize";
 
-import { Debug, RemixLink } from "~/components";
+import { AvatarAuto, Debug, RemixLink } from "~/components";
 import { model } from "~/models";
 import { createSitemap } from "~/utils";
 
@@ -32,22 +32,23 @@ export default function AdminUsersRoute() {
         {users.map((user) => {
           const userNotesCount = user.notes?.length;
           return (
-            <RemixLink
-              prefetch="intent"
-              key={user.id}
-              to={user.id}
-              className="block"
-            >
-              <li className="card hover:card-hover">
-                <h3>
-                  {user.name} (@{user.username})
-                </h3>
-                <h4>{user.email}</h4>
-                <p>
-                  {userNotesCount} {pluralize("note", userNotesCount)}
-                </p>
-              </li>
-            </RemixLink>
+            <li key={user.id}>
+              <RemixLink
+                prefetch="intent"
+                to={user.id}
+                className="card hover:card-hover stack-h-center"
+              >
+                <AvatarAuto user={user} className="size-xl" />
+                <div>
+                  <p>
+                    {user.name} (@{user.username}) {user.email}
+                  </p>
+                  <p>
+                    {userNotesCount} {pluralize("note", userNotesCount)}
+                  </p>
+                </div>
+              </RemixLink>
+            </li>
           );
         })}
       </ul>

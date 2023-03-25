@@ -15,12 +15,10 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
   Icon,
-  Input,
-  Label,
   Logo,
-  RemixForm,
   RemixLinkText,
   RemixNavLink,
+  SearchForm,
   ThemeToggleButton,
 } from "~/components";
 import { configSite } from "~/configs";
@@ -31,7 +29,6 @@ import {
   Keyboard,
   LogOut,
   Menu,
-  Search,
   Settings,
   Twitter,
   User,
@@ -65,7 +62,7 @@ export function SiteHeader({ noThemeToggle }: Props) {
           <HeaderMainLogo noThemeToggle={noThemeToggle} />
           <HeaderMainNavigation navItems={configSite?.navItems} />
           <div className="hidden lg:flex">
-            <HeaderMainSearch />
+            <SearchForm />
           </div>
         </div>
 
@@ -123,26 +120,6 @@ export function HeaderMainNavigation({
           )
       )}
     </nav>
-  );
-}
-
-export function HeaderMainSearch() {
-  return (
-    <RemixForm method="get" action="/search">
-      <fieldset className="relative flex items-center gap-1">
-        <Label className="sr-only">Search</Label>
-        <Input
-          name="q"
-          type="search"
-          placeholder="Search..."
-          autoComplete="off"
-          className="block w-full pl-9 placeholder:text-surface-500 dark:placeholder:text-surface-400"
-        />
-        <span className="pointer-events-none absolute flex pl-3">
-          <Search className="size-sm" />
-        </span>
-      </fieldset>
-    </RemixForm>
   );
 }
 

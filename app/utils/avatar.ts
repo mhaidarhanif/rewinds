@@ -9,7 +9,5 @@ export function createAvatarPlaceholderURL(user: Pick<UserData, "username">) {
   url.searchParams.append("seed", user.username);
   url.searchParams.append("flip", String(true));
 
-  console.log("url", url.toString());
-
   return url.toString();
 }

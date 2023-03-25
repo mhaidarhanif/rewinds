@@ -29,13 +29,16 @@ export async function loader({ request }: LoaderArgs) {
     model.note.query.search({ q }),
     model.user.query.search({ q }),
   ]);
+  const itemsCount = notes.length + users.length;
 
-  return json({ q, notes, users }, { headers: createCacheHeaders(request) });
+  return json(
+    { q, notes, users, itemsCount },
+    { headers: createCacheHeaders(request) }
+  );
 }
 
 export default function SearchRoute() {
-  const { q, notes, users } = useLoaderData<typeof loader>();
-  const itemsCount = notes.length + users.length;
+  const { q, notes, users, itemsCount } = useLoaderData<typeof loader>();
 
   return (
     <Layout
@@ -82,11 +85,11 @@ export default function SearchRoute() {
             <ul className="space-y-1">
               {users.map((user) => {
                 return (
-                  <li key={user.id} className="card-sm hover:card-hover">
+                  <li key={user.id}>
                     <RemixLink
                       prefetch="intent"
                       to={`/${user.username}`}
-                      className="block"
+                      className="card-sm hover:card-hover"
                     >
                       <h4>{user.name}</h4>
                       <p>@{user.username}</p>

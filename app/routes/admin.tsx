@@ -7,6 +7,7 @@ import {
   Icon,
   Logo,
   RemixNavLink,
+  SearchForm,
   ThemeToggleButton,
 } from "~/components";
 import { configAdmin } from "~/configs";
@@ -59,6 +60,7 @@ export function AdminSidebar() {
   return (
     <aside
       className={cn(
+        "hidden sm:block",
         "sticky top-0 h-screen", // sticky sidebar
         "min-w-fit space-y-4 p-2 sm:flex sm:flex-col sm:p-4",
         "border-r border-surface-200 bg-white dark:border-surface-700 dark:bg-surface-900"
@@ -77,6 +79,7 @@ export function AdminSidebar() {
       </div>
 
       <ul className="grow space-y-2">
+        <SearchForm action="/admin/search" />
         {configAdmin.navItems.map((navItem) => {
           return (
             <li key={navItem.name} className="space-y-1">
