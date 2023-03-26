@@ -42,7 +42,7 @@ export async function action({ request }: ActionArgs) {
   return redirect(`.`);
 }
 
-export default function AdminUsersRoute() {
+export default function AdminUsers() {
   const { userCount } = useLoaderData<typeof loader>();
 
   return (

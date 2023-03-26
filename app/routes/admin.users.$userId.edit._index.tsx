@@ -49,7 +49,7 @@ export async function action({ request }: ActionArgs) {
   }
 }
 
-export default function AdminUsersEditRoute() {
+export default function AdminUsersEdit() {
   const { user } = useLoaderData<typeof loader>();
   const actionData = useActionData<typeof action>();
   const navigation = useNavigation();

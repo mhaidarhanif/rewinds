@@ -43,7 +43,7 @@
     "body": [
       "import { Layout } from \"~/components\";",
       "",
-      "export default function $1Route() {",
+      "export default function $1() {",
       "  return (",
       "    <Layout>",
       "      <h1>$1</h1>",

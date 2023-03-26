@@ -78,7 +78,7 @@ export async function action({ request }: ActionArgs) {
   return json(submission);
 }
 
-export default function AuthRegisterRoute() {
+export default function AuthRegister() {
   const { searchParams, redirectTo } = useRedirectTo();
 
   const navigation = useNavigation();

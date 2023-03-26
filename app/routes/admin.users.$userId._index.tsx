@@ -49,7 +49,7 @@ export async function action({ request }: ActionArgs) {
   }
 }
 
-export default function AdminUsersViewRoute() {
+export default function AdminUsersView() {
   const { user } = useLoaderData<typeof loader>();
 
   if (!user) {

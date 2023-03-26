@@ -22,7 +22,7 @@ export async function loader({ request }: LoaderArgs) {
   );
 }
 
-export default function AdminIndexRoute() {
+export default function AdminIndex() {
   const rootLoaderData = useRootLoaderData();
   const loaderData = useLoaderData<typeof loader>();
 

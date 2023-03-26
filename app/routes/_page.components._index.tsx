@@ -62,7 +62,7 @@ export async function action({ request }: ActionArgs) {
   return json({});
 }
 
-export default function PageComponentsRoute() {
+export default function Components() {
   return (
     <Layout
       isSpaced

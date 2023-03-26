@@ -13,7 +13,7 @@ export async function loader({ request }: LoaderArgs) {
   return json({ userRoles });
 }
 
-export default function AdminUserRolesRoute() {
+export default function AdminUserRoles() {
   const { userRoles } = useLoaderData<typeof loader>();
 
   return (

@@ -61,7 +61,7 @@ export async function loader({ request, params }: LoaderArgs) {
   return json({ user }, { headers: createCacheHeaders(request) });
 }
 
-export default function SplatUsernameRoute() {
+export default function SplatUsername() {
   const { user } = useLoaderData<typeof loader>();
   const params = useParams();
 

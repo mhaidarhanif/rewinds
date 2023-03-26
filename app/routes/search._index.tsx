@@ -37,7 +37,7 @@ export async function loader({ request }: LoaderArgs) {
   );
 }
 
-export default function SearchRoute() {
+export default function Search() {
   const { q, notes, users, itemsCount } = useLoaderData<typeof loader>();
 
   return (

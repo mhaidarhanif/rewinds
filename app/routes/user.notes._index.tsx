@@ -47,7 +47,7 @@ export async function action({ request }: ActionArgs) {
   return redirect(`/user/notes`);
 }
 
-export default function AdminNotesRoute() {
+export default function UserNotes() {
   const { notes, notesCount } = useLoaderData<typeof loader>();
 
   return (

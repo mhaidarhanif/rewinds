@@ -54,7 +54,7 @@ export async function action({ request, params }: ActionArgs) {
   }
 }
 
-export default function AdminNotesEditRoute() {
+export default function AdminNotesEdit() {
   const { note } = useLoaderData<typeof loader>();
   const actionData = useActionData<typeof action>();
   const navigation = useNavigation();

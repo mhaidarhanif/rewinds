@@ -38,7 +38,7 @@ export async function loader({ request }: LoaderArgs) {
   );
 }
 
-export default function AdminSearchRoute() {
+export default function AdminSearch() {
   const { q, notes, users, itemsCount } = useLoaderData<typeof loader>();
 
   return (

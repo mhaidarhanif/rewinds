@@ -23,7 +23,7 @@ export const links: LinksFunction = () => {
   return createDocumentLinks({ canonicalPath: "/about" });
 };
 
-export default function AboutRoute() {
+export default function About() {
   return (
     <Layout className="contain-sm space-y-20">
       <article data-id="about-content" className="prose-config mt-10">

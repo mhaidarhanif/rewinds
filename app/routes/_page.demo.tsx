@@ -20,7 +20,7 @@ export const links: LinksFunction = () => {
   return createDocumentLinks({ canonicalPath: "/examples" });
 };
 
-export default function DemoRoute() {
+export default function Demo() {
   return (
     <Layout
       isSpaced

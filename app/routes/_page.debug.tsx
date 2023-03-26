@@ -17,7 +17,7 @@ export async function loader() {
   });
 }
 
-export default function PageDebugRoute() {
+export default function PageDebug() {
   const loaderData = useLoaderData<typeof loader>();
   const rootLoaderData = useRootLoaderData();
 

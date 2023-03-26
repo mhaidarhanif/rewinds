@@ -19,7 +19,7 @@ export const links: LinksFunction = () => {
   return createDocumentLinks({ canonicalPath: "/page" });
 };
 
-export default function PageRoute() {
+export default function Page() {
   return (
     <Layout
       isSpaced

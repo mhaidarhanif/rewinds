@@ -50,7 +50,7 @@ export async function action({ request }: ActionArgs) {
   }
 }
 
-export default function AdminNotesNewRoute() {
+export default function AdminNotesNew() {
   const actionData = useActionData<typeof action>();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";

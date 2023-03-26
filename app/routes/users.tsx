@@ -20,7 +20,7 @@ export async function loader() {
   return json({ users });
 }
 
-export default function UsersRoute() {
+export default function Users() {
   const { users } = useLoaderData<typeof loader>();
 
   return (
