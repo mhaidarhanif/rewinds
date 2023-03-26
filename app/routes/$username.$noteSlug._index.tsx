@@ -1,14 +1,21 @@
-import { json } from "@remix-run/node";
+import { parse } from "@conform-to/react";
+import { json, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { notFound } from "remix-utils";
+import { notFound, serverError } from "remix-utils";
 
 import {
   AvatarAuto,
   Balancer,
+  Button,
+  ButtonLink,
   Layout,
+  RemixForm,
   RemixLink,
   TooltipAuto,
 } from "~/components";
+import { requireUserSession } from "~/helpers";
+import { useRootLoaderData } from "~/hooks";
+import { EditPencil, Trash } from "~/icons";
 import { model } from "~/models";
 import {
   createCacheHeaders,
@@ -18,7 +25,7 @@ import {
   invariant,
 } from "~/utils";
 
-import type { LoaderArgs } from "@remix-run/node";
+import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 
 export const handle = createSitemap();
 
@@ -39,18 +46,66 @@ export async function loader({ request, params }: LoaderArgs) {
   return json({ note }, { headers: createCacheHeaders(request, 60) });
 }
 
+export async function action({ request }: ActionArgs) {
+  const { userSession, user } = await requireUserSession(request);
+
+  const formData = await request.formData();
+  const submission = parse(formData);
+
+  if (submission.payload.intent === "delete-note") {
+    try {
+      await model.userNote.mutation.deleteById({
+        id: submission.payload.noteId,
+        userId: userSession.id,
+      });
+      return redirect(`/${user.username}`);
+    } catch (error) {
+      console.error(error);
+      return serverError(submission);
+    }
+  }
+}
+
 /**
  * Similar with /notes/$noteSlug but fancier
  */
 export default function Route() {
+  const { user } = useRootLoaderData();
   const { note } = useLoaderData<typeof loader>();
+
+  const isOwner = user?.id === note.userId;
 
   // TODO: Can have custom background cover like on dev.to
   return (
     <Layout
       isSpaced
       layoutHeader={
-        <header className="mb-4 bg-surface-100 py-6 dark:bg-surface-800/20 sm:py-10">
+        <header className="mb-4 space-y-4 bg-surface-100 py-6 dark:bg-surface-800/20 sm:py-10">
+          {isOwner && (
+            <aside className="contain-sm stack-h-center">
+              <ButtonLink
+                to={`/user/notes/${note.id}/edit`}
+                size="xs"
+                variant="warning"
+              >
+                <EditPencil className="size-xs" />
+                <span>Edit</span>
+              </ButtonLink>
+              <RemixForm method="delete">
+                <input type="hidden" name="noteId" value={note.id} />
+                <Button
+                  size="xs"
+                  variant="danger"
+                  name="intent"
+                  value="delete-note"
+                >
+                  <Trash className="size-xs" />
+                  <span>Delete</span>
+                </Button>
+              </RemixForm>
+            </aside>
+          )}
+
           <div className="contain-sm space-y-4">
             <h1>
               <Balancer>{note.title}</Balancer>

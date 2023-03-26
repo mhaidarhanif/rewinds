@@ -38,15 +38,16 @@ export const mutation = {
     });
   },
   update({
-    user,
     note,
+    user,
   }: {
-    user: Pick<User, "id">;
     note: Pick<Note, "id" | "slug" | "title" | "description" | "content">;
+    user: Pick<User, "id">;
   }) {
-    return prisma.note.update({
+    return prisma.note.updateMany({
       where: {
         id: note.id,
+        userId: user.id,
       },
       data: {
         slug: updateNoteSlug(note),
@@ -61,9 +62,12 @@ export const mutation = {
       where: { userId: user.id },
     });
   },
-  deleteById({ id }: Pick<Note, "id">) {
-    return prisma.note.delete({
-      where: { id },
+  deleteById({ id, userId }: { id: Note["id"]; userId: User["id"] }) {
+    return prisma.note.deleteMany({
+      where: {
+        id,
+        userId,
+      },
     });
   },
 };
