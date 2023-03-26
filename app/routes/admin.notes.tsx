@@ -42,7 +42,7 @@ export default function Route() {
   const { notesCount } = useLoaderData<typeof loader>();
 
   return (
-    <div data-id="admin-notes-layout">
+    <div>
       <PageAdminHeader size="xs">
         <RemixLink to=".">
           <h1>Notes</h1>
@@ -67,7 +67,7 @@ export default function Route() {
         )}
       </PageAdminHeader>
 
-      <div data-id="admin-notes-outlet" className="px-layout">
+      <div className="px-layout">
         <Outlet />
       </div>
     </div>

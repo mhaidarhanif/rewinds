@@ -58,7 +58,7 @@ export default function Route() {
   }
 
   return (
-    <div data-id="admin-notes-view" className="stack-v">
+    <div className="stack-v">
       <header>
         <div className="stack-h-center">
           <span>View Note</span>
@@ -91,7 +91,7 @@ export default function Route() {
 
       <section className="card stack-v">
         <header>
-          <div data-id="note-view-id-slug" className="flex gap-2 text-xs">
+          <div className="flex gap-2 text-xs">
             <p>
               ID: <b>{note.id}</b>
             </p>

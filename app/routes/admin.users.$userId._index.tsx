@@ -57,7 +57,7 @@ export default function Route() {
   }
 
   return (
-    <div data-id="admin-users-view" className="stack-v">
+    <div className="stack-v">
       <header>
         <div className="stack-h-center">
           <span>View User</span>
@@ -89,7 +89,7 @@ export default function Route() {
 
       <section className="card stack-v">
         <header>
-          <div data-id="user-view-id-slug" className="flex gap-2 text-xs">
+          <div className="flex gap-2 text-xs">
             <p>
               ID: <b>{user.id}</b>
             </p>

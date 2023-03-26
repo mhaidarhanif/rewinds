@@ -51,10 +51,7 @@ export function Logo({
 }: Props) {
   return (
     <div className={cn(logoVariants({ size, accent, className }))} {...props}>
-      <span
-        data-id="logo-image"
-        className={cn(logoVariants({ size, accent, className }))}
-      >
+      <span className={cn(logoVariants({ size, accent, className }))}>
         <img
           src="/favicons/apple-touch-icon.png"
           alt="Logo"
@@ -64,7 +61,6 @@ export function Logo({
         />
       </span>
       <span
-        data-id="logo-text"
         className={cn(
           "inline-block",
           logoVariants({ size, accent, className })

@@ -23,7 +23,6 @@ const DropdownMenuSubTrigger = forwardRef<
   }
 >(({ className, inset, children, ...props }, ref) => (
   <DropdownMenuPrimitive.SubTrigger
-    data-id="radix-dropdown-menu-subtrigger"
     ref={ref}
     className={cn(
       "flex select-none items-center rounded-sm py-1.5 px-2 text-sm font-medium outline-none focus:bg-surface-100 data-[state=open]:bg-surface-100 dark:focus:bg-surface-800 dark:data-[state=open]:bg-surface-800",
@@ -44,7 +43,6 @@ const DropdownMenuSubContent = forwardRef<
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubContent>
 >(({ className, ...props }, ref) => (
   <DropdownMenuPrimitive.SubContent
-    data-id="radix-dropdown-menu-subcontent"
     ref={ref}
     className={cn(
       "z-50 min-w-[8rem] overflow-hidden rounded-md border border-surface-100 bg-white p-1 text-surface-700 shadow-md animate-in slide-in-from-left-1 dark:border-surface-800 dark:bg-surface-900 dark:text-surface-300",
@@ -60,9 +58,8 @@ const DropdownMenuContent = forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>
 >(({ className, sideOffset = 4, ...props }, ref) => (
-  <DropdownMenuPrimitive.Portal data-id="radix-dropdown-menu-portal">
+  <DropdownMenuPrimitive.Portal>
     <DropdownMenuPrimitive.Content
-      data-id="radix-dropdown-menu-content"
       ref={ref}
       sideOffset={sideOffset}
       className={cn(
@@ -83,7 +80,6 @@ const DropdownMenuItem = forwardRef<
   }
 >(({ className, inset, ...props }, ref) => (
   <DropdownMenuPrimitive.Item
-    data-id="radix-dropdown-menu-item"
     ref={ref}
     className={cn(
       "relative flex select-none items-center rounded-sm py-1.5 px-2 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
@@ -100,7 +96,6 @@ const DropdownMenuCheckboxItem = forwardRef<
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem>
 >(({ className, children, checked, ...props }, ref) => (
   <DropdownMenuPrimitive.CheckboxItem
-    data-id="radix-dropdown-menu-checkboxitem"
     ref={ref}
     className={cn(
       "relative flex select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
@@ -125,7 +120,6 @@ const DropdownMenuRadioItem = forwardRef<
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.RadioItem>
 >(({ className, children, ...props }, ref) => (
   <DropdownMenuPrimitive.RadioItem
-    data-id="radix-dropdown-menu-radioitem"
     ref={ref}
     className={cn(
       "relative flex select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
@@ -150,7 +144,6 @@ const DropdownMenuLabel = forwardRef<
   }
 >(({ className, inset, ...props }, ref) => (
   <DropdownMenuPrimitive.Label
-    data-id="radix-dropdown-menu-label"
     ref={ref}
     className={cn(
       "px-2 py-1.5 font-semibold text-surface-900 dark:text-surface-100",
@@ -167,7 +160,6 @@ const DropdownMenuSeparator = forwardRef<
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Separator>
 >(({ className, ...props }, ref) => (
   <DropdownMenuPrimitive.Separator
-    data-id="radix-dropdown-menu-separator"
     ref={ref}
     className={cn(
       "-mx-1 my-1 h-px bg-surface-100 dark:bg-surface-700",
@@ -184,7 +176,6 @@ const DropdownMenuShortcut = ({
 }: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
     <span
-      data-id="radix-dropdown-menu-shortcut"
       className={cn(
         "ml-auto text-xs tracking-widest text-surface-500",
         className

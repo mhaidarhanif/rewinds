@@ -42,7 +42,7 @@ export default function Route() {
   const { q, notes, users, itemsCount } = useLoaderData<typeof loader>();
 
   return (
-    <div data-id="admin-search">
+    <div>
       <PageAdminHeader size="xs" direction="col">
         <h1>Admin search results</h1>
         <h3>

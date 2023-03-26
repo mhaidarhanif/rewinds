@@ -18,7 +18,6 @@ export function Anchor({
 }: Props) {
   return (
     <a
-      data-id="Anchor"
       href={href}
       target="_blank"
       rel="noreferrer noopener"
@@ -36,11 +35,7 @@ export function Anchor({
 // Anchor with default styles from Prose config
 export function AnchorText({ className, href, children }: Props) {
   return (
-    <Anchor
-      data-id="AnchorText"
-      href={href}
-      className={cn("prose-a-styles", className)}
-    >
+    <Anchor href={href} className={cn("prose-a-styles", className)}>
       {children}
     </Anchor>
   );

@@ -87,7 +87,7 @@ export default function Route() {
         }
       >
         <div className="contain-sm space-y-8">
-          <section data-id="user-avatar-name" className="my-4 space-y-2">
+          <section className="my-4 space-y-2">
             <AvatarAuto
               user={user}
               className={cn(

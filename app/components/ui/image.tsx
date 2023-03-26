@@ -8,12 +8,6 @@ interface Props
 
 export function Image({ src, alt, className, ...props }: Props) {
   return (
-    <img
-      data-id="image"
-      src={src}
-      alt={alt}
-      className={cn("rounded", className)}
-      {...props}
-    />
+    <img src={src} alt={alt} className={cn("rounded", className)} {...props} />
   );
 }

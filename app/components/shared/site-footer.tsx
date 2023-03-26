@@ -23,7 +23,7 @@ export function SiteFooter({ noThemeToggle }: Props) {
     >
       <section className="contain flex flex-wrap items-end gap-4 sm:justify-between">
         <div className="space-y-4">
-          <ul data-id="footer-links" className="space-y-2">
+          <ul className="space-y-2">
             <li>
               <span>Repo: </span>
               <AnchorText href={configSite?.links.github} className="py-2">

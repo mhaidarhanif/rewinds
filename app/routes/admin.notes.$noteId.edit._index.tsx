@@ -76,7 +76,7 @@ export default function Route() {
   }
 
   return (
-    <div data-id="admin-notes-edit" className="stack-v">
+    <div className="stack-v">
       <header>
         <span>Edit Note</span>
       </header>

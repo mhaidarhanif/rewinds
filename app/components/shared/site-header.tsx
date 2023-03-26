@@ -54,11 +54,7 @@ export function SiteHeader({ noThemeToggle }: Props) {
           "contain flex items-center justify-between"
         )}
       >
-        <div
-          id="site-header-left"
-          data-id="site-header-left"
-          className="flex items-center gap-1 sm:gap-2"
-        >
+        <div id="site-header-left" className="flex items-center gap-1 sm:gap-2">
           <HeaderMainLogo noThemeToggle={noThemeToggle} />
           <HeaderMainNavigation navItems={configSite?.navItems} />
           <div className="hidden lg:flex">
@@ -68,7 +64,6 @@ export function SiteHeader({ noThemeToggle }: Props) {
 
         <div
           id="site-header-right"
-          data-id="site-header-right"
           className="flex items-center gap-1 sm:gap-2"
         >
           <HeaderMainButtons />

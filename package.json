@@ -32,8 +32,7 @@
     "fix:stylelint": "stylelint --fix ./app/styles/*.css",
     "debug:eslint": "DEBUG=eslint:cli-engine nr check:lint",
     "reveal": "remix reveal",
-    "clean": "rm -rf build public/build",
-    "postinstall": "nr clean && nr prisma:generate"
+    "clean": "rm -rf build public/build"
   },
   "engines": {
     "node": ">=14"

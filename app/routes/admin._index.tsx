@@ -29,7 +29,7 @@ export default function Route() {
   const { user } = loaderData;
 
   return (
-    <div data-id="admin-index" className="stack-v">
+    <div className="stack-v">
       <PageAdminHeader size="xs">
         <h1>Admin Dashboard</h1>
       </PageAdminHeader>

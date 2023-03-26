@@ -39,11 +39,7 @@ export default function Route() {
 
 export function DemoMusicPlayer() {
   return (
-    <section
-      id="demo-music-player"
-      data-id="DemoMusicPlayer"
-      className="space-y-4"
-    >
+    <section id="demo-music-player" className="space-y-4">
       <header>
         <h2>Music Player</h2>
         <p>
@@ -59,11 +55,7 @@ export function DemoMusicPlayer() {
 
 export function DemoContextMenu() {
   return (
-    <section
-      id="demo-context-menu"
-      data-id="DemoContextMenu"
-      className="card space-y-8"
-    >
+    <section id="demo-context-menu" className="card space-y-8">
       <h3>Context Menu</h3>
 
       <div className="stack-v">

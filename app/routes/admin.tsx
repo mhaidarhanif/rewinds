@@ -46,10 +46,10 @@ export async function action({ request }: ActionArgs) {
 // Becaus this is already the Layout route for all admin routes
 export default function Route() {
   return (
-    <div data-id="admin-layout-route" className="flex">
+    <div className="flex">
       <AdminSidebar />
 
-      <main data-id="admin-layout-outlet" className="grow pb-10">
+      <main className="grow pb-10">
         <Outlet />
       </main>
     </div>

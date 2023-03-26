@@ -21,7 +21,7 @@ export async function action({ request }: ActionArgs) {
 export default function Route() {
   return (
     <Layout isSpaced>
-      <div data-id="user-layout-outlet" className="grow">
+      <div className="grow">
         <Outlet />
       </div>
     </Layout>

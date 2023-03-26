@@ -69,7 +69,7 @@ export default function Route() {
   });
 
   return (
-    <div data-id="admin-notes-new" className="stack-v">
+    <div className="stack-v">
       <header>
         <span>Add New Note</span>
       </header>

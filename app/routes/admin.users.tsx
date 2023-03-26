@@ -46,7 +46,7 @@ export default function Route() {
   const { userCount } = useLoaderData<typeof loader>();
 
   return (
-    <div data-id="admin-users">
+    <div>
       <PageAdminHeader size="xs">
         <RemixLink to=".">
           <h1>Users</h1>
@@ -71,7 +71,7 @@ export default function Route() {
         )}
       </PageAdminHeader>
 
-      <div data-id="admin-users-outlet" className="px-layout">
+      <div className="px-layout">
         <Outlet />
       </div>
     </div>
