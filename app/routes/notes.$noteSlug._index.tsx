@@ -11,7 +11,7 @@ import type { LoaderArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader({ request, params }: LoaderArgs) {
-  invariant(params.noteSlug, `noteSlug does not exist`);
+  invariant(params.noteSlug, `noteSlug not found`);
 
   const note = await model.note.query.getBySlug({ slug: params.noteSlug });
   if (!note) {

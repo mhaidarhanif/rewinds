@@ -30,7 +30,7 @@ export const meta: V2_MetaFunction<typeof loader> = ({ params, data }) => {
 
   if (!user) {
     return createMetaData({
-      title: "Profile does not exist",
+      title: "Profile not found",
       description: `Cannot find user with the username ${params.username}`,
     });
   }
@@ -48,7 +48,7 @@ export const meta: V2_MetaFunction<typeof loader> = ({ params, data }) => {
  * 3. If nothing found, tell this account doesn’t exist
  */
 export async function loader({ request, params }: LoaderArgs) {
-  invariant(params.username, "username does not exist");
+  invariant(params.username, "username not found");
 
   // This is not using requireUserSession because anyone public can get the data
   const user = await model.user.query.getByUsername({

@@ -41,10 +41,8 @@ export const mutation = {
     });
   },
   update({
-    user,
     note,
   }: {
-    user: Pick<User, "id">;
     note: Pick<Note, "id" | "slug" | "title" | "description" | "content">;
   }) {
     return prisma.note.update({

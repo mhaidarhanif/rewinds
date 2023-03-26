@@ -14,7 +14,6 @@ import {
   RemixForm,
   TextArea,
 } from "~/components";
-import { requireUserSession } from "~/helpers";
 import { model } from "~/models";
 import { schemaNoteEdit } from "~/schemas";
 import { createSitemap, invariant } from "~/utils";
@@ -25,14 +24,12 @@ import type { z } from "zod";
 export const handle = createSitemap();
 
 export async function loader({ params }: LoaderArgs) {
-  invariant(params.noteId, "noteId does not exist");
+  invariant(params.noteId, "noteId not found");
   const note = await model.adminNote.query.getById({ id: params.noteId });
   return json({ note });
 }
 
 export async function action({ request, params }: ActionArgs) {
-  const { userSession } = await requireUserSession(request);
-
   const formData = await request.formData();
   const submission = parse(formData, { schema: schemaNoteEdit });
   if (!submission.value || submission.intent !== "submit") {
@@ -41,7 +38,6 @@ export async function action({ request, params }: ActionArgs) {
 
   try {
     const updatedNote = await model.adminNote.mutation.update({
-      user: userSession,
       note: submission.value,
     });
     if (!updatedNote) {
@@ -72,7 +68,7 @@ export default function Route() {
   });
 
   if (!note) {
-    return <p>Note does not exist.</p>;
+    return <p>Note not found.</p>;
   }
 
   return (
@@ -81,7 +77,7 @@ export default function Route() {
         <span>Edit Note</span>
       </header>
 
-      <RemixForm {...form.props} method="put" className="card stack-v max-w-lg">
+      <RemixForm {...form.props} method="put" className="card max-w-lg">
         <fieldset
           disabled={isSubmitting}
           className="space-y-2 disabled:opacity-80"
@@ -104,7 +100,7 @@ export default function Route() {
               <Input
                 {...conform.input(title)}
                 type="text"
-                placeholder="Note title or what's on your mind?"
+                placeholder="Add a title"
                 autoFocus
                 defaultValue={note.title}
               />
@@ -116,7 +112,7 @@ export default function Route() {
               <Input
                 {...conform.input(description)}
                 type="text"
-                placeholder="Add a short description"
+                placeholder="Add a description"
                 defaultValue={note.description}
               />
               <Alert id={description.errorId}>{description.error}</Alert>
@@ -133,7 +129,7 @@ export default function Route() {
             />
             <Alert id={content.errorId}>{content.error}</Alert>
             <p className="text-sm text-surface-500">
-              The note has a maximum content length of 1,000 characters.
+              The note has a maximum content length of 10,000 characters.
             </p>
           </div>
 

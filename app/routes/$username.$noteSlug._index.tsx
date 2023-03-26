@@ -30,8 +30,8 @@ import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader({ request, params }: LoaderArgs) {
-  invariant(params.noteSlug, `noteSlug does not exist`);
-  invariant(params.username, `username does not exist`);
+  invariant(params.noteSlug, `noteSlug not found`);
+  invariant(params.username, `username not found`);
 
   // Check 2 things because we won't allow the correct note slug
   // but with the wrong user
@@ -43,7 +43,8 @@ export async function loader({ request, params }: LoaderArgs) {
     throw notFound("Note not found");
   }
 
-  return json({ note }, { headers: createCacheHeaders(request, 60) });
+  // TODO: Don't use cache if coming from edit
+  return json({ note }, { headers: createCacheHeaders(request, 30) });
 }
 
 export async function action({ request }: ActionArgs) {

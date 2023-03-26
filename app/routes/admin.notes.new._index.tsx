@@ -89,7 +89,7 @@ export default function Route() {
               <Input
                 {...conform.input(title)}
                 type="text"
-                placeholder="Note title or what's on your mind?"
+                placeholder="Add a title"
                 defaultValue={configDev.isDevelopment ? "A new example" : ""}
                 autoFocus
               />
@@ -101,7 +101,7 @@ export default function Route() {
               <Input
                 {...conform.input(description)}
                 type="text"
-                placeholder="Add a short description"
+                placeholder="Add a description"
                 defaultValue={configDev.isDevelopment ? "The description" : ""}
               />
               <Alert id={description.errorId}>{description.error}</Alert>
@@ -122,7 +122,7 @@ export default function Route() {
             />
             <Alert id={content.errorId}>{content.error}</Alert>
             <p className="text-sm text-surface-500">
-              The note has a maximum content length of 1,000 characters.
+              The note has a maximum content length of 10,000 characters.
             </p>
           </div>
 

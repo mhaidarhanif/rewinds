@@ -27,7 +27,7 @@ import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader({ request, params }: LoaderArgs) {
-  invariant(params.userId, "userId does not exist");
+  invariant(params.userId, "userId not found");
   const user = await model.adminUser.query.getById({ id: params.userId });
   return json({ user, headers: createCacheHeaders(request) });
 }
@@ -53,7 +53,7 @@ export default function Route() {
   const { user } = useLoaderData<typeof loader>();
 
   if (!user) {
-    return <p>User does not exist.</p>;
+    return <p>User not found.</p>;
   }
 
   return (

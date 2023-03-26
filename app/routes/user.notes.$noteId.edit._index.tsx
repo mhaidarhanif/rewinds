@@ -1,9 +1,8 @@
 import { conform, useForm } from "@conform-to/react";
 import { getFieldsetConstraint, parse } from "@conform-to/zod";
-import { redirect } from "@remix-run/node";
-import { useActionData, useNavigation } from "@remix-run/react";
-import { useId } from "react";
-import { badRequest, serverError } from "remix-utils";
+import { json, redirect } from "@remix-run/node";
+import { useActionData, useLoaderData, useNavigation } from "@remix-run/react";
+import { badRequest, forbidden, serverError } from "remix-utils";
 
 import {
   Alert,
@@ -15,35 +14,54 @@ import {
   RemixForm,
   TextArea,
 } from "~/components";
-import { configDev } from "~/configs";
-import { requireUserSession } from "~/helpers";
+import { requireUserSession, updateNoteSlug } from "~/helpers";
+import { useRootLoaderData } from "~/hooks";
 import { model } from "~/models";
-import { schemaNoteNew } from "~/schemas";
-import { createSitemap } from "~/utils";
+import { schemaNoteEdit } from "~/schemas";
+import { createSitemap, invariant } from "~/utils";
 
-import type { ActionArgs } from "@remix-run/node";
+import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 import type { z } from "zod";
 
 export const handle = createSitemap();
 
-export async function action({ request }: ActionArgs) {
+export async function loader({ request, params }: LoaderArgs) {
+  const { userSession } = await requireUserSession(request);
+  invariant(params.noteId, "noteId not found");
+
+  const note = await model.userNote.query.getById({
+    id: params.noteId,
+    userId: userSession.id,
+  });
+  invariant(note, "Note not found");
+
+  const isOwner = userSession.id === note.userId;
+  if (!isOwner) {
+    return forbidden({ note: null, isOwner: null });
+  }
+
+  return json({ note, isOwner });
+}
+
+export async function action({ request, params }: ActionArgs) {
   const { userSession, user } = await requireUserSession(request);
 
   const formData = await request.formData();
-  const submission = parse(formData, { schema: schemaNoteNew });
+  const submission = parse(formData, { schema: schemaNoteEdit });
   if (!submission.value || submission.intent !== "submit") {
     return badRequest(submission);
   }
 
   try {
-    const newNote = await model.userNote.mutation.addNew({
-      user: userSession,
+    const newSlug = updateNoteSlug(submission.value);
+    const result = await model.userNote.mutation.update({
       note: submission.value,
+      user: userSession,
     });
-    if (!newNote) {
+    if (!result) {
       return badRequest(submission);
     }
-    return redirect(`/${user.username}/${newNote.slug}`);
+    return redirect(`/${user.username}/${newSlug}`);
   } catch (error) {
     console.error(error);
     return serverError(submission);
@@ -51,46 +69,62 @@ export async function action({ request }: ActionArgs) {
 }
 
 export default function Route() {
+  const { user } = useRootLoaderData();
+  const { note } = useLoaderData<typeof loader>();
   const actionData = useActionData<typeof action>();
   const navigation = useNavigation();
+
   const isSubmitting = navigation.state === "submitting";
 
-  const id = useId();
-  const [form, { title, description, content }] = useForm<
-    z.infer<typeof schemaNoteNew>
+  const [form, { id, slug, title, description, content }] = useForm<
+    z.infer<typeof schemaNoteEdit>
   >({
-    id,
     initialReport: "onSubmit",
     lastSubmission: actionData,
     onValidate({ formData }) {
-      return parse(formData, { schema: schemaNoteNew });
+      return parse(formData, { schema: schemaNoteEdit });
     },
-    constraint: getFieldsetConstraint(schemaNoteNew),
+    constraint: getFieldsetConstraint(schemaNoteEdit),
   });
 
+  if (!note) {
+    return <p>Note not found.</p>;
+  }
+
   return (
-    <section className="space-y-2">
+    <div className="stack-v">
       <header className="py-4">
-        <h1 className="text-3xl">Create a new note</h1>
+        <h1 className="text-3xl">Edit existing note</h1>
         <p className="dim">
-          A note can be a blog post, news article, tutorial, or just a regular
-          note.
+          The note can be edited. As a blog post, news article, tutorial, or
+          just a regular note.
         </p>
       </header>
 
-      <RemixForm {...form.props} method="post">
+      <RemixForm {...form.props} method="put">
         <fieldset
           disabled={isSubmitting}
           className="space-y-4 disabled:opacity-80"
         >
+          <div className="dim flex gap-2 text-xs">
+            <p>
+              ID: <b>{note.id}</b>
+            </p>
+            <p>
+              Slug: <b>{note.slug}</b>
+            </p>
+          </div>
+
+          <input hidden {...conform.input(id)} defaultValue={note.id} />
+          <input hidden {...conform.input(slug)} defaultValue={note.slug} />
+
           <div className="space-y-1">
             <Label htmlFor={title.id}>Title</Label>
             <Input
               {...conform.input(title)}
-              autoFocus
               type="text"
               placeholder="Add a title"
-              defaultValue={configDev.isDevelopment ? "A new example" : ""}
+              defaultValue={note.title}
               className="border-none px-0 sm:text-xl"
             />
             <Alert id={title.errorId}>{title.error}</Alert>
@@ -102,7 +136,7 @@ export default function Route() {
               {...conform.input(description)}
               type="text"
               placeholder="Add a description"
-              defaultValue={configDev.isDevelopment ? "The description" : ""}
+              defaultValue={note.description}
               className="border-none px-0 sm:text-xl"
             />
             <Alert id={description.errorId}>{description.error}</Alert>
@@ -114,12 +148,8 @@ export default function Route() {
               {...conform.input(content)}
               placeholder="Type your longer content here, maximum content length of 10,000 characters..."
               rows={10}
-              defaultValue={
-                configDev.isDevelopment
-                  ? "Here is the long content about the note."
-                  : ""
-              }
-              className="border-none px-0 sm:text-xl"
+              defaultValue={note.content}
+              className="overflow-y-scroll border-none px-0 sm:text-xl"
             />
             <Alert id={content.errorId}>{content.error}</Alert>
           </div>
@@ -131,19 +161,23 @@ export default function Route() {
               name="intent"
               value="submit"
               isSubmitting={isSubmitting}
-              loadingText="Creating..."
+              loadingText="Updating..."
             >
-              Create
+              Update
             </ButtonLoading>
             <Button type="reset" variant="subtle">
               Reset
             </Button>
-            <ButtonLink to=".." variant="ghost" accent="red">
+            <ButtonLink
+              to={`/${user?.username}/${note.slug}`}
+              variant="ghost"
+              accent="red"
+            >
               Cancel
             </ButtonLink>
           </div>
         </fieldset>
       </RemixForm>
-    </section>
+    </div>
   );
 }

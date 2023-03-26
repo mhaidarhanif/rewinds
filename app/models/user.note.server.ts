@@ -17,6 +17,12 @@ export const query = {
       orderBy: { updatedAt: "desc" },
     });
   },
+  getById({ id, userId }: Pick<Note, "id" | "userId">) {
+    return prisma.note.findFirst({
+      where: { id, userId: userId },
+      include: { user: { select: model.user.fields.public } },
+    });
+  },
 };
 
 export const mutation = {
@@ -62,7 +68,7 @@ export const mutation = {
       where: { userId: user.id },
     });
   },
-  deleteById({ id, userId }: { id: Note["id"]; userId: User["id"] }) {
+  deleteById({ id, userId }: Pick<Note, "id" | "userId">) {
     return prisma.note.deleteMany({
       where: {
         id,

@@ -23,7 +23,7 @@ import type { z } from "zod";
 export const handle = createSitemap();
 
 export async function loader({ params }: LoaderArgs) {
-  invariant(params.userId, `User with id ${params.userId} does not exist`);
+  invariant(params.userId, `User with id ${params.userId} not found`);
   const user = await model.adminUser.query.getById({ id: params.userId });
   return json({ user });
 }
@@ -67,7 +67,7 @@ export default function Route() {
   });
 
   if (!user) {
-    return <p>User does not exist.</p>;
+    return <p>User not found.</p>;
   }
 
   return (
@@ -76,7 +76,7 @@ export default function Route() {
         <span>Edit User</span>
       </header>
 
-      <RemixForm {...form.props} method="put" className="card stack-v max-w-lg">
+      <RemixForm {...form.props} method="put" className="card max-w-lg">
         <fieldset
           disabled={isSubmitting}
           className="space-y-2 disabled:opacity-80"
