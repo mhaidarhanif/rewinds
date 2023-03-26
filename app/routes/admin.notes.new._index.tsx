@@ -1,7 +1,7 @@
 import { conform, useForm } from "@conform-to/react";
 import { getFieldsetConstraint, parse } from "@conform-to/zod";
 import { redirect } from "@remix-run/node";
-import { useActionData, useCatch, useNavigation } from "@remix-run/react";
+import { useActionData, useNavigation } from "@remix-run/react";
 import { useId } from "react";
 import { badRequest, serverError } from "remix-utils";
 
@@ -10,7 +10,6 @@ import {
   Button,
   ButtonLink,
   ButtonLoading,
-  Debug,
   Input,
   Label,
   RemixForm,
@@ -42,12 +41,12 @@ export async function action({ request }: ActionArgs) {
       note: submission.value,
     });
     if (!newNote) {
-      return serverError(submission);
+      return badRequest(submission);
     }
     return redirect(`../${newNote.id}`);
   } catch (error) {
     console.error(error);
-    return badRequest(submission);
+    return serverError(submission);
   }
 }
 
@@ -147,17 +146,6 @@ export default function AdminNotesNewRoute() {
           </div>
         </fieldset>
       </RemixForm>
-    </div>
-  );
-}
-
-export function CatchBoundary() {
-  const caught = useCatch();
-
-  return (
-    <div>
-      <h1>Error when add new: {caught.status}</h1>
-      <Debug name="caught.data">{caught.data}</Debug>
     </div>
   );
 }

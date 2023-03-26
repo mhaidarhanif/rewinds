@@ -1,12 +1,7 @@
 import { conform, useForm } from "@conform-to/react";
 import { getFieldsetConstraint, parse } from "@conform-to/zod";
 import { json, redirect } from "@remix-run/node";
-import {
-  useActionData,
-  useCatch,
-  useLoaderData,
-  useNavigation,
-} from "@remix-run/react";
+import { useActionData, useLoaderData, useNavigation } from "@remix-run/react";
 import { badRequest, serverError } from "remix-utils";
 
 import {
@@ -14,7 +9,6 @@ import {
   Button,
   ButtonLink,
   ButtonLoading,
-  Debug,
   Input,
   Label,
   RemixForm,
@@ -25,8 +19,7 @@ import { model } from "~/models";
 import { schemaNoteEdit } from "~/schemas";
 import { createSitemap, invariant } from "~/utils";
 
-import type { LoaderArgs } from "@remix-run/node";
-import type { ActionArgs } from "@remix-run/node";
+import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 import type { z } from "zod";
 
 export const handle = createSitemap();
@@ -52,12 +45,12 @@ export async function action({ request, params }: ActionArgs) {
       note: submission.value,
     });
     if (!updatedNote) {
-      return serverError(submission);
+      return badRequest(submission);
     }
     return redirect(`..`);
   } catch (error) {
     console.error(error);
-    return badRequest(submission);
+    return serverError(submission);
   }
 }
 
@@ -164,17 +157,6 @@ export default function AdminNotesEditRoute() {
           </div>
         </fieldset>
       </RemixForm>
-    </div>
-  );
-}
-
-export function CatchBoundary() {
-  const caught = useCatch();
-
-  return (
-    <div>
-      <h1>Error when edit: {caught.status}</h1>
-      <Debug name="caught.data">{caught.data}</Debug>
     </div>
   );
 }

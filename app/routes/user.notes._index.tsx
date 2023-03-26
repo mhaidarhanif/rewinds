@@ -9,13 +9,16 @@ import {
   RemixForm,
   RemixLink,
 } from "~/components";
+import { configDev } from "~/configs";
 import { requireUserSession } from "~/helpers";
 import { Plus, Trash } from "~/icons";
 import { prisma } from "~/libs";
 import { model } from "~/models";
-import { createSitemap, formatPluralItems, truncateText } from "~/utils";
+import { createSitemap, formatPluralItems } from "~/utils";
+import { truncateText } from "~/utils";
 
-import type { ActionArgs, LoaderArgs } from "@remix-run/node";
+import type { LoaderArgs } from "@remix-run/node";
+import type { ActionArgs } from "@remix-run/node";
 
 export const handle = createSitemap();
 
@@ -48,7 +51,7 @@ export default function AdminNotesRoute() {
   const { notes, notesCount } = useLoaderData<typeof loader>();
 
   return (
-    <div data-id="user-notes" className="contain-sm space-y-4">
+    <>
       <PageHeader size="xs" withBackground={false} withContainer={false}>
         <div className="stack-h-center">
           <RemixLink to=".">
@@ -58,18 +61,22 @@ export default function AdminNotesRoute() {
             <Plus className="size-sm" />
             <span>Add Note</span>
           </ButtonLink>
-          <RemixForm method="delete">
-            <Button
-              size="sm"
-              variant="danger"
-              name="intent"
-              value="user-delete-all-notes"
-              disabled={notesCount <= 0}
-            >
-              <Trash className="size-sm" />
-              <span>Delete All My {formatPluralItems("Note", notesCount)}</span>
-            </Button>
-          </RemixForm>
+          {configDev.isDevelopment && (
+            <RemixForm method="delete">
+              <Button
+                size="sm"
+                variant="danger"
+                name="intent"
+                value="user-delete-all-notes"
+                disabled={notesCount <= 0}
+              >
+                <Trash className="size-sm" />
+                <span>
+                  Delete All My {formatPluralItems("Note", notesCount)}
+                </span>
+              </Button>
+            </RemixForm>
+          )}
         </div>
       </PageHeader>
 
@@ -92,6 +99,6 @@ export default function AdminNotesRoute() {
           })}
         </ul>
       </section>
-    </div>
+    </>
   );
 }

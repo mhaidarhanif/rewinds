@@ -1,0 +1,149 @@
+import { conform, useForm } from "@conform-to/react";
+import { getFieldsetConstraint, parse } from "@conform-to/zod";
+import { redirect } from "@remix-run/node";
+import { useActionData, useNavigation } from "@remix-run/react";
+import { useId } from "react";
+import { badRequest, serverError } from "remix-utils";
+
+import {
+  Alert,
+  Button,
+  ButtonLink,
+  ButtonLoading,
+  Input,
+  Label,
+  RemixForm,
+  TextArea,
+} from "~/components";
+import { configDev } from "~/configs";
+import { requireUserSession } from "~/helpers";
+import { model } from "~/models";
+import { schemaNoteNew } from "~/schemas";
+import { createSitemap } from "~/utils";
+
+import type { ActionArgs } from "@remix-run/node";
+import type { z } from "zod";
+
+export const handle = createSitemap();
+
+export async function action({ request }: ActionArgs) {
+  const { userSession, user } = await requireUserSession(request);
+
+  const formData = await request.formData();
+  const submission = parse(formData, { schema: schemaNoteNew });
+  if (!submission.value || submission.intent !== "submit") {
+    return badRequest(submission);
+  }
+
+  try {
+    const newNote = await model.userNote.mutation.addNew({
+      user: userSession,
+      note: submission.value,
+    });
+    if (!newNote) {
+      return badRequest(submission);
+    }
+    return redirect(`/${user.username}/${newNote.slug}`);
+  } catch (error) {
+    console.error(error);
+    return serverError(submission);
+  }
+}
+
+export default function AdminNotesNewRoute() {
+  const actionData = useActionData<typeof action>();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
+
+  const id = useId();
+  const [form, { title, description, content }] = useForm<
+    z.infer<typeof schemaNoteNew>
+  >({
+    id,
+    initialReport: "onSubmit",
+    lastSubmission: actionData,
+    onValidate({ formData }) {
+      return parse(formData, { schema: schemaNoteNew });
+    },
+    constraint: getFieldsetConstraint(schemaNoteNew),
+  });
+
+  return (
+    <section className="space-y-2">
+      <header className="py-4">
+        <h1 className="text-3xl">Create a new note</h1>
+        <p className="dim">
+          A note can be a blog post, news article, tutorial, or just a regular
+          note.
+        </p>
+      </header>
+
+      <RemixForm {...form.props} method="post">
+        <fieldset
+          disabled={isSubmitting}
+          className="space-y-4 disabled:opacity-80"
+        >
+          <div className="space-y-1">
+            <Label htmlFor={title.id}>Title</Label>
+            <Input
+              {...conform.input(title)}
+              autoFocus
+              type="text"
+              placeholder="Note title or what's on your mind?"
+              defaultValue={configDev.isDevelopment ? "A new example" : ""}
+              className="border-none px-0 sm:text-xl"
+            />
+            <Alert id={title.errorId}>{title.error}</Alert>
+          </div>
+
+          <div className="space-y-1">
+            <Label htmlFor={description.id}>Description</Label>
+            <Input
+              {...conform.input(description)}
+              type="text"
+              placeholder="Add a short description"
+              defaultValue={configDev.isDevelopment ? "The description" : ""}
+              className="border-none px-0 sm:text-xl"
+            />
+            <Alert id={description.errorId}>{description.error}</Alert>
+          </div>
+
+          <div className="space-y-1">
+            <Label htmlFor={content.id}>Content</Label>
+            <TextArea
+              {...conform.input(content)}
+              placeholder="Type your longer content here, maximum content length of 1,000 characters..."
+              rows={10}
+              defaultValue={
+                configDev.isDevelopment
+                  ? "Here is the long content about the note."
+                  : ""
+              }
+              className="border-none px-0 sm:text-xl"
+            />
+            <Alert id={content.errorId}>{content.error}</Alert>
+          </div>
+
+          <div className="flex gap-2">
+            <ButtonLoading
+              type="submit"
+              className="grow"
+              name="intent"
+              value="submit"
+              isSubmitting={isSubmitting}
+              loadingText="Creating..."
+            >
+              Create
+            </ButtonLoading>
+            <Button type="reset" variant="subtle">
+              Reset
+            </Button>
+            <ButtonLink to=".." variant="ghost" accent="red">
+              Cancel
+            </ButtonLink>
+          </div>
+        </fieldset>
+      </RemixForm>
+    </section>
+  );
+}

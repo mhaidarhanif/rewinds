@@ -12,7 +12,7 @@ export const schemaNoteNew = z.object({
   content: z
     .string({ required_error: "Content is required" })
     .min(1)
-    .max(1000, "Content length max of 1000 characters"),
+    .max(10000, "Content length max of 10,000 characters"),
 });
 
 export const schemaNoteEdit = z
