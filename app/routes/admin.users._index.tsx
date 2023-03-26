@@ -16,7 +16,7 @@ export async function loader({ request }: LoaderArgs) {
   return json({ users, usersCount });
 }
 
-export default function AdminUsers() {
+export default function Route() {
   const { users, usersCount } = useLoaderData<typeof loader>();
 
   if (users.length <= 0) {

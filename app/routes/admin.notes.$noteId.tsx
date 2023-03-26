@@ -1,5 +1,5 @@
 import { Outlet } from "@remix-run/react";
 
-export default function AdminNotesViewLayout() {
+export default function Route() {
   return <Outlet />;
 }

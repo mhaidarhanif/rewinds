@@ -18,7 +18,7 @@ export async function action({ request }: ActionArgs) {
   return null;
 }
 
-export default function UserLayout() {
+export default function Route() {
   return (
     <Layout isSpaced>
       <div data-id="user-layout-outlet" className="grow">

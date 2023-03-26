@@ -16,7 +16,7 @@ export async function loader({ request }: LoaderArgs) {
   return json({ notes, notesCount });
 }
 
-export default function AdminNotes() {
+export default function Route() {
   const { notes, notesCount } = useLoaderData<typeof loader>();
 
   if (notes.length <= 0) {

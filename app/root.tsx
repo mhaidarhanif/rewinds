@@ -102,7 +102,7 @@ export async function loader({ request }: LoaderArgs) {
  * `themeAction` is the action name that's used to change the theme
  * in the session storage.
  */
-export default function AppWithProviders() {
+export default function Route() {
   const data = useLoaderData();
 
   return (

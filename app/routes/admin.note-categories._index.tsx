@@ -13,7 +13,7 @@ export async function loader({ request }: LoaderArgs) {
   return json({ noteCategories });
 }
 
-export default function AdminNoteCategories() {
+export default function Route() {
   const { noteCategories } = useLoaderData<typeof loader>();
 
   return (

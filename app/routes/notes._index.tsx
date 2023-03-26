@@ -16,7 +16,7 @@ export async function loader() {
   return json({ notes, notesCount });
 }
 
-export default function NotesIndex() {
+export default function Route() {
   const { notes, notesCount } = useLoaderData<typeof loader>();
 
   return (

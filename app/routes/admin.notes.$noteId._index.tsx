@@ -50,7 +50,7 @@ export async function action({ request }: ActionArgs) {
   }
 }
 
-export default function AdminNotesView() {
+export default function Route() {
   const { note } = useLoaderData<typeof loader>();
 
   if (!note) {

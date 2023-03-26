@@ -1,6 +1,6 @@
 import { Layout } from "~/components";
 
-export default function Full() {
+export default function Route() {
   return (
     <Layout variant="full">
       <img

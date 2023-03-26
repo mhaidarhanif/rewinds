@@ -15,6 +15,6 @@ export const handle: SEOHandle = {
   },
 };
 
-export default function Notes() {
+export default function Route() {
   return <Outlet />;
 }

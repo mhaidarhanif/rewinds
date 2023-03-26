@@ -25,7 +25,7 @@ export async function loader({ request, params }: LoaderArgs) {
  * Similar with /$username/$noteSlug but simpler
  * And might not for public use
  */
-export default function NotesNoteSlugView() {
+export default function Route() {
   const { note } = useLoaderData<typeof loader>();
 
   return (

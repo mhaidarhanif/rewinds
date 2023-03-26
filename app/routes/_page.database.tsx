@@ -18,7 +18,7 @@ export async function loader() {
   return json({ notes });
 }
 
-export default function Database() {
+export default function Route() {
   const { notes } = useLoaderData<typeof loader>();
 
   return (

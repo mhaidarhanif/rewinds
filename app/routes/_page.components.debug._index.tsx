@@ -1,7 +1,7 @@
 import { Debug, Layout } from "~/components";
 import { useRootLoaderData } from "~/hooks";
 
-export default function ComponentsDebug() {
+export default function Route() {
   const { user } = useRootLoaderData();
 
   return (

@@ -19,7 +19,7 @@ export async function loader({ request }: LoaderArgs) {
   return json({ user, metrics }, { headers: createCacheHeaders(request) });
 }
 
-export default function UserDashboard() {
+export default function Route() {
   const { user, metrics } = useLoaderData<typeof loader>();
   const isAllowed = requireUserRole(user, ["ADMIN", "MANAGER", "EDITOR"]);
 

@@ -42,7 +42,7 @@ export async function loader({ request, params }: LoaderArgs) {
 /**
  * Similar with /notes/$noteSlug but fancier
  */
-export default function UsernameNoteSlugView() {
+export default function Route() {
   const { note } = useLoaderData<typeof loader>();
 
   // TODO: Can have custom background cover like on dev.to

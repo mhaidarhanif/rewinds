@@ -38,7 +38,7 @@ export async function action({ request }: ActionArgs) {
   return redirect(`.`);
 }
 
-export default function AdminNotes() {
+export default function Route() {
   const { notesCount } = useLoaderData<typeof loader>();
 
   return (

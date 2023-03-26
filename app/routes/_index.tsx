@@ -17,7 +17,7 @@ export const links: LinksFunction = () => {
 
 export const handle = createSitemap("/", 1);
 
-export default function Index() {
+export default function Route() {
   return (
     <Layout>
       <section
