@@ -293,12 +293,12 @@ As this repo was made after having run the `create-remix` command and selected "
 Just keep in mind to set up the environment variables, especially:
 
 ```sh
+DATABASE_URL=
 REMIX_APP_NAME=
 REMIX_APP_EMAIL=
 REMIX_ADMIN_EMAIL=
 REMIX_ADMIN_PASSWORD=
 REMIX_SESSION_SECRET=
-DATABASE_URL=
 ```
 
 Or if using Doppler, there's the auto sync integration.

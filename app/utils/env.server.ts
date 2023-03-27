@@ -33,13 +33,13 @@ export function getEnv(): z.infer<typeof schemaEnv> {
 
 export function getEnvPrivate(): z.infer<typeof schemaEnvPrivate> {
   return {
+    DATABASE_URL: getEnvServer("DATABASE_URL"),
     REMIX_APP_NAME: getEnvServer("REMIX_APP_NAME"),
     REMIX_APP_EMAIL: getEnvServer("REMIX_APP_EMAIL"),
     REMIX_ADMIN_EMAIL: getEnvServer("REMIX_ADMIN_EMAIL"),
     REMIX_ADMIN_PASSWORD: getEnvServer("REMIX_ADMIN_PASSWORD"),
     REMIX_SESSION_SECRET: getEnvServer("REMIX_SESSION_SECRET"),
-    DATABASE_URL: getEnvServer("DATABASE_URL"),
-    IMAGEKIT_PRIVATE_KEY: getEnvServer("IMAGEKIT_PRIVATE_KEY"),
+    IMAGEKIT_PRIVATE_KEY: process.env.IMAGEKIT_PRIVATE_KEY || "not-set",
   };
 }
 
