@@ -4,7 +4,7 @@ import type { UserData } from "~/helpers";
 export function createAvatarPlaceholderURL(user: Pick<UserData, "username">) {
   const styleName = "thumbs";
 
-  const url = new URL(`https://api.dicebear.com/5.x/${styleName}/svg`);
+  const url = new URL(`https://api.dicebear.com/6.x/${styleName}/svg`);
 
   url.searchParams.append("seed", user.username);
   url.searchParams.append("flip", String(true));
