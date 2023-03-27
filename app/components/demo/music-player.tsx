@@ -180,7 +180,7 @@ export function MusicPlayerDemo() {
     <div className="overflow-hidden rounded-md border border-surface-200 bg-gradient-to-b from-brand-300 to-blue-300 shadow-2xl dark:border-surface-800 dark:from-brand-800 dark:to-blue-800">
       <Menubar className="rounded-none border-b border-none dark:bg-surface-900">
         <MenubarMenu>
-          <MenubarTrigger className="flex gap-2 font-bold">
+          <MenubarTrigger className="stack-h-center font-bold">
             <Music className="size-sm" />
             <span>Music</span>
           </MenubarTrigger>

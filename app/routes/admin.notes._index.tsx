@@ -45,7 +45,7 @@ export default function Route() {
               >
                 <h3>{note.title}</h3>
                 <p className="text-xs">{note.slug}</p>
-                <div className="flex gap-2">
+                <div className="stack-h-center">
                   <AvatarAuto user={note.user} className="size-md" />
                   <p>
                     {note.user.name} (@{note.user.username})

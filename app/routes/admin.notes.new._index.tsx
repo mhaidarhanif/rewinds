@@ -126,7 +126,7 @@ export default function Route() {
             </p>
           </div>
 
-          <div className="flex gap-2">
+          <div className="stack-h-center">
             <ButtonLoading
               type="submit"
               className="grow"

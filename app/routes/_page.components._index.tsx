@@ -546,7 +546,7 @@ export function ExampleForm() {
             </p>
           </div>
 
-          <div className="flex gap-2">
+          <div className="stack-h-center">
             <Button type="submit" className="grow">
               Submit Form
             </Button>

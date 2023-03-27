@@ -88,7 +88,7 @@ export function ImageKitUploader({
 
       <div className="space-y-1">
         <p>Upload images (one by one)</p>
-        <div className="flex gap-2">
+        <div className="stack-h-center">
           {inputRef && (
             <Button
               size="sm"

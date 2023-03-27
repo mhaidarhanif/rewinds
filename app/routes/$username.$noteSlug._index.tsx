@@ -80,6 +80,7 @@ export default function Route() {
   return (
     <Layout
       isSpaced
+      variant="sm"
       layoutHeader={
         <header className="mb-4 space-y-4 bg-surface-100 py-6 dark:bg-surface-800/20 sm:py-10">
           {isOwner && (
@@ -116,7 +117,7 @@ export default function Route() {
         </header>
       }
     >
-      <aside className="contain-sm stack-h-center sm:gap-4">
+      <aside className="flex items-center gap-2 sm:gap-4">
         <AvatarAuto user={note.user} className="size-2xl" />
         <div>
           <h4>
@@ -124,7 +125,7 @@ export default function Route() {
               {note.user.name} (@{note.user.username})
             </RemixLink>
           </h4>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-1 text-xs sm:gap-2 sm:text-sm">
             <TooltipAuto content={<b>{formatDateTime(note.createdAt)}</b>}>
               <span>Posted </span>
               <b>{formatRelativeTime(note.createdAt)}</b>
@@ -138,11 +139,9 @@ export default function Route() {
         </div>
       </aside>
 
-      <div className="contain-sm">
-        <article className="prose-config whitespace-pre-wrap sm:py-4">
-          {note.content}
-        </article>
-      </div>
+      <article className="prose-config whitespace-pre-wrap sm:py-4">
+        {note.content}
+      </article>
     </Layout>
   );
 }

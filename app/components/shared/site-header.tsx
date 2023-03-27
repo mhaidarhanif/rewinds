@@ -213,7 +213,7 @@ export function HeaderNavigationMenu({
         {navItems?.map(
           (item, index) =>
             item.to && (
-              <DropdownMenuItem key={index} className="flex gap-2" asChild>
+              <DropdownMenuItem key={index} asChild>
                 <RemixNavLink
                   to={item.to}
                   prefetch="intent"

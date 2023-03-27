@@ -26,7 +26,6 @@ export const ButtonIconAnchor = ({
       target="_blank"
       rel="noreferrer noopener"
       className={cn(
-        "flex gap-2",
         buttonVariants({
           variant,
           size,

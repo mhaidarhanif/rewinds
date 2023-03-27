@@ -106,7 +106,7 @@ export default function Route() {
           disabled={isSubmitting}
           className="space-y-4 disabled:opacity-80"
         >
-          <div className="dim flex gap-2 text-xs">
+          <div className="dim stack-h-center text-xs">
             <p>
               ID: <b>{note.id}</b>
             </p>
@@ -154,7 +154,7 @@ export default function Route() {
             <Alert id={content.errorId}>{content.error}</Alert>
           </div>
 
-          <div className="flex gap-2">
+          <div className="stack-h-center">
             <ButtonLoading
               type="submit"
               className="grow"

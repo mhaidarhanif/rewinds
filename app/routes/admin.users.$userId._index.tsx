@@ -89,13 +89,13 @@ export default function Route() {
 
       <section className="card stack-v">
         <header>
-          <div className="flex gap-2 text-xs">
+          <div className="stack-h-center text-xs">
             <p>
               ID: <b>{user.id}</b>
             </p>
           </div>
 
-          <div className="flex gap-2 text-xs">
+          <div className="stack-h-center text-xs">
             <TooltipAuto content={<b>{formatDateTime(user.createdAt)}</b>}>
               <span>Created at: </span>
               <b>{formatRelativeTime(user.createdAt)}</b>

@@ -15,6 +15,7 @@ export const layoutVariants = cva("", {
     // for the main content
     variant: {
       full: "",
+      sm: "contain-sm",
       default: "contain",
     },
   },
