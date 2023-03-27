@@ -154,7 +154,7 @@ export interface ButtonProps
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      type = "button",
+      type = "submit",
       variant = "default",
       accent = "default",
       size = "default",

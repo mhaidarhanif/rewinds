@@ -48,6 +48,7 @@ export function InputPassword({
         {...props}
       />
       <Button
+        type="button"
         size="xs"
         variant="subtle"
         onClick={handleClick}
