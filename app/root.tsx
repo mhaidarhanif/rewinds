@@ -208,7 +208,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
         <div>
           <p>Here's the error information that can be informed to Rewinds.</p>
           <p>{error.message}</p>
-          <Debug>{error}</Debug>
+          <Debug name="error">{error}</Debug>
         </div>
       </Layout>
     </RootDocumentBoundary>

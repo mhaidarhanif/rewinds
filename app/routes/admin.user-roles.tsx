@@ -21,22 +21,21 @@ import type { ActionArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader() {
-  const userCount = await model.adminUser.query.count();
-  return json({ userCount });
+  const userRolesCount = await model.userRole.query.count();
+  return json({ userCount: userRolesCount });
 }
 
 export async function action({ request }: ActionArgs) {
   const { user } = await requireUserSession(request);
-  const isActionAllowed = requireUserRole(user, ["ADMIN", "MANAGER"]);
-  if (!isActionAllowed) {
+  if (!requireUserRole(user, ["ADMIN", "MANAGER"])) {
     return forbidden({ message: "Not allowed" });
   }
 
   const formData = await request.formData();
   const submission = parse(formData, {});
 
-  if (submission.payload.intent === "delete-all-users") {
-    await model.adminUser.mutation.deleteAll();
+  if (submission.payload.intent === "delete-all-user-roles") {
+    // await model.userRole.mutation.deleteAll();
     return json(submission);
   }
 
@@ -50,11 +49,11 @@ export default function Route() {
     <div>
       <PageAdminHeader size="xs">
         <RemixLink to=".">
-          <h1>Users</h1>
+          <h1>User Roles</h1>
         </RemixLink>
         <ButtonLink to="new" size="sm">
           <Plus className="size-sm" />
-          <span>Register User</span>
+          <span>Add User Role</span>
         </ButtonLink>
         {configDev.isDevelopment && (
           <RemixForm method="delete">
@@ -62,11 +61,13 @@ export default function Route() {
               size="sm"
               variant="danger"
               name="intent"
-              value="delete-all-users"
-              disabled={userCount <= 0}
+              value="delete-all-user-roles"
+              disabled={true || userCount <= 0}
             >
               <Trash className="size-sm" />
-              <span>Delete All {formatPluralItems("User", userCount)}</span>
+              <span>
+                Delete All {formatPluralItems("User Role", userCount)}
+              </span>
             </Button>
           </RemixForm>
         )}

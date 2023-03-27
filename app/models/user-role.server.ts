@@ -1,5 +1,7 @@
 import { prisma } from "~/libs";
 
+import type { UserRole } from "@prisma/client";
+
 export const fields = {
   public: {
     symbol: true,
@@ -15,6 +17,11 @@ export const query = {
   getAll() {
     return prisma.userRole.findMany({
       select: fields.public,
+    });
+  },
+  getBySymbol({ symbol }: { symbol: UserRole["symbol"] }) {
+    return prisma.userRole.findFirst({
+      where: { symbol },
     });
   },
 };

@@ -20,6 +20,8 @@ const userPassword = z
   .min(8, "Password length at least 8 characters")
   .max(100, "Password length limited to 100 characters");
 
+const userRoleSymbol = z.string({ required_error: "Role is required" });
+
 export const schemaUserRegister = z.object({
   name: userName,
   username: userUsername,
@@ -37,4 +39,5 @@ export const schemaAdminUserEdit = z.object({
   name: userName,
   username: userUsername,
   email: userEmail,
+  roleSymbol: userRoleSymbol,
 });

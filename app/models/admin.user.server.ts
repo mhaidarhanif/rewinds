@@ -1,12 +1,14 @@
 import { prisma } from "~/libs";
 
-import type { User } from "@prisma/client";
+import { model } from ".";
+
+import type { User, UserRole } from "@prisma/client";
 
 export const query = {
-  async count() {
+  count() {
     return prisma.user.count();
   },
-  async getAll() {
+  getAll() {
     return prisma.user.findMany({
       include: {
         role: { select: { symbol: true, name: true, description: true } },
@@ -14,10 +16,11 @@ export const query = {
       },
     });
   },
-  async getById({ id }: Pick<User, "id">) {
+  getById({ id }: Pick<User, "id">) {
     return prisma.user.findFirst({
       where: { id },
       include: {
+        role: true,
         profile: true,
         notes: true,
       },
@@ -34,7 +37,24 @@ export const mutation = {
       where: { id },
     });
   },
-  update({ user }: { user: Pick<User, "id" | "name" | "username" | "email"> }) {
+  async update({
+    user,
+    roleSymbol,
+  }: {
+    user: Pick<User, "id" | "name" | "username" | "email">;
+    roleSymbol: UserRole["symbol"];
+  }) {
+    const userRole = await model.userRole.query.getBySymbol({
+      symbol: roleSymbol,
+    });
+    if (!userRole) {
+      return {
+        error: {
+          roleSymbol: `User Role Symbol ${roleSymbol} is not available`,
+        },
+      };
+    }
+
     return prisma.user.update({
       where: {
         id: user.id,
@@ -43,6 +63,7 @@ export const mutation = {
         name: user.name,
         username: user.username,
         email: user.email,
+        role: { connect: { symbol: roleSymbol } },
       },
     });
   },

@@ -52,7 +52,7 @@
     @apply card-base p-4;
   }
   .card-sm {
-    @apply card-base p-2;
+    @apply card-base py-2 px-3;
   }
   .card-hover {
     @apply bg-surface-100/50 dark:bg-surface-800/50;
@@ -129,12 +129,15 @@
     @apply h-10 w-10;
   }
   .size-2xl {
-    @apply h-16 w-16;
+    @apply h-12 w-12;
   }
   .size-3xl {
-    @apply h-20 w-20;
+    @apply h-16 w-16;
   }
   .size-4xl {
+    @apply h-20 w-20;
+  }
+  .size-5xl {
     @apply h-28 w-28;
   }
 

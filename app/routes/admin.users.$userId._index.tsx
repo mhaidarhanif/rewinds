@@ -12,10 +12,10 @@ import {
   RemixLink,
   TooltipAuto,
 } from "~/components";
+import { requireUserRole, requireUserSession } from "~/helpers";
 import { EditPencil, Eye, Trash } from "~/icons";
 import { model } from "~/models";
 import {
-  createCacheHeaders,
   createSitemap,
   formatDateTime,
   formatRelativeTime,
@@ -28,8 +28,11 @@ export const handle = createSitemap();
 
 export async function loader({ request, params }: LoaderArgs) {
   invariant(params.userId, "userId not found");
+  const { user: userData } = await requireUserSession(request);
+  const isActionAllowed = requireUserRole(userData, ["ADMIN", "MANAGER"]);
+
   const user = await model.adminUser.query.getById({ id: params.userId });
-  return json({ user, headers: createCacheHeaders(request) });
+  return json({ user, isActionAllowed });
 }
 
 export async function action({ request }: ActionArgs) {
@@ -50,7 +53,7 @@ export async function action({ request }: ActionArgs) {
 }
 
 export default function Route() {
-  const { user } = useLoaderData<typeof loader>();
+  const { user, isActionAllowed } = useLoaderData<typeof loader>();
 
   if (!user) {
     return <p>User not found.</p>;
@@ -67,31 +70,38 @@ export default function Route() {
             <span>View on Site</span>
           </ButtonLink>
 
-          <ButtonLink to="edit" size="xs" variant="warning">
-            <EditPencil className="size-xs" />
-            <span>Edit</span>
-          </ButtonLink>
+          {isActionAllowed && (
+            <>
+              <ButtonLink to="edit" size="xs" variant="warning">
+                <EditPencil className="size-xs" />
+                <span>Edit</span>
+              </ButtonLink>
 
-          <RemixForm method="delete">
-            <input type="hidden" name="userId" value={user.id} />
-            <Button
-              size="xs"
-              variant="danger"
-              name="intent"
-              value="delete-user"
-            >
-              <Trash className="size-xs" />
-              <span>Delete</span>
-            </Button>
-          </RemixForm>
+              <RemixForm method="delete">
+                <input type="hidden" name="userId" value={user.id} />
+                <Button
+                  size="xs"
+                  variant="danger"
+                  name="intent"
+                  value="delete-user"
+                >
+                  <Trash className="size-xs" />
+                  <span>Delete</span>
+                </Button>
+              </RemixForm>
+            </>
+          )}
         </div>
       </header>
 
-      <section className="card stack-v">
+      <section className="card stack-v sm:gap-4">
         <header>
           <div className="stack-h-center text-xs">
             <p>
               ID: <b>{user.id}</b>
+            </p>
+            <p>
+              Role: <b>{user.role.name}</b>
             </p>
           </div>
 
@@ -109,7 +119,7 @@ export default function Route() {
         </header>
 
         <section className="stack-h-center">
-          <AvatarAuto user={user} className="size-2xl" />
+          <AvatarAuto user={user} className="size-3xl" />
           <div>
             <h2>
               {user.name} (@{user.username})

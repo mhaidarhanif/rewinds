@@ -36,7 +36,7 @@ export default function Route() {
 
       <section className="px-layout space-y-2">
         <h2>Welcome, {user.name}!</h2>
-        <h3>Your role is {user.role.name}</h3>
+        <p>Your role is {user.role.name}</p>
       </section>
 
       <div className="px-layout space-y-2">

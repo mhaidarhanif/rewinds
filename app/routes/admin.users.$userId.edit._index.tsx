@@ -2,7 +2,7 @@ import { conform, useForm } from "@conform-to/react";
 import { getFieldsetConstraint, parse } from "@conform-to/zod";
 import { json, redirect } from "@remix-run/node";
 import { useActionData, useLoaderData, useNavigation } from "@remix-run/react";
-import { badRequest, serverError } from "remix-utils";
+import { badRequest } from "remix-utils";
 
 import {
   Alert,
@@ -12,7 +12,13 @@ import {
   Input,
   Label,
   RemixForm,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "~/components";
+import { prisma } from "~/libs";
 import { model } from "~/models";
 import { schemaAdminUserEdit } from "~/schemas";
 import { createSitemap, invariant } from "~/utils";
@@ -24,38 +30,40 @@ export const handle = createSitemap();
 
 export async function loader({ params }: LoaderArgs) {
   invariant(params.userId, `User with id ${params.userId} not found`);
-  const user = await model.adminUser.query.getById({ id: params.userId });
-  return json({ user });
+
+  const [user, userRoles] = await prisma.$transaction([
+    model.adminUser.query.getById({ id: params.userId }),
+    model.userRole.query.getAll(),
+  ]);
+
+  return json({ user, userRoles });
 }
 
 export async function action({ request }: ActionArgs) {
   const formData = await request.formData();
   const submission = parse(formData, { schema: schemaAdminUserEdit });
-  if (!submission.value || submission.intent !== "submit") {
+  if (!submission.value) {
     return badRequest(submission);
   }
 
-  try {
-    const updatedUser = await model.adminUser.mutation.update({
+  if (submission.payload.intent === "update-user") {
+    await model.adminUser.mutation.update({
       user: submission.value,
+      roleSymbol: submission.value.roleSymbol,
     });
-    if (!updatedUser) {
-      return badRequest(submission);
-    }
     return redirect(`..`);
-  } catch (error) {
-    console.error(error);
-    return serverError(submission);
   }
+
+  return json(submission);
 }
 
 export default function Route() {
-  const { user } = useLoaderData<typeof loader>();
+  const { user, userRoles } = useLoaderData<typeof loader>();
   const actionData = useActionData<typeof action>();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
-  const [form, { id, name, username, email }] = useForm<
+  const [form, { id, name, username, email, roleSymbol }] = useForm<
     z.infer<typeof schemaAdminUserEdit>
   >({
     initialReport: "onSubmit",
@@ -81,55 +89,91 @@ export default function Route() {
           disabled={isSubmitting}
           className="space-y-2 disabled:opacity-80"
         >
-          <header>
-            <div className="stack-h-center text-xs">
-              <p>
-                ID: <b>{user.id}</b>
-              </p>
-            </div>
+          <div className="stack-h-center text-xs">
+            <p>
+              ID: <b>{user.id}</b>
+            </p>
+          </div>
 
-            <input hidden {...conform.input(id)} defaultValue={user.id} />
+          <input hidden {...conform.input(id)} defaultValue={user.id} />
 
-            <div className="space-y-1">
-              <Label htmlFor={name.id}>Name</Label>
-              <Input
-                {...conform.input(name)}
-                type="text"
-                placeholder="Full Name"
-                defaultValue={user.name}
-              />
-              <Alert id={name.errorId}>{name.error}</Alert>
-            </div>
+          <div className="space-y-1">
+            <Label htmlFor={name.id}>Name</Label>
+            <Input
+              {...conform.input(name)}
+              type="text"
+              placeholder="Full Name"
+              defaultValue={user.name}
+            />
+            {name.error && (
+              <Alert variant="danger" id={name.errorId}>
+                {name.error}
+              </Alert>
+            )}
+          </div>
 
-            <div className="space-y-1">
-              <Label htmlFor={username.id}>Username</Label>
-              <Input
-                {...conform.input(username)}
-                type="text"
-                placeholder="username"
-                defaultValue={user.username}
-              />
-              <Alert id={username.errorId}>{username.error}</Alert>
-            </div>
+          <div className="space-y-1">
+            <Label htmlFor={username.id}>Username</Label>
+            <Input
+              {...conform.input(username)}
+              type="text"
+              placeholder="username"
+              defaultValue={user.username}
+            />
+            {username.error && (
+              <Alert variant="danger" id={username.errorId}>
+                {username.error}
+              </Alert>
+            )}
+          </div>
 
-            <div className="space-y-1">
-              <Label htmlFor={email.id}>email</Label>
-              <Input
-                {...conform.input(email)}
-                type="email"
-                placeholder="name@email.com"
-                defaultValue={user.email}
-              />
-              <Alert id={email.errorId}>{email.error}</Alert>
-            </div>
-          </header>
+          <div className="space-y-1">
+            <Label htmlFor={email.id}>Email</Label>
+            <Input
+              {...conform.input(email)}
+              type="email"
+              placeholder="name@email.com"
+              defaultValue={user.email}
+            />
+            {email.error && (
+              <Alert variant="danger" id={email.errorId}>
+                {email.error}
+              </Alert>
+            )}
+          </div>
+
+          <div className="space-y-1">
+            <Label htmlFor={roleSymbol.id}>Role</Label>
+            <Select
+              {...conform.input(roleSymbol)}
+              defaultValue={user.role.symbol}
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder={user.role.name} />
+              </SelectTrigger>
+              <SelectContent>
+                {userRoles.map((userRole) => {
+                  return (
+                    <SelectItem key={userRole.symbol} value={userRole.symbol}>
+                      {userRole.name}
+                    </SelectItem>
+                  );
+                })}
+              </SelectContent>
+            </Select>
+            {roleSymbol.error && (
+              <Alert variant="danger" id={roleSymbol.errorId}>
+                {roleSymbol.error}
+              </Alert>
+            )}
+          </div>
 
           <div className="stack-h-center">
             <ButtonLoading
               type="submit"
               className="grow"
               name="intent"
-              value="submit"
+              value="update-user"
               isSubmitting={isSubmitting}
               loadingText="Updating..."
             >

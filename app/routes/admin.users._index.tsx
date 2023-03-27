@@ -37,13 +37,16 @@ export default function Route() {
               <RemixLink
                 prefetch="intent"
                 to={user.id}
-                className="card hover:card-hover stack-h-center"
+                className="card hover:card-hover stack-h-center sm:gap-4"
               >
-                <AvatarAuto user={user} className="size-xl" />
+                <AvatarAuto user={user} className="size-2xl" />
                 <div>
-                  <p>
-                    {user.name} (@{user.username}) {user.email}
-                  </p>
+                  <h5 className="stack-h-center">
+                    <span>{user.name}</span>
+                    <span>(@{user.username})</span>
+                    <span>{user.email}</span>
+                    <b>{user.role.name}</b>
+                  </h5>
                   <p>
                     {userNotesCount} {pluralize("note", userNotesCount)}
                   </p>

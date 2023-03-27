@@ -17,7 +17,7 @@ const SelectTrigger = forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex h-10 w-full items-center justify-between rounded-md border border-surface-300 bg-transparent py-2 px-3 text-sm placeholder:text-surface-400 focus:outline-none focus:ring-2 focus:ring-surface-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-surface-700 dark:text-surface-50 dark:focus:ring-surface-400 dark:focus:ring-offset-surface-900",
+      "flex h-10 w-full items-center justify-between rounded-md border border-surface-300 bg-white py-2 px-3 text-sm placeholder:text-surface-400 focus:outline-none focus:ring-2 focus:ring-surface-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-surface-700 dark:bg-surface-900 dark:text-surface-50 dark:focus:ring-surface-400 dark:focus:ring-offset-surface-900",
       className
     )}
     {...props}
@@ -36,7 +36,7 @@ const SelectContent = forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       className={cn(
-        "relative z-50 min-w-[8rem] overflow-hidden rounded-md border border-surface-100 bg-white text-surface-700 shadow-md animate-in fade-in-80 dark:border-surface-800 dark:bg-surface-800 dark:text-surface-400",
+        "relative z-50 min-w-[8rem] overflow-hidden rounded-md border border-surface-100 bg-white text-surface-800 shadow-md animate-in fade-in-80 dark:border-surface-800 dark:bg-surface-900 dark:text-surface-200",
         className
       )}
       {...props}
@@ -94,7 +94,7 @@ const SelectSeparator = forwardRef<
   <SelectPrimitive.Separator
     ref={ref}
     className={cn(
-      "-mx-1 my-1 h-px bg-surface-100 dark:bg-surface-700",
+      "-mx-1 my-1 h-px bg-surface-100 dark:bg-surface-800",
       className
     )}
     {...props}

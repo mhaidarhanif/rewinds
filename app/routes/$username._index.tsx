@@ -92,7 +92,7 @@ export default function Route() {
               user={user}
               className={cn(
                 "-mt-16 sm:-mt-24",
-                "size-3xl sm:size-4xl",
+                "size-4xl sm:size-5xl",
                 "outline outline-4 outline-surface-50 dark:outline-surface-900"
               )}
             />
