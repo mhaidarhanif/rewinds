@@ -137,14 +137,15 @@ export const mutation = {
       return { error: { username: `Username ${username} is not allowed` } };
     }
 
-    const userUsername = await prisma.user.findUnique({ where: { username } });
-
+    const userUsername = await prisma.user.findUnique({
+      where: { username: username.trim() },
+    });
     if (userUsername) {
       return { error: { username: `Username ${username} is already taken` } };
     }
 
     const userEmail = await prisma.user.findUnique({
-      where: { email },
+      where: { email: email.trim() },
       include: { password: true },
     });
 
@@ -161,9 +162,9 @@ export const mutation = {
 
     const user = await prisma.user.create({
       data: {
-        name,
-        username,
-        email,
+        name: name.trim(),
+        username: username.trim(),
+        email: email.trim(),
         password: { create: { hash: hashedPassword } },
         role: { connect: { id: defaultUserRole.id } },
         profile: {
@@ -223,7 +224,7 @@ export const mutation = {
   deleteByEmail({ email }: Pick<User, "email">) {
     return prisma.user.delete({ where: { email } });
   },
-  async updateName({ name }: Pick<User, "name">) {
+  updateName({ name }: Pick<User, "name">) {
     const nameIsUnallowed = dataUnallowedUserUsernames.find((user) =>
       name.toLowerCase().includes(user.username)
     );
@@ -231,7 +232,7 @@ export const mutation = {
       return { error: { name: `Name ${name} is not allowed` } };
     }
   },
-  async updateUsername({ username }: Pick<User, "username">) {
+  updateUsername({ username }: Pick<User, "username">) {
     const usernameIsUnallowed = dataUnallowedUserUsernames.find((user) =>
       username.toLowerCase().includes(user.username)
     );

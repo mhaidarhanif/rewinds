@@ -36,7 +36,7 @@ export async function action({ request }: ActionArgs) {
   }
 
   try {
-    const newNote = await model.adminNote.mutation.addNew({
+    const newNote = await model.adminNote.mutation.create({
       user: userSession,
       note: submission.value,
     });

@@ -3,7 +3,7 @@ import { isPrefetch } from "remix-utils";
 export function createCacheHeaders(request: Request, maxAge?: number) {
   const headers = new Headers();
   const maxAgePrefetch = maxAge || 5;
-  const maxAgeNoPrefetch = maxAgePrefetch * 2 || 10;
+  const maxAgeNoPrefetch = maxAgePrefetch * 2;
 
   if (isPrefetch(request)) {
     headers.set(

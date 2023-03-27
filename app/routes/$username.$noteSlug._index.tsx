@@ -44,7 +44,7 @@ export async function loader({ request, params }: LoaderArgs) {
   }
 
   // TODO: Don't use cache if coming from edit
-  return json({ note }, { headers: createCacheHeaders(request, 30) });
+  return json({ note }, { headers: createCacheHeaders(request, 1) });
 }
 
 export async function action({ request }: ActionArgs) {

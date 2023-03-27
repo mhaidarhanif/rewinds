@@ -26,17 +26,17 @@ export default function Route() {
   return (
     <div className="contain-sm space-y-4">
       <PageHeader size="xs" withBackground={false} withContainer={false}>
-        <h1>Dashboard</h1>
-      </PageHeader>
-
-      <section className="space-y-2">
-        <h2>Welcome, {user.name}!</h2>
-        <h3>
+        <h1 className="text-3xl">Dashboard</h1>
+        <p>
           <span>Dashboard for </span>
           <RemixLinkText prefetch="intent" to={`/${user.username}`}>
             @{user.username}
           </RemixLinkText>
-        </h3>
+        </p>
+      </PageHeader>
+
+      <section className="space-y-2">
+        <h2>Welcome, {user.name}!</h2>
       </section>
 
       <section>

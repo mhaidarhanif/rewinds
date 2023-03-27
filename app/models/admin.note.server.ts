@@ -23,7 +23,7 @@ export const query = {
 };
 
 export const mutation = {
-  addNew({
+  create({
     user,
     note,
   }: {
