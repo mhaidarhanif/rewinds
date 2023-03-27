@@ -19,7 +19,7 @@ export const pageHeaderVariants = cva("", {
     withContainer: { true: "", false: "" },
     withMarginBottom: { true: "", false: "" },
     withBackground: {
-      true: "bg-surface-100 dark:bg-surface-800/20",
+      true: "bg-brand-100 dark:bg-brand-800/20",
       false: "",
     },
   },

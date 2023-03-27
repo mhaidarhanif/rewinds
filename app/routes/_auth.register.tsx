@@ -105,7 +105,7 @@ export default function Route() {
       layoutHeader={
         <PageHeader size="xs" isTextCentered>
           <h1>Join {configSite.name}</h1>
-          <p>Let's get started</p>
+          <p>Register new account to get started</p>
         </PageHeader>
       }
     >
@@ -147,7 +147,7 @@ export default function Route() {
                 </Alert>
               )}
               <p className="text-xs text-surface-500">
-                Between 5 to 20 characters, alphanumeric/underscore
+                5 to 20 characters (letters, numbers, underscore)
               </p>
             </div>
 
@@ -180,7 +180,7 @@ export default function Route() {
                   {password.error}
                 </Alert>
               )}
-              <p className="text-xs text-surface-500">At least 8 characters</p>
+              <p className="text-xs text-surface-500">8 characters or more</p>
             </div>
 
             <input type="hidden" name="redirectTo" value={redirectTo} />
