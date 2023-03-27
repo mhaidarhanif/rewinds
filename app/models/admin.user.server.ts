@@ -6,7 +6,6 @@ export const query = {
   async count() {
     return prisma.user.count();
   },
-
   async getAll() {
     return prisma.user.findMany({
       include: {
@@ -15,7 +14,6 @@ export const query = {
       },
     });
   },
-
   async getById({ id }: Pick<User, "id">) {
     return prisma.user.findFirst({
       where: { id },

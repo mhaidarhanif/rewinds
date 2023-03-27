@@ -1,10 +1,11 @@
 import bcrypt from "bcryptjs";
 
 import { configUser } from "~/configs";
+import { dataUnallowedUserUsernames } from "~/data";
 import { prisma } from "~/libs";
 import { createNanoID, invariant } from "~/utils";
 
-import type { UserPassword, User } from "@prisma/client";
+import type { User } from "@prisma/client";
 export type { User } from "@prisma/client";
 
 export const fields = {
@@ -114,61 +115,32 @@ export const query = {
 };
 
 export const mutation = {
-  async login({
-    email,
-    password,
-  }: {
-    email: User["email"];
-    password: string; // from the form field, but it is not the hash
-  }) {
-    const user = await prisma.user.findUnique({
-      where: { email },
-      include: { password: true },
-    });
-
-    if (!user) {
-      return { error: { email: "Email is not registered yet", password: "" } };
-    }
-    if (!user.password) {
-      return { error: { email: "User has no password", password: "" } };
-    }
-
-    const isPasswordCorrect = await bcrypt.compare(
-      password,
-      user.password.hash
-    );
-
-    if (!isPasswordCorrect) {
-      return { error: { email: "", password: "Password is incorrect" } };
-    }
-
-    // To make sure we only have the essential data in the session
-    // Without any other sensitive information
-    return {
-      user,
-      error: null,
-    };
-  },
-
   async register({
     name,
     username,
     email,
     password,
   }: Pick<User, "name" | "username" | "email"> & {
-    password: UserPassword["hash"];
+    password: string; // unencrypted password at first
   }) {
+    const nameIsUnallowed = dataUnallowedUserUsernames.find((user) =>
+      name.toLowerCase().includes(user.username)
+    );
+    if (nameIsUnallowed) {
+      return { error: { name: `Name ${name} is not allowed` } };
+    }
+
+    const usernameIsUnallowed = dataUnallowedUserUsernames.find((user) =>
+      username.toLowerCase().includes(user.username)
+    );
+    if (usernameIsUnallowed) {
+      return { error: { username: `Username ${username} is not allowed` } };
+    }
+
     const userUsername = await prisma.user.findUnique({ where: { username } });
 
     if (userUsername) {
-      return {
-        error: {
-          name: "",
-          username: "Username already taken",
-          email: "",
-          password: "",
-        },
-      };
+      return { error: { username: `Username ${username} is already taken` } };
     }
 
     const userEmail = await prisma.user.findUnique({
@@ -177,14 +149,7 @@ export const mutation = {
     });
 
     if (userEmail) {
-      return {
-        error: {
-          name: "",
-          username: "",
-          email: "Email is already used",
-          password: "",
-        },
-      };
+      return { error: { email: `Email ${email} is already used` } };
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -215,8 +180,63 @@ export const mutation = {
       error: null,
     };
   },
+  async login({
+    email,
+    password,
+  }: {
+    email: User["email"];
+    password: string; // from the form field, but it is not the hash
+  }) {
+    const user = await prisma.user.findUnique({
+      where: { email },
+      include: { password: true },
+    });
 
-  deleteByEmail(email: User["email"]) {
+    if (!user) {
+      return {
+        error: { email: `Email ${email} is not registered yet`, password: "" },
+      };
+    }
+    if (!user.password) {
+      return { error: { email: "User account has no password", password: "" } };
+    }
+
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      user.password.hash
+    );
+
+    if (!isPasswordCorrect) {
+      return { error: { email: "", password: "Password is incorrect" } };
+    }
+
+    // To make sure we only have the essential data in the session
+    // Without any other sensitive information
+    return {
+      user,
+      error: null,
+    };
+  },
+  deleteById({ id }: Pick<User, "id">) {
+    return prisma.user.delete({ where: { id } });
+  },
+  deleteByEmail({ email }: Pick<User, "email">) {
     return prisma.user.delete({ where: { email } });
+  },
+  async updateName({ name }: Pick<User, "name">) {
+    const nameIsUnallowed = dataUnallowedUserUsernames.find((user) =>
+      name.toLowerCase().includes(user.username)
+    );
+    if (nameIsUnallowed) {
+      return { error: { name: `Name ${name} is not allowed` } };
+    }
+  },
+  async updateUsername({ username }: Pick<User, "username">) {
+    const usernameIsUnallowed = dataUnallowedUserUsernames.find((user) =>
+      username.toLowerCase().includes(user.username)
+    );
+    if (usernameIsUnallowed) {
+      return { error: { username: `Username ${username} is not allowed` } };
+    }
   },
 };
