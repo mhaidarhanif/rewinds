@@ -3,7 +3,14 @@ import { useLoaderData } from "@remix-run/react";
 
 import { AvatarAuto, Layout, PageHeader, RemixLink } from "~/components";
 import { model } from "~/models";
-import { createMetaData, formatPluralItems, truncateText } from "~/utils";
+import {
+  createMetaData,
+  createSitemap,
+  formatPluralItems,
+  truncateText,
+} from "~/utils";
+
+export const handle = createSitemap("/notes", 0.8);
 
 export const meta = createMetaData({
   title: "Notes",

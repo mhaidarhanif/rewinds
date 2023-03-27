@@ -8,8 +8,7 @@ dayjs.extend(relativeTime);
 export { dayjs };
 
 export function getCurrentYear() {
-  const now = new Date();
-  return now.getFullYear();
+  return new Date().getFullYear();
 }
 
 /**
@@ -17,13 +16,15 @@ export function getCurrentYear() {
  */
 
 export const formatDateTime = (date: string | Date | undefined) => {
-  const formatted = dayjs(date).locale("en").format("D MMM YYYY, H:mm:ss Z");
-  return formatted;
+  return dayjs(date).locale("en").format("D MMM YYYY, H:mm:ss Z");
 };
 
 export const formatDate = (date: string | Date | undefined) => {
-  const formatted = dayjs(date).locale("en").format("D MMM YYYY");
-  return formatted;
+  return dayjs(date).locale("en").format("D MMM YYYY");
+};
+
+export const formatDateLastMod = (date: string | Date | undefined) => {
+  return dayjs(date).locale("en").format("YYYY-MM-DD");
 };
 
 /**
@@ -31,6 +32,5 @@ export const formatDate = (date: string | Date | undefined) => {
  */
 
 export const formatRelativeTime = (date: string | Date | undefined) => {
-  const formatted = dayjs(date).locale("en").fromNow();
-  return formatted;
+  return dayjs(date).locale("en").fromNow();
 };

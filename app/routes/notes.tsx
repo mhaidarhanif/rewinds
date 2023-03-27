@@ -1,6 +1,7 @@
 import { Outlet } from "@remix-run/react";
 
 import { model } from "~/models";
+import { formatDateLastMod } from "~/utils";
 
 import type { SEOHandle } from "~/utils";
 
@@ -11,16 +12,11 @@ export const handle: SEOHandle = {
       return {
         route: `/${note.user.username}/${note.slug}`,
         priority: 0.7,
+        lastmod: formatDateLastMod(note.updatedAt),
       };
     });
 
-    return [
-      {
-        route: `/notes`,
-        priority: 0.8,
-      },
-      ...notesEntries,
-    ];
+    return notesEntries;
   },
 };
 
