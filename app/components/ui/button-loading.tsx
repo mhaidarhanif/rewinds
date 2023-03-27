@@ -16,6 +16,7 @@ export interface ButtonLoadingProps
 export const ButtonLoading = forwardRef<HTMLButtonElement, ButtonLoadingProps>(
   (
     {
+      type = "button",
       variant = "default",
       accent = "default",
       size = "default",
@@ -32,6 +33,9 @@ export const ButtonLoading = forwardRef<HTMLButtonElement, ButtonLoadingProps>(
   ) => {
     return (
       <button
+        type={type}
+        ref={ref}
+        disabled={isSubmitting}
         className={cn(
           buttonVariants({
             variant,
@@ -44,8 +48,6 @@ export const ButtonLoading = forwardRef<HTMLButtonElement, ButtonLoadingProps>(
             className,
           })
         )}
-        disabled={isSubmitting}
-        ref={ref}
         {...props}
       >
         {isSubmitting && <Loader2 className="animate-spin" />}

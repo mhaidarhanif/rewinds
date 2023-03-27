@@ -10,6 +10,7 @@ import {
   ButtonLoading,
   Debug,
   Input,
+  InputPassword,
   Label,
   Layout,
   PageHeader,
@@ -146,11 +147,10 @@ export default function Route() {
 
             <div className="space-y-1">
               <Label htmlFor={password.id}>Password</Label>
-              <Input
+              <InputPassword
                 {...conform.input(password)}
-                type="password"
-                autoComplete="current-password"
                 placeholder="Enter password"
+                autoComplete="current-password"
                 required
               />
               {password.error && (

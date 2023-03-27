@@ -78,7 +78,7 @@ export const buttonVariants = cva(
         isIcon: false,
         size: "xs",
         radius: "default",
-        class: "h-5 px-1 sm:h-6 sm:px-2 rounded text-xs gap-1",
+        class: "h-6 px-2 rounded text-xs gap-1",
       },
       {
         isIcon: false,
@@ -108,7 +108,7 @@ export const buttonVariants = cva(
         isIcon: true,
         size: "xs",
         radius: "default",
-        class: "rounded h-5 w-5 sm:h-6 sm:w-6",
+        class: "rounded h-6 w-6",
       },
       {
         isIcon: true,
@@ -154,6 +154,7 @@ export interface ButtonProps
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
+      type = "button",
       variant = "default",
       accent = "default",
       size = "default",
@@ -167,6 +168,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     return (
       <button
+        type={type}
+        ref={ref}
         className={cn(
           buttonVariants({
             variant,
@@ -179,7 +182,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             className,
           })
         )}
-        ref={ref}
         {...props}
       />
     );
