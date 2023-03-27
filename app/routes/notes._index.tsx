@@ -40,14 +40,14 @@ export default function Route() {
       className="contain-sm"
     >
       <section>
-        <ul className="grid auto-rows-auto grid-cols-1 gap-4 sm:grid-cols-2">
+        <ul className="space-y-2">
           {notes.map((note) => {
             return (
               <li key={note.slug}>
                 <RemixLink
                   prefetch="intent"
                   to={`/${note.user.username}/${note.slug}`}
-                  className="card hover:card-hover flex h-full flex-col space-y-1"
+                  className="card hover:card-hover flex h-full flex-col space-y-0"
                 >
                   <h3>{note.title}</h3>
                   <p>{note.description}</p>

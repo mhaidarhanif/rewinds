@@ -77,47 +77,62 @@ export const buttonVariants = cva(
       {
         isIcon: false,
         size: "xs",
+        radius: "default",
         class: "h-5 px-1 sm:h-6 sm:px-2 rounded text-xs gap-1",
       },
       {
         isIcon: false,
         size: "sm",
+        radius: "default",
         class: "h-7 px-2 sm:h-8 sm:px-3 rounded text-sm gap-2",
       },
       {
         isIcon: false,
         size: "default",
+        radius: "default",
         class: "h-9 sm:h-10 px-3 sm:px-4 rounded-md gap-2",
       },
       {
         isIcon: false,
         size: "lg",
+        radius: "default",
         class: "h-11 sm:h-12 px-4 sm:px-5 rounded-lg text-lg gap-3",
       },
       {
         isIcon: false,
         variant: "navlink",
+        radius: "default",
         class: "h-8 sm:h-9 px-1 sm:px-2 rounded-md gap-2",
       },
       {
         isIcon: true,
         size: "xs",
+        radius: "default",
         class: "rounded h-5 w-5 sm:h-6 sm:w-6",
       },
       {
         isIcon: true,
         size: "sm",
+        radius: "default",
         class: "rounded h-7 w-7 sm:h-8 sm:w-8",
       },
       {
         isIcon: true,
         size: "default",
+        radius: "default",
         class: "rounded-md h-9 w-9 sm:h-10 sm:w-10",
       },
       {
         isIcon: true,
         size: "lg",
+        radius: "default",
         class: "rounded-lg h-11 w-11 sm:h-12 sm:w-12",
+      },
+      {
+        isIcon: true,
+        size: "default",
+        radius: "full",
+        class: "h-9 w-9 sm:h-10 sm:w-10",
       },
     ],
     defaultVariants: {
@@ -125,8 +140,8 @@ export const buttonVariants = cva(
       accent: "default",
       size: "default",
       weight: "default",
-      radius: "default",
       align: "default",
+      radius: "default",
       isIcon: false,
     },
   }

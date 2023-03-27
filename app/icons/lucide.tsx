@@ -41,7 +41,6 @@ export {
   Music,
   Music2,
   PlayCircle,
-  Plus,
   PlusCircle,
   Podcast,
   Radio,

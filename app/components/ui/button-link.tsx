@@ -1,3 +1,5 @@
+import { forwardRef } from "react";
+
 import { buttonVariants, RemixLink } from "~/components";
 import { cn } from "~/utils";
 
@@ -14,6 +16,7 @@ export const ButtonLink = ({
   accent = "default",
   size = "default",
   align = "default",
+  radius = "default",
   className,
   children,
   ...props
@@ -27,6 +30,7 @@ export const ButtonLink = ({
           accent,
           size,
           align,
+          radius,
           isIcon: false,
           className,
         })
@@ -49,6 +53,8 @@ export const ButtonNavLink = ({
   accent = "default",
   size = "default",
   align = "default",
+  radius = "default",
+  isIcon,
   className,
   children,
   ...props
@@ -62,6 +68,7 @@ export const ButtonNavLink = ({
           accent,
           size,
           align,
+          radius,
           isIcon: false,
           className,
         })
@@ -73,3 +80,40 @@ export const ButtonNavLink = ({
   );
 };
 ButtonNavLink.displayName = "ButtonNavLink";
+
+export interface ButtonLinkIconProps
+  extends RemixLinkProps,
+    VariantProps<typeof buttonVariants> {}
+
+export const ButtonLinkIcon = ({
+  to = "/",
+  variant = "default",
+  accent = "default",
+  size = "default",
+  align = "default",
+  radius = "default",
+  className,
+  children,
+  ...props
+}: ButtonLinkIconProps) => {
+  return (
+    <RemixLink
+      to={to}
+      className={cn(
+        buttonVariants({
+          variant,
+          accent,
+          size,
+          align,
+          radius,
+          isIcon: true,
+          className,
+        })
+      )}
+      {...props}
+    >
+      {children}
+    </RemixLink>
+  );
+};
+ButtonLinkIcon.displayName = "ButtonLinkIcon";

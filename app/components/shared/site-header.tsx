@@ -5,6 +5,7 @@ import {
   ButtonIcon,
   ButtonIconAnchor,
   ButtonLink,
+  ButtonLinkIcon,
   buttonVariants,
   DropdownMenu,
   DropdownMenuContent,
@@ -24,11 +25,13 @@ import {
 import { configSite } from "~/configs";
 import { useRootLoaderData } from "~/hooks";
 import {
+  BellNotification,
   CreditCard,
   Github,
   Keyboard,
   LogOut,
   Menu,
+  Plus,
   Settings,
   Twitter,
   User,
@@ -54,10 +57,13 @@ export function SiteHeader({ noThemeToggle }: Props) {
           "contain flex items-center justify-between"
         )}
       >
-        <div id="site-header-left" className="flex items-center gap-1 sm:gap-2">
+        <div
+          id="site-header-left"
+          className="flex w-full items-center gap-1 sm:gap-2"
+        >
           <HeaderMainLogo noThemeToggle={noThemeToggle} />
           <HeaderMainNavigation navItems={configSite?.navItems} />
-          <div className="hidden lg:flex">
+          <div className="hidden w-full lg:flex">
             <SearchForm />
           </div>
         </div>
@@ -142,19 +148,34 @@ export function HeaderMainButtons() {
         </ButtonIconAnchor>
       </nav>
 
-      <nav className="flex items-center gap-1">
+      <nav className="flex items-center gap-1 sm:gap-2">
         {!user && (
           <>
-            <ButtonLink variant="ghost" to="/login">
+            <ButtonLink to="/login" variant="ghost">
               Login
             </ButtonLink>
-            <ButtonLink variant="subtle" to="/register">
+
+            <ButtonLink to="/register" variant="subtle">
               Register
             </ButtonLink>
           </>
         )}
 
-        {user && <HeaderUserMenu />}
+        {user && (
+          <>
+            <ButtonLinkIcon to="/user" variant="ghost" radius="full">
+              <BellNotification />
+              <span className="sr-only">Notification</span>
+            </ButtonLinkIcon>
+
+            <ButtonLinkIcon to="/new" variant="ghost" radius="full">
+              <Plus />
+              <span className="sr-only">New note</span>
+            </ButtonLinkIcon>
+
+            <HeaderUserMenu />
+          </>
+        )}
       </nav>
     </div>
   );
