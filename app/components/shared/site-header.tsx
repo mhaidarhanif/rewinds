@@ -127,7 +127,7 @@ export function HeaderMainButtons() {
         <ButtonIconAnchor
           href={configSite?.links.github}
           variant="ghost"
-          accent="surface"
+          accent="dim"
         >
           <Github />
           <span className="sr-only">GitHub</span>
@@ -135,7 +135,7 @@ export function HeaderMainButtons() {
         <ButtonIconAnchor
           href={configSite?.links.twitter}
           variant="ghost"
-          accent="surface"
+          accent="dim"
         >
           <Twitter />
           <span className="sr-only">Twitter</span>

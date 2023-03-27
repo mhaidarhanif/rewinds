@@ -149,6 +149,25 @@ export function ExampleButton() {
       </div>
 
       <div className="stack-v">
+        <h4>Accent</h4>
+        <div className="stack-h-center">
+          <Button variant="ghost">Default</Button>
+          <Button variant="ghost" accent="dim">
+            Dim
+          </Button>
+          <Button variant="ghost" accent="red">
+            Red
+          </Button>
+          <Button variant="ghost" accent="green">
+            Green
+          </Button>
+          <Button variant="ghost" accent="blue">
+            Blue
+          </Button>
+        </div>
+      </div>
+
+      <div className="stack-v">
         <h4>Size</h4>
         <div className="stack-h-center">
           <Button size="xs">Extra Small</Button>

@@ -23,29 +23,39 @@ export default function Route() {
     <Layout
       isSpaced
       layoutHeader={
-        <PageHeader size="sm" withBackground={false} withMarginBottom={false}>
+        <PageHeader
+          size="sm"
+          withContainer={false}
+          withBackground={false}
+          withMarginBottom={false}
+          className="contain-sm"
+        >
           <h1>All {formatPluralItems("note", notesCount)}</h1>
-          <h2>Published notes from the users</h2>
-          <p>Frequently changed for this example demo</p>
+          <p className="dim">
+            Published notes from the users. Frequently changed for this example
+            demo.
+          </p>
         </PageHeader>
       }
+      className="contain-sm"
     >
       <section>
-        <ul className="grid auto-rows-auto grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid auto-rows-auto grid-cols-1 gap-4 sm:grid-cols-2">
           {notes.map((note) => {
             return (
               <li key={note.slug}>
                 <RemixLink
                   prefetch="intent"
                   to={`/${note.user.username}/${note.slug}`}
-                  className="card hover:card-hover flex h-full flex-col space-y-2"
+                  className="card hover:card-hover flex h-full flex-col space-y-1"
                 >
                   <h3>{note.title}</h3>
+                  <p>{note.description}</p>
+                  <p className="dim">{truncateText(note.content, 70)}</p>
                   <div className="stack-h-center">
                     <AvatarAuto user={note.user} className="size-md" />
                     <b>{note.user.name}</b>
                   </div>
-                  <p>{truncateText(note.content)}</p>
                 </RemixLink>
               </li>
             );

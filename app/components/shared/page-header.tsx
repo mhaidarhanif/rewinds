@@ -64,7 +64,9 @@ export function PageHeader({
       )}
       {...props}
     >
-      <div className={cn(withContainer && "contain space-y-2")}>{children}</div>
+      <div className={cn("space-y-2", withContainer && "contain")}>
+        {children}
+      </div>
     </header>
   );
 }

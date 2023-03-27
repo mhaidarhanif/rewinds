@@ -15,25 +15,25 @@
   h4,
   h5,
   h6 {
-    @apply scroll-m-20 font-brand font-semibold tracking-tight;
+    @apply scroll-m-20 font-brand tracking-tight;
   }
   h1 {
-    @apply text-4xl lg:text-5xl;
+    @apply text-4xl font-bold lg:text-5xl;
   }
   h2 {
-    @apply text-2xl lg:text-3xl;
+    @apply text-2xl font-semibold lg:text-3xl;
   }
   h3 {
-    @apply text-xl lg:text-2xl;
+    @apply text-xl font-semibold lg:text-2xl;
   }
   h4 {
-    @apply text-lg lg:text-xl;
+    @apply text-lg font-semibold lg:text-xl;
   }
   h5 {
-    @apply lg:text-lg;
+    @apply font-semibold lg:text-lg;
   }
   h6 {
-    @apply lg:text-base;
+    @apply font-semibold lg:text-base;
   }
   header {
     @apply space-y-1;
@@ -71,7 +71,10 @@
     @apply text-brand-600 no-underline transition-colors hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300;
   }
   .dim {
-    @apply text-surface-500 dark:text-surface-600;
+    @apply text-surface-400 dark:text-surface-600;
+  }
+  .dim-hover {
+    @apply hover:text-surface-500 hover:dark:text-surface-500;
   }
   .inline-icon {
     @apply inline-block align-middle;
