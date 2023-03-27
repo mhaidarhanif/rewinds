@@ -36,6 +36,7 @@ export const query = {
       select: {
         id: true,
         username: true,
+        updatedAt: true,
       },
     });
   },

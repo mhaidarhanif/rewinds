@@ -7,12 +7,12 @@ import type { SEOHandle } from "~/utils";
 
 export const handle: SEOHandle = {
   getSitemapEntries: async () => {
-    const notes = await model.note.query.getAll();
-    return notes.map((note) => {
+    const users = await model.user.query.getAllUsernames();
+    return users.map((user) => {
       return {
-        route: `/${note.user.username}/${note.slug}`,
+        route: `/${user.username}`,
         priority: 0.7,
-        lastmod: formatDateLastMod(note.updatedAt),
+        lastmod: formatDateLastMod(user.updatedAt),
       };
     });
   },

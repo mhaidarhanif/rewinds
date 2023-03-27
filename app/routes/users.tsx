@@ -2,18 +2,9 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 import { model } from "~/models";
+import { createSitemap } from "~/utils";
 
-import type { SEOHandle } from "@balavishnuvj/remix-seo";
-
-export const handle: SEOHandle = {
-  getSitemapEntries: async () => {
-    const users = await model.user.query.getAllUsernames();
-    const userEntries: any = users.map((user) => {
-      return { route: `/${user.username}`, priority: 0.8 };
-    });
-    return [{ route: `/users`, priority: 0.7 }, ...userEntries];
-  },
-};
+export const handle = createSitemap();
 
 export async function loader() {
   const users = await model.user.query.getAllUsernames();
