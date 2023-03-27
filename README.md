@@ -415,7 +415,11 @@ module.exports = {
 ### General
 
 - [web.dev](https://web.dev)
+- [Catamyst Stack](https://a.catamyst.com/stack)
+  - [Catamyst Stack All](https://a.catamyst.com/stack-all)
 - [The Web’s Next Transition - Epic Web Dev by Kent C. Dodds](https://www.epicweb.dev/the-webs-next-transition)
+- [Infra I'm Building On In 2023](https://t3.gg/blog/post/2023-infra)
+  - [The Infra That Saved Me From AWS - My 2023 Stack](https://youtube.com/watch?v=v-9AZKp-Ljo)
 
 ### Remix
 
@@ -445,3 +449,12 @@ Some other projects using Rewinds:
 - [M Haidar Hanif Website](https://github.com/mhaidarhanif/mhaidarhanif-web): Personal Website
 - [Catamyst](https://github.com/catamyst/catamyst-web): Learning Management System (LMS)
 - [Super Duper Gallery](https://github.com/jonathannicolasdev/superduper): Art Gallery
+
+### Inspirations
+
+- [shadcn UI](https://github.com/shadcn/ui)
+  - [Taxonomy](https://tx.shadcn.com)
+- [T3 Stack](https://create.t3.gg)
+- [neorepo - Remix/Next.js production-ready starter kit](https://neorepo.com)
+- [SaasRock - The One-Man SaaS Framework](https://saasrock.com)
+- [MakerKit - SaaS Starter Kits based on React](https://makerkit.dev)
