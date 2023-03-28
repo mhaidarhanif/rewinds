@@ -5,6 +5,7 @@ import { serverError } from "remix-utils";
 
 import {
   AvatarAuto,
+  Badge,
   Button,
   ButtonLink,
   Debug,
@@ -102,7 +103,7 @@ export default function Route() {
             </span>
             <span>·</span>
             <span>
-              Role: <b>{user.role.name}</b>
+              Role: <Badge>{user.role.name}</Badge>
             </span>
           </div>
 

@@ -1,7 +1,7 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import { PageAdminHeader, RemixLink } from "~/components";
+import { Badge, PageAdminHeader, RemixLink } from "~/components";
 import { prisma } from "~/libs";
 import { model } from "~/models";
 import {
@@ -67,7 +67,8 @@ export default function Route() {
                       prefetch="intent"
                       className="card-sm hover:card-hover"
                     >
-                      {user.name} @{user.username} <b>{user.role.name}</b>
+                      {user.name} @{user.username}{" "}
+                      <Badge>{user.role.name}</Badge>
                     </RemixLink>
                   </li>
                 );

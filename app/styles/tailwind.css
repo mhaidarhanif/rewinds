@@ -61,7 +61,8 @@
     @apply bg-surface-100 dark:bg-black;
   }
   .code {
-    @apply relative rounded bg-slate-200 py-[0.2rem] px-[0.3rem] font-mono font-semibold text-slate-900 transition-colors before:content-none after:content-none hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-400 hover:dark:bg-slate-700;
+    @apply bg-slate-200 text-slate-900 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-400 hover:dark:bg-slate-700;
+    @apply relative rounded py-[0.2rem] px-[0.3rem] font-mono font-semibold  transition-colors before:content-none after:content-none;
   }
 }
 

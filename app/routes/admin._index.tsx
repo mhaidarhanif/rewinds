@@ -1,7 +1,7 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import { Debug, PageAdminHeader } from "~/components";
+import { Badge, Debug, PageAdminHeader } from "~/components";
 import { requireUserSession } from "~/helpers";
 import { useRootLoaderData } from "~/hooks";
 import { model } from "~/models";
@@ -37,7 +37,7 @@ export default function Route() {
       <section className="px-layout space-y-2">
         <h2>Welcome, {user.name}!</h2>
         <p>
-          Your role is <b>{user.role.name}</b>
+          Your role is <Badge>{user.role.name}</Badge>
         </p>
       </section>
 

@@ -2,7 +2,7 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import pluralize from "pluralize";
 
-import { AvatarAuto, Debug, RemixLink } from "~/components";
+import { AvatarAuto, Badge, Debug, RemixLink } from "~/components";
 import { model } from "~/models";
 import { createSitemap, formatPluralItems } from "~/utils";
 
@@ -45,7 +45,7 @@ export default function Route() {
                     <span>{user.name}</span>
                     <span>(@{user.username})</span>
                     <span>{user.email}</span>
-                    <b>{user.role.name}</b>
+                    <Badge>{user.role.name}</Badge>
                   </h5>
                   <p>
                     {userNotesCount} {pluralize("note", userNotesCount)}

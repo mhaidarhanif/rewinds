@@ -52,6 +52,8 @@ export async function requireUserSession(
 }
 
 // Can be used client-side or server-side
+// This simulate a limited RBAC (Role Based Access Control) functionality
+// but obviously not perfect
 export function requireUserRole(
   user: UserData,
   expectedRoleSymbols?: UserRole["symbol"][]
