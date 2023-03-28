@@ -21,18 +21,15 @@ export default function Route() {
   return (
     <div className="contain-sm space-y-4">
       <PageHeader size="xs" withBackground={false} withContainer={false}>
-        <h1>Settings</h1>
-      </PageHeader>
-
-      <section className="space-y-2">
-        <h2>
+        <h1 className="text-3xl">Settings</h1>
+        <p>
           <span>Settings for </span>
           <RemixLinkText prefetch="intent" to={`/${user.username}`}>
             @{user.username}
           </RemixLinkText>
-        </h2>
-        <h3>Change your profile, email, password, etc</h3>
-      </section>
+        </p>
+        <p>Change your profile, email, password, etc</p>
+      </PageHeader>
 
       <Debug name="user">{user}</Debug>
     </div>

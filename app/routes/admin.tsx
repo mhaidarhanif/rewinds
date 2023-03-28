@@ -6,9 +6,8 @@ import {
   Debug,
   HeaderUserMenu,
   Icon,
-  Layout,
   Logo,
-  PageHeader,
+  PageAdminHeader,
   RemixNavLink,
   SearchForm,
   ThemeToggleButton,
@@ -18,7 +17,7 @@ import { requireUserSession } from "~/helpers";
 import { RootDocumentBoundary } from "~/root";
 import { cn, createSitemap } from "~/utils";
 
-import type { LoaderArgs, ActionArgs } from "@remix-run/node";
+import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 
 export const handle = createSitemap();
 
@@ -50,12 +49,17 @@ export async function action({ request }: ActionArgs) {
 // Becaus this is already the Layout route for all admin routes
 export default function Route() {
   return (
+    <AdminLayout>
+      <Outlet />
+    </AdminLayout>
+  );
+}
+
+export function AdminLayout({ children }: { children: React.ReactNode }) {
+  return (
     <div className="flex">
       <AdminSidebar />
-
-      <main className="grow pb-10">
-        <Outlet />
-      </main>
+      <main className="grow pb-10">{children}</main>
     </div>
   );
 }
@@ -144,21 +148,16 @@ export function AdminSidebar() {
 export function ErrorBoundary({ error }: { error: Error }) {
   return (
     <RootDocumentBoundary title="Sorry, unexpected error occured.">
-      <Layout
-        noThemeToggle
-        isSpaced
-        layoutHeader={
-          <PageHeader size="sm">
-            <h1>Error from {configSite.name}</h1>
-          </PageHeader>
-        }
-      >
-        <div>
+      <AdminLayout>
+        <PageAdminHeader size="sm">
+          <h1>Error from {configSite.name}</h1>
+        </PageAdminHeader>
+        <section className="px-layout space-y-2">
           <p>Here's the error information that can be informed to Rewinds.</p>
-          <p>{error.message}</p>
+          <pre>{error.message}</pre>
           <Debug name="error">{error}</Debug>
-        </div>
-      </Layout>
+        </section>
+      </AdminLayout>
     </RootDocumentBoundary>
   );
 }
@@ -180,22 +179,17 @@ export function CatchBoundary() {
 
   return (
     <RootDocumentBoundary title={message}>
-      <Layout
-        noThemeToggle
-        isSpaced
-        layoutHeader={
-          <PageHeader size="sm">
-            <h1>Error {caught.status}</h1>
-            {caught.statusText && <h2>{caught.statusText}</h2>}
-            <p>{message}</p>
-          </PageHeader>
-        }
-      >
-        <div>
+      <AdminLayout>
+        <PageAdminHeader size="sm">
+          <h1>Error {caught.status}</h1>
+          {caught.statusText && <h2>{caught.statusText}</h2>}
+          <p>{message}</p>
+        </PageAdminHeader>
+        <section className="px-layout space-y-2">
           <p>Here's the error information that can be informed to Rewinds.</p>
           <Debug name="caught">{caught}</Debug>
-        </div>
-      </Layout>
+        </section>
+      </AdminLayout>
     </RootDocumentBoundary>
   );
 }

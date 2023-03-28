@@ -272,7 +272,7 @@ export function HeaderUserMenu({
             <RemixNavLink prefetch="intent" to={`/${user.username}`}>
               <User className="size-sm mr-2" />
               <span>Profile</span>
-              <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+              <DropdownMenuShortcut>⌘⇧P</DropdownMenuShortcut>
             </RemixNavLink>
           </DropdownMenuItem>
 
@@ -280,7 +280,7 @@ export function HeaderUserMenu({
             <RemixNavLink prefetch="intent" to={`/user/dashboard`}>
               <User className="size-sm mr-2" />
               <span>Dashboard</span>
-              <DropdownMenuShortcut>⇧⌘D</DropdownMenuShortcut>
+              <DropdownMenuShortcut>⌘⇧D</DropdownMenuShortcut>
             </RemixNavLink>
           </DropdownMenuItem>
 
@@ -288,14 +288,20 @@ export function HeaderUserMenu({
             <RemixNavLink to={`/user/settings`}>
               <Settings className="size-sm mr-2" />
               <span>Settings</span>
-              <DropdownMenuShortcut>⇧⌘S</DropdownMenuShortcut>
+              <DropdownMenuShortcut>⌘⇧S</DropdownMenuShortcut>
             </RemixNavLink>
           </DropdownMenuItem>
 
           <DropdownMenuItem>
             <CreditCard className="size-sm mr-2" />
             <span>Billing</span>
-            <DropdownMenuShortcut>⇧⌘B</DropdownMenuShortcut>
+            <DropdownMenuShortcut>⌘⇧B</DropdownMenuShortcut>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem>
+            <BellNotification className="size-sm mr-2" />
+            <span>Notifications</span>
+            <DropdownMenuShortcut>⌘⇧O</DropdownMenuShortcut>
           </DropdownMenuItem>
 
           <DropdownMenuItem>
@@ -311,7 +317,6 @@ export function HeaderUserMenu({
           <RemixNavLink to="/logout">
             <LogOut className="size-sm mr-2" />
             <span>Log out</span>
-            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
           </RemixNavLink>
         </DropdownMenuItem>
       </DropdownMenuContent>
