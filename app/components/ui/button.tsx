@@ -32,7 +32,7 @@ export const buttonVariants = cva(
           "text-brand-800 bg-transparent hover:bg-brand-500/20 data-[state=open]:bg-transparent dark:text-brand-100 dark:data-[state=open]:bg-transparent",
         link: "text-brand-800 bg-transparent underline-offset-4 hover:underline hover:bg-transparent dark:text-brand-200",
         navlink:
-          "text-xs sm:text-sm hover:bg-brand-100 hover:dark:bg-brand-800",
+          "text-xs sm:text-sm hover:bg-brand-100 hover:dark:bg-brand-900",
       },
       align: {
         default: "text-center justify-center items-center",
@@ -69,7 +69,7 @@ export const buttonVariants = cva(
       },
       isActive: {
         // to be used with variant="navlink"
-        true: "bg-brand-100 dark:bg-brand-800",
+        true: "bg-brand-100 dark:bg-brand-900",
         false: "",
       },
     },

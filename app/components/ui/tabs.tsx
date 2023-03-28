@@ -44,7 +44,7 @@ const TabsContent = forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Content
     className={cn(
-      "mt-2 rounded-md border border-surface-200 p-6 dark:border-surface-700",
+      "card-base mt-2 p-2",
       "focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 dark:focus:ring-brand-400 dark:focus:ring-offset-brand-900",
       className
     )}
