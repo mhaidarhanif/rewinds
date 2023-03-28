@@ -180,14 +180,18 @@ More details and references can also be checked from [`catamyst/stack`](https://
   - [Doppler](https://doppler.com) / [Dotenv](https://dotenv.org)
 - Deployment
   - [Vercel](https://vercel.com)
+- Domain/DNS
+  - [Cloudflare](https://cloudflare.com)
 
 [Check the GUIDE.md](./GUIDE.md) if you need some guide into the project setup, structure, and files.
 
 ## Extra
 
-(Not included in Rewinds) If you need separate backend/server/service:
+(Not included in Rewinds)
 
-- Core
+If you need separate backend/server/service:
+
+- Core/API
   - GraphQL
     - [GraphQL](https://graphql.org)
     - [GraphQL Yoga](https://github.com/dotansimha/graphql-yoga)
@@ -202,6 +206,8 @@ More details and references can also be checked from [`catamyst/stack`](https://
 - Payment
   - [Lemon Squeezy](https://lemonsqueezy.com)
   - [Stripe](https://stripe.com)
+- Misc
+  - [Inngest](https://inngest.com)
 
 # Development
 
@@ -316,6 +322,15 @@ vercel
 It is generally recommended to use a Git repository, because future commits will then automatically be deployed by Vercel, through its [Git Integration](https://vercel.com/docs/concepts/git).
 
 # Important Notes
+
+## Icons
+
+This template provide at least 2 icon set with SVG assets:
+
+- [Lucide](https://lucide.dev)
+- [Iconoir](https://iconoir.com)
+
+Recommended to use [Icones](https://icones.js.org) to search the icon names easily.
 
 ## Tailwind CSS Config
 
