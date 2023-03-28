@@ -54,7 +54,7 @@ export default function Route() {
   const { note } = useLoaderData<typeof loader>();
 
   if (!note) {
-    return <p>Note not found.</p>;
+    return <span>Note not found.</span>;
   }
 
   return (
@@ -92,17 +92,17 @@ export default function Route() {
       <section className="card stack-v">
         <header>
           <div className="stack-h-center text-xs">
-            <p>
+            <span>
               ID: <b>{note.id}</b>
-            </p>
+            </span>
             <span>·</span>
-            <p>
+            <span>
               Slug: <b>{note.slug}</b>
-            </p>
+            </span>
           </div>
 
           <div className="stack-h-center text-xs">
-            <p>
+            <span>
               <span>Created by: </span>
               <RemixLinkText
                 prefetch="intent"
@@ -110,7 +110,7 @@ export default function Route() {
               >
                 {note.user.name}
               </RemixLinkText>
-            </p>
+            </span>
             <span>·</span>
             <TooltipAuto content={<b>{formatDateTime(note.createdAt)}</b>}>
               <span>Created at: </span>

@@ -75,7 +75,7 @@ export default function Route() {
   });
 
   if (!user) {
-    return <p>User not found.</p>;
+    return <span>User not found.</span>;
   }
 
   return (
@@ -90,9 +90,9 @@ export default function Route() {
           className="space-y-2 disabled:opacity-80"
         >
           <div className="stack-h-center text-xs">
-            <p>
+            <span>
               ID: <b>{user.id}</b>
-            </p>
+            </span>
           </div>
 
           <input hidden {...conform.input(id)} defaultValue={user.id} />

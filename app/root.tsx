@@ -32,7 +32,7 @@ import { configDev, configDocumentLinks, configSite } from "~/configs";
 import { model } from "~/models";
 import { authenticator } from "~/services";
 import { themeSessionResolver } from "~/sessions";
-import { cn, createMetaData, getEnv } from "~/utils";
+import { cn, createCacheHeaders, createMetaData, getEnv } from "~/utils";
 
 import type {
   HeadersFunction,
@@ -92,7 +92,7 @@ export async function loader({ request }: LoaderArgs) {
     user,
   } satisfies RootLoaderData;
 
-  return json(loaderData);
+  return json(loaderData, { headers: createCacheHeaders(request, 15) });
 }
 
 /**

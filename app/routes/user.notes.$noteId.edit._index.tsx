@@ -88,7 +88,7 @@ export default function Route() {
   });
 
   if (!note) {
-    return <p>Note not found.</p>;
+    return <span>Note not found.</span>;
   }
 
   return (
@@ -107,12 +107,13 @@ export default function Route() {
           className="space-y-4 disabled:opacity-80"
         >
           <div className="dim stack-h-center text-xs">
-            <p>
+            <span>
               ID: <b>{note.id}</b>
-            </p>
-            <p>
+            </span>
+            <span>·</span>
+            <span>
               Slug: <b>{note.slug}</b>
-            </p>
+            </span>
           </div>
 
           <input hidden {...conform.input(id)} defaultValue={note.id} />

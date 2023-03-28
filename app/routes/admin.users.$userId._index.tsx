@@ -56,7 +56,7 @@ export default function Route() {
   const { user, isActionAllowed } = useLoaderData<typeof loader>();
 
   if (!user) {
-    return <p>User not found.</p>;
+    return <span>User not found.</span>;
   }
 
   return (
@@ -97,12 +97,13 @@ export default function Route() {
       <section className="card stack-v sm:gap-4">
         <header>
           <div className="stack-h-center text-xs">
-            <p>
+            <span>
               ID: <b>{user.id}</b>
-            </p>
-            <p>
+            </span>
+            <span>·</span>
+            <span>
               Role: <b>{user.role.name}</b>
-            </p>
+            </span>
           </div>
 
           <div className="stack-h-center text-xs">
@@ -136,22 +137,24 @@ export default function Route() {
 
       <section>
         <h5>Notes</h5>
-        <ul className="space-y-1">
-          {user.notes.length <= 0 && <p>No notes yet.</p>}
-          {user.notes.map((note) => {
-            return (
-              <li key={note.id}>
-                <RemixLink
-                  prefetch="intent"
-                  to={`/admin/notes/${note.id}`}
-                  className="card-sm hover:card-hover"
-                >
-                  {note.title}
-                </RemixLink>
-              </li>
-            );
-          })}
-        </ul>
+        {user.notes.length <= 0 && <span>No notes yet.</span>}
+        {user.notes.length > 0 && (
+          <ul className="space-y-1">
+            {user.notes.map((note) => {
+              return (
+                <li key={note.id}>
+                  <RemixLink
+                    prefetch="intent"
+                    to={`/admin/notes/${note.id}`}
+                    className="card-sm hover:card-hover"
+                  >
+                    {note.title}
+                  </RemixLink>
+                </li>
+              );
+            })}
+          </ul>
+        )}
       </section>
 
       <Debug name="user">{user}</Debug>
