@@ -96,7 +96,7 @@ export const query = {
         ],
       },
       select: fields.public,
-      orderBy: [{ name: "asc" }],
+      orderBy: [{ role: { sequence: "asc" } }, { name: "asc" }],
     });
   },
   async getMetrics({ id }: Pick<User, "id">) {

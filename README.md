@@ -232,7 +232,7 @@ cp -i .env.example .env
 # then edit `.env` as you prefer
 ```
 
-Or use [Doppler](https://doppler.com) CLI or [Dotenv](https://dotenv.org) CLI to manage them:
+Recommended to use [Doppler](https://doppler.com) CLI or [Dotenv](https://dotenv.org) CLI to manage them:
 
 ```sh
 doppler login
@@ -244,7 +244,7 @@ doppler secrets download --no-file --format env > .env
 
 ## Prisma ORM and Database Connection
 
-It's up to you which database/DBMS you want to use with the app. This repo is suited to use either your own MySQL instance or MySQL on PlanetScale. But don't use SQLite because it doesn't have `@db.Text` annotation and `model`.createMany()` function.
+It's up to you which database/DBMS you want to use with the app. This repo is suited to use either your own MySQL instance or MySQL on PlanetScale. But don't use SQLite because it doesn't have `@db.Text` annotation and `model.createMany()` function.
 
 For example:
 

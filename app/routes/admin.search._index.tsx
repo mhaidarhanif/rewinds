@@ -67,7 +67,7 @@ export default function Route() {
                       prefetch="intent"
                       className="card-sm hover:card-hover"
                     >
-                      {user.name} @{user.username}
+                      {user.name} @{user.username} <b>{user.role.name}</b>
                     </RemixLink>
                   </li>
                 );
@@ -88,7 +88,8 @@ export default function Route() {
                       to={`/admin/notes/${note.id}`}
                       className="card-sm hover:card-hover"
                     >
-                      {note.title} · {truncateText(note.content)}
+                      <b>{note.title}</b> · {note.description} ·{" "}
+                      {truncateText(note.content, 50)}
                     </RemixLink>
                   </li>
                 );

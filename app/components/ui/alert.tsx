@@ -23,7 +23,7 @@ export const alertVariants = cva(cn("flex items-center border-l border-l-2"), {
       lg: "py-2 px-3 text-lg gap-3",
     },
     radius: {
-      default: "rounded-sm",
+      default: "",
       rounded: "rounded",
     },
   },

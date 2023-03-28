@@ -1,7 +1,7 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import { Debug } from "~/components";
+import { Alert, Debug } from "~/components";
 import { createSitemap } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
@@ -18,6 +18,8 @@ export default function Route() {
 
   return (
     <div className="stack-v">
+      <Alert variant="warning">Under development</Alert>
+
       <header>
         <span>All Note Statuses</span>
       </header>
