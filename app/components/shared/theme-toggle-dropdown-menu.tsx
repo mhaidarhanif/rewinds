@@ -43,15 +43,15 @@ export function ThemeToggleDropdownMenu({ align = "end", size }: Props) {
 
       <DropdownMenuContent align={align} forceMount>
         <DropdownMenuItem onClick={() => handleChangeTheme("light")}>
-          <Sun className="size-sm mr-2" />
+          <Sun className="size-sm me-2" />
           <span>Light</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => handleChangeTheme("dark")}>
-          <Moon className="size-sm mr-2" />
+          <Moon className="size-sm me-2" />
           <span>Dark</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => handleChangeTheme("system")}>
-          <Laptop className="size-sm mr-2" />
+          <Laptop className="size-sm me-2" />
           <span>System</span>
         </DropdownMenuItem>
       </DropdownMenuContent>

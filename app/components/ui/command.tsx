@@ -45,7 +45,7 @@ const CommandInput = forwardRef<
     className="flex items-center border-b border-b-surface-100 px-4 dark:border-b-surface-700"
     cmdk-input-wrapper=""
   >
-    <Search className="size-sm mr-2 shrink-0 opacity-50" />
+    <Search className="size-sm me-2 shrink-0 opacity-50" />
     <CommandPrimitive.Input
       ref={ref}
       className={cn(
@@ -136,7 +136,7 @@ const CommandShortcut = ({
   return (
     <span
       className={cn(
-        "ml-auto text-xs tracking-widest text-surface-500",
+        "ms-auto text-xs tracking-widest text-surface-500",
         className
       )}
       {...props}

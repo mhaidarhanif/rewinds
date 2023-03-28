@@ -53,7 +53,7 @@ export function InputPassword({
         variant="subtle"
         onClick={handleClick}
         className={cn(
-          "height-[inherit] absolute inset-y-0 right-0 my-2 mr-2 font-mono"
+          "height-[inherit] me-2 absolute inset-y-0 right-0 my-2 font-mono"
         )}
       >
         {isShown ? <EyeOff className="size-xs" /> : <Eye className="size-xs" />}

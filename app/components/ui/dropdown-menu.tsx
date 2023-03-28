@@ -25,14 +25,14 @@ const DropdownMenuSubTrigger = forwardRef<
   <DropdownMenuPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      "flex select-none items-center rounded-sm py-1.5 px-2 text-sm font-medium outline-none focus:bg-surface-100 data-[state=open]:bg-surface-100 dark:focus:bg-surface-800 dark:data-[state=open]:bg-surface-800",
-      inset && "pl-8",
+      "flex select-none items-center rounded-sm py-1.5 px-2 text-sm font-medium outline-none focus:bg-surface-100 data-[state=open]:bg-surface-100 dark:focus:bg-surface-900 dark:data-[state=open]:bg-surface-900",
+      inset && "ps-8",
       className
     )}
     {...props}
   >
     {children}
-    <ChevronRight className="size-sm ml-auto" />
+    <ChevronRight className="size-sm ms-auto" />
   </DropdownMenuPrimitive.SubTrigger>
 ));
 DropdownMenuSubTrigger.displayName =
@@ -45,7 +45,7 @@ const DropdownMenuSubContent = forwardRef<
   <DropdownMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      "z-50 min-w-[8rem] overflow-hidden rounded-md border border-surface-100 bg-white p-1 text-surface-700 shadow-md animate-in slide-in-from-left-1 dark:border-surface-800 dark:bg-surface-900 dark:text-surface-300",
+      "z-50 min-w-[8rem] overflow-hidden rounded-md border-2 border-surface-100 bg-white p-1 text-surface-700 shadow-md animate-in slide-in-from-left-1 dark:border-surface-800 dark:bg-surface-900 dark:text-surface-300",
       className
     )}
     {...props}
@@ -64,7 +64,7 @@ const DropdownMenuContent = forwardRef<
       sideOffset={sideOffset}
       className={cn(
         "z-50 min-w-[8rem] overflow-hidden rounded-md p-1 shadow-md animate-in data-[side=right]:slide-in-from-left-2 data-[side=left]:slide-in-from-right-2 data-[side=bottom]:slide-in-from-top-2 data-[side=top]:slide-in-from-bottom-2",
-        "border border-surface-200 bg-white text-surface-700 dark:border-surface-700 dark:bg-surface-900 dark:text-surface-300",
+        "border-2 border-surface-200 bg-white text-surface-700 dark:border-surface-700 dark:bg-surface-900 dark:text-surface-300",
         className
       )}
       {...props}
@@ -83,7 +83,7 @@ const DropdownMenuItem = forwardRef<
     ref={ref}
     className={cn(
       "relative flex select-none items-center rounded-sm py-1.5 px-2 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
-      inset && "pl-8",
+      inset && "ps-8",
       className
     )}
     {...props}
@@ -98,7 +98,7 @@ const DropdownMenuCheckboxItem = forwardRef<
   <DropdownMenuPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      "relative flex select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
+      "ps-8 pe-2 relative flex select-none items-center rounded-sm py-1.5 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
       className
     )}
     checked={checked}
@@ -122,7 +122,7 @@ const DropdownMenuRadioItem = forwardRef<
   <DropdownMenuPrimitive.RadioItem
     ref={ref}
     className={cn(
-      "relative flex select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
+      "ps-8 pe-2 relative flex select-none items-center rounded-sm py-1.5 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
       className
     )}
     {...props}
@@ -147,7 +147,7 @@ const DropdownMenuLabel = forwardRef<
     ref={ref}
     className={cn(
       "px-2 py-1.5 font-semibold text-surface-900 dark:text-surface-100",
-      inset && "pl-8",
+      inset && "ps-8",
       className
     )}
     {...props}
@@ -177,7 +177,7 @@ const DropdownMenuShortcut = ({
   return (
     <span
       className={cn(
-        "ml-auto text-xs tracking-widest text-surface-500",
+        "ms-auto text-xs tracking-widest text-surface-500",
         className
       )}
       {...props}

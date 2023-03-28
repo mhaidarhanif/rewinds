@@ -44,11 +44,11 @@ export function ComboboxExample() {
         <div className="relative mt-1">
           <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
             <Combobox.Input
-              className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
+              className="ps-3 pe-10 w-full border-none py-2 text-sm leading-5 text-gray-900 focus:ring-0"
               displayValue={(item: Item) => item.name}
               onChange={(event) => setQuery(event.target.value)}
             />
-            <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
+            <Combobox.Button className="pe-2 absolute inset-y-0 right-0 flex items-center">
               <ChevronsUpDown
                 className="h-5 w-5 text-gray-400"
                 aria-hidden="true"
@@ -72,7 +72,7 @@ export function ComboboxExample() {
                   <Combobox.Option
                     key={item.id}
                     className={({ active }) =>
-                      `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                      `ps-10 pe-4 relative cursor-default select-none py-2 ${
                         active ? "bg-teal-600 text-white" : "text-gray-900"
                       }`
                     }
@@ -90,7 +90,7 @@ export function ComboboxExample() {
                         </span>
                         {selected ? (
                           <span
-                            className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
+                            className={`ps-3 absolute inset-y-0 left-0 flex items-center ${
                               active ? "text-white" : "text-teal-600"
                             }`}
                           >

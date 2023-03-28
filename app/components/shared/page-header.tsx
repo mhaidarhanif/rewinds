@@ -83,7 +83,7 @@ export function PageAdminHeader({
   return (
     <header
       className={cn(
-        "px-layout flex flex-wrap gap-2 sm:gap-4",
+        "px-layout flex flex-wrap gap-2",
         pageHeaderVariants({
           size,
           direction,

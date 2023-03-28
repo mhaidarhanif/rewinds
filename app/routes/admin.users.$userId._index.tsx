@@ -95,11 +95,11 @@ export default function Route() {
         </div>
       </header>
 
-      <section className="card stack-v sm:gap-4">
+      <section className="card space-y-4">
         <header>
           <div className="stack-h-center text-xs">
             <span>
-              ID: <b>{user.id}</b>
+              ID: <code>{user.id}</code>
             </span>
             <span>·</span>
             <span>

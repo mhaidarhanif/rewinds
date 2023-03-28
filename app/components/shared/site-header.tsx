@@ -214,15 +214,11 @@ export function HeaderNavigationMenu({
           (item, index) =>
             item.to && (
               <DropdownMenuItem key={index} asChild>
-                <RemixNavLink
-                  to={item.to}
-                  prefetch="intent"
-                  className={({ isActive }) =>
-                    cn(buttonVariants({ variant: "navlink", isActive }))
-                  }
-                >
-                  <Icon name={item.icon} />
-                  <span>{item.name}</span>
+                <RemixNavLink to={item.to} prefetch="intent">
+                  <div className={cn("flex gap-2")}>
+                    <Icon name={item.icon} />
+                    <span>{item.name}</span>
+                  </div>
                 </RemixNavLink>
               </DropdownMenuItem>
             )
@@ -270,7 +266,7 @@ export function HeaderUserMenu({
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
             <RemixNavLink prefetch="intent" to={`/${user.username}`}>
-              <User className="size-sm mr-2" />
+              <User className="size-sm me-2" />
               <span>Profile</span>
               <DropdownMenuShortcut>⌘⇧P</DropdownMenuShortcut>
             </RemixNavLink>
@@ -278,7 +274,7 @@ export function HeaderUserMenu({
 
           <DropdownMenuItem asChild>
             <RemixNavLink prefetch="intent" to={`/user/dashboard`}>
-              <User className="size-sm mr-2" />
+              <User className="size-sm me-2" />
               <span>Dashboard</span>
               <DropdownMenuShortcut>⌘⇧D</DropdownMenuShortcut>
             </RemixNavLink>
@@ -286,26 +282,26 @@ export function HeaderUserMenu({
 
           <DropdownMenuItem asChild>
             <RemixNavLink to={`/user/settings`}>
-              <Settings className="size-sm mr-2" />
+              <Settings className="size-sm me-2" />
               <span>Settings</span>
               <DropdownMenuShortcut>⌘⇧S</DropdownMenuShortcut>
             </RemixNavLink>
           </DropdownMenuItem>
 
           <DropdownMenuItem>
-            <CreditCard className="size-sm mr-2" />
+            <CreditCard className="size-sm me-2" />
             <span>Billing</span>
             <DropdownMenuShortcut>⌘⇧B</DropdownMenuShortcut>
           </DropdownMenuItem>
 
           <DropdownMenuItem>
-            <BellNotification className="size-sm mr-2" />
+            <BellNotification className="size-sm me-2" />
             <span>Notifications</span>
             <DropdownMenuShortcut>⌘⇧O</DropdownMenuShortcut>
           </DropdownMenuItem>
 
           <DropdownMenuItem>
-            <Keyboard className="size-sm mr-2" />
+            <Keyboard className="size-sm me-2" />
             <span>Command Palette</span>
             <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
           </DropdownMenuItem>
@@ -315,7 +311,7 @@ export function HeaderUserMenu({
 
         <DropdownMenuItem asChild>
           <RemixNavLink to="/logout">
-            <LogOut className="size-sm mr-2" />
+            <LogOut className="size-sm me-2" />
             <span>Log out</span>
           </RemixNavLink>
         </DropdownMenuItem>

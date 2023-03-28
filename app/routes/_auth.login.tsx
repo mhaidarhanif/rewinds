@@ -122,7 +122,7 @@ export default function Route() {
         </PageHeader>
       }
     >
-      <div className="mx-auto w-full max-w-xs">
+      <div className="mx-auto w-full max-w-sm">
         <RemixForm {...form.props} method="post" className="space-y-4">
           <fieldset
             className="space-y-2 disabled:opacity-80"

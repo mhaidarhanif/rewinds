@@ -16,6 +16,7 @@ import {
   CopyButton,
   HeaderNavigationMenu,
   Input,
+  InputPassword,
   Label,
   Layout,
   Logo,
@@ -513,36 +514,32 @@ export function ExampleForm() {
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
         <RemixForm method="post" className="space-y-2">
           <div className="space-y-1">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="example-email">Email</Label>
             <Input
               type="email"
               id="example-email"
               placeholder="name@example.com"
             />
             <p className="text-sm text-surface-500">
-              Enter your email address.
+              Your most active email address
             </p>
           </div>
 
           <div className="space-y-1">
-            <Label htmlFor="password">Password</Label>
-            <Input
-              type="password"
-              id="example-password"
-              placeholder="********"
-            />
-            <p className="text-sm text-surface-500">Enter your password.</p>
+            <Label htmlFor="example-password">Password</Label>
+            <InputPassword id="example-password" />
+            <p className="text-sm text-surface-500">At least 8 characters</p>
           </div>
 
           <div className="space-y-1">
-            <Label htmlFor="message">Message</Label>
+            <Label htmlFor="example-message">Message</Label>
             <TextArea
               id="example-message"
               placeholder="Type your message here..."
               rows={5}
             />
             <p className="text-sm text-surface-500">
-              Your message will be sent to our team.
+              Your message will be sent to our team
             </p>
           </div>
 

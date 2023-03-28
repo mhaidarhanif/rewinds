@@ -71,7 +71,7 @@ export function AdminSidebar() {
         "hidden sm:block",
         "sticky top-0 h-screen", // sticky sidebar
         "min-w-fit space-y-4 p-2 sm:flex sm:flex-col sm:p-4",
-        "border-r border-surface-200 bg-white dark:border-surface-700 dark:bg-surface-900"
+        "border-r-2 border-surface-200 bg-white dark:border-surface-700 dark:bg-surface-900"
       )}
     >
       <div className="stack-h-center">
@@ -110,7 +110,7 @@ export function AdminSidebar() {
                 <span>{navItem.name}</span>
               </RemixNavLink>
               {navItem.items.length > 0 && (
-                <ul className="ml-4 space-y-1">
+                <ul className="ms-4 space-y-1">
                   {navItem.items.map((item) => {
                     return (
                       <li key={item.name}>

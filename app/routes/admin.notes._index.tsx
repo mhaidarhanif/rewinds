@@ -44,12 +44,12 @@ export default function Route() {
                 className="card hover:card-hover block space-y-1"
               >
                 <h3>{note.title}</h3>
-                <p className="text-xs">{note.slug}</p>
+                <code className="text-xs">{note.slug}</code>
                 <div className="stack-h-center">
                   <AvatarAuto user={note.user} className="size-md" />
-                  <p>
+                  <span className="text-sm">
                     {note.user.name} (@{note.user.username})
-                  </p>
+                  </span>
                 </div>
               </RemixLink>
             </li>

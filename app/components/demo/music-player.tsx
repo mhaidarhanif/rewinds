@@ -345,7 +345,7 @@ export function MusicPlayerDemo() {
             <aside className="pb-12">
               <div className="px-8 py-6">
                 <p className="flex items-center text-2xl font-semibold tracking-tight">
-                  <Music className="mr-2" />
+                  <Music className="me-2" />
                   <span>Music</span>
                 </p>
               </div>
@@ -360,7 +360,7 @@ export function MusicPlayerDemo() {
                       size="sm"
                       className="w-full justify-start"
                     >
-                      <PlayCircle className="size-sm mr-2" />
+                      <PlayCircle className="size-sm me-2" />
                       Listen Now
                     </Button>
                     <Button
@@ -368,7 +368,7 @@ export function MusicPlayerDemo() {
                       size="sm"
                       className="w-full justify-start"
                     >
-                      <LayoutGrid className="size-sm mr-2" />
+                      <LayoutGrid className="size-sm me-2" />
                       Browse
                     </Button>
                     <Button
@@ -376,7 +376,7 @@ export function MusicPlayerDemo() {
                       size="sm"
                       className="w-full justify-start"
                     >
-                      <Radio className="size-sm mr-2" />
+                      <Radio className="size-sm me-2" />
                       Radio
                     </Button>
                   </div>
@@ -391,7 +391,7 @@ export function MusicPlayerDemo() {
                       size="sm"
                       className="w-full justify-start"
                     >
-                      <ListMusic className="size-sm mr-2" />
+                      <ListMusic className="size-sm me-2" />
                       Playlists
                     </Button>
                     <Button
@@ -399,7 +399,7 @@ export function MusicPlayerDemo() {
                       size="sm"
                       className="w-full justify-start"
                     >
-                      <Music2 className="size-sm mr-2" />
+                      <Music2 className="size-sm me-2" />
                       Songs
                     </Button>
                     <Button
@@ -407,7 +407,7 @@ export function MusicPlayerDemo() {
                       size="sm"
                       className="w-full justify-start"
                     >
-                      <User className="size-sm mr-2" />
+                      <User className="size-sm me-2" />
                       Made for You
                     </Button>
                     <Button
@@ -415,7 +415,7 @@ export function MusicPlayerDemo() {
                       size="sm"
                       className="w-full justify-start"
                     >
-                      <Mic2 className="size-sm mr-2" />
+                      <Mic2 className="size-sm me-2" />
                       Artists
                     </Button>
                     <Button
@@ -423,7 +423,7 @@ export function MusicPlayerDemo() {
                       size="sm"
                       className="w-full justify-start"
                     >
-                      <Library className="size-sm mr-2" />
+                      <Library className="size-sm me-2" />
                       Albums
                     </Button>
                   </div>
@@ -441,7 +441,7 @@ export function MusicPlayerDemo() {
                           size="sm"
                           className="w-full justify-start font-normal"
                         >
-                          <ListMusic className="size-sm mr-2" />
+                          <ListMusic className="size-sm me-2" />
                           {playlist}
                         </Button>
                       ))}
@@ -464,7 +464,7 @@ export function MusicPlayerDemo() {
                         Upcoming
                       </TabsTrigger>
                     </TabsList>
-                    <div className="ml-auto mr-4">
+                    <div className="me-4 ms-auto">
                       <h3 className="text-xl">Welcome back, Haidar</h3>
                     </div>
                     <DropdownMenu>
@@ -492,22 +492,22 @@ export function MusicPlayerDemo() {
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
                           <DropdownMenuItem>
-                            <User className="size-sm mr-2" />
+                            <User className="size-sm me-2" />
                             <span>Profile</span>
                             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
                           </DropdownMenuItem>
                           <DropdownMenuItem>
-                            <CreditCard className="size-sm mr-2" />
+                            <CreditCard className="size-sm me-2" />
                             <span>Billing</span>
                             <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
                           </DropdownMenuItem>
                           <DropdownMenuItem>
-                            <Settings className="size-sm mr-2" />
+                            <Settings className="size-sm me-2" />
                             <span>Settings</span>
                             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
                           </DropdownMenuItem>
                           <DropdownMenuItem>
-                            <Keyboard className="size-sm mr-2" />
+                            <Keyboard className="size-sm me-2" />
                             <span>Keyboard shortcuts</span>
                             <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
                           </DropdownMenuItem>
@@ -515,27 +515,27 @@ export function MusicPlayerDemo() {
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
                           <DropdownMenuItem>
-                            <Users className="size-sm mr-2" />
+                            <Users className="size-sm me-2" />
                             <span>Team</span>
                           </DropdownMenuItem>
                           <DropdownMenuSub>
                             <DropdownMenuSubTrigger>
-                              <UserPlus className="size-sm mr-2" />
+                              <UserPlus className="size-sm me-2" />
                               <span>Invite users</span>
                             </DropdownMenuSubTrigger>
                             <DropdownMenuPortal>
                               <DropdownMenuSubContent forceMount>
                                 <DropdownMenuItem>
-                                  <Mail className="size-sm mr-2" />
+                                  <Mail className="size-sm me-2" />
                                   <span>Email</span>
                                 </DropdownMenuItem>
                                 <DropdownMenuItem>
-                                  <MessageSquare className="size-sm mr-2" />
+                                  <MessageSquare className="size-sm me-2" />
                                   <span>Message</span>
                                 </DropdownMenuItem>
                                 <DropdownMenuSeparator />
                                 <DropdownMenuItem>
-                                  <PlusCircle className="size-sm mr-2" />
+                                  <PlusCircle className="size-sm me-2" />
                                   <span>More...</span>
                                 </DropdownMenuItem>
                               </DropdownMenuSubContent>
@@ -544,7 +544,7 @@ export function MusicPlayerDemo() {
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>
-                          <LogOut className="size-sm mr-2" />
+                          <LogOut className="size-sm me-2" />
                           <span>Log out</span>
                           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
                         </DropdownMenuItem>
@@ -628,7 +628,7 @@ export function MusicPlayerDemo() {
                         <Dialog>
                           <DialogTrigger>
                             <Button size="sm" className="relative">
-                              <Plus className="size-sm mr-2" />
+                              <Plus className="size-sm me-2" />
                               Add Podcast
                               <DemoIndicator className="-top-1 -right-1 z-30" />
                             </Button>
@@ -699,13 +699,13 @@ function AlbumArtwork({
             <ContextMenuSubTrigger>Add to Playlist</ContextMenuSubTrigger>
             <ContextMenuSubContent className="w-48">
               <ContextMenuItem>
-                <PlusCircle className="size-sm mr-2" />
+                <PlusCircle className="size-sm me-2" />
                 New Playlist
               </ContextMenuItem>
               <ContextMenuSeparator />
               {playlists.map((playlist) => (
                 <ContextMenuItem key={playlist}>
-                  <ListMusic className="size-sm mr-2" /> {playlist}
+                  <ListMusic className="size-sm me-2" /> {playlist}
                 </ContextMenuItem>
               ))}
             </ContextMenuSubContent>

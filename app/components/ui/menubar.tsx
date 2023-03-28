@@ -54,13 +54,13 @@ const MenubarSubTrigger = forwardRef<
     ref={ref}
     className={cn(
       "flex cursor-default select-none items-center rounded-sm py-1.5 px-2 text-sm font-medium outline-none focus:bg-surface-100 data-[state=open]:bg-surface-100 dark:focus:bg-surface-700 dark:data-[state=open]:bg-surface-700",
-      inset && "pl-8",
+      inset && "ps-8",
       className
     )}
     {...props}
   >
     {children}
-    <ChevronRight className="size-sm ml-auto" />
+    <ChevronRight className="size-sm ms-auto" />
   </MenubarPrimitive.SubTrigger>
 ));
 MenubarSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName;
@@ -115,7 +115,7 @@ const MenubarItem = forwardRef<
     ref={ref}
     className={cn(
       "relative flex cursor-default select-none items-center rounded-sm py-1.5 px-2 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
-      inset && "pl-8",
+      inset && "ps-8",
       className
     )}
     {...props}
@@ -130,7 +130,7 @@ const MenubarCheckboxItem = forwardRef<
   <MenubarPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
+      "ps-8 pe-2 relative flex cursor-default select-none items-center rounded-sm py-1.5 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
       className
     )}
     checked={checked}
@@ -153,7 +153,7 @@ const MenubarRadioItem = forwardRef<
   <MenubarPrimitive.RadioItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
+      "ps-8 pe-2 relative flex cursor-default select-none items-center rounded-sm py-1.5 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
       className
     )}
     {...props}
@@ -178,7 +178,7 @@ const MenubarLabel = forwardRef<
     ref={ref}
     className={cn(
       "px-2 py-1.5 text-sm font-semibold text-surface-900 dark:text-surface-300",
-      inset && "pl-8",
+      inset && "ps-8",
       className
     )}
     {...props}
@@ -208,7 +208,7 @@ const MenubarShortcut = ({
   return (
     <span
       className={cn(
-        "ml-auto text-xs tracking-widest text-surface-500",
+        "ms-auto text-xs tracking-widest text-surface-500",
         className
       )}
       {...props}

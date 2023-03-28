@@ -4,10 +4,10 @@
 
 @layer base {
   body {
-    @apply bg-surface-50 dark:bg-surface-900;
-    @apply text-surface-900 dark:text-surface-50;
+    @apply bg-surface-50 dark:bg-surface-950;
+    @apply text-surface-950 dark:text-surface-50;
     @apply min-h-screen scroll-smooth font-sans antialiased transition-colors;
-    @apply selection:bg-brand-500/20 selection:text-brand-900 dark:selection:bg-brand-500/20 dark:selection:text-brand-100;
+    @apply selection:bg-brand-500/20 selection:text-brand-950 dark:selection:bg-brand-500/20 dark:selection:text-brand-100;
   }
   h1,
   h2,
@@ -41,18 +41,21 @@
   b {
     @apply font-bold;
   }
+  code {
+    @apply font-mono;
+  }
 }
 
 @layer components {
   /* shouldn't be a React component, because any element can be styled as a card */
   .card-base {
-    @apply rounded border border-surface-200 bg-white dark:border-surface-700 dark:bg-surface-800/20;
+    @apply rounded border-2 border-surface-200 bg-white dark:border-surface-700 dark:bg-surface-900;
   }
   .card {
-    @apply card-base block p-4;
+    @apply card-base block py-2 px-3;
   }
   .card-sm {
-    @apply card-base py-2 px-3;
+    @apply card-base block py-1 px-2;
   }
   .card-hover {
     @apply bg-surface-100/50 dark:bg-surface-800/50;

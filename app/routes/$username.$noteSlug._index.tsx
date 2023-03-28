@@ -117,7 +117,7 @@ export default function Route() {
         </header>
       }
     >
-      <aside className="flex items-center gap-2 sm:gap-4">
+      <aside className="flex items-center gap-2">
         <AvatarAuto user={note.user} className="size-2xl" />
         <div>
           <h4>

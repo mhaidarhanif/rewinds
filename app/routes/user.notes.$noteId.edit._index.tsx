@@ -108,11 +108,11 @@ export default function Route() {
         >
           <div className="dim stack-h-center text-xs">
             <span>
-              ID: <b>{note.id}</b>
+              ID: <code>{note.id}</code>
             </span>
             <span>·</span>
             <span>
-              Slug: <b>{note.slug}</b>
+              Slug: <code>{note.slug}</code>
             </span>
           </div>
 

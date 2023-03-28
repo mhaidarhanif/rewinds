@@ -91,7 +91,7 @@ export default function Route() {
         >
           <div className="stack-h-center text-xs">
             <span>
-              ID: <b>{user.id}</b>
+              ID: <code>{user.id}</code>
             </span>
           </div>
 

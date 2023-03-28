@@ -26,11 +26,12 @@ module.exports = {
   },
   rules: {
     "@typescript-eslint/no-empty-interface": "off",
-    "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
     "react/self-closing-comp": "warn",
     "tailwindcss/classnames-order": "off",
     "tailwindcss/no-arbitrary-value": "warn",
+    "tailwindcss/no-custom-classname": "off",
     "import/order": [
       "warn",
       {

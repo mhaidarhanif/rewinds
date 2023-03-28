@@ -37,7 +37,7 @@ export default function Route() {
               <RemixLink
                 prefetch="intent"
                 to={user.id}
-                className="card hover:card-hover stack-h-center sm:gap-4"
+                className="card hover:card-hover stack-h-center sm:gap-2"
               >
                 <AvatarAuto user={user} className="size-2xl" />
                 <div>
