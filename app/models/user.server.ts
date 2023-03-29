@@ -224,7 +224,7 @@ export const mutation = {
   deleteByEmail({ email }: Pick<User, "email">) {
     return prisma.user.delete({ where: { email } });
   },
-  updateName({ name }: Pick<User, "name">) {
+  updateName({ id, name }: Pick<User, "id" | "name">) {
     const nameIsUnallowed = dataUnallowedUserUsernames.find((user) =>
       name.toLowerCase().includes(user.username)
     );
@@ -232,7 +232,7 @@ export const mutation = {
       return { error: { name: `Name ${name} is not allowed` } };
     }
   },
-  updateUsername({ username }: Pick<User, "username">) {
+  updateUsername({ id, username }: Pick<User, "id" | "username">) {
     const usernameIsUnallowed = dataUnallowedUserUsernames.find((user) =>
       username.toLowerCase().includes(user.username)
     );

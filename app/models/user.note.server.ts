@@ -19,7 +19,7 @@ export const query = {
   },
   getById({ id, userId }: Pick<Note, "id" | "userId">) {
     return prisma.note.findFirst({
-      where: { id, userId: userId },
+      where: { id, userId },
       include: { user: { select: model.user.fields.public } },
     });
   },

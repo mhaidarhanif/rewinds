@@ -31,7 +31,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
     const clones = validChildren.map((child, index) => {
       return cloneElement(child, {
         addSeparator,
-        separator: separator,
+        separator,
         lastChild: validChildren.length === index + 1,
       });
     });

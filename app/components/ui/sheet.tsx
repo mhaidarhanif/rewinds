@@ -46,7 +46,7 @@ const SheetOverlay = forwardRef<
 >(({ className, children, ...props }, ref) => (
   <SheetPrimitive.Overlay
     className={cn(
-      "fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-all duration-100 data-[state=closed]:animate-out data-[state=open]:fade-in data-[state=closed]:fade-out",
+      "fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-all duration-100 data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in",
       className
     )}
     {...props}
@@ -161,7 +161,7 @@ const SheetContent = forwardRef<
       {children}
       <SheetPrimitive.Close
         className={cn(
-          "absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-surface-400 focus:ring-offset-2 disabled:pointer-events-none dark:focus:ring-surface-400 dark:focus:ring-offset-surface-900",
+          "absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-surface-400 focus:ring-offset-2 disabled:pointer-events-none dark:focus:ring-surface-400 dark:focus:ring-offset-surface-900",
           "data-[state=open]:bg-surface-100 dark:data-[state=open]:bg-surface-800"
         )}
       >

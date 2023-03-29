@@ -1,43 +1,57 @@
 import { z } from "zod";
 
-const userName = z
+const id = z.string({ required_error: "Existing id is required" });
+
+const name = z
   .string({ required_error: "Full Name is required" })
   .min(1, "Full Name at least 1 character")
   .max(50, "Full Name limited to 50 characters");
 
-const userUsername = z
+const username = z
   .string({ required_error: "Username is required" })
   .regex(/^[a-zA-Z0-9_]+$/, "Only alphabet, number, underscore allowed")
   .min(5, "Username at least 5 characters")
   .max(20, "Username limited to 20 characters");
 
-const userEmail = z
+const email = z
   .string({ required_error: "Email is required" })
   .email("Email is invalid");
 
-const userPassword = z
+const password = z
   .string({ required_error: "Password is required" })
   .min(8, "Password length at least 8 characters")
   .max(100, "Password length limited to 100 characters");
 
-const userRoleSymbol = z.string({ required_error: "Role is required" });
+const roleSymbol = z.string({ required_error: "Role is required" });
 
 export const schemaUserRegister = z.object({
-  name: userName,
-  username: userUsername,
-  email: userEmail,
-  password: userPassword,
+  name,
+  username,
+  email,
+  password,
 });
 
 export const schemaUserLogin = z.object({
-  email: userEmail,
-  password: userPassword,
+  email,
+  password,
+});
+
+export const schemaUserEditData = z.object({
+  id,
+  name,
+  username,
+  email,
+});
+
+export const schemaUserEditUsername = z.object({
+  id,
+  username,
 });
 
 export const schemaAdminUserEdit = z.object({
-  id: z.string({ required_error: "Existing id is required" }),
-  name: userName,
-  username: userUsername,
-  email: userEmail,
-  roleSymbol: userRoleSymbol,
+  id,
+  name,
+  username,
+  email,
+  roleSymbol,
 });
