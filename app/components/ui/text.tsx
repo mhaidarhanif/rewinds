@@ -40,7 +40,7 @@ export function TextBlockquote({
   return (
     <blockquote
       className={cn(
-        "ps-6 mt-6 border-l-2 border-slate-300 italic text-slate-800 dark:border-slate-600 dark:text-slate-200",
+        "mt-6 border-l-2 border-slate-300 ps-6 italic text-slate-800 dark:border-slate-600 dark:text-slate-200",
         className
       )}
       {...props}

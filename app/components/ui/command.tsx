@@ -92,7 +92,7 @@ const CommandGroup = forwardRef<
   <CommandPrimitive.Group
     ref={ref}
     className={cn(
-      "overflow-hidden py-3 px-2 text-surface-700 dark:text-surface-400 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:pb-1.5 [&_[cmdk-group-heading]]:text-sm [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:text-surface-900 [&_[cmdk-group-heading]]:dark:text-surface-300",
+      "overflow-hidden px-2 py-3 text-surface-700 dark:text-surface-400 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:pb-1.5 [&_[cmdk-group-heading]]:text-sm [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:text-surface-900 [&_[cmdk-group-heading]]:dark:text-surface-300",
       className
     )}
     {...props}
@@ -120,7 +120,7 @@ const CommandItem = forwardRef<
   <CommandPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-md py-1.5 px-2 text-sm font-medium outline-none aria-selected:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:aria-selected:bg-surface-700",
+      "relative flex cursor-default select-none items-center rounded-md px-2 py-1.5 text-sm font-medium outline-none aria-selected:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:aria-selected:bg-surface-700",
       className
     )}
     {...props}

@@ -7,6 +7,7 @@ import {
   PageProgress,
   Balancer,
 } from "~/components";
+import { AppleMac } from "~/icons";
 import { createSitemap, createMetaData, createDocumentLinks } from "~/utils";
 
 import type { LinksFunction } from "@remix-run/node";
@@ -90,7 +91,9 @@ export default function Route() {
         <h4>Heading Four</h4>
         <p>Here are some foods.</p>
         <ol>
-          <li>Apple </li>
+          <li>
+            Apple <AppleMac className="inline-icon" /> <span></span>
+          </li>
           <li>Banana</li>
           <ul>
             <li>Coconut</li>

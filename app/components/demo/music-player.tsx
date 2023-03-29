@@ -178,7 +178,7 @@ const madeForYouAlbums: Album[] = [
 export function MusicPlayerDemo() {
   return (
     <div className="overflow-hidden rounded-md border border-surface-200 bg-gradient-to-b from-brand-300 to-blue-300 shadow-2xl dark:border-surface-800 dark:from-brand-800 dark:to-blue-800">
-      <Menubar className="rounded-none border-b border-none dark:bg-surface-900">
+      <Menubar className="rounded-none border-b border-none dark:bg-surface-950">
         <MenubarMenu>
           <MenubarTrigger className="stack-h-center font-bold">
             <Music className="size-sm" />
@@ -340,7 +340,7 @@ export function MusicPlayerDemo() {
         </MenubarMenu>
       </Menubar>
       <div className="p-8">
-        <div className="rounded-md bg-white shadow-2xl transition-all dark:bg-surface-900">
+        <div className="rounded-md bg-white shadow-2xl transition-all dark:bg-surface-950">
           <div className="grid grid-cols-4 xl:grid-cols-5">
             <aside className="pb-12">
               <div className="px-8 py-6">
@@ -564,7 +564,7 @@ export function MusicPlayerDemo() {
                     </div>
                     <Separator className="my-4" />
                     <div className="relative">
-                      <DemoIndicator className="right-auto left-24 top-32 z-30" />
+                      <DemoIndicator className="left-24 right-auto top-32 z-30" />
                       <div className="relative flex space-x-4">
                         {listenNowAlbums.map((album) => (
                           <AlbumArtwork
@@ -585,7 +585,7 @@ export function MusicPlayerDemo() {
                     </div>
                     <Separator className="my-4" />
                     <div className="relative">
-                      <DemoIndicator className="top-32 right-auto left-16 z-30" />
+                      <DemoIndicator className="left-16 right-auto top-32 z-30" />
                       <ScrollArea>
                         <div className="flex space-x-4 pb-4">
                           {madeForYouAlbums.map((album) => (
@@ -622,7 +622,7 @@ export function MusicPlayerDemo() {
                         <h3 className="mt-4 text-lg font-semibold text-surface-900 dark:text-surface-50">
                           No episodes added
                         </h3>
-                        <p className="mt-2 mb-4 text-sm text-surface-500 dark:text-surface-400">
+                        <p className="mb-4 mt-2 text-sm text-surface-500 dark:text-surface-400">
                           You have not added any podcasts. Add one below.
                         </p>
                         <Dialog>
@@ -630,7 +630,7 @@ export function MusicPlayerDemo() {
                             <Button size="sm" className="relative">
                               <Plus className="size-sm me-2" />
                               Add Podcast
-                              <DemoIndicator className="-top-1 -right-1 z-30" />
+                              <DemoIndicator className="-right-1 -top-1 z-30" />
                             </Button>
                           </DialogTrigger>
                           <DialogContent>
@@ -735,7 +735,7 @@ export function DemoIndicator({ className }: DemoIndicatorProps) {
   return (
     <span
       className={cn(
-        "size-md absolute top-1 right-0 flex animate-bounce items-center justify-center",
+        "size-md absolute right-0 top-1 flex animate-bounce items-center justify-center",
         className
       )}
     >

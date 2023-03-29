@@ -16,8 +16,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         ref={ref}
         spellCheck={false}
         className={cn(
-          "bg-surface-50 dark:bg-surface-900",
-          "flex h-10 w-full rounded-md border border-surface-300 py-2 px-3 text-sm placeholder:text-surface-400 focus:outline-none focus:ring-2 focus:ring-surface-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-surface-700 dark:text-surface-50 dark:placeholder:text-surface-700 dark:focus:ring-surface-400 dark:focus:ring-offset-surface-900",
+          "bg-white dark:bg-surface-900",
+          "flex h-10 w-full rounded-md border-2 border-surface-300 px-3 py-2 text-sm placeholder:text-surface-400 focus:border-surface-300 focus:outline-none focus:ring-2 focus:ring-surface-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-surface-700 dark:text-surface-50 dark:placeholder:text-surface-700 dark:focus:ring-surface-400 dark:focus:ring-offset-surface-900",
           className
         )}
         {...props}
@@ -53,7 +53,7 @@ export function InputPassword({
         variant="subtle"
         onClick={handleClick}
         className={cn(
-          "height-[inherit] me-2 absolute inset-y-0 right-0 my-2 font-mono"
+          "height-[inherit] absolute inset-y-0 right-0 my-2 me-2 font-mono"
         )}
       >
         {isShown ? <EyeOff className="size-xs" /> : <Eye className="size-xs" />}

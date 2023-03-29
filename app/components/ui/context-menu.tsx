@@ -25,7 +25,7 @@ const ContextMenuSubTrigger = forwardRef<
   <ContextMenuPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      "flex cursor-default select-none items-center rounded-sm py-1.5 px-2 text-sm font-medium outline-none focus:bg-surface-100 data-[state=open]:bg-surface-100 dark:focus:bg-surface-700 dark:data-[state=open]:bg-surface-700",
+      "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm font-medium outline-none focus:bg-surface-100 data-[state=open]:bg-surface-100 dark:focus:bg-surface-700 dark:data-[state=open]:bg-surface-700",
       inset && "ps-8",
       className
     )}
@@ -78,7 +78,7 @@ const ContextMenuItem = forwardRef<
   <ContextMenuPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-1.5 px-2 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
+      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
       inset && "ps-8",
       className
     )}
@@ -94,7 +94,7 @@ const ContextMenuCheckboxItem = forwardRef<
   <ContextMenuPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      "ps-8 pe-2 relative flex cursor-default select-none items-center rounded-sm py-1.5 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
+      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pe-2 ps-8 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
       className
     )}
     checked={checked}
@@ -118,7 +118,7 @@ const ContextMenuRadioItem = forwardRef<
   <ContextMenuPrimitive.RadioItem
     ref={ref}
     className={cn(
-      "ps-8 pe-2 relative flex cursor-default select-none items-center rounded-sm py-1.5 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
+      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pe-2 ps-8 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
       className
     )}
     {...props}

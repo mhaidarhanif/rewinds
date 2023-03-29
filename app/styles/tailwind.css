@@ -153,6 +153,7 @@
     @apply prose-ul:prose-list-styles;
     @apply prose-ol:prose-list-styles;
     @apply prose-code:prose-code-styles;
+    @apply text-surface-900 dark:text-surface-50;
   }
   .prose-p-styles {
     @apply sm:text-lg;

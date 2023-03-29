@@ -91,7 +91,7 @@ export default function Route() {
               type="text"
               placeholder="Add a title"
               defaultValue={configDev.isDevelopment ? "A new example" : ""}
-              className="border-none px-0 sm:text-xl"
+              className="border-none px-1 sm:text-xl"
             />
             <Alert id={title.errorId}>{title.error}</Alert>
           </div>
@@ -103,7 +103,7 @@ export default function Route() {
               type="text"
               placeholder="Add a description"
               defaultValue={configDev.isDevelopment ? "The description" : ""}
-              className="border-none px-0 sm:text-xl"
+              className="border-none px-1 sm:text-xl"
             />
             <Alert id={description.errorId}>{description.error}</Alert>
           </div>
@@ -119,7 +119,7 @@ export default function Route() {
                   ? "Here is the long content about the note."
                   : ""
               }
-              className="border-none px-0 sm:text-xl"
+              className="border-none px-1 sm:text-xl"
             />
             <Alert id={content.errorId}>{content.error}</Alert>
           </div>

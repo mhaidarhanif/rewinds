@@ -11,9 +11,9 @@ export function SearchForm({ action = "/search" }: { action?: string }) {
           type="search"
           placeholder="Search..."
           autoComplete="off"
-          className="ps-9 block w-full placeholder:text-surface-500 dark:placeholder:text-surface-400"
+          className="block w-full ps-9 placeholder:text-surface-500 dark:placeholder:text-surface-400"
         />
-        <span className="ps-3 pointer-events-none absolute flex">
+        <span className="pointer-events-none absolute flex ps-3">
           <Search className="size-sm" />
         </span>
       </fieldset>

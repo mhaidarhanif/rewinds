@@ -5,6 +5,7 @@
 
 export {
   AddUser,
+  AppleMac,
   AppWindow,
   ArrowSeparateVertical,
   BellNotification,
