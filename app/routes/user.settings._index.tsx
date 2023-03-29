@@ -48,7 +48,7 @@ export async function action({ request }: ActionArgs) {
       return badRequest(submission);
     }
     const result = await model.user.mutation.update(submission.value);
-    if (result.error) {
+    if (result?.error) {
       return forbidden({ ...submission, error: result.error });
     }
     return json(submission);

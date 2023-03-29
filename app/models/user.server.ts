@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client";
 import bcrypt from "bcryptjs";
 
 import { configUser } from "~/configs";
@@ -246,29 +247,28 @@ export const mutation = {
       return { error: { username: `Username ${username} is not allowed` } };
     }
 
-    const userUsername = await prisma.user.findUnique({
-      where: { username: username.trim() },
-    });
-    if (userUsername) {
-      return { error: { username: `Username ${username} is already taken` } };
+    try {
+      const user = await prisma.user.update({
+        where: { id },
+        data: { name, username, email },
+      });
+
+      return {
+        user,
+        error: null,
+      };
+    } catch (error) {
+      if (
+        error instanceof Prisma.PrismaClientKnownRequestError &&
+        error.code === "P2002"
+      ) {
+        return {
+          error: {
+            username: `Username ${username} might already taken`,
+            email: `Email ${email} might already used`,
+          },
+        };
+      }
     }
-
-    const userEmail = await prisma.user.findUnique({
-      where: { email: email.trim() },
-    });
-
-    if (userEmail) {
-      return { error: { email: `Email ${email} is already used` } };
-    }
-
-    const user = await prisma.user.update({
-      where: { id },
-      data: { name, username, email },
-    });
-
-    return {
-      user,
-      error: null,
-    };
   },
 };
