@@ -4,6 +4,7 @@ import {
   Layout,
   MusicPlayerDemo,
   PageHeader,
+  PageProgress,
 } from "~/components";
 import { createDocumentLinks, createMetaData, createSitemap } from "~/utils";
 
@@ -63,6 +64,18 @@ export function DemoContextMenu() {
         <div className="stack-h-center">
           <ItemActionContextMenuDemo />
         </div>
+      </div>
+    </section>
+  );
+}
+
+export function DemoPageProgress() {
+  return (
+    <section id="demo-page-progress" className="card space-y-8">
+      <h3>Page Progress</h3>
+
+      <div className="stack-v">
+        <PageProgress />
       </div>
     </section>
   );
