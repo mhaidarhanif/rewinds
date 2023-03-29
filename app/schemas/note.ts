@@ -15,7 +15,7 @@ export const schemaNoteNew = z.object({
     .max(10_000, "Content length max of 10,000 characters"),
 });
 
-export const schemaNoteEdit = z
+export const schemaNoteUpdate = z
   .object({
     id: z.string({ required_error: "Existing id is required" }),
     slug: z.string({ required_error: "Existing slug is required" }),

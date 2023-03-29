@@ -20,7 +20,7 @@ import {
 } from "~/components";
 import { prisma } from "~/libs";
 import { model } from "~/models";
-import { schemaAdminUserEdit } from "~/schemas";
+import { schemaAdminUserUpdate } from "~/schemas";
 import { createSitemap, invariant } from "~/utils";
 
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
@@ -41,7 +41,7 @@ export async function loader({ params }: LoaderArgs) {
 
 export async function action({ request }: ActionArgs) {
   const formData = await request.formData();
-  const submission = parse(formData, { schema: schemaAdminUserEdit });
+  const submission = parse(formData, { schema: schemaAdminUserUpdate });
   if (!submission.value) {
     return badRequest(submission);
   }
@@ -64,14 +64,14 @@ export default function Route() {
   const isSubmitting = navigation.state === "submitting";
 
   const [form, { id, name, username, email, roleSymbol }] = useForm<
-    z.infer<typeof schemaAdminUserEdit>
+    z.infer<typeof schemaAdminUserUpdate>
   >({
     initialReport: "onSubmit",
     lastSubmission: actionData,
     onValidate({ formData }) {
-      return parse(formData, { schema: schemaAdminUserEdit });
+      return parse(formData, { schema: schemaAdminUserUpdate });
     },
-    constraint: getFieldsetConstraint(schemaAdminUserEdit),
+    constraint: getFieldsetConstraint(schemaAdminUserUpdate),
   });
 
   if (!user) {

@@ -6,6 +6,8 @@ import { prisma } from "~/libs";
 import { createNanoID, invariant } from "~/utils";
 
 import type { User } from "@prisma/client";
+import type { z } from "zod";
+import type { schemaUserUpdateData } from "~/schemas";
 export type { User } from "@prisma/client";
 
 export const fields = {
@@ -224,20 +226,49 @@ export const mutation = {
   deleteByEmail({ email }: Pick<User, "email">) {
     return prisma.user.delete({ where: { email } });
   },
-  updateName({ id, name }: Pick<User, "id" | "name">) {
+  async update({
+    id,
+    name,
+    username,
+    email,
+  }: z.infer<typeof schemaUserUpdateData>) {
     const nameIsUnallowed = dataUnallowedUserUsernames.find((user) =>
       name.toLowerCase().includes(user.username)
     );
     if (nameIsUnallowed) {
       return { error: { name: `Name ${name} is not allowed` } };
     }
-  },
-  updateUsername({ id, username }: Pick<User, "id" | "username">) {
+
     const usernameIsUnallowed = dataUnallowedUserUsernames.find((user) =>
       username.toLowerCase().includes(user.username)
     );
     if (usernameIsUnallowed) {
       return { error: { username: `Username ${username} is not allowed` } };
     }
+
+    const userUsername = await prisma.user.findUnique({
+      where: { username: username.trim() },
+    });
+    if (userUsername) {
+      return { error: { username: `Username ${username} is already taken` } };
+    }
+
+    const userEmail = await prisma.user.findUnique({
+      where: { email: email.trim() },
+    });
+
+    if (userEmail) {
+      return { error: { email: `Email ${email} is already used` } };
+    }
+
+    const user = await prisma.user.update({
+      where: { id },
+      data: { name, username, email },
+    });
+
+    return {
+      user,
+      error: null,
+    };
   },
 };

@@ -1,8 +1,8 @@
-import { conform, useForm } from "@conform-to/react";
-import { parse } from "@conform-to/zod";
+import { conform, parse, useForm } from "@conform-to/react";
+import { parse as parseZod } from "@conform-to/zod";
 import { json } from "@remix-run/node";
 import { useActionData, useLoaderData, useNavigation } from "@remix-run/react";
-import { badRequest } from "remix-utils";
+import { badRequest, forbidden } from "remix-utils";
 
 import {
   Alert,
@@ -20,7 +20,11 @@ import {
 } from "~/components";
 import { requireUserSession } from "~/helpers";
 import { model } from "~/models";
-import { schemaUserEditData } from "~/schemas";
+import {
+  schemaUserUpdateData,
+  schemaUserUpdatePassword,
+  schemaUserUpdateProfile,
+} from "~/schemas";
 import { createSitemap } from "~/utils";
 
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
@@ -36,17 +40,45 @@ export async function loader({ request }: LoaderArgs) {
 
 export async function action({ request }: ActionArgs) {
   const formData = await request.formData();
-  const submission = parse(formData, { schema: schemaUserEditData });
-  if (!submission.value) {
-    return badRequest(submission);
-  }
+  const parsed = parse(formData);
 
-  if (submission.payload.intent === "update-user-name") {
-    await model.user.mutation.updateName(submission.value);
+  if (parsed.payload.intent === "update-user-data") {
+    const submission = parseZod(formData, { schema: schemaUserUpdateData });
+    if (!submission.value) {
+      return badRequest(submission);
+    }
+    const result = await model.user.mutation.update(submission.value);
+    if (result.error) {
+      return forbidden({ ...submission, error: result.error });
+    }
     return json(submission);
   }
 
-  return json(submission);
+  if (parsed.payload.intent === "update-user-profile") {
+    const submission = parseZod(formData, { schema: schemaUserUpdateProfile });
+    if (!submission.value) {
+      return badRequest(submission);
+    }
+    const result = await model.userProfile.mutation.update(submission.value);
+    if (result.error) {
+      return forbidden({ ...submission, error: result.error });
+    }
+    return json(submission);
+  }
+
+  if (parsed.payload.intent === "update-user-password") {
+    const submission = parseZod(formData, { schema: schemaUserUpdatePassword });
+    if (!submission.value) {
+      return badRequest(submission);
+    }
+    const result = await model.userPassword.mutation.update(submission.value);
+    if (result.error) {
+      return forbidden({ ...submission, error: result.error });
+    }
+    return json(submission);
+  }
+
+  return json(parsed);
 }
 
 export default function Route() {
@@ -103,22 +135,18 @@ function UserSettingsTabUser() {
   const isSubmitting = navigation.state === "submitting";
 
   const [form, { id, name, username, email }] = useForm<
-    z.infer<typeof schemaUserEditData>
+    z.infer<typeof schemaUserUpdateData>
   >({
     initialReport: "onSubmit",
     lastSubmission: actionData,
     onValidate({ formData }) {
-      return parse(formData, { schema: schemaUserEditData });
+      return parseZod(formData, { schema: schemaUserUpdateData });
     },
   });
 
   return (
     <div>
-      <p className="dim">
-        Make changes to your user account. Click save when you're done.
-      </p>
-
-      <RemixForm {...form.props} method="put" className="card max-w-lg">
+      <RemixForm {...form.props} method="put" className="max-w-sm">
         <fieldset
           disabled={isSubmitting}
           className="space-y-2 disabled:opacity-80"
@@ -178,7 +206,7 @@ function UserSettingsTabUser() {
               type="submit"
               className="grow"
               name="intent"
-              value="update-user"
+              value="update-user-data"
               isSubmitting={isSubmitting}
               loadingText="Updating..."
             >

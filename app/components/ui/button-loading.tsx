@@ -27,6 +27,8 @@ export const ButtonLoading = forwardRef<HTMLButtonElement, ButtonLoadingProps>(
       children,
       isSubmitting,
       loadingText,
+      name,
+      value,
       ...props
     },
     ref
@@ -48,6 +50,8 @@ export const ButtonLoading = forwardRef<HTMLButtonElement, ButtonLoadingProps>(
             className,
           })
         )}
+        name={name}
+        value={value}
         {...props}
       >
         {isSubmitting && <Loader2 className="animate-spin" />}

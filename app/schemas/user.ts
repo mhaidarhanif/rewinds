@@ -24,6 +24,13 @@ const password = z
 
 const roleSymbol = z.string({ required_error: "Role is required" });
 
+const headline = z
+  .string()
+  .max(50, "Headline limited to 50 characters")
+  .optional();
+
+const bio = z.string().max(280, "Bio limited to 280 characters").optional();
+
 export const schemaUserRegister = z.object({
   name,
   username,
@@ -36,19 +43,25 @@ export const schemaUserLogin = z.object({
   password,
 });
 
-export const schemaUserEditData = z.object({
+export const schemaUserUpdateData = z.object({
   id,
   name,
   username,
   email,
 });
 
-export const schemaUserEditUsername = z.object({
+export const schemaUserUpdateProfile = z.object({
   id,
-  username,
+  headline,
+  bio,
 });
 
-export const schemaAdminUserEdit = z.object({
+export const schemaUserUpdatePassword = z.object({
+  id,
+  password,
+});
+
+export const schemaAdminUserUpdate = z.object({
   id,
   name,
   username,

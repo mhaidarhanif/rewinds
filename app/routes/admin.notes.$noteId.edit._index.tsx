@@ -15,7 +15,7 @@ import {
   TextArea,
 } from "~/components";
 import { model } from "~/models";
-import { schemaNoteEdit } from "~/schemas";
+import { schemaNoteUpdate } from "~/schemas";
 import { createSitemap, invariant } from "~/utils";
 
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
@@ -31,7 +31,7 @@ export async function loader({ params }: LoaderArgs) {
 
 export async function action({ request, params }: ActionArgs) {
   const formData = await request.formData();
-  const submission = parse(formData, { schema: schemaNoteEdit });
+  const submission = parse(formData, { schema: schemaNoteUpdate });
   if (!submission.value || submission.intent !== "submit") {
     return badRequest(submission);
   }
@@ -57,14 +57,14 @@ export default function Route() {
   const isSubmitting = navigation.state === "submitting";
 
   const [form, { id, slug, title, description, content }] = useForm<
-    z.infer<typeof schemaNoteEdit>
+    z.infer<typeof schemaNoteUpdate>
   >({
     initialReport: "onSubmit",
     lastSubmission: actionData,
     onValidate({ formData }) {
-      return parse(formData, { schema: schemaNoteEdit });
+      return parse(formData, { schema: schemaNoteUpdate });
     },
-    constraint: getFieldsetConstraint(schemaNoteEdit),
+    constraint: getFieldsetConstraint(schemaNoteUpdate),
   });
 
   if (!note) {
