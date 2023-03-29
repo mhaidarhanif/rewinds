@@ -44,7 +44,7 @@ const ContextMenuSubContent = forwardRef<
   <ContextMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      "z-50 min-w-[8rem] overflow-hidden rounded-md border border-surface-100 bg-white p-1 shadow-md animate-in slide-in-from-left-1 dark:border-surface-700 dark:bg-surface-900",
+      "z-50 min-w-[8rem] overflow-hidden rounded-md border-2 border-surface-100 bg-white p-1 shadow-md animate-in slide-in-from-left-1 dark:border-surface-700 dark:bg-surface-900",
       className
     )}
     {...props}
@@ -60,7 +60,7 @@ const ContextMenuContent = forwardRef<
     <ContextMenuPrimitive.Content
       ref={ref}
       className={cn(
-        "z-50 min-w-[8rem] overflow-hidden rounded-md border border-surface-100 bg-white p-1 text-surface-700 shadow-md animate-in fade-in-80 dark:border-surface-800 dark:bg-surface-900 dark:text-surface-400",
+        "z-50 min-w-[8rem] overflow-hidden rounded-md border-2 border-surface-100 bg-white p-1 text-surface-700 shadow-md animate-in fade-in-80 dark:border-surface-800 dark:bg-surface-900 dark:text-surface-400",
         className
       )}
       {...props}

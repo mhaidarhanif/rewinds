@@ -17,7 +17,7 @@ const Separator = forwardRef<
       orientation={orientation}
       className={cn(
         "bg-surface-200 dark:bg-surface-700",
-        orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
+        orientation === "horizontal" ? "h-0.5 w-full" : "h-full w-0.5",
         className
       )}
       {...props}

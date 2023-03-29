@@ -34,6 +34,7 @@ export default function Route() {
     >
       <DemoMusicPlayer />
       <DemoContextMenu />
+      <DemoPageProgress />
     </Layout>
   );
 }
@@ -76,6 +77,7 @@ export function DemoPageProgress() {
 
       <div className="stack-v">
         <PageProgress />
+        <PageProgress progressValue={100} />
       </div>
     </section>
   );

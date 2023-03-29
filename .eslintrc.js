@@ -6,6 +6,7 @@ module.exports = {
     "@typescript-eslint",
     "tailwindcss",
     "import",
+    "prettier",
     // "sort-export-all",
   ],
   extends: [
@@ -16,6 +17,7 @@ module.exports = {
     "plugin:tailwindcss/recommended",
     "plugin:import/typescript",
     "plugin:sort-export-all/recommended",
+    "plugin:prettier/recommended",
   ],
   settings: {
     "import/resolver": { typescript: true, node: true },

@@ -19,7 +19,7 @@ import { MousePointerClick } from "~/icons";
 export function ItemActionContextMenuDemo() {
   return (
     <ContextMenu>
-      <ContextMenuTrigger className="card-action flex h-40 w-80 select-none items-center justify-center rounded-md border border-dashed border-slate-300 dark:border-slate-600">
+      <ContextMenuTrigger className="card-action flex h-40 w-80 select-none items-center justify-center rounded-md border-2 border-dashed border-slate-300 dark:border-slate-600">
         <div className="stack-h-center">
           <MousePointerClick />
           <span className="font-bold">Right click here</span>

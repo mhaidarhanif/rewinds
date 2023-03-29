@@ -61,7 +61,7 @@
     @apply bg-surface-100/20 dark:bg-surface-800/50;
   }
   .card-action {
-    @apply bg-surface-100 dark:bg-black;
+    @apply bg-surface-50 dark:bg-black;
   }
   .code {
     @apply bg-slate-200 text-slate-900 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-400 hover:dark:bg-slate-700;

@@ -177,8 +177,8 @@ const madeForYouAlbums: Album[] = [
 
 export function MusicPlayerDemo() {
   return (
-    <div className="overflow-hidden rounded-md border border-surface-200 bg-gradient-to-b from-brand-300 to-blue-300 shadow-2xl dark:border-surface-800 dark:from-brand-800 dark:to-blue-800">
-      <Menubar className="rounded-none border-b border-none dark:bg-surface-950">
+    <div className="overflow-hidden rounded-md border-2 border-surface-200 bg-gradient-to-b from-brand-300 to-blue-300 dark:border-surface-800 dark:from-brand-800 dark:to-blue-800">
+      <Menubar className="rounded-none border-b-2 border-none dark:bg-surface-950">
         <MenubarMenu>
           <MenubarTrigger className="stack-h-center font-bold">
             <Music className="size-sm" />
@@ -340,7 +340,7 @@ export function MusicPlayerDemo() {
         </MenubarMenu>
       </Menubar>
       <div className="p-8">
-        <div className="rounded-md bg-white shadow-2xl transition-all dark:bg-surface-950">
+        <div className="rounded-md bg-white transition-all dark:bg-surface-950">
           <div className="grid grid-cols-4 xl:grid-cols-5">
             <aside className="pb-12">
               <div className="px-8 py-6">
@@ -450,7 +450,7 @@ export function MusicPlayerDemo() {
                 </div>
               </div>
             </aside>
-            <div className="col-span-3 border-l border-l-surface-200 dark:border-l-surface-700 xl:col-span-4">
+            <div className="col-span-3 border-l-2 border-l-surface-200 dark:border-l-surface-700 xl:col-span-4">
               <div className="h-full px-8 py-6">
                 <Tabs defaultValue="music" className="h-full space-y-6">
                   <div className="flex items-center justify-between">
@@ -616,7 +616,7 @@ export function MusicPlayerDemo() {
                       </div>
                     </div>
                     <Separator className="my-4" />
-                    <div className="flex h-[450px] shrink-0 items-center justify-center rounded-md border border-dashed border-surface-200 dark:border-surface-700">
+                    <div className="flex h-[450px] shrink-0 items-center justify-center rounded-md border-2 border-dashed border-surface-200 dark:border-surface-700">
                       <div className="mx-auto flex max-w-[420px] flex-col items-center justify-center text-center">
                         <Podcast className="h-10 w-10 text-surface-400" />
                         <h3 className="mt-4 text-lg font-semibold text-surface-900 dark:text-surface-50">

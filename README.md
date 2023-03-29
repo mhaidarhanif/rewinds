@@ -334,7 +334,7 @@ Recommended to use [Icones](https://icones.js.org) to search the icon names easi
 
 ## Tailwind CSS Config
 
-Use [uicolors.app](https://uicolors.app/create) to generate the color tokens easily. Then replace what's inside `tailwind.config.js`.
+Use [uicolors.app](https://uicolors.app/create) or [tints.dev](https://tints.dev) to generate the color tokens easily. Then replace what's inside `tailwind.config.js`.
 
 ```js
 module.exports = {

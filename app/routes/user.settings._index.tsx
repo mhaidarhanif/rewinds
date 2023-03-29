@@ -53,24 +53,30 @@ export function UserSettingsTabs() {
     <Tabs defaultValue="user" className="w-full">
       <TabsList>
         <TabsTrigger value="user">User</TabsTrigger>
-        <TabsTrigger value="profile">Profile</TabsTrigger>
-        <TabsTrigger value="password">Password</TabsTrigger>
+        <TabsTrigger value="user-profile">Profile</TabsTrigger>
+        <TabsTrigger value="user-password">Password</TabsTrigger>
       </TabsList>
       <TabsContent value="user">
-        <p className="text-sm text-slate-500 dark:text-slate-400">
-          Make changes to your user account. Click save when you're done.
-        </p>
+        <UserSettingsTabUser />
       </TabsContent>
-      <TabsContent value="profile">
-        <p className="text-sm text-slate-500 dark:text-slate-400">
-          Update your profile headline and bio.
-        </p>
+      <TabsContent value="user-profile">
+        <p className="dim">Update your profile headline and bio.</p>
       </TabsContent>
-      <TabsContent value="password">
-        <p className="text-sm text-slate-500 dark:text-slate-400">
+      <TabsContent value="user-password">
+        <p className="dim">
           Change your password. After saving, you'll be logged out.
         </p>
       </TabsContent>
     </Tabs>
+  );
+}
+
+function UserSettingsTabUser() {
+  return (
+    <div>
+      <p className="dim">
+        Make changes to your user account. Click save when you're done.
+      </p>
+    </div>
   );
 }

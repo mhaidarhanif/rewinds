@@ -16,7 +16,7 @@ const ToastViewport = forwardRef<
   <ToastPrimitives.Viewport
     ref={ref}
     className={cn(
-      "fixed top-0 z-40 flex max-h-screen w-full flex-col-reverse p-2 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]",
+      "fixed bottom-0 z-40 flex max-h-screen w-full flex-col-reverse p-2 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]",
       className
     )}
     {...props}
@@ -27,7 +27,7 @@ ToastViewport.displayName = ToastPrimitives.Viewport.displayName;
 const toastVariants = cva(
   cn(
     "p-4 pe-8",
-    "data-[swipe=move]:transition-none grow-1 group relative pointer-events-auto flex w-full items-center justify-between space-x-4 overflow-hidden rounded-md border shadow-lg transition-all data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-[var(--radix-toast-swipe-end-x)] data-[state=open]:animate-in data-[state=closed]:animate-out data-[swipe=end]:animate-out data-[state=closed]:fade-out-80 data-[state=open]:slide-in-from-top-full data-[state=open]:sm:slide-in-from-bottom-full mt-4 data-[state=closed]:slide-out-to-bottom-full dark:border-surface-700 last:mt-0 sm:last:mt-4"
+    "data-[swipe=move]:transition-none grow-1 group relative pointer-events-auto flex w-full items-center justify-between space-x-4 overflow-hidden rounded-md border-2 shadow-lg transition-all data-[swipe=move]:translate-x-[--radix-toast-swipe-move-x] data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-[--radix-toast-swipe-end-x] data-[state=open]:animate-in data-[state=closed]:animate-out data-[swipe=end]:animate-out data-[state=closed]:fade-out-80 data-[state=open]:slide-in-from-bottom-full data-[state=open]:sm:slide-in-from-bottom-full mt-4 data-[state=closed]:slide-out-to-bottom-full dark:border-surface-700 last:mt-0 sm:last:mt-4"
   ),
   {
     variants: {
@@ -68,7 +68,7 @@ const ToastAction = forwardRef<
   <ToastPrimitives.Action
     ref={ref}
     className={cn(
-      "disabled:opacity-50dark:border-surface-700 inline-flex h-8 shrink-0 items-center justify-center rounded-md border border-surface-200 bg-transparent px-3 text-sm font-medium transition-colors hover:bg-surface-100 focus:outline-none focus:ring-2 focus:ring-surface-400 focus:ring-offset-2 disabled:pointer-events-none dark:text-surface-100 dark:hover:bg-surface-700 dark:hover:text-surface-100 dark:focus:ring-surface-400 dark:focus:ring-offset-surface-900 dark:data-[state=open]:bg-surface-800",
+      "disabled:opacity-50dark:border-surface-700 inline-flex h-8 shrink-0 items-center justify-center rounded-md border-2 border-surface-200 bg-transparent px-3 text-sm font-medium transition-colors hover:bg-surface-100 focus:outline-none focus:ring-2 focus:ring-surface-400 focus:ring-offset-2 disabled:pointer-events-none dark:text-surface-100 dark:hover:bg-surface-700 dark:hover:text-surface-100 dark:focus:ring-surface-400 dark:focus:ring-offset-surface-900 dark:data-[state=open]:bg-surface-800",
       "group-[.danger]:border-red-100 group-[.danger]:hover:border-surface-50 group-[.danger]:hover:bg-red-100 group-[.danger]:hover:text-red-600 group-[.danger]:focus:ring-red-400 group-[.danger]:focus:ring-offset-red-600",
       className
     )}

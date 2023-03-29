@@ -23,9 +23,17 @@ export const progressVariants = cva(
 
 interface ProgressProps
   extends ProgressPrimitive.ProgressProps,
-    VariantProps<typeof progressVariants> {}
+    VariantProps<typeof progressVariants> {
+  hasGradient?: boolean;
+}
 
-const Progress = ({ value = 0, size, className, ...props }: ProgressProps) => (
+const Progress = ({
+  value = 0,
+  size = "default",
+  hasGradient = true,
+  className,
+  ...props
+}: ProgressProps) => (
   <ProgressPrimitive.Root
     className={cn(progressVariants({ size, className }))}
     {...props}
@@ -33,8 +41,8 @@ const Progress = ({ value = 0, size, className, ...props }: ProgressProps) => (
     <ProgressPrimitive.Indicator
       className={cn(
         "h-full w-full flex-1 transition-all",
-        // "bg-surface-900 dark:bg-surface-400",
-        "from-10% via-30% to-90% bg-gradient-to-r from-surface-500 via-teal-500 to-brand-500"
+        hasGradient &&
+          "bg-gradient-to-r from-surface-500 from-10% via-brand-500 via-30% to-teal-500 to-60%"
       )}
       style={{ transform: `translateX(-${100 - Number(value)}%)` }}
     />
