@@ -21,7 +21,7 @@ export default function Route() {
   return (
     <Layout>
       <section className="mx-auto flex max-w-max flex-wrap items-center justify-center gap-4 py-10 lg:justify-between lg:py-20">
-        <div className="space-y-4">
+        <div className="space-y-4 max-w-lg">
           <div className="prose-config">
             <h1 className="text-xl">
               <span>Rewinds, </span>
@@ -30,7 +30,7 @@ export default function Route() {
             </h1>
             <p>
               <PeaceHand className="inline-icon link" />
-              <span> Hey, it's just another web app starter kit made by </span>
+              <span>Hey, it's just another web app starter kit made by </span>
               <AnchorText
                 href="https://mhaidarhanif.com"
                 className="inline-block"

@@ -9,7 +9,7 @@ import {
   ScrollRestoration,
   useCatch,
   useLoaderData,
-  useNavigation,
+  useNavigation
 } from "@remix-run/react";
 import { IconoirProvider } from "iconoir-react";
 import NProgress from "nprogress";
@@ -18,7 +18,7 @@ import {
   PreventFlashOnWrongTheme,
   Theme,
   ThemeProvider,
-  useTheme,
+  useTheme
 } from "remix-themes";
 
 import {
@@ -26,7 +26,7 @@ import {
   Layout,
   PageHeader,
   Toaster,
-  TooltipProvider,
+  TooltipProvider
 } from "~/components";
 import { configDev, configDocumentLinks, configSite } from "~/configs";
 import { model } from "~/models";
@@ -39,7 +39,7 @@ import type {
   LinksFunction,
   LoaderArgs,
   V2_HtmlMetaDescriptor,
-  V2_MetaFunction,
+  V2_MetaFunction
 } from "@remix-run/node";
 import type { RootLoaderData } from "~/hooks";
 
@@ -136,8 +136,8 @@ function App() {
   return (
     <html lang="en" data-theme={defaultTheme}>
       <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
         <Links />
@@ -177,8 +177,8 @@ export function RootDocumentBoundary({
   return (
     <html lang="en" data-theme={Theme.DARK}>
       <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         {title && <title>{title}</title>}
         <Links />

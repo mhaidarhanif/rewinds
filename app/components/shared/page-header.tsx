@@ -7,7 +7,7 @@ import type { VariantProps } from "class-variance-authority";
 export const pageHeaderVariants = cva("", {
   variants: {
     size: {
-      xs: "py-3 sm:py-6",
+      xs: "py-4 sm:py-8",
       sm: "py-6 sm:py-10",
       default: "py-12 sm:py-20",
     },

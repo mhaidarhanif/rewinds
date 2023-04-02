@@ -186,12 +186,13 @@ export default function Route() {
             <input type="hidden" name="redirectTo" value={redirectTo} />
 
             <ButtonLoading
+              size="lg"
               type="submit"
-              className="w-full"
               name="intent"
               value="submit"
               isSubmitting={isSubmitting}
               loadingText="Creating account..."
+              className="w-full"
             >
               Create account
             </ButtonLoading>

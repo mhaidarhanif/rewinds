@@ -74,7 +74,7 @@ Included example features:
 Included setup:
 
 - [x] Full stack type safety with Remix and TypeScript
-  - [x] Enabled for HMR/HDR (hot module/data reload)
+  - [x] Config for HMR/HDR (hot module/data reload)
   - [x] v2 future flags
 - [x] UI components with React and Radix UI, ready to use and 100% customizable
 - [x] Styles, colors, fonts, icons, and responsive design with Tailwind CSS
@@ -97,7 +97,7 @@ Recommended extra setup:
 
 ## Some Details
 
-This repo is kind of over-engineered to have high flexibility and cover a lot of use cases for different applications/projects/products (especially what I'm working with several other people). Currently includes the Remix HMR & HDR setup with both Vercel config and Express server on development as per Remix `v1.14`. The config is just combining the templates from Remix with Express and Vercel based on the environment.
+This repo is kind of over-engineered to have high flexibility and cover a lot of use cases for different applications/projects/products (especially what I'm working with several other people). Currently includes the Remix HMR and HDR setup with both Vercel config and Express server on development as per Remix `v1.14`. The config is just combining the templates from Remix with Express and Vercel based on the environment.
 
 Compared to [the older `rewinds`](https://github.com/mhaidarhanif/rewinds-legacy), this newer version uses [`shadcn/ui`](https://github.com/shadcn/ui) as the base components style and setup for full stack app development inspired by [T3 Stack](https://create.t3.gg). The main adaptation reason is that this repo uses Remix, not Next.js as the full-stack framework.
 
@@ -260,15 +260,29 @@ DATABASE_URL='mysql://username:pscale_pw_password@region.connect.psdb.cloud/name
 
 While in development, you can also visualize the schema with [Prismaliser](https://prismaliser.app).
 
+## Check Remix config
+
+You can enable/disable HMR by changing this in the `remix.config.js`. By default we're not using it.
+
+```js
+const isUsingHMR = false
+````
+
 ## Run Development Server
 
-Afterward, start the Remix development server like so:
+Afterward, start the Remix development server like so based on your preference:
+
+- Run without HMR: `nr dev`
+- Run with HMR: `nr dev-hmr`
+
+Without HMR, it will just `remix dev`, the Remix server on development. Then wait until you see this:
 
 ```sh
-nr dev
+Loading environment variables from .env
+Remix App Server started at http://localhost:3000
 ```
 
-This will run both the Remix server and Express server with HMR enabled. Then wait until you see this info on the terminal:
+With HMR, it will run both `dev:remix` and `dev:express`, the Remix server and Express server with HMR enabled. Then wait until you see this:
 
 ```sh
 📀 Remix on Express server port :3000
@@ -383,21 +397,7 @@ npx remix reveal
 
 > This setup has been done in this Rewinds template.
 
-To enable HMR and HDR, at least as per Remix v1.14, when not primarily using Express server only (like using Vercel and another server), we have to do this in the `package.json` scripts.
-
-```json
-{
-  "dev": "run-p dev:*",
-  "dev:remix": "cross-env NODE_ENV=development remix dev",
-  "dev:serve": "cross-env NODE_ENV=development nodemon --require dotenv/config ./server-express.js --watch ./server-express.js"
-}
-```
-
-If you don't need the HMR, simply run `dev:remix` script only as this will run without using the Express server:
-
-```sh
-nr dev:remix
-```
+To enable HMR, at least as per Remix v1.14, when not primarily using Express server only (like using Vercel and another server), we have to a separate Express server.
 
 If using pnpm, you also have to install `react-refresh` to resolve the HMR dependency:
 

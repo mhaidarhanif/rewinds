@@ -117,7 +117,7 @@ export default function Route() {
       isSpaced
       layoutHeader={
         <PageHeader size="xs" isTextCentered>
-          <h1>Login to continue</h1>
+          <h1>Welcome back!</h1>
           <p>Use your {configSite.name} account</p>
         </PageHeader>
       }
@@ -172,6 +172,7 @@ export default function Route() {
             <Input type="hidden" name="redirectTo" value={redirectTo} />
 
             <ButtonLoading
+              size="lg"
               type="submit"
               className="w-full"
               name="intent"

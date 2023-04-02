@@ -1,4 +1,8 @@
+// to determine if we're on the local development server
 const isDevelopment = process.env.NODE_ENV === "development";
+
+// to enable or disable HMR/HDR
+const isUsingHMR = false
 
 /** @type {import('@remix-run/dev').AppConfig} */
 module.exports = {
@@ -10,7 +14,7 @@ module.exports = {
 
   // change this if you are not using Vercel
   server: isDevelopment ? undefined : "./server-vercel.js",
-  serverBuildPath: isDevelopment ? "build/index.js" : "api/index.js",
+  serverBuildPath: isUsingHMR && isDevelopment ? "build/index.js" : "api/index.js",
 
   // https://remix.run/docs/en/1.14.3/file-conventions/remix-config#serverdependenciestobundle
   serverDependenciesToBundle: [],
@@ -19,8 +23,8 @@ module.exports = {
   future: {
     v2_routeConvention: true,
     v2_meta: true,
-    unstable_dev: true, // change to false or remove this to disable HMR/HDR
-    unstable_postcss: true,
     unstable_tailwind: true,
+    unstable_postcss: true,
+    unstable_dev: isUsingHMR,
   },
 };
