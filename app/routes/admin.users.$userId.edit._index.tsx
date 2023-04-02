@@ -66,7 +66,7 @@ export default function Route() {
   const [form, { id, name, username, email, roleSymbol }] = useForm<
     z.infer<typeof schemaAdminUserUpdate>
   >({
-    initialReport: "onSubmit",
+    shouldValidate: "onSubmit",
     lastSubmission: actionData,
     onValidate({ formData }) {
       return parse(formData, { schema: schemaAdminUserUpdate });

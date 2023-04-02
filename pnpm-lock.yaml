@@ -5,14 +5,14 @@ dependencies:
     specifier: ^1.0.2
     version: 1.0.2(@remix-run/react@1.14.3)(@remix-run/server-runtime@1.14.3)
   '@conform-to/dom':
-    specifier: ^0.6.0
-    version: 0.6.0
+    specifier: ^0.6.1
+    version: 0.6.1
   '@conform-to/react':
-    specifier: ^0.6.0
-    version: 0.6.0(react@18.2.0)
+    specifier: ^0.6.1
+    version: 0.6.1(react@18.2.0)
   '@conform-to/zod':
-    specifier: ^0.6.0
-    version: 0.6.0(@conform-to/dom@0.6.0)(zod@3.21.4)
+    specifier: ^0.6.1
+    version: 0.6.1(@conform-to/dom@0.6.1)(zod@3.21.4)
   '@fontsource/archivo':
     specifier: ^4.5.11
     version: 4.5.11
@@ -1699,26 +1699,26 @@ packages:
       lodash: 4.17.21
     dev: false
 
-  /@conform-to/dom@0.6.0:
-    resolution: {integrity: sha512-jeNLWs2DNcPvsukexbdnufsEg0KBZnTSo4Ukl7+4+reudUyrHheAmwlQogkhUIfw+8ov3RbA/DKuY65PTDjyPg==}
+  /@conform-to/dom@0.6.1:
+    resolution: {integrity: sha512-9Fns5h8lAiyOYvY3WHFXuBeNQzUIj9pqENa6KeLzTM3VAb+MTvAkoNUFP/d2kKLGlttt/XWL5houmYpUSGbikw==}
     dev: false
 
-  /@conform-to/react@0.6.0(react@18.2.0):
-    resolution: {integrity: sha512-jMBmXDFKIjkiuOlPSIReNFDPDM+dyuzK05W4imYUJXCgclzIUmkcEERFCuPn1GXtemmKssIJWvgvUw+wqzIhjQ==}
+  /@conform-to/react@0.6.1(react@18.2.0):
+    resolution: {integrity: sha512-CJt5PlhtJk1EfBoxOuRT0njRZBd9lvdSJV+zl7byf9KGrzww7joJba+p7vsZZoRt68rNQbPMJVyX20jGV59wpA==}
     peerDependencies:
       react: '>=16.8'
     dependencies:
-      '@conform-to/dom': 0.6.0
+      '@conform-to/dom': 0.6.1
       react: 18.2.0
     dev: false
 
-  /@conform-to/zod@0.6.0(@conform-to/dom@0.6.0)(zod@3.21.4):
-    resolution: {integrity: sha512-aX3TiOGGnNswFv9IVYkjpiWxZq0NIUEbQ95NrHHTo8iJIMwGnRDHTuXWSBaPVPWASHxGzgIVVZOIBlLtUoH+pQ==}
+  /@conform-to/zod@0.6.1(@conform-to/dom@0.6.1)(zod@3.21.4):
+    resolution: {integrity: sha512-VYu44VfVeP0VyMrc2sNBagFAS66luZMIeFOfkHndGs1ep+LcR3Z4D+EOEqLZ2ECexmg9Y6nrX8Y2d5UUigEXCg==}
     peerDependencies:
-      '@conform-to/dom': 0.6.0
+      '@conform-to/dom': 0.6.1
       zod: ^3.21.0
     dependencies:
-      '@conform-to/dom': 0.6.0
+      '@conform-to/dom': 0.6.1
       zod: 3.21.4
     dev: false
 

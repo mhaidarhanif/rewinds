@@ -60,7 +60,7 @@ export default function Route() {
     z.infer<typeof schemaNoteNew>
   >({
     id,
-    initialReport: "onSubmit",
+    shouldValidate: "onSubmit",
     lastSubmission: actionData,
     onValidate({ formData }) {
       return parse(formData, { schema: schemaNoteNew });

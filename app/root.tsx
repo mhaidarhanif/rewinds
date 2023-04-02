@@ -9,7 +9,7 @@ import {
   ScrollRestoration,
   useCatch,
   useLoaderData,
-  useNavigation
+  useNavigation,
 } from "@remix-run/react";
 import { IconoirProvider } from "iconoir-react";
 import NProgress from "nprogress";
@@ -18,7 +18,7 @@ import {
   PreventFlashOnWrongTheme,
   Theme,
   ThemeProvider,
-  useTheme
+  useTheme,
 } from "remix-themes";
 
 import {
@@ -26,7 +26,7 @@ import {
   Layout,
   PageHeader,
   Toaster,
-  TooltipProvider
+  TooltipProvider,
 } from "~/components";
 import { configDev, configDocumentLinks, configSite } from "~/configs";
 import { model } from "~/models";
@@ -39,7 +39,7 @@ import type {
   LinksFunction,
   LoaderArgs,
   V2_HtmlMetaDescriptor,
-  V2_MetaFunction
+  V2_MetaFunction,
 } from "@remix-run/node";
 import type { RootLoaderData } from "~/hooks";
 

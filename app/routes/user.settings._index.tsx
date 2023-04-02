@@ -137,7 +137,7 @@ function UserSettingsTabUser() {
   const [form, { id, name, username, email }] = useForm<
     z.infer<typeof schemaUserUpdateData>
   >({
-    initialReport: "onSubmit",
+    shouldValidate: "onSubmit",
     lastSubmission: actionData,
     onValidate({ formData }) {
       return parseZod(formData, { schema: schemaUserUpdateData });

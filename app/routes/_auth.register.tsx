@@ -90,7 +90,7 @@ export default function Route() {
   const id = useId();
   const [form, fields] = useForm<z.infer<typeof schemaUserRegister>>({
     id,
-    initialReport: "onSubmit",
+    shouldValidate: "onSubmit",
     lastSubmission: actionData,
     constraint: getFieldsetConstraint(schemaUserRegister),
     onValidate({ formData }) {

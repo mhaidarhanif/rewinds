@@ -265,8 +265,8 @@ While in development, you can also visualize the schema with [Prismaliser](https
 You can enable/disable HMR by changing this in the `remix.config.js`. By default we're not using it.
 
 ```js
-const isUsingHMR = false
-````
+const isUsingHMR = false;
+```
 
 ## Run Development Server
 
