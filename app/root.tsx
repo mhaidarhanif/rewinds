@@ -38,13 +38,13 @@ import type {
   HeadersFunction,
   LinksFunction,
   LoaderArgs,
-  V2_HtmlMetaDescriptor,
+  V2_MetaDescriptor,
   V2_MetaFunction,
 } from "@remix-run/node";
 import type { RootLoaderData } from "~/hooks";
 
 export const meta: V2_MetaFunction = () => {
-  return createMetaData() satisfies V2_HtmlMetaDescriptor[];
+  return createMetaData() satisfies V2_MetaDescriptor[];
 };
 
 export const headers: HeadersFunction = () => {
