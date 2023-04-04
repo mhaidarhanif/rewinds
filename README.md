@@ -1,4 +1,4 @@
-# ⏪ Rewinds
+# ⏪ Rewinds Stack
 
 # Introduction
 
@@ -11,7 +11,16 @@
 ![PlanetScale](https://img.shields.io/badge/PlanetScale-000000?style=flat-square&logo=planetscale&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
-Rewinds is a web app starter kit with Remix and Tailwind family of libraries, interactive UI components, and the TypeScript ecosystem. The core stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel.
+Rewinds Stack is a web app starter kit with Remix and Tailwind family of libraries, interactive UI components, and the TypeScript ecosystem. The core stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel.
+
+Screenshots:
+
+<div style="max-width: 720px;">
+
+[![Dark](public/assets/screenshots/rewinds-screenshot-dark.png)](https://rewinds.mhaidarhanif.com)
+[![Light](public/assets/screenshots/rewinds-screenshot-light.png)](https://rewinds.mhaidarhanif.com)
+
+</div>
 
 Check out the code and the demo:
 
@@ -20,20 +29,85 @@ Check out the code and the demo:
 - [rewinds.vercel.app](https://rewinds.vercel.app)
 - [rewinds.dev](https://rewinds.dev) (Sooner or later)
 
-As for now, this README is the only main documentation.
-
-Also as a reminder:
+As a reminder:
 
 > "Software is a just a tool to help accomplish something for people - many programmers never understood that. Keep your eyes on the delivered value, and don’t over focus on the specifics of the tools" — John Carmack
 
-## Some Screenshots
+For now, this README is the only main documentation.
 
-<div style="max-width: 720px;">
+# Tech Stack
 
-[![Dark](public/assets/screenshots/rewinds-screenshot-dark.png)](https://rewinds.mhaidarhanif.com)
-[![Light](public/assets/screenshots/rewinds-screenshot-light.png)](https://rewinds.mhaidarhanif.com)
+Listed here are only the most important parts in the stack.️ Some setup might haven't done yet or still in progress.
 
-</div>
+More details and references can also be checked from [`catamyst/stack`](https://a.catamyst.com/stack).
+
+## Primary Tech Stack
+
+- Rewinds: Remix Tailwind Stack
+- TRIP: TypeScript/Tailwind Remix/React/Radix Interface Prisma
+
+## Complete Tech Stack
+
+- Core
+  - [Node.js](https://nodejs.org)
+    - [pnpm](https://pnpm.io)
+  - [TypeScript](https://typescriptlang.org)
+  - [React](https://react.dev)
+  - [Remix](https://remix.run)
+- Styling
+  - [Tailwind CSS](https://tailwindcss.com)
+  - [Fontsource](https://fontsource.org)
+  - [Radix UI](https://radix-ui.com)
+  - [React Email](https://react.email) 🚧
+- Form
+  - [Zod](https://zod.dev)
+  - [Conform](https://conform.guide)
+- Database
+  - [Prisma ORM](https://prisma.io)
+  - [PlanetScale](https://planetscale.com)
+- Auth
+  - [Remix Auth](https://github.com/sergiodxa/remix-auth)
+- Tooling
+  - [Prettier](https://prettier.io)
+  - [ESLint](https://eslint.org)
+  - [Doppler](https://doppler.com) / [Dotenv](https://dotenv.org)
+- Deployment
+  - [Vercel](https://vercel.com)
+- Domain/DNS
+  - [Cloudflare](https://cloudflare.com)
+- Testing 🚧
+  - [Vitest](https://vitest.dev) 🚧
+  - [Testing Library](https://testing-library.com) 🚧
+  - [Playwright](https://playwright.dev) 🚧
+  - [Ladle](https://ladle.dev) 🚧
+
+[Check the GUIDE.md](./GUIDE.md) if you need some guide into the project setup, structure, and files. If marked as 🚧 means it's still not there yet or still in development.
+
+## Extra Tech Stack
+
+(Not included in Rewinds)
+
+If you need separate backend/server/service:
+
+- Core/API
+  - GraphQL
+    - [GraphQL](https://graphql.org)
+    - [GraphQL Yoga](https://github.com/dotansimha/graphql-yoga)
+      - [Express](https://expressjs.com)
+    - [Pothos](https://github.com/hayes/pothos)
+  - tRPC
+    - [tRPC](https://trpc.io)
+- Database
+  - [Prisma ORM](https://prisma.io)
+- Auth
+  - [Passport](https://passportjs.org)
+- Payment
+  - [Lemon Squeezy](https://lemonsqueezy.com)
+  - [Stripe](https://stripe.com)
+- Misc
+  - [Inngest](https://inngest.com)
+
+# Some Details
 
 ## Some Ideas
 
@@ -97,117 +171,15 @@ Recommended extra setup:
 
 ## Some Details
 
-This repo is kind of over-engineered to have high flexibility and cover a lot of use cases for different applications/projects/products (especially what I'm working with several other people). Currently includes the Remix HMR and HDR setup with both Vercel config and Express server on development as per Remix `v1.14`. The config is just combining the templates from Remix with Express and Vercel based on the environment.
+This repo is kind of over-engineered to have high flexibility and cover a lot of use cases for different applications/projects/products, especially what I'm working with several other people.
 
-Compared to [the older `rewinds`](https://github.com/mhaidarhanif/rewinds-legacy), this newer version uses [`shadcn/ui`](https://github.com/shadcn/ui) as the base components style and setup for full stack app development inspired by [T3 Stack](https://create.t3.gg). The main adaptation reason is that this repo uses Remix, not Next.js as the full-stack framework.
+This tempalte uses [`shadcn/ui`](https://github.com/shadcn/ui) as the base components style and setup for full stack app development inspired by [T3 Stack](https://create.t3.gg). The main reason is this repo uses Remix, not Next.js like those two inspirations.
+
+Currently includes the Remix HMR and HDR optional setup with both Vercel config and Express server on development as per Remix `v1.14`. The config is just combining the templates from Remix with Express and Vercel based on the environment.
 
 ## Some Background
 
 Why create this? Well, because I had a lot of recent projects with this same stack.
-
-# Table of Contents
-
-- [⏪ Rewinds](#-rewinds)
-- [Introduction](#introduction)
-  - [Some Screenshots](#some-screenshots)
-  - [Some Ideas](#some-ideas)
-  - [Some Checklists](#some-checklists)
-  - [Some Details](#some-details)
-  - [Some Background](#some-background)
-- [Table of Contents](#table-of-contents)
-- [Tech Stack](#tech-stack)
-  - [Primary](#primary)
-  - [Complete](#complete)
-  - [Extra](#extra)
-- [Development](#development)
-  - [Install Dependencies](#install-dependencies)
-  - [Setup Environment Variables](#setup-environment-variables)
-  - [Prisma ORM and Database Connection](#prisma-orm-and-database-connection)
-  - [Run Development Server](#run-development-server)
-  - [TypeScript and ESLint Server](#typescript-and-eslint-server)
-- [Deployment](#deployment)
-  - [Vercel](#vercel)
-- [Important Notes](#important-notes)
-  - [Tailwind CSS Config](#tailwind-css-config)
-  - [Remix Entry Files](#remix-entry-files)
-  - [HMR Workaround](#hmr-workaround)
-  - [References](#references)
-    - [Remix](#remix)
-    - [React](#react)
-    - [Tailwind CSS](#tailwind-css)
-    - [Rewinds in the Wild](#rewinds-in-the-wild)
-
-# Tech Stack
-
-Listed here are only the most important parts in the stack.️ Some setup might haven't done yet or still in progress.
-
-More details and references can also be checked from [`catamyst/stack`](https://a.catamyst.com/stack).
-
-## Primary
-
-- Rewinds: Remix Tailwind Stack
-- TRIP: TypeScript/Tailwind Remix/React/Radix Interface Prisma
-
-## Complete
-
-- Core
-  - [Node.js](https://nodejs.org)
-    - [pnpm](https://pnpm.io)
-  - [TypeScript](https://typescriptlang.org)
-  - [React](https://react.dev)
-  - [Remix](https://remix.run)
-- Styling
-  - [Tailwind CSS](https://tailwindcss.com)
-  - [Fontsource](https://fontsource.org)
-  - [Radix UI](https://radix-ui.com)
-  - [React Email](https://react.email)
-- Form
-  - [Zod](https://zod.dev)
-  - [Conform](https://conform.guide)
-- Database
-  - [Prisma ORM](https://prisma.io)
-  - [PlanetScale](https://planetscale.com)
-- Auth
-  - [Remix Auth](https://github.com/sergiodxa/remix-auth)
-- Testing
-  - [Vitest](https://vitest.dev)
-  - [Testing Library](https://testing-library.com)
-  - [Playwright](https://playwright.dev)
-  - [Ladle](https://ladle.dev)
-- Tooling
-  - [Prettier](https://prettier.io)
-  - [ESLint](https://eslint.org)
-  - [Doppler](https://doppler.com) / [Dotenv](https://dotenv.org)
-- Deployment
-  - [Vercel](https://vercel.com)
-- Domain/DNS
-  - [Cloudflare](https://cloudflare.com)
-
-[Check the GUIDE.md](./GUIDE.md) if you need some guide into the project setup, structure, and files.
-
-## Extra
-
-(Not included in Rewinds)
-
-If you need separate backend/server/service:
-
-- Core/API
-  - GraphQL
-    - [GraphQL](https://graphql.org)
-    - [GraphQL Yoga](https://github.com/dotansimha/graphql-yoga)
-      - [Express](https://expressjs.com)
-    - [Pothos](https://github.com/hayes/pothos)
-  - tRPC
-    - [tRPC](https://trpc.io)
-- Database
-  - [Prisma ORM](https://prisma.io)
-- Auth
-  - [Passport](https://passportjs.org)
-- Payment
-  - [Lemon Squeezy](https://lemonsqueezy.com)
-  - [Stripe](https://stripe.com)
-- Misc
-  - [Inngest](https://inngest.com)
 
 # Development
 
@@ -387,17 +359,25 @@ module.exports = {
 
 ## Remix Entry Files
 
-Since Remix v1.14, you might notice that the entry files are implicitly defined. At the moment, if you need to deploy a Remix app I still suggest revealing or explicitly defining the entry files to make it work smoothly. Although this repo already has the entry files.
+Since Remix `v1.14`, you might notice that the entry files are implicitly defined. At the moment, if you need to deploy a Remix app I still suggest revealing or explicitly defining the entry files to make it work smoothly. Although this repo already has the entry files.
 
 ```sh
 npx remix reveal
 ```
 
+## Remix SEO Configuration
+
+As there's no official way to handle SEO related output for metadata and sitemap, here are the options ordered by stability and realibility:
+
+1. [`balavishnuvj/remix-seo`](https://github.com/balavishnuvj/remix-seo): Collection of SEO utilities like sitemap, robots.txt, etc. for a Remix Application
+2. [`chaance/remix-seo`](https://github.com/chaance/remix-seo): A package for easily managing SEO meta and link tags in Remix
+3. [`fedeya/remix-sitemap`](https://github.com/fedeya/remix-sitemap): Sitemap generator for Remix applications
+
 ## HMR Workaround
 
 > This setup has been done in this Rewinds template.
 
-To enable HMR, at least as per Remix v1.14, when not primarily using Express server only (like using Vercel and another server), we have to a separate Express server.
+To enable HMR, at least as per Remix `v1.14`, when not primarily using Express server only (like using Vercel and another server), we have to a separate Express server.
 
 If using pnpm, you also have to install `react-refresh` to resolve the HMR dependency:
 
