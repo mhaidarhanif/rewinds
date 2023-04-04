@@ -135,7 +135,7 @@ Included example features:
 - [x] Site layout and routes/pages
 - [x] Light and dark mode theme
 - [x] Register, log in, log out
-  - [ ] Data validation and unallowed usernames
+  - [x] Data validation and unallowed usernames
   - [ ] Send welcome or verification email
 - [x] Admin dashboard
   - [x] Manage users and notes
@@ -149,14 +149,23 @@ Included example features:
 Included setup:
 
 - [x] Full stack type safety with Remix and TypeScript
-  - [x] Config for HMR/HDR (hot module/data reload)
-  - [x] v2 future flags
-- [x] UI components with React and Radix UI, ready to use and 100% customizable
-- [x] Styles, colors, fonts, icons, and responsive design with Tailwind CSS
+  - [x] Follow the practices from the official docs and Remix Stacks
+  - [x] v2 future flags while still in v1
+    - [x] v2 flat routes
+    - [x] v2 error boundary
+    - [x] v2 meta data management
+    - [x] v2 route convention
+    - [x] v2 normalized form method
+    - [x] Tailwind CSS support
+    - [x] New dev server with config for HMR/HDR (hot module/data reload)
+- [x] Ready to use and 100% customizable UI components with React, Tailwind CSS, Radix UI
+  - [ ] Rich text or WYSIWYG editor with TipTap
+- [x] Preselected styles, colors, fonts, icons, and responsive design
+  - [x] Icon set system to avoid name conflict
 - [x] Database with Prisma ORM and MySQL on PlanetScale
   - [x] GraphQL/tRPC-style file models structure
-- [x] Auth with Remix Auth using a session cookie
 - [x] Form and data validation with Conform and Zod
+- [x] Auth with Remix Auth using a session cookie
 - [x] No need for loading screens, only loading bar on top and loading button state
 - [x] SEO functions with meta tags, `robots.txt`, `sitemap.xml`, `canonical`
 - [x] Various utilities with external libraries
@@ -444,15 +453,7 @@ module.exports = {
 - [An Honest Look at Tailwind as an API for CSS | thoughtbot, inc.](https://thoughtbot.com/blog/an-honest-look-at-tailwind-as-an-api-for-css)
 - [Styling Best Practices I Use With Tailwind CSS | theodorusclarence.com](https://theodorusclarence.com/blog/tailwindcss-best-practice)
 
-### Rewinds in the Wild
-
-Some other projects using Rewinds:
-
-- [M Haidar Hanif Website](https://github.com/mhaidarhanif/mhaidarhanif-web): Personal Website
-- [Catamyst](https://github.com/catamyst/catamyst-web): Learning Management System (LMS)
-- [Super Duper Gallery](https://github.com/jonathannicolasdev/superduper): Art Gallery
-
-### Inspirations
+### Setup Inspirations
 
 - [shadcn UI](https://github.com/shadcn/ui)
   - [Taxonomy](https://tx.shadcn.com)
@@ -460,3 +461,17 @@ Some other projects using Rewinds:
 - [neorepo - Remix/Next.js production-ready starter kit](https://neorepo.com)
 - [SaasRock - The One-Man SaaS Framework](https://saasrock.com)
 - [MakerKit - SaaS Starter Kits based on React](https://makerkit.dev)
+- [Saas UI - The React component library for Startups](https://saas-ui.dev)
+
+### Design Inspirations
+
+- [saasui.design](https://saasui.design)
+- [saasinterface.com](https://saasinterface.com)
+
+### Rewinds in the Wild
+
+Some other projects using Rewinds:
+
+- [M Haidar Hanif Website](https://github.com/mhaidarhanif/mhaidarhanif-web): Personal Website
+- [Catamyst](https://github.com/catamyst/catamyst-web): Learning Management System (LMS)
+- [Super Duper Gallery](https://github.com/jonathannicolasdev/superduper): Art Gallery
