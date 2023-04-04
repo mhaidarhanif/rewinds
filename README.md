@@ -11,12 +11,12 @@
 ![PlanetScale](https://img.shields.io/badge/PlanetScale-000000?style=flat-square&logo=planetscale&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
-Rewinds Stack is a web app starter kit with Remix and Tailwind family of libraries, interactive UI components, and the TypeScript ecosystem. The core stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel.
+Rewinds Stack is a web app starter kit with Remix and Tailwind family of libraries, interactive UI components, and the TypeScript ecosystem. The core stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel. Learn more about [Remix Stacks](https://remix.run/stacks)
 
-Learn more about [Remix Stacks](https://remix.run/stacks)
+Quick start:
 
 ```sh
-npx create-remix --template mhaidarhanif/rewinds
+npx create-remix@latest --template mhaidarhanif/rewinds
 ```
 
 Screenshots:
@@ -33,7 +33,7 @@ Check out the code and the demo:
 - [mhaidarhanif/rewinds](https://github.com/mhaidarhanif/rewinds)
 - [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com)
 - [rewinds.vercel.app](https://rewinds.vercel.app)
-- [rewinds.dev](https://rewinds.dev) (Sooner or later)
+- [rewinds.dev](https://rewinds.dev) (sooner or later)
 
 As a reminder:
 
@@ -43,9 +43,7 @@ For now, this README is the only main documentation.
 
 # Tech Stack
 
-Listed here are only the most important parts in the stack.️ Some setup might haven't done yet or still in progress.
-
-More details and references can also be checked from [`catamyst/stack`](https://a.catamyst.com/stack).
+Listed here are only the most important parts in the stack.️ Some setup mostly finished, but some might haven't done yet or still in progress. More details and references can also be checked from [`catamyst/stack`](https://a.catamyst.com/stack).
 
 ## Primary Tech Stack
 
@@ -236,17 +234,19 @@ pnpm add -g @antfu/ni  # install once
 ni                     # can auto choose npm/yarn/pnpm
 ```
 
-## Setup Environment Variables
+## Setup Environment Variables/Secrets
 
 Use plain `.env` file for local development:
 
 ```sh
 cp -i .env.example .env
 # `-i` or `--interactive` will prompt before overwrite
-# then edit `.env` as you prefer
+# then edit `.env` as you
 ```
 
-Recommended to use [Doppler](https://doppler.com) CLI or [Dotenv](https://dotenv.org) CLI to manage them:
+Alternatively, it's recommended to use [Doppler](https://doppler.com), or [Dotenv](https://dotenv.org), or somethin similar to manage the credentials.
+
+For example if using Doppler:
 
 ```sh
 doppler login
@@ -254,7 +254,7 @@ doppler setup
 doppler secrets download --no-file --format env > .env
 ```
 
-> ⚠️ Make sure to setup the environment variables here, on Vercel, or on your preferred deployment target. Otherwise the app will break on production. That's why Doppler or Dotenv are recommended to manage them easily. There are also some preset strings in the `.env.example` which you can copy directly.
+> ⚠️ Make sure to setup the environment variables/secrets here, on Vercel, or on your preferred deployment target. Otherwise the app will break on production. That's why Doppler or Dotenv are recommended to manage them easily. There are also some preset strings in the `.env.example` which you can copy directly.
 
 ## Prisma ORM and Database Connection
 
@@ -281,11 +281,19 @@ Afterward, start the Remix development server like so based on your preference:
 - Run without HMR: `nr dev`
 - Run with HMR: `nr dev-hmr`
 
-Without HMR, it will just `remix dev`, the Remix server on development. Then wait until you see this:
+Without HMR, it will just run `remix dev`, the Remix server on development. Then wait until you see this:
 
 ```sh
 Loading environment variables from .env
 Remix App Server started at http://localhost:3000
+```
+
+Open up <http://localhost:3000> and you should be ready to go!
+
+Alternatively, you can enable/disable HMR by changing this in the `remix.config.js`. By default we're not using it.
+
+```js
+const isUsingHMR = false;
 ```
 
 With HMR, it will run both `dev:remix` and `dev:express`, the Remix server and Express server with HMR enabled. Then wait until you see this:
@@ -297,16 +305,6 @@ Loading environment variables from .env
 ```
 
 Open up <http://localhost:3000> and you should be ready to go!
-
-If you're used to using the `vercel dev` command provided by [Vercel CLI](https://vercel.com/cli) instead, you can also use that, but it's not needed.
-
-## Check Remix HMR config
-
-You can enable/disable HMR by changing this in the `remix.config.js`. By default we're not using it.
-
-```js
-const isUsingHMR = false;
-```
 
 ## TypeScript and ESLint Server
 
@@ -324,18 +322,31 @@ When you update some significant changes in the TypeScript config, ESLint config
 
 As this repo was made after having run the `create-remix` command and selected "Vercel" as a deployment target, you only need to [import your Git repository](https://vercel.com/new) into Vercel, and it will be deployed.
 
-Just keep in mind to set up the environment variables, especially:
+Just keep in mind to set up the environment variables/secret that preferably differentiated for each server environments (local/development, staging/preview, production), especially:
 
 ```sh
+# Primary database that connects to Prisma ORM
 DATABASE_URL=
-REMIX_APP_NAME=
-REMIX_APP_EMAIL=
-REMIX_ADMIN_EMAIL=
-REMIX_ADMIN_PASSWORD=
+# Session secret for cookie after authenticated or logged in
 REMIX_SESSION_SECRET=
+# Application name
+REMIX_APP_NAME=
+# Application name for transactional email
+REMIX_APP_EMAIL=
+# Default admin email
+REMIX_ADMIN_EMAIL=
+# Default admin password
+REMIX_ADMIN_PASSWORD=
 ```
 
-Or if using Doppler, there's the auto sync integration.
+The session secret for `REMIX_SESSION_SECRET` can be generated more securely using:
+
+```sh
+node scripts/generate-secret.js # using Node.js crypto module
+1234567890abcdefghijklmnopqrstuvwxyz1234567890
+```
+
+When managing environment variables/secrets using Doppler, there's the auto sync integration to Vercel:
 
 - <https://doppler.com/integrations/vercel>
 - <https://vercel.com/integrations/doppler>
