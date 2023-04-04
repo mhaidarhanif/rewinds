@@ -28,9 +28,13 @@ model User {
   updatedAt DateTime @updatedAt
 
   name     String
-  email    String  @unique(map: "User.email_unique")
   username String  @unique
+  email    String  @unique(map: "User.email_unique")
   phone    String? @unique // phone number is a numeric string and optional
+
+  // Boolean is better with DateTime
+  // emailVerified DateTime? @default(now())
+  // phoneVerified DateTime? @default(now())
 
   roleId        String
   profileId     String             @unique
@@ -144,6 +148,7 @@ model Note {
   content     String @db.Text
 
   isPublished Boolean @default(true)
+  // isPublished DateTime? @default(now())
 
   userId String
   user   User        @relation("UserNotes", fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
