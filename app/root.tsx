@@ -7,9 +7,10 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useCatch,
   useLoaderData,
   useNavigation,
+  isRouteErrorResponse,
+  useRouteError,
 } from "@remix-run/react";
 import { IconoirProvider } from "iconoir-react";
 import NProgress from "nprogress";
@@ -193,61 +194,71 @@ export function RootDocumentBoundary({
   );
 }
 
-export function ErrorBoundary({ error }: { error: Error }) {
-  return (
-    <RootDocumentBoundary title="Sorry, unexpected error occured.">
-      <Layout
-        noThemeToggle
-        isSpaced
-        layoutHeader={
-          <PageHeader size="sm">
-            <h1>Error from {configSite.name}</h1>
-          </PageHeader>
-        }
-      >
-        <div>
-          <p>Here's the error information that can be informed to Rewinds.</p>
-          <p>{error.message}</p>
-          <Debug name="error">{error}</Debug>
-        </div>
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  if (isRouteErrorResponse(error)) {
+    let message;
+    switch (error.status) {
+      case 401:
+        message = `Sorry, you can't access this page.`;
+        break;
+      case 404:
+        message = `Sorry, this page is not available.`;
+        break;
+      default:
+        throw new Error(error.data || error.statusText);
+    }
+
+    return (
+      <RootDocumentBoundary title={message}>
+        <Layout
+          noThemeToggle
+          isSpaced
+          layoutHeader={
+            <PageHeader size="sm">
+              <h1>Error {error.status}</h1>
+              {error.statusText && <h2>{error.statusText}</h2>}
+              <p>{message}</p>
+            </PageHeader>
+          }
+        >
+          <div>
+            <p>Here's the error information that can be informed to Rewinds.</p>
+            <Debug name="error.data">{error.data}</Debug>
+          </div>
+        </Layout>
+      </RootDocumentBoundary>
+    );
+  } else if (error instanceof Error) {
+    return (
+      <RootDocumentBoundary title="Sorry, unexpected error occured.">
+        <Layout
+          noThemeToggle
+          isSpaced
+          layoutHeader={
+            <PageHeader size="sm">
+              <h1>Error from {configSite.name}</h1>
+            </PageHeader>
+          }
+        >
+          <div>
+            <p>Here's the error information that can be informed to Rewinds.</p>
+
+            <p>{error.message}</p>
+            <Debug name="error">{error}</Debug>
+
+            <p>The stack trace is:</p>
+            <Debug name="error.stack">{error.stack}</Debug>
+          </div>
+        </Layout>
+      </RootDocumentBoundary>
+    );
+  } else {
+    return (
+      <Layout>
+        <h1>Unknown Error</h1>
       </Layout>
-    </RootDocumentBoundary>
-  );
-}
-
-export function CatchBoundary() {
-  const caught = useCatch();
-
-  let message;
-  switch (caught.status) {
-    case 401:
-      message = `Sorry, you can't access this page.`;
-      break;
-    case 404:
-      message = `Sorry, this page is not available.`;
-      break;
-    default:
-      throw new Error(caught.data || caught.statusText);
+    );
   }
-
-  return (
-    <RootDocumentBoundary title={message}>
-      <Layout
-        noThemeToggle
-        isSpaced
-        layoutHeader={
-          <PageHeader size="sm">
-            <h1>Error {caught.status}</h1>
-            {caught.statusText && <h2>{caught.statusText}</h2>}
-            <p>{message}</p>
-          </PageHeader>
-        }
-      >
-        <div>
-          <p>Here's the error information that can be informed to Rewinds.</p>
-          <Debug name="caught">{caught}</Debug>
-        </div>
-      </Layout>
-    </RootDocumentBoundary>
-  );
 }

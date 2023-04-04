@@ -76,7 +76,7 @@ export default function Route() {
 
       <RemixForm
         {...form.props}
-        method="post"
+        method="POST"
         className="card max-w-lg space-y-4"
       >
         <fieldset

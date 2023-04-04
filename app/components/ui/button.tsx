@@ -40,7 +40,7 @@ export const buttonVariants = cva(
       },
       accent: {
         default: "",
-        dim: "dim hover:dim-hover",
+        dim: "dim dark:dim hover:dim-hover",
         red: "text-red-800 dark:text-red-500",
         green: "text-green-800 dark:text-green-500",
         blue: "text-blue-800 dark:text-blue-500",

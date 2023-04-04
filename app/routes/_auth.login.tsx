@@ -21,19 +21,9 @@ import { configSite } from "~/configs";
 import { model } from "~/models";
 import { schemaUserLogin } from "~/schemas";
 import { authenticator } from "~/services";
-import {
-  createDocumentLinks,
-  createMetaData,
-  getRedirectTo,
-  useRedirectTo,
-} from "~/utils";
+import { createMetaData, getRedirectTo, useRedirectTo } from "~/utils";
 
-import type {
-  V2_MetaFunction,
-  ActionArgs,
-  LoaderArgs,
-  LinksFunction,
-} from "@remix-run/node";
+import type { ActionArgs, LoaderArgs, V2_MetaFunction } from "@remix-run/node";
 import type { z } from "zod";
 
 export const meta: V2_MetaFunction = () => {
@@ -41,10 +31,6 @@ export const meta: V2_MetaFunction = () => {
     title: "Login",
     description: "Continue with your account.",
   });
-};
-
-export const links: LinksFunction = () => {
-  return createDocumentLinks({ canonicalPath: "/login" });
 };
 
 export async function loader({ request }: LoaderArgs) {
@@ -123,7 +109,7 @@ export default function Route() {
       }
     >
       <div className="mx-auto w-full max-w-sm">
-        <RemixForm {...form.props} method="post" className="space-y-4">
+        <RemixForm {...form.props} method="POST" className="space-y-4">
           <fieldset
             className="space-y-2 disabled:opacity-80"
             disabled={isSubmitting}

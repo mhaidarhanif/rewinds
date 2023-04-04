@@ -3,7 +3,7 @@ import { Search } from "~/icons";
 
 export function SearchForm({ action = "/search" }: { action?: string }) {
   return (
-    <RemixForm method="get" action={action} className="w-full">
+    <RemixForm method="GET" action={action} className="w-full">
       <fieldset className="relative flex items-center gap-1">
         <Label className="sr-only">Search</Label>
         <Input

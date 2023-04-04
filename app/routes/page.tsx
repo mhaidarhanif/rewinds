@@ -1,12 +1,5 @@
 import { Layout, PageHeader } from "~/components";
-import {
-  cn,
-  createDocumentLinks,
-  createMetaData,
-  createSitemap,
-} from "~/utils";
-
-import type { LinksFunction } from "@remix-run/node";
+import { cn, createMetaData, createSitemap } from "~/utils";
 
 export const meta = createMetaData({
   title: "Page",
@@ -14,10 +7,6 @@ export const meta = createMetaData({
 });
 
 export const handle = createSitemap("/page", 0.9);
-
-export const links: LinksFunction = () => {
-  return createDocumentLinks({ canonicalPath: "/page" });
-};
 
 export default function Route() {
   return (

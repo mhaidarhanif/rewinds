@@ -39,10 +39,9 @@ import {
   Star,
   Trash,
 } from "~/icons";
-import { createDocumentLinks, createMetaData } from "~/utils";
-import { createSitemap } from "~/utils";
+import { createMetaData, createSitemap } from "~/utils";
 
-import type { LoaderArgs, ActionArgs, LinksFunction } from "@remix-run/node";
+import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 
 export const meta = createMetaData({
   title: "Components",
@@ -50,10 +49,6 @@ export const meta = createMetaData({
 });
 
 export const handle = createSitemap("/examples", 0.9);
-
-export const links: LinksFunction = () => {
-  return createDocumentLinks({ canonicalPath: "/examples" });
-};
 
 export async function loader({ request }: LoaderArgs) {
   return json({});
@@ -512,7 +507,7 @@ export function ExampleForm() {
       </header>
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
-        <RemixForm method="post" className="space-y-2">
+        <RemixForm method="POST" className="space-y-2">
           <div className="space-y-1">
             <Label htmlFor="example-email">Email</Label>
             <Input

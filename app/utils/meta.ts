@@ -11,7 +11,7 @@ export function createMetaData({
   ogImagePath = configMeta?.ogImagePath,
   ogImageType = configMeta?.ogImageType,
   ogType = configMeta?.ogType,
-  path = "/",
+  canonicalPath = "/",
   themeColor = configMeta?.color,
   title = configMeta?.defaultTitle,
   twitterAuthorHandle = configMeta?.author.handle,
@@ -25,7 +25,7 @@ export function createMetaData({
   ogImagePath?: string;
   ogImageType?: string;
   ogType?: string;
-  path?: string;
+  canonicalPath?: string;
   themeColor?: string;
   title?: string;
   twitterAuthorHandle?: string;
@@ -76,7 +76,7 @@ export function createMetaData({
     },
     {
       property: "og:url",
-      content: path ? `${configMeta?.url}${path}` : url,
+      content: canonicalPath ? `${configMeta?.url}${canonicalPath}` : url,
     },
     {
       property: "og:type",
@@ -126,7 +126,9 @@ export function createMetaData({
     },
     {
       name: "twitter:url",
-      content: path ? `${configMeta?.url}${path}` : url || configMeta?.url,
+      content: canonicalPath
+        ? `${configMeta?.url}${canonicalPath}`
+        : url || configMeta?.url,
     },
     {
       name: "twitter:image",
@@ -134,6 +136,21 @@ export function createMetaData({
         ? `${configMeta?.url}${twitterImagePath}`
         : `${configMeta?.url}${configMeta?.twitterImagePath}`,
     },
-    { name: "fb:app_id", content: configMeta?.fbAppId },
+    {
+      name: "fb:app_id",
+      content: configMeta?.fbAppId,
+    },
+    {
+      tagName: "link",
+      rel: "canonical",
+      href: canonicalPath ? `${configMeta?.url}${canonicalPath}` : url,
+    },
+    {
+      "script:ld+json": {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "Rewinds",
+      },
+    },
   ];
 }

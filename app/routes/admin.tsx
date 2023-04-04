@@ -1,5 +1,5 @@
 import { redirect } from "@remix-run/node";
-import { Outlet, useCatch } from "@remix-run/react";
+import { isRouteErrorResponse, Outlet, useRouteError } from "@remix-run/react";
 
 import {
   buttonVariants,
@@ -145,51 +145,57 @@ export function AdminSidebar() {
   );
 }
 
-export function ErrorBoundary({ error }: { error: Error }) {
-  return (
-    <RootDocumentBoundary title="Sorry, unexpected error occured.">
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  if (isRouteErrorResponse(error)) {
+    let message;
+    switch (error.status) {
+      case 401:
+        message = `Sorry, you can't access this page.`;
+        break;
+      case 404:
+        message = `Sorry, this page is not available.`;
+        break;
+      default:
+        throw new Error(error.data || error.statusText);
+    }
+
+    return (
+      <RootDocumentBoundary title={message}>
+        <AdminLayout>
+          <PageAdminHeader size="sm">
+            <h1>Error {error.status}</h1>
+            {error.statusText && <h2>{error.statusText}</h2>}
+            <p>{message}</p>
+          </PageAdminHeader>
+          <section className="px-layout space-y-2">
+            <p>Here's the error information that can be informed to Rewinds.</p>
+            <Debug name="error.data">{error.data}</Debug>
+          </section>
+        </AdminLayout>
+      </RootDocumentBoundary>
+    );
+  } else if (error instanceof Error) {
+    return (
+      <RootDocumentBoundary title="Sorry, unexpected error occured.">
+        <AdminLayout>
+          <PageAdminHeader size="sm">
+            <h1>Error from {configSite.name}</h1>
+          </PageAdminHeader>
+          <section className="px-layout space-y-2">
+            <p>Here's the error information that can be informed to Rewinds.</p>
+            <pre>{error.message}</pre>
+            <Debug name="error">{error}</Debug>
+          </section>
+        </AdminLayout>
+      </RootDocumentBoundary>
+    );
+  } else {
+    return (
       <AdminLayout>
-        <PageAdminHeader size="sm">
-          <h1>Error from {configSite.name}</h1>
-        </PageAdminHeader>
-        <section className="px-layout space-y-2">
-          <p>Here's the error information that can be informed to Rewinds.</p>
-          <pre>{error.message}</pre>
-          <Debug name="error">{error}</Debug>
-        </section>
+        <h1>Unknown Error</h1>
       </AdminLayout>
-    </RootDocumentBoundary>
-  );
-}
-
-export function CatchBoundary() {
-  const caught = useCatch();
-
-  let message;
-  switch (caught.status) {
-    case 401:
-      message = `Sorry, you can't access this page.`;
-      break;
-    case 404:
-      message = `Sorry, this page is not available.`;
-      break;
-    default:
-      throw new Error(caught.data || caught.statusText);
+    );
   }
-
-  return (
-    <RootDocumentBoundary title={message}>
-      <AdminLayout>
-        <PageAdminHeader size="sm">
-          <h1>Error {caught.status}</h1>
-          {caught.statusText && <h2>{caught.statusText}</h2>}
-          <p>{message}</p>
-        </PageAdminHeader>
-        <section className="px-layout space-y-2">
-          <p>Here's the error information that can be informed to Rewinds.</p>
-          <Debug name="caught">{caught}</Debug>
-        </section>
-      </AdminLayout>
-    </RootDocumentBoundary>
-  );
 }

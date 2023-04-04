@@ -4,11 +4,14 @@ import { useLoaderData } from "@remix-run/react";
 import { AvatarAuto, Layout, PageHeader, RemixLink } from "~/components";
 import { model } from "~/models";
 import {
+  createCacheHeaders,
   createMetaData,
   createSitemap,
   formatPluralItems,
   truncateText,
 } from "~/utils";
+
+import type { LoaderArgs } from "@remix-run/node";
 
 export const handle = createSitemap("/notes", 0.8);
 
@@ -17,10 +20,10 @@ export const meta = createMetaData({
   description: "Public notes created by the community.",
 });
 
-export async function loader() {
+export async function loader({ request }: LoaderArgs) {
   const notes = await model.note.query.getAll();
   const notesCount = notes.length;
-  return json({ notes, notesCount });
+  return json({ notes, notesCount }, { headers: createCacheHeaders(request) });
 }
 
 export default function Route() {
@@ -39,8 +42,8 @@ export default function Route() {
         >
           <h1>All {formatPluralItems("note", notesCount)}</h1>
           <p className="dim">
-            Published notes from the users. Frequently changed for this example
-            demo.
+            Published notes from the users. Frequently changed or reset for this
+            example demo.
           </p>
         </PageHeader>
       }

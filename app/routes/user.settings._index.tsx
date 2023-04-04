@@ -146,7 +146,7 @@ function UserSettingsTabUser() {
 
   return (
     <div>
-      <RemixForm {...form.props} method="put" className="max-w-sm">
+      <RemixForm {...form.props} method="PUT" className="max-w-sm">
         <fieldset
           disabled={isSubmitting}
           className="space-y-2 disabled:opacity-80"

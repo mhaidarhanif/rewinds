@@ -101,7 +101,7 @@ export default function Route() {
         </p>
       </header>
 
-      <RemixForm {...form.props} method="put">
+      <RemixForm {...form.props} method="PUT">
         <fieldset
           disabled={isSubmitting}
           className="space-y-4 disabled:opacity-80"

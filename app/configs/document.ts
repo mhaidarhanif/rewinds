@@ -1,5 +1,5 @@
 /**
- * EDITME: Config Document Links
+ * EDITME: Config Document Links and JSON-LD
  *
  * Favicons
  * Manifest
@@ -12,7 +12,9 @@ import tailwindStyles from "~/styles/tailwind.css";
 export const stylesheetLinks = [{ rel: "stylesheet", href: tailwindStyles }];
 
 export const faviconLinks = [
-  // Use this if you want to change the favicon quickly using emoji
+  /**
+   * Use this if you want to change the favicon quickly using emoji
+   */
   // {
   //   rel: "shortcut icon",
   //   href: "https://fav.farm/⏪",

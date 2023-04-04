@@ -7,13 +7,7 @@ import {
 } from "~/components";
 import { configSite } from "~/configs";
 import { CompactDisc, Components, Github, Packages, PeaceHand } from "~/icons";
-import { createDocumentLinks, createSitemap } from "~/utils";
-
-import type { LinksFunction } from "@remix-run/node";
-
-export const links: LinksFunction = () => {
-  return createDocumentLinks({ canonicalPath: "/" });
-};
+import { createSitemap } from "~/utils";
 
 export const handle = createSitemap("/", 1);
 

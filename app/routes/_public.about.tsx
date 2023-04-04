@@ -1,16 +1,14 @@
 import {
   Anchor,
-  Layout,
-  Image,
-  YouTubeVideo,
   AspectRatio,
-  PageProgress,
   Balancer,
+  Image,
+  Layout,
+  PageProgress,
+  YouTubeVideo,
 } from "~/components";
 import { AppleMac } from "~/icons";
-import { createSitemap, createMetaData, createDocumentLinks } from "~/utils";
-
-import type { LinksFunction } from "@remix-run/node";
+import { createMetaData, createSitemap } from "~/utils";
 
 export const meta = createMetaData({
   title: "About",
@@ -19,10 +17,6 @@ export const meta = createMetaData({
 });
 
 export const handle = createSitemap("/about", 0.9);
-
-export const links: LinksFunction = () => {
-  return createDocumentLinks({ canonicalPath: "/about" });
-};
 
 export default function Route() {
   return (

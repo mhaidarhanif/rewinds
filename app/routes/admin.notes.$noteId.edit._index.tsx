@@ -77,7 +77,7 @@ export default function Route() {
         <span>Edit Note</span>
       </header>
 
-      <RemixForm {...form.props} method="put" className="card max-w-lg">
+      <RemixForm {...form.props} method="PUT" className="card max-w-lg">
         <fieldset
           disabled={isSubmitting}
           className="space-y-2 disabled:opacity-80"

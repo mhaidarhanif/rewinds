@@ -6,9 +6,7 @@ import {
   PageHeader,
   PageProgress,
 } from "~/components";
-import { createDocumentLinks, createMetaData, createSitemap } from "~/utils";
-
-import type { LinksFunction } from "@remix-run/node";
+import { createMetaData, createSitemap } from "~/utils";
 
 export const meta = createMetaData({
   title: "Demo",
@@ -16,10 +14,6 @@ export const meta = createMetaData({
 });
 
 export const handle = createSitemap("/demo", 0.9);
-
-export const links: LinksFunction = () => {
-  return createDocumentLinks({ canonicalPath: "/examples" });
-};
 
 export default function Route() {
   return (

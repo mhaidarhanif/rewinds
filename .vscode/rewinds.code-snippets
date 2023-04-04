@@ -142,38 +142,6 @@
     ]
   },
 
-  "Rewinds Remix Links": {
-    "prefix": "rwl",
-    "body": [
-      "export const links: LinksFunction = () => {",
-      "  return [",
-      "    { rel: \"$1\", href: \"$2\" }",
-      "  ];",
-      "};"
-    ],
-    "description": "Function to define links by route."
-  },
-
-  "Rewinds Remix CatchBoundary": {
-    "prefix": "rwcb",
-    "body": [
-      "export function CatchBoundary() {",
-      "  const caught = useCatch();",
-      "  $1",
-      "  return (",
-      "    <div>",
-      "      <h1>Caught</h1>",
-      "      <p>Status: {caught.status}</p>",
-      "      <Debug name=\"caught.data\">",
-      "        {caught.data}",
-      "      </Debug>",
-      "    </div>",
-      "  );",
-      "}"
-    ],
-    "description": "React component that renders whenever an action or loader throws a Response."
-  },
-
   "Rewinds Remix ErrorBoundary": {
     "prefix": "rweb",
     "body": [
