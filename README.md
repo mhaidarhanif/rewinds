@@ -231,17 +231,15 @@ For example:
 DATABASE_URL='mysql://username:pscale_pw_password@region.connect.psdb.cloud/name?sslaccept=strict'
 ```
 
-While in development, you can also visualize the schema with [Prismaliser](https://prismaliser.app).
+While in development, you can:
 
-## Check Remix config
-
-You can enable/disable HMR by changing this in the `remix.config.js`. By default we're not using it.
-
-```js
-const isUsingHMR = false;
-```
+- Generate Prisma types for `@prisma/client` with `nr prisma:generate`
+- Check generated Prisma documentation with `nr docs:prisma` then open <http://localhost:5858>
+- Visualize the schema with [Prismaliser](https://prismaliser.app)
 
 ## Run Development Server
+
+Make sure you've generated the latest Prisma schema with `nr prisma:generate`.
 
 Afterward, start the Remix development server like so based on your preference:
 
@@ -263,9 +261,17 @@ Loading environment variables from .env
 💿 Built in 0s
 ```
 
-Open up [localhost:3000](http://localhost:3000) and you should be ready to go!
+Open up <http://localhost:3000> and you should be ready to go!
 
 If you're used to using the `vercel dev` command provided by [Vercel CLI](https://vercel.com/cli) instead, you can also use that, but it's not needed.
+
+## Check Remix HMR config
+
+You can enable/disable HMR by changing this in the `remix.config.js`. By default we're not using it.
+
+```js
+const isUsingHMR = false;
+```
 
 ## TypeScript and ESLint Server
 
