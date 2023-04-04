@@ -17,7 +17,7 @@ export default function Route() {
   const { userRoles } = useLoaderData<typeof loader>();
 
   return (
-    <div className="stack-v">
+    <div className="stack">
       <header>
         <span>All User Roles</span>
       </header>
@@ -25,7 +25,7 @@ export default function Route() {
       {userRoles.length <= 0 && <span>No user roles. Please add.</span>}
 
       {userRoles.length > 0 && (
-        <ul className="stack-v">
+        <ul className="stack">
           {userRoles.map((userRole) => {
             return (
               <li key={userRole.symbol} className="card-sm">

@@ -126,15 +126,15 @@ export const mutation = {
   }: Pick<User, "name" | "username" | "email"> & {
     password: string; // unencrypted password at first
   }) {
-    const nameIsUnallowed = dataUnallowedUserUsernames.find((user) =>
-      name.toLowerCase().includes(user.username)
+    const nameIsUnallowed = dataUnallowedUserUsernames.find(
+      (user) => name.toLowerCase() === user.username
     );
     if (nameIsUnallowed) {
       return { error: { name: `Name ${name} is not allowed` } };
     }
 
-    const usernameIsUnallowed = dataUnallowedUserUsernames.find((user) =>
-      username.toLowerCase().includes(user.username)
+    const usernameIsUnallowed = dataUnallowedUserUsernames.find(
+      (user) => username.toLowerCase() === user.username
     );
     if (usernameIsUnallowed) {
       return { error: { username: `Username ${username} is not allowed` } };
@@ -233,15 +233,15 @@ export const mutation = {
     username,
     email,
   }: z.infer<typeof schemaUserUpdateData>) {
-    const nameIsUnallowed = dataUnallowedUserUsernames.find((user) =>
-      name.toLowerCase().includes(user.username)
+    const nameIsUnallowed = dataUnallowedUserUsernames.find(
+      (user) => name.toLowerCase() === user.username
     );
     if (nameIsUnallowed) {
       return { error: { name: `Name ${name} is not allowed` } };
     }
 
-    const usernameIsUnallowed = dataUnallowedUserUsernames.find((user) =>
-      username.toLowerCase().includes(user.username)
+    const usernameIsUnallowed = dataUnallowedUserUsernames.find(
+      (user) => username.toLowerCase() === user.username
     );
     if (usernameIsUnallowed) {
       return { error: { username: `Username ${username} is not allowed` } };

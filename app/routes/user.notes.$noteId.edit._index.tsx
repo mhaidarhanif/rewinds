@@ -92,7 +92,7 @@ export default function Route() {
   }
 
   return (
-    <div className="stack-v">
+    <div className="stack">
       <header className="py-4">
         <h1 className="text-3xl">Edit existing note</h1>
         <p className="dim">
@@ -106,11 +106,11 @@ export default function Route() {
           disabled={isSubmitting}
           className="space-y-4 disabled:opacity-80"
         >
-          <div className="dim stack-h-center text-xs">
+          <div className="dim queue-center text-xs">
             <span>
               ID: <code>{note.id}</code>
             </span>
-            <span>·</span>
+            <span>•</span>
             <span>
               Slug: <code>{note.slug}</code>
             </span>
@@ -155,7 +155,7 @@ export default function Route() {
             <Alert id={content.errorId}>{content.error}</Alert>
           </div>
 
-          <div className="stack-h-center">
+          <div className="queue-center">
             <ButtonLoading
               type="submit"
               className="grow"

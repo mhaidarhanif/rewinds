@@ -74,7 +74,7 @@ export function AdminSidebar() {
         "border-r-2 border-surface-200 bg-white dark:border-surface-700 dark:bg-surface-900"
       )}
     >
-      <div className="stack-h-center">
+      <div className="queue-center">
         <RemixNavLink
           prefetch="intent"
           to="/admin"

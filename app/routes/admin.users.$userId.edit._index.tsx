@@ -79,7 +79,7 @@ export default function Route() {
   }
 
   return (
-    <div className="stack-v">
+    <div className="stack">
       <header>
         <span>Edit User</span>
       </header>
@@ -89,7 +89,7 @@ export default function Route() {
           disabled={isSubmitting}
           className="space-y-2 disabled:opacity-80"
         >
-          <div className="stack-h-center text-xs">
+          <div className="queue-center text-xs">
             <span>
               ID: <code>{user.id}</code>
             </span>
@@ -168,7 +168,7 @@ export default function Route() {
             )}
           </div>
 
-          <div className="stack-h-center">
+          <div className="queue-center">
             <ButtonLoading
               type="submit"
               className="grow"

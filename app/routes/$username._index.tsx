@@ -17,6 +17,8 @@ import {
   createCacheHeaders,
   createMetaData,
   createSitemap,
+  formatDateTime,
+  formatRelativeTime,
   invariant,
   truncateText,
 } from "~/utils";
@@ -118,6 +120,11 @@ export default function Route() {
                     >
                       <h4>{note.title}</h4>
                       <p>{truncateText(note.content)}</p>
+                      <p className="dim">
+                        <span>{formatRelativeTime(note.updatedAt)}</span>
+                        <span>•</span>
+                        <span>{formatDateTime(note.updatedAt)}</span>
+                      </p>
                     </RemixLink>
                   </li>
                 );

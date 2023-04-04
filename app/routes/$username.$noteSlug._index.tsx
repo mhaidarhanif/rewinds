@@ -84,7 +84,7 @@ export default function Route() {
       layoutHeader={
         <header className="mb-4 space-y-4 bg-surface-100 py-6 dark:bg-surface-800/20 sm:py-10">
           {isOwner && (
-            <aside className="contain-sm stack-h-center">
+            <aside className="contain-sm queue-center">
               <ButtonLink
                 to={`/user/notes/${note.id}/edit`}
                 size="xs"
@@ -125,12 +125,12 @@ export default function Route() {
               {note.user.name} (@{note.user.username})
             </RemixLink>
           </h4>
-          <div className="flex flex-wrap gap-1 text-xs sm:gap-2 sm:text-sm">
+          <div className="queue-sm text-xs sm:text-sm">
             <TooltipAuto content={<b>{formatDateTime(note.createdAt)}</b>}>
               <span>Posted </span>
               <b>{formatRelativeTime(note.createdAt)}</b>
             </TooltipAuto>
-            <span>·</span>
+            <span>•</span>
             <TooltipAuto content={<b>{formatDateTime(note.updatedAt)}</b>}>
               <span>Updated </span>
               <b>{formatRelativeTime(note.updatedAt)}</b>

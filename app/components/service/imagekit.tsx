@@ -88,7 +88,7 @@ export function ImageKitUploader({
 
       <div className="space-y-1">
         <p>Upload images (one by one)</p>
-        <div className="stack-h-center">
+        <div className="queue-center">
           {inputRef && (
             <Button
               size="sm"
@@ -126,7 +126,7 @@ export function ImageKitUploadsPreviewer({
 }) {
   return (
     <div>
-      <div className="stack-h-center mt-2 rounded border bg-surface-50 p-2 dark:bg-surface-200">
+      <div className="queue-center mt-2 rounded border bg-surface-50 p-2 dark:bg-surface-200">
         {!imageAssets.length && (
           <div className="h-24 w-24 select-none flex-wrap items-center justify-center rounded border bg-white">
             <p className="break-words text-center text-xs font-bold">

@@ -61,7 +61,7 @@ export default function Route() {
       </section>
 
       <section>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <ButtonLink variant="danger" size="sm" to="/logout">
             Log out
           </ButtonLink>

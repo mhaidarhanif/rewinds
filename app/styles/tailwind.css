@@ -103,20 +103,23 @@
   .contain-sm {
     @apply contain-sm-full px-layout;
   }
-  .stack {
+  .queue {
     @apply flex flex-wrap gap-2;
   }
-  .stack-h {
-    @apply stack flex-row;
+  .queue-sm {
+    @apply flex flex-wrap gap-1 sm:gap-2;
   }
-  .stack-h-center {
-    @apply stack-h items-center;
+  .queue-center {
+    @apply stack items-center;
   }
-  .stack-v {
-    @apply stack flex-col;
+  .queue-center-sm {
+    @apply stack-sm items-center;
   }
-  .stack-v-center {
-    @apply stack-v items-center;
+  .stack {
+    @apply queue flex-col;
+  }
+  .stack-center {
+    @apply stack items-center;
   }
 
   /* Sizes */

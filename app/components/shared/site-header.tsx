@@ -162,12 +162,12 @@ export function HeaderMainButtons() {
 
         {user && (
           <>
-            <ButtonLinkIcon to="/user" variant="subtle" radius="full">
+            <ButtonLinkIcon to="/user" variant="outline" radius="full">
               <BellNotification />
               <span className="sr-only">Notification</span>
             </ButtonLinkIcon>
 
-            <ButtonLinkIcon to="/new" variant="subtle" radius="full">
+            <ButtonLinkIcon to="/new" variant="outline" radius="full">
               <Plus />
               <span className="sr-only">New note</span>
             </ButtonLinkIcon>

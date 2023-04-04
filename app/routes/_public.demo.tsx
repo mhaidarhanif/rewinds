@@ -54,9 +54,9 @@ export function DemoContextMenu() {
     <section id="demo-context-menu" className="card space-y-8">
       <h3>Context Menu</h3>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Demo</h4>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <ItemActionContextMenuDemo />
         </div>
       </div>
@@ -69,7 +69,7 @@ export function DemoPageProgress() {
     <section id="demo-page-progress" className="card space-y-8">
       <h3>Page Progress</h3>
 
-      <div className="stack-v">
+      <div className="stack">
         <PageProgress />
         <PageProgress progressValue={100} />
       </div>

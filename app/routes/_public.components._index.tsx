@@ -69,7 +69,7 @@ export default function Route() {
         </PageHeader>
       }
     >
-      <div className="stack-v">
+      <div className="stack">
         <header>
           <h2>UI</h2>
           <p>Basic and primitive UI components.</p>
@@ -82,7 +82,7 @@ export default function Route() {
         <ExampleBreadcrumb />
       </div>
 
-      <div className="stack-v">
+      <div className="stack">
         <header>
           <h2>Shared</h2>
           <p>Shared and combined components.</p>
@@ -99,9 +99,9 @@ export function ExampleLink() {
     <section id="example-button" className="card space-y-8">
       <h3>Link / Anchor</h3>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Link</h4>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <RemixLink to="/">Link without style</RemixLink>
           <RemixLinkText to="/about">Link text with style</RemixLinkText>
           <ButtonLink size="xs" to="/">
@@ -110,9 +110,9 @@ export function ExampleLink() {
         </div>
       </div>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Anchor</h4>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <Anchor href="http://example.com">Anchor without style</Anchor>
           <AnchorText href="http://example.com">Anchor with style</AnchorText>
           <ButtonAnchor size="xs" href="http://example.com">
@@ -129,9 +129,9 @@ export function ExampleButton() {
     <section id="example-button" className="card space-y-8">
       <h3>Button</h3>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Variant</h4>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <Button>Default</Button>
           <Button variant="info">Info</Button>
           <Button variant="success">Success</Button>
@@ -144,9 +144,9 @@ export function ExampleButton() {
         </div>
       </div>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Accent</h4>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <Button variant="ghost">Default</Button>
           <Button variant="ghost" accent="dim">
             Dim
@@ -163,9 +163,9 @@ export function ExampleButton() {
         </div>
       </div>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Size</h4>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <Button size="xs">Extra Small</Button>
           <Button size="sm">Small</Button>
           <Button>Default</Button>
@@ -173,9 +173,9 @@ export function ExampleButton() {
         </div>
       </div>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>With Icon</h4>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <Button size="sm">
             <Mail className="size-sm" />
             <span>Login with Email</span>
@@ -201,9 +201,9 @@ export function ExampleButton() {
         </div>
       </div>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>With Loading Icon</h4>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <Button size="sm" disabled>
             <Loader2 className="size-sm animate-spin" />
             <span>Loading...</span>
@@ -222,9 +222,9 @@ export function ExampleButtonIcon() {
     <section id="example-button-icon" className="card space-y-8">
       <h3>Button Icon</h3>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Variant</h4>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <ButtonIcon>
             <Star className="size-md" />
           </ButtonIcon>
@@ -255,9 +255,9 @@ export function ExampleButtonIcon() {
         </div>
       </div>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Size</h4>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <ButtonIcon size="xs">
             <Star className="size-xs" />
           </ButtonIcon>
@@ -273,7 +273,7 @@ export function ExampleButtonIcon() {
         </div>
       </div>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Use Case</h4>
         <div className="flex">
           <HeaderNavigationMenu align="start" />
@@ -288,17 +288,17 @@ export function ExampleLogo() {
     <section id="example-logo" className="card space-y-8">
       <h3>Logo</h3>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Accent</h4>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <Logo />
           <Logo accent="brand" />
         </div>
       </div>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Size</h4>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <Logo size="xs" />
           <Logo size="sm" />
           <Logo />
@@ -314,9 +314,9 @@ export function ExampleAlert() {
     <section id="example-alert" className="card space-y-8">
       <h3>Alert</h3>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Variant</h4>
-        <div className="stack-v">
+        <div className="stack">
           <Alert>Alert default.</Alert>
           <Alert variant="info">Alert info.</Alert>
           <Alert variant="success">Alert success.</Alert>
@@ -325,9 +325,9 @@ export function ExampleAlert() {
         </div>
       </div>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Size</h4>
-        <div className="stack-v">
+        <div className="stack">
           <Alert size="sm">Alert small.</Alert>
           <Alert>Alert medium default.</Alert>
           <Alert size="lg">Alert large.</Alert>
@@ -360,9 +360,9 @@ export function ExampleToast() {
     <section id="example-toast" className="card space-y-8">
       <h3>Toast</h3>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Variant</h4>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <Button size="sm" onClick={handleToastDefault}>
             <Calendar className="size-sm" />
             <span>Add to calendar</span>
@@ -386,7 +386,7 @@ export function ExampleBreadcrumb() {
     <section id="example-breadcrumb" className="card space-y-8">
       <h3>Breadcrumb</h3>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Default</h4>
         <Breadcrumb>
           <BreadcrumbItem>
@@ -403,7 +403,7 @@ export function ExampleBreadcrumb() {
         </Breadcrumb>
       </div>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Custom Separator</h4>
         <Breadcrumb separator="/">
           <BreadcrumbItem>
@@ -420,9 +420,9 @@ export function ExampleBreadcrumb() {
         </Breadcrumb>
       </div>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Routing Link</h4>
-        <div className="stack-v">
+        <div className="stack">
           <Breadcrumb>
             <BreadcrumbItem>
               <BreadcrumbLink as={RemixLink} to="/">
@@ -467,9 +467,9 @@ export function ExampleBreadcrumb() {
         </div>
       </div>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Auto Generate</h4>
-        <div className="stack-v">
+        <div className="stack">
           <BreadcrumbAuto
             separator={<GitCommit className="size-sm" />}
             items={[
@@ -489,9 +489,9 @@ export function ExampleBlank() {
     <section id="example-blank" className="card space-y-8">
       <h3>Blank</h3>
 
-      <div className="stack-v">
+      <div className="stack">
         <h4>Variant</h4>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <p>...</p>
         </div>
       </div>
@@ -538,7 +538,7 @@ export function ExampleForm() {
             </p>
           </div>
 
-          <div className="stack-h-center">
+          <div className="queue-center">
             <Button type="submit" className="grow">
               Submit Form
             </Button>

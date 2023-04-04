@@ -69,7 +69,7 @@ export default function Route() {
   });
 
   return (
-    <div className="stack-v">
+    <div className="stack">
       <header>
         <span>Add New Note</span>
       </header>
@@ -126,7 +126,7 @@ export default function Route() {
             </p>
           </div>
 
-          <div className="stack-h-center">
+          <div className="queue-center">
             <ButtonLoading
               type="submit"
               className="grow"

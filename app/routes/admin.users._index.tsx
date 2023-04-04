@@ -24,7 +24,7 @@ export default function Route() {
   }
 
   return (
-    <div className="stack-v">
+    <div className="stack">
       <header>
         <span>{formatPluralItems("user", usersCount)}</span>
       </header>
@@ -37,11 +37,11 @@ export default function Route() {
               <RemixLink
                 prefetch="intent"
                 to={user.id}
-                className="card hover:card-hover stack-h-center sm:gap-2"
+                className="card hover:card-hover queue-center sm:gap-2"
               >
                 <AvatarAuto user={user} className="size-2xl" />
                 <div>
-                  <h5 className="stack-h-center">
+                  <h5 className="queue-center">
                     <span>{user.name}</span>
                     <span>(@{user.username})</span>
                     <span>{user.email}</span>

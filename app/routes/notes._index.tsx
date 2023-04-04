@@ -62,7 +62,7 @@ export default function Route() {
                   <h3>{note.title}</h3>
                   <p>{note.description}</p>
                   <p className="dim">{truncateText(note.content, 70)}</p>
-                  <div className="stack-h-center">
+                  <div className="queue-center">
                     <AvatarAuto user={note.user} className="size-md" />
                     <b>{note.user.name}</b>
                   </div>

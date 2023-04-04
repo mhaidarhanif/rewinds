@@ -58,9 +58,9 @@ export default function Route() {
   }
 
   return (
-    <div className="stack-v">
+    <div className="stack">
       <header>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <span>View Note</span>
           <ButtonLink
             to={`/${note.user.username}/${note.slug}`}
@@ -89,19 +89,19 @@ export default function Route() {
         </div>
       </header>
 
-      <section className="card stack-v">
+      <section className="card stack">
         <header>
-          <div className="stack-h-center text-xs">
+          <div className="queue-center text-xs">
             <span>
               ID: <code>{note.id}</code>
             </span>
-            <span>·</span>
+            <span>•</span>
             <span>
               Slug: <code>{note.slug}</code>
             </span>
           </div>
 
-          <div className="stack-h-center text-xs">
+          <div className="queue-center text-xs">
             <span>
               <span>Created by: </span>
               <RemixLinkText
@@ -111,12 +111,12 @@ export default function Route() {
                 {note.user.name}
               </RemixLinkText>
             </span>
-            <span>·</span>
+            <span>•</span>
             <TooltipAuto content={<b>{formatDateTime(note.createdAt)}</b>}>
               <span>Created at: </span>
               <b>{formatRelativeTime(note.createdAt)}</b>
             </TooltipAuto>
-            <span>·</span>
+            <span>•</span>
             <TooltipAuto content={<b>{formatDateTime(note.updatedAt)}</b>}>
               <span>Updated at: </span>
               <b>{formatRelativeTime(note.updatedAt)}</b>

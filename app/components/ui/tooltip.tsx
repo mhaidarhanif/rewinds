@@ -31,14 +31,16 @@ TooltipContent.displayName = TooltipPrimitive.Content.displayName;
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };
 
 export function TooltipAuto({
+  className,
   children,
   content,
 }: {
+  className?: string;
   children: React.ReactNode;
   content: React.ReactNode;
 }) {
   return (
-    <Tooltip>
+    <Tooltip className={className}>
       <TooltipTrigger>{children}</TooltipTrigger>
       <TooltipContent>{content}</TooltipContent>
     </Tooltip>

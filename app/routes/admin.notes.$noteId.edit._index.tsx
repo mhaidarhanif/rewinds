@@ -72,7 +72,7 @@ export default function Route() {
   }
 
   return (
-    <div className="stack-v">
+    <div className="stack">
       <header>
         <span>Edit Note</span>
       </header>
@@ -83,11 +83,11 @@ export default function Route() {
           className="space-y-2 disabled:opacity-80"
         >
           <header>
-            <div className="stack-h-center text-xs">
+            <div className="queue-center text-xs">
               <span>
                 ID: <code>{note.id}</code>
               </span>
-              <span>·</span>
+              <span>•</span>
               <span>
                 Slug: <code>{note.slug}</code>
               </span>
@@ -134,7 +134,7 @@ export default function Route() {
             </p>
           </div>
 
-          <div className="stack-h-center">
+          <div className="queue-center">
             <ButtonLoading
               type="submit"
               className="grow"

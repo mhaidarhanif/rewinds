@@ -133,7 +133,7 @@ export default function Route() {
                 </Alert>
               )}
               <p className="text-xs text-surface-500">
-                5 to 20 characters (letters, numbers, underscore)
+                4 to 20 characters (letters, numbers, underscore)
               </p>
             </div>
 

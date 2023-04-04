@@ -61,9 +61,9 @@ export default function Route() {
   }
 
   return (
-    <div className="stack-v">
+    <div className="stack">
       <header>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <span>View User</span>
 
           <ButtonLink to={`/${user.username}`} size="xs" variant="info">
@@ -97,22 +97,22 @@ export default function Route() {
 
       <section className="card space-y-4">
         <header>
-          <div className="stack-h-center text-xs">
+          <div className="queue-center text-xs">
             <span>
               ID: <code>{user.id}</code>
             </span>
-            <span>·</span>
+            <span>•</span>
             <span>
               Role: <Badge>{user.role.name}</Badge>
             </span>
           </div>
 
-          <div className="stack-h-center text-xs">
+          <div className="queue-center text-xs">
             <TooltipAuto content={<b>{formatDateTime(user.createdAt)}</b>}>
               <span>Created at: </span>
               <b>{formatRelativeTime(user.createdAt)}</b>
             </TooltipAuto>
-            <span>·</span>
+            <span>•</span>
             <TooltipAuto content={<b>{formatDateTime(user.updatedAt)}</b>}>
               <span>Updated at: </span>
               <b>{formatRelativeTime(user.updatedAt)}</b>
@@ -120,7 +120,7 @@ export default function Route() {
           </div>
         </header>
 
-        <section className="stack-h-center">
+        <section className="queue-center">
           <AvatarAuto user={user} className="size-3xl" />
           <div>
             <h2>

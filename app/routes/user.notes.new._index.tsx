@@ -124,7 +124,7 @@ export default function Route() {
             <Alert id={content.errorId}>{content.error}</Alert>
           </div>
 
-          <div className="stack-h-center">
+          <div className="queue-center">
             <ButtonLoading
               type="submit"
               className="grow"

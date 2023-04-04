@@ -17,7 +17,7 @@ export default function Route() {
   const { noteStatuses } = useLoaderData<typeof loader>();
 
   return (
-    <div className="stack-v">
+    <div className="stack">
       <Alert variant="warning">Under development</Alert>
 
       <header>

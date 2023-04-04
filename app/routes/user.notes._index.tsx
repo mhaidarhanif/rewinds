@@ -53,7 +53,7 @@ export default function Route() {
   return (
     <>
       <PageHeader size="xs" withBackground={false} withContainer={false}>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <RemixLink to=".">
             <h1>Notes</h1>
           </RemixLink>

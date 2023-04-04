@@ -135,6 +135,7 @@ Included example features:
 - [x] Site layout and routes/pages
 - [x] Light and dark mode theme
 - [x] Register, log in, log out
+  - [ ] Data validation and unallowed usernames
   - [ ] Send welcome or verification email
 - [x] Admin dashboard
   - [x] Manage users and notes

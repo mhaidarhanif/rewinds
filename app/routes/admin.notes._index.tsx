@@ -24,9 +24,9 @@ export default function Route() {
   }
 
   return (
-    <div className="stack-v">
+    <div className="stack">
       <header>
-        <div className="stack-h-center">
+        <div className="queue-center">
           <span>{formatPluralItems("note", notesCount)}</span>
           <ButtonLink to="/notes" size="xs" variant="info">
             <Eye className="size-xs" />
@@ -45,7 +45,7 @@ export default function Route() {
               >
                 <h3>{note.title}</h3>
                 <code className="text-xs">{note.slug}</code>
-                <div className="stack-h-center">
+                <div className="queue-center">
                   <AvatarAuto user={note.user} className="size-md" />
                   <span className="text-sm">
                     {note.user.name} (@{note.user.username})

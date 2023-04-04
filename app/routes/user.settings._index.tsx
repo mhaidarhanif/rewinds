@@ -182,7 +182,7 @@ function UserSettingsTabUser() {
               </Alert>
             )}
             <p className="text-xs text-surface-500">
-              5 to 20 characters (letters, numbers, underscore)
+              4 to 20 characters (letters, numbers, underscore)
             </p>
           </div>
 
@@ -201,7 +201,7 @@ function UserSettingsTabUser() {
             )}
           </div>
 
-          <div className="stack-h-center">
+          <div className="queue-center">
             <ButtonLoading
               type="submit"
               className="grow"
