@@ -147,13 +147,13 @@ export default function Route() {
               <p className="text-xs text-surface-500">At least 8 characters</p>
             </div>
 
-            {/* TODO: Can change the cookie session maxAge */}
+            {/* TODO: Implement remember checkbox */}
             {/* <div className="flex gap-1">
-            <Checkbox id="remember" name="remember" />
-            <Label htmlFor="remember" className="cursor-pointer">
-              Remember me
-            </Label>
-          </div> */}
+              <Checkbox {...conform.input(remember)} name="remember" />
+              <Label htmlFor="remember" className="cursor-pointer">
+                Remember me
+              </Label>
+            </div> */}
 
             <Input type="hidden" name="redirectTo" value={redirectTo} />
 

@@ -7,10 +7,9 @@ import {
   createCacheHeaders,
   createMetaData,
   createSitemap,
-  formatDateTime,
   formatPluralItems,
   formatRelativeTime,
-  truncateText
+  truncateText,
 } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";

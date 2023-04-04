@@ -7,6 +7,9 @@ const envPrivate = getEnvPrivate();
 
 invariant(envPrivate.REMIX_SESSION_SECRET, "REMIX_SESSION_SECRET must be set");
 
+// TODO: integrate on register and login flow
+const remember = true;
+
 // export the whole sessionStorage object
 export const authSessionStorage = createCookieSessionStorage({
   cookie: {
@@ -14,6 +17,9 @@ export const authSessionStorage = createCookieSessionStorage({
     httpOnly: true,
     path: "/",
     sameSite: "lax",
+    maxAge: remember
+      ? 60 * 60 * 24 * 7 // 7 days
+      : undefined,
     secrets: [envPrivate.REMIX_SESSION_SECRET],
     secure: env.NODE_ENV === "production",
   },

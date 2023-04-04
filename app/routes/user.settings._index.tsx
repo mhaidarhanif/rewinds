@@ -38,6 +38,10 @@ export async function loader({ request }: LoaderArgs) {
   return json({ user });
 }
 
+/**
+ * TODO: Refactor to switch case
+ * https://github.com/rileytomasek/zodix#actions-with-multiple-intents
+ */
 export async function action({ request }: ActionArgs) {
   const formData = await request.formData();
   const parsed = parse(formData);

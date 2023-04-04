@@ -22,6 +22,10 @@ const password = z
   .min(8, "Password length at least 8 characters")
   .max(100, "Password length limited to 100 characters");
 
+const remember = z.boolean().optional();
+
+const redirectTo = z.string().optional();
+
 const roleSymbol = z.string({ required_error: "Role is required" });
 
 const headline = z
@@ -36,11 +40,14 @@ export const schemaUserRegister = z.object({
   username,
   email,
   password,
+  remember,
 });
 
 export const schemaUserLogin = z.object({
   email,
   password,
+  remember,
+  redirectTo,
 });
 
 export const schemaUserUpdateData = z.object({
