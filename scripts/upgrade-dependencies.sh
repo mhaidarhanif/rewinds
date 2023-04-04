@@ -1,0 +1,1 @@
+ncu --interactive --format group
