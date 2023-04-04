@@ -10,9 +10,9 @@
   "sideEffects": false,
   "scripts": {
     "dev": "remix dev",
-    "dev-hmr": "run-p dev:*",
-    "dev:remix": "cross-env NODE_ENV=development remix dev",
-    "dev:express": "cross-env NODE_ENV=development nodemon --require dotenv/config ./server-express.js --watch ./server-express.js",
+    "dev-hmr": "run-p dev-hmr:*",
+    "dev-hmr:remix": "cross-env NODE_ENV=development remix dev",
+    "dev-hmr:express": "cross-env NODE_ENV=development nodemon --require dotenv/config ./server-express.js --watch ./server-express.js",
     "build": "nr prisma:generate && remix build",
     "start": "cross-env NODE_ENV=production node ./server-express.js",
     "tailwind:view": "tailwind-config-viewer -p 7000 -o",

@@ -44,7 +44,7 @@ export default function Route() {
               Vercel, and more
             </p>
           </div>
-          <div className="stack-h">
+          <div className="queue">
             <ButtonLink to="/components" size="lg">
               <Components />
               <span>Components</span>

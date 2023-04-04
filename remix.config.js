@@ -10,7 +10,6 @@ module.exports = {
   appDirectory: "app",
   assetsBuildDirectory: "public/build",
   publicPath: "/build/",
-  sourceMap: true,
 
   // change this if you are not using Vercel
   server: isDevelopment ? undefined : "./server-vercel.js",

@@ -118,7 +118,9 @@ export default function Route() {
       }
     >
       <aside className="flex items-center gap-2">
-        <AvatarAuto user={note.user} className="size-2xl" />
+        <RemixLink to={`/${note.user.username}`}>
+          <AvatarAuto user={note.user} className="size-2xl" />
+        </RemixLink>
         <div>
           <h4>
             <RemixLink to={`/${note.user.username}`} className="hover:link">

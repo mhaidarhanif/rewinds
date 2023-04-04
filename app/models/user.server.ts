@@ -78,7 +78,9 @@ export const query = {
       include: {
         role: true,
         profile: true,
-        notes: true,
+        notes: {
+          orderBy: { updatedAt: "desc" }
+        },
       },
     });
   },

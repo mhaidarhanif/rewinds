@@ -110,10 +110,10 @@
     @apply flex flex-wrap gap-1 sm:gap-2;
   }
   .queue-center {
-    @apply stack items-center;
+    @apply queue items-center;
   }
   .queue-center-sm {
-    @apply stack-sm items-center;
+    @apply queue-sm items-center;
   }
   .stack {
     @apply queue flex-col;

@@ -16,6 +16,10 @@ export function getCurrentYear() {
  */
 
 export const formatDateTime = (date: string | Date | undefined) => {
+  return dayjs(date).locale("en").format("H:mm [on] D MMM YYYY");
+};
+
+export const formatDateTimeTimezone = (date: string | Date | undefined) => {
   return dayjs(date).locale("en").format("D MMM YYYY, H:mm:ss Z");
 };
 

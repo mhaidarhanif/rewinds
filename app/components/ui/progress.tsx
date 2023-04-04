@@ -41,7 +41,7 @@ const Progress = ({
     <ProgressPrimitive.Indicator
       className={cn(
         "h-full w-full flex-1 transition-all",
-        !hasGradient && "bg-surface-900 dark:bg-surface-400",
+        !hasGradient && "bg-surface-600 dark:bg-surface-400",
         hasGradient &&
           "bg-gradient-to-r from-surface-500 from-10% via-brand-500 via-30% to-teal-500 to-60%"
       )}

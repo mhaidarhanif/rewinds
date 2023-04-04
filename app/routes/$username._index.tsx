@@ -120,10 +120,10 @@ export default function Route() {
                     >
                       <h4>{note.title}</h4>
                       <p>{truncateText(note.content)}</p>
-                      <p className="dim">
-                        <span>{formatRelativeTime(note.updatedAt)}</span>
-                        <span>•</span>
+                      <p className="dim queue-sm">
                         <span>{formatDateTime(note.updatedAt)}</span>
+                        <span>•</span>
+                        <span>{formatRelativeTime(note.updatedAt)}</span>
                       </p>
                     </RemixLink>
                   </li>

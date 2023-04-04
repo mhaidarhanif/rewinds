@@ -7,8 +7,10 @@ import {
   createCacheHeaders,
   createMetaData,
   createSitemap,
+  formatDateTime,
   formatPluralItems,
-  truncateText,
+  formatRelativeTime,
+  truncateText
 } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
@@ -62,9 +64,11 @@ export default function Route() {
                   <h3>{note.title}</h3>
                   <p>{note.description}</p>
                   <p className="dim">{truncateText(note.content, 70)}</p>
-                  <div className="queue-center">
+                  <div className="queue-center dim">
                     <AvatarAuto user={note.user} className="size-md" />
                     <b>{note.user.name}</b>
+                    <span>•</span>
+                    <span>{formatRelativeTime(note.updatedAt)}</span>
                   </div>
                 </RemixLink>
               </li>
