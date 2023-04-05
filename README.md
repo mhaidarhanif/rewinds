@@ -11,39 +11,45 @@
 ![PlanetScale](https://img.shields.io/badge/PlanetScale-000000?style=flat-square&logo=planetscale&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
-Rewinds Stack is a web app starter kit with Remix and Tailwind family of libraries, interactive UI components, and the TypeScript ecosystem. The core stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel. Learn more about [Remix Stacks](https://remix.run/stacks)
+Rewinds Stack is a web app starter kit with Remix and Tailwind family of libraries, interactive UI components, and the TypeScript ecosystem.
 
-Quick start:
+The core stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel.
+
+Learn more about [Remix Stacks](https://remix.run/stacks).
+
+Demo and examples: <https://rewinds.mhaidarhanif.com>
+
+## Quick start
 
 ```sh
 npx create-remix@latest --template mhaidarhanif/rewinds
 ```
 
-Screenshots:
+## Screenshots
 
+<a href="https://rewinds.mhaidarhanif.com" target="_blank">
 <div style="max-width: 720px;">
 
 [![Dark](public/assets/screenshots/rewinds-screenshot-dark.png)](https://rewinds.mhaidarhanif.com)
 [![Light](public/assets/screenshots/rewinds-screenshot-light.png)](https://rewinds.mhaidarhanif.com)
 
 </div>
+</a>
 
-Check out the code and the demo:
+## Code repository and links
 
 - [mhaidarhanif/rewinds](https://github.com/mhaidarhanif/rewinds)
 - [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com)
 - [rewinds.vercel.app](https://rewinds.vercel.app)
 - [rewinds.dev](https://rewinds.dev) (sooner or later)
 
-As a reminder:
-
-> "Software is a just a tool to help accomplish something for people - many programmers never understood that. Keep your eyes on the delivered value, and don’t over focus on the specifics of the tools" — John Carmack
-
-For now, this README is the only main documentation.
-
 # Tech Stack
 
 Listed here are only the most important parts in the stack.️ Some setup mostly finished, but some might haven't done yet or still in progress. More details and references can also be checked from [`catamyst/stack`](https://a.catamyst.com/stack).
+
+As a reminder:
+
+> "Software is a just a tool to help accomplish something for people - many programmers never understood that. Keep your eyes on the delivered value, and don’t over focus on the specifics of the tools" — John Carmack
 
 ## Primary Tech Stack
 
@@ -75,6 +81,7 @@ Listed here are only the most important parts in the stack.️ Some setup mostly
 - Tooling
   - [Prettier](https://prettier.io)
   - [ESLint](https://eslint.org)
+  - [Stylelint](https://stylelint.io)
   - [Doppler](https://doppler.com) / [Dotenv](https://dotenv.org)
 - Deployment
   - [Vercel](https://vercel.com)
@@ -136,27 +143,28 @@ You can use this to build any web app. Also what I'm using Rewinds for.
 
 ## Some Checklists
 
-Included example features:
+Included features for the users:
 
 - [x] Site layout and routes/pages
 - [x] Light and dark mode theme
 - [x] Register, log in, log out
-  - [x] Data validation, availability and strength check, unallowed usernames
+  - [x] Data validation and check availability
   - [ ] Send welcome or verification email
 - [x] Public pages and search
 - [x] User dashboard, profile, settings
-  - [x] Manage notes
+  - [x] Manage notes (create, read, update, delete, search)
   - [ ] Profile and avatar image
   - [ ] Reset and change email
   - [ ] Notification
 - [x] Admin dashboard and search
   - [x] Manage users, notes, etc
 - [x] Various others
+  - [x] Add to home screen as app on mobile
   - [x] Search data
   - [ ] Image assets
   - [ ] Map viewer
 
-Included setup:
+Included setup for the developers:
 
 - [x] Full stack type safety with Remix and TypeScript
   - [x] Follow the practices from the official docs and Remix Stacks
@@ -170,6 +178,7 @@ Included setup:
     - [x] New dev server with config for HMR/HDR (hot module/data reload)
 - [x] Ready to use and 100% customizable UI components with React, Tailwind CSS, Radix UI
   - [ ] Rich text or WYSIWYG editor with TipTap
+  - [ ] Keyboard shortcuts with cmdk
 - [x] Preselected styles, colors, fonts, icons, and responsive design
   - [x] Default avatar image with Dicebear API
   - [x] Icon set system to avoid name conflict
@@ -180,7 +189,8 @@ Included setup:
   - [x] GraphQL/tRPC-style file models structure
 - [x] Data validation with Zod for general and Zodix for Remix loader/action
 - [x] Form handling with Conform
-  - [ ] Redirect to
+  - [x] Check for unallowed usernames
+  - [ ] Redirect to previous route
   - [ ] Password strength meter
 - [x] Auth with Remix Auth using a session cookie
 - [ ] Image hosting integration with ImageKit
@@ -195,6 +205,7 @@ Included setup:
 - [x] Lighthouse or [Pagespeed Insights](https://pagespeed.web.dev/analysis/https-rewinds-mhaidarhanif-com/dzhozpocxy?form_factor=desktop) optimized
 - [x] pnpm, Prettier, ESLint, Stylelint, and much more
   - [x] No lint and type errors!
+  - [x] Organize import order
 
 Recommended extra setup:
 
@@ -496,6 +507,7 @@ module.exports = {
   - [Taxonomy](https://tx.shadcn.com)
 - [Spacewave Stack by Kent C. Dodds](https://github.com/epicweb-dev/spacewave-stack)
 - [Synthwave Stack by I4O Open Source](https://github.com/i4o-oss/synthwave-stack)
+- [Stripe Stack by Daniel Kanem](https://github.com/dev-xo/stripe-stack)
 - [T3 Stack by T3 Community via Theo Browne](https://create.t3.gg)
 - [neorepo - Remix/Next.js production-ready starter kit](https://neorepo.com)
 - [SaasRock - The One-Man SaaS Framework](https://saasrock.com)
