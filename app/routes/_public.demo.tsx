@@ -41,10 +41,17 @@ export function DemoMusicPlayer() {
         <p>
           Demo from{" "}
           <AnchorText href="https://ui.shadcn.com">shadcn/ui</AnchorText>{" "}
-          landing page. Just beware, this example wouldn't work on mobile yet.
+          landing page. Just beware, this example wouldn't work and show on mobile yet.
         </p>
       </header>
-      <MusicPlayerDemo />
+
+      <div className="hidden lg:block">
+        <MusicPlayerDemo />
+      </div>
+
+      <div className="lg:hidden">
+        <p className="card">Music Player is only available on at least large size screens.</p>
+      </div>
     </section>
   );
 }

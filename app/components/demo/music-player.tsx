@@ -465,7 +465,7 @@ export function MusicPlayerDemo() {
                       </TabsTrigger>
                     </TabsList>
                     <div className="me-4 ms-auto">
-                      <h3 className="text-xl">Welcome back, Haidar</h3>
+                      <h3 className="text-xl text-right">Welcome back, Haidar</h3>
                     </div>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
@@ -725,7 +725,7 @@ function AlbumArtwork({
   );
 }
 
-interface DemoIndicatorProps extends React.HTMLAttributes<HTMLSpanElement> {}
+interface DemoIndicatorProps extends React.HTMLAttributes<HTMLSpanElement> { }
 
 export function DemoIndicator({ className }: DemoIndicatorProps) {
   return (

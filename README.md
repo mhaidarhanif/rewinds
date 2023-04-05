@@ -70,10 +70,11 @@ As a reminder:
   - [Fontsource](https://fontsource.org)
   - [Radix UI](https://radix-ui.com)
   - [React Email](https://react.email) 🚧
-- Form
-  - [Zod](https://zod.dev)
+- Form Handling
   - [Conform](https://conform.guide)
-- Database
+- Data Validation
+  - [Zod](https://zod.dev) and [Zodix](https://github.com/rileytomasek/zodix)
+- Database and ORM
   - [Prisma ORM](https://prisma.io)
   - [PlanetScale](https://planetscale.com)
 - Auth
@@ -202,7 +203,7 @@ Included setup for the developers:
   - [x] Root loader data for env, theme, user, etc
   - [x] Cache header
 - [x] No need for CLS loading screens/skeletons, only loading bar on top and loading button state
-- [x] Lighthouse or [Pagespeed Insights](https://pagespeed.web.dev/analysis/https-rewinds-mhaidarhanif-com/dzhozpocxy?form_factor=desktop) optimized
+- [x] Lighthouse or [Pagespeed Insights](https://pagespeed.web.dev/analysis/https-rewinds-mhaidarhanif-com/hbkn7kmahh?form_factor=desktop) optimized
 - [x] pnpm, Prettier, ESLint, Stylelint, and much more
   - [x] No lint and type errors!
   - [x] Organize import order

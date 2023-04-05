@@ -26,13 +26,13 @@ export function SiteFooter({ noThemeToggle }: Props) {
           <ul className="space-y-2">
             <li>
               <span>Repo: </span>
-              <AnchorText href={configSite?.links.github} className="py-2">
+              <AnchorText href={configSite?.links.github} className="py-3 sm:py-0">
                 <TextCode>mhaidarhanif/rewinds</TextCode>
               </AnchorText>
             </li>
             <li>
               <span>Demo: </span>
-              <AnchorText href={configMeta?.url} className="py-2">
+              <AnchorText href={configMeta?.url} className="py-3 sm:py-0">
                 {configSite?.domain}
               </AnchorText>
             </li>
@@ -40,7 +40,7 @@ export function SiteFooter({ noThemeToggle }: Props) {
           <p className="opacity-80">
             <span>Copyright &copy; </span>
             <span>{getCurrentYear()} </span>
-            <Anchor href={configMeta?.author.url} className="font-semibold">
+            <Anchor href={configMeta?.author.url} className="py-3 sm:py-0 font-semibold">
               {configMeta?.author.name}
             </Anchor>
           </p>
