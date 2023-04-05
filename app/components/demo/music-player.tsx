@@ -324,7 +324,7 @@ export function MusicPlayerDemo() {
         </MenubarMenu>
         <MenubarMenu>
           <MenubarTrigger>Account</MenubarTrigger>
-          <MenubarContent forceMount>
+          <MenubarContent>
             <MenubarLabel inset>Switch Account</MenubarLabel>
             <MenubarSeparator />
             <MenubarRadioGroup value="benoit">
@@ -483,11 +483,7 @@ export function MusicPlayerDemo() {
                           <DemoIndicator className="right-0 top-0" />
                         </Button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent
-                        className="w-56"
-                        align="end"
-                        forceMount
-                      >
+                      <DropdownMenuContent className="w-56" align="end">
                         <DropdownMenuLabel>M Haidar Hanif</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
@@ -524,7 +520,7 @@ export function MusicPlayerDemo() {
                               <span>Invite users</span>
                             </DropdownMenuSubTrigger>
                             <DropdownMenuPortal>
-                              <DropdownMenuSubContent forceMount>
+                              <DropdownMenuSubContent>
                                 <DropdownMenuItem>
                                   <Mail className="size-sm me-2" />
                                   <span>Email</span>

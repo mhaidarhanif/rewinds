@@ -246,11 +246,7 @@ export function HeaderUserMenu({
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent
-        align={align}
-        className="w-56 overflow-scroll"
-        forceMount
-      >
+      <DropdownMenuContent align={align} className="w-56 overflow-scroll">
         <DropdownMenuLabel>
           <h5>{user.name}</h5>
           <h6>

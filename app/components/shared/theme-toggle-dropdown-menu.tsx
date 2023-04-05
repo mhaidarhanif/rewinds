@@ -41,7 +41,7 @@ export function ThemeToggleDropdownMenu({ align = "end", size }: Props) {
         </ButtonIcon>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align={align} forceMount>
+      <DropdownMenuContent align={align}>
         <DropdownMenuItem onClick={() => handleChangeTheme("light")}>
           <Sun className="size-sm me-2" />
           <span>Light</span>
