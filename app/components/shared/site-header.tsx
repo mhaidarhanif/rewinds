@@ -23,10 +23,12 @@ import {
   ThemeToggleButton,
 } from "~/components";
 import { configSite } from "~/configs";
+import { getUserIsAllowed } from "~/helpers";
 import { useRootLoaderData } from "~/hooks";
 import {
   BellNotification,
   CreditCard,
+  DashboardSpeed,
   Github,
   Keyboard,
   LogOut,
@@ -238,6 +240,8 @@ export function HeaderUserMenu({
     return null;
   }
 
+  const userIsAllowed = getUserIsAllowed(user, ["ADMIN", "MANAGER", "EDITOR"]);
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -263,15 +267,13 @@ export function HeaderUserMenu({
             <RemixNavLink prefetch="intent" to={`/${user.username}`}>
               <User className="size-sm me-2" />
               <span>Profile</span>
-              <DropdownMenuShortcut>⌘⇧P</DropdownMenuShortcut>
             </RemixNavLink>
           </DropdownMenuItem>
 
           <DropdownMenuItem asChild>
             <RemixNavLink prefetch="intent" to={`/user/dashboard`}>
-              <User className="size-sm me-2" />
+              <DashboardSpeed className="size-sm me-2" />
               <span>Dashboard</span>
-              <DropdownMenuShortcut>⌘⇧D</DropdownMenuShortcut>
             </RemixNavLink>
           </DropdownMenuItem>
 
@@ -279,20 +281,17 @@ export function HeaderUserMenu({
             <RemixNavLink to={`/user/settings`}>
               <Settings className="size-sm me-2" />
               <span>Settings</span>
-              <DropdownMenuShortcut>⌘⇧S</DropdownMenuShortcut>
             </RemixNavLink>
           </DropdownMenuItem>
 
           <DropdownMenuItem>
             <CreditCard className="size-sm me-2" />
             <span>Billing</span>
-            <DropdownMenuShortcut>⌘⇧B</DropdownMenuShortcut>
           </DropdownMenuItem>
 
           <DropdownMenuItem>
             <BellNotification className="size-sm me-2" />
             <span>Notifications</span>
-            <DropdownMenuShortcut>⌘⇧O</DropdownMenuShortcut>
           </DropdownMenuItem>
 
           <DropdownMenuItem>
@@ -301,6 +300,20 @@ export function HeaderUserMenu({
             <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
+
+        {userIsAllowed && (
+          <>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuItem asChild>
+                <RemixNavLink prefetch="intent" to={`/admin`}>
+                  <User className="size-sm me-2" />
+                  <span>Admin</span>
+                </RemixNavLink>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+          </>
+        )}
 
         <DropdownMenuSeparator />
 

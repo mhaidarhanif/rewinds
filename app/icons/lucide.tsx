@@ -45,7 +45,6 @@ export {
   PlusCircle,
   Podcast,
   Radio,
-  Settings,
   Star,
   Sun,
   SunMedium,

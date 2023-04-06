@@ -225,7 +225,9 @@ export function ErrorBoundary() {
         >
           <div>
             <p>Here's the error information that can be informed to Rewinds.</p>
-            <Debug name="error.data">{error.data}</Debug>
+            <Debug name="error.data" isAlwaysShow>
+              {error.data}
+            </Debug>
           </div>
         </Layout>
       </RootDocumentBoundary>
@@ -246,10 +248,14 @@ export function ErrorBoundary() {
             <p>Here's the error information that can be informed to Rewinds.</p>
 
             <p>{error.message}</p>
-            <Debug name="error">{error}</Debug>
+            <Debug name="error" isAlwaysShow>
+              {error}
+            </Debug>
 
             <p>The stack trace is:</p>
-            <Debug name="error.stack">{error.stack}</Debug>
+            <Debug name="error.stack" isAlwaysShow>
+              {error.stack}
+            </Debug>
           </div>
         </Layout>
       </RootDocumentBoundary>

@@ -12,11 +12,13 @@ import { cn } from "~/utils";
 export function Debug({
   name = "unknown",
   isCollapsibleOpen = false,
+  isAlwaysShow,
   className,
   children,
 }: {
   name?: string;
   isCollapsibleOpen?: boolean;
+  isAlwaysShow?: boolean;
   className?: string;
   children: string | any | unknown | null | undefined | React.ReactNode;
 }) {
@@ -24,7 +26,7 @@ export function Debug({
 
   const { ENV } = useRootLoaderData();
 
-  if (ENV && ENV.NODE_ENV === "production") {
+  if (!isAlwaysShow || (ENV && ENV.NODE_ENV === "production")) {
     return null;
   }
 

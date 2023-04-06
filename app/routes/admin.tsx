@@ -22,24 +22,24 @@ import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 export const handle = createSitemap();
 
 export async function loader({ request }: LoaderArgs) {
-  const { isAllowed } = await requireUserSession(request, [
+  const { userIsAllowed } = await requireUserSession(request, [
     "ADMIN",
     "MANAGER",
     "EDITOR",
   ]);
-  if (!isAllowed) {
+  if (!userIsAllowed) {
     return redirect(`/`);
   }
   return null;
 }
 
 export async function action({ request }: ActionArgs) {
-  const { isAllowed } = await requireUserSession(request, [
+  const { userIsAllowed } = await requireUserSession(request, [
     "ADMIN",
     "MANAGER",
     "EDITOR",
   ]);
-  if (!isAllowed) {
+  if (!userIsAllowed) {
     return redirect(`/`);
   }
   return null;
@@ -95,6 +95,7 @@ export function AdminSidebar() {
                 key={navItem.name}
                 to={navItem.to}
                 prefetch="intent"
+                end={navItem.end}
                 className={({ isActive }) =>
                   cn(
                     "w-full",
@@ -171,7 +172,9 @@ export function ErrorBoundary() {
           </PageAdminHeader>
           <section className="px-layout space-y-2">
             <p>Here's the error information that can be informed to Rewinds.</p>
-            <Debug name="error.data">{error.data}</Debug>
+            <Debug name="error.data" isAlwaysShow>
+              {error.data}
+            </Debug>
           </section>
         </AdminLayout>
       </RootDocumentBoundary>
@@ -185,8 +188,16 @@ export function ErrorBoundary() {
           </PageAdminHeader>
           <section className="px-layout space-y-2">
             <p>Here's the error information that can be informed to Rewinds.</p>
+
             <pre>{error.message}</pre>
-            <Debug name="error">{error}</Debug>
+            <Debug name="error" isAlwaysShow>
+              {error}
+            </Debug>
+
+            <p>The stack trace is:</p>
+            <Debug name="error.stack" isAlwaysShow>
+              {error.stack}
+            </Debug>
           </section>
         </AdminLayout>
       </RootDocumentBoundary>

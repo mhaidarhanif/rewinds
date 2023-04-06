@@ -55,9 +55,9 @@ export default function Route() {
         >
           <h1>Search results</h1>
           <h2>
-            <span>{formatPluralItems("result", itemsCount)} </span>
-            {q && <span>with keyword: {q}</span>}
-            {!q && <span>with no specific keyword</span>}
+            <span>{formatPluralItems("result", itemsCount)}</span>
+            {q && <span> with keyword: {q}</span>}
+            {!q && <span> with no specific keyword</span>}
           </h2>
         </PageHeader>
       }

@@ -20,6 +20,7 @@ import {
   TextArea,
 } from "~/components";
 import { requireUserSession } from "~/helpers";
+import { Settings } from "~/icons";
 import { model } from "~/models";
 import {
   schemaUserUpdateData,
@@ -89,7 +90,10 @@ export default function Route() {
   return (
     <div className="contain-sm">
       <PageHeader size="xs" withBackground={false} withContainer={false}>
-        <h1 className="text-3xl">Settings</h1>
+        <h1 className="queue-center text-3xl">
+          <Settings />
+          Settings
+        </h1>
         <p>
           <span>Settings for </span>
           <RemixLinkText prefetch="intent" to={`/${user.username}`}>

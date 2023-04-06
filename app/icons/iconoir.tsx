@@ -12,6 +12,8 @@ export {
   Circle,
   Cloud,
   CompactDisc,
+  Settings,
+  DashboardSpeed,
   Db as Database,
   DbSearch,
   Edit,

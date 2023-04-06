@@ -40,14 +40,14 @@ export async function requireUserSession(
   invariant(user, "User is not available");
 
   // Check role if expectedRoleSymbols exist
-  const isAllowed = expectedRoleSymbols
+  const userIsAllowed = expectedRoleSymbols
     ? requireUserRole(user, expectedRoleSymbols)
     : true;
 
   return {
     userSession,
     user,
-    isAllowed,
+    userIsAllowed,
   };
 }
 
@@ -59,12 +59,10 @@ export function requireUserRole(
   expectedRoleSymbols?: UserRole["symbol"][]
 ) {
   // Find if user's role is available in the list
-  const isAllowed = expectedRoleSymbols?.find(
-    (symbol) => user.role.symbol === symbol
-  );
+  const userIsAllowed = getUserIsAllowed(user, expectedRoleSymbols);
 
   // If user's role is not as expected to be allowed
-  if (!isAllowed) {
+  if (!userIsAllowed) {
     return false;
   } else {
     return true;
@@ -82,4 +80,14 @@ export async function getAuthErrorSession(request: Request) {
   const session = await getSession(request.headers.get("cookie"));
   const errorSession = session.get(authenticator.sessionErrorKey);
   return errorSession;
+}
+
+export function getUserIsAllowed(
+  user: UserData,
+  expectedRoleSymbols?: UserRole["symbol"][]
+) {
+  const userIsAllowed = expectedRoleSymbols?.find(
+    (symbol) => user.role.symbol === symbol
+  );
+  return userIsAllowed ? true : false;
 }

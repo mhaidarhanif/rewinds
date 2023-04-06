@@ -46,9 +46,9 @@ export default function Route() {
       <PageAdminHeader size="xs" direction="col">
         <h1>Admin search results</h1>
         <h3>
-          <span>{formatPluralItems("item", itemsCount)} found </span>
-          {q && <span>with keyword: {q}</span>}
-          {!q && <span>with no specific keyword</span>}
+          <span>{formatPluralItems("result", itemsCount)}</span>
+          {q && <span> with keyword: {q}</span>}
+          {!q && <span> with no specific keyword</span>}
         </h3>
       </PageAdminHeader>
 

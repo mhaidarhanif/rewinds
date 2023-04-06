@@ -11,9 +11,10 @@ export const configAdmin = {
   navItems: [
     {
       to: "/admin",
-      name: "Dashboard",
-      icon: "home",
+      name: "Admin Dashboard",
+      icon: "dashboard",
       items: [],
+      end: true,
     },
 
     {

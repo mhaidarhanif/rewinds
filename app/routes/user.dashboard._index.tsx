@@ -3,6 +3,7 @@ import { useLoaderData } from "@remix-run/react";
 
 import { ButtonLink, PageHeader, RemixLink, RemixLinkText } from "~/components";
 import { requireUserRole, requireUserSession } from "~/helpers";
+import { DashboardSpeed } from "~/icons";
 import { model } from "~/models";
 import { cn, createCacheHeaders, createSitemap, invariant } from "~/utils";
 
@@ -21,12 +22,15 @@ export async function loader({ request }: LoaderArgs) {
 
 export default function Route() {
   const { user, metrics } = useLoaderData<typeof loader>();
-  const isAllowed = requireUserRole(user, ["ADMIN", "MANAGER", "EDITOR"]);
+  const userIsAllowed = requireUserRole(user, ["ADMIN", "MANAGER", "EDITOR"]);
 
   return (
     <div className="contain-sm space-y-4">
       <PageHeader size="xs" withBackground={false} withContainer={false}>
-        <h1 className="text-3xl">Dashboard</h1>
+        <h1 className="queue-center text-3xl">
+          <DashboardSpeed />
+          Dashboard
+        </h1>
         <p>
           <span>Dashboard for </span>
           <RemixLinkText prefetch="intent" to={`/${user.username}`}>
@@ -65,7 +69,7 @@ export default function Route() {
           <ButtonLink variant="danger" size="sm" to="/logout">
             Log out
           </ButtonLink>
-          {isAllowed && (
+          {userIsAllowed && (
             <ButtonLink prefetch="intent" variant="info" size="sm" to="/admin">
               Admin
             </ButtonLink>
