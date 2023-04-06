@@ -24,6 +24,7 @@ export {
   InfoEmpty,
   InputSearch,
   LayoutLeft,
+  Minus,
   MultiplePages,
   Notes,
   Packages,
