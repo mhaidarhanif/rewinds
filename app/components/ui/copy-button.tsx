@@ -6,10 +6,11 @@ import { Copy, Check } from "~/icons";
 import type { ButtonProps } from "~/components";
 
 interface Props extends ButtonProps {
-  contentToCopy: string;
+  contentToCopy: string | undefined;
   copyIcon?: React.ReactNode;
   successIcon?: React.ReactNode;
   withText?: boolean;
+  text?: string;
 }
 
 export function CopyButton({
@@ -18,12 +19,14 @@ export function CopyButton({
   copyIcon,
   successIcon,
   withText,
+  text,
   ...props
 }: Props) {
   const [copied, setCopied] = useState(false);
 
   return (
     <Button
+      type="button"
       onClick={() => {
         navigator.clipboard.writeText(contentToCopy || "");
         setCopied(true);
@@ -37,7 +40,8 @@ export function CopyButton({
       {copied
         ? successIcon || <Check className="size-sm text-green-500" />
         : copyIcon || <Copy className="size-sm" />}
-      {withText && <span>Copy</span>}
+      {!text && withText && <span>Copy</span>}
+      {text}
     </Button>
   );
 }

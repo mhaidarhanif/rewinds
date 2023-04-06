@@ -7,6 +7,7 @@ import { badRequest, forbidden } from "remix-utils";
 import {
   Alert,
   ButtonLoading,
+  CopyButton,
   Debug,
   Input,
   Label,
@@ -18,6 +19,7 @@ import {
   TabsList,
   TabsTrigger,
   TextArea,
+  TooltipAuto,
 } from "~/components";
 import { requireUserSession } from "~/helpers";
 import { Settings } from "~/icons";
@@ -159,7 +161,16 @@ function UserSettingsTabUser() {
           <input hidden {...conform.input(id)} defaultValue={user.id} />
 
           <div className="space-y-1">
-            <Label htmlFor={name.id}>Name</Label>
+            <div className="queue-center justify-between">
+              <Label htmlFor={name.id}>Name</Label>
+              <TooltipAuto content="Copy Name">
+                <CopyButton
+                  variant="ghost"
+                  size="xs"
+                  contentToCopy={user.name || name.defaultValue}
+                />
+              </TooltipAuto>
+            </div>
             <Input
               {...conform.input(name)}
               type="text"
@@ -254,7 +265,16 @@ function UserSettingsTabProfile() {
           />
 
           <div className="space-y-1">
-            <Label htmlFor={headline.id}>Headline</Label>
+            <div className="queue-center justify-between">
+              <Label htmlFor={headline.id}>Headline</Label>
+              <TooltipAuto content="Copy Headline">
+                <CopyButton
+                  variant="ghost"
+                  size="xs"
+                  contentToCopy={user.profile.headline || headline.defaultValue}
+                />
+              </TooltipAuto>
+            </div>
             <Input
               {...conform.input(headline)}
               placeholder="Your headline"
@@ -268,7 +288,16 @@ function UserSettingsTabProfile() {
           </div>
 
           <div className="space-y-1">
-            <Label htmlFor={bio.id}>Bio</Label>
+            <div className="queue-center justify-between">
+              <Label htmlFor={bio.id}>Bio</Label>
+              <TooltipAuto content="Copy Bio">
+                <CopyButton
+                  variant="ghost"
+                  size="xs"
+                  contentToCopy={user.profile.bio || bio.defaultValue}
+                />
+              </TooltipAuto>
+            </div>
             <TextArea
               {...conform.input(bio)}
               placeholder="Your bio here..."
