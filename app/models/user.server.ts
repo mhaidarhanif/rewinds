@@ -55,6 +55,7 @@ export const query = {
         role: { select: { symbol: true, name: true } },
         profile: {
           select: {
+            id: true,
             headline: true,
             bio: true,
           },

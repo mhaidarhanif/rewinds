@@ -17,6 +17,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
+  TextArea,
 } from "~/components";
 import { requireUserSession } from "~/helpers";
 import { model } from "~/models";
@@ -38,15 +39,12 @@ export async function loader({ request }: LoaderArgs) {
   return json({ user });
 }
 
-/**
- * TODO: Refactor to switch case
- * https://github.com/rileytomasek/zodix#actions-with-multiple-intents
- */
 export async function action({ request }: ActionArgs) {
   const formData = await request.formData();
   const parsed = parse(formData);
+  const { intent } = parsed.payload;
 
-  if (parsed.payload.intent === "update-user-data") {
+  if (intent === "update-user-data") {
     const submission = parseZod(formData, { schema: schemaUserUpdateData });
     if (!submission.value) {
       return badRequest(submission);
@@ -58,7 +56,7 @@ export async function action({ request }: ActionArgs) {
     return json(submission);
   }
 
-  if (parsed.payload.intent === "update-user-profile") {
+  if (intent === "update-user-profile") {
     const submission = parseZod(formData, { schema: schemaUserUpdateProfile });
     if (!submission.value) {
       return badRequest(submission);
@@ -70,7 +68,7 @@ export async function action({ request }: ActionArgs) {
     return json(submission);
   }
 
-  if (parsed.payload.intent === "update-user-password") {
+  if (intent === "update-user-password") {
     const submission = parseZod(formData, { schema: schemaUserUpdatePassword });
     if (!submission.value) {
       return badRequest(submission);
@@ -113,7 +111,7 @@ export default function Route() {
 export function UserSettingsTabs() {
   return (
     <Tabs defaultValue="user-data" className="w-full">
-      <TabsList>
+      <TabsList className="mb-2">
         <TabsTrigger value="user-data">User</TabsTrigger>
         <TabsTrigger value="user-profile">Profile</TabsTrigger>
         <TabsTrigger value="user-password">Password</TabsTrigger>
@@ -133,7 +131,6 @@ export function UserSettingsTabs() {
 
 function UserSettingsTabUser() {
   const { user } = useLoaderData<typeof loader>();
-
   const actionData = useActionData<typeof action>();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
@@ -224,9 +221,73 @@ function UserSettingsTabUser() {
 }
 
 function UserSettingsTabProfile() {
+  const { user } = useLoaderData<typeof loader>();
+  const actionData = useActionData<typeof action>();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
+
+  const [form, { id, headline, bio }] = useForm<
+    z.infer<typeof schemaUserUpdateProfile>
+  >({
+    shouldValidate: "onSubmit",
+    lastSubmission: actionData,
+    onValidate({ formData }) {
+      return parseZod(formData, { schema: schemaUserUpdateProfile });
+    },
+  });
+
   return (
     <div>
-      <p className="dim">Update your profile headline and bio.</p>
+      <RemixForm {...form.props} method="PUT" className="max-w-sm">
+        <fieldset
+          disabled={isSubmitting}
+          className="space-y-2 disabled:opacity-80"
+        >
+          <input
+            hidden
+            {...conform.input(id)}
+            defaultValue={String(user.profile.id)}
+          />
+
+          <div className="space-y-1">
+            <Label htmlFor={headline.id}>Headline</Label>
+            <Input
+              {...conform.input(headline)}
+              placeholder="Your headline"
+              defaultValue={String(user.profile.headline)}
+            />
+            <Alert isShown={headline.error} id={headline.errorId}>
+              {headline.error}
+            </Alert>
+          </div>
+
+          <div className="space-y-1">
+            <Label htmlFor={bio.id}>Bio</Label>
+            <TextArea
+              {...conform.input(bio)}
+              placeholder="Your bio here..."
+              defaultValue={String(user.profile.bio)}
+              rows={5}
+            />
+            <Alert isShown={bio.error} id={bio.errorId}>
+              {bio.error}
+            </Alert>
+          </div>
+
+          <div className="queue-center">
+            <ButtonLoading
+              type="submit"
+              className="grow"
+              name="intent"
+              value="update-user-profile"
+              isSubmitting={isSubmitting}
+              loadingText="Updating Profile..."
+            >
+              Update
+            </ButtonLoading>
+          </div>
+        </fieldset>
+      </RemixForm>
     </div>
   );
 }

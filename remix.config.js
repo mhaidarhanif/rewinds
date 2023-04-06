@@ -2,7 +2,14 @@
 const isDevelopment = process.env.NODE_ENV === "development";
 
 // to enable or disable HMR/HDR
-const isUsingHMR = false;
+const isUsingHMR = Boolean(process.env.USE_HMR) || false;
+
+// to show environent condition
+console.info({
+  NODE_ENV: process.env.NODE_ENV,
+  USE_HMR: process.env.USE_HMR,
+  isUsingHMR,
+});
 
 /** @type {import('@remix-run/dev').AppConfig} */
 module.exports = {

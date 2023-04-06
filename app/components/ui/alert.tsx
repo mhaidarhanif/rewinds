@@ -36,16 +36,23 @@ export const alertVariants = cva(cn("flex items-center border-l border-l-2"), {
 
 interface Props
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof alertVariants> {}
+    VariantProps<typeof alertVariants> {
+  isShown?: string | boolean | undefined;
+}
 
 export function Alert({
-  variant = "default",
+  isShown = false,
+  variant = "danger",
   size = "default",
   radius = "default",
   className,
   children,
   ...props
 }: Props) {
+  if (!isShown) {
+    return null;
+  }
+
   if (!children) {
     return null;
   }

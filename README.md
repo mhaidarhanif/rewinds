@@ -10,6 +10,7 @@
 ![Prisma ORM](https://img.shields.io/badge/Prisma_ORM-2D3748?style=flat-square&logo=prisma&logoColor=white)
 ![PlanetScale](https://img.shields.io/badge/PlanetScale-000000?style=flat-square&logo=planetscale&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
+[![Better Uptime](https://betteruptime.com/status-badges/v1/monitor/enmd.svg)](https://uptime.mhaidarhanif.com/?utm_source=status_badge)
 
 Rewinds Stack is a web app starter kit with Remix and Tailwind family of libraries, interactive UI components, and the TypeScript ecosystem.
 
@@ -17,7 +18,7 @@ The core stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Rad
 
 Learn more about [Remix Stacks](https://remix.run/stacks).
 
-Demo and examples: <https://rewinds.mhaidarhanif.com>
+Demo and examples: [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com)
 
 ## Quick start
 
@@ -56,6 +57,8 @@ As a reminder:
 - Rewinds: Remix Tailwind Stack
 - TRIP: TypeScript/Tailwind Remix/React/Radix Interface Prisma
   - VPS: Vercel PlanetScale
+
+These are also the primary prerequisites for you to learn, understand, and use with this Rewinds stack. (Architecture diagram can help later on here)
 
 ## Complete Tech Stack
 
@@ -210,10 +213,11 @@ Included setup for the developers:
 
 Recommended extra setup:
 
-- Use [Google Search Console](https://search.google.com/search-console/about) to check the sitemap and SERP-related stuffs
-- Use [Clerk](https://clerk.com) to [replace Remix Auth](https://clerk.com/docs/quickstarts/get-started-with-remix) if you need more than this
-- Connect Vercel project to Axiom for better log management
-- Connect to Highlight to report and analyze errors
+- Connect to monitoring service such as Better Uptime, Instatus, or Pulsetic.
+- Connect Vercel project to Axiom for better log management.
+- Connect to Highlight to report and analyze errors.
+- Use [Google Search Console](https://search.google.com/search-console/about) to check the sitemap and SERP-related stuffs.
+- Use [Clerk](https://clerk.com) to [replace Remix Auth](https://clerk.com/docs/quickstarts/get-started-with-remix) if you need more than this.
 
 ## Some Details
 
@@ -221,7 +225,7 @@ This repo is kind of over-engineered to have high flexibility and cover a lot of
 
 This template uses [`shadcn/ui`](https://github.com/shadcn/ui) as the base components style and setup for full stack app development inspired by [T3 Stack](https://create.t3.gg). The main reason is this repo uses Remix, not Next.js like those two inspirations.
 
-Currently includes the Remix HMR and HDR optional setup with both Vercel config and Express server on development as per Remix `v1.14`. The config is just combining the templates from Remix with Express and Vercel based on the environment.
+Currently includes the Remix HMR and HDR optional setup with both Vercel config and Express server on development as per Remix `v1.14`. The config is just combining the templates from Remix with Express and Vercel based on the environment. With separated Expresss you are also able to debug the process from code editor like VS Code much easier.
 
 ## Some Background
 
@@ -280,9 +284,11 @@ DATABASE_URL='mysql://username:pscale_pw_password@region.connect.psdb.cloud/name
 
 While in development, you can:
 
-- Generate Prisma types for `@prisma/client` with `nr prisma:generate`
-- Check generated Prisma documentation with `nr docs:prisma` then open <http://localhost:5858>
+- Generate Prisma types for `@prisma/client` with `nr prisma:generate` (it runs `prisma generate`)
+- Check generated Prisma documentation with `nr docs:prisma` (it runs `prisma-docs-generator serve`) then open <http://localhost:5858>
 - Visualize the schema with [Prismaliser](https://prismaliser.app)
+- Push Prisma schema changes for PlanetScale with `nr prisma:push` (it runs `prisma db push`)
+  - You might notice that with [PlanetScale](https://planetscale.com/docs/tutorials/prisma-quickstart) approach with [Prisma](https://prisma.io/docs/guides/database/using-prisma-with-planetscale), we don't need migration files in our repo, rather managed in their platform.
 
 ## Run Development Server
 

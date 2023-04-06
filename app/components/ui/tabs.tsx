@@ -46,6 +46,7 @@ const TabsContent = forwardRef<
   <TabsPrimitive.Content
     className={cn(
       "focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 dark:focus:ring-brand-400 dark:focus:ring-offset-brand-900",
+      "rounded",
       className
     )}
     {...props}
