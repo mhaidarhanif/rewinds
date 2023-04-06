@@ -6,6 +6,7 @@ const isUsingHMR = Boolean(process.env.USE_HMR) || false;
 
 // to show environent condition
 console.info({
+  message: `⏪ Rewinds is running`,
   NODE_ENV: process.env.NODE_ENV,
   USE_HMR: process.env.USE_HMR,
   isUsingHMR,

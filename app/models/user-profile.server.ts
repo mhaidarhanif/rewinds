@@ -21,6 +21,12 @@ export const mutation = {
       data: { headline, bio },
     });
 
+    if (!userProfile) {
+      return {
+        error: { password: `Profile is failed to change` },
+      };
+    }
+
     return {
       userProfile,
       error: null,

@@ -2,6 +2,7 @@ import { conform, parse, useForm } from "@conform-to/react";
 import { parse as parseZod } from "@conform-to/zod";
 import { json } from "@remix-run/node";
 import { useActionData, useLoaderData, useNavigation } from "@remix-run/react";
+import { useEffect } from "react";
 import { badRequest, forbidden } from "remix-utils";
 
 import {
@@ -10,6 +11,7 @@ import {
   CopyButton,
   Debug,
   Input,
+  InputPassword,
   Label,
   PageHeader,
   RemixForm,
@@ -19,7 +21,6 @@ import {
   TabsList,
   TabsTrigger,
   TextArea,
-  TooltipAuto,
 } from "~/components";
 import { requireUserSession } from "~/helpers";
 import { Settings } from "~/icons";
@@ -163,13 +164,11 @@ function UserSettingsTabUser() {
           <div className="space-y-1">
             <div className="queue-center justify-between">
               <Label htmlFor={name.id}>Name</Label>
-              <TooltipAuto content="Copy Name">
-                <CopyButton
-                  variant="ghost"
-                  size="xs"
-                  contentToCopy={user.name || name.defaultValue}
-                />
-              </TooltipAuto>
+              <CopyButton
+                variant="ghost"
+                size="xs"
+                contentToCopy={user.name || name.defaultValue}
+              />
             </div>
             <Input
               {...conform.input(name)}
@@ -220,13 +219,13 @@ function UserSettingsTabUser() {
           <div className="queue-center">
             <ButtonLoading
               type="submit"
-              className="grow"
               name="intent"
               value="update-user-data"
               isSubmitting={isSubmitting}
-              loadingText="Updating..."
+              loadingText="Updating Name..."
+              className="grow"
             >
-              Update
+              Update Name
             </ButtonLoading>
           </div>
         </fieldset>
@@ -267,13 +266,11 @@ function UserSettingsTabProfile() {
           <div className="space-y-1">
             <div className="queue-center justify-between">
               <Label htmlFor={headline.id}>Headline</Label>
-              <TooltipAuto content="Copy Headline">
-                <CopyButton
-                  variant="ghost"
-                  size="xs"
-                  contentToCopy={user.profile.headline || headline.defaultValue}
-                />
-              </TooltipAuto>
+              <CopyButton
+                variant="ghost"
+                size="xs"
+                contentToCopy={user.profile.headline || headline.defaultValue}
+              />
             </div>
             <Input
               {...conform.input(headline)}
@@ -290,13 +287,11 @@ function UserSettingsTabProfile() {
           <div className="space-y-1">
             <div className="queue-center justify-between">
               <Label htmlFor={bio.id}>Bio</Label>
-              <TooltipAuto content="Copy Bio">
-                <CopyButton
-                  variant="ghost"
-                  size="xs"
-                  contentToCopy={user.profile.bio || bio.defaultValue}
-                />
-              </TooltipAuto>
+              <CopyButton
+                variant="ghost"
+                size="xs"
+                contentToCopy={user.profile.bio || bio.defaultValue}
+              />
             </div>
             <TextArea
               {...conform.input(bio)}
@@ -314,13 +309,13 @@ function UserSettingsTabProfile() {
           <div className="queue-center">
             <ButtonLoading
               type="submit"
-              className="grow"
               name="intent"
               value="update-user-profile"
               isSubmitting={isSubmitting}
               loadingText="Updating Profile..."
+              className="grow"
             >
-              Update
+              Update Profile
             </ButtonLoading>
           </div>
         </fieldset>
@@ -330,11 +325,82 @@ function UserSettingsTabProfile() {
 }
 
 function UserSettingsTabPassword() {
+  const { user } = useLoaderData<typeof loader>();
+  const actionData = useActionData<typeof action>();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
+
+  const [form, { id, password, confirmPassword }] = useForm<
+    z.infer<typeof schemaUserUpdatePassword>
+  >({
+    shouldValidate: "onSubmit",
+    lastSubmission: actionData,
+    onValidate({ formData }) {
+      return parseZod(formData, { schema: schemaUserUpdatePassword });
+    },
+  });
+
+  /**
+   * Reset form fields after submitting
+   * Can work with Conform if the input has defaultValue of empty string
+   */
+  useEffect(() => {
+    if (!isSubmitting) {
+      form.ref.current?.reset();
+    }
+  }, [isSubmitting, form.ref]);
+
   return (
     <div>
-      <p className="dim">
-        Change your password. After saving, you'll be logged out.
-      </p>
+      <RemixForm {...form.props} method="PUT" className="max-w-sm">
+        <fieldset
+          disabled={isSubmitting}
+          className="space-y-2 disabled:opacity-80"
+        >
+          <input hidden {...conform.input(id)} defaultValue={user.id} />
+
+          <div className="space-y-1">
+            <Label htmlFor={password.id}>New Password</Label>
+            <InputPassword
+              {...conform.input(password)}
+              placeholder="Your new password"
+              defaultValue=""
+            />
+            {password.error && (
+              <Alert variant="danger" id={password.errorId}>
+                {password.error}
+              </Alert>
+            )}
+          </div>
+
+          <div className="space-y-1">
+            <Label htmlFor={confirmPassword.id}>Confirm New Password</Label>
+            <InputPassword
+              {...conform.input(confirmPassword)}
+              placeholder="Confirm your new password"
+              defaultValue=""
+            />
+            {confirmPassword.error && (
+              <Alert variant="danger" id={confirmPassword.errorId}>
+                {confirmPassword.error}
+              </Alert>
+            )}
+          </div>
+
+          <div className="queue-center">
+            <ButtonLoading
+              type="submit"
+              name="intent"
+              value="update-user-password"
+              isSubmitting={isSubmitting}
+              loadingText="Updating Password..."
+              className="grow"
+            >
+              Update Password
+            </ButtonLoading>
+          </div>
+        </fieldset>
+      </RemixForm>
     </div>
   );
 }

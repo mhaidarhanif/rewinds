@@ -137,11 +137,11 @@ export default function Route() {
           <div className="queue-center">
             <ButtonLoading
               type="submit"
-              className="grow"
               name="intent"
               value="submit"
               isSubmitting={isSubmitting}
               loadingText="Updating..."
+              className="grow"
             >
               Update
             </ButtonLoading>

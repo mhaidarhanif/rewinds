@@ -6,7 +6,7 @@ import { Copy, Check } from "~/icons";
 import type { ButtonProps } from "~/components";
 
 interface Props extends ButtonProps {
-  contentToCopy: string | undefined;
+  contentToCopy?: string | undefined;
   copyIcon?: React.ReactNode;
   successIcon?: React.ReactNode;
   withText?: boolean;
@@ -15,7 +15,7 @@ interface Props extends ButtonProps {
 
 export function CopyButton({
   className,
-  contentToCopy,
+  contentToCopy = "",
   copyIcon,
   successIcon,
   withText,

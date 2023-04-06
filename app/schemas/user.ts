@@ -63,10 +63,21 @@ export const schemaUserUpdateProfile = z.object({
   bio,
 });
 
-export const schemaUserUpdatePassword = z.object({
-  id,
-  password,
-});
+export const schemaUserUpdatePassword = z
+  .object({
+    id,
+    password,
+    confirmPassword: password,
+  })
+  .superRefine(({ password, confirmPassword }, ctx) => {
+    if (password !== confirmPassword) {
+      ctx.addIssue({
+        path: ["confirmPassword"],
+        code: "custom",
+        message: "The passwords did not match",
+      });
+    }
+  });
 
 export const schemaAdminUserUpdate = z.object({
   id,
