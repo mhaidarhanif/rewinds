@@ -261,7 +261,9 @@ function UserSettingsTabProfile() {
               defaultValue={String(user.profile.headline)}
             />
             {headline.error && (
-              <Alert id={headline.errorId}>{headline.error}</Alert>
+              <Alert variant="danger" id={headline.errorId}>
+                {headline.error}
+              </Alert>
             )}
           </div>
 
@@ -273,7 +275,11 @@ function UserSettingsTabProfile() {
               defaultValue={String(user.profile.bio)}
               rows={5}
             />
-            {bio.error && <Alert id={bio.errorId}>{bio.error}</Alert>}
+            {bio.error && (
+              <Alert variant="danger" id={bio.errorId}>
+                {bio.error}
+              </Alert>
+            )}
           </div>
 
           <div className="queue-center">

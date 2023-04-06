@@ -14,7 +14,7 @@
 
 Rewinds Stack is a web app starter kit with Remix and Tailwind family of libraries, interactive UI components, and the TypeScript ecosystem.
 
-The core stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel.
+The core stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel. But this repo also learns from Next.js, tRPC, GraphQL, and others as well.
 
 Learn more about [Remix Stacks](https://remix.run/stacks).
 
@@ -130,6 +130,8 @@ If you need separate backend/server/service:
 
 You can use this to build any web app. Also what I'm using Rewinds for.
 
+Because well, Remix or Next.js are capable to build apps like these:
+
 - Personal Website
 - Company Profile
 - Todo List
@@ -138,10 +140,14 @@ You can use this to build any web app. Also what I'm using Rewinds for.
 - Community Forum
 - Support Desk
 - Art Gallery
+- Job Board
+- Hiring or Recruitment
+- Applicant Tracking System (ATS)
 - E-Commerce
 - Inventory Management
 - Events Management
 - Knowledge Management
+- Product/Project Management
 - Content Management System (CMS)
 - Learning Management System (LMS)
 

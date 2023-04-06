@@ -35,7 +35,7 @@ export function CopyButton({
       {...props}
     >
       {copied
-        ? successIcon || <Check className="size-sm" />
+        ? successIcon || <Check className="size-sm text-green-500" />
         : copyIcon || <Copy className="size-sm" />}
       {withText && <span>Copy</span>}
     </Button>

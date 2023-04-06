@@ -41,8 +41,8 @@ interface Props
 }
 
 export function Alert({
-  isShown,
-  variant = "danger",
+  isShown = true,
+  variant = "default",
   size = "default",
   radius = "default",
   className,
