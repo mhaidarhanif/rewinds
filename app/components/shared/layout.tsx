@@ -18,6 +18,10 @@ export const layoutVariants = cva("", {
       sm: "contain-sm",
       default: "contain",
     },
+    containSize: {
+      default: "",
+      sm: "contain-sm",
+    },
   },
   defaultVariants: {
     variant: "default",
@@ -35,6 +39,8 @@ interface Props
 export function Layout({
   variant = "default",
   isSpaced = false,
+  containSize = "default",
+
   className,
 
   layoutHeader, // custom page header, by default should be none
@@ -50,7 +56,10 @@ export function Layout({
       {layoutHeader}
 
       <main
-        className={cn("grow", layoutVariants({ variant, isSpaced, className }))}
+        className={cn(
+          "grow",
+          layoutVariants({ variant, isSpaced, containSize, className })
+        )}
       >
         {children}
       </main>

@@ -11,6 +11,10 @@ export const pageHeaderVariants = cva("", {
       sm: "py-6 sm:py-10",
       default: "py-12 sm:py-20",
     },
+    containSize: {
+      default: "",
+      sm: "contain-sm",
+    },
     direction: {
       row: "flex-row items-center",
       col: "flex-col",
@@ -43,6 +47,7 @@ interface Props
 
 export function PageHeader({
   size = "default",
+  containSize = "default",
   isTextCentered = false,
   withMarginBottom = true,
   withBackground = true,
@@ -56,6 +61,7 @@ export function PageHeader({
       className={cn(
         pageHeaderVariants({
           size,
+          containSize,
           isTextCentered,
           withMarginBottom,
           withBackground,

@@ -33,22 +33,22 @@ export default function Route() {
   return (
     <Layout
       isSpaced
+      containSize="sm"
       layoutHeader={
         <PageHeader
           size="sm"
           withContainer={false}
           withBackground={false}
           withMarginBottom={false}
-          className="contain-sm"
+          containSize="sm"
         >
           <h1>All {formatPluralItems("note", notesCount)}</h1>
-          <p className="dim">
+          <p>
             Published notes from the users. Frequently changed or reset for this
             example demo.
           </p>
         </PageHeader>
       }
-      className="contain-sm"
     >
       <section>
         <ul className="space-y-2">
