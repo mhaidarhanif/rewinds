@@ -1,8 +1,8 @@
 {
   "dotenv.enableAutocloaking": false,
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "editor.insertSpaces": true,
-  // "editor.renderWhitespace": "boundary",
+  "editor.renderWhitespace": "boundary",
   "editor.rulers": [120],
   "editor.tabSize": 2,
   "eslint.validate": [
