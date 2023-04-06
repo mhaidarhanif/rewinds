@@ -1,6 +1,6 @@
 import usersUnallowedJSON from "./users-unallowed.json";
 
-function checkDuplicates(arr: string[]): string[] {
+function checkDuplicates(arr: string[]) {
   const counts = arr.reduce((obj, item) => {
     obj[item] = (obj[item] ?? 0) + 1;
     return obj;

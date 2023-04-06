@@ -34,7 +34,7 @@ import type { z } from "zod";
 export const meta: V2_MetaFunction = () => {
   return createMetaData({
     title: "Login",
-    description: "Continue with your account.",
+    description: `Continue with your ${configSite.name} account`,
   });
 };
 
