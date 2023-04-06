@@ -62,35 +62,57 @@ These are also the primary prerequisites for you to learn, understand, and use w
 
 ## Complete Tech Stack
 
+Legends:
+
+- ⭐ means it's required or should not be changed
+- 🧰 means it's optional or interchangeable
+- 🚧 means it's still not there yet or still in development.
+
+Included in Rewinds, also for recommendation.
+
 - Core
-  - [Node.js](https://nodejs.org)
-    - [pnpm](https://pnpm.io)
-  - [TypeScript](https://typescriptlang.org)
-  - [React](https://react.dev)
-  - [Remix](https://remix.run)
+  - [Node.js](https://nodejs.org) ⭐
+    - [pnpm](https://pnpm.io) 🧰
+  - [TypeScript](https://typescriptlang.org) ⭐
+  - [React](https://react.dev) ⭐
+  - [Remix](https://remix.run) ⭐
 - Styling
-  - [Tailwind CSS](https://tailwindcss.com)
-  - [Fontsource](https://fontsource.org)
-  - [Radix UI](https://radix-ui.com)
+  - [Tailwind CSS](https://tailwindcss.com) ⭐
+  - [Fontsource](https://fontsource.org) ⭐
+  - [Radix UI](https://radix-ui.com) 🧰
   - [React Email](https://react.email) 🚧
 - Form Handling
-  - [Conform](https://conform.guide)
+  - [Conform](https://conform.guide) ⭐
 - Data Validation
-  - [Zod](https://zod.dev) and [Zodix](https://github.com/rileytomasek/zodix)
+  - [Zod](https://zod.dev) ⭐ and [Zodix](https://github.com/rileytomasek/zodix)
 - Database and ORM
-  - [Prisma ORM](https://prisma.io)
-  - [PlanetScale](https://planetscale.com)
+  - [Prisma ORM](https://prisma.io) ⭐
+  - [PlanetScale](https://planetscale.com) 🧰 (3rd party)
 - Auth
-  - [Remix Auth](https://github.com/sergiodxa/remix-auth)
+  - [Remix Auth](https://github.com/sergiodxa/remix-auth) ⭐
 - Tooling
-  - [Prettier](https://prettier.io)
-  - [ESLint](https://eslint.org)
-  - [Stylelint](https://stylelint.io)
-  - [Doppler](https://doppler.com) / [Dotenv](https://dotenv.org)
+  - [Prettier](https://prettier.io) ⭐
+  - [ESLint](https://eslint.org) ⭐
+  - [Stylelint](https://stylelint.io) ⭐
+  - Environment Variable/Secret
+    - [Doppler](https://doppler.com) 🧰 (3rd party)
+    - [Dotenv](https://dotenv.org) 🧰 (3rd party)
 - Deployment
-  - [Vercel](https://vercel.com)
+  - [Vercel](https://vercel.com) 🧰 (3rd party)
 - Domain/DNS
-  - [Cloudflare](https://cloudflare.com)
+  - [Cloudflare](https://cloudflare.com) 🧰
+- Image
+  - [ImageKit](https://imagekit.io) 🚧🧰
+  - [Cloudinary](https://example.com) 🚧🧰
+- Email
+  - Template
+    - [React Email](https://example.com) 🚧🧰
+  - Transactional
+    - [Mailjet](https://example.com) 🚧🧰
+    - [Resend](https://example.com) 🚧🧰
+  - Marketing
+    - [ConvertKit](https://example.com) 🚧🧰
+    - [Bento](https://example.com) 🚧🧰
 - Testing 🚧
   - [Vitest](https://vitest.dev) 🚧
   - [Testing Library](https://testing-library.com) 🚧
@@ -98,7 +120,7 @@ These are also the primary prerequisites for you to learn, understand, and use w
   - [Playwright](https://playwright.dev) 🚧
   - [Ladle](https://ladle.dev) 🚧
 
-[Check the GUIDE.md](./GUIDE.md) if you need some guide into the project setup, structure, and files. If marked as 🚧 means it's still not there yet or still in development.
+[Check the GUIDE.md](./GUIDE.md) if you need some guide into the project setup, structure, and files.
 
 ## Extra Tech Stack
 

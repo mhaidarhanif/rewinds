@@ -1,7 +1,7 @@
 import { conform, useForm } from "@conform-to/react";
 import { getFieldsetConstraint, parse } from "@conform-to/zod";
 import { json } from "@remix-run/node";
-import { useActionData, useNavigation } from "@remix-run/react";
+import { useActionData, useLoaderData, useNavigation } from "@remix-run/react";
 import { useId } from "react";
 import { badRequest, forbidden } from "remix-utils";
 
@@ -21,7 +21,12 @@ import { configSite } from "~/configs";
 import { model } from "~/models";
 import { schemaUserLogin } from "~/schemas";
 import { authenticator } from "~/services";
-import { createMetaData, getRedirectTo, useRedirectTo } from "~/utils";
+import {
+  createMetaData,
+  getRandomText,
+  getRedirectTo,
+  useRedirectTo,
+} from "~/utils";
 
 import type { ActionArgs, LoaderArgs, V2_MetaFunction } from "@remix-run/node";
 import type { z } from "zod";
@@ -34,8 +39,25 @@ export const meta: V2_MetaFunction = () => {
 };
 
 export async function loader({ request }: LoaderArgs) {
-  return await authenticator.isAuthenticated(request, {
+  await authenticator.isAuthenticated(request, {
     successRedirect: "/user/dashboard",
+  });
+
+  const headerHeadingText = getRandomText([
+    "Hello again!",
+    "Welcome back!",
+    "Glad to see you!",
+  ]);
+
+  const headerDescriptionText = getRandomText([
+    `Continue to ${configSite.name}`,
+    `Continue with your ${configSite.name} account`,
+    `Use your ${configSite.name} account to continue`,
+  ]);
+
+  return json({
+    headerHeadingText,
+    headerDescriptionText,
   });
 }
 
@@ -79,8 +101,9 @@ export async function action({ request }: ActionArgs) {
 }
 
 export default function Route() {
+  const { headerHeadingText, headerDescriptionText } =
+    useLoaderData<typeof loader>();
   const { searchParams, redirectTo } = useRedirectTo();
-
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
@@ -103,8 +126,8 @@ export default function Route() {
       isSpaced
       layoutHeader={
         <PageHeader size="xs" isTextCentered>
-          <h1>Welcome back!</h1>
-          <p>Use your {configSite.name} account</p>
+          <h1>{headerHeadingText}</h1>
+          <p>{headerDescriptionText}</p>
         </PageHeader>
       }
     >
