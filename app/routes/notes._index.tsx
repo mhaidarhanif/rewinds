@@ -9,7 +9,6 @@ import {
   createSitemap,
   formatPluralItems,
   formatRelativeTime,
-  truncateText,
 } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
@@ -37,10 +36,10 @@ export default function Route() {
       layoutHeader={
         <PageHeader
           size="sm"
+          containSize="sm"
           withContainer={false}
           withBackground={false}
           withMarginBottom={false}
-          containSize="sm"
         >
           <h1>All {formatPluralItems("note", notesCount)}</h1>
           <p>
@@ -62,7 +61,7 @@ export default function Route() {
                 >
                   <h3>{note.title}</h3>
                   <p>{note.description}</p>
-                  <p className="dim">{truncateText(note.content, 70)}</p>
+                  {/* <p className="dim">{truncateText(note.content, 70)}</p> */}
                   <div className="queue-center dim">
                     <AvatarAuto user={note.user} className="size-md" />
                     <b>{note.user.name}</b>

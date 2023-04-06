@@ -1,7 +1,7 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import { Layout, PageHeader, RemixLink } from "~/components";
+import { AvatarAuto, Layout, PageHeader, RemixLink } from "~/components";
 import { prisma } from "~/libs";
 import { model } from "~/models";
 import {
@@ -9,6 +9,7 @@ import {
   createMetaData,
   createSitemap,
   formatPluralItems,
+  formatRelativeTime,
   getAllSearchQuery,
   truncateText,
 } from "~/utils";
@@ -43,11 +44,18 @@ export default function Route() {
   return (
     <Layout
       isSpaced
+      containSize="sm"
       layoutHeader={
-        <PageHeader size="xs">
+        <PageHeader
+          size="xs"
+          containSize="sm"
+          withContainer={false}
+          withBackground={false}
+          withMarginBottom={false}
+        >
           <h1>Search results</h1>
           <h2>
-            <span>{formatPluralItems("item", itemsCount)} found </span>
+            <span>{formatPluralItems("result", itemsCount)} </span>
             {q && <span>with keyword: {q}</span>}
             {!q && <span>with no specific keyword</span>}
           </h2>
@@ -59,7 +67,7 @@ export default function Route() {
 
         {notes.length > 0 && (
           <div className="space-y-2">
-            <h3>Notes</h3>
+            <span>Notes</span>
             <ul className="space-y-1">
               {notes.map((note) => {
                 return (
@@ -71,6 +79,12 @@ export default function Route() {
                     >
                       <h4>{note.title}</h4>
                       <p>{truncateText(note.content)}</p>
+                      <div className="queue-center dim">
+                        <AvatarAuto user={note.user} className="size-md" />
+                        <b>{note.user.name}</b>
+                        <span>•</span>
+                        <span>{formatRelativeTime(note.updatedAt)}</span>
+                      </div>
                     </RemixLink>
                   </li>
                 );
@@ -81,7 +95,7 @@ export default function Route() {
 
         {users.length > 0 && (
           <div className="space-y-2">
-            <h3>Users</h3>
+            <span>Users</span>
             <ul className="space-y-1">
               {users.map((user) => {
                 return (
@@ -89,10 +103,13 @@ export default function Route() {
                     <RemixLink
                       prefetch="intent"
                       to={`/${user.username}`}
-                      className="card-sm hover:card-hover"
+                      className="card-sm hover:card-hover queue-center"
                     >
-                      <h4>{user.name}</h4>
-                      <p>@{user.username}</p>
+                      <AvatarAuto user={user} className="size-xl" />
+                      <div className="space-y-0">
+                        <h5>{user.name}</h5>
+                        <p>@{user.username}</p>
+                      </div>
                     </RemixLink>
                   </li>
                 );

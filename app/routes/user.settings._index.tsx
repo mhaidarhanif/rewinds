@@ -256,9 +256,9 @@ function UserSettingsTabProfile() {
               placeholder="Your headline"
               defaultValue={String(user.profile.headline)}
             />
-            <Alert isShown={headline.error} id={headline.errorId}>
-              {headline.error}
-            </Alert>
+            {headline.error && (
+              <Alert id={headline.errorId}>{headline.error}</Alert>
+            )}
           </div>
 
           <div className="space-y-1">
@@ -269,9 +269,7 @@ function UserSettingsTabProfile() {
               defaultValue={String(user.profile.bio)}
               rows={5}
             />
-            <Alert isShown={bio.error} id={bio.errorId}>
-              {bio.error}
-            </Alert>
+            {bio.error && <Alert id={bio.errorId}>{bio.error}</Alert>}
           </div>
 
           <div className="queue-center">

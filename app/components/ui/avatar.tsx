@@ -50,6 +50,9 @@ AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;
 
 export { Avatar, AvatarImage, AvatarFallback };
 
+/**
+ * TODO: Refactor with variant to handle size
+ */
 export function AvatarAuto({
   user,
   ...props

@@ -44,6 +44,12 @@ export const query = {
           { slug: { contains: q } },
           { description: { contains: q } },
           { content: { contains: q } },
+          {
+            user: { name: { contains: q } },
+          },
+          {
+            user: { username: { contains: q } },
+          },
         ],
       },
       include: {
