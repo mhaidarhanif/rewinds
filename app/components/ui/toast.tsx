@@ -68,8 +68,8 @@ const ToastAction = forwardRef<
   <ToastPrimitives.Action
     ref={ref}
     className={cn(
-      "disabled:opacity-50dark:border-surface-700 inline-flex h-8 shrink-0 items-center justify-center rounded-md border-2 border-surface-200 bg-transparent px-3 text-sm font-medium transition-colors hover:bg-surface-100 focus:outline-none focus:ring-2 focus:ring-surface-400 focus:ring-offset-2 disabled:pointer-events-none dark:text-surface-100 dark:hover:bg-surface-700 dark:hover:text-surface-100 dark:focus:ring-surface-400 dark:focus:ring-offset-surface-900 dark:data-[state=open]:bg-surface-800",
-      "group-[.danger]:border-red-100 group-[.danger]:hover:border-surface-50 group-[.danger]:hover:bg-red-100 group-[.danger]:hover:text-red-600 group-[.danger]:focus:ring-red-400 group-[.danger]:focus:ring-offset-red-600",
+      "disabled:opacity-50dark:border-surface-700 inline-flex h-8 shrink-0 items-center justify-center rounded-md border-2 border-surface-200 bg-transparent px-3 text-sm font-medium transition-colors hover:bg-surface-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surface-400 focus-visible:ring-offset-2 disabled:pointer-events-none dark:text-surface-100 dark:hover:bg-surface-700 dark:hover:text-surface-100 dark:focus-visible:ring-surface-400 dark:focus-visible:ring-offset-surface-900 dark:data-[state=open]:bg-surface-800",
+      "group-[.danger]:border-red-100 group-[.danger]:hover:border-surface-50 group-[.danger]:hover:bg-red-100 group-[.danger]:hover:text-red-600 group-[.danger]:focus-visible:ring-red-400 group-[.danger]:focus-visible:ring-offset-red-600",
       className
     )}
     {...props}
@@ -84,8 +84,8 @@ const ToastClose = forwardRef<
   <ToastPrimitives.Close
     ref={ref}
     className={cn(
-      "absolute right-2 top-2 rounded-md p-1 text-surface-500 transition-opacity hover:text-surface-900 focus:outline-none focus:ring-2 group-hover:opacity-100",
-      "group-[.danger]:text-red-300 group-[.danger]:hover:text-red-50 group-[.danger]:focus:ring-red-400 group-[.danger]:focus:ring-offset-red-600 dark:hover:text-surface-50",
+      "absolute right-2 top-2 rounded-md p-1 text-surface-500 transition-opacity hover:text-surface-900 focus-visible:outline-none focus-visible:ring-2 group-hover:opacity-100",
+      "group-[.danger]:text-red-300 group-[.danger]:hover:text-red-50 group-[.danger]:focus-visible:ring-red-400 group-[.danger]:focus-visible:ring-offset-red-600 dark:hover:text-surface-50",
       className
     )}
     toast-close=""

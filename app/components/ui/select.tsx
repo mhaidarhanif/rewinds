@@ -17,7 +17,7 @@ const SelectTrigger = forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex h-10 w-full items-center justify-between rounded-md border-2 border-surface-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-surface-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-surface-700 dark:bg-surface-900 dark:text-surface-50 dark:focus:ring-surface-400 dark:focus:ring-offset-surface-900",
+      "flex h-10 w-full items-center justify-between rounded-md border-2 border-surface-300 bg-white px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surface-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-surface-700 dark:bg-surface-900 dark:text-surface-50 dark:focus-visible:ring-surface-400 dark:focus-visible:ring-offset-surface-900",
       "data-[placeholder]:text-surface-400",
       className
     )}
@@ -72,7 +72,7 @@ const SelectItem = forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pe-2 ps-8 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
+      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pe-2 ps-8 text-sm font-medium outline-none focus-visible:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus-visible:bg-surface-700",
       className
     )}
     {...props}

@@ -26,7 +26,7 @@ const RadioGroupItem = forwardRef<
     <RadioGroupPrimitive.Item
       ref={ref}
       className={cn(
-        "text:fill-surface-50 size-sm rounded-full border border-surface-300 text-surface-900 hover:border-surface-400 focus:outline-none focus:ring-2 focus:ring-surface-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-surface-700 dark:text-surface-100 dark:hover:text-surface-900 dark:focus:ring-surface-400 dark:focus:ring-offset-surface-900",
+        "text:fill-surface-50 size-sm rounded-full border border-surface-300 text-surface-900 hover:border-surface-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surface-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-surface-700 dark:text-surface-100 dark:hover:text-surface-900 dark:focus-visible:ring-surface-400 dark:focus-visible:ring-offset-surface-900",
         className
       )}
       {...props}

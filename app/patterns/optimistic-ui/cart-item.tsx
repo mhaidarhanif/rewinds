@@ -147,7 +147,7 @@ export function CartItem({
             <div>
               <input
                 // eslint-disable-next-line tailwindcss/no-arbitrary-value
-                className="h-8 w-14 rounded border-gray-200 bg-gray-50 p-0 text-center text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+                className="h-8 w-14 rounded border-gray-200 bg-gray-50 p-0 text-center text-gray-600 [-moz-appearance:_textfield] focus-visible:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
                 type="number"
                 disabled
                 value={Number(cartItemQuantity)}
