@@ -104,6 +104,7 @@ export default function Route() {
   const { headerHeadingText, headerDescriptionText } =
     useLoaderData<typeof loader>();
   const { searchParams, redirectTo } = useRedirectTo();
+
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 

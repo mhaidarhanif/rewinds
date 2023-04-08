@@ -1,7 +1,7 @@
 import { conform, useForm } from "@conform-to/react";
 import { getFieldsetConstraint, parse } from "@conform-to/zod";
 import { json } from "@remix-run/node";
-import { useActionData, useNavigation } from "@remix-run/react";
+import { useActionData, useLoaderData, useNavigation } from "@remix-run/react";
 import { useId } from "react";
 import { badRequest, forbidden } from "remix-utils";
 
@@ -21,21 +21,42 @@ import { configSite } from "~/configs";
 import { model } from "~/models";
 import { schemaUserRegister } from "~/schemas";
 import { authenticator } from "~/services";
-import { createMetaData, getRedirectTo, useRedirectTo } from "~/utils";
+import {
+  createMetaData,
+  getRandomText,
+  getRedirectTo,
+  useRedirectTo,
+} from "~/utils";
 
 import type { ActionArgs, LoaderArgs, V2_MetaFunction } from "@remix-run/node";
 import type { z } from "zod";
 
 export const meta: V2_MetaFunction = () => {
   return createMetaData({
-    title: "Register",
-    description: "Create new account to join the adventure.",
+    title: "Register for Rewinds",
+    description: "Create your new account to join the adventure.",
   });
 };
 
 export async function loader({ request }: LoaderArgs) {
-  return await authenticator.isAuthenticated(request, {
+  await authenticator.isAuthenticated(request, {
     successRedirect: "/user/dashboard",
+  });
+
+  const headerHeadingText = getRandomText([
+    `Join ${configSite.name}`,
+    `Create your account`,
+  ]);
+
+  const headerDescriptionText = getRandomText([
+    `Let's get started in ${configSite.name}`,
+    `Register your new account to get started`,
+    `Welcome to a web app starter kit that's based on Remix and Tailwind.`,
+  ]);
+
+  return json({
+    headerHeadingText,
+    headerDescriptionText,
   });
 }
 
@@ -66,6 +87,8 @@ export async function action({ request }: ActionArgs) {
 }
 
 export default function Route() {
+  const { headerHeadingText, headerDescriptionText } =
+    useLoaderData<typeof loader>();
   const { searchParams, redirectTo } = useRedirectTo();
 
   const navigation = useNavigation();
@@ -90,8 +113,8 @@ export default function Route() {
       isSpaced
       layoutHeader={
         <PageHeader size="xs" isTextCentered>
-          <h1>Join {configSite.name}</h1>
-          <p>Register new account to get started</p>
+          <h1>{headerHeadingText}</h1>
+          <p>{headerDescriptionText}</p>
         </PageHeader>
       }
     >
@@ -180,9 +203,13 @@ export default function Route() {
               loadingText="Creating account..."
               className="w-full"
             >
-              Create account
+              Join {configSite.name}
             </ButtonLoading>
           </fieldset>
+
+          {/* <div>
+            <p>By clicking "Create {configSite.name}" you agree to our Code of Conduct, Terms of Service and Privacy Policy.</p>
+          </div> */}
 
           <div>
             <p className="text-center">

@@ -1,6 +1,5 @@
 {
   "dotenv.enableAutocloaking": false,
-  "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.renderWhitespace": "trailing",
   "editor.rulers": [
@@ -41,5 +40,6 @@
     "titleBar.activeForeground": "#15202b",
     "titleBar.inactiveBackground": "#3399cc99",
     "titleBar.inactiveForeground": "#15202b99"
-  }
+  },
+  "editor.formatOnSave": true
 }
