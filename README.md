@@ -14,13 +14,17 @@
 
 Rewinds Stack is a web app starter kit with Remix and Tailwind family of libraries, interactive UI components, and the TypeScript ecosystem.
 
-The core stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel. But this repo also learns from Next.js, tRPC, GraphQL, and others as well.
+The core stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel. But this repo also learns from Next.js, tRPC, GraphQL, NestJS, and others as well.
 
-Learn more about [Remix Stacks](https://remix.run/stacks).
-
-Demo and examples: [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com)
+- Demo and examples: [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com)
+- Learn more: [Remix Stacks](https://remix.run/stacks)
+- Follow the progress on
+ - GitHub: [@mhaidarhanif](https://github.com/mhaidarhanif)
+ - Twitter: [@mhaidarhanif](https://twitter.com/mhaidarhanif)
 
 ## Quick start
+
+Starting a new project? Create a Remix app with the Rewinds template.
 
 ```sh
 npx create-remix@latest --template mhaidarhanif/rewinds
@@ -64,55 +68,59 @@ These are also the primary prerequisites for you to learn, understand, and use w
 
 Legends:
 
-- ⭐ means it's required or should not be changed
-- 🧰 means it's optional or interchangeable
+- 🧰 means it's required or should not be changed
+- 🧩 means it's optional or interchangeable
 - 🚧 means it's still not there yet or still in development.
 
 Included in Rewinds, also for recommendation.
 
 - Core
-  - [Node.js](https://nodejs.org) ⭐
-    - [pnpm](https://pnpm.io) 🧰
-  - [TypeScript](https://typescriptlang.org) ⭐
-  - [React](https://react.dev) ⭐
-  - [Remix](https://remix.run) ⭐
+  - [Node.js](https://nodejs.org) 🧰
+    - [pnpm](https://pnpm.io) 🧩
+  - [TypeScript](https://typescriptlang.org) 🧰
+  - [React](https://react.dev) 🧰
+  - [Remix](https://remix.run) 🧰
 - Styling
-  - [Tailwind CSS](https://tailwindcss.com) ⭐
-  - [Fontsource](https://fontsource.org) ⭐
-  - [Radix UI](https://radix-ui.com) 🧰
+  - [Tailwind CSS](https://tailwindcss.com) 🧰
+  - [Fontsource](https://fontsource.org) 🧰
+  - [Radix UI](https://radix-ui.com) 🧩
   - [React Email](https://react.email) 🚧
 - Form Handling
-  - [Conform](https://conform.guide) ⭐
+  - [Conform](https://conform.guide) 🧰
 - Data Validation
-  - [Zod](https://zod.dev) ⭐ and [Zodix](https://github.com/rileytomasek/zodix)
+  - [Zod](https://zod.dev) 🧰
+    - [Zodix](https://github.com/rileytomasek/zodix)
+    - [zod-form-data](https://npmjs.com/package/zod-form-data)
 - Database and ORM
-  - [Prisma ORM](https://prisma.io) ⭐
-  - [PlanetScale](https://planetscale.com) 🧰 (3rd party)
+  - [Prisma ORM](https://prisma.io) 🧰
+  - [PlanetScale](https://planetscale.com) 🧩 (3rd party)
 - Auth
-  - [Remix Auth](https://github.com/sergiodxa/remix-auth) ⭐
+  - [Remix Auth](https://github.com/sergiodxa/remix-auth) 🧰
 - Tooling
-  - [Prettier](https://prettier.io) ⭐
-  - [ESLint](https://eslint.org) ⭐
-  - [Stylelint](https://stylelint.io) ⭐
+  - [Prettier](https://prettier.io) 🧰
+  - [ESLint](https://eslint.org) 🧰
+  - [Stylelint](https://stylelint.io) 🧰
   - Environment Variable/Secret
-    - [Doppler](https://doppler.com) 🧰 (3rd party)
-    - [Dotenv](https://dotenv.org) 🧰 (3rd party)
+    - [Doppler](https://doppler.com) 🧩 (3rd party)
+    - [Dotenv](https://dotenv.org) 🧩 (3rd party)
 - Deployment
-  - [Vercel](https://vercel.com) 🧰 (3rd party)
+  - [Vercel](https://vercel.com) 🧩 (3rd party)
 - Domain/DNS
-  - [Cloudflare](https://cloudflare.com) 🧰
+  - [Cloudflare](https://cloudflare.com) 🧩
+- Cache/Ratelimit
+  - [Upstash](https://upstash.com) 🚧🧩
 - Image
-  - [ImageKit](https://imagekit.io) 🚧🧰
-  - [Cloudinary](https://example.com) 🚧🧰
+  - [ImageKit](https://imagekit.io) 🚧🧩
+  - [Cloudinary](https://cloudinary.com) 🚧🧩
 - Email
   - Template
-    - [React Email](https://example.com) 🚧🧰
+    - [React Email](https://react.email) 🚧🧩
   - Transactional
-    - [Mailjet](https://example.com) 🚧🧰
-    - [Resend](https://example.com) 🚧🧰
+    - [Mailjet](https://mailjet.com) 🚧🧩
+    - [Resend](https://resend.com) 🚧🧩
   - Marketing
-    - [ConvertKit](https://example.com) 🚧🧰
-    - [Bento](https://example.com) 🚧🧰
+    - [ConvertKit](https://convertkit.com) 🚧🧩
+    - [Bento](https://bentonow.com) 🚧🧩
 - Testing 🚧
   - [Vitest](https://vitest.dev) 🚧
   - [Testing Library](https://testing-library.com) 🚧
@@ -129,6 +137,10 @@ Included in Rewinds, also for recommendation.
 If you need separate backend/server/service:
 
 - Core/API
+  - REST
+    - [NestJS](https://nestjs.com)
+      - [Express](https://expressjs.com)
+    - [Pothos](https://github.com/hayes/pothos)
   - GraphQL
     - [GraphQL](https://graphql.org)
     - [GraphQL Yoga](https://github.com/dotansimha/graphql-yoga)
@@ -284,8 +296,8 @@ Use plain `.env` file for local development:
 
 ```sh
 cp -i .env.example .env
-# `-i` or `--interactive` will prompt before overwrite
-# then edit `.env` as you
+# -i or --interactive will ask before overwrite
+# then edit `.env` as you need
 ```
 
 Alternatively, it's recommended to use [Doppler](https://doppler.com), or [Dotenv](https://dotenv.org), or somethin similar to manage the credentials.
@@ -493,7 +505,7 @@ When running locally in development mode, use either the Express server or Verce
 - [web.dev](https://web.dev)
 - [Catamyst Stack](https://a.catamyst.com/stack)
   - [Catamyst Stack All](https://a.catamyst.com/stack-all)
-- [The Web’s Next Transition - Epic Web Dev by Kent C. Dodds](https://www.epicweb.dev/the-webs-next-transition)
+- [The Web’s Next Transition - Epic Web Dev by Kent C. Dodds](https://epicweb.dev/the-webs-next-transition)
 - [Infra I'm Building On In 2023](https://t3.gg/blog/post/2023-infra)
   - [The Infra That Saved Me From AWS - My 2023 Stack](https://youtube.com/watch?v=v-9AZKp-Ljo)
 
@@ -502,7 +514,7 @@ When running locally in development mode, use either the Express server or Verce
 - [Remix Docs](http://remix.run)
 - [Remix Blog Tutorial](http://remix.run/docs/en/main/tutorials/blog)
 - [Up and Running with Remix - Kent C. Dodds - egghead.io](https://egghead.io/courses/up-and-running-with-remix-b82b6bb6)
-- [Build a Fullstack App with Remix and Prisma - Prisma YouTub Playlist](https://www.youtube.com/watch?v=4tXGRe5CDDg&list=PLn2e1F9Rfr6kPDIAbfkOxgDLf4N3bFiMn)
+- [Build a Fullstack App with Remix and Prisma - Prisma YouTub Playlist](https://youtube.com/watch?v=4tXGRe5CDDg&list=PLn2e1F9Rfr6kPDIAbfkOxgDLf4N3bFiMn)
 - [Build a Fullstack App with Remix and Prisma - Prisma Blog](https://prisma.io/blog/fullstack-remix-prisma-mongodb-1-7D0BfTXBmB6r)
 
 ### React
