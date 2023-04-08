@@ -1,5 +1,7 @@
 # ⏪ Rewinds Stack
 
+[![Screenshot](https://raw.githubusercontent.com/mhaidarhanif/rewinds/main/public/assets/screenshots/rewinds-screenshot-dark.png)](https://rewinds.mhaidarhanif.com)
+
 # Introduction
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
@@ -19,8 +21,8 @@ The core stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Rad
 - Demo and examples: [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com)
 - Learn more: [Remix Stacks](https://remix.run/stacks)
 - Follow the progress on
- - GitHub: [@mhaidarhanif](https://github.com/mhaidarhanif)
- - Twitter: [@mhaidarhanif](https://twitter.com/mhaidarhanif)
+- GitHub: [@mhaidarhanif](https://github.com/mhaidarhanif)
+- Twitter: [@mhaidarhanif](https://twitter.com/mhaidarhanif)
 
 ## Quick start
 
@@ -29,17 +31,6 @@ Starting a new project? Create a Remix app with the Rewinds template.
 ```sh
 npx create-remix@latest --template mhaidarhanif/rewinds
 ```
-
-## Screenshots
-
-<a href="https://rewinds.mhaidarhanif.com" target="_blank">
-<div style="max-width: 720px;">
-
-[![Dark](public/assets/screenshots/rewinds-screenshot-dark.png)](https://rewinds.mhaidarhanif.com)
-[![Light](public/assets/screenshots/rewinds-screenshot-light.png)](https://rewinds.mhaidarhanif.com)
-
-</div>
-</a>
 
 ## Code repository and links
 
@@ -89,8 +80,8 @@ Included in Rewinds, also for recommendation.
   - [Conform](https://conform.guide) 🧰
 - Data Validation
   - [Zod](https://zod.dev) 🧰
-    - [Zodix](https://github.com/rileytomasek/zodix)
-    - [zod-form-data](https://npmjs.com/package/zod-form-data)
+    - [Zodix](https://github.com/rileytomasek/zodix) 🧩
+    - [zod-form-data](https://npmjs.com/package/zod-form-data) 🧩
 - Database and ORM
   - [Prisma ORM](https://prisma.io) 🧰
   - [PlanetScale](https://planetscale.com) 🧩 (3rd party)
@@ -106,21 +97,21 @@ Included in Rewinds, also for recommendation.
 - Deployment
   - [Vercel](https://vercel.com) 🧩 (3rd party)
 - Domain/DNS
-  - [Cloudflare](https://cloudflare.com) 🧩
+  - [Cloudflare](https://cloudflare.com) 🧩 (3rd party)
 - Cache/Ratelimit
-  - [Upstash](https://upstash.com) 🚧🧩
+  - [Upstash](https://upstash.com) 🚧🧩 (3rd party)
 - Image
-  - [ImageKit](https://imagekit.io) 🚧🧩
-  - [Cloudinary](https://cloudinary.com) 🚧🧩
+  - [ImageKit](https://imagekit.io) 🚧🧩 (3rd party)
+  - [Cloudinary](https://cloudinary.com) 🚧🧩 (3rd party)
 - Email
   - Template
     - [React Email](https://react.email) 🚧🧩
   - Transactional
-    - [Mailjet](https://mailjet.com) 🚧🧩
-    - [Resend](https://resend.com) 🚧🧩
+    - [Mailjet](https://mailjet.com) 🚧🧩 (3rd party)
+    - [Resend](https://resend.com) 🚧🧩 (3rd party)
   - Marketing
-    - [ConvertKit](https://convertkit.com) 🚧🧩
-    - [Bento](https://bentonow.com) 🚧🧩
+    - [ConvertKit](https://convertkit.com) 🚧🧩 (3rd party)
+    - [Bento](https://bentonow.com) 🚧🧩 (3rd party)
 - Testing 🚧
   - [Vitest](https://vitest.dev) 🚧
   - [Testing Library](https://testing-library.com) 🚧
