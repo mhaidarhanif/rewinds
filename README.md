@@ -1,6 +1,6 @@
 # ⏪ Rewinds Stack
 
-[![Screenshot](https://raw.githubusercontent.com/mhaidarhanif/rewinds/main/public/assets/screenshots/rewinds-screenshot-dark.png)](https://rewinds.mhaidarhanif.com)
+![The Rewinds Stack](https://raw.githubusercontent.com/mhaidarhanif/rewinds/main/public/assets/screenshots/rewinds-screenshot-dark.png)
 
 # Introduction
 
@@ -20,7 +20,9 @@ The core stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Rad
 
 - Demo and examples: [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com)
 - Learn more: [Remix Stacks](https://remix.run/stacks)
-- Follow the progress on
+
+Follow the progress on:
+
 - GitHub: [@mhaidarhanif](https://github.com/mhaidarhanif)
 - Twitter: [@mhaidarhanif](https://twitter.com/mhaidarhanif)
 
