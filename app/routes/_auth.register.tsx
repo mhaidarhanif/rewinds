@@ -45,7 +45,7 @@ export async function loader({ request }: LoaderArgs) {
 
   const headerHeadingText = getRandomText([
     `Join ${configSite.name}`,
-    `Create your account`,
+    `Create your ${configSite.name} account`,
   ]);
 
   const headerDescriptionText = getRandomText([

@@ -1,7 +1,7 @@
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import { forwardRef } from "react";
 
-import { cn, createAvatarPlaceholderURL, getInitials } from "~/utils";
+import { cn, createAvatarPlaceholderURL, getNameInitials } from "~/utils";
 
 import type { UserData } from "~/helpers";
 
@@ -64,7 +64,9 @@ export function AvatarAuto({
   return (
     <Avatar {...props}>
       <AvatarImage src={imageURL} alt={user.name} />
-      {!imageURL && <AvatarFallback>{getInitials(user.name)}</AvatarFallback>}
+      {!imageURL && (
+        <AvatarFallback>{getNameInitials(user.name)}</AvatarFallback>
+      )}
     </Avatar>
   );
 }

@@ -1,4 +1,4 @@
-export function getInitials(name = "First Last") {
+export function getNameInitials(name = "First Last") {
   return name
     .split(" ")
     .map((word, index) => {
@@ -28,4 +28,3 @@ export function parseTextForMention(input: string) {
   // const output = parseTextForMention(input);
   // Hello <a href="/world">@world</a>! How are you doing today?
 }
-

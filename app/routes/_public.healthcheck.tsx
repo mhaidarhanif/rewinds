@@ -1,6 +1,8 @@
 import { configDev } from "~/configs";
 import { prisma } from "~/libs";
 
+import { HttpStatus } from "~/utils";
+
 import type { LoaderArgs } from "@remix-run/node";
 
 export async function loader({ request }: LoaderArgs) {
@@ -23,6 +25,6 @@ export async function loader({ request }: LoaderArgs) {
     return new Response("OK");
   } catch (error: unknown) {
     console.info("Health Check ❌", { error });
-    return new Response("ERROR", { status: 500 });
+    return new Response("ERROR", { status: HttpStatus.INTERNAL_SERVER_ERROR });
   }
 }
