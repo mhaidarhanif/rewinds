@@ -63,6 +63,7 @@ Legends:
 
 - 🧰 means it's required or should not be changed
 - 🧩 means it's optional or interchangeable
+- 🎉 means it's 3rd party service or platform
 - 🚧 means it's still not there yet or still in development.
 
 Included in Rewinds, also for recommendation.
@@ -86,7 +87,7 @@ Included in Rewinds, also for recommendation.
     - [zod-form-data](https://npmjs.com/package/zod-form-data) 🧩
 - Database and ORM
   - [Prisma ORM](https://prisma.io) 🧰
-  - [PlanetScale](https://planetscale.com) 🧩 (3rd party)
+  - [PlanetScale](https://planetscale.com) 🧩🎉
 - Auth
   - [Remix Auth](https://github.com/sergiodxa/remix-auth) 🧰
 - Tooling
@@ -94,26 +95,28 @@ Included in Rewinds, also for recommendation.
   - [ESLint](https://eslint.org) 🧰
   - [Stylelint](https://stylelint.io) 🧰
   - Environment Variable/Secret
-    - [Doppler](https://doppler.com) 🧩 (3rd party)
-    - [Dotenv](https://dotenv.org) 🧩 (3rd party)
+    - [Doppler](https://doppler.com) 🧩🎉
+    - [Dotenv](https://dotenv.org) 🧩🎉
 - Deployment
-  - [Vercel](https://vercel.com) 🧩 (3rd party)
+  - [Vercel](https://vercel.com) 🧰🧩🎉
+  - [Fly](https://fly.io) 🧩🎉
+  - [Render](https://render.com) 🧩🎉
 - Domain/DNS
-  - [Cloudflare](https://cloudflare.com) 🧩 (3rd party)
+  - [Cloudflare](https://cloudflare.com) 🧩🎉
 - Cache/Ratelimit
-  - [Upstash](https://upstash.com) 🚧🧩 (3rd party)
+  - [Upstash](https://upstash.com) 🚧🧩🎉
 - Image
-  - [ImageKit](https://imagekit.io) 🚧🧩 (3rd party)
-  - [Cloudinary](https://cloudinary.com) 🚧🧩 (3rd party)
+  - [ImageKit](https://imagekit.io) 🚧🧩🎉
+  - [Cloudinary](https://cloudinary.com) 🚧🧩🎉
 - Email
   - Template
     - [React Email](https://react.email) 🚧🧩
   - Transactional
-    - [Mailjet](https://mailjet.com) 🚧🧩 (3rd party)
-    - [Resend](https://resend.com) 🚧🧩 (3rd party)
+    - [Mailjet](https://mailjet.com) 🚧🧩🎉
+    - [Resend](https://resend.com) 🚧🧩🎉
   - Marketing
-    - [ConvertKit](https://convertkit.com) 🚧🧩 (3rd party)
-    - [Bento](https://bentonow.com) 🚧🧩 (3rd party)
+    - [ConvertKit](https://convertkit.com) 🚧🧩🎉
+    - [Bento](https://bentonow.com) 🚧🧩🎉
 - Testing 🚧
   - [Vitest](https://vitest.dev) 🚧
   - [Testing Library](https://testing-library.com) 🚧
@@ -319,7 +322,7 @@ While in development, you can:
 
 - Generate Prisma types for `@prisma/client` with `nr prisma:generate` (it runs `prisma generate`)
 - Check generated Prisma documentation with `nr docs:prisma` (it runs `prisma-docs-generator serve`) then open <http://localhost:5858>
-- Visualize the schema with [Prismaliser](https://prismaliser.app)
+- Visualize the schema with [Prisma Editor](https://github.com/mohammed-bahumaish/prisma-editor) or [Prismaliser](https://prismaliser.app)
 - Push Prisma schema changes for PlanetScale with `nr prisma:push` (it runs `prisma db push`)
   - You might notice that with [PlanetScale](https://planetscale.com/docs/tutorials/prisma-quickstart) approach with [Prisma](https://prisma.io/docs/guides/database/using-prisma-with-planetscale), we don't need migration files in our repo, rather managed in their platform.
 
