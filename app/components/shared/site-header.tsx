@@ -48,7 +48,7 @@ export function SiteHeader({ noThemeToggle }: Props) {
   return (
     <header
       className={cn(
-        "bg-white dark:bg-surface-900", // background
+        "bg-surface-50 dark:bg-surface-900", // background
         "border-b-2 border-surface-100 dark:border-surface-800", // border
         "sticky left-0 right-0 top-0 z-40", // to work with the layout and nprogress
         "w-full py-4"

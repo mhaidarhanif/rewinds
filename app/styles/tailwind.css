@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-surface-50 dark:bg-surface-950;
+    @apply bg-white dark:bg-surface-950;
     @apply text-surface-950 dark:text-surface-50;
     @apply min-h-screen scroll-smooth font-sans antialiased transition-colors;
     @apply selection:bg-brand-500/20 selection:text-brand-950 dark:selection:bg-brand-500/20 dark:selection:text-brand-100;
@@ -49,7 +49,7 @@
 @layer components {
   /* shouldn't be a React component, because any element can be styled as a card */
   .card-base {
-    @apply rounded border-2 border-surface-100 bg-white dark:border-surface-800 dark:bg-surface-900;
+    @apply rounded border-2 border-surface-100 dark:border-surface-800;
   }
   .card {
     @apply card-base block px-3 py-2;
@@ -58,7 +58,7 @@
     @apply card-base block px-2 py-1;
   }
   .card-hover {
-    @apply bg-surface-100/20 dark:bg-surface-800/50;
+    @apply bg-surface-100/30 dark:bg-surface-800/30;
   }
   .card-action {
     @apply bg-surface-50 dark:bg-black;
