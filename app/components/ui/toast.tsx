@@ -35,9 +35,9 @@ const toastVariants = cva(
         default:
           "bg-white border-surface-200 dark:bg-surface-800 dark:border-surface-700",
         success:
-          "bg-green-600 dark:bg-green-900 text-white border-green-600 dark:border-green-600",
+          "group success text-white bg-green-600 dark:bg-green-900 border-green-600 dark:border-green-600",
         danger:
-          "group danger bg-red-600 dark:bg-red-900 text-white border-red-600 dark:border-red-600",
+          "group danger text-white bg-red-600 dark:bg-red-900 border-red-600 dark:border-red-600",
       },
     },
     defaultVariants: {
@@ -69,6 +69,7 @@ const ToastAction = forwardRef<
     ref={ref}
     className={cn(
       "disabled:opacity-50dark:border-surface-700 inline-flex h-8 shrink-0 items-center justify-center rounded-md border-2 border-surface-200 bg-transparent px-3 text-sm font-medium transition-colors hover:bg-surface-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surface-400 focus-visible:ring-offset-2 disabled:pointer-events-none dark:text-surface-100 dark:hover:bg-surface-700 dark:hover:text-surface-100 dark:focus-visible:ring-surface-400 dark:focus-visible:ring-offset-surface-900 dark:data-[state=open]:bg-surface-800",
+      "group-[.success]:border-green-100 group-[.success]:hover:border-surface-50 group-[.success]:hover:bg-green-100 group-[.success]:hover:text-green-600 group-[.success]:focus-visible:ring-green-400 group-[.success]:focus-visible:ring-offset-green-600",
       "group-[.danger]:border-red-100 group-[.danger]:hover:border-surface-50 group-[.danger]:hover:bg-red-100 group-[.danger]:hover:text-red-600 group-[.danger]:focus-visible:ring-red-400 group-[.danger]:focus-visible:ring-offset-red-600",
       className
     )}
@@ -85,6 +86,7 @@ const ToastClose = forwardRef<
     ref={ref}
     className={cn(
       "absolute right-2 top-2 rounded-md p-1 text-surface-500 transition-opacity hover:text-surface-900 focus-visible:outline-none focus-visible:ring-2 group-hover:opacity-100",
+      "group-[.success]:text-green-300 group-[.success]:hover:text-green-50 group-[.success]:focus-visible:ring-green-400 group-[.success]:focus-visible:ring-offset-green-600 dark:hover:text-surface-50",
       "group-[.danger]:text-red-300 group-[.danger]:hover:text-red-50 group-[.danger]:focus-visible:ring-red-400 group-[.danger]:focus-visible:ring-offset-red-600 dark:hover:text-surface-50",
       className
     )}
