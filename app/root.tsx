@@ -145,10 +145,7 @@ function App() {
         <Links />
       </head>
 
-      <body
-        id="__remix"
-        className={cn(defaultTheme, configDev.isDevelopment && "debug-screens")}
-      >
+      <body id="__remix" className={cn(defaultTheme)}>
         <TooltipProvider>
           <IconoirProvider
             iconProps={{ strokeWidth: 2, width: "1.5em", height: "1.5em" }}
@@ -156,7 +153,9 @@ function App() {
             <>
               <Outlet />
               <Toaster />
-              <TailwindIndicator />
+              {configDev.isDevelopment && configDev.features.debugScreens && (
+                <TailwindIndicator />
+              )}
             </>
           </IconoirProvider>
         </TooltipProvider>
