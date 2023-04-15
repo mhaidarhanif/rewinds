@@ -5,6 +5,7 @@ import { model } from "~/models";
 import { createSitemap } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
+import { Badge } from "~/components";
 
 export const handle = createSitemap();
 
@@ -29,9 +30,10 @@ export default function Route() {
           {userRoles.map((userRole) => {
             return (
               <li key={userRole.symbol} className="card-sm">
-                <h4>
-                  {userRole.name} <b>{userRole.symbol}</b>
-                </h4>
+                <div className="queue-center">
+                  <h4>{userRole.name}</h4>
+                  <Badge>{userRole.symbol}</Badge>
+                </div>
                 <p>{userRole.description}</p>
               </li>
             );

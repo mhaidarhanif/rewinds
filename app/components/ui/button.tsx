@@ -27,7 +27,7 @@ export const buttonVariants = cva(
         subtle:
           "text-brand-800 bg-brand-500/20 hover:bg-brand-500/50 dark:text-brand-200 dark:bg-brand-900 hover:dark:bg-brand-800",
         outline:
-          "text-brand-800 bg-transparent border-2 border-brand-800 hover:bg-brand-500/20 dark:text-brand-200 hover:dark:bg-brand-800/50",
+          "text-brand-800 bg-transparent border-2 border-brand-500 dark:border-brand-800 hover:bg-brand-500/20 dark:text-brand-200 hover:dark:bg-brand-800/50",
         ghost:
           "text-brand-800 bg-transparent hover:bg-brand-500/20 data-[state=open]:bg-transparent dark:text-brand-100 dark:data-[state=open]:bg-transparent",
         link: "text-brand-800 bg-transparent underline-offset-4 hover:underline hover:bg-transparent dark:text-brand-200",

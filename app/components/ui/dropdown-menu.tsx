@@ -25,7 +25,8 @@ const DropdownMenuSubTrigger = forwardRef<
   <DropdownMenuPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      "flex select-none items-center rounded-sm px-2 py-1.5 text-sm font-medium outline-none focus-visible:bg-surface-100 data-[state=open]:bg-surface-100 dark:focus-visible:bg-surface-900 dark:data-[state=open]:bg-surface-900",
+      "flex select-none items-center rounded-sm px-2 py-1.5 text-sm font-medium outline-none",
+      "focus:bg-surface-100 data-[state=open]:bg-surface-100 dark:focus:bg-surface-900 dark:data-[state=open]:bg-surface-900",
       inset && "ps-8",
       className
     )}
@@ -82,7 +83,7 @@ const DropdownMenuItem = forwardRef<
   <DropdownMenuPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm font-medium outline-none focus-visible:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus-visible:bg-surface-700",
+      "relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
       inset && "ps-8",
       className
     )}
@@ -98,7 +99,7 @@ const DropdownMenuCheckboxItem = forwardRef<
   <DropdownMenuPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      "relative flex select-none items-center rounded-sm py-1.5 pe-2 ps-8 text-sm font-medium outline-none focus-visible:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus-visible:bg-surface-700",
+      "relative flex select-none items-center rounded-sm py-1.5 pe-2 ps-8 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
       className
     )}
     checked={checked}
@@ -122,7 +123,7 @@ const DropdownMenuRadioItem = forwardRef<
   <DropdownMenuPrimitive.RadioItem
     ref={ref}
     className={cn(
-      "relative flex select-none items-center rounded-sm py-1.5 pe-2 ps-8 text-sm font-medium outline-none focus-visible:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus-visible:bg-surface-700",
+      "relative flex select-none items-center rounded-sm py-1.5 pe-2 ps-8 text-sm font-medium outline-none focus:bg-surface-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-surface-700",
       className
     )}
     {...props}
