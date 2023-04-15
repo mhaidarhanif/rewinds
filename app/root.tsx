@@ -26,6 +26,7 @@ import {
   Debug,
   Layout,
   PageHeader,
+  TailwindIndicator,
   Toaster,
   TooltipProvider,
 } from "~/components";
@@ -155,6 +156,7 @@ function App() {
             <>
               <Outlet />
               <Toaster />
+              <TailwindIndicator />
             </>
           </IconoirProvider>
         </TooltipProvider>

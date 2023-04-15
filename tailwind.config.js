@@ -69,7 +69,6 @@ module.exports = {
     require("@tailwindcss/forms"),
     require("@tailwindcss/typography"),
     require("tailwindcss-animate"),
-    require("tailwindcss-debug-screens"),
     require("tailwindcss-radix")(),
   ],
 };

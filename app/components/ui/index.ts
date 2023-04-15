@@ -41,6 +41,7 @@ export * from "./sheet";
 export * from "./slider";
 export * from "./switch";
 export * from "./tabs";
+export * from "./tailwind-indicator";
 export * from "./text";
 export * from "./textarea";
 export * from "./toast";
