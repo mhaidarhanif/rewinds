@@ -9,7 +9,7 @@ const name = z
 
 const username = z
   .string({ required_error: "Username is required" })
-  .regex(/^[a-zA-Z0-9_]+$/, "Only alphabet, number, underscore allowed")
+  .regex(/^[a-zA-Z0-9._]+$/, "Only alphabet, number, dot, underscore allowed")
   .min(4, "Username at least 4 characters")
   .max(20, "Username limited to 20 characters");
 
