@@ -37,6 +37,29 @@ export default function Route() {
             @{user.username}
           </RemixLinkText>
         </p>
+        <section>
+          <div className="queue-center">
+            <ButtonLink size="xs" to="/user/profile">
+              Profile
+            </ButtonLink>
+            <ButtonLink size="xs" to="/user/settings">
+              Settings
+            </ButtonLink>
+            <ButtonLink variant="danger" size="xs" to="/logout">
+              Log out
+            </ButtonLink>
+            {userIsAllowed && (
+              <ButtonLink
+                prefetch="intent"
+                variant="info"
+                size="xs"
+                to="/admin"
+              >
+                Admin
+              </ButtonLink>
+            )}
+          </div>
+        </section>
       </PageHeader>
 
       <section className="space-y-2">
@@ -62,19 +85,6 @@ export default function Route() {
             );
           })}
         </ul>
-      </section>
-
-      <section>
-        <div className="queue-center">
-          <ButtonLink variant="danger" size="sm" to="/logout">
-            Log out
-          </ButtonLink>
-          {userIsAllowed && (
-            <ButtonLink prefetch="intent" variant="info" size="sm" to="/admin">
-              Admin
-            </ButtonLink>
-          )}
-        </div>
       </section>
     </div>
   );
