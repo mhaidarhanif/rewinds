@@ -16,7 +16,7 @@
 
 Rewinds Stack is a web app starter kit with Remix and Tailwind family of libraries, interactive UI components, and the TypeScript ecosystem.
 
-The core stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel. But this repo also learns from Next.js, tRPC, GraphQL, NestJS, and others as well.
+The core stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel. But this repo also attemp to learn from Next.js, tRPC, GraphQL, NestJS, Passport, Swagger (OpenAPI), and others as well.
 
 - Demo and examples: [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com)
 - Learn more: [Remix Stacks](https://remix.run/stacks)
@@ -117,6 +117,10 @@ Included in Rewinds, also for recommendation.
   - Marketing
     - [ConvertKit](https://convertkit.com) 🚧🧩🎉
     - [Bento](https://bentonow.com) 🚧🧩🎉
+- Payment
+  - [Lemon Squeezy](https://lemonsqueezy.com) 🚧🧩🎉
+  - [Paddle](https://paddle.com) 🚧🧩🎉
+  - [Stripe](https://stripe.com) 🚧🧩🎉
 - Testing 🚧
   - [Vitest](https://vitest.dev) 🚧
   - [Testing Library](https://testing-library.com) 🚧
@@ -130,12 +134,13 @@ Included in Rewinds, also for recommendation.
 
 (Not included in Rewinds)
 
-If you need separate backend/server/service:
+If you need separate backend/server/service, here are the recommendations:
 
 - Core/API
   - REST
     - [NestJS](https://nestjs.com)
       - [Express](https://expressjs.com)
+      - [Fastify](https://fastify.io)
     - [Pothos](https://github.com/hayes/pothos)
   - GraphQL
     - [GraphQL](https://graphql.org)
@@ -148,11 +153,12 @@ If you need separate backend/server/service:
   - [Prisma ORM](https://prisma.io)
 - Auth
   - [Passport](https://passportjs.org)
-- Payment
-  - [Lemon Squeezy](https://lemonsqueezy.com)
-  - [Stripe](https://stripe.com)
 - Misc
   - [Inngest](https://inngest.com)
+- Deployment
+  - [Railway](https://railway.app)
+  - [Fly.io](https://fly.io)
+  - [Render](https://render.com)
 
 # Some Details
 
@@ -216,7 +222,7 @@ Included setup for the developers:
     - [x] v2 normalized form method
     - [x] Tailwind CSS support
     - [x] New dev server with config for HMR/HDR (hot module/data reload)
-- [x] Ready to use and 100% customizable UI components with React, Tailwind CSS, Radix UI
+- [x] More than 50 of ready to use and 100% customizable UI components, including layouts and demo examples
   - [ ] Rich text or WYSIWYG editor with TipTap
   - [ ] Keyboard shortcuts with cmdk
 - [x] Preselected styles, colors, fonts, icons, and responsive design
@@ -253,7 +259,7 @@ Recommended extra setup:
 - Connect Vercel project to Axiom for better log management.
 - Connect to Highlight to report and analyze errors.
 - Use [Google Search Console](https://search.google.com/search-console/about) to check the sitemap and SERP-related stuffs.
-- Use [Clerk](https://clerk.com) to [replace Remix Auth](https://clerk.com/docs/quickstarts/get-started-with-remix) if you need more than this.
+- Use Clerk or Auth0 to [replace Remix Auth](https://clerk.com/docs/quickstarts/get-started-with-remix) if you need more than this.
 
 ## Some Details
 
@@ -362,7 +368,7 @@ Open up <http://localhost:3000> and you should be ready to go!
 
 ## TypeScript and ESLint Server
 
-When you update some significant changes in the TypeScript config, ESLint config, or just generated a new Prisma schema, you can restart.
+When you update some significant changes in the TypeScript config, ESLint config, or just generated a new Prisma schema, you can restart the language server as needed:
 
 ```sh
 > TypeScript: Restart TS Server
@@ -376,28 +382,36 @@ When you update some significant changes in the TypeScript config, ESLint config
 
 As this repo was made after having run the `create-remix` command and selected "Vercel" as a deployment target, you only need to [import your Git repository](https://vercel.com/new) into Vercel, and it will be deployed.
 
-Just keep in mind to set up the environment variables/secret that preferably differentiated for each server environments (local/development, staging/preview, production), especially:
+Just keep in mind to set up the environment variables/secret that preferably differentiated for each server environments such as local/development, staging/preview, and production; especially:
 
 ```sh
 # Primary database that connects to Prisma ORM
 DATABASE_URL=
+
 # Session secret for cookie after authenticated or logged in
 REMIX_SESSION_SECRET=
+
 # Application name
 REMIX_APP_NAME=
+
 # Application name for transactional email
 REMIX_APP_EMAIL=
+
 # Default admin email
 REMIX_ADMIN_EMAIL=
+
 # Default admin password
 REMIX_ADMIN_PASSWORD=
 ```
 
-The session secret for `REMIX_SESSION_SECRET` can be generated more securely using:
+The session secret for `REMIX_SESSION_SECRET` can be generated more securely using either Node.js crypto module (JS) or OpenSSL (shell):
 
 ```sh
-node scripts/generate-secret.js # using Node.js crypto module
+$ node scripts/generate-secret.js
 1234567890abcdefghijklmnopqrstuvwxyz1234567890
+
+$ sh scripts/generate-secret.sh
+yjudrrKv/W4jxzmQqXze9T7DEANxStDtg4YCdfgs/4E=
 ```
 
 When managing environment variables/secrets using Doppler, there's the auto sync integration to Vercel:
@@ -484,9 +498,7 @@ As there's no official way to handle SEO related output for metadata and sitemap
 
 > This setup has been done in this Rewinds template.
 
-To enable HMR, at least as per Remix `v1.14`, when not primarily using Express server only (like using Vercel and another server), we have to a separate Express server.
-
-If using pnpm, you also have to install `react-refresh` to resolve the HMR dependency:
+To enable HMR, at least as per Remix `v1.14`, when not primarily using Express server only (like using Vercel and another server), we have to a separate Express server. If using pnpm, you also have to install `react-refresh` to resolve the HMR dependency:
 
 ```sh
 ni -D react-refresh
@@ -502,7 +514,7 @@ When running locally in development mode, use either the Express server or Verce
 - [Catamyst Stack](https://a.catamyst.com/stack)
   - [Catamyst Stack All](https://a.catamyst.com/stack-all)
 - [The Web’s Next Transition - Epic Web Dev by Kent C. Dodds](https://epicweb.dev/the-webs-next-transition)
-- [Infra I'm Building On In 2023](https://t3.gg/blog/post/2023-infra)
+- [Infra I'm Building On In 2023 - T3](https://t3.gg/blog/post/2023-infra)
   - [The Infra That Saved Me From AWS - My 2023 Stack](https://youtube.com/watch?v=v-9AZKp-Ljo)
 
 ### Remix
@@ -526,10 +538,12 @@ When running locally in development mode, use either the Express server or Verce
 - [An Honest Look at Tailwind as an API for CSS | thoughtbot, inc.](https://thoughtbot.com/blog/an-honest-look-at-tailwind-as-an-api-for-css)
 - [Styling Best Practices I Use With Tailwind CSS | theodorusclarence.com](https://theodorusclarence.com/blog/tailwindcss-best-practice)
 
-### Setup Inspirations
+### Inspirations
 
+- [Design System Checklist](https://designsystemchecklist.com)
 - [shadcn UI](https://github.com/shadcn/ui)
   - [Taxonomy](https://tx.shadcn.com)
+- [Reshaped](https://reshaped.so)
 - [Spacewave Stack by Kent C. Dodds](https://github.com/epicweb-dev/spacewave-stack)
 - [Synthwave Stack by I4O Open Source](https://github.com/i4o-oss/synthwave-stack)
 - [Stripe Stack by Daniel Kanem](https://github.com/dev-xo/stripe-stack)
@@ -538,15 +552,12 @@ When running locally in development mode, use either the Express server or Verce
 - [SaasRock - The One-Man SaaS Framework](https://saasrock.com)
 - [MakerKit - SaaS Starter Kits based on React](https://makerkit.dev)
 - [Saas UI - The React component library for Startups](https://saas-ui.dev)
-
-### Design Inspirations
-
 - [saasui.design](https://saasui.design)
 - [saasinterface.com](https://saasinterface.com)
 
 ### Rewinds in the wild
 
-Some other projects using Rewinds:
+Some other public repos/projects using Rewinds:
 
 - [M Haidar Hanif Website](https://github.com/mhaidarhanif/mhaidarhanif-web): Personal Website
 - [Catamyst](https://github.com/catamyst/catamyst-web): Learning Management System (LMS)
