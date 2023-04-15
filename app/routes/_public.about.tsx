@@ -7,6 +7,7 @@ import {
   PageProgress,
   YouTubeVideo,
 } from "~/components";
+import { useRootLoaderData } from "~/hooks";
 import { AppleMac } from "~/icons";
 import { createMetaData, createSitemap } from "~/utils";
 
@@ -18,15 +19,19 @@ export const meta = createMetaData({
 
 export const handle = createSitemap("/about", 0.9);
 
+// TODO: Load content from HTML/MDX data
 export default function Route() {
+  const { user } = useRootLoaderData();
+
   return (
     <Layout className="contain-sm space-y-20">
       <article className="prose-config mt-10">
         <h1>
           <Balancer>About the Remix starter kit called Rewinds</Balancer>
         </h1>
+        {user && <p>Hello {user.name}.</p>}
         <p>
-          The about page is to showcase the prose styles from Tailwind CSS
+          This about page is to showcase the prose styles from Tailwind CSS
           Typography. This template is originally made by{" "}
           <Anchor href="https://mhaidarhanif.com">M Haidar Hanif</Anchor> in
           conjunction with <Anchor href="https://catamyst.com">Catamyst</Anchor>{" "}

@@ -6,12 +6,15 @@ import {
   Layout,
 } from "~/components";
 import { configSite } from "~/configs";
+import { useRootLoaderData } from "~/hooks";
 import { CompactDisc, Components, Github, Packages, PeaceHand } from "~/icons";
 import { createSitemap } from "~/utils";
 
 export const handle = createSitemap("/", 1);
 
 export default function Route() {
+  const { user } = useRootLoaderData();
+
   return (
     <Layout>
       <section className="mx-auto flex max-w-max flex-wrap items-center justify-center gap-4 py-10 lg:justify-between lg:py-20">
@@ -24,7 +27,8 @@ export default function Route() {
             </h1>
             <p>
               <PeaceHand className="inline-icon link" />
-              <span>Hey, it's just another web app starter kit made by </span>
+              {user ? <span>Hey {user.name}, </span> : <span>Hey, </span>}
+              <span>it's just another web app starter kit made by </span>
               <AnchorText
                 href="https://mhaidarhanif.com"
                 className="inline-block"
