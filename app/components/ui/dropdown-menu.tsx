@@ -26,7 +26,8 @@ const DropdownMenuSubTrigger = forwardRef<
     ref={ref}
     className={cn(
       "flex select-none items-center rounded-sm px-2 py-1.5 text-sm font-medium outline-none",
-      "focus:bg-surface-100 data-[state=open]:bg-surface-100 dark:focus:bg-surface-900 dark:data-[state=open]:bg-surface-900",
+      "focus:bg-surface-100 dark:focus:bg-surface-700",
+      "data-[state=open]:bg-surface-100 dark:data-[state=open]:bg-surface-700",
       inset && "ps-8",
       className
     )}

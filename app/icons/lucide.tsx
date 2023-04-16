@@ -22,6 +22,7 @@ export {
   Globe,
   Hexagon,
   Image,
+  Inbox,
   Info,
   Keyboard,
   Laptop,

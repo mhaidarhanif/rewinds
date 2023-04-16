@@ -1,7 +1,13 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import { AvatarAuto, Layout, PageHeader, RemixLink } from "~/components";
+import {
+  AvatarAuto,
+  ButtonLink,
+  Layout,
+  PageHeader,
+  RemixLink,
+} from "~/components";
 import { model } from "~/models";
 import {
   createCacheHeaders,
@@ -12,6 +18,7 @@ import {
 } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
+import { Plus } from "~/icons";
 
 export const handle = createSitemap("/notes", 0.8);
 
@@ -46,6 +53,10 @@ export default function Route() {
             Published notes from the users. Frequently changed or reset for this
             example demo.
           </p>
+          <ButtonLink to="/user/notes/new" size="sm">
+            <Plus className="size-sm" />
+            <span>Add Note</span>
+          </ButtonLink>
         </PageHeader>
       }
     >

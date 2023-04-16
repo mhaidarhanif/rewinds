@@ -10,7 +10,7 @@ export const buttonVariants = cva(
     "z-auto inline-flex select-none transition-colors active:translate-y-px",
     "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 dark:focus-visible:ring-brand-400 dark:focus-visible:ring-offset-brand-900",
-    "data-[state=open]:bg-brand-100 dark:data-[state=open]:bg-brand-800"
+    "data-[state=open]:bg-surface-100 dark:data-[state=open]:bg-surface-700"
   ),
   {
     variants: {
@@ -27,7 +27,7 @@ export const buttonVariants = cva(
         subtle:
           "text-brand-800 bg-brand-500/20 hover:bg-brand-500/50 dark:text-brand-200 dark:bg-brand-900 hover:dark:bg-brand-800",
         outline:
-          "text-brand-800 bg-transparent border-2 border-surface-100 dark:border-surface-800 hover:bg-brand-500/20 dark:text-brand-200 hover:dark:bg-brand-800/50",
+          "text-brand-800 dark:text-brand-200 bg-transparent border-2 border-surface-100 dark:border-surface-800 hover:bg-surface-100/30 hover:dark:bg-surface-800/30",
         ghost:
           "text-brand-800 bg-transparent hover:bg-brand-500/20 data-[state=open]:bg-transparent dark:text-brand-100 dark:data-[state=open]:bg-transparent",
         link: "text-brand-800 bg-transparent underline-offset-4 hover:underline hover:bg-transparent dark:text-brand-200",

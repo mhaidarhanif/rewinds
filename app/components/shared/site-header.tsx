@@ -26,10 +26,10 @@ import { configSite } from "~/configs";
 import { getUserIsAllowed } from "~/helpers";
 import { useRootLoaderData } from "~/hooks";
 import {
-  BellNotification,
   CreditCard,
   DashboardSpeed,
   Github,
+  Inbox,
   Keyboard,
   LogOut,
   Menu,
@@ -45,6 +45,8 @@ interface Props {
 }
 
 export function SiteHeader({ noThemeToggle }: Props) {
+  const { user } = useRootLoaderData();
+
   return (
     <header
       className={cn(
@@ -75,10 +77,14 @@ export function SiteHeader({ noThemeToggle }: Props) {
           id="site-header-right"
           className="flex items-center gap-1 sm:gap-2"
         >
+          {/* <div className="flex lg:hidden">
+            <HeaderSearchButton />
+          </div> */}
           <HeaderMainButtons />
           <div className="flex lg:hidden">
             <HeaderNavigationMenu navItems={configSite?.navItems} />
           </div>
+          {user && <HeaderUserMenu />}
         </div>
       </section>
     </header>
@@ -167,7 +173,7 @@ export function HeaderMainButtons() {
         {user && (
           <>
             <ButtonLinkIcon to="/user" variant="outline">
-              <BellNotification />
+              <Inbox />
               <span className="sr-only">Notification</span>
             </ButtonLinkIcon>
 
@@ -175,8 +181,6 @@ export function HeaderMainButtons() {
               <Plus />
               <span className="sr-only">New note</span>
             </ButtonLinkIcon>
-
-            <HeaderUserMenu />
           </>
         )}
       </nav>
@@ -194,8 +198,8 @@ export function HeaderNavigationMenu({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <ButtonIcon variant="ghost" size="lg">
-          <Menu className="size-lg" />
+        <ButtonIcon variant="outline">
+          <Menu className="size-md" />
           <span className="sr-only font-bold">Menu</span>
         </ButtonIcon>
       </DropdownMenuTrigger>
@@ -292,7 +296,7 @@ export function HeaderUserMenu({
           </DropdownMenuItem>
 
           <DropdownMenuItem>
-            <BellNotification className="size-sm me-2" />
+            <Inbox className="size-sm me-2" />
             <span>Notifications</span>
           </DropdownMenuItem>
 
