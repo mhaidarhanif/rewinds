@@ -53,7 +53,7 @@ export default function Route() {
             Published notes from the users. Frequently changed or reset for this
             example demo.
           </p>
-          <ButtonLink to="/user/notes/new" size="sm">
+          <ButtonLink to="/new" size="sm">
             <Plus className="size-sm" />
             <span>Add Note</span>
           </ButtonLink>

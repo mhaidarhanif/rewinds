@@ -13,7 +13,7 @@ const TooltipTrigger = TooltipPrimitive.Trigger;
 const TooltipContent = forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
->(({ className, sideOffset = 0, ...props }, ref) => (
+>(({ className, sideOffset = 4, ...props }, ref) => (
   <TooltipPrimitive.Content
     ref={ref}
     sideOffset={sideOffset}
@@ -34,15 +34,17 @@ export function TooltipAuto({
   className,
   children,
   content,
+  side,
 }: {
   className?: string;
   children: React.ReactNode;
   content: React.ReactNode;
+  side?: "top" | "right" | "bottom" | "left" | undefined;
 }) {
   return (
     <Tooltip className={className}>
       <TooltipTrigger>{children}</TooltipTrigger>
-      <TooltipContent>{content}</TooltipContent>
+      <TooltipContent side={side}>{content}</TooltipContent>
     </Tooltip>
   );
 }

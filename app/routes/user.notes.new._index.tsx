@@ -14,6 +14,7 @@ import {
   Label,
   RemixForm,
   TextArea,
+  TooltipAuto,
 } from "~/components";
 import { configDev } from "~/configs";
 import { requireUserSession } from "~/helpers";
@@ -23,6 +24,7 @@ import { createSitemap } from "~/utils";
 
 import type { ActionArgs } from "@remix-run/node";
 import type { z } from "zod";
+import { InfoEmpty, SubmitDocument } from "~/icons";
 
 export const handle = createSitemap();
 
@@ -71,11 +73,21 @@ export default function Route() {
   return (
     <section className="space-y-2">
       <header className="py-4">
-        <h1 className="text-3xl">Create a new note</h1>
-        <p className="dim">
-          A note can be a blog post, news article, tutorial, or just a regular
-          note.
-        </p>
+        <h1 className="queue-center text-3xl">
+          <SubmitDocument />
+          <span>Create a new note</span>
+          <TooltipAuto
+            content={
+              <p>
+                A note can be a blog post, news article, <br /> tutorial, or
+                just a regular note
+              </p>
+            }
+            side="bottom"
+          >
+            <InfoEmpty className="size-md" />
+          </TooltipAuto>
+        </h1>
       </header>
 
       <RemixForm {...form.props} method="POST">
@@ -91,7 +103,7 @@ export default function Route() {
               type="text"
               placeholder="Add a title"
               defaultValue={configDev.isDevelopment ? "A new example" : ""}
-              className="border-none px-1 sm:text-xl"
+              className="border-none px-1 text-lg sm:text-xl md:text-2xl lg:text-3xl"
             />
             <Alert id={title.errorId}>{title.error}</Alert>
           </div>
@@ -103,7 +115,7 @@ export default function Route() {
               type="text"
               placeholder="Add a description"
               defaultValue={configDev.isDevelopment ? "The description" : ""}
-              className="border-none px-1 sm:text-xl"
+              className="border-none px-1 text-lg sm:text-xl"
             />
             <Alert id={description.errorId}>{description.error}</Alert>
           </div>
@@ -119,7 +131,7 @@ export default function Route() {
                   ? "Here is the long content about the note."
                   : ""
               }
-              className="border-none px-1 sm:text-xl"
+              className="border-none px-1 sm:text-lg"
             />
             <Alert id={content.errorId}>{content.error}</Alert>
           </div>
