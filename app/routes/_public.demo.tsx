@@ -80,8 +80,8 @@ export function DemoPageProgress() {
       <h3>Page Progress</h3>
 
       <div className="stack">
-        <PageProgress />
-        <PageProgress progressValue={100} />
+        <PageProgress progressValue={50} />
+        <PageProgress progressValue={75} isAnimated />
       </div>
     </section>
   );

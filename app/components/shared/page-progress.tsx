@@ -10,10 +10,12 @@ interface Props
     HTMLDivElement
   > {
   progressValue?: number;
+  isAnimated?: boolean;
 }
 
 export function PageProgress({
-  progressValue = 25,
+  progressValue = 100,
+  isAnimated = false,
   className,
   ...props
 }: Props) {
@@ -33,7 +35,7 @@ export function PageProgress({
     });
   }
 
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(isAnimated ? 0 : progressValue);
 
   useEffect(() => {
     const timer = setTimeout(() => setProgress(progressValue), 500);
