@@ -4,6 +4,13 @@ import { cn } from "~/utils";
 
 import type { RemixLinkProps } from "@remix-run/react/dist/components";
 
+/**
+ * Remix Link + Text
+ *
+ * Reexport Link and NavLink component from Remix.
+ * Also Link Text and NavLink Text with some default styles.
+ */
+
 export { RemixLink, RemixNavLink };
 
 interface Props extends RemixLinkProps {

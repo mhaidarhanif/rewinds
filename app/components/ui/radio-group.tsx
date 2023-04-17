@@ -4,7 +4,13 @@ import { forwardRef } from "react";
 import { Circle } from "~/icons";
 import { cn } from "~/utils";
 
-const RadioGroup = forwardRef<
+/**
+ * Radio Group
+ *
+ * A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.
+ */
+
+export const RadioGroup = forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
 >(({ className, ...props }, ref) => {
@@ -18,7 +24,7 @@ const RadioGroup = forwardRef<
 });
 RadioGroup.displayName = RadioGroupPrimitive.Root.displayName;
 
-const RadioGroupItem = forwardRef<
+export const RadioGroupItem = forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
 >(({ className, children, ...props }, ref) => {
@@ -38,5 +44,3 @@ const RadioGroupItem = forwardRef<
   );
 });
 RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName;
-
-export { RadioGroup, RadioGroupItem };

@@ -1,5 +1,11 @@
 import { cn } from "~/utils";
 
+/**
+ * Image
+ *
+ * Display image with default styles.
+ */
+
 interface Props
   extends React.DetailedHTMLProps<
     React.ImgHTMLAttributes<HTMLImageElement>,

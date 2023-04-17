@@ -1,6 +1,20 @@
 import { cn } from "~/utils";
 
-export function SpanText({
+/**
+ * Text
+ *
+ * Various text components for typography:
+ * - Span, default of Text component
+ * - Paragraph
+ * - Block Quote
+ * - Preformat
+ * - Code
+ * - Lead
+ * - Large
+ * - Subtle
+ */
+
+export function TextSpan({
   className,
   children,
   ...props
@@ -12,7 +26,7 @@ export function SpanText({
   );
 }
 
-export { SpanText as Text };
+export { TextSpan as Text };
 
 export function TextParagraph({
   className,
@@ -104,7 +118,7 @@ export function TextLarge({
   );
 }
 
-export function SubtleText({
+export function TextSubtle({
   className,
   children,
   ...props

@@ -3,6 +3,12 @@ import { cn } from "~/utils";
 
 import type { VariantProps } from "class-variance-authority";
 
+/**
+ * Button Anchor
+ *
+ * Button with anchor element.
+ */
+
 export interface ButtonAnchorProps
   extends React.DetailedHTMLProps<
       React.AnchorHTMLAttributes<HTMLAnchorElement>,

@@ -3,9 +3,16 @@ import { forwardRef } from "react";
 
 import { cn } from "~/utils";
 
-const Tabs = TabsPrimitive.Root;
+/**
+ * Tabs
+ *
+ * A set of layered sections of content or tab panels,
+ * that are displayed one at a time.
+ */
 
-const TabsList = forwardRef<
+export const Tabs = TabsPrimitive.Root;
+
+export const TabsList = forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
 >(({ className, ...props }, ref) => (
@@ -21,7 +28,7 @@ const TabsList = forwardRef<
 ));
 TabsList.displayName = TabsPrimitive.List.displayName;
 
-const TabsTrigger = forwardRef<
+export const TabsTrigger = forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
 >(({ className, ...props }, ref) => (
@@ -39,7 +46,7 @@ const TabsTrigger = forwardRef<
 ));
 TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
 
-const TabsContent = forwardRef<
+export const TabsContent = forwardRef<
   React.ElementRef<typeof TabsPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
 >(({ className, ...props }, ref) => (
@@ -54,5 +61,3 @@ const TabsContent = forwardRef<
   />
 ));
 TabsContent.displayName = TabsPrimitive.Content.displayName;
-
-export { Tabs, TabsList, TabsTrigger, TabsContent };

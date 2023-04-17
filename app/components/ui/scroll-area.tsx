@@ -4,7 +4,13 @@ import { forwardRef } from "react";
 
 import { cn } from "~/utils";
 
-const ScrollArea = forwardRef<
+/**
+ * Scroll Area
+ *
+ * Augments native scroll functionality for custom, cross-browser styling.
+ */
+
+export const ScrollArea = forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
 >(({ className, children, ...props }, ref) => (
@@ -22,7 +28,7 @@ const ScrollArea = forwardRef<
 ));
 ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName;
 
-const ScrollBar = forwardRef<
+export const ScrollBar = forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>
 >(({ className, orientation = "vertical", ...props }, ref) => (
@@ -43,5 +49,3 @@ const ScrollBar = forwardRef<
   </ScrollAreaPrimitive.ScrollAreaScrollbar>
 ));
 ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName;
-
-export { ScrollArea, ScrollBar };

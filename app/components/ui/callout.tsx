@@ -11,7 +11,7 @@ import { forwardRef } from "react";
  * Displays a callout for user attention.
  */
 
-const calloutVariants = cva(
+export const calloutVariants = cva(
   "relative w-full rounded-lg border p-4 [&>svg]:absolute [&>svg]:text-foreground [&>svg]:left-4 [&>svg]:top-4 [&>svg+div]:translate-y-[-3px] [&:has(svg)]:pl-11",
   {
     variants: {
@@ -27,7 +27,7 @@ const calloutVariants = cva(
   }
 );
 
-const Callout = forwardRef<
+export const Callout = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof calloutVariants>
 >(({ className, variant, ...props }, ref) => (
@@ -40,7 +40,7 @@ const Callout = forwardRef<
 ));
 Callout.displayName = "Callout";
 
-const CalloutTitle = forwardRef<
+export const CalloutTitle = forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLHeadingElement>
 >(({ className, ...props }, ref) => (
@@ -52,7 +52,7 @@ const CalloutTitle = forwardRef<
 ));
 CalloutTitle.displayName = "CalloutTitle";
 
-const CalloutDescription = forwardRef<
+export const CalloutDescription = forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => (
@@ -63,5 +63,3 @@ const CalloutDescription = forwardRef<
   />
 ));
 CalloutDescription.displayName = "CalloutDescription";
-
-export { Callout, CalloutTitle, CalloutDescription };

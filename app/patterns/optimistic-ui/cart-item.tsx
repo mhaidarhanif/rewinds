@@ -16,14 +16,14 @@ function calculateCartItem({
 }
 
 /**
- * Pattern Example: Optimistic UI: Cart Item
+ * Pattern Example > Cart Item
  *
- * Should not use client-only form handling
- * Because during this view, there will be an update to the database
- * All counter changes happen both in the client-side and server-side
+ * Optimistic UI component that would not use client-only form handling.
+ * Because during this view, there will be an update to the database.
+ * All counter changes happen both in the client-side and server-side.
  *
- * Inspiration:
- * https://github.com/jacob-ebey/remix-ecommerce/blob/main/app/components/cart-listitem.tsx
+ * Inspirations:
+ * - https://github.com/jacob-ebey/remix-ecommerce/blob/main/app/components/cart-listitem.tsx
  */
 
 export function CartItem({

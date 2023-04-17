@@ -6,6 +6,12 @@ import { cn } from "~/utils";
 
 import type { VariantProps } from "class-variance-authority";
 
+/**
+ * Button Loading
+ *
+ * Button with loading indicator props.
+ */
+
 export interface ButtonLoadingProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {

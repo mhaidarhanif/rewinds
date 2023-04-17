@@ -2,10 +2,16 @@ import { forwardRef } from "react";
 
 import { cn } from "~/utils";
 
+/**
+ * Textarea
+ *
+ * Displays a form textarea or a component that looks like a textarea.
+ */
+
 export interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
 
-const TextArea = forwardRef<HTMLTextAreaElement, TextareaProps>(
+export const TextArea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, ...props }, ref) => {
     return (
       <textarea
@@ -24,5 +30,3 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   }
 );
 TextArea.displayName = "TextArea";
-
-export { TextArea };

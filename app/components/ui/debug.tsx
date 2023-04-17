@@ -9,6 +9,13 @@ import { configDev } from "~/configs";
 import { useRootLoaderData } from "~/hooks";
 import { cn } from "~/utils";
 
+/**
+ * Debug
+ *
+ * Preformat code component to show debugging information.
+ * Can be toggled in app/configs/dev.ts: debugComponent
+ */
+
 export function Debug({
   name = "unknown",
   isCollapsibleOpen = false,

@@ -3,11 +3,17 @@ import { forwardRef } from "react";
 
 import { cn } from "~/utils";
 
-const HoverCard = HoverCardPrimitive.Root;
+/**
+ * Hover Card
+ *
+ * For sighted users to preview content available behind a link.
+ */
 
-const HoverCardTrigger = HoverCardPrimitive.Trigger;
+export const HoverCard = HoverCardPrimitive.Root;
 
-const HoverCardContent = forwardRef<
+export const HoverCardTrigger = HoverCardPrimitive.Trigger;
+
+export const HoverCardContent = forwardRef<
   React.ElementRef<typeof HoverCardPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof HoverCardPrimitive.Content>
 >(({ className, align = "center", sideOffset = 4, ...props }, ref) => (
@@ -23,5 +29,3 @@ const HoverCardContent = forwardRef<
   />
 ));
 HoverCardContent.displayName = HoverCardPrimitive.Content.displayName;
-
-export { HoverCard, HoverCardTrigger, HoverCardContent };

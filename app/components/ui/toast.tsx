@@ -5,11 +5,20 @@ import { forwardRef } from "react";
 import { X } from "~/icons";
 import { cn } from "~/utils";
 
+/**
+ * Toast
+ *
+ * A succinct message that is displayed temporarily.
+ *
+ * Alternatives:
+ * - React Hot Toast: https://react-hot-toast.com
+ */
+
 import type { VariantProps } from "class-variance-authority";
 
-const ToastProvider = ToastPrimitives.Provider;
+export const ToastProvider = ToastPrimitives.Provider;
 
-const ToastViewport = forwardRef<
+export const ToastViewport = forwardRef<
   React.ElementRef<typeof ToastPrimitives.Viewport>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Viewport>
 >(({ className, ...props }, ref) => (
@@ -24,7 +33,7 @@ const ToastViewport = forwardRef<
 ));
 ToastViewport.displayName = ToastPrimitives.Viewport.displayName;
 
-const toastVariants = cva(
+export const toastVariants = cva(
   cn(
     "p-4 pe-8",
     "data-[swipe=move]:transition-none grow-1 group relative pointer-events-auto flex w-full items-center justify-between space-x-4 overflow-hidden rounded-md border-2 shadow-lg transition-all data-[swipe=move]:translate-x-[--radix-toast-swipe-move-x] data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-[--radix-toast-swipe-end-x] data-[state=open]:animate-in data-[state=closed]:animate-out data-[swipe=end]:animate-out data-[state=closed]:fade-out-80 data-[state=open]:slide-in-from-bottom-full data-[state=open]:sm:slide-in-from-bottom-full mt-4 data-[state=closed]:slide-out-to-bottom-full dark:border-surface-700 last:mt-0 sm:last:mt-4"
@@ -46,7 +55,7 @@ const toastVariants = cva(
   }
 );
 
-const Toast = forwardRef<
+export const Toast = forwardRef<
   React.ElementRef<typeof ToastPrimitives.Root>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Root> &
     VariantProps<typeof toastVariants>
@@ -61,7 +70,7 @@ const Toast = forwardRef<
 });
 Toast.displayName = ToastPrimitives.Root.displayName;
 
-const ToastAction = forwardRef<
+export const ToastAction = forwardRef<
   React.ElementRef<typeof ToastPrimitives.Action>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Action>
 >(({ className, ...props }, ref) => (
@@ -78,7 +87,7 @@ const ToastAction = forwardRef<
 ));
 ToastAction.displayName = ToastPrimitives.Action.displayName;
 
-const ToastClose = forwardRef<
+export const ToastClose = forwardRef<
   React.ElementRef<typeof ToastPrimitives.Close>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Close>
 >(({ className, ...props }, ref) => (
@@ -98,7 +107,7 @@ const ToastClose = forwardRef<
 ));
 ToastClose.displayName = ToastPrimitives.Close.displayName;
 
-const ToastTitle = forwardRef<
+export const ToastTitle = forwardRef<
   React.ElementRef<typeof ToastPrimitives.Title>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Title>
 >(({ className, ...props }, ref) => (
@@ -110,7 +119,7 @@ const ToastTitle = forwardRef<
 ));
 ToastTitle.displayName = ToastPrimitives.Title.displayName;
 
-const ToastDescription = forwardRef<
+export const ToastDescription = forwardRef<
   React.ElementRef<typeof ToastPrimitives.Description>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Description>
 >(({ className, ...props }, ref) => (
@@ -122,18 +131,6 @@ const ToastDescription = forwardRef<
 ));
 ToastDescription.displayName = ToastPrimitives.Description.displayName;
 
-type ToastProps = React.ComponentPropsWithoutRef<typeof Toast>;
+export type ToastProps = React.ComponentPropsWithoutRef<typeof Toast>;
 
-type ToastActionElement = React.ReactElement<typeof ToastAction>;
-
-export {
-  type ToastProps,
-  type ToastActionElement,
-  ToastProvider,
-  ToastViewport,
-  Toast,
-  ToastTitle,
-  ToastDescription,
-  ToastClose,
-  ToastAction,
-};
+export type ToastActionElement = React.ReactElement<typeof ToastAction>;

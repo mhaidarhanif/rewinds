@@ -3,11 +3,17 @@ import { forwardRef } from "react";
 
 import { cn } from "~/utils";
 
-const Popover = PopoverPrimitive.Root;
+/**
+ * Popover
+ *
+ * Displays rich content in a portal, triggered by a button.
+ */
 
-const PopoverTrigger = PopoverPrimitive.Trigger;
+export const Popover = PopoverPrimitive.Root;
 
-const PopoverContent = forwardRef<
+export const PopoverTrigger = PopoverPrimitive.Trigger;
+
+export const PopoverContent = forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>
 >(({ className, align = "center", sideOffset = 4, ...props }, ref) => (
@@ -25,5 +31,3 @@ const PopoverContent = forwardRef<
   </PopoverPrimitive.Portal>
 ));
 PopoverContent.displayName = PopoverPrimitive.Content.displayName;
-
-export { Popover, PopoverTrigger, PopoverContent };

@@ -8,11 +8,17 @@ import { cn } from "~/utils";
 
 import type { VariantProps } from "class-variance-authority";
 
-const Sheet = SheetPrimitive.Root;
+/**
+ * Sheet
+ *
+ * Extends the Dialog component to display content that complements the main content of the screen.
+ */
 
-const SheetTrigger = SheetPrimitive.Trigger;
+export const Sheet = SheetPrimitive.Root;
 
-const portalVariants = cva("fixed inset-0 z-50 flex", {
+export const SheetTrigger = SheetPrimitive.Trigger;
+
+export const portalVariants = cva("fixed inset-0 z-50 flex", {
   variants: {
     position: {
       top: "items-start",
@@ -28,7 +34,7 @@ interface SheetPortalProps
   extends SheetPrimitive.DialogPortalProps,
     VariantProps<typeof portalVariants> {}
 
-const SheetPortal = ({
+export const SheetPortal = ({
   position,
   className,
   children,
@@ -40,7 +46,7 @@ const SheetPortal = ({
 );
 SheetPortal.displayName = SheetPrimitive.Portal.displayName;
 
-const SheetOverlay = forwardRef<
+export const SheetOverlay = forwardRef<
   React.ElementRef<typeof SheetPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Overlay>
 >(({ className, children, ...props }, ref) => (
@@ -55,7 +61,7 @@ const SheetOverlay = forwardRef<
 ));
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
 
-const sheetVariants = cva(
+export const sheetVariants = cva(
   "fixed z-50 scale-100 gap-4 bg-white p-6 opacity-100 dark:bg-surface-900",
   {
     variants: {
@@ -147,7 +153,7 @@ export interface DialogContentProps
   extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
     VariantProps<typeof sheetVariants> {}
 
-const SheetContent = forwardRef<
+export const SheetContent = forwardRef<
   React.ElementRef<typeof SheetPrimitive.Content>,
   DialogContentProps
 >(({ position, size, className, children, ...props }, ref) => (
@@ -173,7 +179,7 @@ const SheetContent = forwardRef<
 ));
 SheetContent.displayName = SheetPrimitive.Content.displayName;
 
-const SheetHeader = ({
+export const SheetHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
@@ -187,7 +193,7 @@ const SheetHeader = ({
 );
 SheetHeader.displayName = "SheetHeader";
 
-const SheetFooter = ({
+export const SheetFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
@@ -201,7 +207,7 @@ const SheetFooter = ({
 );
 SheetFooter.displayName = "SheetFooter";
 
-const SheetTitle = forwardRef<
+export const SheetTitle = forwardRef<
   React.ElementRef<typeof SheetPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>
 >(({ className, ...props }, ref) => (
@@ -217,7 +223,7 @@ const SheetTitle = forwardRef<
 ));
 SheetTitle.displayName = SheetPrimitive.Title.displayName;
 
-const SheetDescription = forwardRef<
+export const SheetDescription = forwardRef<
   React.ElementRef<typeof SheetPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description>
 >(({ className, ...props }, ref) => (
@@ -232,13 +238,3 @@ const SheetDescription = forwardRef<
   />
 ));
 SheetDescription.displayName = SheetPrimitive.Description.displayName;
-
-export {
-  Sheet,
-  SheetTrigger,
-  SheetContent,
-  SheetHeader,
-  SheetFooter,
-  SheetTitle,
-  SheetDescription,
-};

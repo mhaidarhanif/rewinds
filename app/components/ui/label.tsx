@@ -3,7 +3,13 @@ import { forwardRef } from "react";
 
 import { cn } from "~/utils";
 
-const Label = forwardRef<
+/**
+ * Label
+ *
+ * Renders an accessible label associated with controls.
+ */
+
+export const Label = forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
 >(({ className, ...props }, ref) => (
@@ -17,5 +23,3 @@ const Label = forwardRef<
   />
 ));
 Label.displayName = LabelPrimitive.Root.displayName;
-
-export { Label };

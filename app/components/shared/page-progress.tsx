@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Button, Progress, ToastAction } from "~/components";
 import { toast } from "~/hooks";
 import { CheckCircle, Undo } from "~/icons";
@@ -32,14 +33,21 @@ export function PageProgress({
     });
   }
 
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setProgress(progressValue), 500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <aside
       className={cn("flex w-full flex-wrap justify-between gap-4", className)}
       {...props}
     >
       <div className="w-full max-w-xs space-y-2">
-        <span className="font-bold">{progressValue}% complete</span>
-        <Progress size="sm" value={progressValue} />
+        <span className="font-bold">{progress}% complete</span>
+        <Progress size="sm" value={progress} />
       </div>
 
       <div>

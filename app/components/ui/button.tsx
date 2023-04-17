@@ -5,6 +5,12 @@ import { cn } from "~/utils";
 
 import type { VariantProps } from "class-variance-authority";
 
+/**
+ * Button
+ *
+ * Displays a button or a component that looks like a button.
+ */
+
 export const buttonVariants = cva(
   cn(
     "z-auto inline-flex select-none transition-colors active:translate-y-px",

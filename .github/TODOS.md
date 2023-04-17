@@ -5,6 +5,11 @@ Public and quick todos for this repo.
 ## In Progress
 
 - new components
+  - Callout
+  - Badge
+  - Calendar
+  - Card
+  - Skeleton
 - profile badge
 - admin verified users
 
@@ -56,8 +61,8 @@ Public and quick todos for this repo.
 - notes and search pagination
 - rate limit with upstash
 - password strength
-  - https://www.npmjs.com/package/check-password-strength
-  - https://www.npmjs.com/package/password-meter
+  - https://npmjs.com/package/check-password-strength
+  - https://npmjs.com/package/password-meter
 
 ## triage
 

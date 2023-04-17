@@ -5,6 +5,12 @@ import { cn } from "~/utils";
 
 import type { VariantProps } from "class-variance-authority";
 
+/**
+ * Button Icon
+ *
+ * Button with icon content.
+ */
+
 export interface ButtonIconProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {}

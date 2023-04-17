@@ -4,6 +4,12 @@ import { cn } from "~/utils";
 
 import type { VariantProps } from "class-variance-authority";
 
+/**
+ * Alert
+ *
+ * Displays an alert after something happened for user attention.
+ */
+
 export const alertVariants = cva(cn("flex items-center border-l border-l-2"), {
   variants: {
     variant: {

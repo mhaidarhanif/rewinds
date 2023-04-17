@@ -5,6 +5,12 @@ import { Copy, Check } from "~/icons";
 
 import type { ButtonProps } from "~/components";
 
+/**
+ * Button Copy
+ *
+ * Button with copy to clipboard functionality.
+ */
+
 interface Props extends ButtonProps {
   contentToCopy?: string | undefined;
   copyIcon?: React.ReactNode;
@@ -13,7 +19,7 @@ interface Props extends ButtonProps {
   text?: string;
 }
 
-export function CopyButton({
+export function ButtonCopy({
   className,
   contentToCopy = "",
   copyIcon,
@@ -45,4 +51,4 @@ export function CopyButton({
     </Button>
   );
 }
-CopyButton.displayName = "Copy Button";
+ButtonCopy.displayName = "Button Copy";

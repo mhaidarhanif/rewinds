@@ -3,7 +3,13 @@ import { forwardRef, useState } from "react";
 import { Eye, EyeOff } from "~/icons";
 import { cn } from "~/utils";
 
-import { Button } from "./button";
+import { Button } from "~/components";
+
+/**
+ * Input
+ *
+ * Displays a form input field or a component that looks like an input field.
+ */
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}

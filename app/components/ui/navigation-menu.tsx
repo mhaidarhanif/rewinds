@@ -6,7 +6,17 @@ import { forwardRef } from "react";
 import { ChevronDown } from "~/icons";
 import { cn } from "~/utils";
 
-const NavigationMenu = forwardRef<
+/**
+ * Navigation Menu
+ *
+ * A collection of links for navigating websites.
+ *
+ * Docs:
+ * - https://ui.shadcn.com/docs/components/navigation-menu
+ * - https://radix-ui.com/docs/primitives/components/navigation-menu
+ */
+
+export const NavigationMenu = forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
 >(({ className, children, ...props }, ref) => (
@@ -24,7 +34,7 @@ const NavigationMenu = forwardRef<
 ));
 NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName;
 
-const NavigationMenuList = forwardRef<
+export const NavigationMenuList = forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.List>
 >(({ className, ...props }, ref) => (
@@ -39,13 +49,13 @@ const NavigationMenuList = forwardRef<
 ));
 NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 
-const NavigationMenuItem = NavigationMenuPrimitive.Item;
+export const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
-const navigationMenuTriggerStyle = cva(
+export const navigationMenuTriggerStyle = cva(
   "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:bg-surface-100 disabled:opacity-50 dark:focus-visible:bg-surface-800 disabled:pointer-events-none bg-transparent hover:bg-surface-100 dark:hover:bg-surface-800 dark:text-surface-100 dark:hover:text-surface-100 data-[state=open]:bg-surface-50 dark:data-[state=open]:bg-surface-800 data-[active]:bg-surface-50 dark:data-[active]:bg-surface-800 h-10 py-2 px-4 group w-max"
 );
 
-const NavigationMenuTrigger = forwardRef<
+export const NavigationMenuTrigger = forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger>
 >(({ className, children, ...props }, ref) => (
@@ -63,7 +73,7 @@ const NavigationMenuTrigger = forwardRef<
 ));
 NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName;
 
-const NavigationMenuContent = forwardRef<
+export const NavigationMenuContent = forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Content>
 >(({ className, ...props }, ref) => (
@@ -78,9 +88,9 @@ const NavigationMenuContent = forwardRef<
 ));
 NavigationMenuContent.displayName = NavigationMenuPrimitive.Content.displayName;
 
-const NavigationMenuLink = NavigationMenuPrimitive.Link;
+export const NavigationMenuLink = NavigationMenuPrimitive.Link;
 
-const NavigationMenuViewport = forwardRef<
+export const NavigationMenuViewport = forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
 >(({ className, ...props }, ref) => (
@@ -98,7 +108,7 @@ const NavigationMenuViewport = forwardRef<
 NavigationMenuViewport.displayName =
   NavigationMenuPrimitive.Viewport.displayName;
 
-const NavigationMenuIndicator = forwardRef<
+export const NavigationMenuIndicator = forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Indicator>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Indicator>
 >(({ className, ...props }, ref) => (
@@ -115,15 +125,3 @@ const NavigationMenuIndicator = forwardRef<
 ));
 NavigationMenuIndicator.displayName =
   NavigationMenuPrimitive.Indicator.displayName;
-
-export {
-  navigationMenuTriggerStyle,
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuContent,
-  NavigationMenuTrigger,
-  NavigationMenuLink,
-  NavigationMenuIndicator,
-  NavigationMenuViewport,
-};

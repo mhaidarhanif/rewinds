@@ -21,8 +21,9 @@ import {
 /**
  * Icon Component
  *
- * Mapping with name string
- * Only used when need to determine icon based on the item name from data
+ * For automated icon display with name props.
+ * Works by mapping the name string with like a switch case.
+ * Only used when need to determine icon based on the item name from data.
  */
 
 export const iconMaps = {

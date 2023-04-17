@@ -3,14 +3,27 @@ import { forwardRef } from "react";
 
 import { cn } from "~/utils";
 
-const TooltipProvider = TooltipPrimitive.Provider;
+/**
+ * Tooltip from Radix UI
+ *
+ * A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+ *
+ * Docs:
+ * - https://ui.shadcn.com/docs/components/tooltip
+ * - https://radix-ui.com/docs/primitives/components/tooltip
+ *
+ * Alternatives:
+ * - Ariakit Tooltip: https://ariakit.org/components/tooltip
+ */
 
-const Tooltip = ({ ...props }) => <TooltipPrimitive.Root {...props} />;
+export const TooltipProvider = TooltipPrimitive.Provider;
+
+export const Tooltip = ({ ...props }) => <TooltipPrimitive.Root {...props} />;
 Tooltip.displayName = TooltipPrimitive.Tooltip.displayName;
 
-const TooltipTrigger = TooltipPrimitive.Trigger;
+export const TooltipTrigger = TooltipPrimitive.Trigger;
 
-const TooltipContent = forwardRef<
+export const TooltipContent = forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
 >(({ className, sideOffset = 4, ...props }, ref) => (
@@ -27,8 +40,6 @@ const TooltipContent = forwardRef<
   />
 ));
 TooltipContent.displayName = TooltipPrimitive.Content.displayName;
-
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };
 
 export function TooltipAuto({
   className,

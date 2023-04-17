@@ -3,7 +3,13 @@ import { forwardRef } from "react";
 
 import { cn } from "~/utils";
 
-const Switch = forwardRef<
+/**
+ * Switch
+ *
+ * A control that allows the user to toggle between checked and not checked.
+ */
+
+export const Switch = forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
   React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>
 >(({ className, ...props }, ref) => (
@@ -23,5 +29,3 @@ const Switch = forwardRef<
   </SwitchPrimitives.Root>
 ));
 Switch.displayName = SwitchPrimitives.Root.displayName;
-
-export { Switch };

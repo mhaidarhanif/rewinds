@@ -5,8 +5,10 @@ import { Check, ChevronsUpDown } from "~/icons";
 import { cn } from "~/utils";
 
 /**
- * Combobox from Headless UI
- * need refactoring to make it easier to reuse
+ * Combobox
+ *
+ * Can refactor later to make it easier to reuse.
+ * Made with Headless UI Combobox: https://headlessui.com/react/combobox
  */
 
 type Item = {

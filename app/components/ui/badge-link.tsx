@@ -4,6 +4,12 @@ import { cn } from "~/utils";
 import type { RemixLinkProps } from "@remix-run/react/dist/components";
 import type { VariantProps } from "class-variance-authority";
 
+/**
+ * Badge Link
+ *
+ * Displays a badge with link to another route.
+ */
+
 export interface BadgeLinkProps
   extends RemixLinkProps,
     VariantProps<typeof badgeVariants> {}

@@ -5,6 +5,13 @@ import { cn } from "~/utils";
 
 import type { VariantProps } from "class-variance-authority";
 
+/**
+ * Progress
+ *
+ * Displays an indicator showing the completion progress of a task,
+ * typically displayed as a progress bar.
+ */
+
 export const progressVariants = cva(
   "relative w-full overflow-hidden rounded-full bg-surface-200 dark:bg-surface-800",
   {
@@ -27,7 +34,7 @@ interface ProgressProps
   hasGradient?: boolean;
 }
 
-const Progress = ({
+export const Progress = ({
   value = 0,
   size = "default",
   hasGradient = false,
@@ -50,5 +57,3 @@ const Progress = ({
   </ProgressPrimitive.Root>
 );
 Progress.displayName = ProgressPrimitive.Root.displayName;
-
-export { Progress };

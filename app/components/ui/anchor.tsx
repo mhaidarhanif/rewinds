@@ -2,6 +2,12 @@ import { cn } from "~/utils";
 
 import type { ReactNode } from "react";
 
+/**
+ * Anchor
+ *
+ * Link to external URL
+ */
+
 interface Props {
   className?: string;
   href: string;

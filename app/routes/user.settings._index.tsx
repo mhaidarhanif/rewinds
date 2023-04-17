@@ -8,7 +8,7 @@ import { badRequest, forbidden } from "remix-utils";
 import {
   Alert,
   ButtonLoading,
-  CopyButton,
+  ButtonCopy,
   Debug,
   Input,
   InputPassword,
@@ -164,7 +164,7 @@ function UserSettingsTabUser() {
           <div className="space-y-1">
             <div className="queue-center justify-between">
               <Label htmlFor={name.id}>Name</Label>
-              <CopyButton
+              <ButtonCopy
                 variant="ghost"
                 size="xs"
                 contentToCopy={user.name || name.defaultValue}
@@ -266,7 +266,7 @@ function UserSettingsTabProfile() {
           <div className="space-y-1">
             <div className="queue-center justify-between">
               <Label htmlFor={headline.id}>Headline</Label>
-              <CopyButton
+              <ButtonCopy
                 variant="ghost"
                 size="xs"
                 contentToCopy={user.profile.headline || headline.defaultValue}
@@ -287,7 +287,7 @@ function UserSettingsTabProfile() {
           <div className="space-y-1">
             <div className="queue-center justify-between">
               <Label htmlFor={bio.id}>Bio</Label>
-              <CopyButton
+              <ButtonCopy
                 variant="ghost"
                 size="xs"
                 contentToCopy={user.profile.bio || bio.defaultValue}

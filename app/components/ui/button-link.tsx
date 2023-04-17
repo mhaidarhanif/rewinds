@@ -4,6 +4,12 @@ import { cn } from "~/utils";
 import type { RemixLinkProps } from "@remix-run/react/dist/components";
 import type { VariantProps } from "class-variance-authority";
 
+/**
+ * Button Link
+ *
+ * Button with Link component.
+ */
+
 export interface ButtonLinkProps
   extends RemixLinkProps,
     VariantProps<typeof buttonVariants> {}

@@ -11,7 +11,7 @@ import { cn, createAvatarPlaceholderURL, getNameInitials } from "~/utils";
 
 import type { UserData } from "~/helpers";
 
-const Avatar = forwardRef<
+export const Avatar = forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
 >(({ className, ...props }, ref) => (
@@ -27,7 +27,7 @@ const Avatar = forwardRef<
 ));
 Avatar.displayName = AvatarPrimitive.Root.displayName;
 
-const AvatarImage = forwardRef<
+export const AvatarImage = forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Image>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
 >(({ className, ...props }, ref) => (
@@ -39,7 +39,7 @@ const AvatarImage = forwardRef<
 ));
 AvatarImage.displayName = AvatarPrimitive.Image.displayName;
 
-const AvatarFallback = forwardRef<
+export const AvatarFallback = forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Fallback>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
 >(({ className, ...props }, ref) => (
@@ -54,10 +54,10 @@ const AvatarFallback = forwardRef<
 ));
 AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;
 
-export { Avatar, AvatarImage, AvatarFallback };
-
 /**
- * TODO: Refactor with variant to handle size
+ * Avatar Auto
+ *
+ * Can refactor later with variant to handle size
  */
 export function AvatarAuto({
   user,

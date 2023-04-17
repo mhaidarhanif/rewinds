@@ -3,7 +3,13 @@ import { forwardRef } from "react";
 
 import { cn } from "~/utils";
 
-const Separator = forwardRef<
+/**
+ * Separator
+ *
+ * Visually or semantically separates content.
+ */
+
+export const Separator = forwardRef<
   React.ElementRef<typeof SeparatorPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
 >(
@@ -25,5 +31,3 @@ const Separator = forwardRef<
   )
 );
 Separator.displayName = SeparatorPrimitive.Root.displayName;
-
-export { Separator };

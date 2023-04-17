@@ -14,7 +14,7 @@ import {
   ButtonIcon,
   ButtonLink,
   ButtonLoading,
-  CopyButton,
+  ButtonCopy,
   HeaderNavigationMenu,
   Input,
   InputPassword,
@@ -194,7 +194,7 @@ export function ExampleButton() {
             <Trash className="size-xs" />
             <span>Delete</span>
           </Button>
-          <CopyButton
+          <ButtonCopy
             variant="ghost"
             size="sm"
             contentToCopy="Content to copy"

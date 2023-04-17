@@ -8,6 +8,15 @@ import {
 } from "~/components";
 import { useToast } from "~/hooks";
 
+/**
+ * Toaster
+ *
+ * To manage the Toast component instances.
+ *
+ * Alternatives:
+ * - React Hot Toast: https://react-hot-toast.com
+ */
+
 export function Toaster() {
   const { toasts } = useToast();
 

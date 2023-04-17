@@ -4,7 +4,13 @@ import { forwardRef } from "react";
 import { Check } from "~/icons";
 import { cn } from "~/utils";
 
-const Checkbox = forwardRef<
+/**
+ * Checkbox
+ *
+ * A control that allows the user to toggle between checked and not checked.
+ */
+
+export const Checkbox = forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
 >(({ className, ...props }, ref) => (
@@ -24,5 +30,3 @@ const Checkbox = forwardRef<
   </CheckboxPrimitive.Root>
 ));
 Checkbox.displayName = CheckboxPrimitive.Root.displayName;
-
-export { Checkbox };
