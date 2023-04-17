@@ -3,6 +3,12 @@ import { forwardRef } from "react";
 
 import { cn, createAvatarPlaceholderURL, getNameInitials } from "~/utils";
 
+/**
+ * Avatar
+ *
+ * An image element with a fallback for representing the user or organization.
+ */
+
 import type { UserData } from "~/helpers";
 
 const Avatar = forwardRef<

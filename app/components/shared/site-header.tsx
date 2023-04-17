@@ -3,7 +3,6 @@ import {
   AvatarAuto,
   Button,
   ButtonIcon,
-  ButtonIconAnchor,
   ButtonLink,
   ButtonLinkIcon,
   buttonVariants,
@@ -28,14 +27,12 @@ import { useRootLoaderData } from "~/hooks";
 import {
   CreditCard,
   DashboardSpeed,
-  Github,
   Inbox,
   Keyboard,
   LogOut,
   Menu,
   Plus,
   Settings,
-  Twitter,
   User,
 } from "~/icons";
 import { cn } from "~/utils";

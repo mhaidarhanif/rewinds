@@ -4,6 +4,7 @@ Public and quick todos for this repo.
 
 ## In Progress
 
+- new components
 - profile badge
 - admin verified users
 

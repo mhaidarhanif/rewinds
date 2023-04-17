@@ -4,6 +4,12 @@ import { forwardRef } from "react";
 import { ChevronDown } from "~/icons";
 import { cn } from "~/utils";
 
+/**
+ * Accordion
+ *
+ * A vertically stacked set of interactive headings that each reveal a section of content.
+ */
+
 const Accordion = AccordionPrimitive.Root;
 
 const AccordionItem = forwardRef<

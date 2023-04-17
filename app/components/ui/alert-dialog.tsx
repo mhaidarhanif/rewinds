@@ -3,6 +3,12 @@ import { forwardRef } from "react";
 
 import { cn } from "~/utils";
 
+/**
+ * Alert Dialog
+ *
+ * A modal dialog that interrupts the user with important content and expects a response.
+ */
+
 const AlertDialog = AlertDialogPrimitive.Root;
 
 const AlertDialogTrigger = AlertDialogPrimitive.Trigger;

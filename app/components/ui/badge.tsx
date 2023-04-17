@@ -4,15 +4,27 @@ import { cn } from "~/utils";
 
 import type { VariantProps } from "class-variance-authority";
 
+/**
+ * Badge
+ *
+ * Displays a badge or a component that looks like a badge.
+ */
+
 export const badgeVariants = cva(
   cn(
-    "select-none font-bold tracking-wide uppercase inline-flex items-center gap-1"
+    "select-none border font-bold tracking-wide inline-flex items-center gap-1 transition-colors",
+    "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
   ),
   {
     variants: {
       variant: {
-        default: "text-white bg-brand-600",
-        surface: "text-white bg-surface-600",
+        default:
+          "bg-brand-600 hover:bg-brand/80 text-brand-50 border-transparent",
+        surface:
+          "bg-surface-600 hover:bg-secondary/80 text-surface-50 border-transparent",
+        desctructive:
+          "bg-red hover:bg-secondary/80 text-red-500 border-transparent",
+        outline: "text-500",
       },
       size: {
         xs: "text-xs",

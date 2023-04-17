@@ -9,9 +9,9 @@ module.exports = {
   plugins: [
     "@typescript-eslint",
     "tailwindcss",
+    "prettier",
     // "import",
     // "sort-export-all",
-    // "prettier",
   ],
   extends: [
     "eslint:recommended",
@@ -19,9 +19,9 @@ module.exports = {
     "@remix-run/eslint-config/node",
     "plugin:@typescript-eslint/recommended",
     "plugin:tailwindcss/recommended",
+    "plugin:prettier/recommended",
     // "plugin:import/typescript",
     // "plugin:sort-export-all/recommended",
-    // "plugin:prettier/recommended",
   ],
   settings: {
     "import/resolver": { typescript: true, node: true },
@@ -36,7 +36,7 @@ module.exports = {
     "@typescript-eslint/strict-boolean-expressions": "off",
     "object-shorthand": ["warn", "always"],
     "react/self-closing-comp": "warn",
-    "tailwindcss/classnames-order": "off",
+    "tailwindcss/classnames-order": "off", // use prettier-plugin-tailwindcss
     "tailwindcss/no-arbitrary-value": "warn",
     "tailwindcss/no-custom-classname": "off",
     // "import/order": [
