@@ -8,7 +8,7 @@ Public and quick todos for this repo.
 
 ## Todo
 
-- setup heroicons
+- profile badge
 - setup Uploadcare example
 - implement admin menu on mobile with sheet
   - https://ui.shadcn.com/docs/primitives/sheet

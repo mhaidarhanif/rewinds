@@ -54,6 +54,7 @@
     "@fontsource/chivo-mono": "^4.5.1",
     "@fontsource/inter": "^4.5.15",
     "@headlessui/react": "^1.7.13",
+    "@heroicons/react": "2.0.17",
     "@highlight-run/node": "^2.5.3",
     "@highlight-run/react": "^2.0.1",
     "@markdoc/markdoc": "^0.2.2",
