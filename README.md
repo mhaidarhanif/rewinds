@@ -544,9 +544,11 @@ When running locally in development mode, use either the Express server or Verce
 - [shadcn UI](https://github.com/shadcn/ui)
   - [Taxonomy](https://tx.shadcn.com)
 - [Reshaped](https://reshaped.so)
-- [Spacewave Stack by Kent C. Dodds](https://github.com/epicweb-dev/spacewave-stack)
-- [Synthwave Stack by I4O Open Source](https://github.com/i4o-oss/synthwave-stack)
-- [Stripe Stack by Daniel Kanem](https://github.com/dev-xo/stripe-stack)
+- [Remix Stacks](https://remix.run/stacks)
+  - [Remix Directory](https://remix.directory)
+  - [Spacewave Stack by Kent C. Dodds](https://github.com/epicweb-dev/spacewave-stack)
+  - [Synthwave Stack by I4O Open Source](https://github.com/i4o-oss/synthwave-stack)
+  - [Stripe Stack by Daniel Kanem](https://github.com/dev-xo/stripe-stack)
 - [T3 Stack by T3 Community via Theo Browne](https://create.t3.gg)
 - [neorepo - Remix/Next.js production-ready starter kit](https://neorepo.com)
 - [SaasRock - The One-Man SaaS Framework](https://saasrock.com)
@@ -566,3 +568,4 @@ Some other public repos/projects using Rewinds:
 ### What's next for the future?
 
 Repackage this as [@catamyst/ui] or [@catamyst/rewinds-ui]
+

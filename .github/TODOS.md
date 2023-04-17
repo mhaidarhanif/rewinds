@@ -4,10 +4,11 @@ Public and quick todos for this repo.
 
 ## In Progress
 
-- update site header icons
+.
 
 ## Todo
 
+- setup heroicons
 - setup Uploadcare example
 - implement admin menu on mobile with sheet
   - https://ui.shadcn.com/docs/primitives/sheet
