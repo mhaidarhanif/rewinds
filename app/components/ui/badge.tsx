@@ -12,32 +12,35 @@ import type { VariantProps } from "class-variance-authority";
 
 export const badgeVariants = cva(
   cn(
-    "select-none border font-bold tracking-wide inline-flex items-center gap-1 transition-colors",
+    "border-2 select-none font-bold tracking-wide inline-flex items-center gap-1 transition-colors",
     "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
   ),
   {
     variants: {
       variant: {
         default:
-          "bg-brand-600 hover:bg-brand/80 text-brand-50 border-transparent",
+          "border-transparent bg-surface-950 text-surface-50 dark:bg-surface-50 dark:text-surface-950",
+        brand:
+          "border-transparent bg-brand-600 text-brand-50",
         surface:
-          "bg-surface-600 hover:bg-secondary/80 text-surface-50 border-transparent",
-        desctructive:
-          "bg-red hover:bg-secondary/80 text-red-500 border-transparent",
-        outline: "text-500",
+          "border-transparent bg-surface-600 text-surface-50",
+        danger:
+          "border-transparent bg-red-600 text-red-50",
+        outline: "border-2 border-surface-950 text-surface-950 dark:border-surface-50 dark:text-surface-50",
       },
       size: {
-        xs: "text-xs",
-        sm: "text-xs px-0.5 py-0.5",
-        default: "text-xs px-1 py-0.5",
-        lg: "text-sm px-3 py-2",
+        sm: "text-[0.5rem] uppercase px-1.5 py-0.5",
+        default: "text-xs px-2.5 py-0.5",
+        lg: "text-sm px-3 py-0.5",
       },
       radius: {
-        default: "rounded",
+        default: "",
+        base: "rounded",
         full: "rounded-full",
       },
       transform: {
-        default: "uppercase",
+        default: "",
+        uppercase: "uppercase",
         lowercase: "lowercase",
         capitalize: "capitalize",
         normal: "normal-case",
@@ -46,7 +49,7 @@ export const badgeVariants = cva(
     defaultVariants: {
       variant: "default",
       size: "default",
-      radius: "default",
+      radius: "full",
       transform: "default",
     },
   }
@@ -54,7 +57,7 @@ export const badgeVariants = cva(
 
 interface Props
   extends React.HTMLAttributes<HTMLSpanElement>,
-    VariantProps<typeof badgeVariants> {}
+  VariantProps<typeof badgeVariants> { }
 
 export function Badge({
   variant,

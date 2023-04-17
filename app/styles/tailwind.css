@@ -109,6 +109,9 @@
   .queue-sm {
     @apply flex flex-wrap gap-1 sm:gap-2;
   }
+  .queue-lg {
+    @apply flex flex-wrap gap-2 sm:gap-4;
+  }
   .queue-center {
     @apply queue items-center;
   }
@@ -117,6 +120,9 @@
   }
   .stack {
     @apply queue flex-col;
+  }
+  .stack-lg {
+    @apply queue-lg flex-col;
   }
   .stack-center {
     @apply stack items-center;

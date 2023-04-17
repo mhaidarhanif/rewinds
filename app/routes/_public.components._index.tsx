@@ -4,6 +4,7 @@ import {
   Alert,
   Anchor,
   AnchorText,
+  Badge,
   Breadcrumb,
   BreadcrumbAuto,
   BreadcrumbItem,
@@ -69,7 +70,7 @@ export default function Route() {
         </PageHeader>
       }
     >
-      <div className="stack">
+      <div className="stack-lg">
         <header>
           <h2>UI</h2>
           <p>Basic and primitive UI components.</p>
@@ -77,6 +78,7 @@ export default function Route() {
         <ExampleLink />
         <ExampleButton />
         <ExampleButtonIcon />
+        <ExampleBadge />
         <ExampleAlert />
         <ExampleToast />
         <ExampleBreadcrumb />
@@ -283,6 +285,44 @@ export function ExampleButtonIcon() {
   );
 }
 
+export function ExampleBadge() {
+  return (
+    <section id="example-badge" className="card space-y-8">
+      <h3>Badge</h3>
+
+      <div className="stack">
+        <h4>Variant</h4>
+        <div className="queue-center">
+          <Badge>
+            Default
+          </Badge>
+          <Badge variant="brand">
+            Brand
+          </Badge>
+          <Badge variant="surface">
+            Surface
+          </Badge>
+          <Badge variant="danger">
+            Danger
+          </Badge>
+          <Badge variant="outline">
+            Outline
+          </Badge>
+        </div>
+
+        <div className="stack">
+          <h4>Size</h4>
+          <div className="queue-center">
+            <Badge size="sm">Small</Badge>
+            <Badge>Default</Badge>
+            <Badge size="lg">Large</Badge>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function ExampleLogo() {
   return (
     <section id="example-logo" className="card space-y-8">
@@ -316,7 +356,7 @@ export function ExampleAlert() {
 
       <div className="stack">
         <h4>Variant</h4>
-        <div className="stack">
+        <div className="stack max-w-xs">
           <Alert>Alert default.</Alert>
           <Alert variant="info">Alert info.</Alert>
           <Alert variant="success">Alert success.</Alert>
@@ -327,7 +367,7 @@ export function ExampleAlert() {
 
       <div className="stack">
         <h4>Size</h4>
-        <div className="stack">
+        <div className="stack max-w-xs">
           <Alert size="sm">Alert small.</Alert>
           <Alert>Alert medium default.</Alert>
           <Alert size="lg">Alert large.</Alert>
