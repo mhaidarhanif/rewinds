@@ -38,7 +38,7 @@ export function PageProgress({
   useEffect(() => {
     const timer = setTimeout(() => setProgress(progressValue), 500);
     return () => clearTimeout(timer);
-  }, []);
+  }, [progressValue]);
 
   return (
     <aside
