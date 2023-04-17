@@ -20,13 +20,11 @@ export const badgeVariants = cva(
       variant: {
         default:
           "border-transparent bg-surface-950 text-surface-50 dark:bg-surface-50 dark:text-surface-950",
-        brand:
-          "border-transparent bg-brand-600 text-brand-50",
-        surface:
-          "border-transparent bg-surface-600 text-surface-50",
-        danger:
-          "border-transparent bg-red-600 text-red-50",
-        outline: "border-2 border-surface-950 text-surface-950 dark:border-surface-50 dark:text-surface-50",
+        brand: "border-transparent bg-brand-600 text-brand-50",
+        surface: "border-transparent bg-surface-600 text-surface-50",
+        danger: "border-transparent bg-red-600 text-red-50",
+        outline:
+          "border-2 border-surface-950 text-surface-950 dark:border-surface-50 dark:text-surface-50",
       },
       size: {
         sm: "text-[0.5rem] uppercase px-1.5 py-0.5",
@@ -57,7 +55,7 @@ export const badgeVariants = cva(
 
 interface Props
   extends React.HTMLAttributes<HTMLSpanElement>,
-  VariantProps<typeof badgeVariants> { }
+    VariantProps<typeof badgeVariants> {}
 
 export function Badge({
   variant,

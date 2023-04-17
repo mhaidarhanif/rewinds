@@ -293,21 +293,11 @@ export function ExampleBadge() {
       <div className="stack">
         <h4>Variant</h4>
         <div className="queue-center">
-          <Badge>
-            Default
-          </Badge>
-          <Badge variant="brand">
-            Brand
-          </Badge>
-          <Badge variant="surface">
-            Surface
-          </Badge>
-          <Badge variant="danger">
-            Danger
-          </Badge>
-          <Badge variant="outline">
-            Outline
-          </Badge>
+          <Badge>Default</Badge>
+          <Badge variant="brand">Brand</Badge>
+          <Badge variant="surface">Surface</Badge>
+          <Badge variant="danger">Danger</Badge>
+          <Badge variant="outline">Outline</Badge>
         </div>
 
         <div className="stack">

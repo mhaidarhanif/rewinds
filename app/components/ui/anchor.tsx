@@ -6,13 +6,13 @@ interface Props {
   className?: string;
   href: string;
   children: ReactNode;
-  noIndicator?: boolean;
+  withIndicator?: boolean;
 }
 
 // Anchor without significant styles
 export function Anchor({
   href = "/",
-  noIndicator = false,
+  withIndicator = true,
   className,
   children,
 }: Props) {
@@ -23,7 +23,7 @@ export function Anchor({
       rel="noreferrer noopener"
       className={cn(
         "cursor-pointer leading-[initial]",
-        !noIndicator && "after:content-['_↗']",
+        withIndicator && "after:content-['_↗']",
         className
       )}
     >

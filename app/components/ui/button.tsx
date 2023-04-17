@@ -59,7 +59,7 @@ export const buttonVariants = cva(
         default: "",
         lg: "",
       },
-      noIndicator: {
+      withIndicator: {
         true: "",
         false: "",
       },

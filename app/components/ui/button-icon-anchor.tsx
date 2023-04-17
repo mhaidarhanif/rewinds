@@ -15,7 +15,7 @@ export const ButtonIconAnchor = ({
   variant = "default",
   size = "default",
   accent = "default",
-  noIndicator = false,
+  withIndicator = false,
   className,
   children,
   ...props
