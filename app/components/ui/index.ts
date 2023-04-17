@@ -5,6 +5,7 @@ export * from "./anchor";
 export * from "./aspect-ratio";
 export * from "./avatar";
 export * from "./badge";
+export * from "./badge-link";
 export * from "./balancer";
 export * from "./breadcrumb";
 export * from "./button";
