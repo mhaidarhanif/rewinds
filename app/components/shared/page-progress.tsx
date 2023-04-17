@@ -21,8 +21,9 @@ export function PageProgress({
 }: Props) {
   function handleMarkAsComplete() {
     toast({
+      variant: "success",
       title: "Completed!",
-      description: "About page has been marked as complete.",
+      description: "It has been marked as complete.",
       action: (
         <ToastAction
           altText="Undo mark as complete"
