@@ -59,7 +59,8 @@ export function SiteHeader({ noThemeToggle }: Props) {
       <section
         className={cn(
           "h-6", // height of the site header
-          "contain flex items-center justify-between"
+          "contain flex items-center justify-between",
+          "gap-1 sm:gap-2"
         )}
       >
         <div
@@ -138,25 +139,6 @@ export function HeaderMainButtons() {
 
   return (
     <div className="flex grow items-center justify-end space-x-2">
-      <nav className="hidden gap-1 xl:flex">
-        <ButtonIconAnchor
-          href={configSite?.links.github}
-          variant="ghost"
-          accent="dim"
-        >
-          <Github />
-          <span className="sr-only">GitHub</span>
-        </ButtonIconAnchor>
-        <ButtonIconAnchor
-          href={configSite?.links.twitter}
-          variant="ghost"
-          accent="dim"
-        >
-          <Twitter />
-          <span className="sr-only">Twitter</span>
-        </ButtonIconAnchor>
-      </nav>
-
       <nav className="flex items-center gap-1 sm:gap-2">
         {!user && (
           <>

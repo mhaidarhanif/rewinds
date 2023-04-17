@@ -4,11 +4,11 @@ Public and quick todos for this repo.
 
 ## In Progress
 
-.
+- profile badge
+- admin verified users
 
 ## Todo
 
-- profile badge
 - setup Uploadcare example
 - implement admin menu on mobile with sheet
   - https://ui.shadcn.com/docs/primitives/sheet

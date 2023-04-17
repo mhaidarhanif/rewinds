@@ -59,7 +59,7 @@ export function SiteFooter({ noThemeToggle }: Props) {
             variant="ghost"
             accent="dim"
           >
-            <Github />
+            <Github className="fill-current" />
             <span className="sr-only">GitHub</span>
           </ButtonIconAnchor>
 
@@ -68,7 +68,7 @@ export function SiteFooter({ noThemeToggle }: Props) {
             variant="ghost"
             accent="dim"
           >
-            <Twitter />
+            <Twitter className="fill-current" />
             <span className="sr-only">Twitter</span>
           </ButtonIconAnchor>
 
