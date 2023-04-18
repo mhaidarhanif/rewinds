@@ -1,4 +1,4 @@
-import { Badge } from "~/components";
+import { Text } from "~/components";
 
 /**
  * Tailwind Indicator
@@ -18,31 +18,15 @@ export function TailwindIndicator() {
 
   return (
     <div className="fixed bottom-1 left-1 z-50 flex select-none items-center justify-center rounded bg-brand-800 p-1 font-mono text-xs text-white">
-      <Badge size="sm">dev:</Badge>
-      <Badge size="sm" className="block sm:hidden">
-        xs
-      </Badge>
-      <Badge
-        size="sm"
-        className="hidden sm:block md:hidden lg:hidden xl:hidden 2xl:hidden"
-      >
+      <Text>dev:</Text>
+      <Text className="block sm:hidden">xs</Text>
+      <Text className="hidden sm:block md:hidden lg:hidden xl:hidden 2xl:hidden">
         sm
-      </Badge>
-      <Badge
-        size="sm"
-        className="hidden md:block lg:hidden xl:hidden 2xl:hidden"
-      >
-        md
-      </Badge>
-      <Badge size="sm" className="hidden lg:block xl:hidden 2xl:hidden">
-        lg
-      </Badge>
-      <Badge size="sm" className="hidden xl:block 2xl:hidden">
-        xl
-      </Badge>
-      <Badge size="sm" className="hidden 2xl:block">
-        2xl
-      </Badge>
+      </Text>
+      <Text className="hidden md:block lg:hidden xl:hidden 2xl:hidden">md</Text>
+      <Text className="hidden lg:block xl:hidden 2xl:hidden">lg</Text>
+      <Text className="hidden xl:block 2xl:hidden">xl</Text>
+      <Text className="hidden 2xl:block">2xl</Text>
     </div>
   );
 }

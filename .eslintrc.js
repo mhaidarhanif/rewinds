@@ -36,9 +36,9 @@ module.exports = {
     "@typescript-eslint/strict-boolean-expressions": "off",
     "object-shorthand": ["warn", "always"],
     "react/self-closing-comp": "warn",
-    "tailwindcss/classnames-order": "off", // use prettier-plugin-tailwindcss
-    "tailwindcss/no-arbitrary-value": "warn",
-    "tailwindcss/no-custom-classname": "off",
+    "tailwindcss/classnames-order": 2, // use prettier-plugin-tailwindcss
+    "tailwindcss/no-arbitrary-value": 2,
+    "tailwindcss/no-custom-classname": 2,
     // "import/order": [
     //   "warn",
     //   {
