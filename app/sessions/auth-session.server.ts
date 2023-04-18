@@ -1,16 +1,16 @@
 import { createCookieSessionStorage } from "@remix-run/node";
 
-import { getEnv, getEnvPrivate, invariant } from "~/utils";
+import { convertDaysToSeconds, getEnv, getEnvPrivate, invariant } from "~/utils";
 
 const env = getEnv();
 const envPrivate = getEnvPrivate();
 
 invariant(envPrivate.REMIX_SESSION_SECRET, "REMIX_SESSION_SECRET must be set");
 
-// TODO: integrate on register and login flow
+// TODO: Integrate on register and login flow
 const remember = true;
 
-// export the whole sessionStorage object
+// Export the whole sessionStorage object
 export const authSessionStorage = createCookieSessionStorage({
   cookie: {
     name: "__auth-session",
@@ -18,12 +18,12 @@ export const authSessionStorage = createCookieSessionStorage({
     path: "/",
     sameSite: "lax",
     maxAge: remember
-      ? 60 * 60 * 24 * 7 // 7 days
+      ? convertDaysToSeconds(7) // EDITME: Set max age for session persistence
       : undefined,
     secrets: [envPrivate.REMIX_SESSION_SECRET],
     secure: env.NODE_ENV === "production",
   },
 });
 
-// you can also export the methods individually for your own usage
+// You can also export the methods individually for your own usage
 export const { getSession, commitSession, destroySession } = authSessionStorage;

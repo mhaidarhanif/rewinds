@@ -35,17 +35,18 @@ export default function Route() {
               >
                 M Haidar Hanif
               </AnchorText>
+              <span> that also has real world functionalities.</span>
             </p>
             <p>
               <CompactDisc className="inline-icon link" /> Rewinds is a Remix
               Tailwind Stack with Tailwind CSS family of libraries, React
               components, along with the JavaScript, TypeScript, and Node.js
-              ecosystem
+              ecosystem.
             </p>
             <p>
               <Packages className="inline-icon link" /> Including other tech
               stack such as mostly React, Radix UI, Prisma ORM, PlanetScale,
-              Vercel, and more
+              Vercel, and more.
             </p>
           </div>
           <div className="queue">

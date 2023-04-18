@@ -15,19 +15,19 @@ export function getCurrentYear() {
  * Date time format
  */
 
-export const formatDateTime = (date: string | Date | undefined) => {
+export function formatDateTime(date: string | Date | undefined) {
   return dayjs(date).locale("en").format("H:mm [on] D MMM YYYY");
 };
 
-export const formatDateTimeTimezone = (date: string | Date | undefined) => {
+export function formatDateTimeTimezone(date: string | Date | undefined) {
   return dayjs(date).locale("en").format("D MMM YYYY, H:mm:ss Z");
 };
 
-export const formatDate = (date: string | Date | undefined) => {
+export function formatDate(date: string | Date | undefined) {
   return dayjs(date).locale("en").format("D MMM YYYY");
 };
 
-export const formatDateLastMod = (date: string | Date | undefined) => {
+export function formatDateLastMod(date: string | Date | undefined) {
   return dayjs(date).locale("en").format("YYYY-MM-DD");
 };
 
@@ -35,6 +35,15 @@ export const formatDateLastMod = (date: string | Date | undefined) => {
  * Relative time
  */
 
-export const formatRelativeTime = (date: string | Date | undefined) => {
+export function formatRelativeTime(date: string | Date | undefined) {
   return dayjs(date).locale("en").fromNow();
 };
+
+/**
+ * Converter
+ */
+
+export function convertDaysToSeconds(days: number) {
+  // seconds * minutes * hours * days
+  return 60 * 60 * 24 * days
+}
