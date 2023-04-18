@@ -9,6 +9,9 @@ import { forwardRef } from "react";
  * Callout
  *
  * Displays a callout for user attention.
+ *
+ * Docs:
+ * - https://ui.shadcn.com/docs/components/alert
  */
 
 export const calloutVariants = cva(

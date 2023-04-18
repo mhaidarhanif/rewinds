@@ -151,7 +151,7 @@ export default function Route() {
               <SelectTrigger className="w-full">
                 <SelectValue placeholder={user.role.name} />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent position="popper">
                 {userRoles.map((userRole) => {
                   return (
                     <SelectItem key={userRole.symbol} value={userRole.symbol}>

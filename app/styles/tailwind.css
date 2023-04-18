@@ -57,6 +57,9 @@
   .card-sm {
     @apply card-base block px-2 py-1;
   }
+  .card-lg {
+    @apply card-base block p-6;
+  }
   .card-hover {
     @apply bg-surface-100/30 dark:bg-surface-800/30;
   }

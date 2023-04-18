@@ -16,6 +16,7 @@ export * from "./button-icon-anchor";
 export * from "./button-link";
 export * from "./button-loading";
 export * from "./callout";
+export * from "./card";
 export * from "./checkbox";
 export * from "./collapsible";
 export * from "./combobox";
