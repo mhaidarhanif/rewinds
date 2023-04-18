@@ -11,10 +11,13 @@ import tailwindStyles from "~/styles/tailwind.css";
 
 export const stylesheetLinks = [{ rel: "stylesheet", href: tailwindStyles }];
 
+/**
+ * Docs:
+ * - https://favicon.io
+ * - https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs
+ */
 export const faviconLinks = [
-  /**
-   * Use this if you want to change the favicon quickly using emoji
-   */
+  // Use this if you want to change the favicon quickly using emoji
   // {
   //   rel: "shortcut icon",
   //   href: "https://fav.farm/⏪",
