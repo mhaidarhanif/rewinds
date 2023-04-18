@@ -16,6 +16,8 @@
 
 Rewinds is a web app starter kit with Remix, Tailwind CSS, and the TypeScript ecosystem. It is an opinionated collection of interactive UI components, hooks, and utilities for your Remix project.
 
+## Goals
+
 You can use this to build any web apps (also what I'm using Rewinds for):
 
 - Personal Website
@@ -375,11 +377,18 @@ When you update some significant changes in the TypeScript config, ESLint config
 > Prisma: Restart Language Server
 ```
 
+## Customize some contents
+
+Look up for these comments:
+
+- `EDITME`: You can edit them based on your need
+- `TODO`: You can see that they are in progress
+
 # Deployment
 
 ## Vercel
 
-As this repo was made after having run the `create-remix` command and selected "Vercel" as a deployment target, you only need to [import your Git repository](https://vercel.com/new) into Vercel, and it will be deployed.
+As this repo was made after having run the `create-remix` command and selected "Vercel" as a deployment target, you only need to [import your Git repository](https://vercel.com/new) into Vercel, and it will be deployed. Alternatively you can just use the "Deploy to Vercel" button above.
 
 Just keep in mind to set up the environment variables/secret that preferably differentiated for each server environments such as local/development, staging/preview, and production.
 
