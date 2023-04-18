@@ -13,6 +13,7 @@ import {
   Label,
   RemixForm,
   TextArea,
+  TooltipAuto,
 } from "~/components";
 import { requireUserSession, updateNoteSlug } from "~/helpers";
 import { useRootLoaderData } from "~/hooks";
@@ -22,6 +23,7 @@ import { createSitemap, invariant } from "~/utils";
 
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 import type { z } from "zod";
+import { InfoEmpty, SubmitDocument } from "~/icons";
 
 export const handle = createSitemap();
 
@@ -94,11 +96,20 @@ export default function Route() {
   return (
     <div className="stack">
       <header className="py-4">
-        <h1 className="text-3xl">Edit existing note</h1>
-        <p className="dim">
-          The note can be edited. As a blog post, news article, tutorial, or
-          just a regular note.
-        </p>
+        <h1 className="queue-center text-3xl">
+          <SubmitDocument />
+          <span>Edit note</span>
+          <TooltipAuto
+            content={
+              <p>
+                A note can be a blog post, news article, <br /> tutorial, or
+                just a regular note
+              </p>
+            }
+          >
+            <InfoEmpty className="size-md" />
+          </TooltipAuto>
+        </h1>
       </header>
 
       <RemixForm {...form.props} method="PUT">
@@ -106,11 +117,10 @@ export default function Route() {
           disabled={isSubmitting}
           className="space-y-4 disabled:opacity-80"
         >
-          <div className="dim queue-center text-xs">
+          <div className="dim stack text-xs">
             <span>
               ID: <code>{note.id}</code>
             </span>
-            <span>•</span>
             <span>
               Slug: <code>{note.slug}</code>
             </span>
@@ -148,7 +158,7 @@ export default function Route() {
             <TextArea
               {...conform.input(content)}
               placeholder="Type your longer content here, maximum content length of 10,000 characters..."
-              rows={10}
+              rows={20}
               defaultValue={note.content}
               className="overflow-y-scroll border-none px-0 sm:text-xl"
             />

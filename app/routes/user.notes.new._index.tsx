@@ -83,7 +83,6 @@ export default function Route() {
                 just a regular note
               </p>
             }
-            side="bottom"
           >
             <InfoEmpty className="size-md" />
           </TooltipAuto>
@@ -125,7 +124,7 @@ export default function Route() {
             <TextArea
               {...conform.input(content)}
               placeholder="Type your longer content here, maximum content length of 10,000 characters..."
-              rows={10}
+              rows={20}
               defaultValue={
                 configDev.isDevelopment
                   ? "Here is the long content about the note."
