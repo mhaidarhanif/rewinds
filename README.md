@@ -494,7 +494,7 @@ module.exports = {
 
 ## Remix Entry Files
 
-Since Remix `v1.14`, you might notice that the entry files are implicitly defined. At the moment, if you need to deploy a Remix app I still suggest revealing or explicitly defining the entry files to make it work smoothly. Although this repo already has the entry files.
+This repo already has the entry files. Since Remix `v1.14`, you might notice that the entry files might be able to be implicitly defined. At the moment, I still suggest revealing or explicitly defining them to make it work smoothly.
 
 ```sh
 npx remix reveal
@@ -502,7 +502,7 @@ npx remix reveal
 
 ## Remix SEO Configuration
 
-As there's no official way to handle SEO related output for metadata and sitemap, here are the options ordered by stability and realibility:
+As there's not yet an official way to handle SEO related output for metadata and sitemap, here are the options ordered by preference:
 
 1. [`balavishnuvj/remix-seo`](https://github.com/balavishnuvj/remix-seo): Collection of SEO utilities like sitemap, robots.txt, etc. for a Remix Application
 2. [`chaance/remix-seo`](https://github.com/chaance/remix-seo): A package for easily managing SEO meta and link tags in Remix

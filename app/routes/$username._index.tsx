@@ -28,7 +28,7 @@ import type { LoaderArgs, V2_MetaFunction } from "@remix-run/node";
 export const handle = createSitemap();
 
 export const meta: V2_MetaFunction<typeof loader> = ({ params, data }) => {
-  const user = data.user;
+  const user = data?.user;
 
   if (!user) {
     return createMetaData({

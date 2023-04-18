@@ -1,32 +1,33 @@
 import { z } from "zod";
 
-const id = z.string({ required_error: "Existing id is required" });
+const id = z.string().min(1, "Existing id is required");
 
 const name = z
-  .string({ required_error: "Full Name is required" })
-  .min(1, "Full Name at least 1 character")
+  .string()
+  .min(1, "Full Name is required")
   .max(50, "Full Name limited to 50 characters");
 
 const username = z
-  .string({ required_error: "Username is required" })
+  .string()
   .regex(/^[a-zA-Z0-9._]+$/, "Only alphabet, number, dot, underscore allowed")
-  .min(4, "Username at least 4 characters")
+  .min(4, "Username require at least 4 characters")
   .max(20, "Username limited to 20 characters");
 
 const email = z
-  .string({ required_error: "Email is required" })
+  .string()
+  .min(1, "Email is required")
   .email("Email is invalid");
 
 const password = z
-  .string({ required_error: "Password is required" })
-  .min(8, "Password length at least 8 characters")
-  .max(100, "Password length limited to 100 characters");
+  .string()
+  .min(8, "Password require at least 8 characters")
+  .max(100, "Password max length limited to 100 characters");
 
 const remember = z.boolean().optional();
 
 const redirectTo = z.string().optional();
 
-const roleSymbol = z.string({ required_error: "Role is required" });
+const roleSymbol = z.string().min(1, "Role is required");
 
 const headline = z
   .string()
