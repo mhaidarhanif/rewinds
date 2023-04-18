@@ -140,6 +140,11 @@ export const buttonVariants = cva(
         radius: "full",
         class: "h-9 w-9 sm:h-10 sm:w-10",
       },
+      {
+        isIcon: false,
+        radius: "full",
+        class: "px-4 py-1",
+      },
     ],
     defaultVariants: {
       variant: "default",

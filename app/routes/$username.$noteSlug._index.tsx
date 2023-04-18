@@ -88,10 +88,10 @@ export async function action({ request }: ActionArgs) {
  * Similar with /notes/$noteSlug but fancier
  */
 export default function Route() {
-  const { user } = useRootLoaderData();
+  const { user: userSession } = useRootLoaderData();
   const { note } = useLoaderData<typeof loader>();
 
-  const isOwner = user?.id === note.userId;
+  const isOwner = userSession?.id === note.userId;
 
   // TODO: Can have custom background cover like on dev.to
   return (

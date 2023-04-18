@@ -6,6 +6,7 @@ import {
   AnchorText,
   AvatarAuto,
   Balancer,
+  ButtonLink,
   Layout,
   PageHeader,
   RemixLink,
@@ -24,6 +25,7 @@ import {
 } from "~/utils";
 
 import type { LoaderArgs, V2_MetaFunction } from "@remix-run/node";
+import { useRootLoaderData } from "~/hooks";
 
 export const handle = createSitemap();
 
@@ -64,8 +66,11 @@ export async function loader({ request, params }: LoaderArgs) {
 }
 
 export default function Route() {
+  const { user: userSession } = useRootLoaderData();
   const { user } = useLoaderData<typeof loader>();
   const params = useParams();
+
+  const isOwner = userSession?.id === user?.id;
 
   if (user) {
     return (
@@ -90,16 +95,34 @@ export default function Route() {
       >
         <div className="contain-sm space-y-8">
           <section className="my-4 space-y-2">
-            <AvatarAuto
-              user={user}
+            <div
               className={cn(
-                "-mt-16 sm:-mt-24",
-                "size-4xl sm:size-5xl",
-                "outline outline-4 outline-surface-50 dark:outline-surface-900"
+                "-mt-12 sm:-mt-16",
+                "flex flex-wrap items-end justify-between"
               )}
-            />
-            <h1>{user.name}</h1>
-            <h2>@{user.username}</h2>
+            >
+              <AvatarAuto
+                user={user}
+                className={cn(
+                  "size-4xl sm:size-5xl",
+                  "outline outline-4 outline-surface-50 dark:outline-surface-900"
+                )}
+              />
+              {isOwner && (
+                <ButtonLink
+                  to="/user/settings"
+                  variant="outline"
+                  size="sm"
+                >
+                  Edit profile
+                </ButtonLink>
+              )}
+            </div>
+
+            <div>
+              <h1>{user.name}</h1>
+              <h2>@{user.username}</h2>
+            </div>
           </section>
 
           <section className="space-y-2">
