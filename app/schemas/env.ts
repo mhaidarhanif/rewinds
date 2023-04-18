@@ -16,13 +16,10 @@ export const schemaEnv = z.object({
 });
 
 export const schemaEnvPrivate = z.object({
-  REMIX_APP_NAME: z.string(),
-  REMIX_APP_EMAIL: z.string().email(),
-  REMIX_ADMIN_EMAIL: z.string().email(),
-  REMIX_ADMIN_PASSWORD: z.string(),
-  REMIX_SESSION_SECRET: z.string(),
-
   DATABASE_URL: z.string().url(),
 
-  IMAGEKIT_PRIVATE_KEY: z.string(),
+  REMIX_SESSION_SECRET: z.string(),
+
+  REMIX_APP_NAME: z.string(),
+  REMIX_APP_EMAIL: z.string().email(),
 });

@@ -383,7 +383,9 @@ When you update some significant changes in the TypeScript config, ESLint config
 
 As this repo was made after having run the `create-remix` command and selected "Vercel" as a deployment target, you only need to [import your Git repository](https://vercel.com/new) into Vercel, and it will be deployed.
 
-Just keep in mind to set up the environment variables/secret that preferably differentiated for each server environments such as local/development, staging/preview, and production; especially:
+Just keep in mind to set up the environment variables/secret that preferably differentiated for each server environments such as local/development, staging/preview, and production.
+
+Required for the app to run:
 
 ```sh
 # Primary database that connects to Prisma ORM
@@ -397,7 +399,11 @@ REMIX_APP_NAME=
 
 # Application name for transactional email
 REMIX_APP_EMAIL=
+```
 
+Optionals but required for seed:
+
+```sh
 # Default admin email
 REMIX_ADMIN_EMAIL=
 
@@ -507,9 +513,9 @@ ni -D react-refresh
 
 When running locally in development mode, use either the Express server or Vercel. This by default does not understand the Vercel lambda module format, so we fall back to the standard build output.
 
-## References
+# References
 
-### General
+## General
 
 - [web.dev](https://web.dev)
 - [Catamyst Stack](https://a.catamyst.com/stack)
@@ -518,7 +524,7 @@ When running locally in development mode, use either the Express server or Verce
 - [Infra I'm Building On In 2023 - T3](https://t3.gg/blog/post/2023-infra)
   - [The Infra That Saved Me From AWS - My 2023 Stack](https://youtube.com/watch?v=v-9AZKp-Ljo)
 
-### Remix
+## Remix
 
 - [Remix Docs](http://remix.run)
 - [Remix Blog Tutorial](http://remix.run/docs/en/main/tutorials/blog)
@@ -526,20 +532,20 @@ When running locally in development mode, use either the Express server or Verce
 - [Build a Fullstack App with Remix and Prisma - Prisma YouTub Playlist](https://youtube.com/watch?v=4tXGRe5CDDg&list=PLn2e1F9Rfr6kPDIAbfkOxgDLf4N3bFiMn)
 - [Build a Fullstack App with Remix and Prisma - Prisma Blog](https://prisma.io/blog/fullstack-remix-prisma-mongodb-1-7D0BfTXBmB6r)
 
-### React
+## React
 
 - [React](https://react.dev)
 - [Rethinking React best practices - Frontend Mastery](https://frontendmastery.com/posts/rethinking-react-best-practices)
 - [Bulletproof React - A simple, scalable, and powerful architecture for building production-ready React applications](https://github.com/alan2207/bulletproof-react)
 
-### Tailwind CSS
+## Tailwind CSS
 
 - [Tailwind CSS](https://tailwindcss.com)
 - [Why we use Tailwind CSS as our primary framework | Clean Commit](https://cleancommit.io/blog/why-we-use-tailwind-css-as-our-primary-framework)
 - [An Honest Look at Tailwind as an API for CSS | thoughtbot, inc.](https://thoughtbot.com/blog/an-honest-look-at-tailwind-as-an-api-for-css)
 - [Styling Best Practices I Use With Tailwind CSS | theodorusclarence.com](https://theodorusclarence.com/blog/tailwindcss-best-practice)
 
-### Inspirations
+## Inspirations
 
 - [Design System Checklist](https://designsystemchecklist.com)
 - [shadcn UI](https://github.com/shadcn/ui)
@@ -559,7 +565,7 @@ When running locally in development mode, use either the Express server or Verce
 - [saasui.design](https://saasui.design)
 - [saasinterface.com](https://saasinterface.com)
 
-### Rewinds in the wild
+## Rewinds in the wild
 
 Some other public repos/projects using Rewinds:
 
@@ -567,6 +573,6 @@ Some other public repos/projects using Rewinds:
 - [Catamyst](https://github.com/catamyst/catamyst-web): Learning Management System (LMS)
 - [Super Duper Gallery](https://github.com/jonathannicolasdev/superduper): Art Gallery
 
-### What's next for the future?
+## What's next for the future?
 
 Repackage this as [@catamyst/ui] or [@catamyst/rewinds-ui]
