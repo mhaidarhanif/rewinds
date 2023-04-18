@@ -87,12 +87,12 @@ The complete stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS,
 
 Legends:
 
-- 🧰 means it's required or should not be changed
-- 🧩 means it's optional or interchangeable
-- 🎉 means it's 3rd party service or platform
-- 🚧 means it's still not there yet or still in development.
+- 🧰 = required or should not be changed
+- 🧩 = optional or interchangeable
+- 🎉 = 3rd party service or platform
+- 🚧 = still not there yet or still in development
 
-Included in Rewinds, also for recommendation.
+Already setup in Rewinds and some are for alternatives:
 
 - Core
   - [Node.js](https://nodejs.org) 🧰
@@ -148,19 +148,17 @@ Included in Rewinds, also for recommendation.
   - [Paddle](https://paddle.com) 🚧🧩🎉
   - [Stripe](https://stripe.com) 🚧🧩🎉
 - Testing 🚧
-  - [Vitest](https://vitest.dev) 🚧
-  - [Testing Library](https://testing-library.com) 🚧
-  - [MSW](https://msw.io) 🚧
-  - [Playwright](https://playwright.dev) 🚧
-  - [Ladle](https://ladle.dev) 🚧
+  - [Vitest](https://vitest.dev) 🚧🧩
+  - [Testing Library](https://testing-library.com) 🚧🧩
+  - [MSW](https://msw.io) 🚧🧩
+  - [Playwright](https://playwright.dev) 🚧🧩
+  - [Ladle](https://ladle.dev) 🚧🧩
 
 [Check the GUIDE.md](./GUIDE.md) if you need some guide into the project setup, structure, and files.
 
 ## Extra Tech Stack
 
-(Not included in Rewinds)
-
-If you need separate backend/server/service, here are the recommendations:
+Although these are not included in Rewinds, if you need a separate backend/server/service, here are the recommendations:
 
 - Core/API
   - REST
@@ -181,14 +179,17 @@ If you need separate backend/server/service, here are the recommendations:
   - [Passport](https://passportjs.org)
 - Misc
   - [Inngest](https://inngest.com)
-- Deployment
+- Deployment with PaaS
   - [Railway](https://railway.app)
   - [Fly.io](https://fly.io)
   - [Render](https://render.com)
+- Deployment with IaaS
+  - [Google Cloud Platform](https://cloud.google.com)
+  - [Amazon Web Services](https://aws.amazon.com)
 
-# Some Details
+# Some More Info
 
-## Some Checklists
+## Some Roadmap or Checklists
 
 Included features for the users:
 
@@ -200,8 +201,9 @@ Included features for the users:
 - [x] Public pages and search
 - [x] User dashboard, profile, settings
   - [x] Manage notes (create, read, update, delete, search)
-  - [ ] Profile and avatar image
-  - [ ] Reset and change email
+  - [x] Change profile and avatar image
+  - [x] Change email
+  - [x] Change and reset password
   - [ ] Notification
 - [x] Admin dashboard and search
   - [x] Manage users, notes, etc
@@ -240,7 +242,7 @@ Included setup for the developers:
   - [ ] Redirect to previous route
   - [ ] Password strength meter
 - [x] Auth with Remix Auth using a session cookie
-- [ ] Image hosting integration with ImageKit
+- [ ] Image hosting integration
 - [ ] Email delivery system
   - [ ] Transactional email with Mailjet/Resend and React Email
   - [ ] Marketing email with ConvertKit/Bento
@@ -269,10 +271,6 @@ This repo is kind of over-engineered to have high flexibility and cover a lot of
 This template uses [`shadcn/ui`](https://github.com/shadcn/ui) as the base components style and setup for full stack app development inspired by [T3 Stack](https://create.t3.gg). The main reason is this repo uses Remix, not Next.js like those two inspirations.
 
 Currently includes the Remix HMR and HDR optional setup with both Vercel config and Express server on development as per Remix `v1.14`. The config is just combining the templates from Remix with Express and Vercel based on the environment. With separated Expresss you are also able to debug the process from code editor like VS Code much easier.
-
-## Some Background
-
-Why create this? Well, because I had a lot of recent projects with this same stack.
 
 # Development
 
