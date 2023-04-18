@@ -8,6 +8,7 @@ export * from "./http";
 export * from "./invariant";
 export * from "./meta";
 export * from "./nanoid";
+export * from "./number";
 export * from "./pluralize";
 export * from "./prettyjson.server";
 export * from "./random";

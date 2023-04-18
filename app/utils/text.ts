@@ -9,9 +9,15 @@ export function getNameInitials(name = "First Last") {
 }
 
 export function truncateText(text: string, maxLength = 140) {
+  if (!text || typeof text !== "string") return text;
   return text.length > maxLength
     ? text.substring(0, maxLength - 3) + "..."
     : text;
+}
+
+export function capitalizeText(text: string) {
+  if (!text || typeof text !== "string") return text;
+  return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 /**
