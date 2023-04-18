@@ -2,7 +2,6 @@
 
 ![The Rewinds Stack](https://raw.githubusercontent.com/mhaidarhanif/rewinds/main/public/assets/screenshots/rewinds-screenshot-dark.png)
 
-
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![Remix](https://img.shields.io/badge/Remix-000000?style=flat-square&logo=remix&logoColor=white)
 ![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=white)
@@ -38,10 +37,9 @@ You can use this to build any web apps (also what I'm using Rewinds for):
 - Content Management System (CMS)
 - Learning Management System (LMS)
 
-The complete stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel. But this repo also attempt to learn from Next.js, tRPC, GraphQL, NestJS, Passport, Swagger (OpenAPI), and others as well.
+## Demos
 
-- Demo and examples: [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com)
-- Learn more: [Remix Stacks](https://remix.run/stacks)
+Visit [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com)
 
 Follow the progress on:
 
@@ -84,6 +82,8 @@ As a reminder:
 These are also the primary prerequisites for you to learn, understand, and use with this Rewinds stack. (Architecture diagram can help later on here)
 
 ## Complete Tech Stack
+
+The complete stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel. But this repo also attempt to learn from Next.js, tRPC, GraphQL, NestJS, Passport, Swagger (OpenAPI), and others as well.
 
 Legends:
 
