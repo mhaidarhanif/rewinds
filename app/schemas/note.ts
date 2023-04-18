@@ -3,15 +3,12 @@ import { z } from "zod";
 export const schemaNoteNew = z.object({
   title: z
     .string({ required_error: "Title is required" })
-    .min(1)
     .max(50, "Title max of 50 characters"),
   description: z
     .string({ required_error: "Description is required" })
-    .min(1)
     .max(100, "Description max of 100 characters"),
   content: z
     .string({ required_error: "Content is required" })
-    .min(1)
     .max(10_000, "Content length max of 10,000 characters"),
 });
 

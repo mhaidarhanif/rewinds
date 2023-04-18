@@ -501,11 +501,18 @@ export function ExampleBreadcrumb() {
         <h4>Auto Generate</h4>
         <div className="stack">
           <BreadcrumbAuto
+            items={[
+              { to: "/", name: "App" },
+              { to: "/page", name: "Page" },
+              { to: "/page/example", name: "Example" },
+            ]}
+          />
+          <BreadcrumbAuto
             separator={<GitCommit className="size-sm" />}
             items={[
               { to: "/", name: "App" },
               { to: "/page", name: "Page" },
-              { to: "/page/example", name: "example", isCurrentPage: true },
+              { to: "/page/example", name: "Example", isCurrentPage: true },
             ]}
           />
         </div>
