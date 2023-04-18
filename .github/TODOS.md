@@ -4,10 +4,6 @@ Public and quick todos for this repo.
 
 ## In Progress
 
-- new components
-  - Callout
-  - Badge
-  - Calendar
 - profile badge
 - admin verified users
 
