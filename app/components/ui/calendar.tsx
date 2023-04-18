@@ -40,7 +40,8 @@ export function Calendar({
         nav_button_next: "absolute right-1",
         table: "w-full border-collapse space-y-1",
         head_row: "flex",
-        head_cell: "text-brand-700 dark:text-brand-300 rounded-md w-9 font-semibold text-[0.8rem]",
+        head_cell:
+          "text-brand-700 dark:text-brand-300 rounded-md w-9 font-semibold text-[0.8rem]",
         row: "flex w-full mt-2",
         cell: cn(
           "text-center text-sm p-0 relative rounded-md focus-within:relative focus-within:z-20",
@@ -50,7 +51,8 @@ export function Calendar({
           buttonVariants({ variant: "none" }),
           "h-9 w-9 p-0 font-semibold aria-selected:opacity-100"
         ),
-        day_selected: "bg-brand-700 text-brand-200 focus:bg-brand-800 focus:text-brand-300 hover:opacity-90",
+        day_selected:
+          "bg-brand-700 text-brand-200 focus:bg-brand-800 focus:text-brand-300 hover:opacity-90",
         day_today: "bg-surface-200 dark:bg-surface-800",
         day_outside: "text-surface-300 dark:text-surface-700 opacity-50",
         day_disabled: "text-surface-300 dark:text-surface-700 opacity-50",

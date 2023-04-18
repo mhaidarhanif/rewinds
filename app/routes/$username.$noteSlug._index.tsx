@@ -32,7 +32,7 @@ export const handle = createSitemap();
 
 export const meta: V2_MetaFunction<typeof loader> = ({ params, data }) => {
   const note = data.note;
-  console.log({ note })
+  console.log({ note });
 
   if (!note) {
     return createMetaData({
