@@ -41,7 +41,7 @@ export const TooltipContent = forwardRef<
 ));
 TooltipContent.displayName = TooltipPrimitive.Content.displayName;
 
-export function TooltipAuto({
+export function TooltipAutoRadix({
   className,
   children,
   content,

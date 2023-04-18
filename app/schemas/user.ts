@@ -13,10 +13,7 @@ const username = z
   .min(4, "Username require at least 4 characters")
   .max(20, "Username limited to 20 characters");
 
-const email = z
-  .string()
-  .min(1, "Email is required")
-  .email("Email is invalid");
+const email = z.string().min(1, "Email is required").email("Email is invalid");
 
 const password = z
   .string()

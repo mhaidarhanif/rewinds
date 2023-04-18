@@ -89,8 +89,6 @@
   .inline-icon {
     @apply inline-block align-middle;
   }
-  .success {}
-  .danger {}
 
   /* Layouts */
   .px-layout {
