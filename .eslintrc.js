@@ -31,14 +31,14 @@ module.exports = {
     project: ["./tsconfig.json"],
   },
   rules: {
-    "@typescript-eslint/no-empty-interface": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/strict-boolean-expressions": "off",
-    "object-shorthand": ["warn", "always"],
-    "react/self-closing-comp": "warn",
-    "tailwindcss/classnames-order": 2, // use prettier-plugin-tailwindcss
-    "tailwindcss/no-arbitrary-value": 2,
-    "tailwindcss/no-custom-classname": 2,
+    "@typescript-eslint/no-empty-interface": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/strict-boolean-expressions": 0,
+    "object-shorthand": [1, "always"],
+    "react/self-closing-comp": 1,
+    "tailwindcss/classnames-order": 1, // use prettier-plugin-tailwindcss
+    "tailwindcss/no-arbitrary-value": 0,
+    "tailwindcss/no-custom-classname": 1,
     // "import/order": [
     //   "warn",
     //   {

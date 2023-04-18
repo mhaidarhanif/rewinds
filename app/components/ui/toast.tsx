@@ -42,11 +42,11 @@ export const toastVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-white border-surface-200 dark:bg-surface-800 dark:border-surface-700",
+          "border-surface-200 bg-white dark:border-surface-700 dark:bg-surface-800",
         success:
-          "group success text-white bg-green-600 dark:bg-green-900 border-green-600 dark:border-green-600",
+          "success group border-green-600 bg-green-600 text-white dark:border-green-600 dark:bg-green-900",
         danger:
-          "group danger text-white bg-red-600 dark:bg-red-900 border-red-600 dark:border-red-600",
+          "danger group border-red-600 bg-red-600 text-white dark:border-red-600 dark:bg-red-900",
       },
     },
     defaultVariants: {

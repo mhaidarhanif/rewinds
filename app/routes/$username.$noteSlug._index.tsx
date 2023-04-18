@@ -1,5 +1,5 @@
 import { parse } from "@conform-to/react";
-import { json, redirect, V2_MetaFunction } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { notFound, serverError } from "remix-utils";
 
@@ -26,7 +26,7 @@ import {
   invariant,
 } from "~/utils";
 
-import type { ActionArgs, LoaderArgs } from "@remix-run/node";
+import type { ActionArgs, LoaderArgs, V2_MetaFunction } from "@remix-run/node";
 
 export const handle = createSitemap();
 

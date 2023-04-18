@@ -13,13 +13,13 @@ import type { VariantProps } from "class-variance-authority";
  */
 
 export const toggleVariants = cva(
-  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors data-[state=on]:bg-surface-200 dark:hover:bg-surface-800 dark:data-[state=on]:bg-surface-700 focus-visible:outline-none dark:text-surface-100 focus-visible:ring-2 focus-visible:ring-surface-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:focus-visible:ring-offset-surface-900 hover:bg-surface-100  dark:hover:text-surface-100 dark:data-[state=on]:text-surface-100",
+  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-surface-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surface-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-surface-200 dark:text-surface-100 dark:hover:bg-surface-800 dark:hover:text-surface-100 dark:focus-visible:ring-offset-surface-900  dark:data-[state=on]:bg-surface-700 dark:data-[state=on]:text-surface-100",
   {
     variants: {
       variant: {
         default: "bg-transparent",
         outline:
-          "bg-transparent border border-surface-200 hover:bg-surface-100 dark:border-surface-700",
+          "border border-surface-200 bg-transparent hover:bg-surface-100 dark:border-surface-700",
       },
       size: {
         default: "h-10 px-3",

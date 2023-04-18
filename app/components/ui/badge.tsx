@@ -27,9 +27,9 @@ export const badgeVariants = cva(
           "border-2 border-surface-950 text-surface-950 dark:border-surface-50 dark:text-surface-50",
       },
       size: {
-        sm: "text-[0.5rem] uppercase px-1.5 py-0.5",
-        default: "text-xs px-2.5 py-0.5",
-        lg: "text-sm px-3 py-0.5",
+        sm: "px-1.5 py-0.5 text-[0.5rem] uppercase",
+        default: "px-2.5 py-0.5 text-xs",
+        lg: "px-3 py-0.5 text-sm",
       },
       radius: {
         default: "",

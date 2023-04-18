@@ -5,18 +5,18 @@ import { cn } from "~/utils";
 
 import type { VariantProps } from "class-variance-authority";
 
-export const logoVariants = cva("flex items-center font-semibold font-brand", {
+export const logoVariants = cva("flex items-center font-brand font-semibold", {
   variants: {
     size: {
       xs: "gap-1 text-xs sm:text-sm",
       sm: "gap-1 text-sm sm:text-base",
-      default: "gap-1 sm:gap-2 text-lg sm:text-2xl",
-      lg: "gap-2 sm:gap-3 text-xl sm:text-3xl",
+      default: "gap-1 text-lg sm:gap-2 sm:text-2xl",
+      lg: "gap-2 text-xl sm:gap-3 sm:text-3xl",
     },
     accent: {
       default: "text-black dark:text-white",
       brand: "text-brand-600",
-      muted: "grayscale text-surface-600 dark:text-surface-100",
+      muted: "text-surface-600 grayscale dark:text-surface-100",
     },
   },
   defaultVariants: {

@@ -14,19 +14,19 @@ export const alertVariants = cva(cn("flex items-center border-l border-l-2"), {
   variants: {
     variant: {
       default:
-        "text-brand-900 dark:text-brand-50 bg-brand-100 border-brand-800 dark:bg-brand-800 dark:border-brand-500",
-      info: "text-blue-900 dark:text-blue-50 bg-blue-100 border-blue-800 dark:bg-blue-800 dark:border-blue-500",
+        "border-brand-800 bg-brand-100 text-brand-900 dark:border-brand-500 dark:bg-brand-800 dark:text-brand-50",
+      info: "border-blue-800 bg-blue-100 text-blue-900 dark:border-blue-500 dark:bg-blue-800 dark:text-blue-50",
       success:
-        "text-green-900 dark:text-green-50 bg-green-100 border-green-800 dark:bg-green-800 dark:border-green-500",
+        "border-green-800 bg-green-100 text-green-900 dark:border-green-500 dark:bg-green-800 dark:text-green-50",
       warning:
-        "text-yellow-900 dark:text-yellow-50 bg-yellow-100 border-yellow-800 dark:bg-yellow-800 dark:border-yellow-500",
+        "border-yellow-800 bg-yellow-100 text-yellow-900 dark:border-yellow-500 dark:bg-yellow-800 dark:text-yellow-50",
       danger:
-        "text-red-900 dark:text-red-50 bg-red-100 border-red-800 dark:bg-red-800 dark:border-red-500",
+        "border-red-800 bg-red-100 text-red-900 dark:border-red-500 dark:bg-red-800 dark:text-red-50",
     },
     size: {
-      sm: "py-0.5 px-1 text-xs gap-2",
-      default: "py-1 px-2 text-sm gap-2",
-      lg: "py-2 px-3 text-lg gap-3",
+      sm: "gap-2 px-1 py-0.5 text-xs",
+      default: "gap-2 px-2 py-1 text-sm",
+      lg: "gap-3 px-3 py-2 text-lg",
     },
     radius: {
       default: "",
