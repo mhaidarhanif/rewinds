@@ -197,8 +197,9 @@ Although these are not included in Rewinds, if you need a separate backend/serve
 
 Included features for the users:
 
-- [x] Site layout and routes/pages
 - [x] Light and dark mode theme
+- [x] Site layout and routes/pages
+- [x] Admin dashboard
 - [x] Register, log in, log out
   - [x] Data validation and check availability
   - [ ] Send welcome or verification email
@@ -233,6 +234,7 @@ Included setup for the developers:
   - [ ] Rich text or WYSIWYG editor with TipTap
   - [ ] Keyboard shortcuts with cmdk
 - [x] Preselected styles, colors, fonts, icons, and responsive design
+  - [x] Customize in Tailwind Config, for brand (primary) and surface (secondary) colors
   - [x] Default avatar image with Dicebear API
   - [x] Icon set system to avoid name conflict
     - [x] Lucide
