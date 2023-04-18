@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  '@ariakit/react':
+    specifier: 0.1.2
+    version: 0.1.2(react-dom@18.2.0)(react@18.2.0)
   '@balavishnuvj/remix-seo':
     specifier: ^1.0.2
     version: 1.0.2(@remix-run/react@1.15.0)(@remix-run/server-runtime@1.15.0)
@@ -41,8 +44,8 @@ dependencies:
     specifier: 6.4.0
     version: 6.4.0
   '@prisma/client':
-    specifier: ^4.12.0
-    version: 4.12.0(prisma@4.12.0)
+    specifier: ^4.13.0
+    version: 4.13.0(prisma@4.13.0)
   '@radix-ui/react-accessible-icon':
     specifier: ^1.0.2
     version: 1.0.2(react-dom@18.2.0)(react@18.2.0)
@@ -218,8 +221,8 @@ dependencies:
     specifier: ^4.18.2
     version: 4.18.2
   framer-motion:
-    specifier: 10.12.2
-    version: 10.12.2(react-dom@18.2.0)(react@18.2.0)
+    specifier: 10.12.4
+    version: 10.12.4(react-dom@18.2.0)(react@18.2.0)
   highlight.run:
     specifier: 6.0.3
     version: 6.0.3
@@ -239,8 +242,8 @@ dependencies:
     specifier: 3.6.8
     version: 3.6.8
   lucide-react:
-    specifier: ^0.161.0
-    version: 0.161.0(react@18.2.0)
+    specifier: ^0.162.0
+    version: 0.162.0(react@18.2.0)
   morgan:
     specifier: ^1.10.0
     version: 1.10.0
@@ -257,8 +260,8 @@ dependencies:
     specifier: ^8.0.0
     version: 8.0.0
   posthog-js:
-    specifier: ^1.53.3
-    version: 1.53.3
+    specifier: ^1.53.4
+    version: 1.53.4
   posthog-node:
     specifier: ^3.0.0
     version: 3.0.0
@@ -421,8 +424,8 @@ devDependencies:
     specifier: ^0.2.7
     version: 0.2.7(prettier@2.8.7)
   prisma:
-    specifier: ^4.12.0
-    version: 4.12.0
+    specifier: ^4.13.0
+    version: 4.13.0
   react-refresh:
     specifier: ^0.14.0
     version: 0.14.0
@@ -468,6 +471,35 @@ packages:
     resolution: {integrity: sha512-iDtQMeMW1kKV4nzQ+tjYOIPUm6nmh7pJe4sM0kx1jdAChKSCBLStqlgIoo5Tce++p+o8cBiWIzC3jg6oHyjzMA==}
     hasBin: true
     dev: true
+
+  /@ariakit/core@0.1.1:
+    resolution: {integrity: sha512-Sgl8SBXRyFOD82DQHzCzYcKEo5KKtDoKezLLcJGLxD1htZlB9juvZvnTJJDwcy9utRUF3NNkyTkBVEoROzlOSQ==}
+    dev: false
+
+  /@ariakit/react-core@0.1.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Lb0/rURkLtA6la1xCKoep8H4PqXQ2pq0ka0ErzYr/OgyRL6UW5gigd3MaMpKKZaGavq1mPkSGpTOun7J03IYRg==}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
+    dependencies:
+      '@ariakit/core': 0.1.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
+  /@ariakit/react@0.1.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-I7qBMw3/ZZPWB9C3Py1hmsd2NLhkTdJ3R25oKP1DXcHgPlOGWopAVLhrtJxqb2vupi4kjEJiTNiih54CFSQz3w==}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
+    dependencies:
+      '@ariakit/core': 0.1.1
+      '@ariakit/react-core': 0.1.2(react-dom@18.2.0)(react@18.2.0)
+      '@floating-ui/dom': 1.2.6
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /@babel/code-frame@7.18.6:
     resolution: {integrity: sha512-TDCmlK5eOvH+eH7cdAFlNXeVJqWIQ7gW9tY1GJIpUtFb6CmjVyq2VM3u71bOyR8CRihcCgMUYoDNyLXao3+70Q==}
@@ -2919,10 +2951,20 @@ packages:
     resolution: {integrity: sha512-buc8BXHmG9l82+OQXOFU3Kr2XQx9ys01U/Q9HMIrZ300iLc8HLMgh7dcCqgYzAzf4BkoQvDcXf5Y+CuEZ5JBYg==}
     dev: false
 
+  /@floating-ui/core@1.2.6:
+    resolution: {integrity: sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==}
+    dev: false
+
   /@floating-ui/dom@0.5.4:
     resolution: {integrity: sha512-419BMceRLq0RrmTSDxn8hf9R3VCJv2K9PUfugh5JyEFmdjzDo+e8U5EdR8nzKq8Yj1htzLm3b6eQEEam3/rrtg==}
     dependencies:
       '@floating-ui/core': 0.7.3
+    dev: false
+
+  /@floating-ui/dom@1.2.6:
+    resolution: {integrity: sha512-02vxFDuvuVPs22iJICacezYJyf7zwwOCWkPNkWNBr1U0Qt1cKFYzWvxts0AmqcOQGwt/3KJWcWIgtbUU38keyw==}
+    dependencies:
+      '@floating-ui/core': 1.2.6
     dev: false
 
   /@floating-ui/react-dom@0.7.2(@types/react@18.0.37)(react-dom@18.2.0)(react@18.2.0):
@@ -4093,8 +4135,8 @@ packages:
     resolution: {integrity: sha512-Cr4OjIkipTtcXKjAsm8agyleBuDHvxzeBoa1v543lbv1YaIwQjESsVcmjiWiPEbC1FIeHOG/Op9kdCmAmiS3Kw==}
     dev: false
 
-  /@prisma/client@4.12.0(prisma@4.12.0):
-    resolution: {integrity: sha512-j9/ighfWwux97J2dS15nqhl60tYoH8V0IuSsgZDb6bCFcQD3fXbXmxjYC8GHhIgOk3lB7Pq+8CwElz2MiDpsSg==}
+  /@prisma/client@4.13.0(prisma@4.13.0):
+    resolution: {integrity: sha512-YaiiICcRB2hatxsbnfB66uWXjcRw3jsZdlAVxmx0cFcTc/Ad/sKdHCcWSnqyDX47vAewkjRFwiLwrOUjswVvmA==}
     engines: {node: '>=14.17'}
     requiresBuild: true
     peerDependencies:
@@ -4103,8 +4145,8 @@ packages:
       prisma:
         optional: true
     dependencies:
-      '@prisma/engines-version': 4.12.0-67.659ef412370fa3b41cd7bf6e94587c1dfb7f67e7
-      prisma: 4.12.0
+      '@prisma/engines-version': 4.13.0-50.1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a
+      prisma: 4.13.0
     dev: false
 
   /@prisma/debug@4.12.0:
@@ -4139,12 +4181,17 @@ packages:
       - supports-color
     dev: false
 
-  /@prisma/engines-version@4.12.0-67.659ef412370fa3b41cd7bf6e94587c1dfb7f67e7:
-    resolution: {integrity: sha512-JIHNj5jlXb9mcaJwakM0vpgRYJIAurxTUqM0iX0tfEQA5XLZ9ONkIckkhuAKdAzocZ+80GYg7QSsfpjg7OxbOA==}
+  /@prisma/engines-version@4.13.0-50.1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a:
+    resolution: {integrity: sha512-fsQlbkhPJf08JOzKoyoD9atdUijuGBekwoOPZC3YOygXEml1MTtgXVpnUNchQlRSY82OQ6pSGQ9PxUe4arcSLQ==}
     dev: false
 
   /@prisma/engines@4.12.0:
     resolution: {integrity: sha512-0alKtnxhNB5hYU+ymESBlGI4b9XrGGSdv7Ud+8TE/fBNOEhIud0XQsAR+TrvUZgS4na5czubiMsODw0TUrgkIA==}
+    requiresBuild: true
+    dev: false
+
+  /@prisma/engines@4.13.0:
+    resolution: {integrity: sha512-HrniowHRZXHuGT9XRgoXEaP2gJLXM5RMoItaY2PkjvuZ+iHc0Zjbm/302MB8YsPdWozAPHHn+jpFEcEn71OgPw==}
     requiresBuild: true
 
   /@prisma/fetch-engine@4.12.0:
@@ -9504,8 +9551,8 @@ packages:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
     dev: true
 
-  /framer-motion@10.12.2(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-DD3Ieqy4pjmL0qBtfNMqnU/IONchUqnhHtgFtu0Nq5jw7bhkksD/Cs4cNhLYd1vs7iB8Q+WInxuBeMmzIoA5Xg==}
+  /framer-motion@10.12.4(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-9gLtv8T6dui0tujHROR+VM3kdJyKiFCFiD94IQE+0OuX6LaIyXtdVpviokVdrHSb1giWhmmX4yzoucALMx6mtw==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -11086,8 +11133,8 @@ packages:
     resolution: {integrity: sha512-Pn9cox5CsMYngeDbmChANltQl+5pi6XmTrraMSzhPmMBbmgcxmqWry0U3PGapCU1yB4/LqCcom7qhHZiF/jGfQ==}
     dev: false
 
-  /lucide-react@0.161.0(react@18.2.0):
-    resolution: {integrity: sha512-Yr0VR0l6r+t65JCE9q+rTMItWqbhF4Wn3l73PHMwxves2wDhEPH7V2JqxvqS0In/brIwiyBV90++r/rHxNK9ug==}
+  /lucide-react@0.162.0(react@18.2.0):
+    resolution: {integrity: sha512-bKUvG2OTerGVt2GdbYK+VE4cdZS2DNUspY1CrqFnlvOkMPHjWzbydsJVtmFjtdExsII34JpthHUml2zWP4R9iw==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
@@ -12619,8 +12666,8 @@ packages:
       xtend: 4.0.2
     dev: false
 
-  /posthog-js@1.53.3:
-    resolution: {integrity: sha512-BOfsuzzt+IcUB9bjHjCg3P0bp7gIjNEeC3NT/0zoTfajRvpNX5nQJ85xgAshRC8mKSXW6NiWEC70gsi+zMQVmQ==}
+  /posthog-js@1.53.4:
+    resolution: {integrity: sha512-aaQ9S+/eDuBl2XTuU/lMyMtX7eeNAQ/+53O0O+I05FwX7e5NDN1nVqlnkMP0pfZlFcnsPaVqm8N3HoYj+b7Eow==}
     dependencies:
       fflate: 0.4.8
       rrweb-snapshot: 1.1.14
@@ -12774,13 +12821,13 @@ packages:
       - supports-color
     dev: false
 
-  /prisma@4.12.0:
-    resolution: {integrity: sha512-xqVper4mbwl32BWzLpdznHAYvYDWQQWK2tBfXjdUD397XaveRyAP7SkBZ6kFlIg8kKayF4hvuaVtYwXd9BodAg==}
+  /prisma@4.13.0:
+    resolution: {integrity: sha512-L9mqjnSmvWIRCYJ9mQkwCtj4+JDYYTdhoyo8hlsHNDXaZLh/b4hR0IoKIBbTKxZuyHQzLopb/+0Rvb69uGV7uA==}
     engines: {node: '>=14.17'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 4.12.0
+      '@prisma/engines': 4.13.0
 
   /prismjs@1.29.0:
     resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
