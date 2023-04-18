@@ -339,10 +339,14 @@ export function MusicPlayerDemo() {
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
+
       <div className="p-8">
         <div className="rounded-md bg-white transition-all dark:bg-surface-950">
           <div className="grid grid-cols-4 xl:grid-cols-5">
-            <aside className="pb-12">
+            <aside
+              data-id="music-player-sidebar"
+              className="rounded-l-md bg-brand-50 pb-12 dark:bg-brand-950/50"
+            >
               <div className="px-8 py-6">
                 <p className="flex items-center text-2xl font-semibold tracking-tight">
                   <Music className="me-2" />
@@ -450,7 +454,8 @@ export function MusicPlayerDemo() {
                 </div>
               </div>
             </aside>
-            <div className="col-span-3 border-l-2 border-l-surface-200 dark:border-l-surface-700 xl:col-span-4">
+
+            <div className="col-span-3 xl:col-span-4">
               <div className="h-full px-8 py-6">
                 <Tabs defaultValue="music" className="h-full space-y-6">
                   <div className="flex items-center justify-between">

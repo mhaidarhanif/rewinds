@@ -4,9 +4,9 @@ import { forwardRef } from "react";
 import { cn } from "~/utils";
 
 /**
- * Separator
+ * Separator or Divider
  *
- * Visually or semantically separates content.
+ * Visually or semantically separates or divides content.
  */
 
 export const Separator = forwardRef<
