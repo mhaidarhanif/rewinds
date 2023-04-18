@@ -2,7 +2,6 @@
 
 ![The Rewinds Stack](https://raw.githubusercontent.com/mhaidarhanif/rewinds/main/public/assets/screenshots/rewinds-screenshot-dark.png)
 
-# Introduction
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![Remix](https://img.shields.io/badge/Remix-000000?style=flat-square&logo=remix&logoColor=white)
@@ -14,7 +13,9 @@
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 [![Better Uptime](https://betteruptime.com/status-badges/v1/monitor/enmd.svg)](https://uptime.mhaidarhanif.com/?utm_source=status_badge)
 
-Rewinds Stack is a web app starter kit with Remix and Tailwind family of libraries, interactive UI components, and the TypeScript ecosystem.
+# Introduction
+
+Rewinds is a web app starter kit with Remix, Tailwind CSS, and the TypeScript ecosystem. It is an opinionated collection of interactive UI components, hooks, and utilities for your Remix project.
 
 You can use this to build any web apps (also what I'm using Rewinds for):
 
@@ -37,7 +38,7 @@ You can use this to build any web apps (also what I'm using Rewinds for):
 - Content Management System (CMS)
 - Learning Management System (LMS)
 
-The core stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel. But this repo also attemp to learn from Next.js, tRPC, GraphQL, NestJS, Passport, Swagger (OpenAPI), and others as well.
+The complete stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel. But this repo also attempt to learn from Next.js, tRPC, GraphQL, NestJS, Passport, Swagger (OpenAPI), and others as well.
 
 - Demo and examples: [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com)
 - Learn more: [Remix Stacks](https://remix.run/stacks)
@@ -49,11 +50,15 @@ Follow the progress on:
 
 ## Quick start
 
-Starting a new project? Create a Remix app with the Rewinds template.
+Starting a new project? You can clone or create a Remix app with this template:
 
 ```sh
 npx create-remix@latest --template mhaidarhanif/rewinds
 ```
+
+Faster? Deploy this template to Vercel:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmhaidarhanif%2Frewinds&env=DATABASE_URL,REMIX_SESSION_SECRET,REMIX_APP_NAME,REMIX_APP_EMAIL&project-name=my-rewinds-app&repository-name=my-rewinds-app&demo-title=Rewinds&demo-description=A%20starter%20kit%20with%20Remix%2C%20Tailwind%20CSS%2C%20and%20the%20TypeScript%20ecosystem.&demo-url=https%3A%2F%2Frewinds.mhaidarhanif.com&demo-image=https%3A%2F%2Frewinds.mhaidarhanif.com%2Fassets%2Fimages%2Fcat-study-dark.png)
 
 ## Code repository and links
 
@@ -539,6 +544,7 @@ When running locally in development mode, use either the Express server or Verce
 - [Design System Checklist](https://designsystemchecklist.com)
 - [shadcn UI](https://github.com/shadcn/ui)
   - [Taxonomy](https://tx.shadcn.com)
+- [Precedent](https://precedent.dev)
 - [Reshaped](https://reshaped.so)
 - [Remix Stacks](https://remix.run/stacks)
   - [Remix Directory](https://remix.directory)
