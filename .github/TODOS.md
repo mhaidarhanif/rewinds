@@ -8,8 +8,6 @@ Public and quick todos for this repo.
   - Callout
   - Badge
   - Calendar
-  - Card
-  - Skeleton
 - profile badge
 - admin verified users
 
