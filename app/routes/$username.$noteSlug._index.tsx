@@ -1,5 +1,5 @@
 import { parse } from "@conform-to/react";
-import { json, redirect } from "@remix-run/node";
+import { json, redirect, V2_MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { notFound, serverError } from "remix-utils";
 
@@ -19,6 +19,7 @@ import { EditPencil, Trash } from "~/icons";
 import { model } from "~/models";
 import {
   createCacheHeaders,
+  createMetaData,
   createSitemap,
   formatDateTime,
   formatRelativeTime,
@@ -28,6 +29,23 @@ import {
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 
 export const handle = createSitemap();
+
+export const meta: V2_MetaFunction<typeof loader> = ({ params, data }) => {
+  const note = data.note;
+  console.log({ note })
+
+  if (!note) {
+    return createMetaData({
+      title: "Note does not exist",
+      description: `Cannot find note ${params.noteSlug} from ${params.username}`,
+    });
+  }
+
+  return createMetaData({
+    title: `${note.title}`,
+    description: `${note.description} by ${note.user.name} (@${note.user.username})`,
+  });
+};
 
 export async function loader({ request, params }: LoaderArgs) {
   invariant(params.noteSlug, `noteSlug not found`);
