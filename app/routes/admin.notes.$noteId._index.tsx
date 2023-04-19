@@ -124,7 +124,7 @@ export default function Route() {
           </div>
         </header>
 
-        <div className="prose-config whitespace-pre-wrap sm:py-4">
+        <article className="prose-config whitespace-pre-wrap sm:py-4">
           <h1>{note.title}</h1>
           <h2>
             {note.description || (
@@ -132,7 +132,7 @@ export default function Route() {
             )}
           </h2>
           {note.content}
-        </div>
+        </article>
       </section>
 
       <Debug name="note">{note}</Debug>

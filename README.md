@@ -50,15 +50,19 @@ Follow the progress on:
 
 ## Quick start
 
-Starting a new project? You can clone or create a Remix app with this template:
+Starting new? You can [use this template to generate the repository](https://github.com/mhaidarhanif/rewinds/generate).
+
+Use terminal? Create a Remix app with this template:
 
 ```sh
 npx create-remix@latest --template mhaidarhanif/rewinds
 ```
 
-Faster? Deploy this template to Vercel:
+Deploy faster? Deploy this template to Vercel:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmhaidarhanif%2Frewinds&env=DATABASE_URL,REMIX_SESSION_SECRET,REMIX_APP_NAME,REMIX_APP_EMAIL&project-name=my-rewinds-app&repository-name=my-rewinds-app&demo-title=Rewinds&demo-description=A%20starter%20kit%20with%20Remix%2C%20Tailwind%20CSS%2C%20and%20the%20TypeScript%20ecosystem.&demo-url=https%3A%2F%2Frewinds.mhaidarhanif.com&demo-image=https%3A%2F%2Frewinds.mhaidarhanif.com%2Fassets%2Fimages%2Fcat-study-dark.png)
+
+Then make sure to explore the repo to rename and replace the contents along the way. As this is a template, not a blank repo generator.
 
 ## Code repository and links
 
@@ -69,7 +73,7 @@ Faster? Deploy this template to Vercel:
 
 # Tech Stack
 
-Listed here are only the most important parts in the stack.️ Some setup mostly finished, but some might haven't done yet or still in progress. More details and references can also be checked from [`catamyst/stack`](https://a.catamyst.com/stack).
+Listed here are only the most important parts in the stack.️ Some setup mostly finished, but some might haven't done yet or still in progress. More details and references can also be checked from [`mhaidarhanif/rewinds`](https://rewinds.mhaidarhanif.com) and [`catamyst/stack`](https://a.catamyst.com/stack).
 
 As a reminder:
 
@@ -137,6 +141,7 @@ Already setup in Rewinds and some are for alternatives:
   - [Upstash](https://upstash.com) 🚧🧩🎉
 - Image
   - [ImageKit](https://imagekit.io) 🚧🧩🎉
+  - [Uploadcare](https://uploadcare.com) 🚧🧩🎉
   - [Cloudinary](https://cloudinary.com) 🚧🧩🎉
 - Email
   - Template
@@ -241,7 +246,7 @@ Included setup for the developers:
     - [x] Iconir
     - [ ] Bring your own favorite
 - [x] Database with Prisma ORM and MySQL on PlanetScale
-  - [x] GraphQL/tRPC-style file models structure
+  - [x] tRPC-style or GraphQL-style data models file structure
 - [x] Data validation with Zod for general and Zodix for Remix loader/action
 - [x] Form handling with Conform
   - [x] Check for unallowed usernames
@@ -264,7 +269,7 @@ Included setup for the developers:
 
 Recommended extra setup:
 
-- Connect to monitoring service such as Better Uptime, Instatus, or Pulsetic.
+- Connect to monitoring service such as Better Uptime or Instatus.
 - Connect Vercel project to Axiom for better log management.
 - Connect to Highlight to report and analyze errors.
 - Use [Google Search Console](https://search.google.com/search-console/about) to check the sitemap and SERP-related stuffs.
@@ -304,10 +309,12 @@ Use plain `.env` file for local development:
 ```sh
 cp -i .env.example .env
 # -i or --interactive will ask before overwrite
-# then edit `.env` as you need
 ```
 
-Alternatively, it's recommended to use [Doppler](https://doppler.com), or [Dotenv](https://dotenv.org), or somethin similar to manage the credentials.
+Then edit `.env` as you need.
+
+Alternatively, it's recommended to use [Doppler](https://doppler.com), or
+[Dotenv](https://dotenv.org), or something similar to manage the credentials.
 
 For example if using Doppler:
 
@@ -321,12 +328,18 @@ doppler secrets download --no-file --format env > .env
 
 ## Prisma ORM and Database Connection
 
-It's up to you which database/DBMS you want to use with the app. This repo is suited to use either your own MySQL instance or MySQL on PlanetScale. But don't use SQLite because it doesn't have `@db.Text` annotation and `model.createMany()` function.
+It's up to you which database/DBMS you want to use with the app that supported by Prisma ORM. This repo is suited to use either your own MySQL instance or MySQL on PlanetScale. But don't use SQLite because it doesn't have `@db.Text` annotation and `model.createMany()` function.
 
-For example:
+Once you have the database URL connection string from PlanetScale MySQL instance, for example:
 
 ```sh
 DATABASE_URL='mysql://username:pscale_pw_password@region.connect.psdb.cloud/name?sslaccept=strict'
+```
+
+If you need to use local database, run [Docker compose](./docker-compose.yml):
+
+```sh
+docker compose up
 ```
 
 While in development, you can:
@@ -529,6 +542,7 @@ When running locally in development mode, use either the Express server or Verce
 ## General
 
 - [web.dev](https://web.dev)
+- [Rewinds Stack](https://rewinds.mhaidarhanif.com)
 - [Catamyst Stack](https://a.catamyst.com/stack)
   - [Catamyst Stack All](https://a.catamyst.com/stack-all)
 - [The Web’s Next Transition - Epic Web Dev by Kent C. Dodds](https://epicweb.dev/the-webs-next-transition)

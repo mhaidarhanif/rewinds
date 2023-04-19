@@ -12,6 +12,7 @@ module.exports = {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
         mono: ["Chivo Mono", ...defaultTheme.fontFamily.mono],
       },
+      // Use https://uicolors.app to generate these
       colors: {
         brand: {
           50: "#f2f9fd",
