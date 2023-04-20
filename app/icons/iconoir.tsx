@@ -1,6 +1,10 @@
 /**
  * Iconoir icon set
  * has 1300+ icons
+ *
+ * Docs:
+ * - https://iconoir.com
+ * - https://icones.js.org/collection/iconoir
  */
 
 export {

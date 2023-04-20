@@ -1,6 +1,10 @@
 /**
  * Lucide icon set
  * has 900+ icons
+ *
+ * Docs:
+ * - https://lucide.dev
+ * - https://icones.js.org/collection/lucide
  */
 
 export {
