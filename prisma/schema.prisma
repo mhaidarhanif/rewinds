@@ -175,6 +175,40 @@ model NoteImage {
 }
 
 // -----------------------------------------------------------------------------
+// Address and Location
+// -----------------------------------------------------------------------------
+
+model Address {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  label String // Address label name
+
+  addressComplete      String? // The complete combined address name
+  addressGoogleMapsURL String? // https://goo.gl/maps/1xABCDEF123456
+
+  street        String? // Street name
+  streetDetails String? // Street or location details, such as floor number
+  subDistrict   String?
+  district      String?
+  city          String?
+  province      String?
+  postalCode    String?
+  countryCode   String?
+
+  countryId     String?
+  provinceId    String?
+  cityId        String?
+  districtId    String?
+  subDistrictId String?
+
+  // Geolocation
+  latitude  Decimal? // -90 to 90, Example: -6.1234567
+  longitude Decimal? // -180 to 180, Example: 106.1234567
+}
+
+// -----------------------------------------------------------------------------
 // External Assets
 // -----------------------------------------------------------------------------
 

@@ -53,30 +53,34 @@ export default function Route() {
   return (
     <>
       <PageHeader size="xs" withBackground={false} withContainer={false}>
-        <div className="queue-center">
+        <div className="stack">
           <RemixLink to=".">
             <h1>Notes</h1>
           </RemixLink>
-          <ButtonLink to="new" size="sm">
-            <Plus className="size-sm" />
-            <span>Add Note</span>
-          </ButtonLink>
-          {configDev.isDevelopment && (
-            <RemixForm method="delete">
-              <Button
-                size="sm"
-                variant="danger"
-                name="intent"
-                value="user-delete-all-notes"
-                disabled={notesCount <= 0}
-              >
-                <Trash className="size-sm" />
-                <span>
-                  Delete All My {formatPluralItems("Note", notesCount)}
-                </span>
-              </Button>
-            </RemixForm>
-          )}
+
+          <div className="queue-center">
+            <ButtonLink to="new" size="sm">
+              <Plus className="size-sm" />
+              <span>Add Note</span>
+            </ButtonLink>
+
+            {configDev.isDevelopment && (
+              <RemixForm method="delete">
+                <Button
+                  size="sm"
+                  variant="danger"
+                  name="intent"
+                  value="user-delete-all-notes"
+                  disabled={notesCount <= 0}
+                >
+                  <Trash className="size-sm" />
+                  <span>
+                    Delete All My {formatPluralItems("Note", notesCount)}
+                  </span>
+                </Button>
+              </RemixForm>
+            )}
+          </div>
         </div>
       </PageHeader>
 

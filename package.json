@@ -31,10 +31,12 @@
     "check:format": "prettier --check \"**/*.{ts,tsx,json,md,mdx}\" --cache",
     "check:eslint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "check:stylelint": "stylelint ./app/styles/*.css",
+    "check:prisma": "prisma validate",
     "fix": "run-p fix:*",
     "fix:format": "prettier --write \"**/*.{ts,tsx,json,md,mdx}\" --cache",
     "fix:eslint": "eslint . --fix --cache --cache-location ./node_modules/.cache/eslint .",
     "fix:stylelint": "stylelint --fix ./app/styles/*.css",
+    "fix:prisma": "prisma format && prisma validate",
     "debug:eslint": "DEBUG=eslint:cli-engine nr check:lint",
     "reveal": "remix reveal",
     "clean": "rm -rf build public/build"

@@ -94,7 +94,7 @@ export default function Route() {
     <div className="contain-sm">
       <PageHeader size="xs" withBackground={false} withContainer={false}>
         <h1 className="queue-center text-3xl">
-          <Settings />
+          <Settings className="size-lg" />
           Settings
         </h1>
         <p>

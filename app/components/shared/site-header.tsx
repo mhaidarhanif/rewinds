@@ -21,11 +21,13 @@ import {
   SearchForm,
   ThemeToggleButton,
 } from "~/components";
-import { configSite } from "~/configs";
+import { configDev, configSite } from "~/configs";
 import { getUserIsAllowed } from "~/helpers";
 import { useRootLoaderData } from "~/hooks";
 import {
+  Components,
   CreditCard,
+  LayoutDashboard,
   DashboardSpeed,
   Inbox,
   Keyboard,
@@ -257,7 +259,7 @@ export function HeaderUserMenu({
 
           <DropdownMenuItem asChild>
             <RemixNavLink prefetch="intent" to={`/user/dashboard`}>
-              <DashboardSpeed className="size-sm me-2" />
+              <LayoutDashboard className="size-sm me-2" />
               <span>Dashboard</span>
             </RemixNavLink>
           </DropdownMenuItem>
@@ -292,8 +294,22 @@ export function HeaderUserMenu({
             <DropdownMenuGroup>
               <DropdownMenuItem asChild>
                 <RemixNavLink prefetch="intent" to={`/admin`}>
-                  <User className="size-sm me-2" />
+                  <DashboardSpeed className="size-sm me-2" />
                   <span>Admin</span>
+                </RemixNavLink>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+          </>
+        )}
+
+        {configDev.isDevelopment && (
+          <>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuItem asChild>
+                <RemixNavLink prefetch="intent" to={`/components`}>
+                  <Components className="size-sm me-2" />
+                  <span>Component</span>
                 </RemixNavLink>
               </DropdownMenuItem>
             </DropdownMenuGroup>

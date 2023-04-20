@@ -16,6 +16,7 @@ Public and quick todos for this repo.
 ## Backlog
 
 - setup URL shortener
+- paginate notes
 - update screenshots
 - user lastActive
 - add stack logos

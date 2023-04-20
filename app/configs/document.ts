@@ -26,6 +26,8 @@ export const faviconLinks = [
     rel: "shortcut icon",
     href: "/favicon.ico",
   },
+  // Design and use your own favicon, or get some initial image from:
+  // https://emojipedia.org
   {
     rel: "icon",
     type: "image/png",

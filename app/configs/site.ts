@@ -56,7 +56,7 @@ export const configMeta = {
     ? "http://localhost:3000"
     : `https://${configSite?.domain}`,
   canonicalPath: "/",
-  color: "#3399cc",
+  color: "#3399cc", // EDITME
   ogType: "website",
   ogImageAlt: configSite?.title,
   ogImageType: "image/png",

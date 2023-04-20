@@ -2,7 +2,6 @@
   "name": "Rewinds",
   "short_name": "Rewinds",
   "description": "Web app starter kit with Remix and Tailwind",
-  "start_url": "https://rewinds.mhaidarhanif.com",
   "icons": [
     {
       "src": "/favicons/android-chrome-192x192.png",
@@ -15,8 +14,10 @@
       "type": "image/png"
     }
   ],
+  "start_url": "/",
+  "scope": "/",
   "theme_color": "#38bef8",
-  "background_color": "#ffffff",
-  "orientation": "portrait-primary",
-  "display": "standalone"
+  "background_color": "#f2f9fd",
+  "display": "standalone",
+  "orientation": "portrait-primary"
 }

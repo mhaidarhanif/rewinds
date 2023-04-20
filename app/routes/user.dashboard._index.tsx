@@ -3,7 +3,7 @@ import { useLoaderData } from "@remix-run/react";
 
 import { ButtonLink, PageHeader, RemixLink, RemixLinkText } from "~/components";
 import { requireUserRole, requireUserSession } from "~/helpers";
-import { DashboardSpeed } from "~/icons";
+import { LayoutDashboard } from "~/icons";
 import { model } from "~/models";
 import { cn, createCacheHeaders, createSitemap, invariant } from "~/utils";
 
@@ -28,7 +28,7 @@ export default function Route() {
     <div className="contain-sm space-y-4">
       <PageHeader size="xs" withBackground={false} withContainer={false}>
         <h1 className="queue-center text-3xl">
-          <DashboardSpeed />
+          <LayoutDashboard className="size-lg" />
           Dashboard
         </h1>
         <p>

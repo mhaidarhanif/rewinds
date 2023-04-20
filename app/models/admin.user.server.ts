@@ -14,6 +14,7 @@ export const query = {
         role: { select: { symbol: true, name: true, description: true } },
         notes: { select: { id: true } },
       },
+      orderBy: [{ role: { sequence: "asc" } }, { name: "asc" }],
     });
   },
   getById({ id }: Pick<User, "id">) {

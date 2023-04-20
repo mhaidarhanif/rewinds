@@ -52,13 +52,19 @@ Follow the progress on:
 
 Starting new? You can [use this template to generate the repository](https://github.com/mhaidarhanif/rewinds/generate).
 
-Use terminal? Create a Remix app with this template:
+Clone the repository?
+
+```sh
+git clone git@github.com:mhaidarhanif/rewinds.git
+```
+
+Use npx?
 
 ```sh
 npx create-remix@latest --template mhaidarhanif/rewinds
 ```
 
-Deploy faster? Deploy this template to Vercel:
+Deploy faster?
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmhaidarhanif%2Frewinds&env=DATABASE_URL,REMIX_SESSION_SECRET,REMIX_APP_NAME,REMIX_APP_EMAIL&project-name=my-rewinds-app&repository-name=my-rewinds-app&demo-title=Rewinds&demo-description=A%20starter%20kit%20with%20Remix%2C%20Tailwind%20CSS%2C%20and%20the%20TypeScript%20ecosystem.&demo-url=https%3A%2F%2Frewinds.mhaidarhanif.com&demo-image=https%3A%2F%2Frewinds.mhaidarhanif.com%2Fassets%2Fimages%2Fcat-study-dark.png)
 
@@ -218,6 +224,7 @@ Included features for the users:
 - [x] Admin dashboard and search
   - [x] Manage users, notes, etc
 - [x] Various others
+  - [x] Share image (open graph)
   - [x] Add to home screen as app on mobile
   - [x] Search data
   - [ ] Image assets
@@ -257,7 +264,11 @@ Included setup for the developers:
 - [ ] Email delivery system
   - [ ] Transactional email with Mailjet/Resend and React Email
   - [ ] Marketing email with ConvertKit/Bento
-- [x] SEO functions with meta tags, `robots.txt`, `sitemap.xml`, `canonical`
+- [x] SEO functions with meta tags
+  - [x] Open Graph and Twitter card
+  - [x] `robots.txt`
+  - [x] Generate `sitemap.xml` automatically
+  - [x] `canonical` tag
 - [x] Various utilities with external libraries
   - [x] Root loader data for env, theme, user, etc
   - [x] Cache header
@@ -594,10 +605,27 @@ When running locally in development mode, use either the Express server or Verce
 
 Some other public repos/projects using Rewinds:
 
-- [M Haidar Hanif Website](https://github.com/mhaidarhanif/mhaidarhanif-web): Personal Website
-- [Catamyst](https://github.com/catamyst/catamyst-web): Learning Management System (LMS)
-- [Super Duper Gallery](https://github.com/jonathannicolasdev/superduper): Art Gallery
+- [🧊 M Haidar Hanif Website](https://github.com/mhaidarhanif/mhaidarhanif-web): Personal Website
+- [🐱 Catamyst](https://github.com/catamyst/catamyst-web): Learning Management System (LMS)
+- [🎨Super Duper Gallery](https://github.com/jonathannicolasdev/superduper): Art Gallery in Philippines
+- [🕌 Kawal Masjid](https://github.com/zainfathoni/kawalmasjid): Mosque Directory in Indonesia
 
 ## What's next for the future?
 
-Repackage this as [@catamyst/ui] or [@catamyst/rewinds-ui]
+Repackage this as `@mhaidarhanif/ui` or `@catamyst/ui`. It can even evolve with [multi-tenancy](https://github.com/vercel/platforms).
+
+# Credits
+
+## Author
+
+M Haidar Hanif (@mhaidarhanif)
+
+## License
+
+The MIT License.
+
+---
+
+<a aria-label="Logo" href="https://rewinds.mhaidarhanif.com">
+  <img src="https://flat.badgen.net/badge/Made%20by/M%20Haidar%20Hanif?color=black&labelColor=blue">
+</a>
