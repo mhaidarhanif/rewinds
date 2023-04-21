@@ -12,11 +12,11 @@
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 [![Better Uptime](https://betteruptime.com/status-badges/v1/monitor/enmd.svg)](https://uptime.mhaidarhanif.com/?utm_source=status_badge)
 
-# Introduction
+## Introduction
 
 Rewinds is a web app starter kit with Remix, Tailwind CSS, and the TypeScript ecosystem. It is an opinionated collection of interactive UI components, hooks, and utilities for your Remix project.
 
-## Goals
+### Goals
 
 You can use this to build any web apps (also what I'm using Rewinds for):
 
@@ -39,7 +39,7 @@ You can use this to build any web apps (also what I'm using Rewinds for):
 - Content Management System (CMS)
 - Learning Management System (LMS)
 
-## Demos
+### Demos
 
 Visit [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com)
 
@@ -48,7 +48,7 @@ Follow the progress on:
 - GitHub: [@mhaidarhanif](https://github.com/mhaidarhanif)
 - Twitter: [@mhaidarhanif](https://twitter.com/mhaidarhanif)
 
-## Quick start
+### Quick start
 
 Starting new? You can [use this template to generate the repository](https://github.com/mhaidarhanif/rewinds/generate).
 
@@ -70,14 +70,14 @@ Deploy faster?
 
 Then make sure to explore the repo to rename and replace the contents along the way. As this is a template, not a blank repo generator.
 
-## Code repository and links
+### Code repository and links
 
 - [mhaidarhanif/rewinds](https://github.com/mhaidarhanif/rewinds)
 - [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com)
 - [rewinds.vercel.app](https://rewinds.vercel.app)
 - [rewinds.dev](https://rewinds.dev) (sooner or later)
 
-# Tech Stack
+## Tech Stack
 
 Listed here are only the most important parts in the stack.️ Some setups are mostly finished, but some might haven't been done yet or are still in progress. More details and references can also be checked from [`mhaidarhanif/rewinds`](https://rewinds.mhaidarhanif.com) and [`catamyst/stack`](https://a.catamyst.com/stack).
 
@@ -85,7 +85,7 @@ As a reminder:
 
 > "Software is a just a tool to help accomplish something for people - many programmers never understood that. Keep your eyes on the delivered value, and don’t over focus on the specifics of the tools" — John Carmack
 
-## Primary Tech Stack
+### Primary Tech Stack
 
 - Rewinds: Remix Tailwind Stack
 - TRIP: TypeScript/Tailwind Remix/React/Radix Interface Prisma
@@ -98,7 +98,7 @@ If you work as a team, I recommend to:
 - Use secrets management platform such as Doppler, to share the environment variables. So you can optionally use or not to use `.env` file.
 - Use Vercel Pro plan to make code review with preview deployments easier.
 
-## Complete Tech Stack
+### Complete Tech Stack
 
 The complete stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel. But this repo also attempt to learn from Next.js, tRPC, GraphQL, NestJS, Passport, Swagger (OpenAPI), and others as well.
 
@@ -176,7 +176,7 @@ Already setup in Rewinds and some are for alternatives:
 
 [Check the GUIDE.md](./GUIDE.md) if you need some guide into the project setup, structure, and files.
 
-## Extra Tech Stack
+### Extra Tech Stack
 
 Although these are not included in Rewinds, if you need a separate backend/server/service, here are the recommendations:
 
@@ -207,9 +207,9 @@ Although these are not included in Rewinds, if you need a separate backend/serve
   - [Google Cloud Platform](https://cloud.google.com)
   - [Amazon Web Services](https://aws.amazon.com)
 
-# Some More Info
+## Some More Info
 
-## Some Roadmap or Checklists
+### Some Roadmap or Checklists
 
 Included features for the users:
 
@@ -291,7 +291,7 @@ Recommended extra setup:
 - Use [Google Search Console](https://search.google.com/search-console/about) to check the sitemap and SERP-related stuffs.
 - Use Clerk or Auth0 to [replace Remix Auth](https://clerk.com/docs/quickstarts/get-started-with-remix) if you need more than this.
 
-## Some Details
+### Some Details
 
 This repo is kind of over-engineered to have high flexibility and cover a lot of use cases for different applications/projects/products, especially what I'm working with several other people.
 
@@ -299,9 +299,9 @@ This template uses [`shadcn/ui`](https://github.com/shadcn/ui) as the base compo
 
 Currently includes the Remix HMR and HDR optional setup with both Vercel config and Express server on development as per Remix `v1.14`. The config is just combining the templates from Remix with Express and Vercel based on the environment. With separated Express server, you are also able to debug the process from code editor like VS Code much easier.
 
-# Development
+## Development
 
-## Install Dependencies
+### Install Dependencies
 
 Before running your Remix app locally, make sure your project's local dependencies are installed using your preferred package manager agent:
 
@@ -318,7 +318,7 @@ pnpm add -g @antfu/ni  # install once
 ni                     # can auto choose npm/yarn/pnpm
 ```
 
-## Setup Environment Variables/Secrets
+### Setup Environment Variables/Secrets
 
 These are the main environment variables you need to set up on your own for developing locally:
 
@@ -330,7 +330,7 @@ To manage the environment variables, you can either use:
 1. Plain `.env` file
 2. Secrets management platform such as Doppler
 
-### If using `.env` fie
+#### If using `.env` fie
 
 ```sh
 cp -i .env.example .env
@@ -339,7 +339,7 @@ cp -i .env.example .env
 
 Then edit `.env` as you need.
 
-### If using secrets management platform
+#### If using secrets management platform
 
 Alternatively, it's recommended to use [Doppler](https://doppler.com), or
 [Dotenv](https://dotenv.org), or something similar to manage the credentials.
@@ -363,13 +363,13 @@ doppler secrets download --no-file --format env > .env
 
 > ⚠️ Make sure to setup the environment variables/secrets here, on Vercel, or on your preferred deployment target. Otherwise the app will break on production. That's why a secrets management platform is recommended to manage them easily. There are also some preset strings in the `.env.example` which you can copy directly.
 
-## Prisma ORM and Database Connection
+### Prisma ORM and Database Connection
 
 It's up to you which database/DBMS you want to use with the app that supported by Prisma ORM. This repo is suited to use either your own MySQL instance or MySQL on PlanetScale. But don't use SQLite because it doesn't have `@db.Text` annotation and `model.createMany()` function.
 
 Once you have the database URL connection string from PlanetScale MySQL instance, for example:
 
-### If using PlanetScale
+#### If using PlanetScale
 
 1. [Create a PlanetScale account](https://planetscale.com) which you can [sign up for free](https://auth.planetscale.com/sign-up).
 2. [Create a database](https://planetscale.com/docs) and get the database URL connection string as `DATABASE_URL` from there.
@@ -379,7 +379,7 @@ Once you have the database URL connection string from PlanetScale MySQL instance
 DATABASE_URL='mysql://username:pscale_pw_password@region.connect.psdb.cloud/name?sslaccept=strict'
 ```
 
-### If using local database
+#### If using local database
 
 Run Docker service and run [Docker Compose script](./docker-compose.yml):
 
@@ -395,7 +395,7 @@ While in development, you can:
 - Push Prisma schema changes for PlanetScale with `nr prisma:push` (it runs `prisma db push`)
   - You might notice that with [PlanetScale](https://planetscale.com/docs/tutorials/prisma-quickstart) approach with [Prisma](https://prisma.io/docs/guides/database/using-prisma-with-planetscale), we don't need migration files in our repo, but rather managed in their platform.
 
-## File upload with Uploadcare
+### File upload with Uploadcare
 
 This repo primarily using [Uploadcare](https://uploadcare.com) to host the uploaded images. If you want the upload component to run locally, you need to:
 
@@ -405,7 +405,7 @@ This repo primarily using [Uploadcare](https://uploadcare.com) to host the uploa
 2. Go to the Dashboard and get the public key string.
 3. Put it as `UPLOADCARE_PUBLIC_KEY` to the environment variables.
 
-## Run Development Server
+### Run Development Server
 
 Make sure you've generated the latest Prisma schema with `nr prisma:generate`.
 
@@ -439,7 +439,7 @@ Loading environment variables from .env
 
 Open up <http://localhost:3000> and you should be ready to go!
 
-## TypeScript and ESLint Server
+### TypeScript and ESLint Server
 
 When you update some significant changes in the TypeScript config, ESLint config, or just generated a new Prisma schema, you can restart the language server as needed:
 
@@ -449,16 +449,16 @@ When you update some significant changes in the TypeScript config, ESLint config
 > Prisma: Restart Language Server
 ```
 
-## Customize some contents
+### Customize some contents
 
 Look up for these comments:
 
 - `EDITME`: You can edit them based on your need
 - `TODO`: You can see that they are in progress
 
-# Deployment
+## Deployment
 
-## Vercel
+### Vercel
 
 As this repo was made after having run the `create-remix` command and selected "Vercel" as a deployment target, you only need to [import your Git repository](https://vercel.com/new) into Vercel, and it will be deployed. Alternatively you can just use the "Deploy to Vercel" button above.
 
@@ -514,9 +514,9 @@ pnpm build:ci
 
 (Change `pnpm` to your package manager of choice)
 
-# Important Notes
+## Important Notes
 
-## Icons
+### Icons
 
 This template provide at least 2 icon set with SVG assets:
 
@@ -525,7 +525,7 @@ This template provide at least 2 icon set with SVG assets:
 
 Recommended to use [Icones](https://icones.js.org) to search the icon names easily.
 
-## Tailwind CSS Config
+### Tailwind CSS Config
 
 Use [uicolors.app](https://uicolors.app/create) or [tints.dev](https://tints.dev) to generate the color tokens easily. Then replace what's inside `tailwind.config.js`.
 
@@ -564,7 +564,7 @@ module.exports = {
 };
 ```
 
-## Remix Entry Files
+### Remix Entry Files
 
 This repo already has the entry files. Since Remix `v1.14`, you might notice that the entry files might be able to be implicitly defined. At the moment, I still suggest revealing or explicitly defining them to make it work smoothly.
 
@@ -572,7 +572,7 @@ This repo already has the entry files. Since Remix `v1.14`, you might notice tha
 npx remix reveal
 ```
 
-## Remix SEO Configuration
+### Remix SEO Configuration
 
 As there's not yet an official way to handle SEO related output for metadata and sitemap, here are the options ordered by preference:
 
@@ -580,7 +580,7 @@ As there's not yet an official way to handle SEO related output for metadata and
 2. [`chaance/remix-seo`](https://github.com/chaance/remix-seo): A package for easily managing SEO meta and link tags in Remix
 3. [`fedeya/remix-sitemap`](https://github.com/fedeya/remix-sitemap): Sitemap generator for Remix applications
 
-## HMR Workaround
+### HMR Workaround
 
 > This setup has been done in this Rewinds template.
 
@@ -592,9 +592,9 @@ ni -D react-refresh
 
 When running locally in development mode, use either the Express server or Vercel. This by default does not understand the Vercel lambda module format, so we fall back to the standard build output.
 
-# References
+## References
 
-## General
+### General
 
 - [web.dev](https://web.dev)
 - [Rewinds Stack](https://rewinds.mhaidarhanif.com)
@@ -604,7 +604,7 @@ When running locally in development mode, use either the Express server or Verce
 - [Infra I'm Building On In 2023 - T3](https://t3.gg/blog/post/2023-infra)
   - [The Infra That Saved Me From AWS - My 2023 Stack](https://youtube.com/watch?v=v-9AZKp-Ljo)
 
-## Remix
+### Remix
 
 - [Remix Docs](http://remix.run)
 - [Remix Blog Tutorial](http://remix.run/docs/en/main/tutorials/blog)
@@ -612,20 +612,20 @@ When running locally in development mode, use either the Express server or Verce
 - [Build a Fullstack App with Remix and Prisma - Prisma YouTub Playlist](https://youtube.com/watch?v=4tXGRe5CDDg&list=PLn2e1F9Rfr6kPDIAbfkOxgDLf4N3bFiMn)
 - [Build a Fullstack App with Remix and Prisma - Prisma Blog](https://prisma.io/blog/fullstack-remix-prisma-mongodb-1-7D0BfTXBmB6r)
 
-## React
+### React
 
 - [React](https://react.dev)
 - [Rethinking React best practices - Frontend Mastery](https://frontendmastery.com/posts/rethinking-react-best-practices)
 - [Bulletproof React - A simple, scalable, and powerful architecture for building production-ready React applications](https://github.com/alan2207/bulletproof-react)
 
-## Tailwind CSS
+### Tailwind CSS
 
 - [Tailwind CSS](https://tailwindcss.com)
 - [Why we use Tailwind CSS as our primary framework | Clean Commit](https://cleancommit.io/blog/why-we-use-tailwind-css-as-our-primary-framework)
 - [An Honest Look at Tailwind as an API for CSS | thoughtbot, inc.](https://thoughtbot.com/blog/an-honest-look-at-tailwind-as-an-api-for-css)
 - [Styling Best Practices I Use With Tailwind CSS | theodorusclarence.com](https://theodorusclarence.com/blog/tailwindcss-best-practice)
 
-## Inspirations
+### Inspirations
 
 - [Design System Checklist](https://designsystemchecklist.com)
 - [shadcn UI](https://github.com/shadcn/ui)
@@ -645,7 +645,7 @@ When running locally in development mode, use either the Express server or Verce
 - [saasui.design](https://saasui.design)
 - [saasinterface.com](https://saasinterface.com)
 
-## Rewinds in the wild
+### Rewinds in the wild
 
 Some other public repos/projects using Rewinds:
 
@@ -654,17 +654,17 @@ Some other public repos/projects using Rewinds:
 - [🎨Super Duper Gallery](https://github.com/jonathannicolasdev/superduper): Art Gallery in Philippines
 - [🕌 Kawal Masjid](https://github.com/zainfathoni/kawalmasjid): Mosque Directory in Indonesia
 
-## What's next for the future?
+### What's next for the future?
 
 Repackage this as `@mhaidarhanif/ui` or `@catamyst/ui`. It can even evolve with [multi-tenancy](https://github.com/vercel/platforms).
 
-# Credits
+## Credits
 
-## Author
+### Author
 
 M Haidar Hanif (@mhaidarhanif)
 
-## License
+### License
 
 The MIT License.
 
