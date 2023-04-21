@@ -39,24 +39,24 @@ export default function Route() {
   return (
     <Layout
       isSpaced
-      containSize="sm"
+      variant="sm"
       layoutHeader={
-        <PageHeader
-          size="sm"
-          containSize="sm"
-          withContainer={false}
-          withBackground={false}
-          withMarginBottom={false}
-        >
-          <h1>All {formatPluralItems("note", notesCount)}</h1>
-          <p>
-            Published notes from the users. Frequently changed or reset for this
-            example demo.
-          </p>
-          <ButtonLink to="/new" size="sm">
-            <Plus className="size-sm" />
-            <span>Add Note</span>
-          </ButtonLink>
+        <PageHeader size="xs">
+          <div className="contain-sm stack">
+            <div>
+              <h1>All {formatPluralItems("note", notesCount)}</h1>
+              <p>
+                Published notes from the users. Frequently changed or reset for
+                this example demo.
+              </p>
+            </div>
+            <div className="queue-center">
+              <ButtonLink to="/new" size="sm">
+                <Plus className="size-sm" />
+                <span>Add Note</span>
+              </ButtonLink>
+            </div>
+          </div>
         </PageHeader>
       }
     >

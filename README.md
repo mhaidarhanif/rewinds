@@ -79,7 +79,7 @@ Then make sure to explore the repo to rename and replace the contents along the 
 
 # Tech Stack
 
-Listed here are only the most important parts in the stack.️ Some setup mostly finished, but some might haven't done yet or still in progress. More details and references can also be checked from [`mhaidarhanif/rewinds`](https://rewinds.mhaidarhanif.com) and [`catamyst/stack`](https://a.catamyst.com/stack).
+Listed here are only the most important parts in the stack.️ Some setups are mostly finished, but some might haven't been done yet or are still in progress. More details and references can also be checked from [`mhaidarhanif/rewinds`](https://rewinds.mhaidarhanif.com) and [`catamyst/stack`](https://a.catamyst.com/stack).
 
 As a reminder:
 
@@ -92,6 +92,11 @@ As a reminder:
   - VPS: Vercel PlanetScale
 
 These are also the primary prerequisites for you to learn, understand, and use with this Rewinds stack. (Architecture diagram can help later on here)
+
+If you work as a team, I recommend to:
+
+- Use secrets management platform such as Doppler, to share the environment variables. So you can optionally use or not to use `.env` file.
+- Use Vercel Pro plan to make code review with preview deployments easier.
 
 ## Complete Tech Stack
 
@@ -290,9 +295,9 @@ Recommended extra setup:
 
 This repo is kind of over-engineered to have high flexibility and cover a lot of use cases for different applications/projects/products, especially what I'm working with several other people.
 
-This template uses [`shadcn/ui`](https://github.com/shadcn/ui) as the base components style and setup for full stack app development inspired by [T3 Stack](https://create.t3.gg). The main reason is this repo uses Remix, not Next.js like those two inspirations.
+This template uses [`shadcn/ui`](https://github.com/shadcn/ui) as the base components style. And the setup for full stack app development is mostly inspired by [T3 Stack](https://create.t3.gg). The main difference is this repo uses Remix, not Next.js like those two.
 
-Currently includes the Remix HMR and HDR optional setup with both Vercel config and Express server on development as per Remix `v1.14`. The config is just combining the templates from Remix with Express and Vercel based on the environment. With separated Expresss you are also able to debug the process from code editor like VS Code much easier.
+Currently includes the Remix HMR and HDR optional setup with both Vercel config and Express server on development as per Remix `v1.14`. The config is just combining the templates from Remix with Express and Vercel based on the environment. With separated Express server, you are also able to debug the process from code editor like VS Code much easier.
 
 # Development
 
@@ -315,7 +320,17 @@ ni                     # can auto choose npm/yarn/pnpm
 
 ## Setup Environment Variables/Secrets
 
-Use plain `.env` file for local development:
+These are the main environment variables you need to set up on your own for developing locally:
+
+- `DATABASE_URL`
+- `UPLOADCARE_PUBLIC_KEY`
+
+To manage the environment variables, you can either use:
+
+1. Plain `.env` file
+2. Secrets management platform such as Doppler
+
+### If using `.env` fie
 
 ```sh
 cp -i .env.example .env
@@ -324,18 +339,29 @@ cp -i .env.example .env
 
 Then edit `.env` as you need.
 
+### If using secrets management platform
+
 Alternatively, it's recommended to use [Doppler](https://doppler.com), or
 [Dotenv](https://dotenv.org), or something similar to manage the credentials.
-
-For example if using Doppler:
 
 ```sh
 doppler login
 doppler setup
+```
+
+To use the secrets directly:
+
+```sh
+doppler -- pnpm <command>
+```
+
+To download the secrets into the `.env` file:
+
+```sh
 doppler secrets download --no-file --format env > .env
 ```
 
-> ⚠️ Make sure to setup the environment variables/secrets here, on Vercel, or on your preferred deployment target. Otherwise the app will break on production. That's why Doppler or Dotenv are recommended to manage them easily. There are also some preset strings in the `.env.example` which you can copy directly.
+> ⚠️ Make sure to setup the environment variables/secrets here, on Vercel, or on your preferred deployment target. Otherwise the app will break on production. That's why a secrets management platform is recommended to manage them easily. There are also some preset strings in the `.env.example` which you can copy directly.
 
 ## Prisma ORM and Database Connection
 
@@ -343,11 +369,19 @@ It's up to you which database/DBMS you want to use with the app that supported b
 
 Once you have the database URL connection string from PlanetScale MySQL instance, for example:
 
+### If using PlanetScale
+
+1. [Create a PlanetScale account](https://planetscale.com) which you can [sign up for free](https://auth.planetscale.com/sign-up).
+2. [Create a database](https://planetscale.com/docs) and get the database URL connection string as `DATABASE_URL` from there.
+3. Put the `DATABASE_URL` to the environment variables.
+
 ```sh
 DATABASE_URL='mysql://username:pscale_pw_password@region.connect.psdb.cloud/name?sslaccept=strict'
 ```
 
-If you need to use local database, run [Docker compose](./docker-compose.yml):
+### If using local database
+
+Run Docker service and run [Docker Compose script](./docker-compose.yml):
 
 ```sh
 docker compose up
@@ -359,7 +393,17 @@ While in development, you can:
 - Check generated Prisma documentation with `nr docs:prisma` (it runs `prisma-docs-generator serve`) then open <http://localhost:5858>
 - Visualize the schema with [Prisma Editor](https://github.com/mohammed-bahumaish/prisma-editor) or [Prismaliser](https://prismaliser.app)
 - Push Prisma schema changes for PlanetScale with `nr prisma:push` (it runs `prisma db push`)
-  - You might notice that with [PlanetScale](https://planetscale.com/docs/tutorials/prisma-quickstart) approach with [Prisma](https://prisma.io/docs/guides/database/using-prisma-with-planetscale), we don't need migration files in our repo, rather managed in their platform.
+  - You might notice that with [PlanetScale](https://planetscale.com/docs/tutorials/prisma-quickstart) approach with [Prisma](https://prisma.io/docs/guides/database/using-prisma-with-planetscale), we don't need migration files in our repo, but rather managed in their platform.
+
+## File upload with Uploadcare
+
+This repo primarily using [Uploadcare](https://uploadcare.com) to host the uploaded images. If you want the upload component to run locally, you need to:
+
+ and paste your [Public API key](https://uploadcare.com/docs/start/settings/#keys-public) to `UPLOADCARE_PUBLIC_KEY` env var.
+
+1. [Create an Uploadcare account](https://uploadcare.com).
+2. Go to the Dashboard and get the public key string.
+3. Put it as `UPLOADCARE_PUBLIC_KEY` to the environment variables.
 
 ## Run Development Server
 
@@ -385,7 +429,7 @@ Alternatively, you can enable/disable HMR by changing this in the `remix.config.
 const isUsingHMR = false;
 ```
 
-With HMR, it will run both `dev:remix` and `dev:express`, the Remix server and Express server with HMR enabled. Then wait until you see this:
+With HMR, it will run both `dev:remix` and `dev:express`, the Remix server and the Express server with HMR enabled. Then wait until you see this:
 
 ```sh
 📀 Remix on Express server port :3000

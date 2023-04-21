@@ -34,26 +34,28 @@ interface ProgressProps
   hasGradient?: boolean;
 }
 
-export const Progress = ({
+export function Progress({
   value = 0,
   size = "default",
   hasGradient = false,
   className,
   ...props
-}: ProgressProps) => (
-  <ProgressPrimitive.Root
-    className={cn(progressVariants({ size, className }))}
-    {...props}
-  >
-    <ProgressPrimitive.Indicator
-      className={cn(
-        "h-full w-full flex-1 transition-all",
-        !hasGradient && "bg-surface-600 dark:bg-surface-400",
-        hasGradient &&
-          "bg-gradient-to-r from-surface-500 from-10% via-brand-500 via-30% to-teal-500 to-60%"
-      )}
-      style={{ transform: `translateX(-${100 - Number(value)}%)` }}
-    />
-  </ProgressPrimitive.Root>
-);
+}: ProgressProps) {
+  return (
+    <ProgressPrimitive.Root
+      className={cn(progressVariants({ size, className }))}
+      {...props}
+    >
+      <ProgressPrimitive.Indicator
+        className={cn(
+          "h-full w-full flex-1 transition-all",
+          !hasGradient && "bg-surface-600 dark:bg-surface-400",
+          hasGradient &&
+            "bg-gradient-to-r from-surface-500 from-10% via-brand-500 via-30% to-teal-500 to-60%"
+        )}
+        style={{ transform: `translateX(-${100 - Number(value)}%)` }}
+      />
+    </ProgressPrimitive.Root>
+  );
+}
 Progress.displayName = ProgressPrimitive.Root.displayName;

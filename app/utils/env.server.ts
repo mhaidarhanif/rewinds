@@ -16,12 +16,7 @@ export function getEnv(): z.infer<typeof schemaEnv> {
     // REMIX variables are mostly private
     // DATABASE_URL is private
 
-    IMAGEKIT_URL_ENDPOINT:
-      process.env.IMAGEKIT_URL_ENDPOINT || "https://ik.imagekit.io",
-    IMAGEKIT_FOLDER_NAME: process.env.IMAGEKIT_FOLDER_NAME || "not-set",
-    IMAGEKIT_PUBLIC_KEY: process.env.IMAGEKIT_PUBLIC_KEY || "not-set",
-    // IMAGEKIT private key is obviously private
-
+    UPLOADCARE_PUBLIC_KEY: process.env.UPLOADCARE_PUBLIC_KEY || "not-set",
     MAPBOX_PUBLIC_TOKEN: process.env.MAPBOX_PUBLIC_TOKEN || "not-set",
 
     GA_MEASUREMENT_ID: process.env.GA_MEASUREMENT_ID || "not-set",

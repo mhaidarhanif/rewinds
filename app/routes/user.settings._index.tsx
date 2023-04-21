@@ -163,7 +163,7 @@ function UserSettingsTabUser() {
 
           <div className="space-y-1">
             <div className="queue-center justify-between">
-              <Label htmlFor={name.id}>Name</Label>
+              <Label htmlFor={name.id}>Full Name</Label>
               <ButtonCopy
                 variant="ghost"
                 size="xs"
@@ -222,10 +222,10 @@ function UserSettingsTabUser() {
               name="intent"
               value="update-user-data"
               isSubmitting={isSubmitting}
-              loadingText="Updating Name..."
+              loadingText="Updating..."
               className="grow"
             >
-              Update Name
+              Update
             </ButtonLoading>
           </div>
         </fieldset>
