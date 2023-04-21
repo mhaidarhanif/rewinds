@@ -480,16 +480,6 @@ REMIX_APP_NAME=
 REMIX_APP_EMAIL=
 ```
 
-Optionals but required for seed:
-
-```sh
-# Default admin email
-REMIX_ADMIN_EMAIL=
-
-# Default admin password
-REMIX_ADMIN_PASSWORD=
-```
-
 The session secret for `REMIX_SESSION_SECRET` can be generated more securely using either Node.js crypto module (JS) or OpenSSL (shell):
 
 ```sh
@@ -513,6 +503,16 @@ vercel
 ```
 
 It is generally recommended to use a Git repository, because future commits will then automatically be deployed by Vercel, through its [Git Integration](https://vercel.com/docs/concepts/git).
+
+To make it automatic for Vercel CI to push the database schema changes (especially to PlanetScale) while building for Preview and Production, you can setup the build command to use the `build:ci` script instead of regular `build`.
+
+Put this into the Build Command in the Project Settings:
+
+```sh
+pnpm build:ci
+```
+
+(Change `pnpm` to your package manager of choice)
 
 # Important Notes
 

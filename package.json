@@ -17,6 +17,7 @@
     "dev-hmr:express": "cross-env NODE_ENV=development USE_HMR=true nodemon --require dotenv/config ./server-express.js --watch ./server-express.js",
     "prebuild": "nr prisma:generate",
     "build": "remix build",
+    "build:ci": "nr prisma:push && remix build",
     "start": "cross-env NODE_ENV=production node ./server-express.js",
     "prisma:studio": "prisma studio",
     "prisma:generate": "prisma generate",
