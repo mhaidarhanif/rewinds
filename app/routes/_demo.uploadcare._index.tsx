@@ -59,6 +59,7 @@ export async function action({ request }: ActionArgs) {
   // Transform checkbox value to boolean
   const multiple = submission?.value?.multiple === "on" ? true : false;
 
+  // Save one file info to database, image table
   if (!multiple) {
     const fileInfo: FileInfo = JSON.parse(String(submission?.value?.fileInfo));
 
@@ -70,13 +71,14 @@ export async function action({ request }: ActionArgs) {
       if (!newImage) {
         return badRequest(submission);
       }
-      return json(submission);
+      return json({ ...submission, newImage });
     } catch (error) {
       console.error(error);
       return serverError(submission);
     }
   }
 
+  // Save multiple files info to database, image table
   if (multiple) {
     const fileGroup: FileGroup = JSON.parse(
       String(submission?.value?.fileGroup)
@@ -87,20 +89,21 @@ export async function action({ request }: ActionArgs) {
       return badRequest(submission);
     }
 
-    const files: FileInfo[] = fileGroupNumbers.map((number) => {
-      return {
-        cdnUrl: `${fileGroup?.cdnUrl}nth/${number}/`,
-      } as FileInfo;
-    });
-
     try {
-      // TODO: Create many images based on files array
-      const newImages = files;
-
+      const newImages = await model.userImage.mutation.createMany({
+        files: fileGroupNumbers.map((number) => {
+          return {
+            cdnUrl: `${fileGroup?.cdnUrl}nth/${number}/`,
+          } as FileInfo;
+        }),
+        user: {
+          id: userSession.id
+        },
+      });
       if (!newImages) {
         return badRequest(submission);
       }
-      return json(submission);
+      return json({ ...submission, newImages });
     } catch (error) {
       console.error(error);
       return serverError(submission);
