@@ -14,7 +14,6 @@ import {
   RemixLink,
   TooltipAuto,
   Image,
-  Card,
 } from "~/components";
 import { requireUserRole, requireUserSession } from "~/helpers";
 import { EditPencil, Eye, Trash } from "~/icons";

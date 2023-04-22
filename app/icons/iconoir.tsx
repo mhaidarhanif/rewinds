@@ -44,4 +44,8 @@ export {
   Undo,
   User,
   UserCrown,
+  MediaImage,
+  MediaImageList,
+  Journal,
+  JournalPage,
 } from "iconoir-react";

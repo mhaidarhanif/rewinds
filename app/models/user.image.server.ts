@@ -2,7 +2,7 @@ import { prisma } from "~/libs";
 import { model } from "~/models";
 
 import type { Image, User } from "@prisma/client";
-import { FileInfo } from "@uploadcare/react-widget";
+import type { FileInfo } from "@uploadcare/react-widget";
 
 export const query = {
   count({ user }: { user: Pick<User, "id"> }) {
@@ -40,19 +40,13 @@ export const mutation = {
       },
     });
   },
-  createMany({
-    files,
-    user,
-  }: {
-    files: FileInfo[];
-    user: Pick<User, "id">;
-  }) {
+  createMany({ files, user }: { files: FileInfo[]; user: Pick<User, "id"> }) {
     return prisma.image.createMany({
       data: files.map((file) => {
         return {
           url: String(file.cdnUrl),
-          userId: user.id
-        }
+          userId: user.id,
+        };
       }),
     });
   },

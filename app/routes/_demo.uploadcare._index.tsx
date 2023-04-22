@@ -97,7 +97,7 @@ export async function action({ request }: ActionArgs) {
           } as FileInfo;
         }),
         user: {
-          id: userSession.id
+          id: userSession.id,
         },
       });
       if (!newImages) {

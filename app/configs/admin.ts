@@ -31,6 +31,13 @@ export const configAdmin = {
     },
 
     {
+      to: "images",
+      name: "Images",
+      icon: "images",
+      items: [],
+    },
+
+    {
       to: "notes",
       name: "Notes",
       icon: "notes",
@@ -49,6 +56,11 @@ export const configAdmin = {
           to: "note-tags",
           name: "Note Tags",
           icon: "noteTag",
+        },
+        {
+          to: "note-images",
+          name: "Note Images",
+          icon: "noteImage",
         },
       ],
     },

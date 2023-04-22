@@ -10,7 +10,9 @@ import {
   Home,
   InfoEmpty,
   InputSearch,
+  JournalPage,
   LayoutLeft,
+  MediaImageList,
   MultiplePages,
   PageEdit,
   PageSearch,
@@ -27,12 +29,12 @@ import {
  */
 
 export const iconMaps = {
+  default: <Circle />,
   about: <InfoEmpty />,
   appWindow: <AppWindow />,
   components: <Components />,
   dashboard: <DashboardSpeed />,
   database: <Database />,
-  default: <Circle />,
   demo: <LayoutLeft />,
   home: <Home />,
   noteCategory: <PageSearch />,
@@ -44,6 +46,8 @@ export const iconMaps = {
   site: <Cloud />,
   userRole: <UserCrown />,
   users: <Group />,
+  images: <MediaImageList />,
+  noteImage: <JournalPage />,
 };
 
 export function lookupIcon(lookupObject: any, defaultCase = "default") {
