@@ -42,6 +42,7 @@ model User {
   profile       UserProfile        @relation("UserProfile", fields: [profileId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   password      UserPassword?      @relation("UserPassword") // optional if using OAuth etc
   notifications UserNotification[] @relation("UserNotifications")
+  images        Image[]            @relation("Images")
   notes         Note[]             @relation("UserNotes")
   noteImages    NoteImage[]        @relation("UserNoteImages")
 
@@ -165,10 +166,10 @@ model NoteImage {
   url      String
   filePath String?
 
-  userId String
-  noteId String
-  user   User   @relation("UserNoteImages", fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
-  note   Note   @relation("NoteImages", fields: [noteId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  userId String?
+  user   User?   @relation("UserNoteImages", fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  noteId String?
+  note   Note?   @relation("NoteImages", fields: [noteId], references: [id], onUpdate: Cascade, onDelete: Cascade)
 
   @@index([userId])
   @@index([noteId])
@@ -220,4 +221,9 @@ model Image {
 
   url      String // Complete URL to the image
   filePath String? // ImageKit File Path, to be used with ImageKit component
+
+  userId String?
+  user   User?   @relation("Images", fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  @@index([userId])
 }

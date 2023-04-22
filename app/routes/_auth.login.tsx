@@ -202,9 +202,9 @@ export default function Route() {
             </RemixLinkText>
           </p>
         </RemixForm>
-      </div>
 
-      <Debug name="form">{{ actionData, fields }}</Debug>
+        <Debug name="form">{{ actionData, fields }}</Debug>
+      </div>
     </Layout>
   );
 }

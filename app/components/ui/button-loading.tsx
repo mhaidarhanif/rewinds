@@ -15,8 +15,8 @@ import type { VariantProps } from "class-variance-authority";
 export interface ButtonLoadingProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  isSubmitting: boolean;
-  loadingText: React.ReactNode;
+  isSubmitting?: boolean;
+  loadingText?: React.ReactNode;
 }
 
 export const ButtonLoading = forwardRef<HTMLButtonElement, ButtonLoadingProps>(
@@ -31,8 +31,8 @@ export const ButtonLoading = forwardRef<HTMLButtonElement, ButtonLoadingProps>(
       align = "default",
       className,
       children,
-      isSubmitting,
-      loadingText,
+      isSubmitting = false,
+      loadingText = "",
       name,
       value,
       ...props

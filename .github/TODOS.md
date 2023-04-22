@@ -4,17 +4,19 @@ Public and quick todos for this repo.
 
 ## In Progress
 
-- profile badge
-- admin verified users
+- feat: setup uploadcare example
 
 ## Todo
 
-- setup Uploadcare example
+- delete user account and associated data
 - implement admin menu on mobile with sheet
   - https://ui.shadcn.com/docs/primitives/sheet
+- setup Analytics with Ackee / @vercel/analytics
 
 ## Backlog
 
+- profile badge
+- admin verified users
 - setup URL shortener
 - paginate notes
 - update screenshots
@@ -65,7 +67,6 @@ Public and quick todos for this repo.
 - github actions
 - routes gen: https://github.com/sandulat/routes-gen
 - setupGoogle Webmaster
-- setup Analytics
 - setup JSON-LD config
 - setup Mapbox example
 - setup lazy load example

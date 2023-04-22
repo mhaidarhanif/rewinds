@@ -10,15 +10,15 @@ import type { schemaEnv, schemaEnvPrivate } from "~/schemas";
 export function getEnv(): z.infer<typeof schemaEnv> {
   return {
     NODE_ENV: process.env.NODE_ENV || "development", // development | test | production
-    APP_ENV: process.env.APP_ENV || "unknown", // local | development | staging | production
+    APP_ENV: process.env.APP_ENV || "unknown", // local | development | test | staging | production
     VERCEL: Boolean(process.env.VERCEL) || false,
 
     // REMIX variables are mostly private
     // DATABASE_URL is private
 
     UPLOADCARE_PUBLIC_KEY: process.env.UPLOADCARE_PUBLIC_KEY || "not-set",
-    MAPBOX_PUBLIC_TOKEN: process.env.MAPBOX_PUBLIC_TOKEN || "not-set",
 
+    MAPBOX_PUBLIC_TOKEN: process.env.MAPBOX_PUBLIC_TOKEN || "not-set",
     GA_MEASUREMENT_ID: process.env.GA_MEASUREMENT_ID || "not-set",
     SENTRY_BROWSER_DSN: process.env.SENTRY_BROWSER_DSN || "not-set",
     POSTHOG_API_HOST: process.env.POSTHOG_API_HOST || "not-set",

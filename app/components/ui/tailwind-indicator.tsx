@@ -1,4 +1,5 @@
 import { Text } from "~/components";
+import { configDev } from "~/configs";
 
 /**
  * Tailwind Indicator
@@ -14,7 +15,7 @@ import { Text } from "~/components";
  */
 
 export function TailwindIndicator() {
-  if (process.env.NODE_ENV === "production") return null;
+  if (!configDev.isDevelopment) return null;
 
   return (
     <div className="fixed bottom-1 left-1 z-50 flex select-none items-center justify-center rounded bg-brand-800 p-1 font-mono text-xs text-white">

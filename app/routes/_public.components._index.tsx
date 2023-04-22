@@ -210,9 +210,10 @@ export function ExampleButton() {
             <Loader2 className="size-sm animate-spin" />
             <span>Loading...</span>
           </Button>
-          <ButtonLoading isSubmitting={true} loadingText="Button is loading...">
+          <ButtonLoading isSubmitting loadingText="Button is loading...">
             Button is not loading
           </ButtonLoading>
+          <ButtonLoading isSubmitting />
         </div>
       </div>
     </section>

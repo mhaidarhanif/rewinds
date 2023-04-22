@@ -178,41 +178,9 @@
     "description": "SEO handle to be used with sitemap.xml file"
   },
 
-  "Rewinds Remix Session": {
-    "prefix": "remix-session",
-    "body": [
-      "import { createCookieSessionStorage } from \"remix\";",
-      "",
-      "const sessionSecret = process.env.SESSION_SECRET;",
-      "if (!sessionSecret) {",
-      "  throw new Error(\"SESSION_SECRET must be set\");",
-      "}",
-      "",
-      "const { getSession, commitSession, destroySession } =",
-      "  createCookieSessionStorage({",
-      "    // a Cookie from `createCookie` or the CookieOptions to create one",
-      "    cookie: {",
-      "      name: \"${1:__session}\",",
-      "",
-      "      // all of these are optional",
-      "      domain: \"${2:remix.run}\",",
-      "      maxAge: 3000000,",
-      "      httpOnly: true,",
-      "      maxAge: 60,",
-      "      path: \"/\",",
-      "      sameSite: \"lax\",",
-      "      secrets: [sessionSecret],",
-      "      secure: true",
-      "    }",
-      "  });",
-      "export { getSession, commitSession, destroySession };"
-    ],
-    "description": "Creates a cookie session storage template."
-  },
-
   "Rewinds Remix Link": {
     "prefix": "remix-a-link",
-    "body": ["<Link prefetch=\"${1|none,intent,render|}\" to={`$2`}>$3</Link>"],
+    "body": ["<RemixLink prefetch=\"${1|none,intent,render|}\" to={`$2`}>$3</RemixLink>"],
     "description": "Remix Link component that renders an anchor tag for navigation."
   },
 

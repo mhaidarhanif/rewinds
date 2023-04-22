@@ -1,13 +1,15 @@
 import { useState } from "react";
 
 import {
+  ButtonIcon,
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "~/components";
 import { configDev } from "~/configs";
 import { useRootLoaderData } from "~/hooks";
-import { cn } from "~/utils";
+import { X } from "~/icons";
+import { cn, jsonStringify } from "~/utils";
 
 /**
  * Debug
@@ -19,7 +21,7 @@ import { cn } from "~/utils";
 export function Debug({
   name = "unknown",
   isCollapsibleOpen = false,
-  isAlwaysShow,
+  isAlwaysShow = false,
   className,
   children,
 }: {
@@ -29,11 +31,16 @@ export function Debug({
   className?: string;
   children: string | any | unknown | null | undefined | React.ReactNode;
 }) {
+  const [isVisible, setIsVisible] = useState(true);
   const [isOpen, setIsOpen] = useState(isCollapsibleOpen);
 
   const { ENV } = useRootLoaderData();
 
-  if (!isAlwaysShow || (ENV && ENV.NODE_ENV === "production")) {
+  function handleCloseButton() {
+    setIsVisible(false);
+  }
+
+  if (!isAlwaysShow && ENV && ENV.NODE_ENV === "production") {
     return null;
   }
 
@@ -41,25 +48,32 @@ export function Debug({
     return null;
   }
 
+  if (!isVisible) {
+    return null;
+  }
+
   return (
     <div className="my-1">
       <Collapsible open={isOpen} onOpenChange={setIsOpen} className="space-y-1">
         <CollapsibleTrigger asChild>
-          <code className="code cursor-pointer text-xs">
-            <span className="font-bold">DEBUG: {name}</span>
-          </code>
+          <span className="code inline-flex cursor-pointer items-center gap-2 py-0 ps-2 text-xs">
+            <code className="font-bold">DEBUG: {name}</code>
+            <ButtonIcon variant="ghost" size="xs" onClick={handleCloseButton}>
+              <X className="size-xs" />
+            </ButtonIcon>
+          </span>
         </CollapsibleTrigger>
 
         <CollapsibleContent>
           <pre
             className={cn(
-              "my-1 overflow-scroll rounded border border-brand-500 p-1 text-xs",
-              "bg-white dark:bg-black",
+              "my-1 overflow-scroll rounded border p-1 text-xs",
+              "border-surface-200 bg-white dark:border-surface-800 dark:bg-black",
               "whitespace-pre-wrap", // alternative: break-spaces
               className
             )}
           >
-            {JSON.stringify(children, null, 2)}
+            {jsonStringify(children)}
           </pre>
         </CollapsibleContent>
       </Collapsible>

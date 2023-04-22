@@ -31,14 +31,14 @@ export const buttonVariants = cva(
         danger:
           "border-2 border-red-800 bg-red-600 text-red-50 hover:bg-red-700 dark:border-red-400",
         subtle:
-          "bg-brand-500/20 text-brand-800 hover:bg-brand-500/50 dark:bg-brand-900 dark:text-brand-200 hover:dark:bg-brand-800",
+          "bg-brand-500/20 text-brand-800 hover:bg-brand-500/50 dark:bg-brand-950 dark:text-brand-200 dark:hover:bg-brand-800 dark:hover:text-brand-200",
         outline:
-          "border-2 border-surface-100 bg-transparent text-brand-800 hover:bg-surface-100/30 dark:border-surface-800 dark:text-brand-200 hover:dark:bg-surface-800/30",
+          "border-2 border-surface-100 bg-transparent text-brand-800 hover:bg-surface-100/30 dark:border-surface-800 dark:text-brand-200 dark:hover:bg-surface-800/30",
         ghost: "text-brand-800 hover:bg-brand-500/20 dark:text-brand-100",
         none: "",
         link: "bg-transparent text-brand-800 underline-offset-4 hover:bg-transparent hover:underline dark:text-brand-200",
         navlink:
-          "text-xs hover:bg-brand-100 hover:dark:bg-brand-900 sm:text-sm",
+          "text-xs hover:bg-brand-100 dark:hover:bg-brand-900 sm:text-sm",
       },
       align: {
         default: "items-center justify-center text-center",
@@ -64,6 +64,10 @@ export const buttonVariants = cva(
         sm: "",
         default: "",
         lg: "",
+      },
+      padding: {
+        default: "",
+        none: "p-0",
       },
       withIndicator: {
         true: "",
@@ -145,6 +149,12 @@ export const buttonVariants = cva(
         radius: "full",
         class: "px-4 py-1",
       },
+      {
+        size: "sm",
+        variant: "subtle",
+        padding: "none",
+        class: "px-0 sm:px-0",
+      },
     ],
     defaultVariants: {
       variant: "default",
@@ -153,6 +163,7 @@ export const buttonVariants = cva(
       weight: "default",
       align: "default",
       radius: "default",
+      padding: "default",
       isIcon: false,
     },
   }
@@ -172,6 +183,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       weight = "default",
       radius = "default",
       align = "default",
+      padding = "default",
       className,
       ...props
     },
@@ -189,6 +201,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             weight,
             radius,
             align,
+            padding,
             isIcon: false,
             className,
           })

@@ -4,10 +4,9 @@
 
 @layer base {
   body {
-    @apply bg-white dark:bg-surface-950;
-    @apply text-surface-950 dark:text-surface-50;
+    @apply bg-text-default;
+    @apply bg-text-selection;
     @apply min-h-screen scroll-smooth font-sans antialiased transition-colors;
-    @apply selection:bg-brand-500/20 selection:text-brand-950 dark:selection:bg-brand-500/20 dark:selection:text-brand-100;
   }
   h1,
   h2,
@@ -70,26 +69,25 @@
     @apply bg-surface-50 dark:bg-black;
   }
   .code {
-    @apply bg-slate-200 text-slate-900 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-400 hover:dark:bg-slate-700;
+    @apply bg-slate-300/50 text-slate-900 hover:bg-slate-300;
+    @apply dark:bg-slate-800/50 dark:text-slate-400 dark:hover:bg-slate-800;
     @apply relative rounded px-[0.3rem] py-[0.2rem] font-mono font-semibold  transition-colors before:content-none after:content-none;
   }
 }
 
 @layer utilities {
   /* Content */
-  .button {
-    @apply z-auto inline-flex select-none transition-colors active:translate-y-px;
-    @apply disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50;
-    @apply focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 dark:focus:ring-brand-400 dark:focus:ring-offset-brand-900;
+  .bg-text-default {
+    @apply bg-white text-surface-950;
+    @apply dark:bg-surface-950 dark:text-surface-50;
   }
-  .button:focus {
-    @apply outline-none ring-2 ring-brand-600 ring-offset-2 dark:ring-brand-400 dark:ring-offset-brand-900;
+  .bg-text-raised {
+    @apply bg-surface-50 text-black;
+    @apply dark:bg-surface-900 dark:text-white;
   }
-  .button-variant-primary {
-    @apply border-2 border-brand-800 bg-brand-600 text-white hover:bg-brand-700 dark:border-brand-400;
-  }
-  .button-variant-primary:focus {
-    @apply bg-brand-600;
+  .bg-text-selection {
+    @apply selection:bg-brand-500/20 selection:text-brand-950;
+    @apply dark:selection:bg-brand-500/20 dark:selection:text-brand-100;
   }
   .link {
     @apply text-brand-600 transition-colors hover:text-brand-800 dark:text-brand-400 dark:hover:text-brand-300;
@@ -101,10 +99,42 @@
     @apply dim text-xs;
   }
   .dim-hover {
-    @apply hover:text-surface-500 hover:dark:text-surface-500;
+    @apply hover:text-surface-500 dark:hover:text-surface-500;
   }
   .inline-icon {
     @apply inline-block align-middle;
+  }
+
+  /* Content Variants */
+  .input {
+    @apply bg-white dark:bg-surface-950;
+    @apply rounded-md border-2 border-surface-100 focus-visible:border-surface-100 dark:border-surface-800;
+    @apply focus-visible:ring-brand-600 dark:focus-visible:ring-brand-400;
+    @apply flex h-10 w-full px-3 py-2 text-sm placeholder:text-surface-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:text-surface-50 dark:placeholder:text-surface-700 dark:focus-visible:ring-offset-surface-900;
+  }
+  .select-trigger {
+    @apply rounded-md;
+    @apply flex h-10 items-center justify-between border-2 border-surface-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-surface-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-surface-700 dark:bg-surface-900 dark:text-surface-50 dark:focus:ring-surface-400 dark:focus:ring-offset-surface-900;
+    @apply placeholder:text-surface-400 data-[placeholder]:text-surface-400;
+  }
+  .button {
+    @apply z-auto cursor-pointer select-none rounded-md;
+    @apply inline-flex transition-colors active:translate-y-px;
+    @apply font-semibold hover:font-semibold focus:font-semibold;
+    @apply disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50;
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 dark:focus:ring-brand-400 dark:focus:ring-offset-brand-900;
+  }
+  .button-size-default {
+    @apply h-9 gap-2 rounded-md px-3 sm:h-10 sm:px-4;
+  }
+  .button-size-small {
+    @apply button h-7 gap-2 rounded px-2 text-sm hover:text-sm focus:text-sm sm:h-8 sm:px-3;
+  }
+  .button-variant-default {
+    @apply border-2 border-brand-800 bg-brand-600 text-white hover:bg-brand-700 focus:bg-brand-600 dark:border-brand-400 dark:hover:bg-brand-700 dark:focus:bg-brand-600;
+  }
+  .button-variant-subtle {
+    @apply bg-brand-500/20 text-brand-800 hover:bg-brand-500/50 hover:text-brand-800 focus:bg-brand-300 focus:text-brand-800 dark:bg-brand-900 dark:text-brand-200 dark:hover:bg-brand-800 dark:hover:text-brand-200 dark:focus:bg-brand-800 dark:focus:text-brand-200;
   }
 
   /* Layouts */
@@ -147,8 +177,14 @@
   .stack-lg {
     @apply queue-lg flex-col;
   }
+  .stack-start {
+    @apply stack items-start;
+  }
   .stack-center {
     @apply stack items-center;
+  }
+  .cross-center {
+    @apply flex justify-center items-center;
   }
 
   /* Sizes */
@@ -231,9 +267,36 @@
 }
 
 /* Uploadcare styles need to be outside of layers */
+.uploadcare--dialog__container {
+  @apply card-base;
+}
+.uploadcare--panel {
+  @apply bg-text-default;
+}
+.uploadcare--menu__items {
+  @apply bg-text-raised;
+}
+.uploadcare--menu__item.uploadcare--menu__item_current {
+  @apply bg-text-default;
+}
+.uploadcare--menu__item {
+  @apply bg-text-raised;
+}
 .uploadcare--widget__button {
-  @apply button button-variant-primary;
+  @apply button-size-small button-variant-subtle;
+}
+.uploadcare--button {
+  @apply cursor-pointer;
 }
 .uploadcare--button_primary {
-  @apply button button-variant-primary;
+  @apply button button-variant-subtle border-none;
+}
+.uploadcare-tab-effects--effect-button {
+  @apply dark:fill-white;
+}
+.uploadcare--input {
+  @apply input;
+}
+.uploadcare--camera__device-select {
+  @apply select-trigger w-full max-w-lg;
 }

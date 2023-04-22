@@ -18,7 +18,7 @@ interface Props {
 // Anchor without significant styles
 export function Anchor({
   href = "/",
-  withIndicator = true,
+  withIndicator = false,
   className,
   children,
 }: Props) {

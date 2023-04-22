@@ -232,7 +232,8 @@ Included features for the users:
   - [x] Share image (open graph)
   - [x] Add to home screen as app on mobile
   - [x] Search data
-  - [ ] Image assets
+  - [x] Image assets
+    - [x] Uploadcare
   - [ ] Map viewer
 
 Included setup for the developers:
@@ -283,13 +284,18 @@ Included setup for the developers:
   - [x] No lint and type errors!
   - [x] Organize import order
 
-Recommended extra setup:
+Recommended extra app setup:
 
-- Connect to monitoring service such as Better Uptime or Instatus.
-- Connect Vercel project to Axiom for better log management.
-- Connect to Highlight to report and analyze errors.
+- Connect to monitoring service such as [Better Uptime](https://betteruptime.com) or [Instatus](https://instatus.com).
+- Connect to [Axiom](https://axiom.co) for better log management.
+- Connect to [Highlight](https://highlight.io) to report and analyze errors.
 - Use [Google Search Console](https://search.google.com/search-console/about) to check the sitemap and SERP-related stuffs.
 - Use Clerk or Auth0 to [replace Remix Auth](https://clerk.com/docs/quickstarts/get-started-with-remix) if you need more than this.
+
+Recommended extra development workflow setup:
+
+- Install [Kodiak](https://github.com/marketplace/kodiakhq) to automate your GitHub pull requests.
+- Install [Socket Security](https://github.com/marketplace/socket-security) to prevent malicious open source dependencies from infiltrating your apps.
 
 ### Some Details
 
@@ -323,7 +329,9 @@ ni                     # can auto choose npm/yarn/pnpm
 These are the main environment variables you need to set up on your own for developing locally:
 
 - `DATABASE_URL`
+  - Used with Prisma ORM. Get it from local database or [PlanetScale](https://planetscale.com/docs/concepts/connection-strings)
 - `UPLOADCARE_PUBLIC_KEY`
+  - Used with Uploadcare's file uploader widget. Get it from [Uploadcare](https://uploadcare.com/docs/start/settings)
 
 To manage the environment variables, you can either use:
 
@@ -399,7 +407,7 @@ While in development, you can:
 
 This repo primarily using [Uploadcare](https://uploadcare.com) to host the uploaded images. If you want the upload component to run locally, you need to:
 
- and paste your [Public API key](https://uploadcare.com/docs/start/settings/#keys-public) to `UPLOADCARE_PUBLIC_KEY` env var.
+and paste your [Public API key](https://uploadcare.com/docs/start/settings/#keys-public) to `UPLOADCARE_PUBLIC_KEY` env var.
 
 1. [Create an Uploadcare account](https://uploadcare.com).
 2. Go to the Dashboard and get the public key string.

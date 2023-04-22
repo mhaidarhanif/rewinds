@@ -172,7 +172,7 @@ export function ErrorBoundary() {
           </PageAdminHeader>
           <section className="px-layout space-y-2">
             <p>Here's the error information that can be informed to Rewinds.</p>
-            <Debug name="error.data" isAlwaysShow>
+            <Debug name="error.data" isAlwaysShow isCollapsibleOpen>
               {error.data}
             </Debug>
           </section>
@@ -190,12 +190,12 @@ export function ErrorBoundary() {
             <p>Here's the error information that can be informed to Rewinds.</p>
 
             <pre>{error.message}</pre>
-            <Debug name="error" isAlwaysShow>
+            <Debug name="error" isAlwaysShow isCollapsibleOpen>
               {error}
             </Debug>
 
             <p>The stack trace is:</p>
-            <Debug name="error.stack" isAlwaysShow>
+            <Debug name="error.stack" isAlwaysShow isCollapsibleOpen>
               {error.stack}
             </Debug>
           </section>

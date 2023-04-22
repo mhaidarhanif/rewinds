@@ -23,7 +23,7 @@ Folders
 
 1. `components`: React components
    - `demo`: Demo of complex components
-   - `service`: External service components such as ImageKit and YouTube
+   - `service`: External service components such as YouTube
    - `shared`: Shared custom project components
    - `ui`: UI components with mostly Radix UI
 2. `configs`: Project configuration

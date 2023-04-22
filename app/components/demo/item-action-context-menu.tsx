@@ -20,7 +20,7 @@ export function ItemActionContextMenuDemo() {
   return (
     <ContextMenu>
       <ContextMenuTrigger className="card-action flex h-40 w-80 select-none items-center justify-center rounded-md border-2 border-dashed border-slate-300 dark:border-slate-600">
-        <div className="queue-center">
+        <div className="queue-center dim">
           <MousePointerClick />
           <span className="font-bold">Right click here</span>
         </div>
