@@ -151,8 +151,8 @@ Already setup in Rewinds and some are for alternatives:
 - Cache/Ratelimit
   - [Upstash](https://upstash.com) 🚧🧩🎉
 - Image
+  - [Uploadcare](https://uploadcare.com) 🧩🎉
   - [ImageKit](https://imagekit.io) 🚧🧩🎉
-  - [Uploadcare](https://uploadcare.com) 🚧🧩🎉
   - [Cloudinary](https://cloudinary.com) 🚧🧩🎉
 - Email
   - Template
@@ -232,8 +232,7 @@ Included features for the users:
   - [x] Share image (open graph)
   - [x] Add to home screen as app on mobile
   - [x] Search data
-  - [x] Image assets
-    - [x] Uploadcare
+  - [x] Upload image assets
   - [ ] Map viewer
 
 Included setup for the developers:
@@ -260,12 +259,13 @@ Included setup for the developers:
     - [ ] Bring your own favorite
 - [x] Database with Prisma ORM and MySQL on PlanetScale
   - [x] tRPC-style or GraphQL-style data models file structure
+- [x] Auth with Remix Auth using a session cookie
 - [x] Data validation with Zod for general and Zodix for Remix loader/action
 - [x] Form handling with Conform
   - [x] Check for unallowed usernames
+  - [x] Upload file to Uploadcare
   - [ ] Redirect to previous route
   - [ ] Password strength meter
-- [x] Auth with Remix Auth using a session cookie
 - [ ] Image hosting integration
 - [ ] Email delivery system
   - [ ] Transactional email with Mailjet/Resend and React Email
@@ -401,11 +401,11 @@ While in development, you can:
 - Check generated Prisma documentation with `nr docs:prisma` (it runs `prisma-docs-generator serve`) then open <http://localhost:5858>
 - Visualize the schema with [Prisma Editor](https://github.com/mohammed-bahumaish/prisma-editor) or [Prismaliser](https://prismaliser.app)
 - Push Prisma schema changes for PlanetScale with `nr prisma:push` (it runs `prisma db push`)
-  - You might notice that with [PlanetScale](https://planetscale.com/docs/tutorials/prisma-quickstart) approach with [Prisma](https://prisma.io/docs/guides/database/using-prisma-with-planetscale), we don't need migration files in our repo, but rather managed in their platform.
+  - Notice that with [PlanetScale](https://planetscale.com/docs/tutorials/prisma-quickstart) approach with [Prisma](https://prisma.io/docs/guides/database/using-prisma-with-planetscale), we don't need migration files in our repo, but rather managed in their platform.
 
 ### File upload with Uploadcare
 
-This repo primarily using [Uploadcare](https://uploadcare.com) to host the uploaded images. If you want the upload component to run locally, you need to:
+This repo using [Uploadcare](https://uploadcare.com) to primarily upload and host the uploaded images and files. If you want the upload component to run, you need to:
 
 and paste your [Public API key](https://uploadcare.com/docs/start/settings/#keys-public) to `UPLOADCARE_PUBLIC_KEY` env var.
 
@@ -484,8 +484,11 @@ REMIX_SESSION_SECRET=
 # Application name
 REMIX_APP_NAME=
 
-# Application name for transactional email
+# Application transactional email
 REMIX_APP_EMAIL=
+
+# Upload image assets solution
+UPLOADCARE_PUBLIC_KEY=
 ```
 
 The session secret for `REMIX_SESSION_SECRET` can be generated more securely using either Node.js crypto module (JS) or OpenSSL (shell):
@@ -526,7 +529,7 @@ pnpm build:ci
 
 ### Icons
 
-This template provide at least 2 icon set with SVG assets:
+This template provide at least 2 main icon set with SVG assets:
 
 - [Lucide](https://lucide.dev)
 - [Iconoir](https://iconoir.com)
@@ -544,27 +547,13 @@ module.exports = {
       colors: {
         brand: {
           50: "#f2f9fd",
-          100: "#e5f1f9",
-          200: "#c5e2f2",
-          300: "#92cae7",
-          400: "#57aed9",
-          500: "#3399cc",
-          600: "#2277a7",
-          700: "#1d6087",
-          800: "#1b5171",
-          900: "#1c445e",
+          // ...
+          950: "#0c1c27",
         },
         surface: {
           50: "#f4f8f9",
-          100: "#dce7eb",
-          200: "#b8ced7",
-          300: "#8dacbb",
-          400: "#65899c",
-          500: "#4b6e81",
-          600: "#3a5667",
-          700: "#324653",
-          800: "#2b3944",
-          900: "#0a0d0f",
+          // ...
+          950: "#040506",
         },
       },
     },

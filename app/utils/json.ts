@@ -1,8 +1,7 @@
-export function jsonStringify(children: object | undefined) {
+export function jsonStringify(children: any | null | undefined) {
   return JSON.stringify(children, null, 2);
 }
 
-export function jsonParse(text: string | undefined) {
-  if (!text) return {};
-  return JSON.parse(text);
+export function jsonParse(text: string | null | undefined) {
+  return JSON.parse(String(text));
 }

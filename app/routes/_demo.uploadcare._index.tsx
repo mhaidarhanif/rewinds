@@ -2,6 +2,8 @@ import { parse } from "@conform-to/zod";
 import { useActionData, useNavigation } from "@remix-run/react";
 import { useState } from "react";
 import { badRequest, serverError } from "remix-utils";
+import type { ActionArgs, LoaderArgs } from "@remix-run/node";
+import { json } from "@remix-run/node";
 
 import {
   ButtonLoading,
@@ -17,68 +19,120 @@ import {
   Anchor,
 } from "~/components";
 import { requireUserSession } from "~/helpers";
-import { useRootLoaderData } from "~/hooks";
-
-import type { ActionArgs } from "@remix-run/node";
-import type { FileInfo } from "@uploadcare/react-widget";
-import { consoleDev, jsonParse, jsonStringify } from "~/utils";
-import { z } from "zod";
+import { createMetaData, jsonStringify } from "~/utils";
 import { model } from "~/models";
-import { configDev } from "~/configs";
+
+import type { FileGroup, FileInfo } from "@uploadcare/react-widget";
+import { z } from "zod";
 
 /**
  * Demo: Uploadcare
  */
 
-export const schemaDemoUploadcare = z.object({
-  imageUrl: z.string().optional(),
-  uploadedFiles: z.string().optional(), // Contain array of objects
+export const meta = createMetaData({
+  title: "Demo: Uploadcare",
+  description: "Upload files demo.",
 });
+
+export const schemaUploadcareDemo = z.object({
+  multiple: z.string().optional(),
+  // These are texts because they were sent as stringified JSON from the client
+  fileInfo: z.string().optional(), // Contain one object
+  fileGroup: z.string().optional(), //  Contain array of multiple objects
+});
+
+export async function loader({ request }: LoaderArgs) {
+  await requireUserSession(request);
+  return null;
+}
 
 export async function action({ request }: ActionArgs) {
   const { userSession } = await requireUserSession(request);
 
   const formData = await request.formData();
-  const submission = parse(formData, { schema: schemaDemoUploadcare });
+  const submission = parse(formData, { schema: schemaUploadcareDemo });
+
   if (!submission.value || submission.intent !== "submit") {
     return badRequest(submission);
   }
-  const uploadedFields = jsonParse(submission.value.uploadedFiles);
-  consoleDev(uploadedFields);
 
-  try {
-    const newImage = await model.userImage.mutation.create({
-      image: {
-        url: submission?.value?.imageUrl || "https://example.com",
-      },
-      user: {
-        id: userSession.id,
-      },
-    });
-    if (!newImage) {
+  // Transform checkbox value to boolean
+  const multiple = submission?.value?.multiple === "on" ? true : false;
+
+  if (!multiple) {
+    const fileInfo: FileInfo = JSON.parse(String(submission?.value?.fileInfo));
+
+    try {
+      const newImage = await model.userImage.mutation.create({
+        image: { url: String(fileInfo.cdnUrl) },
+        user: { id: userSession.id },
+      });
+      if (!newImage) {
+        return badRequest(submission);
+      }
+      return json(submission);
+    } catch (error) {
+      console.error(error);
+      return serverError(submission);
+    }
+  }
+
+  if (multiple) {
+    const fileGroup: FileGroup = JSON.parse(
+      String(submission?.value?.fileGroup)
+    );
+    const fileGroupNumbers = Array.from(Array(fileGroup?.count).keys());
+
+    if (fileGroup?.count <= 0 && fileGroupNumbers?.length <= 0) {
       return badRequest(submission);
     }
-    return null;
-  } catch (error) {
-    console.error(error);
-    return serverError(submission);
+
+    const files: FileInfo[] = fileGroupNumbers.map((_, index) => {
+      return {
+        cdnUrl: `${fileGroup?.cdnUrl}nth/${index}/`,
+      } as FileInfo;
+    });
+
+    try {
+      // TODO: Create many images based on files array
+      const newImages = files;
+
+      if (!newImages) {
+        return badRequest(submission);
+      }
+      return json(submission);
+    } catch (error) {
+      console.error(error);
+      return serverError(submission);
+    }
   }
+
+  return json(submission);
 }
 
 export default function Route() {
-  const { ENV } = useRootLoaderData();
   const actionData = useActionData<typeof action>();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
-  const [uploadedFiles, setUploadedFiles] = useState<FileInfo[]>([]);
+  const [fileInfo, setFileInfo] = useState<FileInfo>();
+  const [fileGroup, setFileGroup] = useState<FileGroup>();
+  const [fileGroupNumbers, setFileGroupNumbers] = useState<number[]>([]);
 
-  if (!ENV.UPLOADCARE_PUBLIC_KEY) {
-    return null;
-  }
+  // TODO: Use a switch
+  const multiple = true;
 
-  function getUploadedFile(file: FileInfo) {
-    setUploadedFiles([...uploadedFiles, file]);
+  // TODO: Use a toast to show the file/files have been saved
+  // console.info()
+
+  function handleUploaded(file: any) {
+    if (!file?.count) {
+      setFileInfo(file as FileInfo);
+    }
+    if (file?.count) {
+      setFileGroup(file as FileGroup);
+      setFileGroupNumbers(Array.from(Array(file?.count).keys()));
+    }
   }
 
   return (
@@ -93,21 +147,30 @@ export default function Route() {
       <div className="mx-auto w-full max-w-xl">
         <RemixForm method="POST" className="stack">
           <div className="stack">
-            <Label>Upload image:</Label>
+            <Label>Upload image{multiple && "s"}:</Label>
             <UploadcareWidget
-              getUploadedFile={getUploadedFile}
-            // publicKey="demopublickey" // Toggle this to save to storage
+              isDemo
+              multiple={multiple}
+              handleUploaded={handleUploaded}
             />
-            <Input
-              type="hidden"
-              name="imageUrl"
-              value={String(uploadedFiles[0]?.cdnUrl)}
+            <input
+              className="hidden"
+              type="checkbox"
+              id="multiple"
+              name="multiple"
+              defaultChecked={multiple}
               readOnly
             />
             <Input
               type="hidden"
-              name="uploadedFiles"
-              value={jsonStringify(uploadedFiles)}
+              name="fileInfo"
+              value={jsonStringify(fileInfo)}
+              readOnly
+            />
+            <Input
+              type="hidden"
+              name="fileGroup"
+              value={jsonStringify(fileGroup)}
               readOnly
             />
           </div>
@@ -115,21 +178,36 @@ export default function Route() {
           <div>
             <Card
               data-id="preview-uploaded-files"
-              className="flex h-36 w-full px-2"
+              className="queue-center h-36 w-full px-2"
             >
-              {uploadedFiles.length <= 0 && (
+              {/* If no file/files yet */}
+              {!fileInfo && !fileGroup && (
                 <div className="cross-center h-[inherit] w-full select-none">
                   <p className="dim">Preview will be shown here</p>
                 </div>
               )}
-              {uploadedFiles.length > 0 && (
+
+              {/* If one file as a FileInfo */}
+              {fileInfo && (
+                <Anchor href={String(fileInfo?.cdnUrl)}>
+                  <Image
+                    src={String(fileInfo?.cdnUrl)}
+                    alt={String(fileInfo?.name)}
+                    className="max-h-32 max-w-xs object-cover"
+                  />
+                </Anchor>
+              )}
+
+              {/* If multiple files as a FileGroup */}
+              {Number(fileGroup?.count) > 0 && (
                 <div className="queue-center h-[inherit] w-full">
-                  {uploadedFiles.map(({ uuid, cdnUrl, name }) => {
+                  {fileGroupNumbers.map((_, index) => {
+                    const cdnUrl = `${fileGroup?.cdnUrl}nth/${index}/`;
                     return (
-                      <Anchor key={uuid} href={String(cdnUrl)}>
+                      <Anchor key={cdnUrl} href={cdnUrl}>
                         <Image
-                          src={String(cdnUrl)}
-                          alt={String(name)}
+                          src={cdnUrl}
+                          alt={`Uploaded file: ${index}`}
                           className="max-h-32 max-w-xs object-cover"
                         />
                       </Anchor>
@@ -145,14 +223,23 @@ export default function Route() {
             name="intent"
             value="submit"
             isSubmitting={isSubmitting}
-            loadingText="Submitting..."
+            loadingText="Saving..."
             className="grow"
           >
-            Submit
+            Save
           </ButtonLoading>
         </RemixForm>
 
-        <Debug name="actionData">{actionData}</Debug>
+        <Debug name="state,actionData">
+          {{
+            state: {
+              fileInfo,
+              fileGroup,
+              fileGroupNumbers,
+            },
+            actionData,
+          }}
+        </Debug>
       </div>
     </Layout>
   );

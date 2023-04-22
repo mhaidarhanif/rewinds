@@ -77,17 +77,20 @@
 
 @layer utilities {
   /* Content */
+  .text-default {
+    @apply text-surface-950 dark:text-surface-50;
+  }
+  .bg-default {
+    @apply bg-white dark:bg-surface-950;
+  }
   .bg-text-default {
-    @apply bg-white text-surface-950;
-    @apply dark:bg-surface-950 dark:text-surface-50;
+    @apply text-default bg-default;
   }
   .bg-text-raised {
-    @apply bg-surface-50 text-black;
-    @apply dark:bg-surface-900 dark:text-white;
+    @apply bg-surface-50 text-black dark:bg-surface-900 dark:text-white;
   }
   .bg-text-selection {
-    @apply selection:bg-brand-500/20 selection:text-brand-950;
-    @apply dark:selection:bg-brand-500/20 dark:selection:text-brand-100;
+    @apply selection:bg-brand-500/20 selection:text-brand-950 dark:selection:bg-brand-500/20 dark:selection:text-brand-100;
   }
   .link {
     @apply text-brand-600 transition-colors hover:text-brand-800 dark:text-brand-400 dark:hover:text-brand-300;
@@ -118,8 +121,7 @@
     @apply placeholder:text-surface-400 data-[placeholder]:text-surface-400;
   }
   .button {
-    @apply z-auto cursor-pointer select-none rounded-md;
-    @apply inline-flex transition-colors active:translate-y-px;
+    @apply z-auto cursor-pointer select-none rounded-md transition-colors active:translate-y-px;
     @apply font-semibold hover:font-semibold focus:font-semibold;
     @apply disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50;
     @apply focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 dark:focus:ring-brand-400 dark:focus:ring-offset-brand-900;
@@ -289,7 +291,7 @@
   @apply cursor-pointer;
 }
 .uploadcare--button_primary {
-  @apply button button-variant-subtle border-none;
+  @apply button button-variant-subtle border-none block;
 }
 .uploadcare-tab-effects--effect-button {
   @apply dark:fill-white;
@@ -299,4 +301,19 @@
 }
 .uploadcare--camera__device-select {
   @apply select-trigger w-full max-w-lg;
+}
+.uploadcare--progress_type_canvas {
+  @apply text-brand-500;
+}
+.uploadcare--panel__footer {
+  @apply bg-text-default;
+}
+.uploadcare--file {
+  @apply text-default;
+}
+.uploadcare--progressbar__value {
+  @apply bg-brand-500;
+}
+.uploadcare--file_status_uploading .uploadcare--file__preview {
+  @apply bg-brand-500 text-brand-500 border-brand-500;
 }

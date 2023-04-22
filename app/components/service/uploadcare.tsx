@@ -6,45 +6,49 @@ import { Alert, ButtonLoading, Debug } from "~/components";
 import { useRootLoaderData } from "~/hooks";
 import { uploadcareLocaleTranslations } from "./uploadcare.locale";
 
-import type { FileInfo, WidgetProps } from "@uploadcare/react-widget";
-
-import type { Prettify } from "~/types";
+import type {
+  FileInfo,
+  WidgetProps,
+  FileGroup,
+} from "@uploadcare/react-widget";
 
 /**
  * Uploadcare Service Component
  *
- * This is still implemented using public key,
- * without server-side private key
+ * - This is using the older uploader widget, as the newest is still in beta
+ * - This is implemented using public key, without server-side private key yet
  *
  * Docs:
  * - https://uploadcare.com
+ * - https://uploadcare.com/docs/uploads/file-uploader
  */
 
-type PrettifiedFileInfo = Prettify<FileInfo>;
-
 interface UploadcareWidgetProps extends Partial<WidgetProps> {
-  getUploadedFile?: (file: PrettifiedFileInfo) => void;
+  isDemo?: boolean;
+  handleUploaded?: (file: FileInfo | FileGroup) => void;
 }
 
 export function UploadcareWidget(props: UploadcareWidgetProps) {
   const {
+    isDemo,
     publicKey,
-    tabs = "file camera url",
+    multiple,
+    tabs = "file url camera",
     previewStep = true,
     effects = ["crop", "sharp", "enhance"],
-    getUploadedFile,
+    handleUploaded,
   } = props;
 
   const { ENV } = useRootLoaderData();
   const [widgetFileState, setWidgetFileState] = useState({});
 
-  function handleChange(file: PrettifiedFileInfo) {
+  function handleChange(fileObject: FileInfo | FileGroup) {
     // To set the local state
-    setWidgetFileState(file);
+    setWidgetFileState(fileObject);
 
-    // To send file to parent component
-    if (getUploadedFile) {
-      getUploadedFile(file);
+    // To send FileInfo or FileGroup to parent component
+    if (handleUploaded) {
+      handleUploaded(fileObject);
     }
   }
 
@@ -59,13 +63,16 @@ export function UploadcareWidget(props: UploadcareWidgetProps) {
       {ENV.UPLOADCARE_PUBLIC_KEY && (
         <div className="queue-center h-8 w-full">
           <Widget
-            publicKey={publicKey || ENV.UPLOADCARE_PUBLIC_KEY}
+            publicKey={
+              isDemo ? "demopublickey" : publicKey || ENV.UPLOADCARE_PUBLIC_KEY
+            }
+            onChange={handleChange}
+            multiple={multiple}
             tabs={tabs}
             previewStep={previewStep}
             effects={effects}
             customTabs={{ preview: uploadcareTabEffects }}
             localeTranslations={uploadcareLocaleTranslations}
-            onChange={handleChange}
             preloader={
               <ButtonLoading size="sm" variant="subtle" isSubmitting />
             }
@@ -73,9 +80,11 @@ export function UploadcareWidget(props: UploadcareWidgetProps) {
         </div>
       )}
 
-      <Debug name="widgetProps,widgetFileState">
-        {{ props, widgetFileState }}
-      </Debug>
+      {ENV.UPLOADCARE_PUBLIC_KEY && (
+        <Debug name="widgetProps,widgetFileState">
+          {{ props, widgetFileState }}
+        </Debug>
+      )}
     </div>
   );
 }

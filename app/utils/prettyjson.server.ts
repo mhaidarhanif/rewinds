@@ -1,6 +1,6 @@
 import prettyjson from "prettyjson";
 
-export function log(data: any) {
+export function logPrettyJSON(data: any) {
   console.info(prettyjson.render(data));
 }
 
