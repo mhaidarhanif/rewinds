@@ -27,8 +27,8 @@
   --muted-foreground: hsl(215deg 16% 57%);
   --popover: hsl(224deg 71% 4%);
   --popover-foreground: hsl(215deg 20% 65%);
-  --card: hsl(0deg 0% 100%);
-  --card-foreground: hsl(222deg 47% 11%);
+  --card: hsl(224deg 71% 4%);
+  --card-foreground: hsl(213deg 31% 91%);
   --border: hsl(216deg 34% 17%);
   --input: hsl(216deg 34% 17%);
   --primary: hsl(210deg 40% 98%);

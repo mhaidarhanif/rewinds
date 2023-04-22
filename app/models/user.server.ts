@@ -102,7 +102,7 @@ export const query = {
         ],
       },
       select: fields.public,
-      orderBy: [{ role: { sequence: "asc" } }, { name: "asc" }],
+      orderBy: [{ role: { sequence: "asc" } }, { createdAt: "asc" }],
     });
   },
   async getMetrics({ id }: Pick<User, "id">) {

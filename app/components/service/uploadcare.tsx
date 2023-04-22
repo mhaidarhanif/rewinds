@@ -41,7 +41,7 @@ export function UploadcareWidget(props: UploadcareWidgetProps) {
     // Custom
     handleUploaded,
     isDemo,
-    isAlwaysShowDebug = false
+    isAlwaysShowDebug = false,
   } = props;
 
   const { ENV } = useRootLoaderData();
@@ -91,7 +91,10 @@ export function UploadcareWidget(props: UploadcareWidgetProps) {
       )}
 
       {ENV.UPLOADCARE_PUBLIC_KEY && (
-        <Debug name="widgetProps,widgetFileState" isAlwaysShow={isAlwaysShowDebug}>
+        <Debug
+          name="widgetProps,widgetFileState"
+          isAlwaysShow={isAlwaysShowDebug}
+        >
           {{ props, widgetFileState }}
         </Debug>
       )}

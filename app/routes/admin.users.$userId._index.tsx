@@ -4,6 +4,7 @@ import { useLoaderData } from "@remix-run/react";
 import { serverError } from "remix-utils";
 
 import {
+  Anchor,
   AvatarAuto,
   Badge,
   Button,
@@ -12,6 +13,8 @@ import {
   RemixForm,
   RemixLink,
   TooltipAuto,
+  Image,
+  Card,
 } from "~/components";
 import { requireUserRole, requireUserSession } from "~/helpers";
 import { EditPencil, Eye, Trash } from "~/icons";
@@ -61,7 +64,7 @@ export default function Route() {
   }
 
   return (
-    <div className="stack">
+    <div className="stack-lg">
       <header>
         <div className="queue-center">
           <span>View User</span>
@@ -138,7 +141,7 @@ export default function Route() {
 
       <section>
         <h5>Notes</h5>
-        {user.notes.length <= 0 && <span>No notes yet.</span>}
+        {user.notes.length <= 0 && <span>No user notes yet.</span>}
         {user.notes.length > 0 && (
           <ul className="space-y-1">
             {user.notes.map((note) => {
@@ -154,6 +157,36 @@ export default function Route() {
                 </li>
               );
             })}
+          </ul>
+        )}
+      </section>
+
+      <section>
+        <h5>Images</h5>
+        {user.images.length <= 0 && <span>No user images yet.</span>}
+        {user.images.length > 0 && (
+          <ul className="queue-center">
+            {user.images
+              .filter((image) => image.url && image.url !== "undefined")
+              .map((image) => {
+                const imageUrl =
+                  image.url +
+                  `-/preview/200x200/` +
+                  `-/format/auto/` +
+                  `-/quality/smart/`;
+
+                return (
+                  <li key={image.id}>
+                    <Anchor href={imageUrl} className="card hover:card-hover">
+                      <Image
+                        src={imageUrl}
+                        alt={`Image: ${image.url}`}
+                        className="max-h-20 max-w-xs object-cover"
+                      />
+                    </Anchor>
+                  </li>
+                );
+              })}
           </ul>
         )}
       </section>

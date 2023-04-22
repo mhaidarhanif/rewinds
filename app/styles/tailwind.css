@@ -159,7 +159,7 @@
     @apply flex flex-wrap gap-2;
   }
   .queue-sm {
-    @apply flex flex-wrap gap-1 sm:gap-2;
+    @apply flex flex-wrap gap-1;
   }
   .queue-lg {
     @apply flex flex-wrap gap-2 sm:gap-4;
@@ -175,6 +175,9 @@
   }
   .stack {
     @apply queue flex-col;
+  }
+  .stack-sm {
+    @apply queue-sm flex-col;
   }
   .stack-lg {
     @apply queue-lg flex-col;

@@ -117,7 +117,7 @@ export default function Route() {
 
   const [fileInfo, setFileInfo] = useState<FileInfo>();
   const [fileGroup, setFileGroup] = useState<FileGroup>();
-  const [fileGroupNumbers, setFileGroupNumbers] = useState<number[]>([]);
+  const [fileGroupNumbers, setFileGroupNumbers] = useState<number[]>();
 
   // TODO: Use a switch
   const multiple = true;
@@ -202,18 +202,20 @@ export default function Route() {
               {/* If multiple files as a FileGroup */}
               {Number(fileGroup?.count) > 0 && (
                 <div className="queue-center h-[inherit] w-full">
-                  {fileGroupNumbers.map((number) => {
-                    const cdnUrl = `${fileGroup?.cdnUrl}nth/${number}/`;
-                    return (
-                      <Anchor key={cdnUrl} href={cdnUrl}>
-                        <Image
-                          src={cdnUrl}
-                          alt={`Uploaded file: ${number}`}
-                          className="max-h-32 max-w-xs object-cover"
-                        />
-                      </Anchor>
-                    );
-                  })}
+                  {fileGroupNumbers &&
+                    fileGroupNumbers?.length > 0 &&
+                    fileGroupNumbers.map((number) => {
+                      const cdnUrl = `${fileGroup?.cdnUrl}nth/${number}/`;
+                      return (
+                        <Anchor key={cdnUrl} href={cdnUrl}>
+                          <Image
+                            src={cdnUrl}
+                            alt={`Uploaded file: ${number}`}
+                            className="max-h-32 max-w-xs object-cover"
+                          />
+                        </Anchor>
+                      );
+                    })}
                 </div>
               )}
             </Card>

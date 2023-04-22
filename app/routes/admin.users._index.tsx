@@ -4,7 +4,12 @@ import pluralize from "pluralize";
 
 import { AvatarAuto, Badge, Debug, RemixLink } from "~/components";
 import { model } from "~/models";
-import { createSitemap, formatPluralItems } from "~/utils";
+import {
+  createSitemap,
+  formatDateTimeTimezone,
+  formatPluralItems,
+  formatRelativeTime,
+} from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
 
@@ -32,6 +37,8 @@ export default function Route() {
       <ul className="space-y-2">
         {users.map((user) => {
           const userNotesCount = user.notes?.length;
+          const userImagesCount = user.images?.length;
+
           return (
             <li key={user.id}>
               <RemixLink
@@ -48,7 +55,17 @@ export default function Route() {
                     <Badge>{user.role.name}</Badge>
                   </h5>
                   <p>
-                    {userNotesCount} {pluralize("note", userNotesCount)}
+                    <span>Registered </span>
+                    <b>{formatDateTimeTimezone(user.createdAt)} </b>
+                    <b>({formatRelativeTime(user.createdAt)})</b>
+                  </p>
+                  <p className="queue-center">
+                    <span>
+                      {userNotesCount} {pluralize("note", userNotesCount)}
+                    </span>
+                    <span>
+                      {userImagesCount} {pluralize("image", userImagesCount)}
+                    </span>
                   </p>
                 </div>
               </RemixLink>

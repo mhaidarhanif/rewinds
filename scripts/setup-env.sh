@@ -20,3 +20,5 @@ doppler setup
 # └─────────┴─────────┴───────────────┘
 
 doppler secrets download --no-file --format env > .env
+
+# Then check .env file in the project root

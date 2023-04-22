@@ -13,8 +13,9 @@ export const query = {
       include: {
         role: { select: { symbol: true, name: true, description: true } },
         notes: { select: { id: true } },
+        images: { select: { id: true } },
       },
-      orderBy: [{ role: { sequence: "asc" } }, { name: "asc" }],
+      orderBy: [{ role: { sequence: "asc" } }, { createdAt: "asc" }],
     });
   },
   getById({ id }: Pick<User, "id">) {
@@ -24,6 +25,7 @@ export const query = {
         role: true,
         profile: true,
         notes: true,
+        images: true,
       },
     });
   },
