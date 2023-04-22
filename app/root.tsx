@@ -21,6 +21,7 @@ import {
   ThemeProvider,
   useTheme,
 } from "remix-themes";
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 
 import {
   Debug,
@@ -160,6 +161,8 @@ function App() {
           </IconoirProvider>
         </TooltipProvider>
 
+        <VercelAnalytics />
+
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
@@ -187,6 +190,9 @@ export function RootDocumentBoundary({
       </head>
       <body id="__remix">
         {children}
+
+        <VercelAnalytics />
+
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
