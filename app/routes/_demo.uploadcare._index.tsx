@@ -87,9 +87,9 @@ export async function action({ request }: ActionArgs) {
       return badRequest(submission);
     }
 
-    const files: FileInfo[] = fileGroupNumbers.map((_, index) => {
+    const files: FileInfo[] = fileGroupNumbers.map((number) => {
       return {
-        cdnUrl: `${fileGroup?.cdnUrl}nth/${index}/`,
+        cdnUrl: `${fileGroup?.cdnUrl}nth/${number}/`,
       } as FileInfo;
     });
 
@@ -149,9 +149,10 @@ export default function Route() {
           <div className="stack">
             <Label>Upload image{multiple && "s"}:</Label>
             <UploadcareWidget
-              isDemo
               multiple={multiple}
               handleUploaded={handleUploaded}
+              isDemo
+              isAlwaysShowDebug
             />
             <input
               className="hidden"
@@ -201,13 +202,13 @@ export default function Route() {
               {/* If multiple files as a FileGroup */}
               {Number(fileGroup?.count) > 0 && (
                 <div className="queue-center h-[inherit] w-full">
-                  {fileGroupNumbers.map((_, index) => {
-                    const cdnUrl = `${fileGroup?.cdnUrl}nth/${index}/`;
+                  {fileGroupNumbers.map((number) => {
+                    const cdnUrl = `${fileGroup?.cdnUrl}nth/${number}/`;
                     return (
                       <Anchor key={cdnUrl} href={cdnUrl}>
                         <Image
                           src={cdnUrl}
-                          alt={`Uploaded file: ${index}`}
+                          alt={`Uploaded file: ${number}`}
                           className="max-h-32 max-w-xs object-cover"
                         />
                       </Anchor>

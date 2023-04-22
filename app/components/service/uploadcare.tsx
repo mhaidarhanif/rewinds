@@ -24,19 +24,24 @@ import type {
  */
 
 interface UploadcareWidgetProps extends Partial<WidgetProps> {
-  isDemo?: boolean;
   handleUploaded?: (file: FileInfo | FileGroup) => void;
+  isDemo?: boolean;
+  isAlwaysShowDebug?: boolean;
 }
 
 export function UploadcareWidget(props: UploadcareWidgetProps) {
   const {
-    isDemo,
+    // WidgetProps
     publicKey,
     multiple,
     tabs = "file url camera",
     previewStep = true,
     effects = ["crop", "sharp", "enhance"],
+
+    // Custom
     handleUploaded,
+    isDemo,
+    isAlwaysShowDebug = false
   } = props;
 
   const { ENV } = useRootLoaderData();
@@ -74,14 +79,19 @@ export function UploadcareWidget(props: UploadcareWidgetProps) {
             customTabs={{ preview: uploadcareTabEffects }}
             localeTranslations={uploadcareLocaleTranslations}
             preloader={
-              <ButtonLoading size="sm" variant="subtle" isSubmitting />
+              <ButtonLoading
+                size="sm"
+                variant="subtle"
+                isSubmitting
+                isDisabledWhenLoading={false}
+              />
             }
           />
         </div>
       )}
 
       {ENV.UPLOADCARE_PUBLIC_KEY && (
-        <Debug name="widgetProps,widgetFileState">
+        <Debug name="widgetProps,widgetFileState" isAlwaysShow={isAlwaysShowDebug}>
           {{ props, widgetFileState }}
         </Debug>
       )}

@@ -17,6 +17,7 @@ export interface ButtonLoadingProps
     VariantProps<typeof buttonVariants> {
   isSubmitting?: boolean;
   loadingText?: React.ReactNode;
+  isDisabledWhenLoading?: boolean;
 }
 
 export const ButtonLoading = forwardRef<HTMLButtonElement, ButtonLoadingProps>(
@@ -33,6 +34,7 @@ export const ButtonLoading = forwardRef<HTMLButtonElement, ButtonLoadingProps>(
       children,
       isSubmitting = false,
       loadingText = "",
+      isDisabledWhenLoading = true,
       name,
       value,
       ...props
@@ -43,7 +45,7 @@ export const ButtonLoading = forwardRef<HTMLButtonElement, ButtonLoadingProps>(
       <button
         type={type}
         ref={ref}
-        disabled={isSubmitting}
+        disabled={isDisabledWhenLoading ? isSubmitting : isDisabledWhenLoading}
         className={cn(
           buttonVariants({
             variant,
