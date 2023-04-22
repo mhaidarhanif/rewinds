@@ -1,6 +1,7 @@
 export * from "./avatar";
 export * from "./cache.server";
 export * from "./classnames";
+export * from "./console";
 export * from "./currency";
 export * from "./datetime";
 export * from "./env.server";

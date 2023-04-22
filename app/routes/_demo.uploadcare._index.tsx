@@ -21,9 +21,10 @@ import { useRootLoaderData } from "~/hooks";
 
 import type { ActionArgs } from "@remix-run/node";
 import type { FileInfo } from "@uploadcare/react-widget";
-import { jsonParse, jsonStringify } from "~/utils";
+import { consoleDev, jsonParse, jsonStringify } from "~/utils";
 import { z } from "zod";
 import { model } from "~/models";
+import { configDev } from "~/configs";
 
 /**
  * Demo: Uploadcare
@@ -43,7 +44,7 @@ export async function action({ request }: ActionArgs) {
     return badRequest(submission);
   }
   const uploadedFields = jsonParse(submission.value.uploadedFiles);
-  console.info({ uploadedFields });
+  consoleDev(uploadedFields);
 
   try {
     const newImage = await model.userImage.mutation.create({
@@ -95,7 +96,7 @@ export default function Route() {
             <Label>Upload image:</Label>
             <UploadcareWidget
               getUploadedFile={getUploadedFile}
-              // publicKey="demopublickey" // Toggle this to save to storage
+            // publicKey="demopublickey" // Toggle this to save to storage
             />
             <Input
               type="hidden"
