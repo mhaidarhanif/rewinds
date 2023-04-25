@@ -127,7 +127,8 @@ export default function Route() {
 
   const [isMultiple, setIsMultiple] = useState<boolean>(true);
 
-  const isSubmitEnabled = (!isMultiple && fileInfo?.cdnUrl) || (isMultiple && fileGroup?.cdnUrl)
+  const isSubmitEnabled =
+    (!isMultiple && fileInfo?.cdnUrl) || (isMultiple && fileGroup?.cdnUrl);
 
   // Keep in mind changing between multiple and not
   // after uploaded some file(s) could cause the expected behaviors
@@ -158,9 +159,9 @@ export default function Route() {
 
   useEffect(() => {
     if (actionData?.intent === "submit") {
-      handleToastCompleted()
+      handleToastCompleted();
     }
-  }, [actionData])
+  }, [actionData]);
 
   return (
     <Layout

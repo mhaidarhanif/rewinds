@@ -30,16 +30,20 @@ export async function loader({ request }: LoaderArgs) {
     model.note.query.search({ q }),
     model.user.query.search({ q }),
   ]);
-  const itemsCount = notes.length + users.length;
+
+  const notesCount = notes.length;
+  const usersCount = users.length;
+  const itemsCount = notesCount + usersCount;
 
   return json(
-    { q, notes, users, itemsCount },
+    { q, notes, notesCount, users, usersCount, itemsCount },
     { headers: createCacheHeaders(request) }
   );
 }
 
 export default function Route() {
-  const { q, notes, users, itemsCount } = useLoaderData<typeof loader>();
+  const { q, notes, notesCount, users, usersCount, itemsCount } =
+    useLoaderData<typeof loader>();
 
   return (
     <Layout
@@ -62,26 +66,26 @@ export default function Route() {
         </PageHeader>
       }
     >
-      <section className="space-y-4">
+      <section className="stack-xl">
         {itemsCount <= 0 && <h3>Sorry, nothing found.</h3>}
 
         {notes.length > 0 && (
-          <div className="space-y-2">
-            <span>Notes</span>
-            <ul className="space-y-1">
+          <div className="stack">
+            <span>{formatPluralItems("Note", notesCount)}</span>
+            <ul className="stack">
               {notes.map((note) => {
                 return (
                   <li key={note.id}>
                     <RemixLink
                       prefetch="intent"
                       to={`/${note.user.username}/${note.slug}`}
-                      className="card-sm hover:card-hover"
+                      className="card hover:card-hover stack-sm h-full"
                     >
-                      <h4>{note.title}</h4>
+                      <h3>{note.title}</h3>
                       <p>{truncateText(note.content)}</p>
-                      <div className="queue-center dim">
+                      <div className="queue-center-sm dim">
                         <AvatarAuto user={note.user} className="size-md" />
-                        <b>{note.user.name}</b>
+                        <span>{note.user.name}</span>
                         <span>•</span>
                         <span>{formatRelativeTime(note.updatedAt)}</span>
                       </div>
@@ -95,7 +99,7 @@ export default function Route() {
 
         {users.length > 0 && (
           <div className="space-y-2">
-            <span>Users</span>
+            <span>{formatPluralItems("User", usersCount)}</span>
             <ul className="space-y-1">
               {users.map((user) => {
                 return (

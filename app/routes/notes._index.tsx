@@ -61,21 +61,21 @@ export default function Route() {
       }
     >
       <section>
-        <ul className="space-y-2">
+        <ul className="stack">
           {notes.map((note) => {
             return (
               <li key={note.slug}>
                 <RemixLink
                   prefetch="intent"
                   to={`/notes/${note.slug}`}
-                  className="card hover:card-hover flex h-full flex-col space-y-0"
+                  className="card hover:card-hover stack-sm h-full"
                 >
                   <h3>{note.title}</h3>
                   <p>{note.description}</p>
                   {/* <p className="dim">{truncateText(note.content, 70)}</p> */}
-                  <div className="queue-center dim">
+                  <div className="queue-center-sm dim">
                     <AvatarAuto user={note.user} className="size-md" />
-                    <b>{note.user.name}</b>
+                    <span>{note.user.name}</span>
                     <span>•</span>
                     <span>{formatRelativeTime(note.updatedAt)}</span>
                   </div>

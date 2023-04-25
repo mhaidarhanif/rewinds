@@ -167,6 +167,9 @@
   .queue-lg {
     @apply flex flex-wrap gap-2 sm:gap-4;
   }
+  .queue-xl {
+    @apply flex flex-wrap gap-4 sm:gap-8;
+  }
   .queue-center {
     @apply queue items-center;
   }
@@ -184,6 +187,9 @@
   }
   .stack-lg {
     @apply queue-lg flex-col;
+  }
+  .stack-xl {
+    @apply queue-xl flex-col;
   }
   .stack-start {
     @apply stack items-start;
