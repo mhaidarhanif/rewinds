@@ -10,9 +10,10 @@ datasource db {
   relationMode = "prisma"
 }
 
+// https://www.prisma.io/docs/concepts/components/preview-features/client-preview-features
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["jsonProtocol"]
+  previewFeatures = ["fullTextSearch", "fullTextIndex", "metrics", "orderByNulls", "filteredRelationCount", "fieldReference", "extendedWhereUnique", "views", "jsonProtocol"]
 }
 
 generator docs {
