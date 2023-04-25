@@ -15,6 +15,8 @@ Public and quick todos for this repo.
 
 - profile badge
 - admin verified users
+- og image generator
+  - https://www.jacobparis.com/guides/remix-og
 - setup URL shortener
 - paginate notes
 - update screenshots
@@ -74,3 +76,5 @@ Public and quick todos for this repo.
 - color mode / theme naming convention
   - Mode: for light and dark mode
   - Theme: visual like colors, typography, but can can exist in light or dark mode
+- desktop app
+  - https://todesktop.com

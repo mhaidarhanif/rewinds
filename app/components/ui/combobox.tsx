@@ -90,7 +90,7 @@ export function ComboboxExample() {
                         >
                           {item.name}
                         </span>
-                        {selected ? (
+                        {selected && (
                           <span
                             className={`absolute inset-y-0 left-0 flex items-center ps-3 ${
                               active ? "text-white" : "text-teal-600"
@@ -98,7 +98,7 @@ export function ComboboxExample() {
                           >
                             <Check className="h-5 w-5" aria-hidden="true" />
                           </span>
-                        ) : null}
+                        )}
                       </>
                     )}
                   </Combobox.Option>

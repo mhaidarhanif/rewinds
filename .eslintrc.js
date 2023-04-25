@@ -22,6 +22,7 @@ module.exports = {
     "plugin:prettier/recommended",
     // "plugin:import/typescript",
     // "plugin:sort-export-all/recommended",
+    // "plugin:unicorn/recommended",
   ],
   settings: {
     "import/resolver": { typescript: true, node: true },
