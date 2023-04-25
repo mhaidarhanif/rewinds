@@ -67,7 +67,7 @@ export default function Route() {
               <li key={note.slug}>
                 <RemixLink
                   prefetch="intent"
-                  to={`/${note.user.username}/${note.slug}`}
+                  to={`/notes/${note.slug}`}
                   className="card hover:card-hover flex h-full flex-col space-y-0"
                 >
                   <h3>{note.title}</h3>
