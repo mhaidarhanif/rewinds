@@ -309,7 +309,7 @@ export function HeaderUserMenu({
               <DropdownMenuItem asChild>
                 <RemixNavLink prefetch="intent" to={`/components`}>
                   <Components className="size-sm me-2" />
-                  <span>Component</span>
+                  <span>Components</span>
                 </RemixNavLink>
               </DropdownMenuItem>
             </DropdownMenuGroup>

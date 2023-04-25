@@ -70,6 +70,9 @@ module.exports = {
     require("@tailwindcss/forms"),
     require("@tailwindcss/typography"),
     require("tailwindcss-animate"),
+    require("tailwindcss-autofill"),
+    require("tailwindcss-shadow-fill"),
+    require("tailwindcss-text-fill"),
     require("tailwindcss-radix")(),
   ],
 };

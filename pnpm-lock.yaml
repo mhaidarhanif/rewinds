@@ -322,6 +322,15 @@ dependencies:
   tailwindcss-animate:
     specifier: ^1.0.5
     version: 1.0.5(tailwindcss@3.3.1)
+  tailwindcss-autofill:
+    specifier: 1.0.2
+    version: 1.0.2(tailwindcss@3.3.1)
+  tailwindcss-shadow-fill:
+    specifier: 1.0.1
+    version: 1.0.1(tailwindcss@3.3.1)
+  tailwindcss-text-fill:
+    specifier: 0.2.0
+    version: 0.2.0(tailwindcss@3.3.1)
   tiny-invariant:
     specifier: ^1.3.1
     version: 1.3.1
@@ -9632,6 +9641,10 @@ packages:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
 
+  /flatten-tailwindcss-theme@1.0.0:
+    resolution: {integrity: sha512-7B795m0qzLF0yQYGkfGanO3NOisEI4EaVObnr3DBq7Qc8Ygq4yWGa0Gpx2rtb10NSgIcimUqu4Xaqh+0bkC87w==}
+    dev: false
+
   /follow-redirects@1.15.2:
     resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
     engines: {node: '>=4.0'}
@@ -14554,9 +14567,35 @@ packages:
       tailwindcss: 3.3.1(postcss@8.4.23)
     dev: false
 
+  /tailwindcss-autofill@1.0.2(tailwindcss@3.3.1):
+    resolution: {integrity: sha512-gbm/ZKvU7EW2kzSoyCREwsNSQlsgEmNWnagggz6dGl1QgtM9RkmeWRicAY+eSnI9VFnfYCQOAthW9gDKZjda4Q==}
+    peerDependencies:
+      tailwindcss: '>=2.0.0'
+    dependencies:
+      tailwindcss: 3.3.1(postcss@8.4.23)
+    dev: false
+
   /tailwindcss-radix@2.8.0:
     resolution: {integrity: sha512-1k1UfoIYgVyBl13FKwwoKavjnJ5VEaUClCTAsgz3VLquN4ay/lyaMPzkbqD71sACDs2fRGImytAUlMb4TzOt1A==}
     dev: true
+
+  /tailwindcss-shadow-fill@1.0.1(tailwindcss@3.3.1):
+    resolution: {integrity: sha512-GvPU6IEXFprcvz/qz7SbAdlciWHg5CFg427nmrCPN1BYaDxTKxcxmFy/vh35i2/4RW3AHIRBp/h6VADMpYryww==}
+    peerDependencies:
+      tailwindcss: '>=2.0.0'
+    dependencies:
+      flatten-tailwindcss-theme: 1.0.0
+      tailwindcss: 3.3.1(postcss@8.4.23)
+    dev: false
+
+  /tailwindcss-text-fill@0.2.0(tailwindcss@3.3.1):
+    resolution: {integrity: sha512-3lo6a/9jXSx4+24onFv7xnHO/1DZCk6qM+LoCsEUxn79sAeoc/ts74LSH0vRhLvWe4Yn+YglFfT+lxDv6wn2sQ==}
+    peerDependencies:
+      tailwindcss: '>=2.0.0'
+    dependencies:
+      flatten-tailwindcss-theme: 1.0.0
+      tailwindcss: 3.3.1(postcss@8.4.23)
+    dev: false
 
   /tailwindcss@3.3.1(postcss@8.4.23):
     resolution: {integrity: sha512-Vkiouc41d4CEq0ujXl6oiGFQ7bA3WEhUZdTgXAhtKxSy49OmKs8rEfQmupsfF0IGW8fv2iQkp1EVUuapCFrZ9g==}
