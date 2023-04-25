@@ -236,7 +236,7 @@ export default function Route() {
           </ButtonLoading>
         </RemixForm>
 
-        <Debug name="state,actionData">
+        <Debug name="state,actionData" isAlwaysShow>
           {{
             state: {
               fileInfo,

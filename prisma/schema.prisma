@@ -33,9 +33,10 @@ model User {
   email    String  @unique(map: "User.email_unique")
   phone    String? @unique // phone number is a numeric string and optional
 
-  // Boolean is better with DateTime
-  // emailVerified DateTime? @default(now())
-  // phoneVerified DateTime? @default(now())
+  // isEmailVerified Boolean?  @default(false)
+  // emailVerifiedAt DateTime?
+  // isPhoneVerified Boolean?  @default(false)
+  // phoneVerifiedAt DateTime?
 
   roleId        String
   profileId     String             @unique
@@ -214,7 +215,6 @@ model Address {
 // External Assets
 // -----------------------------------------------------------------------------
 
-// For example
 model Image {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())

@@ -3,6 +3,7 @@ import { prisma } from "~/libs";
 import { model } from "~/models";
 
 import type { Note, User } from "@prisma/client";
+import type { FileInfo } from "@uploadcare/react-widget";
 
 export const query = {
   count({ user }: { user: Pick<User, "id"> }) {
@@ -29,17 +30,27 @@ export const mutation = {
   create({
     user,
     note,
+    files,
   }: {
     user: Pick<User, "id">;
     note: Pick<Note, "title" | "description" | "content">;
+    files: FileInfo[];
   }) {
     return prisma.note.create({
       data: {
-        user: { connect: { id: user.id } },
         slug: createNoteSlug(note),
         title: note.title.trim(),
         description: note.description.trim(),
         content: note.content.trim(),
+        userId: user.id,
+        images: {
+          create: files.map((file) => {
+            return {
+              url: String(file.cdnUrl),
+              userId: user.id,
+            };
+          }),
+        },
       },
     });
   },

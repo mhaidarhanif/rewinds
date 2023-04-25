@@ -21,6 +21,7 @@ import { model } from "~/models";
 import {
   createSitemap,
   formatDateTime,
+  formatPluralItems,
   formatRelativeTime,
   invariant,
 } from "~/utils";
@@ -61,6 +62,8 @@ export default function Route() {
   if (!user) {
     return <span>User not found.</span>;
   }
+
+  const userImagesCount = user.images.length;
 
   return (
     <div className="stack-lg">
@@ -161,7 +164,23 @@ export default function Route() {
       </section>
 
       <section>
-        <h5>Images</h5>
+        <header>
+          <h5>Images</h5>
+          <RemixForm method="delete">
+            <Button
+              size="sm"
+              variant="danger"
+              name="intent"
+              value="admin-user-delete-all-images"
+              disabled={userImagesCount <= 0}
+            >
+              <Trash className="size-sm" />
+              <span>
+                Delete All {formatPluralItems("Note", userImagesCount)}
+              </span>
+            </Button>
+          </RemixForm>
+        </header>
         {user.images.length <= 0 && <span>No user images yet.</span>}
         {user.images.length > 0 && (
           <ul className="queue-center">

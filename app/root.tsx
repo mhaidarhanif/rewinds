@@ -21,7 +21,7 @@ import {
   ThemeProvider,
   useTheme,
 } from "remix-themes";
-import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 
 import {
   Debug,

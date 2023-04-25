@@ -4,13 +4,12 @@ Public and quick todos for this repo.
 
 ## In Progress
 
-- settings to delete user account and associated data
+- implement admin menu on mobile with sheet
+  - https://ui.shadcn.com/docs/primitives/sheet
 
 ## Todo
 
-- implement admin menu on mobile with sheet
-  - https://ui.shadcn.com/docs/primitives/sheet
-- setup Analytics with Ackee / @vercel/analytics
+- settings to delete user account and associated data
 
 ## Backlog
 

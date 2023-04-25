@@ -402,6 +402,8 @@ While in development, you can:
 - Visualize the schema with [Prisma Editor](https://github.com/mohammed-bahumaish/prisma-editor) or [Prismaliser](https://prismaliser.app)
 - Push Prisma schema changes for PlanetScale with `nr prisma:push` (it runs `prisma db push`)
   - Notice that with [PlanetScale](https://planetscale.com/docs/tutorials/prisma-quickstart) approach with [Prisma](https://prisma.io/docs/guides/database/using-prisma-with-planetscale), we don't need migration files in our repo, but rather managed in their platform.
+- Read the [official Prisma docs](https://prisma.io/docs) and [How to Prisma](https://howtoprisma.com)
+  - Can also try [PrismaGPT](https://gpt.howtoprisma.com) to help learn the query.
 
 ### File upload with Uploadcare
 
