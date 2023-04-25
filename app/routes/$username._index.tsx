@@ -66,7 +66,7 @@ export async function loader({ request, params }: LoaderArgs) {
 }
 
 export default function Route() {
-  const { user: userSession } = useRootLoaderData();
+  const { userSession } = useRootLoaderData();
   const { user } = useLoaderData<typeof loader>();
   const params = useParams();
 

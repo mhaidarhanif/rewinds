@@ -92,6 +92,7 @@ export async function loader({ request }: LoaderArgs) {
   const loaderData = {
     ENV,
     theme,
+    userSession,
     user,
   } satisfies RootLoaderData;
 

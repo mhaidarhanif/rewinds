@@ -88,7 +88,7 @@ export async function action({ request }: ActionArgs) {
  * Similar with /notes/$noteSlug but fancier
  */
 export default function Route() {
-  const { user: userSession } = useRootLoaderData();
+  const { userSession } = useRootLoaderData();
   const { note } = useLoaderData<typeof loader>();
 
   const isOwner = userSession?.id === note.userId;
