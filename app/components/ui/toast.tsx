@@ -45,9 +45,9 @@ export const toastVariants = cva(
         default:
           "border-surface-200 bg-white dark:border-surface-700 dark:bg-surface-800",
         success:
-          "success group border-green-600 bg-green-600 text-white dark:border-green-600 dark:bg-green-900",
+          "success group border-green-800 bg-green-600 text-white dark:border-green-600 dark:bg-green-900",
         danger:
-          "danger group border-red-600 bg-red-600 text-white dark:border-red-600 dark:bg-red-900",
+          "danger group border-red-800 bg-red-600 text-white dark:border-red-600 dark:bg-red-900",
       },
     },
     defaultVariants: {
@@ -59,7 +59,7 @@ export const toastVariants = cva(
 export const Toast = forwardRef<
   React.ElementRef<typeof ToastPrimitives.Root>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Root> &
-    VariantProps<typeof toastVariants>
+  VariantProps<typeof toastVariants>
 >(({ className, variant, ...props }, ref) => {
   return (
     <ToastPrimitives.Root

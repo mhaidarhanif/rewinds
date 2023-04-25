@@ -1,8 +1,8 @@
-import { parse } from "@conform-to/zod";
+import { useState, useEffect } from "react";
 import { json } from "@remix-run/node";
 import { useActionData, useNavigation } from "@remix-run/react";
-import { useState } from "react";
 import { badRequest, serverError } from "remix-utils";
+import { parse } from "@conform-to/zod";
 import { z } from "zod";
 
 import {
@@ -17,6 +17,8 @@ import {
   UploadcareWidget,
   Image,
   Anchor,
+  Switch,
+  ToastAction,
 } from "~/components";
 import { requireUserSession } from "~/helpers";
 import { model } from "~/models";
@@ -24,6 +26,7 @@ import { createMetaData, jsonStringify } from "~/utils";
 
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 import type { FileGroup, FileInfo } from "@uploadcare/react-widget";
+import { toast } from "~/hooks";
 
 /**
  * Demo: Uploadcare
@@ -122,21 +125,42 @@ export default function Route() {
   const [fileGroup, setFileGroup] = useState<FileGroup>();
   const [fileGroupNumbers, setFileGroupNumbers] = useState<number[]>();
 
-  // TODO: Use a switch
-  const multiple = true;
+  const [isMultiple, setIsMultiple] = useState<boolean>(true);
 
-  // TODO: Use a toast to show the file/files have been saved
-  // console.info()
+  const isSubmitEnabled = (!isMultiple && fileInfo?.cdnUrl) || (isMultiple && fileGroup?.cdnUrl)
+
+  // Keep in mind changing between multiple and not
+  // after uploaded some file(s) could cause the expected behaviors
+  // for the Uploadcare error:
+  // - FileInfo to FileGroup: Can’t create file group
+  // - FileGroup to FileInfo: Incorrect value
+  function handleChangeMultiple() {
+    setIsMultiple(!isMultiple);
+  }
 
   function handleUploaded(file: any) {
-    if (!file?.count) {
+    if (!file?.count && !isMultiple) {
       setFileInfo(file as FileInfo);
     }
-    if (file?.count) {
+    if (file?.count && isMultiple) {
       setFileGroup(file as FileGroup);
       setFileGroupNumbers(Array.from(Array(file?.count).keys()));
     }
   }
+
+  function handleToastCompleted() {
+    const mode = isMultiple ? "Multiple files" : "Single file";
+    toast({
+      variant: "success",
+      title: `${mode} uploaded and submitted!`,
+    });
+  }
+
+  useEffect(() => {
+    if (actionData?.intent === "submit") {
+      handleToastCompleted()
+    }
+  }, [actionData])
 
   return (
     <Layout
@@ -147,12 +171,21 @@ export default function Route() {
         </PageHeader>
       }
     >
-      <div className="mx-auto w-full max-w-xl">
+      <div className="stack-lg mx-auto w-full max-w-xl">
+        <section className="queue-center">
+          <Switch
+            id="uploadcare-multiple"
+            onCheckedChange={handleChangeMultiple}
+            checked={isMultiple}
+          />
+          <Label htmlFor="uploadcare-multiple">Multiple Upload</Label>
+        </section>
+
         <RemixForm method="POST" className="stack">
           <div className="stack">
-            <Label>Upload image{multiple && "s"}:</Label>
+            <Label>Upload image{isMultiple && "s"}:</Label>
             <UploadcareWidget
-              multiple={multiple}
+              multiple={isMultiple}
               handleUploaded={handleUploaded}
               isDemo
               isAlwaysShowDebug
@@ -162,7 +195,7 @@ export default function Route() {
               type="checkbox"
               id="multiple"
               name="multiple"
-              defaultChecked={multiple}
+              defaultChecked={isMultiple}
               readOnly
             />
             <Input
@@ -182,7 +215,7 @@ export default function Route() {
           <div>
             <Card
               data-id="preview-uploaded-files"
-              className="queue-center min-h-[9rem] w-full p-2"
+              className="queue-center min-h-[10rem] w-full p-2"
             >
               {/* If no file/files yet */}
               {!fileInfo && !fileGroup && (
@@ -192,7 +225,7 @@ export default function Route() {
               )}
 
               {/* If one file as a FileInfo */}
-              {fileInfo && (
+              {!isMultiple && fileInfo && (
                 <Anchor href={String(fileInfo?.cdnUrl)}>
                   <Image
                     src={String(fileInfo?.cdnUrl)}
@@ -203,7 +236,7 @@ export default function Route() {
               )}
 
               {/* If multiple files as a FileGroup */}
-              {Number(fileGroup?.count) > 0 && (
+              {isMultiple && Number(fileGroup?.count) > 0 && (
                 <div className="queue-center h-[inherit] w-full">
                   {fileGroupNumbers &&
                     fileGroupNumbers?.length > 0 &&
@@ -231,6 +264,7 @@ export default function Route() {
             isSubmitting={isSubmitting}
             loadingText="Saving..."
             className="grow"
+            disabled={!isSubmitEnabled}
           >
             Save
           </ButtonLoading>

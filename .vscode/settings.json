@@ -1,6 +1,6 @@
 {
   "dotenv.enableAutocloaking": true,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "editor.insertSpaces": true,
   "editor.renderWhitespace": "trailing",
   "editor.rulers": [

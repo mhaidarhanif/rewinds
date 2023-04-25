@@ -93,7 +93,7 @@
     @apply selection:bg-brand-500/50;
   }
   .link {
-    @apply text-brand-600 transition-colors hover:text-brand-800 dark:text-brand-400 dark:hover:text-brand-300;
+    @apply text-brand-600 transition-colors hover:border-brand-700 hover:text-brand-700 dark:text-brand-400 dark:hover:border-brand-400 dark:hover:text-brand-400;
   }
   .dim {
     @apply text-surface-400 dark:text-surface-600;
@@ -134,6 +134,9 @@
   }
   .button-variant-default {
     @apply border-2 border-brand-800 bg-brand-600 text-white hover:bg-brand-700 focus:bg-brand-600 dark:border-brand-400 dark:hover:bg-brand-700 dark:focus:bg-brand-600;
+  }
+  .button-variant-outline {
+    @apply border-2 border-surface-100 bg-transparent text-brand-800 hover:bg-surface-100/30 dark:border-surface-800 dark:text-brand-200 dark:hover:bg-surface-800/30;
   }
   .button-variant-subtle {
     @apply bg-brand-500/20 text-brand-800 hover:bg-brand-500/50 hover:text-brand-800 focus:bg-brand-300 focus:text-brand-800 dark:bg-brand-900 dark:text-brand-200 dark:hover:bg-brand-800 dark:hover:text-brand-200 dark:focus:bg-brand-800 dark:focus:text-brand-200;
@@ -288,21 +291,30 @@
   @apply bg-text-default;
 }
 .uploadcare--menu__item {
-  @apply bg-text-raised;
+  @apply bg-text-raised focus:link hover:link;
 }
 .uploadcare--link,
 .uploadcare--link:link,
 .uploadcare--link:visited {
   @apply link;
 }
+.uploadcare--button:not(.uploadcare--button_primary) {
+  @apply button-variant-outline;
+}
+.uploadcare--button:not(.uploadcare--dialog__close) {
+  @apply button focus:link hover:link cursor-pointer;
+}
+.uploadcare--dialog__close {
+  @apply link focus:link hover:link cursor-pointer;
+}
 .uploadcare--widget__button {
   @apply button-size-small button-variant-subtle;
 }
-.uploadcare--button {
-  @apply cursor-pointer;
-}
 .uploadcare--button_primary {
   @apply button button-variant-subtle block border-none;
+}
+.uploadcare-tab-effects--effects {
+  @apply queue-center;
 }
 .uploadcare-tab-effects--effect-button {
   @apply dark:fill-white;
@@ -325,8 +337,14 @@
 .uploadcare--progressbar__value {
   @apply bg-brand-500;
 }
+.uploadcare--file__description {
+  @apply hover:link focus:link;
+}
+.uploadcare--file__description .uploadcare--file__preview {
+  @apply hover:link focus:link;
+}
 .uploadcare--file_status_uploading .uploadcare--file__preview {
-  @apply border-brand-500 bg-brand-500 text-brand-500;
+  @apply hover:link focus:link border-brand-500 bg-brand-500 text-brand-500;
 }
 .uploadcare--menu_opened .uploadcare--menu__toggle {
   @apply bg-text-default;
