@@ -1,8 +1,8 @@
 import { DayPicker } from "react-day-picker";
 
-import { cn } from "~/utils";
 import { buttonVariants } from "~/components";
 import { ChevronLeft, ChevronRight } from "~/icons";
+import { cn } from "~/utils";
 
 /**
  * Calendar

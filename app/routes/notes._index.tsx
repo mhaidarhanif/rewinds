@@ -8,6 +8,7 @@ import {
   PageHeader,
   RemixLink,
 } from "~/components";
+import { Plus } from "~/icons";
 import { model } from "~/models";
 import {
   createCacheHeaders,
@@ -18,7 +19,6 @@ import {
 } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
-import { Plus } from "~/icons";
 
 export const handle = createSitemap("/notes", 0.8);
 

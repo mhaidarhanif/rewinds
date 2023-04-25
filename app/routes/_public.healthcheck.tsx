@@ -1,6 +1,5 @@
 import { configDev } from "~/configs";
 import { prisma } from "~/libs";
-
 import { HttpStatus } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";

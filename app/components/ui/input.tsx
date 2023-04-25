@@ -1,9 +1,8 @@
 import { forwardRef, useState } from "react";
 
+import { Button } from "~/components";
 import { Eye, EyeOff } from "~/icons";
 import { cn } from "~/utils";
-
-import { Button } from "~/components";
 
 /**
  * Input

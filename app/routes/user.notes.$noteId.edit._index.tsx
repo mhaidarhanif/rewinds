@@ -17,13 +17,13 @@ import {
 } from "~/components";
 import { requireUserSession, updateNoteSlug } from "~/helpers";
 import { useRootLoaderData } from "~/hooks";
+import { InfoEmpty, SubmitDocument } from "~/icons";
 import { model } from "~/models";
 import { schemaNoteUpdate } from "~/schemas";
 import { createSitemap, invariant } from "~/utils";
 
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 import type { z } from "zod";
-import { InfoEmpty, SubmitDocument } from "~/icons";
 
 export const handle = createSitemap();
 

@@ -1,11 +1,11 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
+import { Badge } from "~/components";
 import { model } from "~/models";
 import { createSitemap } from "~/utils";
 
 import type { LoaderArgs } from "@remix-run/node";
-import { Badge } from "~/components";
 
 export const handle = createSitemap();
 

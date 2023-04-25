@@ -1,9 +1,10 @@
-import type { LoaderArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
-import { prisma } from "~/libs";
 
+import { prisma } from "~/libs";
 import { model } from "~/models";
 import { createCacheHeaders } from "~/utils";
+
+import type { LoaderArgs } from "@remix-run/node";
 
 export async function loader({ request }: LoaderArgs) {
   const [notesCount, notes] = await prisma.$transaction([

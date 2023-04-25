@@ -12,6 +12,7 @@ import {
   RemixLink,
 } from "~/components";
 import { configMeta } from "~/configs";
+import { useRootLoaderData } from "~/hooks";
 import { model } from "~/models";
 import {
   cn,
@@ -25,7 +26,6 @@ import {
 } from "~/utils";
 
 import type { LoaderArgs, V2_MetaFunction } from "@remix-run/node";
-import { useRootLoaderData } from "~/hooks";
 
 export const handle = createSitemap();
 

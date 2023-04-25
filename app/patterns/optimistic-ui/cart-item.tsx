@@ -1,7 +1,7 @@
 import { useFetcher } from "@remix-run/react";
-import { Minus, Plus, Trash } from "~/icons";
 
 import { RemixLink } from "~/components";
+import { Minus, Plus, Trash } from "~/icons";
 import { cn, formatValueToCurrency } from "~/utils";
 
 // Mock function

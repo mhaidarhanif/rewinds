@@ -18,13 +18,13 @@ import {
 } from "~/components";
 import { configDev } from "~/configs";
 import { requireUserSession } from "~/helpers";
+import { InfoEmpty, SubmitDocument } from "~/icons";
 import { model } from "~/models";
 import { schemaNoteNew } from "~/schemas";
 import { createSitemap } from "~/utils";
 
 import type { ActionArgs } from "@remix-run/node";
 import type { z } from "zod";
-import { InfoEmpty, SubmitDocument } from "~/icons";
 
 export const handle = createSitemap();
 

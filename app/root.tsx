@@ -12,6 +12,7 @@ import {
   isRouteErrorResponse,
   useRouteError,
 } from "@remix-run/react";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import { IconoirProvider } from "iconoir-react";
 import NProgress from "nprogress";
 import { useEffect } from "react";
@@ -21,7 +22,6 @@ import {
   ThemeProvider,
   useTheme,
 } from "remix-themes";
-import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 
 import {
   Debug,
