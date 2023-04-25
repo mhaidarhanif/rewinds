@@ -78,3 +78,7 @@ Public and quick todos for this repo.
   - Theme: visual like colors, typography, but can can exist in light or dark mode
 - desktop app
   - https://todesktop.com
+- Snaplet database mirror
+- Eraser diagram vs Mermaid
+- ConvertKit vs Bento vs Audienceful
+- What the Diff: https://whatthediff.ai

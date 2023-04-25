@@ -1,5 +1,6 @@
 {
-  "dotenv.enableAutocloaking": false,
+  "dotenv.enableAutocloaking": true,
+  "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.renderWhitespace": "trailing",
   "editor.rulers": [
@@ -16,6 +17,75 @@
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "peacock.color": "#3399cc",
+  "reload-can-solve-any-problems.reloadItems": [
+    {
+      "extensionId": "dbaeumer.vscode-eslint",
+      "name": "ESLint",
+      "operations": [
+        {
+          "commandId": "eslint.restart",
+          "statusBarProgressMessage": "Reload ESlint",
+          "text": "$(debug-restart)",
+          "title": "Reload ESLint"
+        }
+      ]
+    },
+    {
+      "extensionId": "vscode.typescript-language-features",
+      "name": "TypeScript",
+      "operations": [
+        {
+          "commandId": "typescript.reloadProjects",
+          "statusBarProgressMessage": "Reload TypeScript Projects",
+          "text": "$(project)",
+          "title": "Reload TypeScript Projects"
+        },
+        {
+          "commandId": "typescript.restartTsServer",
+          "text": "$(server-process)",
+          "title": "Restart TypeScript Server"
+        }
+      ]
+    },
+    {
+      "extensionId": "Vue.volar",
+      "name": "Volar",
+      "operations": [
+        {
+          "commandId": "volar.action.reloadProject",
+          "statusBarProgressMessage": "Volar Reload Projects",
+          "text": "$(project)",
+          "title": "Volar Reload Projects"
+        },
+        {
+          "commandId": "volar.action.restartServer",
+          "statusBarProgressMessage": "Restart Vue Server",
+          "text": "$(server-process)",
+          "title": "Restart Vue Server"
+        }
+      ]
+    }
+  ],
+  "reload-can-solve-any-problems.reloadServers": [
+    {
+      "commandId": "eslint.restart",
+      "extensionId": "dbaeumer.vscode-eslint"
+    },
+    {
+      "commandId": "typescript.reloadProjects",
+      "extensionId": "vscode.typescript-language-features"
+    },
+    {
+      "commandId": "volar.action.reloadProject",
+      "extensionId": "Vue.volar"
+    }
+  ],
+  "reload-can-solve-any-problems.statusBar": {
+    "alignment": "left",
+    "commandId": "workbench.action.reloadWindow",
+    "priority": 100,
+    "text": "$(debug-restart)"
+  },
   "search.exclude": {
     ".cache/**": true,
     "build/**": true,
@@ -40,6 +110,5 @@
     "titleBar.activeForeground": "#15202b",
     "titleBar.inactiveBackground": "#3399cc99",
     "titleBar.inactiveForeground": "#15202b99"
-  },
-  "editor.formatOnSave": true
+  }
 }

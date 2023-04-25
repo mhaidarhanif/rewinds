@@ -182,7 +182,7 @@ export default function Route() {
           <div>
             <Card
               data-id="preview-uploaded-files"
-              className="queue-center h-36 w-full px-2"
+              className="queue-center min-h-[9rem] w-full p-2"
             >
               {/* If no file/files yet */}
               {!fileInfo && !fileGroup && (

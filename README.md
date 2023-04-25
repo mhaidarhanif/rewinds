@@ -279,6 +279,7 @@ Included setup for the developers:
   - [x] Root loader data for env, theme, user, etc
   - [x] Cache header
 - [x] No need for CLS loading screens/skeletons, only loading bar on top and loading button state
+- [x] Integration with [Vercel Web Analytics](https://vercel.com/docs/concepts/analytics). Enable it on your Vercel projects dashboard.
 - [x] Lighthouse or [Pagespeed Insights](https://pagespeed.web.dev/analysis/https-rewinds-mhaidarhanif-com/hbkn7kmahh?form_factor=desktop) optimized
 - [x] pnpm, Prettier, ESLint, Stylelint, and much more
   - [x] No lint and type errors!
@@ -286,7 +287,7 @@ Included setup for the developers:
 
 Recommended extra app setup:
 
-- Connect to monitoring service such as [Better Uptime](https://betteruptime.com) or [Instatus](https://instatus.com).
+- Connect to monitoring service such as [Better Uptime](https://betteruptime.com), [Hyperping](https://hyperping.io), or [Instatus](https://instatus.com).
 - Connect to [Axiom](https://axiom.co) for better log management.
 - Connect to [Highlight](https://highlight.io) to report and analyze errors.
 - Use [Google Search Console](https://search.google.com/search-console/about) to check the sitemap and SERP-related stuffs.
@@ -403,6 +404,7 @@ While in development, you can:
 - Push Prisma schema changes for PlanetScale with `nr prisma:push` (it runs `prisma db push`)
   - Notice that with [PlanetScale](https://planetscale.com/docs/tutorials/prisma-quickstart) approach with [Prisma](https://prisma.io/docs/guides/database/using-prisma-with-planetscale), we don't need migration files in our repo, but rather managed in their platform.
 - Read the [official Prisma docs](https://prisma.io/docs) and [How to Prisma](https://howtoprisma.com)
+  - Follow the [PlanetScale & Prisma happy practices](https://planetscale.com/docs/prisma/prisma-best-practices)
   - Can also try [PrismaGPT](https://gpt.howtoprisma.com) to help learn the query.
 
 ### File upload with Uploadcare
