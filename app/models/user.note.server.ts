@@ -34,7 +34,7 @@ export const mutation = {
   }: {
     user: Pick<User, "id">;
     note: Pick<Note, "title" | "description" | "content">;
-    files: FileInfo[];
+    files?: FileInfo[];
   }) {
     return prisma.note.create({
       data: {
@@ -44,7 +44,7 @@ export const mutation = {
         content: note.content.trim(),
         userId: user.id,
         images: {
-          create: files.map((file) => {
+          create: files?.map((file) => {
             return {
               url: String(file.cdnUrl),
               userId: user.id,
