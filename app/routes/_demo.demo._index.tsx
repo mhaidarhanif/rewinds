@@ -40,7 +40,7 @@ export function DemoMusicPlayer() {
         <h2>Music Player</h2>
         <p>
           Demo from{" "}
-          <AnchorText href="https://ui.shadcn.com">shadcn/ui</AnchorText>{" "}
+          <AnchorText href="https://ui.shadcn.com">shadcn UI</AnchorText>{" "}
           landing page. Just beware, this example wouldn't work and show on
           mobile yet.
         </p>

@@ -176,7 +176,7 @@ export default function Route() {
             >
               <Trash className="size-sm" />
               <span>
-                Delete All {formatPluralItems("Note", userImagesCount)}
+                Delete All {formatPluralItems("Image", userImagesCount)}
               </span>
             </Button>
           </RemixForm>

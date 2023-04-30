@@ -2,9 +2,11 @@
 
 This is ⏪ Rewinds
 
-A full featured web app starter kit with Remix and Tailwind CSS
+A full featured web app starter kit with Remix
 
-It is based on Remix Stacks and @shadcn UI, open source and free
+It is based on Remix Stacks, Tailwind CSS, Radix UI, and @shadcn UI
+
+Open source and free
 
 (screenshot)
 

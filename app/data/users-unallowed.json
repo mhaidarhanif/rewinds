@@ -56,6 +56,12 @@
   "build",
   "builds",
   "built",
+  "cal",
+  "call",
+  "calls",
+  "called",
+  "caller",
+  "callers",
   "calculate",
   "calculated",
   "calculates",
@@ -592,5 +598,10 @@
   "yearinreview",
   "years",
   "youtube",
+  "upload",
+  "uploadcare",
+  "download",
+  "table",
+  "tables",
   "zed"
 ]

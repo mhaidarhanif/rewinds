@@ -302,7 +302,7 @@ Recommended extra development workflow setup:
 
 This repo is kind of over-engineered to have high flexibility and cover a lot of use cases for different applications/projects/products, especially what I'm working with several other people.
 
-This template uses [`shadcn/ui`](https://github.com/shadcn/ui) as the base components style. And the setup for full stack app development is mostly inspired by [T3 Stack](https://create.t3.gg). The main difference is this repo uses Remix, not Next.js like those two.
+The components initialized using [shadcn UI](https://github.com/shadcn/ui) as the base components style. And the setup for full stack app development is mostly inspired by [T3 Stack](https://create.t3.gg). The main difference is this repo uses Remix, not Next.js like those two.
 
 Currently includes the Remix HMR and HDR optional setup with both Vercel config and Express server on development as per Remix `v1.14`. The config is just combining the templates from Remix with Express and Vercel based on the environment. With separated Express server, you are also able to debug the process from code editor like VS Code much easier.
 

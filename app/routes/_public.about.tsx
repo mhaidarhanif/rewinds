@@ -1,5 +1,6 @@
 import {
   Anchor,
+  AnchorText,
   AspectRatio,
   Balancer,
   Image,
@@ -41,9 +42,7 @@ export default function Route() {
           Rewinds is a Remix Tailwind Stack with various library setup,
           interactive UI components, and functional features of a web app. This
           template components uses{" "}
-          <Anchor href="https://github.com/shadcn/ui">
-            <code>shadcn/ui</code>
-          </Anchor>{" "}
+          <AnchorText href="https://github.com/shadcn/ui">shadcn UI</AnchorText>{" "}
           as the base components style. While the setup for full stack app
           development is inspired by{" "}
           <Anchor href="https://create.t3.gg">T3 Stack</Anchor>.

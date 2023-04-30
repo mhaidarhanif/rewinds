@@ -41,7 +41,7 @@ export async function action({ request }: ActionArgs) {
     const newNote = await model.userNote.mutation.create({
       user: userSession,
       note: submission.value,
-      files: []
+      files: [],
     });
     if (!newNote) {
       return badRequest(submission);
