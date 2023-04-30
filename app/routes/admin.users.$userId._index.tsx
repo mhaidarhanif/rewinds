@@ -43,17 +43,25 @@ export async function action({ request }: ActionArgs) {
   const formData = await request.formData();
   const submission = parse(formData);
 
-  if (submission.payload.intent === "delete-user") {
-    try {
+  try {
+    if (submission.payload.intent === "delete-user") {
       await model.adminUser.mutation.deleteById({
         id: submission.payload.userId,
       });
       return redirect(`..`);
-    } catch (error) {
-      console.error(error);
-      return serverError(submission);
     }
+    if (submission.payload.intent === "delete-all-user-images") {
+      await model.adminUser.mutation.deleteAllUserImages({
+        userId: submission.payload.userId,
+      });
+      return json(submission)
+    }
+  } catch (error) {
+    console.error(error);
+    return serverError(submission);
   }
+
+  return null;
 }
 
 export default function Route() {
@@ -107,8 +115,8 @@ export default function Route() {
               ID: <code>{user.id}</code>
             </span>
             <span>•</span>
-            <span>
-              Role: <Badge>{user.role.name}</Badge>
+            <span className="queue-center-sm">
+              Role: <Badge size="xs">{user.role.name}</Badge>
             </span>
           </div>
 
@@ -141,8 +149,10 @@ export default function Route() {
         </article>
       </section>
 
-      <section>
-        <h5>Notes</h5>
+      <section className="stack">
+        <header>
+          <h5>Notes</h5>
+        </header>
         {user.notes.length <= 0 && <span>No user notes yet.</span>}
         {user.notes.length > 0 && (
           <ul className="space-y-1">
@@ -163,26 +173,27 @@ export default function Route() {
         )}
       </section>
 
-      <section>
-        <header>
+      <section className="stack">
+        <header className="queue-center">
           <h5>Images</h5>
           <RemixForm method="delete">
+            <input type="hidden" name="userId" value={user.id} />
             <Button
-              size="sm"
+              size="xs"
               variant="danger"
               name="intent"
-              value="admin-user-delete-all-images"
+              value="delete-all-user-images"
               disabled={userImagesCount <= 0}
             >
-              <Trash className="size-sm" />
+              <Trash className="size-xs" />
               <span>
                 Delete All {formatPluralItems("Image", userImagesCount)}
               </span>
             </Button>
           </RemixForm>
         </header>
-        {user.images.length <= 0 && <span>No user images yet.</span>}
-        {user.images.length > 0 && (
+        {userImagesCount <= 0 && <span>No user images yet.</span>}
+        {userImagesCount > 0 && (
           <ul className="queue-center">
             {user.images
               .filter((image) => image.url && image.url !== "undefined")

@@ -70,4 +70,9 @@ export const mutation = {
       },
     });
   },
+  deleteAllUserImages({ userId }: { userId: User["id"] }) {
+    return prisma.image.deleteMany({
+      where: { userId },
+    });
+  },
 };

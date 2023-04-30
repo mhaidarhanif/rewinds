@@ -174,7 +174,9 @@ export default function Route() {
             onCheckedChange={handleChangeMultiple}
             checked={isMultiple}
           />
-          <Label htmlFor="uploadcare-multiple">{isMultiple ? "Multiple Upload" : "Single Upload"}</Label>
+          <Label htmlFor="uploadcare-multiple">
+            {isMultiple ? "Multiple Upload" : "Single Upload"}
+          </Label>
         </section>
 
         <RemixForm method="POST" className="stack">
@@ -217,7 +219,10 @@ export default function Route() {
               {/* If no file/files yet */}
               {!fileInfo && !fileGroup && (
                 <div className="cross-center h-[inherit] w-full select-none">
-                  <p className="dim">{isMultiple ? "Some images" : "An image"} will be previewed here</p>
+                  <p className="dim">
+                    {isMultiple ? "Some images" : "An image"} will be previewed
+                    here
+                  </p>
                 </div>
               )}
 

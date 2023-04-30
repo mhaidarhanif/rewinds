@@ -304,6 +304,7 @@ export function ExampleBadge() {
         <div className="stack">
           <h4>Size</h4>
           <div className="queue-center">
+            <Badge size="xs">Extra Small</Badge>
             <Badge size="sm">Small</Badge>
             <Badge>Default</Badge>
             <Badge size="lg">Large</Badge>
