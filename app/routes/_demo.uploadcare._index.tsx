@@ -53,16 +53,15 @@ export async function action({ request }: ActionArgs) {
 
   const formData = await request.formData();
   const submission = parse(formData, { schema: schemaUploadcareDemo });
-
   if (!submission.value || submission.intent !== "submit") {
     return badRequest(submission);
   }
 
-  // Transform checkbox value to boolean
+  // Transform checkbox "on" or null value to boolean
   const multiple = submission?.value?.multiple === "on" ? true : false;
 
-  // Save one file info to database, image table
-  if (!multiple) {
+  // If not multiple, save one file info to database (Image table)
+  if (!multiple && submission?.value?.fileInfo) {
     const fileInfo: FileInfo = JSON.parse(String(submission?.value?.fileInfo));
 
     try {
@@ -80,8 +79,8 @@ export async function action({ request }: ActionArgs) {
     }
   }
 
-  // Save multiple files info to database, image table
-  if (multiple) {
+  // If multiple, save multiple files info to database (Image table)
+  if (multiple && submission?.value?.fileGroup) {
     const fileGroup: FileGroup = JSON.parse(
       String(submission?.value?.fileGroup)
     );
@@ -148,19 +147,16 @@ export default function Route() {
     }
   }
 
-  function handleToastCompleted() {
-    const mode = isMultiple ? "Multiple files" : "Single file";
-    toast({
-      variant: "success",
-      title: `${mode} uploaded and submitted!`,
-    });
-  }
-
+  // TODO: https://jacobparis.com/guides/remix-form-toast
   useEffect(() => {
     if (actionData?.intent === "submit") {
-      handleToastCompleted();
+      const mode = isMultiple ? "Multiple files" : "Single file";
+      toast({
+        variant: "success",
+        title: `${mode} uploaded and submitted!`,
+      });
     }
-  }, [actionData]);
+  }, [actionData, toast]);
 
   return (
     <Layout
@@ -178,7 +174,7 @@ export default function Route() {
             onCheckedChange={handleChangeMultiple}
             checked={isMultiple}
           />
-          <Label htmlFor="uploadcare-multiple">Multiple Upload</Label>
+          <Label htmlFor="uploadcare-multiple">{isMultiple ? "Multiple Upload" : "Single Upload"}</Label>
         </section>
 
         <RemixForm method="POST" className="stack">
@@ -195,8 +191,9 @@ export default function Route() {
               type="checkbox"
               id="multiple"
               name="multiple"
-              defaultChecked={isMultiple}
               readOnly
+              // checked, not defaultChecked because dynamic value
+              checked={isMultiple}
             />
             <Input
               type="hidden"
@@ -220,7 +217,7 @@ export default function Route() {
               {/* If no file/files yet */}
               {!fileInfo && !fileGroup && (
                 <div className="cross-center h-[inherit] w-full select-none">
-                  <p className="dim">Preview will be shown here</p>
+                  <p className="dim">{isMultiple ? "Some images" : "An image"} will be previewed here</p>
                 </div>
               )}
 
@@ -266,7 +263,7 @@ export default function Route() {
             className="grow"
             disabled={!isSubmitEnabled}
           >
-            Save
+            Save {isMultiple ? "Images" : "Image"}
           </ButtonLoading>
         </RemixForm>
 
