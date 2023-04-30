@@ -87,15 +87,15 @@ As a reminder:
 
 ### Primary Tech Stack
 
-- Rewinds: Remix Tailwind Stack
-- TRIP: TypeScript/Tailwind Remix/React/Radix Interface Prisma
-  - VPS: Vercel PlanetScale
+- [Rewinds](https://rewinds.mhaidarhanif.com): [Remix](https://remix.run) [Tailwind](https://tailwindcss.com) Stack
+- TRIP: [TypeScript](https://typescriptlang.org)/[Tailwind](https://tailwindcss.com) [Remix](https://remix.run)/[React](https://react.dev)/[Radix](https://radix-ui.com) Interface [Prisma](https://prisma.io)
+  - VPS: [Vercel](https://vercel.com) [PlanetScale](https://planetscale.com)
 
 These are also the primary prerequisites for you to learn, understand, and use with this Rewinds stack. (Architecture diagram can help later on here)
 
 If you work as a team, I recommend to:
 
-- Use secrets management platform such as Doppler, to share the environment variables. So you can optionally use or not to use `.env` file.
+- Use secrets management platform such as [Doppler](https://doppler.com), to share the environment variables. So you can optionally use or not to use `.env` file. But if you need to share quickly, you can use any methods available or share via [EnvShare](https://envshare.dev).
 - Use Vercel Pro plan to make code review with preview deployments easier.
 
 ### Complete Tech Stack

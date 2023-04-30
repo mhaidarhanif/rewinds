@@ -1,4 +1,5 @@
 _*.md
+._*
 .cache
 .DS_Store
 .env
