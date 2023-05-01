@@ -144,7 +144,7 @@ export default function Route() {
     }
   }
 
-  // TODO: https://jacobparis.com/guides/remix-form-toast
+  // TODO: Use cookie https://jacobparis.com/guides/remix-form-toast
   useEffect(() => {
     if (actionData?.intent === "submit") {
       const mode = isMultiple ? "Multiple files" : "Single file";

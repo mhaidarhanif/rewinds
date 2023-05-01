@@ -16,7 +16,7 @@ const username = z
 const email = z.string().min(1, "Email is required").email("Email is invalid");
 
 /**
- * TODO:
+ * TODO: Improve password check
  * - Not only numbers
  * - Shouldn't match the email
  */

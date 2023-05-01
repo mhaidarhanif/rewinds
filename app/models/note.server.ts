@@ -20,7 +20,7 @@ export const query = {
       include: { user: { select: model.user.fields.public } },
     });
   },
-  // TODO: might evaluate again later for the performance
+  // TODO: Might evaluate again later for the performance
   getBySlugAndUsername({
     slug,
     username,
