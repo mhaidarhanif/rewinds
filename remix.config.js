@@ -29,14 +29,16 @@ module.exports = {
   // https://remix.run/docs/en/1.14.3/file-conventions/remix-config#serverdependenciestobundle
   serverDependenciesToBundle: [],
 
+  // https://remix.run/docs/en/1.16.0/guides/styling#tailwind-css
+  tailwind: true,
+  postcss: true,
+
   // https://remix.run/docs/en/v1/file-conventions/route-files-v2#route-file-naming-v2
   future: {
     v2_errorBoundary: true,
     v2_meta: true,
     v2_routeConvention: true,
     v2_normalizeFormMethod: true,
-    unstable_tailwind: true,
-    unstable_postcss: true,
     unstable_dev: isUsingHMR,
   },
 };
