@@ -54,7 +54,7 @@ export async function action({ request }: ActionArgs) {
       await model.adminUser.mutation.deleteAllUserImages({
         userId: submission.payload.userId,
       });
-      return json(submission)
+      return json(submission);
     }
   } catch (error) {
     console.error(error);

@@ -70,17 +70,17 @@ export async function action({ request }: ActionArgs) {
   const formData = await request.formData();
   const submission = parse(formData);
 
-  if (submission.payload.intent === "delete-note") {
-    try {
+  try {
+    if (submission.payload.intent === "delete-note") {
       await model.userNote.mutation.deleteById({
         id: submission.payload.noteId,
         userId: userSession.id,
       });
       return redirect(`/${user.username}`);
-    } catch (error) {
-      console.error(error);
-      return serverError(submission);
     }
+  } catch (error) {
+    console.error(error);
+    return serverError(submission);
   }
 }
 

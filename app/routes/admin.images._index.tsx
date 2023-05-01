@@ -1,7 +1,16 @@
-import { ActionArgs, json } from "@remix-run/node";
+import type { ActionArgs } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import { Alert, Anchor, Image, Debug, RemixLink, RemixForm, Button } from "~/components";
+import {
+  Alert,
+  Anchor,
+  Image,
+  Debug,
+  RemixLink,
+  RemixForm,
+  Button,
+} from "~/components";
 import { createSitemap, formatPluralItems } from "~/utils";
 import { prisma } from "~/libs";
 import { Trash } from "~/icons";
@@ -25,7 +34,7 @@ export async function action({ request }: ActionArgs) {
 
   try {
     if (submission.payload.intent === "delete-all-images") {
-      await prisma.image.deleteMany()
+      await prisma.image.deleteMany();
       return json(submission);
     }
   } catch (error) {
@@ -33,14 +42,12 @@ export async function action({ request }: ActionArgs) {
     return serverError(submission);
   }
 
-  return null;
+  return json(submission);
 }
-
 
 export default function Route() {
   const { images } = useLoaderData<typeof loader>();
   const imagesCount = images.length;
-
 
   return (
     <div className="stack px-layout">
@@ -57,9 +64,7 @@ export default function Route() {
             disabled={imagesCount <= 0}
           >
             <Trash className="size-xs" />
-            <span>
-              Delete All {formatPluralItems("Image", imagesCount)}
-            </span>
+            <span>Delete All {formatPluralItems("Image", imagesCount)}</span>
           </Button>
         </RemixForm>
       </header>

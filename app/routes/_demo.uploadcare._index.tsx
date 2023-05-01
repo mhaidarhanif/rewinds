@@ -57,14 +57,16 @@ export async function action({ request }: ActionArgs) {
     return badRequest(submission);
   }
 
-  // Transform checkbox "on" or null value to boolean
-  const multiple = submission?.value?.multiple === "on" ? true : false;
+  try {
+    // Transform checkbox "on" or null value to boolean
+    const multiple = submission?.value?.multiple === "on" ? true : false;
 
-  // If not multiple, save one file info to database (Image table)
-  if (!multiple && submission?.value?.fileInfo) {
-    const fileInfo: FileInfo = JSON.parse(String(submission?.value?.fileInfo));
+    // If not multiple, save one file info to database (Image table)
+    if (!multiple && submission?.value?.fileInfo) {
+      const fileInfo: FileInfo = JSON.parse(
+        String(submission?.value?.fileInfo)
+      );
 
-    try {
       const newImage = await model.userImage.mutation.create({
         image: { url: String(fileInfo.cdnUrl) },
         user: { id: userSession.id },
@@ -73,24 +75,19 @@ export async function action({ request }: ActionArgs) {
         return badRequest(submission);
       }
       return json({ ...submission, newImage });
-    } catch (error) {
-      console.error(error);
-      return serverError(submission);
-    }
-  }
-
-  // If multiple, save multiple files info to database (Image table)
-  if (multiple && submission?.value?.fileGroup) {
-    const fileGroup: FileGroup = JSON.parse(
-      String(submission?.value?.fileGroup)
-    );
-    const fileGroupNumbers = Array.from(Array(fileGroup?.count).keys());
-
-    if (fileGroup?.count <= 0 && fileGroupNumbers?.length <= 0) {
-      return badRequest(submission);
     }
 
-    try {
+    // If multiple, save multiple files info to database (Image table)
+    if (multiple && submission?.value?.fileGroup) {
+      const fileGroup: FileGroup = JSON.parse(
+        String(submission?.value?.fileGroup)
+      );
+      const fileGroupNumbers = Array.from(Array(fileGroup?.count).keys());
+
+      if (fileGroup?.count <= 0 && fileGroupNumbers?.length <= 0) {
+        return badRequest(submission);
+      }
+
       const newImages = await model.userImage.mutation.createMany({
         files: fileGroupNumbers.map((number) => {
           return {
@@ -105,10 +102,10 @@ export async function action({ request }: ActionArgs) {
         return badRequest(submission);
       }
       return json({ ...submission, newImages });
-    } catch (error) {
-      console.error(error);
-      return serverError(submission);
     }
+  } catch (error) {
+    console.error(error);
+    return serverError(submission);
   }
 
   return json(submission);
@@ -156,7 +153,7 @@ export default function Route() {
         title: `${mode} uploaded and submitted!`,
       });
     }
-  }, [actionData, toast]);
+  }, [actionData, isMultiple]);
 
   return (
     <Layout
