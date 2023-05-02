@@ -19,13 +19,14 @@ import {
   Anchor,
   Switch,
 } from "~/components";
-import { requireUserSession } from "~/helpers";
+import { getUserSession, requireUserSession } from "~/helpers";
 import { model } from "~/models";
-import { createMetaData, jsonStringify } from "~/utils";
+import { createMetaData, invariant, jsonStringify } from "~/utils";
 
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 import type { FileGroup, FileInfo } from "@uploadcare/react-widget";
 import { toast } from "~/hooks";
+import { prisma } from "~/libs";
 
 /**
  * Demo: Uploadcare
@@ -43,13 +44,11 @@ export const schemaUploadcareDemo = z.object({
   fileGroup: z.string().optional(), //  Contain array of multiple objects
 });
 
-export async function loader({ request }: LoaderArgs) {
-  await requireUserSession(request);
-  return null;
-}
-
 export async function action({ request }: ActionArgs) {
-  const { userSession } = await requireUserSession(request);
+  const userSession = await getUserSession(request)
+  const userFirst = await prisma.user.findFirst()
+  const user = userSession || userFirst
+  invariant(user, "User is not available")
 
   const formData = await request.formData();
   const submission = parse(formData, { schema: schemaUploadcareDemo });
@@ -66,10 +65,9 @@ export async function action({ request }: ActionArgs) {
       const fileInfo: FileInfo = JSON.parse(
         String(submission?.value?.fileInfo)
       );
-
       const newImage = await model.userImage.mutation.create({
         image: { url: String(fileInfo.cdnUrl) },
-        user: { id: userSession.id },
+        user: { id: user.id },
       });
       if (!newImage) {
         return badRequest(submission);
@@ -88,15 +86,13 @@ export async function action({ request }: ActionArgs) {
         return badRequest(submission);
       }
 
+      const files = fileGroupNumbers.map((number) => {
+        return { cdnUrl: `${fileGroup?.cdnUrl}nth/${number}/` } as FileInfo;
+      })
+
       const newImages = await model.userImage.mutation.createMany({
-        files: fileGroupNumbers.map((number) => {
-          return {
-            cdnUrl: `${fileGroup?.cdnUrl}nth/${number}/`,
-          } as FileInfo;
-        }),
-        user: {
-          id: userSession.id,
-        },
+        files,
+        user: { id: user.id },
       });
       if (!newImages) {
         return badRequest(submission);
@@ -116,11 +112,10 @@ export default function Route() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
+  const [isMultiple, setIsMultiple] = useState<boolean>(true);
   const [fileInfo, setFileInfo] = useState<FileInfo>();
   const [fileGroup, setFileGroup] = useState<FileGroup>();
   const [fileGroupNumbers, setFileGroupNumbers] = useState<number[]>();
-
-  const [isMultiple, setIsMultiple] = useState<boolean>(true);
 
   const isSubmitEnabled =
     (!isMultiple && fileInfo?.cdnUrl) || (isMultiple && fileGroup?.cdnUrl);
@@ -148,10 +143,7 @@ export default function Route() {
   useEffect(() => {
     if (actionData?.intent === "submit") {
       const mode = isMultiple ? "Multiple files" : "Single file";
-      toast({
-        variant: "success",
-        title: `${mode} uploaded and submitted!`,
-      });
+      toast({ variant: "success", title: `${mode} uploaded and submitted!`, });
     }
   }, [actionData, isMultiple]);
 

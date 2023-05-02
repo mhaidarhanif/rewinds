@@ -69,6 +69,10 @@ export function requireUserRole(
   }
 }
 
+export async function getUserSession(request: Request) {
+  return authenticator.isAuthenticated(request);
+}
+
 export async function getUserRedirect(request: Request) {
   const url = new URL(request.url);
   return authenticator.isAuthenticated(request, {

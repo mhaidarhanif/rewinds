@@ -21,6 +21,9 @@ module.exports = {
   assetsBuildDirectory: "public/build",
   publicPath: "/build/",
 
+  // https://remix.run/docs/en/v1.16.0/pages/v2#servermoduleformat
+  serverModuleFormat: "cjs",
+
   // change this if you are not using Vercel
   server: isDevelopment ? undefined : "./server-vercel.js",
   serverBuildPath:
