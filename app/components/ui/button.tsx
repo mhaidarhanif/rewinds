@@ -119,7 +119,7 @@ export const buttonVariants = cva(
         isIcon: true,
         size: "xs",
         radius: "default",
-        class: "h-6 w-6 rounded",
+        class: "h-4 w-4 rounded",
       },
       {
         isIcon: true,
@@ -172,7 +172,7 @@ export const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 

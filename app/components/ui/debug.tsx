@@ -40,17 +40,9 @@ export function Debug({
     setIsVisible(false);
   }
 
-  if (!isAlwaysShow && ENV && ENV.NODE_ENV === "production") {
-    return null;
-  }
-
-  if (configDev.features.debugComponent !== true) {
-    return null;
-  }
-
-  if (!isVisible) {
-    return null;
-  }
+  if (!isAlwaysShow && ENV && ENV.NODE_ENV === "production") return null;
+  if (configDev.features.debugComponent !== true) return null;
+  if (!isVisible) return null;
 
   return (
     <div className="my-1">
