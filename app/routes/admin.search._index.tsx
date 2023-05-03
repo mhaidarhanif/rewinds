@@ -68,7 +68,7 @@ export default function Route() {
                       className="card-sm hover:card-hover"
                     >
                       {user.name} @{user.username}{" "}
-                      <Badge>{user.role.name}</Badge>
+                      <Badge size="sm">{user.role.name}</Badge>
                     </RemixLink>
                   </li>
                 );
