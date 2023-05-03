@@ -55,24 +55,26 @@ export default function Route() {
         <RemixLink to=".">
           <h1>Images</h1>
         </RemixLink>
-        <ButtonLink to="/uploadcare" size="sm">
-          <Plus className="size-sm" />
-          <span>Add Image</span>
-        </ButtonLink>
-        {configDev.isDevelopment && (
-          <RemixForm method="delete">
-            <Button
-              size="sm"
-              variant="danger"
-              name="intent"
-              value="delete-all-images"
-              disabled={imagesCount <= 0}
-            >
-              <Trash className="size-sm" />
-              <span>Delete All {formatPluralItems("Image", imagesCount)}</span>
-            </Button>
-          </RemixForm>
-        )}
+        <div className="queue">
+          <ButtonLink to="/uploadcare" size="sm">
+            <Plus className="size-sm" />
+            <span>Add Image</span>
+          </ButtonLink>
+          {configDev.isDevelopment && (
+            <RemixForm method="delete">
+              <Button
+                size="sm"
+                variant="danger"
+                name="intent"
+                value="delete-all-images"
+                disabled={imagesCount <= 0}
+              >
+                <Trash className="size-sm" />
+                <span>Delete All {formatPluralItems("Image", imagesCount)}</span>
+              </Button>
+            </RemixForm>
+          )}
+        </div>
       </PageAdminHeader>
 
       <div className="px-layout">

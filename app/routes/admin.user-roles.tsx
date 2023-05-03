@@ -51,26 +51,28 @@ export default function Route() {
         <RemixLink to=".">
           <h1>User Roles</h1>
         </RemixLink>
-        <ButtonLink to="new" size="sm">
-          <Plus className="size-sm" />
-          <span>Add User Role</span>
-        </ButtonLink>
-        {configDev.isDevelopment && (
-          <RemixForm method="delete">
-            <Button
-              size="sm"
-              variant="danger"
-              name="intent"
-              value="delete-all-user-roles"
-              disabled={true || userCount <= 0}
-            >
-              <Trash className="size-sm" />
-              <span>
-                Delete All {formatPluralItems("User Role", userCount)}
-              </span>
-            </Button>
-          </RemixForm>
-        )}
+        <div className="queue">
+          <ButtonLink to="new" size="sm">
+            <Plus className="size-sm" />
+            <span>Add User Role</span>
+          </ButtonLink>
+          {configDev.isDevelopment && (
+            <RemixForm method="delete">
+              <Button
+                size="sm"
+                variant="danger"
+                name="intent"
+                value="delete-all-user-roles"
+                disabled={true || userCount <= 0}
+              >
+                <Trash className="size-sm" />
+                <span>
+                  Delete All {formatPluralItems("User Role", userCount)}
+                </span>
+              </Button>
+            </RemixForm>
+          )}
+        </div>
       </PageAdminHeader>
 
       <div className="px-layout">

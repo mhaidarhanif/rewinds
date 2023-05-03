@@ -47,24 +47,26 @@ export default function Route() {
         <RemixLink to=".">
           <h1>Notes</h1>
         </RemixLink>
-        <ButtonLink to="new" size="sm">
-          <Plus className="size-sm" />
-          <span>Add Note</span>
-        </ButtonLink>
-        {configDev.isDevelopment && (
-          <RemixForm method="delete">
-            <Button
-              size="sm"
-              variant="danger"
-              name="intent"
-              value="admin-delete-all-notes"
-              disabled={notesCount <= 0}
-            >
-              <Trash className="size-sm" />
-              <span>Delete All {formatPluralItems("Note", notesCount)}</span>
-            </Button>
-          </RemixForm>
-        )}
+        <div className="queue">
+          <ButtonLink to="new" size="sm">
+            <Plus className="size-sm" />
+            <span>Add Note</span>
+          </ButtonLink>
+          {configDev.isDevelopment && (
+            <RemixForm method="delete">
+              <Button
+                size="sm"
+                variant="danger"
+                name="intent"
+                value="admin-delete-all-notes"
+                disabled={notesCount <= 0}
+              >
+                <Trash className="size-sm" />
+                <span>Delete All {formatPluralItems("Note", notesCount)}</span>
+              </Button>
+            </RemixForm>
+          )}
+        </div>
       </PageAdminHeader>
 
       <div className="px-layout">
