@@ -1,7 +1,7 @@
 import { parse } from "@conform-to/react";
-import { json } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
 import { Outlet, useLoaderData } from "@remix-run/react";
-import { forbidden } from "remix-utils";
+import { forbidden, serverError } from "remix-utils";
 
 import {
   Button,
@@ -17,43 +17,47 @@ import { model } from "~/models";
 import { createSitemap, formatPluralItems } from "~/utils";
 
 import type { ActionArgs } from "@remix-run/node";
+import { prisma } from "~/libs";
 
 export const handle = createSitemap();
 
 export async function loader() {
-  const userRolesCount = await model.userRole.query.count();
-  return json({ userCount: userRolesCount });
+  const images = await prisma.image.findMany({
+    include: { user: true, },
+  });
+  return json({ images });
 }
 
 export async function action({ request }: ActionArgs) {
-  const { user } = await requireUserSession(request);
-  if (!requireUserRole(user, ["ADMIN", "MANAGER"])) {
-    return forbidden({ message: "Not allowed" });
-  }
-
   const formData = await request.formData();
-  const submission = parse(formData, {});
+  const submission = parse(formData);
 
-  if (submission.payload.intent === "delete-all-user-roles") {
-    // await model.userRole.mutation.deleteAll();
-    return json(submission);
+  try {
+    if (submission.payload.intent === "delete-all-images") {
+      await prisma.image.deleteMany();
+      return json(submission);
+    }
+  } catch (error) {
+    console.error(error);
+    return serverError(submission);
   }
 
   return json(submission);
 }
 
 export default function Route() {
-  const { userCount } = useLoaderData<typeof loader>();
+  const { images } = useLoaderData<typeof loader>();
+  const imagesCount = images.length;
 
   return (
     <div>
       <PageAdminHeader size="xs">
         <RemixLink to=".">
-          <h1>User Roles</h1>
+          <h1>Images</h1>
         </RemixLink>
-        <ButtonLink to="new" size="sm">
+        <ButtonLink to="/uploadcare" size="sm">
           <Plus className="size-sm" />
-          <span>Add User Role</span>
+          <span>Add Image</span>
         </ButtonLink>
         {configDev.isDevelopment && (
           <RemixForm method="delete">
@@ -61,13 +65,11 @@ export default function Route() {
               size="sm"
               variant="danger"
               name="intent"
-              value="delete-all-user-roles"
-              disabled={true || userCount <= 0}
+              value="delete-all-images"
+              disabled={imagesCount <= 0}
             >
               <Trash className="size-sm" />
-              <span>
-                Delete All {formatPluralItems("User Role", userCount)}
-              </span>
+              <span>Delete All {formatPluralItems("Image", imagesCount)}</span>
             </Button>
           </RemixForm>
         )}

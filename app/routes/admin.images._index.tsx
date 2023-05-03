@@ -1,48 +1,22 @@
-import type { ActionArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 import {
-  Alert,
   Anchor,
   Image,
   Debug,
   RemixLink,
-  RemixForm,
-  Button,
 } from "~/components";
-import { createSitemap, formatPluralItems } from "~/utils";
+import { createSitemap } from "~/utils";
 import { prisma } from "~/libs";
-import { Trash } from "~/icons";
-import { parse } from "@conform-to/dom";
-import { serverError } from "remix-utils";
 
 export const handle = createSitemap();
 
 export async function loader() {
   const images = await prisma.image.findMany({
-    include: {
-      user: true,
-    },
+    include: { user: true, },
   });
   return json({ images });
-}
-
-export async function action({ request }: ActionArgs) {
-  const formData = await request.formData();
-  const submission = parse(formData);
-
-  try {
-    if (submission.payload.intent === "delete-all-images") {
-      await prisma.image.deleteMany();
-      return json(submission);
-    }
-  } catch (error) {
-    console.error(error);
-    return serverError(submission);
-  }
-
-  return json(submission);
 }
 
 export default function Route() {
@@ -50,25 +24,7 @@ export default function Route() {
   const imagesCount = images.length;
 
   return (
-    <div className="stack px-layout">
-      <Alert variant="warning">Under development</Alert>
-
-      <header className="queue-center">
-        <span>All Images</span>
-        <RemixForm method="delete">
-          <Button
-            size="xs"
-            variant="danger"
-            name="intent"
-            value="delete-all-images"
-            disabled={imagesCount <= 0}
-          >
-            <Trash className="size-xs" />
-            <span>Delete All {formatPluralItems("Image", imagesCount)}</span>
-          </Button>
-        </RemixForm>
-      </header>
-
+    <div className="stack">
       <section>
         {imagesCount <= 0 && <span>No images yet.</span>}
         {imagesCount > 0 && (

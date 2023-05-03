@@ -6,7 +6,7 @@ export const meta = createMetaData({
   description: "Some page description to replace.",
 });
 
-export const handle = createSitemap("/page", 0.9);
+export const handle = createSitemap("/page", 0.1);
 
 export default function Route() {
   return (
