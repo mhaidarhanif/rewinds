@@ -6,7 +6,7 @@ import { Search } from "~/icons";
 export function SearchForm({ action = "/search" }: { action?: string }) {
   const location = useLocation();
   const pathname = location?.pathname;
-  const isRouteSearch = pathname === "/search";
+  const isRouteSearch = pathname === "/search" || pathname === "/admin/search";
 
   const [searchParams] = useSearchParams();
   const querySearchParams = searchParams.get("q") || "";
