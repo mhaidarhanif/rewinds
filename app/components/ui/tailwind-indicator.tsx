@@ -33,7 +33,9 @@ export function TailwindIndicator() {
         <Text className="hidden sm:block md:hidden lg:hidden xl:hidden 2xl:hidden">
           sm
         </Text>
-        <Text className="hidden md:block lg:hidden xl:hidden 2xl:hidden">md</Text>
+        <Text className="hidden md:block lg:hidden xl:hidden 2xl:hidden">
+          md
+        </Text>
         <Text className="hidden lg:block xl:hidden 2xl:hidden">lg</Text>
         <Text className="hidden xl:block 2xl:hidden">xl</Text>
         <Text className="hidden 2xl:block">2xl</Text>

@@ -1,7 +1,7 @@
 import { parse } from "@conform-to/react";
-import { json, redirect } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import { Outlet, useLoaderData } from "@remix-run/react";
-import { forbidden, serverError } from "remix-utils";
+import { serverError } from "remix-utils";
 
 import {
   Button,
@@ -11,9 +11,7 @@ import {
   RemixLink,
 } from "~/components";
 import { configDev } from "~/configs";
-import { requireUserRole, requireUserSession } from "~/helpers";
 import { Plus, Trash } from "~/icons";
-import { model } from "~/models";
 import { createSitemap, formatPluralItems } from "~/utils";
 
 import type { ActionArgs } from "@remix-run/node";
@@ -23,7 +21,7 @@ export const handle = createSitemap();
 
 export async function loader() {
   const images = await prisma.image.findMany({
-    include: { user: true, },
+    include: { user: true },
   });
   return json({ images });
 }
@@ -70,7 +68,9 @@ export default function Route() {
                 disabled={imagesCount <= 0}
               >
                 <Trash className="size-sm" />
-                <span>Delete All {formatPluralItems("Image", imagesCount)}</span>
+                <span>
+                  Delete All {formatPluralItems("Image", imagesCount)}
+                </span>
               </Button>
             </RemixForm>
           )}

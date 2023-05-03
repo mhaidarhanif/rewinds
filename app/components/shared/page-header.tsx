@@ -43,7 +43,7 @@ export const pageHeaderVariants = cva("", {
 
 interface Props
   extends React.HTMLAttributes<HTMLElement>,
-  VariantProps<typeof pageHeaderVariants> { }
+    VariantProps<typeof pageHeaderVariants> {}
 
 export function PageHeader({
   size = "default",
@@ -89,7 +89,7 @@ export function PageAdminHeader({
   return (
     <header
       className={cn(
-        "px-layout flex flex-wrap gap-2 justify-between",
+        "px-layout flex flex-wrap justify-between gap-2",
         pageHeaderVariants({
           size,
           direction,

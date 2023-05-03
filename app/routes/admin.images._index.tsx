@@ -1,12 +1,7 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import {
-  Anchor,
-  Image,
-  Debug,
-  RemixLink,
-} from "~/components";
+import { Anchor, Image, Debug, RemixLink } from "~/components";
 import { createSitemap } from "~/utils";
 import { prisma } from "~/libs";
 
@@ -14,7 +9,7 @@ export const handle = createSitemap();
 
 export async function loader() {
   const images = await prisma.image.findMany({
-    include: { user: true, },
+    include: { user: true },
   });
   return json({ images });
 }
