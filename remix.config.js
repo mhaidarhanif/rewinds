@@ -1,10 +1,10 @@
 // to determine if we're on the local development server
 const isDevelopment = process.env.NODE_ENV === "development";
 
-// to enable or disable HMR/HDR
+// to enable or disable HMR/HDR, only for local development use
 const isUsingHMR = Boolean(process.env.USE_HMR) || false;
 
-// to show environent condition
+// to show environment condition
 if (isDevelopment) {
   console.info({
     message: `⏪ Rewinds is running`,
@@ -24,13 +24,13 @@ module.exports = {
   // change this if you are not using Vercel
   server: isDevelopment ? undefined : "./server-vercel.js",
   serverBuildPath:
-    isUsingHMR && isDevelopment ? "build/index.js" : "api/index.js",
+    isDevelopment && isUsingHMR ? "build/index.js" : "api/index.js",
 
   // https://remix.run/docs/en/1.14.3/file-conventions/remix-config#serverdependenciestobundle
   serverDependenciesToBundle: [],
 
   // https://remix.run/docs/en/v1.16.0/pages/v2#servermoduleformat
-  // serverModuleFormat: "cjs",
+  serverModuleFormat: "cjs",
 
   // https://remix.run/docs/en/1.16.0/guides/styling#tailwind-css
   // tailwind: true,
