@@ -43,7 +43,7 @@ module.exports = {
     v2_routeConvention: true,
     v2_normalizeFormMethod: true,
     unstable_dev: isUsingHMR,
-    tailwind: true,
-    postcss: true,
+    unstable_tailwind: true,
+    unstable_postcss: true,
   },
 };
