@@ -12,9 +12,9 @@
   "scripts": {
     "postinstall": "nr prisma:generate",
     "dev": "remix dev",
-    "dev-hmr": "run-p build --parallel \"dev-hmr:*\"",
-    "dev-hmr:node": "cross-env NODE_ENV=development nodemon --require dotenv/config ./server-express.js --watch ./server-express.js",
-    "dev-hmr:remix": "remix watch",
+    "dev-hmr": "run-p dev-hmr:*",
+    "dev-hmr:remix": "cross-env NODE_ENV=development USE_HMR=true remix dev",
+    "dev-hmr:express": "cross-env NODE_ENV=development USE_HMR=true nodemon --require dotenv/config ./server-express.js --watch ./server-express.js",
     "prebuild": "nr prisma:generate",
     "build": "remix build",
     "build:ci": "nr prisma:push && remix build",
