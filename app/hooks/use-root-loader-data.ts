@@ -34,9 +34,9 @@ export function safeRedirect(
 
 export type RootLoaderData = {
   ENV: ReturnType<typeof getEnv>;
-  theme: Theme | null | undefined;
-  userSession: UserSession | null | undefined;
-  user: UserData | null | undefined;
+  theme: Theme | undefined;
+  userSession: UserSession | undefined;
+  user: UserData | undefined;
 };
 
 export function useMatchesData(

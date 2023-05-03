@@ -21,9 +21,6 @@ module.exports = {
   assetsBuildDirectory: "public/build",
   publicPath: "/build/",
 
-  // https://remix.run/docs/en/v1.16.0/pages/v2#servermoduleformat
-  serverModuleFormat: "cjs",
-
   // change this if you are not using Vercel
   server: isDevelopment ? undefined : "./server-vercel.js",
   serverBuildPath:
@@ -32,9 +29,12 @@ module.exports = {
   // https://remix.run/docs/en/1.14.3/file-conventions/remix-config#serverdependenciestobundle
   serverDependenciesToBundle: [],
 
+  // https://remix.run/docs/en/v1.16.0/pages/v2#servermoduleformat
+  // serverModuleFormat: "cjs",
+
   // https://remix.run/docs/en/1.16.0/guides/styling#tailwind-css
-  tailwind: true,
-  postcss: true,
+  // tailwind: true,
+  // postcss: true,
 
   // https://remix.run/docs/en/v1/file-conventions/route-files-v2#route-file-naming-v2
   future: {
@@ -43,5 +43,7 @@ module.exports = {
     v2_routeConvention: true,
     v2_normalizeFormMethod: true,
     unstable_dev: isUsingHMR,
+    tailwind: true,
+    postcss: true,
   },
 };

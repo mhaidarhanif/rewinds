@@ -19,11 +19,11 @@ import {
   Anchor,
   Switch,
 } from "~/components";
-import { getUserSession, requireUserSession } from "~/helpers";
+import { getUserSession } from "~/helpers";
 import { model } from "~/models";
 import { createMetaData, invariant, jsonStringify } from "~/utils";
 
-import type { ActionArgs, LoaderArgs } from "@remix-run/node";
+import type { ActionArgs } from "@remix-run/node";
 import type { FileGroup, FileInfo } from "@uploadcare/react-widget";
 import { toast } from "~/hooks";
 import { prisma } from "~/libs";
@@ -45,10 +45,10 @@ export const schemaUploadcareDemo = z.object({
 });
 
 export async function action({ request }: ActionArgs) {
-  const userSession = await getUserSession(request)
-  const userFirst = await prisma.user.findFirst()
-  const user = userSession || userFirst
-  invariant(user, "User is not available")
+  const userSession = await getUserSession(request);
+  const userFirst = await prisma.user.findFirst();
+  const user = userSession || userFirst;
+  invariant(user, "User is not available");
 
   const formData = await request.formData();
   const submission = parse(formData, { schema: schemaUploadcareDemo });
@@ -88,7 +88,7 @@ export async function action({ request }: ActionArgs) {
 
       const files = fileGroupNumbers.map((number) => {
         return { cdnUrl: `${fileGroup?.cdnUrl}nth/${number}/` } as FileInfo;
-      })
+      });
 
       const newImages = await model.userImage.mutation.createMany({
         files,
@@ -143,7 +143,7 @@ export default function Route() {
   useEffect(() => {
     if (actionData?.intent === "submit") {
       const mode = isMultiple ? "Multiple files" : "Single file";
-      toast({ variant: "success", title: `${mode} uploaded and submitted!`, });
+      toast({ variant: "success", title: `${mode} uploaded and submitted!` });
     }
   }, [actionData, isMultiple]);
 
