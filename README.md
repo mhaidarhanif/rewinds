@@ -14,7 +14,7 @@
 
 ## Introduction
 
-Rewinds is a web app starter kit with Remix, Tailwind CSS, and the TypeScript ecosystem. It is an opinionated collection of interactive UI components, hooks, and utilities for your Remix project.
+Rewinds is a web app starter kit with Remix and Tailwind CSS. It is an opinionated collection of interactive UI components, hooks, and utilities for your Remix project.
 
 ### Goals
 
