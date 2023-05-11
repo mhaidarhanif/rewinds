@@ -593,6 +593,16 @@ ni -D react-refresh
 
 When running locally in development mode, use either the Express server or Vercel. This by default does not understand the Vercel lambda module format, so we fall back to the standard build output.
 
+### Database backup
+
+```sh
+pscale db dump database_name branch --output database_name.dump
+```
+
+```sh
+pscale db dump rewinds main --output rewinds.dump
+```
+
 ## References
 
 ### General
