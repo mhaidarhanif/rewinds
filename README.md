@@ -14,14 +14,17 @@
 
 ## Introduction
 
-Rewinds is a web app starter kit with Remix and Tailwind CSS. It is an opinionated collection of interactive UI components, hooks, and utilities for your Remix project.
+Rewinds is a web app starter kit with mainly Remix and Tailwind CSS. The goal is to be as productive as possible to ship things fast. So it is a highly opinionated collection of software engineering and web development workflow, interactive UI components, functionality hooks and utilities.
 
-### Goals
+Visit the demo at [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com). Follow the progress on [GitHub @mhaidarhanif](https://github.com/mhaidarhanif) and [Twitter @mhaidarhanif](https://twitter.com/mhaidarhanif).
 
-You can use this to build any web apps (also what I'm using Rewinds for):
+## Goals
+
+Use this to build any web apps:
 
 - Personal Website
 - Company Profile
+- Interactive Form
 - Todo List
 - Blog or News
 - Social Media
@@ -31,76 +34,62 @@ You can use this to build any web apps (also what I'm using Rewinds for):
 - Job Board
 - Hiring or Recruitment
 - Applicant Tracking System (ATS)
-- E-Commerce
 - Inventory Management
 - Events Management
 - Knowledge Management
+- Admin Panel or Dashboard
+- E-Commerce or Storefront
 - Product or Project Management
 - Content Management System (CMS)
 - Learning Management System (LMS)
 
-### Demos
+## Quick start
 
-Visit [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com)
+Starting new? [Use this template to generate the repository](https://github.com/mhaidarhanif/rewinds/generate).
 
-Follow the progress on:
-
-- GitHub: [@mhaidarhanif](https://github.com/mhaidarhanif)
-- Twitter: [@mhaidarhanif](https://twitter.com/mhaidarhanif)
-
-### Quick start
-
-Starting new? You can [use this template to generate the repository](https://github.com/mhaidarhanif/rewinds/generate).
-
-Clone the repository?
+Clone?
 
 ```sh
 git clone git@github.com:mhaidarhanif/rewinds.git
 ```
 
-Use npx?
+Use `npx`?
 
 ```sh
 npx create-remix@latest --template mhaidarhanif/rewinds
 ```
 
-Deploy faster?
+Deploy quickly?
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmhaidarhanif%2Frewinds&env=DATABASE_URL,REMIX_SESSION_SECRET,REMIX_APP_NAME,REMIX_APP_EMAIL&project-name=my-rewinds-app&repository-name=my-rewinds-app&demo-title=Rewinds&demo-description=A%20starter%20kit%20with%20Remix%2C%20Tailwind%20CSS%2C%20and%20the%20TypeScript%20ecosystem.&demo-url=https%3A%2F%2Frewinds.mhaidarhanif.com&demo-image=https%3A%2F%2Frewinds.mhaidarhanif.com%2Fassets%2Fimages%2Fcat-study-dark.png)
 
 Then make sure to explore the repo to rename and replace the contents along the way. As this is a template, not a blank repo generator.
 
-### Code repository and links
-
-- [mhaidarhanif/rewinds](https://github.com/mhaidarhanif/rewinds)
-- [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com)
-- [rewinds.vercel.app](https://rewinds.vercel.app)
-- [rewinds.dev](https://rewinds.dev) (sooner or later)
-
 ## Tech Stack
-
-Listed here are only the most important parts in the stack.️ Some setups are mostly finished, but some might haven't been done yet or are still in progress. More details and references can also be checked from [`mhaidarhanif/rewinds`](https://rewinds.mhaidarhanif.com) and [`catamyst/stack`](https://a.catamyst.com/stack).
-
-As a reminder:
-
-> "Software is a just a tool to help accomplish something for people - many programmers never understood that. Keep your eyes on the delivered value, and don’t over focus on the specifics of the tools" — John Carmack
 
 ### Primary Tech Stack
 
-- [Rewinds](https://rewinds.mhaidarhanif.com): [Remix](https://remix.run) [Tailwind](https://tailwindcss.com) Stack
-- TRIP: [TypeScript](https://typescriptlang.org)/[Tailwind](https://tailwindcss.com) [Remix](https://remix.run)/[React](https://react.dev)/[Radix](https://radix-ui.com) Interface [Prisma](https://prisma.io)
-  - VPS: [Vercel](https://vercel.com) [PlanetScale](https://planetscale.com)
+The main prerequisites to learn, understand, and use with the stack.
 
-These are also the primary prerequisites for you to learn, understand, and use with this Rewinds stack. (Architecture diagram can help later on here)
+1. [TypeScript](https://typescriptlang.org): typed language
+2. [React](https://react.dev): UI library
+3. [Remix](https://remix.run): web framework
+4. [Tailwind CSS](https://tailwindcss.com): styling
+5. [Radix UI](https://radix-ui.com): interactive components
+6. [Prisma](https://prisma.io): database ORM
+7. [PlanetScale](https://planetscale.com): database management system
+8. [Vercel](https://vercel.com): deployment
+
+(Architecture diagram can help later on here)
 
 If you work as a team, I recommend to:
 
-- Use secrets management platform such as [Doppler](https://doppler.com), to share the environment variables. So you can optionally use or not to use `.env` file. But if you need to share quickly, you can use any methods available or share via [EnvShare](https://envshare.dev).
-- Use Vercel Pro plan to make code review with preview deployments easier.
+1. Use [Doppler](https://doppler.com) or [Dotenv](https://dotenv.org) as secrets management platform to share the environment variables. So you can optionally use `.env` file. If you need to share quickly [EnvShare](https://envshare.dev) is good.
+2. Use [Vercel Pro](https://vercel.com/docs/concepts/payments-and-billing/pro) to make code review with preview deployments easier.
 
 ### Complete Tech Stack
 
-The complete stack includes TypeScript, Remix & Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel. But this repo also attempt to learn from Next.js, tRPC, GraphQL, NestJS, Passport, Swagger (OpenAPI), and others as well.
+The complete stack are Node.js, TypeScript, Remix, Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel.
 
 Legends:
 
@@ -109,70 +98,108 @@ Legends:
 - 🎉 = 3rd party service or platform
 - 🚧 = still not there yet or still in development
 
-Already setup in Rewinds and some are for alternatives:
+#### Core
 
-- Core
-  - [Node.js](https://nodejs.org) 🧰
-    - [pnpm](https://pnpm.io) 🧩
-  - [TypeScript](https://typescriptlang.org) 🧰
-  - [React](https://react.dev) 🧰
-  - [Remix](https://remix.run) 🧰
-- Styling
-  - [Tailwind CSS](https://tailwindcss.com) 🧰
-  - [Fontsource](https://fontsource.org) 🧰
-  - [Radix UI](https://radix-ui.com) 🧰🧩
+- [Node.js](https://nodejs.org): runtime 🧰
+  - [pnpm](https://pnpm.io): package manager 🧩
+- [TypeScript](https://typescriptlang.org): typed language 🧰
+- [React](https://react.dev): UI library 🧰
+- [Remix](https://remix.run): web framework 🧰
+
+#### Styling and Components
+
+- [Tailwind CSS](https://tailwindcss.com): styling 🧰
+- [Fontsource](https://fontsource.org): web fonts 🧰
+- [Radix UI](https://radix-ui.com): unstyled UI components 🧰🧩
   - [Headless UI](https://headlessui.dev) 🧰🧩
   - [Ariakit](https://ariakit.org) 🧩
-  - [React Email](https://react.email) 🚧
-- Form Handling
-  - [Conform](https://conform.guide) 🧰
-- Data Validation
-  - [Zod](https://zod.dev) 🧰
-    - [Zodix](https://github.com/rileytomasek/zodix) 🧩
-    - [zod-form-data](https://npmjs.com/package/zod-form-data) 🧩
-- Database and ORM
-  - [Prisma ORM](https://prisma.io) 🧰
-  - [PlanetScale](https://planetscale.com) 🧩🎉
-- Auth
-  - [Remix Auth](https://github.com/sergiodxa/remix-auth) 🧰
-- Tooling
-  - [Prettier](https://prettier.io) 🧰
-  - [ESLint](https://eslint.org) 🧰
-  - [Stylelint](https://stylelint.io) 🧰
-  - Environment Variable/Secret
-    - [Doppler](https://doppler.com) 🧩🎉
-    - [Dotenv](https://dotenv.org) 🧩🎉
-- Deployment
-  - [Vercel](https://vercel.com) 🧰🧩🎉
-  - [Fly](https://fly.io) 🧩🎉
-  - [Render](https://render.com) 🧩🎉
-- Domain/DNS
-  - [Cloudflare](https://cloudflare.com) 🧩🎉
-- Cache/Ratelimit
-  - [Upstash](https://upstash.com) 🚧🧩🎉
-- Image
-  - [Uploadcare](https://uploadcare.com) 🧩🎉
-  - [ImageKit](https://imagekit.io) 🚧🧩🎉
-  - [Cloudinary](https://cloudinary.com) 🚧🧩🎉
-- Email
-  - Template
-    - [React Email](https://react.email) 🚧🧩
-  - Transactional
-    - [Mailjet](https://mailjet.com) 🚧🧩🎉
-    - [Resend](https://resend.com) 🚧🧩🎉
-  - Marketing
-    - [ConvertKit](https://convertkit.com) 🚧🧩🎉
-    - [Bento](https://bentonow.com) 🚧🧩🎉
-- Payment
-  - [Lemon Squeezy](https://lemonsqueezy.com) 🚧🧩🎉
-  - [Paddle](https://paddle.com) 🚧🧩🎉
-  - [Stripe](https://stripe.com) 🚧🧩🎉
-- Testing 🚧
-  - [Vitest](https://vitest.dev) 🚧🧩
-  - [Testing Library](https://testing-library.com) 🚧🧩
-  - [MSW](https://msw.io) 🚧🧩
-  - [Playwright](https://playwright.dev) 🚧🧩
-  - [Ladle](https://ladle.dev) 🚧🧩
+- [Icones](https://icones.js.org): icon search
+  - [Lucide](https://lucide.dev): icon set
+  - [Iconoir](https://iconoir.com): icon set
+- [React Email](https://react.email): email styling 🚧🧩
+- [TanStack Table](https://tanstack.com/table): unstyled table grid component 🚧🧩
+
+#### Form Handling and Data Validation
+
+- [Conform](https://conform.guide): form handling 🧰
+- [Zod](https://zod.dev): data validation 🧰
+  - [Zodix](https://github.com/rileytomasek/zodix) 🧩
+  - [zod-form-data](https://npmjs.com/package/zod-form-data) 🧩
+
+#### Database and ORM
+
+- [Prisma ORM](https://prisma.io): database ORM 🧰
+- [MySQL on PlanetScale](https://planetscale.com): database management system 🧩🎉
+
+#### Auth Provider
+
+- [Remix Auth](https://github.com/sergiodxa/remix-auth) 🧰
+  - [Lucia](https://lucia-auth.com) 🧩
+  - [Clerk](https://clerk.dev) 🧩🎉
+
+#### Tools: Code Quality
+
+- [Prettier](https://prettier.io): code formatter 🧰
+- [ESLint](https://eslint.org): code linter 🧰
+- [Stylelint](https://stylelint.io): styling linter 🧰
+
+#### Tools: Deployment
+
+- [Vercel](https://vercel.com) 🧰🧩🎉
+- [Fly](https://fly.io) 🧩🎉
+- [Render](https://render.com) 🧩🎉
+- [Railway](https://railway.app) 🧩🎉
+- [Google Cloud](https://cloud.google.com) 🧩🎉
+- [Amazon Web Services (AWS)](https://aws.amazon.com) 🧩🎉
+
+#### Tools: Domain and DNS and SSL/TLS
+
+- [Cloudflare](https://cloudflare.com) 🧩🎉
+
+#### Tools: Environment Variable/Secret
+
+- [Doppler](https://doppler.com) 🧩🎉
+- [Dotenv](https://dotenv.org) 🧩🎉
+
+#### Tools: Analytics
+
+- [Vercel Analytics](https://vercel.com/docs/concepts/analytics) 🧩🎉
+  - Enable it on your Vercel projects dashboard
+- [Jitsu](https://jitsu.com): data pipeline and ingestion 🚧🧩🎉
+
+#### Tools: Cache and Rate Limiter
+
+- [Upstash](https://upstash.com) 🚧🧩🎉
+
+#### Tools: Image
+
+- [Uploadcare](https://uploadcare.com) 🧩🎉
+- [ImageKit](https://imagekit.io) 🚧🧩🎉
+- [Cloudinary](https://cloudinary.com) 🚧🧩🎉
+
+#### Tools: Transactional Email 🚧
+
+- [Mailjet](https://mailjet.com) 🚧🧩🎉
+- [Resend](https://resend.com) 🚧🧩🎉
+
+#### Tools: Marketing Email 🚧
+
+- [ConvertKit](https://convertkit.com) 🚧🧩🎉
+- [Bento](https://bentonow.com) 🚧🧩🎉
+
+#### Tools: Payment 🚧
+
+- [Lemon Squeezy](https://lemonsqueezy.com) 🚧🧩🎉
+- [Paddle](https://paddle.com) 🚧🧩🎉
+- [Stripe](https://stripe.com) 🚧🧩🎉
+
+#### Tools: Testing 🚧
+
+- [Vitest](https://vitest.dev) 🚧🧩
+- [Testing Library](https://testing-library.com) 🚧🧩
+- [MSW](https://msw.io) 🚧🧩
+- [Playwright](https://playwright.dev) 🚧🧩
+- [Ladle](https://ladle.dev) 🚧🧩
 
 [Check the GUIDE.md](./GUIDE.md) if you need some guide into the project setup, structure, and files.
 
@@ -180,36 +207,28 @@ Already setup in Rewinds and some are for alternatives:
 
 Although these are not included in Rewinds, if you need a separate backend/server/service, here are the recommendations:
 
-- Core/API
-  - REST
-    - [NestJS](https://nestjs.com)
-      - [Express](https://expressjs.com)
-      - [Fastify](https://fastify.io)
-    - [Pothos](https://github.com/hayes/pothos)
-  - GraphQL
-    - [GraphQL](https://graphql.org)
-    - [GraphQL Yoga](https://github.com/dotansimha/graphql-yoga)
-      - [Express](https://expressjs.com)
-    - [Pothos](https://github.com/hayes/pothos)
-  - tRPC
-    - [tRPC](https://trpc.io)
-- Database
-  - [Prisma ORM](https://prisma.io)
-- Auth
-  - [Passport](https://passportjs.org)
-- Misc
-  - [Inngest](https://inngest.com)
-- Deployment with PaaS
-  - [Railway](https://railway.app)
-  - [Fly.io](https://fly.io)
-  - [Render](https://render.com)
-- Deployment with IaaS
-  - [Google Cloud Platform](https://cloud.google.com)
-  - [Amazon Web Services](https://aws.amazon.com)
+#### REST API
 
-## Some More Info
+- [NestJS](https://nestjs.com)
+  - [Express](https://expressjs.com)
+  - [Fastify](https://fastify.io)
 
-### Some Roadmap or Checklists
+#### GraphQL
+
+- [GraphQL](https://graphql.org)
+- [GraphQL Yoga](https://github.com/dotansimha/graphql-yoga)
+  - [Express](https://expressjs.com)
+- [Pothos](https://github.com/hayes/pothos)
+
+#### tRPC
+
+- [tRPC](https://trpc.io)
+
+#### Auth
+
+- [Passport](https://passportjs.org)
+
+## Roadmap
 
 Included features for the users:
 
@@ -247,7 +266,8 @@ Included setup for the developers:
     - [x] v2 normalized form method
     - [x] Tailwind CSS support
     - [x] New dev server with config for HMR/HDR (hot module/data reload)
-- [x] More than 50 of ready to use and 100% customizable UI components, including layouts and demo examples
+- [x] More than 50 of ready to use and 100% customizable UI components
+  - [x] Layouts and demo examples
   - [ ] Rich text or WYSIWYG editor with TipTap
   - [ ] Keyboard shortcuts with cmdk
 - [x] Preselected styles, colors, fonts, icons, and responsive design
@@ -255,7 +275,7 @@ Included setup for the developers:
   - [x] Default avatar image with Dicebear API
   - [x] Icon set system to avoid name conflict
     - [x] Lucide
-    - [x] Iconir
+    - [x] Iconoir
     - [ ] Bring your own favorite
 - [x] Database with Prisma ORM and MySQL on PlanetScale
   - [x] tRPC-style or GraphQL-style data models file structure
@@ -271,38 +291,40 @@ Included setup for the developers:
   - [ ] Transactional email with Mailjet/Resend and React Email
   - [ ] Marketing email with ConvertKit/Bento
 - [x] SEO functions with meta tags
-  - [x] Open Graph and Twitter card
   - [x] `robots.txt`
-  - [x] Generate `sitemap.xml` automatically
   - [x] `canonical` tag
+  - [x] `sitemap.xml` generator
+  - [x] Open Graph and Twitter card
 - [x] Various utilities with external libraries
   - [x] Root loader data for env, theme, user, etc
-  - [x] Cache header
+  - [x] Cache control header
 - [x] No need for CLS loading screens/skeletons, only loading bar on top and loading button state
-- [x] Integration with [Vercel Web Analytics](https://vercel.com/docs/concepts/analytics). Enable it on your Vercel projects dashboard.
 - [x] Lighthouse or [Pagespeed Insights](https://pagespeed.web.dev/analysis/https-rewinds-mhaidarhanif-com/hbkn7kmahh?form_factor=desktop) optimized
-- [x] pnpm, Prettier, ESLint, Stylelint, and much more
-  - [x] No lint and type errors!
-  - [x] Organize import order
+- [x] pnpm, Prettier, ESLint, Stylelint, and many more
 
-Recommended extra app setup:
+Recommended external setup:
 
-- Connect to monitoring service such as [Better Uptime](https://betteruptime.com), [Hyperping](https://hyperping.io), or [Instatus](https://instatus.com).
-- Connect to [Axiom](https://axiom.co) for better log management.
-- Connect to [Highlight](https://highlight.io) to report and analyze errors.
-- Use [Google Search Console](https://search.google.com/search-console/about) to check the sitemap and SERP-related stuffs.
-- Use Clerk or Auth0 to [replace Remix Auth](https://clerk.com/docs/quickstarts/get-started-with-remix) if you need more than this.
+- Monitoring
+  - [Better Uptime](https://betteruptime.com)
+  - [Hyperping](https://hyperping.io)
+  - [Instatus](https://instatus.com)
+- Log management
+  - [Axiom](https://axiom.co)
+- Error reporting and analysis
+  - [Highlight](https://highlight.io)
+- SEO
+  - [Google Search Console](https://search.google.com/search-console/about) to check the sitemap and SERP-related stuffs.
 
 Recommended extra development workflow setup:
 
 - Install [Kodiak](https://github.com/marketplace/kodiakhq) to automate your GitHub pull requests.
 - Install [Socket Security](https://github.com/marketplace/socket-security) to prevent malicious open source dependencies from infiltrating your apps.
 
-### Some Details
+### More Details
 
 This repo is kind of over-engineered to have high flexibility and cover a lot of use cases for different applications/projects/products, especially what I'm working with several other people.
 
-The components initialized using [shadcn UI](https://github.com/shadcn/ui) as the base components style. And the setup for full stack app development is mostly inspired by [T3 Stack](https://create.t3.gg). The main difference is this repo uses Remix, not Next.js like those two.
+The components initialized using [shadcn UI](https://github.com/shadcn/ui) as the base components style. And the setup for full stack app development is mostly inspired by [T3 Stack](https://create.t3.gg). The main difference is this repo uses Remix by default, not Next.js like those two.
 
 Currently includes the Remix HMR and HDR optional setup with both Vercel config and Express server on development as per Remix `v1.14`. The config is just combining the templates from Remix with Express and Vercel based on the environment. With separated Express server, you are also able to debug the process from code editor like VS Code much easier.
 
@@ -531,15 +553,6 @@ pnpm build:ci
 
 ## Important Notes
 
-### Icons
-
-This template provide at least 2 main icon set with SVG assets:
-
-- [Lucide](https://lucide.dev)
-- [Iconoir](https://iconoir.com)
-
-Recommended to use [Icones](https://icones.js.org) to search the icon names easily.
-
 ### Tailwind CSS Config
 
 Use [uicolors.app](https://uicolors.app/create) or [tints.dev](https://tints.dev) to generate the color tokens easily. Then replace what's inside `tailwind.config.js`.
@@ -575,29 +588,21 @@ npx remix reveal
 
 ### Remix SEO Configuration
 
-As there's not yet an official way to handle SEO related output for metadata and sitemap, here are the options ordered by preference:
+As there's no official way yet to handle SEO related output for metadata and sitemap, here are the options ordered by preference:
 
 1. [`balavishnuvj/remix-seo`](https://github.com/balavishnuvj/remix-seo): Collection of SEO utilities like sitemap, robots.txt, etc. for a Remix Application
 2. [`chaance/remix-seo`](https://github.com/chaance/remix-seo): A package for easily managing SEO meta and link tags in Remix
 3. [`fedeya/remix-sitemap`](https://github.com/fedeya/remix-sitemap): Sitemap generator for Remix applications
 
-### HMR Workaround
-
-> This setup has been done in this Rewinds template.
-
-To enable HMR, at least as per Remix `v1.14`, when not primarily using Express server only (like using Vercel and another server), we have to a separate Express server. If using pnpm, you also have to install `react-refresh` to resolve the HMR dependency:
-
-```sh
-ni -D react-refresh
-```
-
-When running locally in development mode, use either the Express server or Vercel. This by default does not understand the Vercel lambda module format, so we fall back to the standard build output.
-
 ### Database backup
+
+Syntax to backup using PlanetScale's `pscale` CLI:
 
 ```sh
 pscale db dump database_name branch --output database_name.dump
 ```
+
+For example:
 
 ```sh
 pscale db dump rewinds main --output rewinds.dump
@@ -639,22 +644,26 @@ pscale db dump rewinds main --output rewinds.dump
 ### Inspirations
 
 - [Design System Checklist](https://designsystemchecklist.com)
+- [Remix Stacks](https://remix.run/stacks)
+  - [Remix Directory](https://remix.directory)
+  - [Epic Stack by Kent C. Dodds](https://github.com/epicweb-dev/epic-stack)
+  - [Spacewave Stack by Kent C. Dodds](https://github.com/epicweb-dev/spacewave-stack)
+  - [Synthwave Stack by I4O Open Source](https://github.com/i4o-oss/synthwave-stack)
+  - [Stripe Stack by Daniel Kanem](https://github.com/dev-xo/stripe-stack)
+- [T3 Stack by T3 Community / Theo Browne](https://create.t3.gg)
 - [shadcn UI](https://github.com/shadcn/ui)
   - [Taxonomy](https://tx.shadcn.com)
 - [Precedent](https://precedent.dev)
 - [Reshaped](https://reshaped.so)
-- [Remix Stacks](https://remix.run/stacks)
-  - [Remix Directory](https://remix.directory)
-  - [Spacewave Stack by Kent C. Dodds](https://github.com/epicweb-dev/spacewave-stack)
-  - [Synthwave Stack by I4O Open Source](https://github.com/i4o-oss/synthwave-stack)
-  - [Stripe Stack by Daniel Kanem](https://github.com/dev-xo/stripe-stack)
-- [T3 Stack by T3 Community via Theo Browne](https://create.t3.gg)
 - [neorepo - Remix/Next.js production-ready starter kit](https://neorepo.com)
 - [SaasRock - The One-Man SaaS Framework](https://saasrock.com)
 - [MakerKit - SaaS Starter Kits based on React](https://makerkit.dev)
 - [Saas UI - The React component library for Startups](https://saas-ui.dev)
+- [Rewind-UI - React component library using Tailwind CSS](https://github.com/rewindui/rewindui)
 - [saasui.design](https://saasui.design)
 - [saasinterface.com](https://saasinterface.com)
+
+Also attempt to learn from others like Next.js, NestJS, Passport, tRPC, GraphQL, Swagger (OpenAPI), etc.
 
 ### Rewinds in the wild
 
@@ -665,10 +674,6 @@ Some other public repos/projects using Rewinds:
 - [🎨Super Duper Gallery](https://github.com/jonathannicolasdev/superduper): Art Gallery in Philippines
 - [🕌 Kawal Masjid](https://github.com/zainfathoni/kawalmasjid): Mosque Directory in Indonesia
 
-### What's next for the future?
-
-Repackage this as `@mhaidarhanif/ui` or `@catamyst/ui`. It can even evolve with [multi-tenancy](https://github.com/vercel/platforms).
-
 ## Credits
 
 ### Author
@@ -677,7 +682,11 @@ M Haidar Hanif (@mhaidarhanif)
 
 ### License
 
-The MIT License.
+[The MIT License](LICENSE)
+
+### Reminder
+
+> "Software is a just a tool to help accomplish something for people - many programmers never understood that. Keep your eyes on the delivered value, and don’t over focus on the specifics of the tools" — John Carmack
 
 ---
 

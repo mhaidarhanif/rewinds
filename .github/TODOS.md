@@ -17,6 +17,7 @@ Public and quick todos for this repo.
 - admin verified users
 - og image generator
   - https://www.jacobparis.com/guides/remix-og
+- setup plaiceholder.co
 - setup URL shortener
 - paginate notes
 - update screenshots

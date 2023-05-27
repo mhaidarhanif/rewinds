@@ -1,6 +1,12 @@
 # Guide
 
-Quickstart to understand the project structure:
+Quickstart to understand the workflow and project structure:
+
+## Workflow
+
+- Start from the `app`
+- Create the expected pages in `routes`
+- ...
 
 ## `/app`
 
