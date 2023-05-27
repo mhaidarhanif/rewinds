@@ -89,14 +89,14 @@ If you work as a team, I recommend to:
 
 ### Complete Tech Stack
 
-The complete stack are Node.js, TypeScript, Remix, Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel.
+The complete stack are Node.js, TypeScript, Remix, Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel. [Check the GUIDE.md](GUIDE.md) if you need more info on the project setup, structure, and files.
 
 Legends:
 
 - 🧰 = required or should not be changed
 - 🧩 = optional or interchangeable
 - 🎉 = 3rd party service or platform
-- 🚧 = still not there yet or still in development
+- 🚧 = still in development or not available
 
 #### Core
 
@@ -111,7 +111,7 @@ Legends:
 - [Tailwind CSS](https://tailwindcss.com): styling 🧰
 - [Fontsource](https://fontsource.org): web fonts 🧰
 - [Radix UI](https://radix-ui.com): unstyled UI components 🧰🧩
-  - [Headless UI](https://headlessui.dev) 🧰🧩
+  - [Headless UI](https://headlessui.dev) 🧩
   - [Ariakit](https://ariakit.org) 🧩
 - [Icones](https://icones.js.org): icon search
   - [Lucide](https://lucide.dev): icon set
@@ -201,7 +201,11 @@ Legends:
 - [Playwright](https://playwright.dev) 🚧🧩
 - [Ladle](https://ladle.dev) 🚧🧩
 
-[Check the GUIDE.md](./GUIDE.md) if you need some guide into the project setup, structure, and files.
+#### Tools: Container
+
+- [Docker](http://www.docker.com)
+  - [Docker Compose](https://docs.docker.com/compose)
+  - [Docker Hub](https://hub.docker.com)
 
 ### Extra Tech Stack
 
@@ -230,11 +234,12 @@ Although these are not included in Rewinds, if you need a separate backend/serve
 
 ## Roadmap
 
-Included features for the users:
+Included features for the end users:
 
+- [x] Premade contents
 - [x] Light and dark mode theme
 - [x] Site layout and routes/pages
-- [x] Admin dashboard
+- [x] Admin dashboard and statistics
 - [x] Register, log in, log out
   - [x] Data validation and check availability
   - [ ] Send welcome or verification email
