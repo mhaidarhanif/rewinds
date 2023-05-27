@@ -10,6 +10,7 @@ Public and quick todos for this repo.
 ## Todo
 
 - settings to delete user account and associated data
+- follow Epic Stack app/routes examples
 
 ## Backlog
 

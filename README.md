@@ -89,59 +89,60 @@ If you work as a team, I recommend to:
 
 ### Complete Tech Stack
 
-The complete stack are Node.js, TypeScript, Remix, Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel. [Check the GUIDE.md](GUIDE.md) if you need more info on the project setup, structure, and files.
+The complete stack are Node.js, TypeScript, Remix, Remix Auth, React, Tailwind CSS, Radix UI, Zod, Conform, Prisma ORM, PlanetScale, and Vercel. We also aim to prioritize which has open source option, free-tier, or freemium. [Check the GUIDE.md](GUIDE.md) if you need more info on the project setup, structure, and files.
 
 Legends:
 
 - 🧰 = required or should not be changed
-- 🧩 = optional or interchangeable
 - 🎉 = 3rd party service or platform
+- 🧩 = optional or interchangeable
+- 💠 = available as open source
 - 🚧 = still in development or not available
 
 #### Core
 
-- [Node.js](https://nodejs.org): runtime 🧰
-  - [pnpm](https://pnpm.io): package manager 🧩
-- [TypeScript](https://typescriptlang.org): typed language 🧰
-- [React](https://react.dev): UI library 🧰
-- [Remix](https://remix.run): web framework 🧰
+- [Node.js](https://nodejs.org): runtime 🧰💠
+  - [pnpm](https://pnpm.io): package manager 🧩💠
+- [TypeScript](https://typescriptlang.org): typed language 🧰💠
+- [React](https://react.dev): UI library 🧰💠
+- [Remix](https://remix.run): web framework 🧰💠
 
 #### Styling and Components
 
-- [Tailwind CSS](https://tailwindcss.com): styling 🧰
+- [Tailwind CSS](https://tailwindcss.com): styling 🧰💠
 - [Fontsource](https://fontsource.org): web fonts 🧰
-- [Radix UI](https://radix-ui.com): unstyled UI components 🧰🧩
-  - [Headless UI](https://headlessui.dev) 🧩
-  - [Ariakit](https://ariakit.org) 🧩
-- [Icones](https://icones.js.org): icon search
-  - [Lucide](https://lucide.dev): icon set
-  - [Iconoir](https://iconoir.com): icon set
-- [React Email](https://react.email): email styling 🚧🧩
-- [TanStack Table](https://tanstack.com/table): unstyled table grid component 🚧🧩
+- [Radix UI](https://radix-ui.com): unstyled UI components 🧰🧩💠
+  - [Headless UI](https://headlessui.dev) 🧩💠
+  - [Ariakit](https://ariakit.org) 🧩💠
+- [Icones](https://icones.js.org): icon search 💠
+  - [Lucide](https://lucide.dev): icon set 💠
+  - [Iconoir](https://iconoir.com): icon set 💠
+- [React Email](https://react.email): email styling 🚧🧩💠
+- [TanStack Table](https://tanstack.com/table): unstyled table grid component 🚧🧩💠
 
 #### Form Handling and Data Validation
 
-- [Conform](https://conform.guide): form handling 🧰
-- [Zod](https://zod.dev): data validation 🧰
-  - [Zodix](https://github.com/rileytomasek/zodix) 🧩
-  - [zod-form-data](https://npmjs.com/package/zod-form-data) 🧩
+- [Conform](https://conform.guide): form handling 🧰💠
+- [Zod](https://zod.dev): data validation 🧰💠
+  - [Zodix](https://github.com/rileytomasek/zodix) 🧩💠
+  - [zod-form-data](https://npmjs.com/package/zod-form-data) 🧩💠
 
 #### Database and ORM
 
-- [Prisma ORM](https://prisma.io): database ORM 🧰
-- [MySQL on PlanetScale](https://planetscale.com): database management system 🧩🎉
+- [Prisma ORM](https://prisma.io): database ORM 🧰💠
+- [MySQL on PlanetScale](https://planetscale.com): database management system 🧩🎉💠
 
 #### Auth Provider
 
-- [Remix Auth](https://github.com/sergiodxa/remix-auth) 🧰
-  - [Lucia](https://lucia-auth.com) 🧩
+- [Remix Auth](https://github.com/sergiodxa/remix-auth) 🧰💠
+  - [Lucia](https://lucia-auth.com) 🧩💠
   - [Clerk](https://clerk.dev) 🧩🎉
 
 #### Tools: Code Quality
 
-- [Prettier](https://prettier.io): code formatter 🧰
-- [ESLint](https://eslint.org): code linter 🧰
-- [Stylelint](https://stylelint.io): styling linter 🧰
+- [Prettier](https://prettier.io): code formatter 🧰💠
+- [ESLint](https://eslint.org): code linter 🧰💠
+- [Stylelint](https://stylelint.io): styling linter 🧰💠
 
 #### Tools: Deployment
 
@@ -165,27 +166,35 @@ Legends:
 
 - [Vercel Analytics](https://vercel.com/docs/concepts/analytics) 🧩🎉
   - Enable it on your Vercel projects dashboard
-- [Jitsu](https://jitsu.com): data pipeline and ingestion 🚧🧩🎉
-
-#### Tools: Cache and Rate Limiter
-
-- [Upstash](https://upstash.com) 🚧🧩🎉
+- [Posthog](https://posthog.com): product platform and data tools 🧩🎉💠
+- [Jitsu](https://jitsu.com): data pipeline and ingestion 🚧🧩🎉💠
 
 #### Tools: Image
 
-- [Uploadcare](https://uploadcare.com) 🧩🎉
-- [ImageKit](https://imagekit.io) 🚧🧩🎉
-- [Cloudinary](https://cloudinary.com) 🚧🧩🎉
+- [Dicebear](http://dicebear.com): avatar placeholder 🧩🎉💠
+- [Unsplash](http://unsplash.com): image placeholder 🚧🧩🎉
+- [Uploadcare](https://uploadcare.com): assets management 🧩🎉
+- [ImageKit](https://imagekit.io): assets management 🚧🧩🎉
+- [Cloudinary](https://cloudinary.com): assets management 🚧🧩🎉
+- [UploadThing](http://uploadthing): upload management 🚧🧩💠
+
+#### Tools: Video
+
+- [Mux](https://mux.com): video streaming and management 🚧🧩🎉
 
 #### Tools: Transactional Email 🚧
 
-- [Mailjet](https://mailjet.com) 🚧🧩🎉
 - [Resend](https://resend.com) 🚧🧩🎉
+- [Mailjet](https://mailjet.com) 🚧🧩🎉
 
 #### Tools: Marketing Email 🚧
 
 - [ConvertKit](https://convertkit.com) 🚧🧩🎉
 - [Bento](https://bentonow.com) 🚧🧩🎉
+
+#### Tools: Cache and Rate Limiter
+
+- [Upstash](https://upstash.com) 🚧🧩🎉
 
 #### Tools: Payment 🚧
 
@@ -195,21 +204,21 @@ Legends:
 
 #### Tools: Testing 🚧
 
-- [Vitest](https://vitest.dev) 🚧🧩
-- [Testing Library](https://testing-library.com) 🚧🧩
-- [MSW](https://msw.io) 🚧🧩
-- [Playwright](https://playwright.dev) 🚧🧩
+- [Vitest](https://vitest.dev) 🚧🧩💠
+- [Testing Library](https://testing-library.com) 🚧🧩💠
+- [Mock Service Worker (MSW)](https://msw.io) 🚧🧩💠
+- [Playwright](https://playwright.dev) 🚧🧩💠
 - [Ladle](https://ladle.dev) 🚧🧩
 
 #### Tools: Container
 
-- [Docker](http://www.docker.com)
-  - [Docker Compose](https://docs.docker.com/compose)
-  - [Docker Hub](https://hub.docker.com)
+- [Docker](http://www.docker.com) 🧩💠
+  - [Docker Compose](https://docs.docker.com/compose) 🧩💠
+  - [Docker Hub](https://hub.docker.com) 🚧🧩💠
 
 ### Extra Tech Stack
 
-Although these are not included in Rewinds, if you need a separate backend/server/service, here are the recommendations:
+Although these are not included, if you need a separate backend/server/service, here are the recommendations:
 
 #### REST API
 
@@ -253,23 +262,23 @@ Included features for the end users:
 - [x] Admin dashboard and search
   - [x] Manage users, notes, etc
 - [x] Various others
-  - [x] Share image (open graph)
+  - [x] Share URL with preview image from Open Graph
   - [x] Add to home screen as app on mobile
   - [x] Search data
-  - [x] Upload image assets
+    - [ ] Full text search
+  - [x] Upload and manage image assets
   - [ ] Map viewer
 
 Included setup for the developers:
 
-- [x] Full stack type safety with Remix and TypeScript
-  - [x] Follow the practices from the official docs and Remix Stacks
+- [x] Full stack type safety with Remix, TypeScript, Zod
+  - [x] Follow the practices from the official docs and popular Remix Stacks
   - [x] v2 future flags while still in v1
-    - [x] v2 flat routes
-    - [x] v2 error boundary
+    - [x] v2 flat routes convention
     - [x] v2 meta data management
-    - [x] v2 route convention
     - [x] v2 normalized form method
-    - [x] Tailwind CSS support
+    - [x] v2 error boundary
+    - [x] Tailwind CSS and PostCSS support
     - [x] New dev server with config for HMR/HDR (hot module/data reload)
 - [x] More than 50 of ready to use and 100% customizable UI components
   - [x] Layouts and demo examples

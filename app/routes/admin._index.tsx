@@ -42,7 +42,7 @@ export default function Route() {
 
       <section className="px-layout space-y-2">
         <h3>Database Metrics/Statistics</h3>
-        <div className="grid max-w-3xl grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid max-w-3xl gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {metrics.map((metric) => {
             return (
               <RemixLink key={metric.name} to={metric.to}>
