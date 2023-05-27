@@ -1,17 +1,20 @@
 import { prisma } from "~/libs";
+import { configAdmin } from "~/configs";
 
 export const query = {
   async getMetrics() {
     const counts = await prisma.$transaction([
       prisma.user.count(),
-      prisma.userProfile.count(),
-      prisma.userAvatarImage.count(),
-      prisma.userCoverImage.count(),
-      prisma.userRole.count(),
-      prisma.note.count(),
-      prisma.noteImage.count(),
       prisma.image.count(),
+      prisma.note.count(),
     ]);
-    return counts;
+
+    const metrics = configAdmin.navItems
+      .filter((item) => item.isMetric)
+      .map((item, index) => {
+        return { ...item, count: counts[index] };
+      });
+
+    return metrics;
   },
 };

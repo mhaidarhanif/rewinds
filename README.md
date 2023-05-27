@@ -239,7 +239,7 @@ Included features for the end users:
 - [x] Premade contents
 - [x] Light and dark mode theme
 - [x] Site layout and routes/pages
-- [x] Admin dashboard and statistics
+- [x] Admin dashboard and metrics/statistics
 - [x] Register, log in, log out
   - [x] Data validation and check availability
   - [ ] Send welcome or verification email

@@ -39,16 +39,19 @@ export const logoImageVariants = cva("", {
   },
 });
 
-interface Props
+interface LogoProps
   extends React.HTMLAttributes<HTMLElement>,
-    VariantProps<typeof logoVariants> {}
+    VariantProps<typeof logoVariants> {
+  text: string;
+}
 
 export function Logo({
   size = "default",
   accent = "default",
+  text = "default",
   className,
   ...props
-}: Props) {
+}: LogoProps) {
   return (
     <div className={cn(logoVariants({ size, accent, className }))} {...props}>
       <span className={cn(logoVariants({ size, accent, className }))}>
@@ -60,14 +63,18 @@ export function Logo({
           className={cn(logoImageVariants({ size }))}
         />
       </span>
-      <span
-        className={cn(
-          "inline-block",
-          logoVariants({ size, accent, className })
-        )}
-      >
-        {configSite?.name}
-      </span>
+      {text === "default" ? (
+        <span
+          className={cn(
+            "inline-block",
+            logoVariants({ size, accent, className })
+          )}
+        >
+          {configSite?.name}
+        </span>
+      ) : (
+        <span>{text}</span>
+      )}
     </div>
   );
 }

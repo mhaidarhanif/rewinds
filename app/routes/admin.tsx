@@ -74,16 +74,18 @@ export function AdminSidebar() {
         "border-r-2 border-surface-200 bg-white dark:border-surface-700 dark:bg-surface-900"
       )}
     >
-      <div className="queue-center">
+      <div className="queue-center justify-between">
         <RemixNavLink
           prefetch="intent"
           to="/admin"
           className="block min-w-fit transition-opacity hover:opacity-80"
         >
-          <Logo />
+          <Logo text="Admin" />
         </RemixNavLink>
-        <ThemeToggleButton />
-        <HeaderUserMenu align="center" />
+        <div className="queue-center">
+          <ThemeToggleButton />
+          <HeaderUserMenu align="start" />
+        </div>
       </div>
 
       <ul className="grow space-y-2">

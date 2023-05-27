@@ -11,7 +11,7 @@ export const configAdmin = {
   navItems: [
     {
       to: "/admin",
-      name: "Admin Dashboard",
+      name: "Overview",
       icon: "dashboard",
       items: [],
       end: true,
@@ -21,6 +21,7 @@ export const configAdmin = {
       to: "users",
       name: "Users",
       icon: "users",
+      isMetric: true,
       items: [
         {
           to: "user-roles",
@@ -34,6 +35,7 @@ export const configAdmin = {
       to: "images",
       name: "Images",
       icon: "images",
+      isMetric: true,
       items: [],
     },
 
@@ -41,6 +43,7 @@ export const configAdmin = {
       to: "notes",
       name: "Notes",
       icon: "notes",
+      isMetric: true,
       items: [
         {
           to: "note-statuses",

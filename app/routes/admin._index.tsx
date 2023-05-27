@@ -1,7 +1,7 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import { Badge, Debug, PageAdminHeader } from "~/components";
+import { Badge, Debug, PageAdminHeader, RemixLink } from "~/components";
 import { requireUserSession } from "~/helpers";
 import { useRootLoaderData } from "~/hooks";
 import { model } from "~/models";
@@ -26,25 +26,40 @@ export default function Route() {
   const rootLoaderData = useRootLoaderData();
   const loaderData = useLoaderData<typeof loader>();
 
-  const { user } = loaderData;
+  const { user, metrics } = loaderData;
 
   return (
-    <div className="stack">
+    <div>
       <PageAdminHeader size="xs">
         <h1>Admin Dashboard</h1>
+        <RemixLink to={`/admin/users/${user.id}`}>
+          <div className="space-y-2 text-right">
+            <h2>Welcome, {user.name}!</h2>
+            <Badge>{user.role.name}</Badge>
+          </div>
+        </RemixLink>
       </PageAdminHeader>
 
       <section className="px-layout space-y-2">
-        <h2>Welcome, {user.name}!</h2>
-        <p>
-          Your role is <Badge>{user.role.name}</Badge>
-        </p>
+        <h3>Database Metrics/Statistics</h3>
+        <div className="grid max-w-3xl grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {metrics.map((metric) => {
+            return (
+              <RemixLink key={metric.name} to={metric.to}>
+                <div className="card hover:card-hover stack rounded p-4 text-center">
+                  <p className="text-6xl font-extrabold">{metric.count}</p>
+                  <span>{metric.name}</span>
+                </div>
+              </RemixLink>
+            );
+          })}
+        </div>
       </section>
 
-      <div className="px-layout space-y-2">
+      <section className="px-layout">
         <Debug name="rootLoaderData">{rootLoaderData}</Debug>
         <Debug name="loaderData">{loaderData}</Debug>
-      </div>
+      </section>
     </div>
   );
 }
