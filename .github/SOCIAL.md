@@ -14,7 +14,7 @@ Open source and free
 
 This template is what I personally use to build several of my real paid projects and @catamyst platform.
 
-Get it here: http://rewinds.dev
+Get it here: http://rewinds.mhaidarhanif.com
 
 ---
 
@@ -48,4 +48,4 @@ Some more and future plans:
 
 Feel free to send some feedback and fixes
 
-https://github.com/steven-tey/precedent
+https://github.com/mhaidarhanif/rewinds

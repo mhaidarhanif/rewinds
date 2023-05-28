@@ -5,10 +5,15 @@ Quickstart to understand the workflow and project structure:
 ## Workflow
 
 - Start from the `app`
-- Create the expected pages in `routes`
-- ...
+- Check config in `app/configs`
+- Manage the expected pages in `app/routes`
+- Check CRUD operations:
+  - Create
+  - Read/Show
+  - Update/Edit
+  - Delete
 
-## `/app`
+## `app`
 
 Files:
 
@@ -50,23 +55,23 @@ Folders
 15. `types`: Project type definitions
 16. `utils`: Project utility functions
 
-## `/public`
+## `public`
 
 (TODO)
 
-## `/prisma`
+## `prisma`
 
 (TODO)
 
-## `/api`
+## `api`
 
 (TODO)
 
-## `/.github`
+## `.github`
 
 (TODO)
 
-## `/.vscode`
+## `.vscode`
 
 - `extensions.json`: ...
 - `launch.json`: ...

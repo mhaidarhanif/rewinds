@@ -6,7 +6,6 @@
 
 - rewinds
 - Rewinds
-- rewinds.dev
 - rewinds.mhaidarhanif.com
 - rewinds-og
 

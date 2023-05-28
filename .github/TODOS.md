@@ -62,6 +62,7 @@ Public and quick todos for this repo.
 - password strength
   - https://npmjs.com/package/check-password-strength
   - https://npmjs.com/package/password-meter
+- unsaved changes notifier
 
 ## triage
 

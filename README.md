@@ -80,12 +80,12 @@ The main prerequisites to learn, understand, and use with the stack.
 7. [PlanetScale](https://planetscale.com): database management system
 8. [Vercel](https://vercel.com): deployment
 
-(Architecture diagram can help later on here)
-
 If you work as a team, I recommend to:
 
 1. Use [Doppler](https://doppler.com) or [Dotenv](https://dotenv.org) as secrets management platform to share the environment variables. So you can optionally use `.env` file. If you need to share quickly [EnvShare](https://envshare.dev) is good.
 2. Use [Vercel Pro](https://vercel.com/docs/concepts/payments-and-billing/pro) to make code review with preview deployments easier.
+
+(Architecture diagram can help later on here)
 
 ### Complete Tech Stack
 
@@ -171,12 +171,19 @@ Legends:
 
 #### Tools: Image
 
-- [Dicebear](http://dicebear.com): avatar placeholder 🧩🎉💠
-- [Unsplash](http://unsplash.com): image placeholder 🚧🧩🎉
-- [Uploadcare](https://uploadcare.com): assets management 🧩🎉
-- [ImageKit](https://imagekit.io): assets management 🚧🧩🎉
-- [Cloudinary](https://cloudinary.com): assets management 🚧🧩🎉
-- [UploadThing](http://uploadthing): upload management 🚧🧩💠
+- Placeholders
+  - [Dicebear](http://dicebear.com): avatar placeholder 🧩🎉💠
+- Stock
+  - [Unsplash](http://unsplash.com): image placeholder 🚧🧩🎉
+- Upload and assets
+  - [Uploadcare](https://uploadcare.com): assets management 🧩🎉
+  - [ImageKit](https://imagekit.io): assets management 🚧🧩🎉
+  - [Cloudinary](https://cloudinary.com): assets management 🚧🧩🎉
+  - [UploadThing](http://uploadthing): upload management 🚧🧩💠
+- Maps
+  - [Mapbox](https://example.com) 🚧🧩💠
+  - [`mapbox-gl`](https://example.com)
+  - [`react-map-gl`](https://example.com)
 
 #### Tools: Video
 
