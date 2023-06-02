@@ -18,6 +18,8 @@ Rewinds is a web app starter kit with mainly Remix and Tailwind CSS. The goal is
 
 Visit the demo at [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com). Follow the progress on [GitHub @mhaidarhanif](https://github.com/mhaidarhanif) and [Twitter @mhaidarhanif](https://twitter.com/mhaidarhanif).
 
+> See the latest continuation of this starter as [Anison Dev](https://github.com/haidar-dev/anison-dev)
+
 ## Goals
 
 Use this to build any web apps:
@@ -452,9 +454,7 @@ While in development, you can:
 
 ### File upload with Uploadcare
 
-This repo using [Uploadcare](https://uploadcare.com) to primarily upload and host the uploaded images and files. If you want the upload component to run, you need to:
-
-and paste your [Public API key](https://uploadcare.com/docs/start/settings/#keys-public) to `UPLOADCARE_PUBLIC_KEY` env var.
+This repo using [Uploadcare](https://uploadcare.com) to primarily upload and host the uploaded images and files. If you want the upload component to run, you need to paste your [Public API key](https://uploadcare.com/docs/start/settings/#keys-public) to `UPLOADCARE_PUBLIC_KEY` env var.
 
 1. [Create an Uploadcare account](https://uploadcare.com).
 2. Go to the Dashboard and get the public key string.
