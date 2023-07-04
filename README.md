@@ -1,6 +1,6 @@
-# ⏪ Rewinds Stack
+# ⏪ Rewinds
 
-![The Rewinds Stack](https://raw.githubusercontent.com/mhaidarhanif/rewinds/main/public/assets/screenshots/rewinds-screenshot-dark.png)
+![Rewinds](https://raw.githubusercontent.com/mhaidarhanif/rewinds/main/public/assets/screenshots/rewinds-screenshot-dark.png)
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![Remix](https://img.shields.io/badge/Remix-000000?style=flat-square&logo=remix&logoColor=white)
@@ -14,11 +14,13 @@
 
 ## Introduction
 
-Rewinds is a web app starter kit with mainly Remix and Tailwind CSS. The goal is to be as productive as possible to ship things fast. So it is a highly opinionated collection of software engineering and web development workflow, interactive UI components, functionality hooks and utilities.
+[⏪ Rewinds](https://rewinds.mhaidarhanif.com) is a web app starter kit with mainly Remix and Tailwind CSS. Visit the demo at [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com).
 
-Visit the demo at [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com). Follow the progress on [GitHub @mhaidarhanif](https://github.com/mhaidarhanif) and [Twitter @mhaidarhanif](https://twitter.com/mhaidarhanif).
+The goal is to be as productive as possible to ship things fast. So it is a highly opinionated collection of software engineering and web development workflow, interactive UI components, functionality hooks and utilities.
 
-> See the latest continuation of this starter as [Anison Dev](https://github.com/haidar-dev/anison-dev)
+This template can still be used as is and quite stable, but will not be updated often anymore. See the latest continuation of this starter as [🦌 Antelapp](https://github.com/haidar-dev/antelapp).
+
+Follow the progress on [GitHub @mhaidarhanif](https://github.com/mhaidarhanif) and [Twitter @mhaidarhanif](https://twitter.com/mhaidarhanif).
 
 ## Goals
 
