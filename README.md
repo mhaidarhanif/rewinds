@@ -18,7 +18,7 @@
 
 The goal is to be as productive as possible to ship things fast. So it is a highly opinionated collection of software engineering and web development workflow, interactive UI components, functionality hooks and utilities.
 
-This template can still be used as is and quite stable, but will not be updated often anymore. See the latest continuation of this starter as [🦌 Antelapp](https://github.com/haidar-dev/antelapp).
+This template can still be used as is and quite stable, but will not be updated often anymore. See the latest continuation of this starter as [🦌 Antelapp](https://github.com/haidar-dev/antelapp) that also use [Turborepo](https://turbo.build/repo) and [shadcn UI](https://ui.shadcn.com).
 
 Follow the progress on [GitHub @mhaidarhanif](https://github.com/mhaidarhanif) and [Twitter @mhaidarhanif](https://twitter.com/mhaidarhanif).
 
@@ -340,7 +340,7 @@ Recommended external setup:
 - SEO
   - [Google Search Console](https://search.google.com/search-console/about) to check the sitemap and SERP-related stuffs.
 
-Recommended extra development workflow setup:
+Optional workflow setup:
 
 - Install [Kodiak](https://github.com/marketplace/kodiakhq) to automate your GitHub pull requests.
 - Install [Socket Security](https://github.com/marketplace/socket-security) to prevent malicious open source dependencies from infiltrating your apps.
@@ -349,9 +349,7 @@ Recommended extra development workflow setup:
 
 This repo is kind of over-engineered to have high flexibility and cover a lot of use cases for different applications/projects/products, especially what I'm working with several other people.
 
-The components initialized using [shadcn UI](https://github.com/shadcn/ui) as the base components style. And the setup for full stack app development is mostly inspired by [T3 Stack](https://create.t3.gg). The main difference is this repo uses Remix by default, not Next.js like those two.
-
-Currently includes the Remix HMR and HDR optional setup with both Vercel config and Express server on development as per Remix `v1.14`. The config is just combining the templates from Remix with Express and Vercel based on the environment. With separated Express server, you are also able to debug the process from code editor like VS Code much easier.
+The components are using [shadcn UI](https://ui.shadcn.com) as the base components style. And the setup for full stack app development is mostly inspired by [T3 Stack](https://create.t3.gg). The main difference is this repo example uses Remix by default, not Next.js like those two.
 
 ## Development
 
@@ -360,16 +358,16 @@ Currently includes the Remix HMR and HDR optional setup with both Vercel config 
 Before running your Remix app locally, make sure your project's local dependencies are installed using your preferred package manager agent:
 
 ```sh
-npm i
-yarn i
-pnpm i
+npm install
+yarn install
+pnpm install
 ```
 
 Or if using [`ni`](https://github.com/antfu/ni) which can autodetect the agent:
 
 ```sh
-pnpm add -g @antfu/ni  # install once
-ni                     # can auto choose npm/yarn/pnpm
+pnpm add -g @antfu/ni  # Install once globally
+ni                     # Will auto choose npm/yarn/pnpm
 ```
 
 ### Setup Environment Variables/Secrets
@@ -398,7 +396,7 @@ Then edit `.env` as you need.
 #### If using secrets management platform
 
 Alternatively, it's recommended to use [Doppler](https://doppler.com), or
-[Dotenv](https://dotenv.org), or something similar to manage the credentials.
+[Dotenv](https://dotenv.org), or something similar to manage the credentials. Especially if you're working with a team.
 
 ```sh
 doppler login

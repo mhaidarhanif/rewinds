@@ -1,3 +1,0 @@
-{
-  "reject": ["nanoid", "typescript", "/^@remix-run//"]
-}
