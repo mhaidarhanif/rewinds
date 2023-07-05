@@ -104,7 +104,7 @@ export default function Route() {
           <aside className="contain-sm queue-center">
             {userIsAllowed && (
               <ButtonLink
-                to={`/admin/${note.user.username}/${note.slug}`}
+                to={`/admin/notes/${note.id}`}
                 size="xs"
                 variant="info"
               >
