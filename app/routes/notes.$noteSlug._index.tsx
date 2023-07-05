@@ -21,10 +21,10 @@ import {
   formatRelativeTime,
   invariant,
 } from "~/utils";
-import { requireUserSession } from "~/helpers";
+import { getUserIsAllowed, requireUserSession } from "~/helpers";
 
 import type { LoaderArgs, V2_MetaFunction, ActionArgs } from "@remix-run/node";
-import { EditPencil, Trash } from "~/icons";
+import { EditPencil, Eye, Trash } from "~/icons";
 import { useRootLoaderData } from "~/hooks";
 
 export const handle = createSitemap();
@@ -80,9 +80,10 @@ export async function action({ request }: ActionArgs) {
  * Similar with /$username/$noteSlug but simpler
  */
 export default function Route() {
-  const { userSession } = useRootLoaderData();
+  const { userSession, user } = useRootLoaderData();
   const { note } = useLoaderData<typeof loader>();
 
+  const userIsAllowed = getUserIsAllowed(user, ["ADMIN", "MANAGER", "EDITOR"]);
   const isOwner = userSession?.id === note.userId;
 
   // TODO: Can have custom background cover like on dev.to
@@ -92,30 +93,42 @@ export default function Route() {
       variant="sm"
       layoutHeader={
         <header className="mb-4 space-y-4 bg-surface-100 py-6 dark:bg-surface-800/20 sm:py-10">
-          {isOwner && (
-            <aside className="contain-sm queue-center">
+          <aside className="contain-sm queue-center">
+            {userIsAllowed && (
               <ButtonLink
-                to={`/user/notes/${note.id}/edit`}
+                to={`/admin/notes/${note.id}`}
                 size="xs"
-                variant="warning"
+                variant="info"
               >
-                <EditPencil className="size-xs" />
-                <span>Edit</span>
+                <Eye className="size-xs" />
+                <span>View on Admin</span>
               </ButtonLink>
-              <RemixForm method="delete">
-                <input type="hidden" name="noteId" value={note.id} />
-                <Button
+            )}
+            {isOwner && (
+              <>
+                <ButtonLink
+                  to={`/user/notes/${note.id}/edit`}
                   size="xs"
-                  variant="danger"
-                  name="intent"
-                  value="delete-note"
+                  variant="warning"
                 >
-                  <Trash className="size-xs" />
-                  <span>Delete</span>
-                </Button>
-              </RemixForm>
-            </aside>
-          )}
+                  <EditPencil className="size-xs" />
+                  <span>Edit</span>
+                </ButtonLink>
+                <RemixForm method="delete">
+                  <input type="hidden" name="noteId" value={note.id} />
+                  <Button
+                    size="xs"
+                    variant="danger"
+                    name="intent"
+                    value="delete-note"
+                  >
+                    <Trash className="size-xs" />
+                    <span>Delete</span>
+                  </Button>
+                </RemixForm>
+              </>
+            )}
+          </aside>
 
           <div className="contain-sm space-y-4">
             <h1>
