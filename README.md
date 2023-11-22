@@ -16,11 +16,12 @@
 
 [⏪ Rewinds](https://rewinds.mhaidarhanif.com) is a web app starter kit with mainly Remix and Tailwind CSS. Visit the demo at [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com).
 
+This template can still be used as is and quite stable, but will not be updated often anymore.
+See the latest continuation of this starter as [🐶 Dogokit](https://dogokit.allnimal.com) and [🐶 Dogokit Remix repo](https://github.com/dogokit/dogokit-remix).
+
 The goal is to be as productive as possible to ship things fast. So it is a highly opinionated collection of software engineering and web development workflow, interactive UI components, functionality hooks and utilities.
 
-This template can still be used as is and quite stable, but will not be updated often anymore. See the latest continuation of this starter as [🦌 Antelapp](https://github.com/haidar-dev/antelapp) that also use [Turborepo](https://turbo.build/repo) and [shadcn UI](https://ui.shadcn.com).
-
-Follow the progress on [GitHub @mhaidarhanif](https://github.com/mhaidarhanif) and [Twitter @mhaidarhanif](https://twitter.com/mhaidarhanif).
+Follow the progress on [GitHub @mhaidarhanif](https://github.com/mhaidarhanif) and [Twitter/X @mhaidarhanif](https://twitter.com/mhaidarhanif).
 
 ## Goals
 
