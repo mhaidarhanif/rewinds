@@ -1,29 +1,18 @@
-# ⏪ Rewinds
+# Rewinds
+
+> ⏪ Rewinds is no longer maintained since Remix v2. Check out the continuation on [🐶 Dogokit](https://dogokit.allnimal.com) / [🐶 Dogokit Remix](https://github.com/dogokit/dogokit-remix)
 
 ![Rewinds](https://raw.githubusercontent.com/mhaidarhanif/rewinds/main/public/assets/screenshots/rewinds-screenshot-dark.png)
-
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![Remix](https://img.shields.io/badge/Remix-000000?style=flat-square&logo=remix&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
-![Radix UI](https://img.shields.io/badge/Radix_UI-111111?style=flat-square&logo=framer&logoColor=white)
-![Prisma ORM](https://img.shields.io/badge/Prisma_ORM-2D3748?style=flat-square&logo=prisma&logoColor=white)
-![PlanetScale](https://img.shields.io/badge/PlanetScale-000000?style=flat-square&logo=planetscale&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
-[![Better Uptime](https://betteruptime.com/status-badges/v1/monitor/enmd.svg)](https://uptime.mhaidarhanif.com/?utm_source=status_badge)
 
 ## Introduction
 
 [⏪ Rewinds](https://rewinds.mhaidarhanif.com) is a web app starter kit with mainly Remix and Tailwind CSS. Visit the demo at [rewinds.mhaidarhanif.com](https://rewinds.mhaidarhanif.com).
 
-This template can still be used as is and quite stable, but will not be updated often anymore.
-See the latest continuation of this starter as [🐶 Dogokit](https://dogokit.allnimal.com) and [🐶 Dogokit Remix repo](https://github.com/dogokit/dogokit-remix).
-
-The goal is to be as productive as possible to ship things fast. So it is a highly opinionated collection of software engineering and web development workflow, interactive UI components, functionality hooks and utilities.
-
-Follow the progress on [GitHub @mhaidarhanif](https://github.com/mhaidarhanif) and [Twitter/X @mhaidarhanif](https://twitter.com/mhaidarhanif).
+This template can still be used as is and quite stable with Remix v1, but will not be updated anymore. See the latest continuation of this starter as [🐶 Dogokit](https://dogokit.allnimal.com), one of them is being [🐶 Dogokit Remix](https://github.com/dogokit/dogokit-remix).
 
 ## Goals
+
+The goal is to be as productive as possible to ship things fast. So it is a highly opinionated collection of software engineering and web development workflow, interactive UI components, functionality hooks and utilities.
 
 Use this to build any web apps:
 
